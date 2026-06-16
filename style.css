@@ -175,6 +175,7 @@ body:has(.uba-case){overflow-x:hidden}.uba-case,.uba-case>*{min-width:0;max-widt
 .g-sun{background:radial-gradient(circle,#ffd9c7,#ee9e84);box-shadow:0 18px 45px rgba(238,158,132,.26)}
 .g-focus-card{background:radial-gradient(circle at 92% 8%,rgba(158,232,199,.25),transparent 34%),linear-gradient(135deg,#0f312b,#1e5c4e);border:1px solid rgba(255,255,255,.12)}
 .grounded-impact{background:radial-gradient(circle at 10% 10%,rgba(255,255,255,.42),transparent 24%),linear-gradient(135deg,#f4a98f,#dbeee2 80%)}
+.grounded-research .grounded-heading h2{max-width:980px}
 @media(max-width:700px){.g-suite-phones{padding:18px;border-radius:24px}.grounded-hero{background:radial-gradient(circle at 88% 18%,rgba(158,232,199,.55),transparent 28%),linear-gradient(135deg,#fff8ed,#e5f5ec)}}
 
 /* Project password gate */
