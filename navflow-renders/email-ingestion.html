@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "on-primary-fixed-variant": "#6900b3",
+            "on-surface-variant": "#cfc2d6",
+            "inverse-primary": "#842bd2",
+            "tertiary-container": "#8083ff",
+            "error": "#ffb4ab",
+            "error-container": "#93000a",
+            "on-secondary": "#002e6a",
+            "inverse-surface": "#dae2fd",
+            "on-secondary-fixed-variant": "#004395",
+            "tertiary-fixed": "#e1e0ff",
+            "on-primary-fixed": "#2c0051",
+            "surface-container-lowest": "#060e20",
+            "on-error": "#690005",
+            "on-background": "#dae2fd",
+            "primary-fixed-dim": "#ddb7ff",
+            "surface-variant": "#2d3449",
+            "on-primary": "#490080",
+            "primary-fixed": "#f0dbff",
+            "on-tertiary-container": "#0d0096",
+            "on-secondary-fixed": "#001a42",
+            "on-tertiary-fixed": "#07006c",
+            "tertiary": "#c0c1ff",
+            "surface-tint": "#ddb7ff",
+            "tertiary-fixed-dim": "#c0c1ff",
+            "background": "#0b1326",
+            "surface-bright": "#31394d",
+            "primary": "#ddb7ff",
+            "surface-dim": "#0b1326",
+            "secondary-container": "#0566d9",
+            "surface-container-high": "#222a3d",
+            "surface-container-low": "#131b2e",
+            "on-surface": "#dae2fd",
+            "surface-container-highest": "#2d3449",
+            "on-error-container": "#ffdad6",
+            "inverse-on-surface": "#283044",
+            "primary-container": "#b76dff",
+            "on-tertiary": "#1000a9",
+            "outline": "#988d9f",
+            "secondary": "#adc6ff",
+            "on-secondary-container": "#e6ecff",
+            "outline-variant": "#4d4354",
+            "surface-container": "#171f33",
+            "on-tertiary-fixed-variant": "#2f2ebe",
+            "on-primary-container": "#400071",
+            "secondary-fixed": "#d8e2ff",
+            "secondary-fixed-dim": "#adc6ff",
+            "surface": "#0b1326"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "container-padding": "32px",
+            "section-margin": "48px",
+            "card-gap": "24px",
+            "gutter": "24px"
+          },
+          "fontFamily": {
+            "headline-md": ["Inter"],
+            "display-xl": ["Inter"],
+            "label-sm": ["Inter"],
+            "headline-lg": ["Inter"],
+            "body-md": ["Inter"],
+            "body-lg": ["Inter"]
+          },
+          "fontSize": {
+            "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+            "display-xl": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+            "label-sm": ["13px", {"lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "500"}],
+            "headline-lg": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+            "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+            "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    .glass-card {
+      background: rgba(23, 31, 51, 0.4);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    }
+    .status-pulse {
+      box-shadow: 0 0 0 0 rgba(183, 109, 255, 0.7);
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(183, 109, 255, 0.7); }
+      70% { transform: scale(1.1); box-shadow: 0 0 0 10px rgba(183, 109, 255, 0); }
+      100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(183, 109, 255, 0); }
+    }
+    .shimmer {
+      background: linear-gradient(90deg, transparent, rgba(221, 183, 255, 0.1), transparent);
+      background-size: 200% 100%;
+      animation: shimmer 3s infinite linear;
+    }
+    @keyframes shimmer {
+      from { background-position: -200% 0; }
+      to { background-position: 200% 0; }
+    }
+    .extraction-highlight {
+      background: rgba(183, 109, 255, 0.15);
+      border-bottom: 2px solid #b76dff;
+      padding: 0 2px;
+    }
+  </style>
+</head>
+<body class="bg-background text-on-surface font-body-md overflow-hidden h-screen flex">
+<!-- SideNavBar -->
+<nav class="fixed left-0 top-0 h-full w-20 hover:w-64 z-50 transition-all duration-500 overflow-hidden bg-surface-container-low/30 backdrop-blur-xl border-r border-white/10 shadow-2xl flex flex-col py-8 gap-y-2 group">
+<div class="px-6 mb-8 flex items-center gap-4">
+<div class="w-8 h-8 flex-shrink-0 bg-primary-container rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-on-primary-container" style="font-variation-settings: 'FILL' 1;">account_tree</span>
+</div>
+<span class="font-headline-md text-headline-md font-bold text-primary opacity-0 group-hover:opacity-100 transition-opacity">NAVFlow AI</span>
+</div>
+<div class="flex-grow">
+<a class="flex items-center gap-4 text-on-surface-variant px-4 py-3 hover:bg-white/5 hover:text-on-surface transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">Dashboard</span>
+</a>
+<a class="flex items-center gap-4 text-on-surface-variant px-4 py-3 hover:bg-white/5 hover:text-on-surface transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="account_tree">account_tree</span>
+<span class="opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">Pipeline</span>
+</a>
+<a class="flex items-center gap-4 bg-primary/20 text-primary border-l-4 border-primary px-4 py-3" href="#">
+<span class="material-symbols-outlined" data-icon="inbox">inbox</span>
+<span class="opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">Inbox</span>
+</a>
+<a class="flex items-center gap-4 text-on-surface-variant px-4 py-3 hover:bg-white/5 hover:text-on-surface transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="workspaces">workspaces</span>
+<span class="opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">Workspace</span>
+</a>
+<a class="flex items-center gap-4 text-on-surface-variant px-4 py-3 hover:bg-white/5 hover:text-on-surface transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="rule">rule</span>
+<span class="opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">Validation</span>
+</a>
+<a class="flex items-center gap-4 text-on-surface-variant px-4 py-3 hover:bg-white/5 hover:text-on-surface transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="smart_toy">smart_toy</span>
+<span class="opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">Agents</span>
+</a>
+</div>
+<div class="mt-auto">
+<a class="flex items-center gap-4 text-on-surface-variant px-4 py-3 hover:bg-white/5 hover:text-on-surface transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="help_outline">help_outline</span>
+<span class="opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">Help</span>
+</a>
+<a class="flex items-center gap-4 text-on-surface-variant px-4 py-3 hover:bg-white/5 hover:text-on-surface transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="logout">logout</span>
+<span class="opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">Sign Out</span>
+</a>
+</div>
+</nav>
+<!-- Main Content Area -->
+<main class="flex-grow flex flex-col ml-20 h-screen">
+<!-- TopNavBar -->
+<header class="h-16 flex justify-between items-center px-container-padding bg-surface/10 dark:bg-surface/10 backdrop-blur-2xl border-b border-white/10 z-40">
+<div class="flex items-center gap-4">
+<h1 class="font-headline-md text-headline-md font-bold text-primary">NAV Email Ingestion</h1>
+<div class="flex items-center gap-2 px-3 py-1 bg-primary/10 rounded-full">
+<span class="w-2 h-2 rounded-full bg-primary status-pulse"></span>
+<span class="text-label-sm font-label-sm text-primary uppercase">AI Ingestion Active</span>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<div class="relative group">
+<input class="bg-surface-container-low border-none rounded-xl py-2 pl-10 pr-4 text-on-surface-variant focus:ring-2 focus:ring-primary/50 transition-all w-64" placeholder="Search across emails..." type="text"/>
+<span class="material-symbols-outlined absolute left-3 top-2 text-on-surface-variant">search</span>
+</div>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:text-primary transition-colors">calendar_today</span>
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:text-primary transition-colors">notifications</span>
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:text-primary transition-colors">settings</span>
+<img alt="User Profile" class="w-8 h-8 rounded-full border border-white/20" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDi2ZWbzxSwaMmaWOPdkBrcHTzG55XqKBMpeJKu5wjre6_A4xRt7lOrFaJc_x-q-V3x6nhUlgTLc-a2xmF_gai43r9XrxrdUyFXI_3KGEkV1rChnkePcjTiMgZ3Ei2FDW-q8Zvj7aJulj2wqENxtWK_yT4saju9f2SCDHq6GTNKPcaa5q-Xh3yCF-2La-8IPqihjjNIMccEifT76rVRvXn5Ly6inAdjvR6gGzUWkiXCPY-U0hg5MJ8R4CUR3BxfdOhKeukLHPuJZ20"/>
+</div>
+</div>
+</header>
+<!-- Split Screen Workspace -->
+<div class="flex-grow flex overflow-hidden">
+<!-- Left Panel: Inbox & Preview -->
+<section class="w-2/5 flex flex-col border-r border-white/5 bg-surface-container-low/20">
+<!-- Inbox List -->
+<div class="h-1/3 overflow-y-auto border-b border-white/5 p-4 space-y-3">
+<div class="p-4 glass-card rounded-xl border-primary/50 bg-primary/5 relative cursor-pointer ring-1 ring-primary/30">
+<div class="flex justify-between items-start mb-1">
+<span class="text-label-sm font-bold text-primary">Global Alpha Partners</span>
+<span class="text-[11px] text-on-surface-variant">10:42 AM</span>
+</div>
+<p class="font-headline-md text-[14px] text-on-surface mb-1">NAV Report - Q3 FY24 Performance</p>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-on-surface-variant text-[14px]">attach_file</span>
+<span class="text-[12px] text-on-surface-variant italic">NAV_Report_GAP_Q3.pdf</span>
+</div>
+<div class="absolute right-4 top-1/2 -translate-y-1/2">
+<span class="material-symbols-outlined text-primary">chevron_right</span>
+</div>
+</div>
+<div class="p-4 glass-card rounded-xl hover:bg-white/5 transition-colors cursor-pointer">
+<div class="flex justify-between items-start mb-1">
+<span class="text-label-sm font-medium text-on-surface-variant">Stratton Hedge Fund</span>
+<span class="text-[11px] text-on-surface-variant">Yesterday</span>
+</div>
+<p class="font-headline-md text-[14px] text-on-surface mb-1">Final Net Asset Value Notification</p>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-on-surface-variant text-[14px]">attach_file</span>
+<span class="text-[12px] text-on-surface-variant italic">Stratton_Final_NAV.xlsx</span>
+</div>
+</div>
+<div class="p-4 glass-card rounded-xl hover:bg-white/5 transition-colors cursor-pointer">
+<div class="flex justify-between items-start mb-1">
+<span class="text-label-sm font-medium text-on-surface-variant">Meridian Capital</span>
+<span class="text-[11px] text-on-surface-variant">Yesterday</span>
+</div>
+<p class="font-headline-md text-[14px] text-on-surface mb-1">Monthly Statement Correction</p>
+</div>
+</div>
+<!-- Email Content Preview -->
+<div class="flex-grow p-8 overflow-y-auto bg-surface-dim relative">
+<div class="max-w-xl mx-auto space-y-6">
+<div class="flex items-center justify-between pb-6 border-b border-white/10">
+<div>
+<h2 class="text-headline-md font-headline-md text-on-surface">Global Alpha Partners</h2>
+<p class="text-on-surface-variant text-body-md">From: reporting@globalalpha.com</p>
+</div>
+<div class="flex gap-2">
+<button class="p-2 rounded-lg bg-surface-container-high hover:bg-primary/20 transition-colors">
+<span class="material-symbols-outlined text-[20px]">reply</span>
+</button>
+<button class="p-2 rounded-lg bg-surface-container-high hover:bg-primary/20 transition-colors">
+<span class="material-symbols-outlined text-[20px]">print</span>
+</button>
+</div>
+</div>
+<div class="space-y-4 text-on-surface-variant leading-relaxed">
+<p>Dear Finance Operations Team,</p>
+<p>Please find attached the official Net Asset Value report for the <span class="extraction-highlight">Global Alpha Multi-Strategy Fund</span> as of the valuation date <span class="extraction-highlight">September 30, 2024</span>.</p>
+<p>For the primary share class <span class="extraction-highlight">Class A (Institutional)</span>, the closing Net Asset Value per share has been calculated at <span class="extraction-highlight">$1,422.84</span>.</p>
+<p>This valuation has been reviewed by our compliance department and reflects the total assets under management including current quarter gains from alternative investments.</p>
+<p>Regards,<br/>NAV Services Department</p>
+</div>
+<div class="p-4 glass-card rounded-2xl flex items-center gap-4 mt-8 shimmer">
+<div class="p-3 bg-primary-container/20 rounded-xl">
+<span class="material-symbols-outlined text-primary">picture_as_pdf</span>
+</div>
+<div class="flex-grow">
+<p class="text-body-md font-medium text-on-surface">NAV_Report_GAP_Q3.pdf</p>
+<p class="text-label-sm text-on-surface-variant uppercase">8.4 MB • PDF Document</p>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:text-primary">download</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Right Panel: AI Extraction & Fields -->
+<section class="flex-grow p-container-padding flex flex-col gap-6 overflow-y-auto">
+<div class="flex items-center justify-between mb-4">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary text-3xl" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+<h2 class="text-headline-lg font-headline-lg text-on-surface">AI Extraction Results</h2>
+</div>
+<div class="flex items-center gap-3">
+<div class="px-4 py-2 rounded-xl bg-surface-container-highest flex items-center gap-2 border border-white/5">
+<span class="text-label-sm text-on-surface-variant">Global Confidence:</span>
+<span class="text-headline-md font-bold text-[#4ade80]">94%</span>
+</div>
+</div>
+</div>
+<!-- Data Table Card -->
+<div class="glass-card rounded-3xl overflow-hidden">
+<table class="w-full text-left">
+<thead>
+<tr class="bg-white/5 border-b border-white/10">
+<th class="px-6 py-4 font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Field Name</th>
+<th class="px-6 py-4 font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Extracted Value</th>
+<th class="px-6 py-4 font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Confidence</th>
+<th class="px-6 py-4 font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Source</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-white/5">
+<tr class="hover:bg-white/5 transition-colors">
+<td class="px-6 py-5">
+<span class="text-body-md font-semibold text-on-surface">Entity Name</span>
+</td>
+<td class="px-6 py-5">
+<div class="flex items-center gap-2">
+<span class="text-body-md text-on-surface">Global Alpha Multi-Strategy Fund</span>
+<span class="material-symbols-outlined text-primary text-sm">edit</span>
+</div>
+</td>
+<td class="px-6 py-5">
+<div class="flex items-center gap-2">
+<span class="px-2 py-1 bg-[#4ade80]/10 text-[#4ade80] rounded text-[12px] font-bold">98%</span>
+<div class="w-16 h-1 bg-surface-container-high rounded-full">
+<div class="bg-[#4ade80] h-full rounded-full" style="width: 98%;"></div>
+</div>
+</div>
+</td>
+<td class="px-6 py-5">
+<span class="text-label-sm text-on-surface-variant">Email Body, Line 2</span>
+</td>
+</tr>
+<tr class="hover:bg-white/5 transition-colors">
+<td class="px-6 py-5">
+<span class="text-body-md font-semibold text-on-surface">NAV Date</span>
+</td>
+<td class="px-6 py-5">
+<div class="flex items-center gap-2">
+<span class="text-body-md text-on-surface">September 30, 2024</span>
+<span class="material-symbols-outlined text-primary text-sm">edit</span>
+</div>
+</td>
+<td class="px-6 py-5">
+<div class="flex items-center gap-2">
+<span class="px-2 py-1 bg-[#4ade80]/10 text-[#4ade80] rounded text-[12px] font-bold">99%</span>
+<div class="w-16 h-1 bg-surface-container-high rounded-full">
+<div class="bg-[#4ade80] h-full rounded-full" style="width: 99%;"></div>
+</div>
+</div>
+</td>
+<td class="px-6 py-5">
+<span class="text-label-sm text-on-surface-variant">Email Body, Line 2</span>
+</td>
+</tr>
+<tr class="hover:bg-white/5 transition-colors">
+<td class="px-6 py-5">
+<span class="text-body-md font-semibold text-on-surface">Share Class</span>
+</td>
+<td class="px-6 py-5">
+<div class="flex items-center gap-2">
+<span class="text-body-md text-on-surface">Class A (Institutional)</span>
+<span class="material-symbols-outlined text-primary text-sm">edit</span>
+</div>
+</td>
+<td class="px-6 py-5">
+<div class="flex items-center gap-2">
+<span class="px-2 py-1 bg-[#fbbf24]/10 text-[#fbbf24] rounded text-[12px] font-bold">82%</span>
+<div class="w-16 h-1 bg-surface-container-high rounded-full">
+<div class="bg-[#fbbf24] h-full rounded-full" style="width: 82%;"></div>
+</div>
+</div>
+</td>
+<td class="px-6 py-5">
+<span class="text-label-sm text-on-surface-variant">Email Body, Line 4</span>
+</td>
+</tr>
+<tr class="hover:bg-white/5 transition-colors">
+<td class="px-6 py-5">
+<span class="text-body-md font-semibold text-on-surface">NAV Value</span>
+</td>
+<td class="px-6 py-5">
+<div class="flex items-center gap-2">
+<span class="text-body-md font-semibold text-primary">$1,422.84</span>
+<span class="material-symbols-outlined text-primary text-sm">edit</span>
+</div>
+</td>
+<td class="px-6 py-5">
+<div class="flex items-center gap-2">
+<span class="px-2 py-1 bg-[#4ade80]/10 text-[#4ade80] rounded text-[12px] font-bold">98%</span>
+<div class="w-16 h-1 bg-surface-container-high rounded-full">
+<div class="bg-[#4ade80] h-full rounded-full" style="width: 98%;"></div>
+</div>
+</div>
+</td>
+<td class="px-6 py-5">
+<span class="text-label-sm text-on-surface-variant">Email Body, Line 4</span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- AI Reasoning / Copilot Insights -->
+<div class="glass-card rounded-3xl p-6 border-primary/20">
+<div class="flex items-center gap-3 mb-4">
+<span class="material-symbols-outlined text-primary">psychology</span>
+<h3 class="font-headline-md text-[18px] text-on-surface">AI Reasoning Insights</h3>
+</div>
+<div class="grid grid-cols-2 gap-6">
+<div class="bg-primary/5 rounded-2xl p-4 border border-primary/10">
+<p class="text-label-sm font-bold text-primary mb-2 uppercase">Cross-Validation</p>
+<p class="text-body-md text-on-surface-variant">Entity name matched against internal database ID <span class="text-primary">GAP-FUND-001</span> with high statistical overlap in naming convention.</p>
+</div>
+<div class="bg-primary/5 rounded-2xl p-4 border border-primary/10">
+<p class="text-label-sm font-bold text-primary mb-2 uppercase">Ambiguity Flag</p>
+<p class="text-body-md text-on-surface-variant">Multiple share classes were mentioned in previous emails for this sender. Defaulted to <span class="text-primary">Class A</span> based on historical priority.</p>
+</div>
+</div>
+</div>
+<!-- Actions -->
+<div class="flex items-center gap-4 mt-auto">
+<button class="flex-grow py-4 px-6 bg-gradient-to-r from-primary to-secondary text-on-primary font-bold rounded-2xl flex items-center justify-center gap-3 hover:opacity-90 transition-all active:scale-[0.98]">
+<span class="material-symbols-outlined">check_circle</span>
+            Approve Extraction
+          </button>
+<button class="py-4 px-8 glass-card text-on-surface font-semibold rounded-2xl flex items-center justify-center gap-3 hover:bg-white/10 transition-all">
+<span class="material-symbols-outlined">refresh</span>
+            Retry AI Extraction
+          </button>
+<button class="py-4 px-8 glass-card text-on-surface font-semibold rounded-2xl flex items-center justify-center gap-3 hover:bg-white/10 transition-all">
+<span class="material-symbols-outlined">edit_note</span>
+            Manual Correction
+          </button>
+</div>
+</section>
+<!-- AI Copilot Panel (Floating) -->
+<aside class="fixed right-8 bottom-8 w-80 glass-card rounded-3xl p-6 z-50 border-primary/40 shadow-[0_0_50px_rgba(183,109,255,0.2)]">
+<div class="flex items-center gap-3 mb-4">
+<div class="w-10 h-10 bg-primary rounded-xl flex items-center justify-center status-pulse">
+<span class="material-symbols-outlined text-on-primary" style="font-variation-settings: 'FILL' 1;">smart_toy</span>
+</div>
+<div>
+<h4 class="font-headline-md text-[16px] text-on-surface">Copilot Advisor</h4>
+<span class="text-[11px] text-[#4ade80] font-bold uppercase">Ready to Assist</span>
+</div>
+</div>
+<p class="text-body-md text-on-surface-variant mb-4 bg-surface-container-high p-3 rounded-xl">"I have verified the NAV value against last month's figures ($1,401.12). The 1.5% growth is within the normal variance range."</p>
+<div class="flex flex-col gap-2">
+<button class="w-full text-left px-4 py-2 rounded-xl bg-white/5 hover:bg-primary/20 text-label-sm text-on-surface transition-colors flex justify-between items-center">
+            View historical trend
+            <span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+</button>
+<button class="w-full text-left px-4 py-2 rounded-xl bg-white/5 hover:bg-primary/20 text-label-sm text-on-surface transition-colors flex justify-between items-center">
+            Flag for compliance review
+            <span class="material-symbols-outlined text-[14px]">flag</span>
+</button>
+</div>
+</aside>
+</div>
+</main>
+<!-- Background Decorative Elements -->
+<div class="fixed top-[-10%] right-[-10%] w-[500px] h-[500px] bg-primary/10 blur-[120px] rounded-full -z-10"></div>
+<div class="fixed bottom-[-5%] left-[-5%] w-[400px] h-[400px] bg-secondary/10 blur-[100px] rounded-full -z-10"></div>
+</body></html>

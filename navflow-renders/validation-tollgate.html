@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-primary-fixed-variant": "#6900b3",
+                        "on-surface-variant": "#cfc2d6",
+                        "inverse-primary": "#842bd2",
+                        "tertiary-container": "#8083ff",
+                        "error": "#ffb4ab",
+                        "error-container": "#93000a",
+                        "on-secondary": "#002e6a",
+                        "inverse-surface": "#dae2fd",
+                        "on-secondary-fixed-variant": "#004395",
+                        "tertiary-fixed": "#e1e0ff",
+                        "on-primary-fixed": "#2c0051",
+                        "surface-container-lowest": "#060e20",
+                        "on-error": "#690005",
+                        "on-background": "#dae2fd",
+                        "primary-fixed-dim": "#ddb7ff",
+                        "surface-variant": "#2d3449",
+                        "on-primary": "#490080",
+                        "primary-fixed": "#f0dbff",
+                        "on-tertiary-container": "#0d0096",
+                        "on-secondary-fixed": "#001a42",
+                        "on-tertiary-fixed": "#07006c",
+                        "tertiary": "#c0c1ff",
+                        "surface-tint": "#ddb7ff",
+                        "tertiary-fixed-dim": "#c0c1ff",
+                        "background": "#0b1326",
+                        "surface-bright": "#31394d",
+                        "primary": "#ddb7ff",
+                        "surface-dim": "#0b1326",
+                        "secondary-container": "#0566d9",
+                        "surface-container-high": "#222a3d",
+                        "surface-container-low": "#131b2e",
+                        "on-surface": "#dae2fd",
+                        "surface-container-highest": "#2d3449",
+                        "on-error-container": "#ffdad6",
+                        "inverse-on-surface": "#283044",
+                        "primary-container": "#b76dff",
+                        "on-tertiary": "#1000a9",
+                        "outline": "#988d9f",
+                        "secondary": "#adc6ff",
+                        "on-secondary-container": "#e6ecff",
+                        "outline-variant": "#4d4354",
+                        "surface-container": "#171f33",
+                        "on-tertiary-fixed-variant": "#2f2ebe",
+                        "on-primary-container": "#400071",
+                        "secondary-fixed": "#d8e2ff",
+                        "secondary-fixed-dim": "#adc6ff",
+                        "surface": "#0b1326"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "container-padding": "32px",
+                        "section-margin": "48px",
+                        "card-gap": "24px",
+                        "gutter": "24px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Inter"],
+                        "display-xl": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "body-md": ["Inter"],
+                        "body-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                        "display-xl": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "label-sm": ["13px", {"lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                        "headline-lg": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .glass-card {
+            background: rgba(45, 52, 73, 0.15);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: inset 1px 1px 0px rgba(255, 255, 255, 0.05);
+        }
+        .shimmer {
+            background: linear-gradient(90deg, transparent, rgba(221, 183, 255, 0.05), transparent);
+            background-size: 200% 100%;
+            animation: shimmer 3s infinite;
+        }
+        @keyframes shimmer {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
+        }
+        .pulse-amber {
+            box-shadow: 0 0 0 0 rgba(255, 191, 0, 0.4);
+            animation: pulse-amber 2s infinite;
+        }
+        @keyframes pulse-amber {
+            0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(255, 191, 0, 0.7); }
+            70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(255, 191, 0, 0); }
+            100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(255, 191, 0, 0); }
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-md overflow-hidden h-screen flex">
+<!-- SideNavBar (The Anchor) -->
+<aside class="fixed left-0 top-0 h-full w-20 hover:w-64 z-40 transition-all duration-500 overflow-hidden border-r border-white/10 bg-surface-container-low/30 backdrop-blur-xl flex flex-col py-8 gap-y-2 shadow-2xl group">
+<div class="px-6 mb-8 flex items-center gap-4">
+<div class="w-8 h-8 rounded-lg bg-primary-container flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-on-primary-container" data-icon="account_balance">account_balance</span>
+</div>
+<span class="font-headline-md text-headline-md font-bold text-primary whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity">NAVFlow AI</span>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="flex items-center gap-4 text-on-surface-variant px-4 py-3 hover:bg-white/5 hover:text-on-surface transition-all" href="#">
+<span class="material-symbols-outlined shrink-0" data-icon="dashboard">dashboard</span>
+<span class="whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity">Dashboard</span>
+</a>
+<a class="flex items-center gap-4 text-on-surface-variant px-4 py-3 hover:bg-white/5 hover:text-on-surface transition-all" href="#">
+<span class="material-symbols-outlined shrink-0" data-icon="account_tree">account_tree</span>
+<span class="whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity">Pipeline</span>
+</a>
+<a class="flex items-center gap-4 bg-primary/20 text-primary border-l-4 border-primary px-4 py-3" href="#">
+<span class="material-symbols-outlined shrink-0" data-icon="rule">rule</span>
+<span class="whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity font-bold">Validation</span>
+</a>
+<a class="flex items-center gap-4 text-on-surface-variant px-4 py-3 hover:bg-white/5 hover:text-on-surface transition-all" href="#">
+<span class="material-symbols-outlined shrink-0" data-icon="smart_toy">smart_toy</span>
+<span class="whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity">Agents</span>
+</a>
+</nav>
+<div class="mt-auto border-t border-white/10 pt-4">
+<a class="flex items-center gap-4 text-on-surface-variant px-4 py-3 hover:bg-white/5 hover:text-on-surface transition-all" href="#">
+<span class="material-symbols-outlined shrink-0" data-icon="help_outline">help_outline</span>
+<span class="whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity">Help</span>
+</a>
+<a class="flex items-center gap-4 text-on-surface-variant px-4 py-3 hover:bg-white/5 hover:text-on-surface transition-all" href="#">
+<span class="material-symbols-outlined shrink-0" data-icon="logout">logout</span>
+<span class="whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity">Sign Out</span>
+</a>
+</div>
+</aside>
+<main class="flex-1 ml-20 flex flex-col relative overflow-hidden">
+<!-- TopNavBar -->
+<header class="fixed top-0 right-0 left-20 z-30 h-16 bg-surface/10 backdrop-blur-2xl border-b border-white/20 shadow-[0_4px_30px_rgba(0,0,0,0.1)] flex justify-between items-center px-container-padding">
+<div class="flex items-center gap-6">
+<h1 class="font-headline-md text-headline-md font-bold text-on-surface">Validation &amp; Tollgate Center</h1>
+<div class="flex items-center bg-surface-container-highest px-4 py-1 rounded-full border border-white/10">
+<span class="w-2 h-2 rounded-full bg-amber-500 pulse-amber mr-2"></span>
+<span class="text-label-sm font-label-sm text-on-surface-variant uppercase tracking-wider">Medium Risk — Amber Status</span>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="flex items-center gap-2 px-3 py-1.5 bg-primary/10 rounded-lg text-primary border border-primary/20">
+<span class="material-symbols-outlined" data-icon="auto_awesome">auto_awesome</span>
+<span class="text-label-sm font-medium">Copilot Active</span>
+</div>
+<button class="text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="calendar_today">calendar_today</span>
+</button>
+<button class="text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<button class="text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+</button>
+<div class="w-8 h-8 rounded-full overflow-hidden border border-primary/50">
+<img alt="User profile" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA7A0BULAxD6jc0UNC8hHk7g4rlp0PzqaSPL0ckrgRQoLmeGZtPKbU_bXHo4cKmPr6KyVwaPSV9a-Gg8r2tNFpVXY7p2GWEozU0Uj3HOCTGzdrLwj62MPXVlH2Vbjk_UBCAuVVVKCtPvyz7dsaYho2LeX4XM_FXz05m79NlIhy0sJTIuHuF_nmsJ5YHvMuXY8D2GcU-HiZUwRi0AoN93eBQ0jDmAZuhSBM5bIlR3wr4I-dTfIMl9s0EZnyuyYP2zmvcV5fr82LV7jw"/>
+</div>
+</div>
+</header>
+<!-- Main Content Area -->
+<div class="mt-16 flex-1 flex gap-gutter p-container-padding overflow-hidden">
+<!-- Left: Validation Rules List -->
+<section class="w-80 flex flex-col gap-4 overflow-y-auto">
+<div class="flex items-center justify-between mb-2">
+<h2 class="text-label-sm font-bold uppercase tracking-widest text-primary-fixed-dim">Validation Rules</h2>
+<span class="text-label-sm bg-surface-container-high px-2 py-0.5 rounded text-on-surface-variant">6 Active</span>
+</div>
+<div class="glass-card p-4 rounded-xl space-y-4 border-l-4 border-error">
+<div class="flex items-start justify-between">
+<span class="font-headline-md text-body-md font-bold text-on-surface">Variance Check</span>
+<span class="material-symbols-outlined text-error" data-icon="warning">warning</span>
+</div>
+<p class="text-label-sm text-on-surface-variant leading-relaxed">System-wide check for multi-period fiscal variance exceeding 10%.</p>
+<div class="flex items-center gap-2 text-error text-label-sm">
+<span class="material-symbols-outlined text-[16px]" data-icon="error">error</span>
+<span>Failed: 12 Rows Affected</span>
+</div>
+</div>
+<div class="glass-card p-4 rounded-xl space-y-4 border-l-4 border-primary">
+<div class="flex items-start justify-between">
+<span class="font-headline-md text-body-md font-bold text-on-surface">SLA Check</span>
+<span class="material-symbols-outlined text-primary" data-icon="check_circle">check_circle</span>
+</div>
+<p class="text-label-sm text-on-surface-variant leading-relaxed">Latency validation for real-time ledger updates across nodes.</p>
+<div class="flex items-center gap-2 text-primary text-label-sm">
+<span class="material-symbols-outlined text-[16px]" data-icon="verified">verified</span>
+<span>Passed: No delays</span>
+</div>
+</div>
+<div class="glass-card p-4 rounded-xl space-y-4 border-l-4 border-error">
+<div class="flex items-start justify-between">
+<span class="font-headline-md text-body-md font-bold text-on-surface">Missing Data</span>
+<span class="material-symbols-outlined text-error" data-icon="warning">warning</span>
+</div>
+<p class="text-label-sm text-on-surface-variant leading-relaxed">Scanning for null fields in transaction header metadata.</p>
+<div class="flex items-center gap-2 text-error text-label-sm">
+<span class="material-symbols-outlined text-[16px]" data-icon="error">error</span>
+<span>Failed: 4 Fields missing</span>
+</div>
+</div>
+<div class="glass-card p-4 rounded-xl space-y-4 opacity-60">
+<div class="flex items-start justify-between">
+<span class="font-headline-md text-body-md font-bold text-on-surface">Compliance Tag</span>
+<span class="material-symbols-outlined" data-icon="schedule">schedule</span>
+</div>
+<p class="text-label-sm text-on-surface-variant leading-relaxed">Validating Sarbanes-Oxley (SOX) tagging integrity.</p>
+<div class="flex items-center gap-2 text-on-surface-variant text-label-sm">
+<span class="material-symbols-outlined text-[16px]" data-icon="hourglass_empty">hourglass_empty</span>
+<span>Pending Processing</span>
+</div>
+</div>
+</section>
+<!-- Center: Data Grid -->
+<section class="flex-1 flex flex-col gap-4 min-w-0">
+<div class="glass-card rounded-2xl overflow-hidden flex flex-col h-full relative">
+<div class="shimmer absolute inset-0 pointer-events-none opacity-20"></div>
+<div class="p-6 border-b border-white/10 flex justify-between items-center bg-surface-container-low/50">
+<h3 class="font-headline-md text-headline-md font-bold">Failed Ledger Rows</h3>
+<div class="flex gap-2">
+<button class="bg-surface-container-highest px-4 py-2 rounded-lg text-label-sm font-bold flex items-center gap-2 hover:bg-surface-variant transition-colors">
+<span class="material-symbols-outlined text-[18px]" data-icon="filter_list">filter_list</span>
+                                Filter
+                            </button>
+<button class="bg-surface-container-highest px-4 py-2 rounded-lg text-label-sm font-bold flex items-center gap-2 hover:bg-surface-variant transition-colors">
+<span class="material-symbols-outlined text-[18px]" data-icon="download">download</span>
+                                Export
+                            </button>
+</div>
+</div>
+<div class="flex-1 overflow-auto">
+<table class="w-full text-left border-collapse">
+<thead class="sticky top-0 bg-surface-container-low border-b border-white/10 text-on-surface-variant text-label-sm uppercase tracking-widest z-10">
+<tr>
+<th class="p-4 font-bold">Transaction ID</th>
+<th class="p-4 font-bold">Entity</th>
+<th class="p-4 font-bold text-right">Value (USD)</th>
+<th class="p-4 font-bold">Expected</th>
+<th class="p-4 font-bold">Status</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-white/5">
+<tr class="hover:bg-white/5 transition-colors cursor-pointer bg-error-container/10 group">
+<td class="p-4 font-mono text-error">TX-9921-A</td>
+<td class="p-4">Global Logistics Inc</td>
+<td class="p-4 text-right font-bold">$1,240,500.00</td>
+<td class="p-4 text-on-surface-variant">$1,078,000.00</td>
+<td class="p-4">
+<span class="px-2 py-1 bg-error/20 text-error rounded text-[11px] font-bold uppercase">Variance High</span>
+</td>
+</tr>
+<tr class="hover:bg-white/5 transition-colors cursor-pointer bg-error-container/10">
+<td class="p-4 font-mono text-error">TX-8832-B</td>
+<td class="p-4">Tech-Flow Solutions</td>
+<td class="p-4 text-right font-bold">$450,200.00</td>
+<td class="p-4 text-on-surface-variant">$391,000.00</td>
+<td class="p-4">
+<span class="px-2 py-1 bg-error/20 text-error rounded text-[11px] font-bold uppercase">Variance High</span>
+</td>
+</tr>
+<tr class="hover:bg-white/5 transition-colors cursor-pointer">
+<td class="p-4 font-mono">TX-7712-C</td>
+<td class="p-4">Artemis Ventures</td>
+<td class="p-4 text-right font-bold">$12,000.00</td>
+<td class="p-4 text-on-surface-variant">$12,000.00</td>
+<td class="p-4">
+<span class="px-2 py-1 bg-primary/20 text-primary rounded text-[11px] font-bold uppercase">Verified</span>
+</td>
+</tr>
+<tr class="hover:bg-white/5 transition-colors cursor-pointer bg-error-container/10">
+<td class="p-4 font-mono text-error">TX-6641-D</td>
+<td class="p-4">Horizon Capital</td>
+<td class="p-4 text-right font-bold">$890,000.00</td>
+<td class="p-4 text-on-surface-variant">$774,000.00</td>
+<td class="p-4">
+<span class="px-2 py-1 bg-error/20 text-error rounded text-[11px] font-bold uppercase">Variance High</span>
+</td>
+</tr>
+<tr class="hover:bg-white/5 transition-colors cursor-pointer">
+<td class="p-4 font-mono">TX-5590-E</td>
+<td class="p-4">Zenith Media</td>
+<td class="p-4 text-right font-bold">$67,400.00</td>
+<td class="p-4 text-on-surface-variant">$67,400.00</td>
+<td class="p-4">
+<span class="px-2 py-1 bg-primary/20 text-primary rounded text-[11px] font-bold uppercase">Verified</span>
+</td>
+</tr>
+<tr class="hover:bg-white/5 transition-colors cursor-pointer bg-error-container/10">
+<td class="p-4 font-mono text-error">TX-4421-F</td>
+<td class="p-4">Stellar Retail</td>
+<td class="p-4 text-right font-bold">$2,300,000.00</td>
+<td class="p-4 text-on-surface-variant">$2,000,000.00</td>
+<td class="p-4">
+<span class="px-2 py-1 bg-error/20 text-error rounded text-[11px] font-bold uppercase">Variance High</span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- Action Bar -->
+<div class="glass-card p-6 rounded-2xl flex items-center justify-between">
+<div class="flex items-center gap-4 text-on-surface-variant">
+<span class="material-symbols-outlined" data-icon="info">info</span>
+<span class="text-body-md italic">6 failing rows selected for investigation</span>
+</div>
+<div class="flex gap-3">
+<button class="bg-surface-container-highest border border-white/10 px-6 py-3 rounded-xl font-bold hover:bg-surface-variant transition-all">
+                            Override Rule
+                        </button>
+<button class="bg-surface-container-highest border border-white/10 px-6 py-3 rounded-xl font-bold hover:bg-surface-variant transition-all">
+                            Request Fix
+                        </button>
+<button class="bg-gradient-to-r from-primary-container to-secondary-container text-white px-8 py-3 rounded-xl font-bold shadow-lg shadow-primary/20 hover:brightness-110 active:scale-95 transition-all">
+                            Approve with Exception
+                        </button>
+</div>
+</div>
+</section>
+<!-- Right: AI Explanation Drawer -->
+<aside class="w-96 flex flex-col gap-4">
+<div class="glass-card h-full rounded-2xl flex flex-col overflow-hidden">
+<div class="p-6 bg-primary/10 border-b border-primary/20 flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined" data-icon="psychology">psychology</span>
+</div>
+<div>
+<h4 class="font-bold text-on-surface">AI Reasoner</h4>
+<p class="text-[11px] text-primary/80 uppercase font-bold tracking-widest">Neural Analysis Active</p>
+</div>
+</div>
+<div class="flex-1 p-6 space-y-6 overflow-y-auto">
+<div class="space-y-3">
+<h5 class="text-label-sm font-bold text-on-surface-variant">Tollgate Failure Cause</h5>
+<div class="p-4 rounded-xl bg-surface-container-highest/50 border border-white/10">
+<p class="text-body-md leading-relaxed">
+<span class="text-primary font-bold">15.07% variance detected</span> against the 5-day rolling average for Global Logistics Inc. 
+                                </p>
+<p class="mt-2 text-body-md text-on-surface-variant">
+                                    The spike is correlated with a sudden fuel price adjustment in the EMEA region that hasn't been updated in the master data yet.
+                                </p>
+</div>
+</div>
+<div class="space-y-3">
+<h5 class="text-label-sm font-bold text-on-surface-variant">Recommended Action</h5>
+<ul class="space-y-2">
+<li class="flex gap-3 items-start p-3 rounded-lg bg-primary/5 border border-primary/10">
+<span class="material-symbols-outlined text-primary text-[20px]" data-icon="ads_click">ads_click</span>
+<span class="text-label-sm">Accept variance as "External Volatility" and tag for quarterly audit review.</span>
+</li>
+<li class="flex gap-3 items-start p-3 rounded-lg hover:bg-white/5 transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant text-[20px]" data-icon="refresh">refresh</span>
+<span class="text-label-sm">Trigger immediate metadata refresh from vendor portal.</span>
+</li>
+</ul>
+</div>
+<div class="space-y-3">
+<h5 class="text-label-sm font-bold text-on-surface-variant">Risk Visualization</h5>
+<div class="h-40 glass-card rounded-xl overflow-hidden relative p-4 flex flex-col justify-end">
+<img class="absolute inset-0 w-full h-full object-cover opacity-30 grayscale brightness-150" data-alt="A sophisticated data visualization dashboard showing a complex network of financial transactions and risk nodes. The visualization uses a dark neon aesthetic with vibrant purple and amber lines representing data flow and potential risk hotspots. High-end glassmorphism effects and soft glowing elements create a futuristic, professional enterprise finance atmosphere." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCbYGyWFkldUUogCPDnMLOkA8varhNnaaKX5KOs0kBEWmgivDOt99gxRYowIr5GWQqxOvAy-lObb5CocrB6_qLWKqOdsQhZ-a-dSHAnUuT-t2eLUxvOii0PCjUHKenoM5syZjEdYoOOHZeAb0s6RB-ApZ2RUdKO092dhv5F6z8CsMlZ5IgjiOojzefDSjKi8Psl6aXIwMYt6uCK5TP2-SLvIj5iL7swWfb0iZxqn5zT01KMDnPt3qywJ5wJGWXzQVIy9BQqKeG0oKY"/>
+<div class="relative z-10 flex justify-between items-end">
+<div>
+<div class="text-headline-lg font-bold">84%</div>
+<div class="text-label-sm text-on-surface-variant">Prediction Certainty</div>
+</div>
+<div class="flex gap-1 pb-1">
+<div class="w-1 h-4 bg-primary rounded-full"></div>
+<div class="w-1 h-6 bg-primary rounded-full"></div>
+<div class="w-1 h-8 bg-primary rounded-full"></div>
+<div class="w-1 h-5 bg-primary/40 rounded-full"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="p-6 border-t border-white/10">
+<div class="relative">
+<input class="w-full bg-surface-container-highest border border-white/10 rounded-xl px-4 py-3 text-body-md focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all" placeholder="Ask Copilot about this failure..." type="text"/>
+<button class="absolute right-3 top-2.5 text-primary">
+<span class="material-symbols-outlined" data-icon="send">send</span>
+</button>
+</div>
+</div>
+</div>
+</aside>
+</div>
+</main>
+<!-- Floating AI Copilot Bubble (Contextual Trigger) -->
+<button class="fixed bottom-8 right-8 w-14 h-14 rounded-full bg-gradient-to-tr from-primary to-primary-container text-on-primary-container shadow-2xl flex items-center justify-center hover:scale-110 transition-transform z-50">
+<span class="material-symbols-outlined" data-icon="assistant">assistant</span>
+</button>
+</body></html>
