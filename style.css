@@ -1,4 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Manrope:wght@400;500&display=swap');
+body .logo{font-size:24px;letter-spacing:-.045em;white-space:nowrap}
+body .logo span{letter-spacing:0}
 /* About page orange accent pass */
 .about-site{--about-orange:#ff6f0f;--about-orange-soft:rgba(255,111,15,.14);--about-orange-line:rgba(255,111,15,.34)}
 .about-site .logo span,.about-site .eyebrow,.about-site nav a:hover,.about-site .about-page h2 em,.about-site .about-contact span,.about-site .career-grid span,.about-site .stats strong,.about-site .process-list strong,.about-site .detail-stack span{color:var(--about-orange)!important}
