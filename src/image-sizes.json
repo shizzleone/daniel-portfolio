@@ -266,5 +266,121 @@
   "sendory/components.png": [
     1265,
     712
+  ],
+  "flownode/overview.png": [
+    1270,
+    714
+  ],
+  "flownode/builder.png": [
+    1280,
+    720
+  ],
+  "flownode/operations.png": [
+    1270,
+    714
+  ],
+  "flownode/ai-plan.png": [
+    1280,
+    720
+  ],
+  "flownode/canvas.png": [
+    1280,
+    720
+  ],
+  "flownode/executions.png": [
+    1270,
+    714
+  ],
+  "finwise-web/transactions.png": [
+    1265,
+    712
+  ],
+  "finwise-web/dashboard.png": [
+    1265,
+    712
+  ],
+  "finwise-web/wallet.png": [
+    1265,
+    712
+  ],
+  "finwise-web/statistics.png": [
+    1265,
+    712
+  ],
+  "agent-os/workflows.png": [
+    1265,
+    712
+  ],
+  "agent-os/pricing.png": [
+    1265,
+    712
+  ],
+  "agent-os/home.png": [
+    1265,
+    712
+  ],
+  "agent-os/platform.png": [
+    1265,
+    712
+  ],
+  "agent-os/agents.png": [
+    1265,
+    712
+  ],
+  "arca/home.png": [
+    1280,
+    984
+  ],
+  "arca/cards.png": [
+    1280,
+    984
+  ],
+  "arca/activity.png": [
+    1280,
+    984
+  ],
+  "arca/welcome.png": [
+    1280,
+    720
+  ],
+  "shoppulse/dashboard.png": [
+    1269,
+    1329
+  ],
+  "shoppulse/analytics.png": [
+    1269,
+    1711
+  ],
+  "shoppulse/products.png": [
+    1269,
+    1335
+  ],
+  "shoppulse/orders.png": [
+    1269,
+    1295
+  ],
+  "interoly/items.png": [
+    1265,
+    946
+  ],
+  "interoly/home.png": [
+    1265,
+    946
+  ],
+  "interoly/orders.png": [
+    1265,
+    946
+  ],
+  "urbandrive/fleet.png": [
+    1265,
+    712
+  ],
+  "urbandrive/booking.png": [
+    1265,
+    712
+  ],
+  "urbandrive/home.png": [
+    1265,
+    712
   ]
 }

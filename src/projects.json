@@ -98,7 +98,8 @@
         "Public wallet demo with illustrative balances and asset-level detail.",
         "decision-2"
       ]
-    ]
+    ],
+    "prototypeUrl": "https://www.entashiga.io/"
   },
   {
     "id": "metric-os",
@@ -197,6 +198,112 @@
     ]
   },
   {
+    "id": "flownode",
+    "name": "Flownode",
+    "category": "Innovation / AI workflow design",
+    "summary": "Making AI automation understandable and controllable—from a plain-language idea to a workflow people can inspect.",
+    "role": "Product design",
+    "scope": "Workflow experience · Interface design · Interactive prototype",
+    "platform": "Web application prototype",
+    "image": "flownode/canvas.png",
+    "alt": "Flownode prototype showing a connected workflow with branching steps and a human approval gate.",
+    "intro": "Turning an automation idea into a visible, editable plan—without losing human control.",
+    "overview": "An AI workflow authoring and operations concept.",
+    "challenge": "Make generated automation understandable before execution.",
+    "decisions": [
+      [
+        "Review a plan before inserting it",
+        "The AI builder presents a proposed sequence, the purpose of each step, and an estimated credit cost before the workflow reaches the canvas. This creates a deliberate review moment: a person can check whether the proposed automation matches their intent. In the prototype, plan generation uses predefined examples; the interaction demonstrates how a future model-backed experience could make its proposal inspectable."
+      ],
+      [
+        "Keep the workflow visible while editing a step",
+        "The canvas establishes the overall sequence while a configuration panel supports detailed changes. This arrangement gives people a way to understand where a decision sits in the larger process. A human approval gate is represented as an explicit node, making a sensitive handoff part of the workflow rather than an invisible exception."
+      ],
+      [
+        "Give operations its own workspace",
+        "Execution history and the operations view separate authoring from day-to-day oversight. Status labels help distinguish successful, waiting, running, and failed work, while routing and failure views suggest where investigation should begin. The displayed metrics are demonstration data, used to explore hierarchy and decision support rather than report product performance."
+      ]
+    ],
+    "gallery": [
+      [
+        "flownode/overview.png",
+        "Product overview in the interactive prototype. Credit, performance, and activity values are demo data.",
+        "discovery"
+      ],
+      [
+        "flownode/ai-plan.png",
+        "AI plan review: proposed steps and a human approval gate. Generation is simulated in this prototype.",
+        "decision-0"
+      ],
+      [
+        "flownode/builder.png",
+        "Step configuration alongside the workflow canvas.",
+        "decision-1"
+      ],
+      [
+        "flownode/executions.png",
+        "Execution history with seeded examples of success, waiting, running, and failure.",
+        "decision-2"
+      ],
+      [
+        "flownode/operations.png",
+        "Operations concept: failure patterns and model routing, illustrated with demo data.",
+        "delivery"
+      ]
+    ]
+  },
+  {
+    "id": "agent-os",
+    "name": "Agent OS",
+    "category": "AI / Product discovery experience",
+    "summary": "Making an AI agent platform easier to understand, explore, and evaluate.",
+    "role": "Product design",
+    "scope": "Information architecture · Product storytelling · Web experience",
+    "platform": "Marketing website prototype",
+    "prototypeUrl": "https://agent-os-theta-black.vercel.app/pricing",
+    "image": "agent-os/home.png",
+    "alt": "Agent OS homepage with a bold introduction and computing imagery.",
+    "intro": "From an abstract AI promise to a clear path through capabilities, workflows, and plans.",
+    "overview": "A connected product-discovery website for an AI agent platform.",
+    "challenge": "Help visitors connect a broad AI proposition to a relevant capability and a clear next step.",
+    "decisions": [
+      [
+        "Separate the promise from the explanation",
+        "The homepage establishes the broad proposition, while Agents, Platform, and Workflows provide distinct routes into the detail. This creates several starting points for visitors with different questions. The tradeoff is that those destinations must explain their relationship clearly enough to avoid making the visitor assemble the product story alone."
+      ],
+      [
+        "Make workflows a bridge to relevance",
+        "A list of capabilities can describe what a platform contains without explaining what someone could do with it. Giving workflows their own destination creates space to connect agents with a sequence of work. The intended benefit is comprehension: visitors should be able to describe an applicable scenario before evaluating a plan."
+      ],
+      [
+        "Put plan differences side by side",
+        "The pricing page uses Starter, Pro, and Enterprise cards to organize scope and support differences. Repeated feature structures make comparison easier, while distinct calls to action suggest a next step. In the prototype, those links lead to contact; the experience demonstrates an evaluation path rather than an operational subscription checkout."
+      ]
+    ],
+    "gallery": [
+      [
+        "agent-os/agents.png",
+        "Agent discovery page from the hosted website prototype.",
+        "decision-0"
+      ],
+      [
+        "agent-os/workflows.png",
+        "Workflow explanation as a bridge from capabilities to use.",
+        "decision-1"
+      ],
+      [
+        "agent-os/pricing.png",
+        "Plan comparison in the prototype; displayed offers are sample product content.",
+        "decision-2"
+      ],
+      [
+        "agent-os/platform.png",
+        "Platform overview supporting deeper product evaluation.",
+        "architecture"
+      ]
+    ]
+  },
+  {
     "id": "iretv",
     "name": "IreTV",
     "category": "Streaming · Independent product",
@@ -245,49 +352,49 @@
   },
   {
     "id": "finwise",
-    "name": "Finwise",
-    "category": "Fintech · Independent initiative",
-    "summary": "Everyday banking, with confidence built in.",
-    "role": "Lead Product Designer",
-    "scope": "Discovery through high-fidelity product design",
-    "platform": "iOS & Android · 12 weeks",
-    "image": "finwise-product-screens.png",
-    "alt": "Finwise mobile banking product screens",
-    "intro": "Making everyday money decisions feel reassuringly simple.",
-    "overview": "Finwise explores a calmer mobile banking experience for understanding spending, transferring money, and building savings habits.",
-    "challenge": "Feature-heavy banking tools can make simple decisions feel complicated. People need a clear picture of their money and transparent consequences before taking action.",
+    "name": "ArtoQu",
+    "category": "Fintech / Finance dashboard",
+    "summary": "A clearer view of spending, savings, and everyday money.",
+    "role": "Product design",
+    "scope": "Dashboard experience · Financial information hierarchy · Interactive prototype",
+    "platform": "Web application prototype",
+    "image": "finwise-web/dashboard.png",
+    "alt": "ArtoQu finance dashboard prototype",
+    "intro": "Connecting everyday financial activity to the bigger picture.",
+    "overview": "A web dashboard connecting savings goals, cash flow, wallet balances, and transaction detail.",
+    "challenge": "Help people move from a financial summary to the detail needed to understand it.",
     "decisions": [
       [
-        "Make the full picture easy to scan",
-        "Balances, recent activity, and upcoming payments sit in a focused account overview."
+        "Bring goals into the everyday overview",
+        "Savings targets appear alongside cash flow and account context, connecting longer-term intentions to the routine act of checking money. Each target combines a label, time horizon, amount, and progress indicator. This hierarchy is intended to make goals recognizable without requiring a separate planning session. The prototype’s sample values illustrate the layout; calculation consistency remains a validation priority."
       ],
       [
-        "Clarify transfers before confirmation",
-        "Recipient details, timing, fees, and confirmation states support deliberate decisions."
+        "Give transactions a dedicated workspace",
+        "The overview introduces recent activity, while the transaction screen provides space for deeper inspection. This separation keeps the first screen focused and gives people a predictable destination when they need to investigate an amount or category. The design question is whether the transition preserves enough context to explain the summary."
       ],
       [
-        "Turn savings into visible progress",
-        "Goals connect current progress to a practical next action without overwhelming the main banking experience."
+        "Separate account context from trend analysis",
+        "Wallet and statistics views support different questions: where money is held and how activity changes over time. Persistent navigation connects these views while allowing each to use a suitable information hierarchy. Balance cards emphasize account context; charts emphasize comparison. Neither should require people to infer the period or meaning of an amount."
       ]
     ],
-    "outcome": "The initiative produced core task flows, an interactive prototype, six product screens, and design-system foundations. The work focuses on clarity, transfer confidence, and visible savings progress.",
     "gallery": [
       [
-        "finwise-dashboard.png",
-        "Account overview and everyday financial context.",
-        "decision-0"
-      ],
-      [
-        "finwise-transfer.png",
-        "A focused transfer journey.",
+        "finwise-web/transactions.png",
+        "Dedicated transaction view in the hosted prototype. Values are demonstration data.",
         "decision-1"
       ],
       [
-        "finwise-savings.png",
-        "Savings goals with visible progress.",
+        "finwise-web/wallet.png",
+        "Wallet view showing account and balance context in the prototype.",
         "decision-2"
+      ],
+      [
+        "finwise-web/statistics.png",
+        "Statistics view connecting savings targets with an analytic report. Demo data.",
+        "strategy"
       ]
-    ]
+    ],
+    "prototypeUrl": "https://finance-dashboard-slice-ui.vercel.app/dashboard"
   },
   {
     "id": "pulse",
@@ -332,6 +439,53 @@
         "Webhook endpoint visibility supports integration monitoring. This capture is from the public Test-mode demo.",
         "decision-2"
       ]
+    ],
+    "prototypeUrl": "https://www.pulseshiga.io/"
+  },
+  {
+    "id": "arca",
+    "name": "Arca",
+    "category": "Fintech / Mobile wallet",
+    "summary": "Balances, budgets, and card controls in one calm mobile experience.",
+    "role": "Product design",
+    "scope": "Mobile experience · Financial hierarchy · Interactive prototype",
+    "platform": "Mobile web prototype",
+    "prototypeUrl": "https://personal-finance-wallet-mobile-app.vercel.app/",
+    "image": "arca/home.png",
+    "alt": "Arca mobile wallet overview with sample balances and money actions.",
+    "intro": "A calmer way to understand money and find the next action.",
+    "overview": "A mobile wallet concept connecting financial orientation, activity, and card management.",
+    "challenge": "Make a dense set of financial tasks understandable on a small screen.",
+    "decisions": [
+      [
+        "Establish the overview before the actions",
+        "The home screen leads with a total balance and period controls, then places common money actions within reach. Card summaries, budgets, and recent activity provide supporting context further down the screen. This layered hierarchy aims to support a quick check while keeping detail available for a longer visit. The relationship between the total and individual sample balances needs reconciliation before evaluating numerical trust."
+      ],
+      [
+        "Give activity a stable destination",
+        "Activity has a dedicated place in the bottom navigation, allowing someone to move from a broad summary to a record of individual events. This separates checking a balance from investigating why it changed. Evaluation should establish whether transaction descriptions, amounts, and categories give enough context without requiring unnecessary navigation."
+      ],
+      [
+        "Keep card controls beside card context",
+        "The Cards destination places management actions near the selected card, with masked details and spending information below. This makes the object of an action visible before someone chooses it. Controls such as Freeze and Limits are prototype representations; the interface does not establish a connection to a card issuer or a real security service."
+      ]
+    ],
+    "gallery": [
+      [
+        "arca/welcome.png",
+        "Arca onboarding introduces the combined wallet concept.",
+        "discovery"
+      ],
+      [
+        "arca/activity.png",
+        "Activity view in the interactive prototype, using sample transactions.",
+        "decision-1"
+      ],
+      [
+        "arca/cards.png",
+        "Card management with masked details and contextual controls. Demonstration data.",
+        "decision-2"
+      ]
     ]
   },
   {
@@ -371,88 +525,129 @@
     ]
   },
   {
-    "id": "grounded",
-    "name": "Grounded",
-    "category": "Wellness · Mobile product",
-    "summary": "Healthier habits, without the pressure.",
-    "role": "Lead Product Designer",
-    "scope": "Research strategy, interaction design, visual direction",
-    "platform": "iOS & Android · 14 weeks",
-    "image": "grounded-product.png",
-    "alt": "Grounded daily wellbeing check-in and guided breathing screen",
-    "intro": "Wellness that fits real life.",
-    "overview": "Grounded helps people notice their energy, build flexible routines, and recover with intention. Guidance adapts to mood, available time, and personal goals.",
-    "challenge": "Rigid streaks and dense dashboards can make self-care feel like another performance metric. People need support that accommodates changing days.",
+    "id": "interoly",
+    "name": "Interoly",
+    "category": "Commerce / Mobile inventory",
+    "summary": "Stock and order context, close to the work.",
+    "role": "Product design",
+    "scope": "Information architecture · Operational workflows · Interactive prototype",
+    "platform": "Mobile web prototype",
+    "prototypeUrl": "https://inventory-management-mobile-app.vercel.app/",
+    "image": "interoly/home.png",
+    "alt": "Interoly prototype overview with demonstration data.",
+    "intro": "Stock and order context, close to the work.",
+    "overview": "Interoly connects an overview to dedicated operational destinations.",
+    "challenge": "Help people connect a summary to the record and status needed to understand it.",
     "decisions": [
       [
-        "Ask before advising",
-        "A lightweight check-in shapes guidance around mood, energy, and time."
+        "Surface work needing attention",
+        "The home screen calls out items below reorder level and groups sales activity by operational status. This creates a starting point for deciding where to look next. The design hypothesis is that a visible exception and a direct route to review are more useful during a short visit than a collection of equally emphasized metrics."
       ],
       [
-        "Celebrate returning",
-        "Progress language encourages recovery after disruption instead of punishing a missed day."
+        "Keep item inspection in its own destination",
+        "Items has a stable position in the bottom navigation, giving stock inspection a predictable home. A mobile catalog must help someone recognize the correct item before any adjustment is considered. The observed prototype supports exploring the item destination; barcode matching and live stock synchronization are not established by this walkthrough."
       ],
       [
-        "Make small actions meaningful",
-        "Short practices explain their benefit and offer an approachable next step."
+        "Make order status easy to inspect",
+        "The Orders destination gives individual work a stable place outside the overview. Visible records and status labels support inspection before action. A production implementation would need precise definitions for each status, clear ownership, and reliable feedback after a change; the screenshots show demonstration data rather than verified fulfilment activity."
       ]
     ],
-    "outcome": "The design connects daily check-ins, recommendations, guided practices, and gentle progress reflection. Evaluation targets sustainable return, completion of short practices, and perceived usefulness.",
     "gallery": [
       [
-        "screens/grounded-checkin.png",
-        "The check-in pairs current needs with available time. The progress view brings reflection and return into the same experience; values shown are sample interface data.",
-        "decision-0"
+        "interoly/items.png",
+        "Mobile item catalog with sample inventory records.",
+        "decision-1"
       ],
       [
-        "screens/grounded-practices.png",
-        "Welcome, practice discovery, and the guided reset show how a small next step carries through the product.",
+        "interoly/orders.png",
+        "Order list supporting quick status inspection.",
         "decision-2"
       ]
     ]
   },
   {
-    "id": "loop-learning",
-    "name": "Loop Learning",
-    "category": "Edtech · Cohort learning",
-    "summary": "A closer connection between learning and feedback.",
-    "role": "Lead Product Designer",
-    "scope": "Learning strategy, UX writing, interaction design",
-    "platform": "Web application",
-    "image": "loop-product.png",
-    "alt": "Loop Learning cohort workspace with learning activity and study guidance",
-    "intro": "Learning that feels connected, even at a distance.",
-    "overview": "Loop Learning brings live sessions, practice, feedback, reflection, and instructor support into a shared cohort experience.",
-    "challenge": "Remote learning often fragments across video calls, assignments, messages, and private notes. Instructors need better signals about who is confident and who needs support.",
+    "id": "shoppulse",
+    "name": "ShopPulse",
+    "category": "E-commerce / Analytics workspace",
+    "summary": "Connecting store performance to the products and orders behind it.",
+    "role": "Product design",
+    "scope": "Information architecture · Operational workflows · Interactive prototype",
+    "platform": "Web dashboard prototype",
+    "prototypeUrl": "https://shoppulse-saas.vercel.app/dashboard",
+    "image": "shoppulse/dashboard.png",
+    "alt": "ShopPulse prototype overview with demonstration data.",
+    "intro": "Connecting store performance to the products and orders behind it.",
+    "overview": "ShopPulse connects an overview to dedicated operational destinations.",
+    "challenge": "Help people connect a summary to the record and status needed to understand it.",
     "decisions": [
       [
-        "Make the next step visible",
-        "Learners can find today’s objective, preparation, and cohort activity in one place."
+        "Start with a performance overview",
+        "The dashboard establishes a broad view before someone moves into a dedicated management workspace. This supports the transition from noticing a performance signal to investigating its cause. Metric labels, reporting periods, and the relationship between aggregate figures and records remain essential to whether that transition is understandable."
       ],
       [
-        "Close the feedback loop",
-        "Practice checkpoints and structured critique connect effort to useful guidance."
+        "Connect summaries to product context",
+        "The Products destination separates catalog inspection from the overview. It gives individual records room to be read without crowding the dashboard. A consistent route to this detail should help an operator connect a broad signal to the product context that might explain it, a hypothesis to evaluate with realistic tasks."
       ],
       [
-        "Support without surveillance",
-        "Instructor signals include context, helping distinguish normal struggle from disengagement."
+        "Make order status easy to inspect",
+        "The Orders destination gives individual work a stable place outside the overview. Visible records and status labels support inspection before action. A production implementation would need precise definitions for each status, clear ownership, and reliable feedback after a change; the screenshots show demonstration data rather than verified fulfilment activity."
       ]
     ],
-    "outcome": "The design connects a student hub, live studio, feedback workspace, AI study coach, and instructor console. Evaluation focuses on participation, recovery after missed work, and learner confidence.",
     "gallery": [
       [
-        "screens/loop-learning-hub.png",
-        "The learning hub connects the current session, progress, practice tasks, and study guidance in one workspace. Values and learner details are sample content.",
-        "architecture"
-      ],
-      [
-        "screens/loop-feedback.png",
-        "Live critique and contextual coaching keep feedback close to the learning task. The study uses sample conversation and session data.",
+        "shoppulse/products.png",
+        "Product catalog supporting investigation beyond summary metrics.",
         "decision-1"
       ],
       [
-        "screens/loop-instructor.png",
-        "The instructor console combines cohort signals with learner context to support intervention decisions. Sample data illustrates the interface.",
+        "shoppulse/orders.png",
+        "Order management view with demonstration commerce data.",
+        "decision-2"
+      ],
+      [
+        "shoppulse/analytics.png",
+        "Analytics view for deeper performance exploration.",
+        "strategy"
+      ]
+    ]
+  },
+  {
+    "id": "urbandrive",
+    "name": "UrbanDrive",
+    "category": "Travel / Car rental experience",
+    "summary": "From finding the right vehicle to understanding the rental.",
+    "role": "Product design",
+    "scope": "Search experience · Vehicle comparison · Booking flow",
+    "platform": "Web booking prototype",
+    "prototypeUrl": "https://urbandrive-host.netlify.app/",
+    "image": "urbandrive/home.png",
+    "alt": "UrbanDrive rental discovery homepage.",
+    "intro": "A clearer path from travel plans to a considered rental choice.",
+    "overview": "A car rental frontend connecting search, fleet discovery, and booking configuration.",
+    "challenge": "Connect a vehicle choice to understandable rental details before commitment.",
+    "decisions": [
+      [
+        "Start with the trip",
+        "Location and rental dates sit close to the homepage proposition, making the practical task visible alongside vehicle imagery. Rental-mode choices suggest different travel needs. The design question is whether visitors can establish their trip context without being distracted by promotional content."
+      ],
+      [
+        "Make vehicles comparable",
+        "Fleet cards repeat daily rate, seating, transmission, and fuel information. Repeated structure supports scanning across alternatives while category controls narrow the collection. A daily rate is only an entry point: the booking experience still needs to explain duration, extras, and the total."
+      ],
+      [
+        "Keep rental context beside configuration",
+        "The rental-details screen places location, dates, and protection choices alongside a booking summary. This layout is intended to make the effect of a choice easier to inspect before advancing. The prototype contains sample dates and prices; synchronizing the summary with entered values is a priority for further evaluation."
+      ]
+    ],
+    "gallery": [
+      [
+        "urbandrive/fleet.png",
+        "Fleet discovery and vehicle comparison in the hosted prototype.",
+        "decision-1"
+      ],
+      [
+        "urbandrive/booking.png",
+        "Rental details and booking summary before advancing to personal information or payment.",
         "decision-2"
       ]
     ]

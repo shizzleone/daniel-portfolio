@@ -562,562 +562,194 @@
   },
   "finwise": {
     "executive": {
-      "mandate": "Make personal finance easier to understand and act on across everyday banking tasks.",
-      "decision": "Connect financial visibility to a clear next action and an understandable consequence.",
-      "value": "Help people move from checking balances to making informed decisions."
+      "mandate": "Make a financial overview useful for both a quick check and a deeper investigation.",
+      "decision": "Connect goals, cash flow, and recent activity with dedicated transaction, wallet, and statistics views.",
+      "value": "The interactive prototype demonstrates a connected financial workspace. Comprehension and usability benefits remain hypotheses to evaluate."
     },
     "context": [
-      "Finwise explores a mobile banking experience organized around financial understanding, transfers, and savings. The product challenge is not simply displaying more data: people need a reliable sense of where they stand and what a choice will change.",
-      "This independent initiative is presented through preserved product screens and a discovery narrative. The case study connects the dashboard, money movement, and savings flows through a common principle: provide context before asking for commitment."
+      "ArtoQu explores a web-based financial workspace organized around savings goals, cash flow, transactions, and wallet context. The central product question is how to help a person understand their current position without making every visit feel like a detailed analysis session.",
+      "The linked prototype and screenshots show the supplied ArtoQu interface. This case study follows the available frontend and its demonstration data; it does not describe a live banking service or report customer outcomes."
     ],
     "discovery": {
-      "title": "Understand the gap between seeing and deciding.",
+      "title": "Connect the overview to the questions behind it.",
       "paragraphs": [
-        "The discovery frame separates three needs: understanding current finances, deciding whether an action is affordable, and knowing whether it completed. A competitive review can reveal common conventions, but the design opportunity lies in the moments where the interface leaves the person to calculate or infer meaning.",
-        "The synthesis below uses the project’s existing themes of fragmented visibility, unclear consequences, and passive insights. These themes guide design hypotheses; they are not presented as newly conducted interviews or attributed participant statements."
+        "Reviewing the supplied interface reveals several related tasks: checking progress toward a target, comparing financial activity across a period, inspecting transactions, and understanding wallet balances. These tasks share data but require different levels of detail. The discovery frame therefore focuses on the transition from summary to explanation.",
+        "The available evidence is the supplied source and hosted interface. Audience needs and synthesis themes below are design hypotheses, rather than findings attributed to interviews. A future research phase should examine which financial questions people ask most often and which labels or chart conventions create uncertainty."
       ],
       "methods": [
         [
-          "Competitive review",
-          "Examine balance hierarchy, transfer confirmation, and goal progress across banking experiences."
+          "Interface walkthrough",
+          "Examined the dashboard, transaction, wallet, and statistics destinations to understand the information available at each level."
         ],
         [
-          "Task analysis",
-          "Trace the information required before, during, and after a financial action."
+          "Content review",
+          "Reviewed the sample target and cash-flow data in the source. Currency formatting, date conventions, and progress calculations need consistent rules before production use."
         ],
         [
-          "Journey synthesis",
-          "Connect uncertainty to a specific intervention rather than collecting generic pain points."
+          "Task framing",
+          "Mapped orientation, inspection, comparison, and return navigation to identify where a summary needs supporting detail."
         ]
       ]
     },
     "problem": {
-      "statement": "People can see financial information but still struggle to translate it into a confident next step. Separate balances, opaque transaction consequences, and passive summaries make everyday decisions require extra interpretation.",
-      "hmw": "How might we connect a clear financial picture to actions whose consequences people can understand before confirming?",
+      "statement": "A financial dashboard can show many numbers without helping people understand how they relate. Goals, cash-flow trends, and transactions need a clear hierarchy and a dependable path to detail so a quick check can become an informed investigation.",
+      "hmw": "How might we connect financial summaries to the context people need, without overwhelming the overview?",
       "constraints": [
-        "Keep sensitive financial information legible and appropriately scoped.",
-        "Make fees, recipients, and transaction status explicit.",
-        "Support both quick checks and deeper review."
+        "Use demonstration data without implying real account connectivity.",
+        "Make time periods, currency conventions, and progress calculations understandable and consistent.",
+        "Support quick orientation and detailed review within the same navigation structure."
       ]
     },
     "insights": [
       [
-        "The overview needs a hierarchy",
-        "A dashboard should establish current position before introducing secondary trends. Equal visual weight makes a simple financial check feel like analysis."
+        "Hierarchy should reflect the question",
+        "Goals, account context, and cash flow compete for attention. Their placement should help people distinguish current position from longer-term progress."
       ],
       [
-        "Trust is built before confirmation",
-        "Recipient, amount, fees, and expected timing belong in the decision moment. A receipt cannot repair uncertainty that prevented someone from acting."
+        "A chart needs a clear frame",
+        "A trend is useful only when its period and measure are understood. Labels and controls should explain what changes when a person switches the view."
       ],
       [
-        "Goals need an actionable next step",
-        "Progress becomes useful when people can connect the gap to a manageable contribution rather than only seeing a percentage."
+        "Detail should explain the summary",
+        "Transactions and wallet views should preserve the context that prompted the visit. This connection is a key hypothesis for usability evaluation."
       ]
     ],
     "audiences": [
       [
-        "Everyday banking customer",
-        "Needs quick orientation and confidence when moving money."
+        "Everyday money manager",
+        "Needs a quick view of balances and recent activity, with a clear route to investigate an amount."
       ],
       [
-        "Goal-oriented saver",
-        "Needs understandable progress and a realistic way to adjust contributions."
+        "Goal-oriented planner",
+        "Needs to understand savings progress and compare activity across meaningful time periods."
       ]
     ],
     "journey": [
       [
         "Orient",
-        "Understand current position",
-        "Information is fragmented",
-        "Prioritize a coherent overview"
+        "Understand the financial overview.",
+        "Several summaries compete for attention.",
+        "Group goals, activity, and account context."
       ],
       [
-        "Explore",
-        "Inspect a financial detail",
-        "Summary lacks context",
-        "Connect overview to transactions"
+        "Inspect",
+        "Understand a particular amount.",
+        "A summary does not explain individual activity.",
+        "Provide a dedicated transaction destination."
       ],
       [
-        "Decide",
-        "Choose an action",
-        "Consequences are unclear",
-        "Preview amount, fees, and impact"
+        "Review",
+        "Understand where money is held.",
+        "Account details can become detached from the overview.",
+        "Give wallet information a consistent workspace."
       ],
       [
-        "Confirm",
-        "Commit with confidence",
-        "Details are easy to miss",
-        "Provide a focused review step"
+        "Compare",
+        "Understand change over time.",
+        "Charts can obscure the selected measure or period.",
+        "Keep period controls beside the report."
       ],
       [
-        "Track",
-        "Know what changed",
-        "Completion is ambiguous",
-        "Show status and an accessible record"
+        "Return",
+        "Continue monitoring goals.",
+        "Detailed review can lose the bigger picture.",
+        "Preserve navigation back to the overview."
       ]
     ],
     "strategy": {
-      "title": "Make the next step feel informed.",
+      "title": "Support a quick check and a deeper look.",
       "paragraphs": [
-        "The core scope links an understandable overview with dependable transfers and practical savings management. These flows demonstrate whether the navigation and information hierarchy can support both frequent and considered decisions.",
-        "Additional insights should earn their place by helping a person act or understand a change. A feed of observations without relevance or control adds content without necessarily adding confidence."
+        "The dashboard establishes a starting point rather than attempting to contain every task. Savings targets, cash flow, and recent activity create a broad picture; dedicated destinations allow greater detail when a person needs it.",
+        "The strategy relies on consistent relationships between screens. A transaction amount should mean the same thing in the overview and the activity list, while a reporting period should remain explicit in statistical views. Clear content rules are therefore as important as the visual hierarchy."
       ],
       "priorities": [
         [
           "Core",
-          "Financial overview, transaction context, transfer review, and savings progress."
+          "Orientation through goals, cash flow, and recent activity."
+        ],
+        [
+          "Detail",
+          "Dedicated transaction and wallet views."
         ],
         [
           "Next",
-          "Relevant prompts and adjustable goal contributions."
-        ],
-        [
-          "Later",
-          "Broader personalization after basic comprehension is validated."
+          "Evaluate chart comprehension and reconcile sample-data conventions."
         ]
       ]
     },
     "architecture": {
-      "title": "Move from overview to detail to commitment.",
+      "title": "Organize the workspace around financial questions.",
       "paragraphs": [
-        "The structure separates orientation from action while maintaining a clear connection between them. People should be able to inspect the source account, understand the transfer, review its details, and return to a meaningful updated state.",
-        "Wireframe exploration should test hierarchy and sequence before visual refinement. The preserved screens then show how dashboard summaries, savings cards, and transfer steps can share a consistent language."
+        "A persistent sidebar separates dashboard, transactions, wallet, and statistics. This creates stable destinations for overview, inspection, account context, and comparison. Supporting preferences remain separate from the main financial tasks.",
+        "The interface uses cards for bounded summaries, tables for comparable activity, and charts for change over time. Wireframe evaluation should focus on whether those choices help people answer a question rather than simply increase the amount of information on screen."
       ],
       "wireframes": [
         [
           "Overview hierarchy",
-          "Establish balance context, recent activity, and primary actions."
+          "Compare the prominence of savings goals, cash flow, and account context during a short first impression."
         ],
         [
-          "Transfer sequence",
-          "Separate entry, review, and status so commitment remains explicit."
+          "Summary to detail",
+          "Test whether a person can find the transaction information needed to explain an overview amount."
         ],
         [
-          "Savings detail",
-          "Show progress, contribution controls, and the effect of an adjustment."
+          "Reporting controls",
+          "Check that a change of period or measure is understandable before refining the chart styling."
         ]
       ]
     },
     "tradeoffs": [
       [
-        "Simplicity versus financial detail",
-        "Keep the overview scannable while making supporting information easy to inspect. Hiding essential transaction consequences is not simplification."
+        "Breadth versus focus",
+        "The overview covers several financial concerns. The hierarchy must make those groups readable without asking people to study every card."
       ],
       [
-        "Guidance versus control",
-        "Offer helpful next steps without implying that the product knows a person’s full financial circumstances. Make assumptions and controls visible."
+        "Visual progress versus numerical precision",
+        "Progress rings aid scanning, but the displayed percentage and underlying amounts must agree. Reconcile sample data before evaluating trust in the interface."
       ],
       [
-        "Speed versus verification",
-        "Allow familiar tasks to move quickly while preserving a deliberate final review of recipient and amount. The cost of a mistaken transfer justifies this checkpoint."
+        "Familiar patterns versus specific context",
+        "Cards and charts are familiar, but labels, periods, and formatting still need to explain this particular financial view."
       ]
     ],
     "validation": {
       "paragraphs": [
-        "The proposed usability evaluation focuses on comprehension as well as completion. Participants should explain what an amount represents, what a transfer will do, and how a savings adjustment changes their plan.",
-        "Use representative test data and compare understanding across overview, review, and completion states. These scenarios describe future evaluation, not newly verified customer findings."
+        "The hosted dashboard and its transaction, wallet, and statistics navigation were inspected for this case study. These checks establish that the interface can be explored; they do not establish successful banking operations or user comprehension.",
+        "The proposed study should ask participants to explain the information in their own words and trace a summary to supporting detail. It should also test whether inconsistent sample formatting or progress values distract from the intended hierarchy."
       ],
       "tasks": [
         [
-          "Understand finances",
-          "Explain the overview and locate a recent transaction.",
-          "Distinguish summary information from transaction detail."
+          "Orient",
+          "Explain the dashboard’s goals, cash flow, and account context.",
+          "Distinguish current amounts from goals and period-based summaries."
         ],
         [
-          "Review a transfer",
-          "Check a transfer with fees and a delayed arrival.",
-          "Identify recipient, total cost, and expected timing before confirming."
+          "Inspect activity",
+          "Find the transaction destination and identify an amount and category.",
+          "Locate relevant detail without losing the purpose of the investigation."
         ],
         [
-          "Adjust a goal",
-          "Change a savings contribution.",
-          "Understand how the adjustment affects the goal."
+          "Compare periods",
+          "Explain the statistical report and its selected period.",
+          "Correctly describe what the chart represents."
+        ],
+        [
+          "Read goal progress",
+          "Compare a target amount, current amount, and percentage.",
+          "Recognize their relationship and flag any inconsistency."
         ]
       ]
     },
     "delivery": {
       "paragraphs": [
-        "Delivery should specify content rules for currency, dates, masked account details, transaction status, and errors. Consistent formatting reduces the cognitive work of interpreting each screen.",
-        "The state model needs pending, failed, cancelled, and completed transactions, including safe retry guidance. Accessibility review should cover input labels, error association, readable monetary values, and status announcements."
+        "The supplied frontend uses Next.js, TypeScript, and Tailwind, with reusable dashboard components and sample datasets. Product screenshots in this case study come from the hosted prototype, preserving the actual interface and its ArtoQu branding.",
+        "The next iteration should focus on consistent currency and date formatting, reconciled progress calculations, accessible chart alternatives, and clear empty and error states. Connecting live account data would require additional integration, security, and service-state design beyond the demonstrated frontend."
       ],
       "checks": [
-        "Currency, timing, and fee clarity",
-        "Transaction lifecycle and retry behavior",
-        "Accessible forms and confirmation states"
-      ]
-    }
-  },
-  "grounded": {
-    "executive": {
-      "mandate": "Help people sustain a wellbeing routine that can adapt to changing energy and time.",
-      "decision": "Replace rigid progress pressure with a small, relevant next step and supportive return paths.",
-      "value": "Make continued participation feel achievable, including after a missed day."
-    },
-    "context": [
-      "Grounded explores a wellbeing experience shaped around flexible routines and a lightweight check-in. The design opportunity is to make a useful practice accessible on an ordinary difficult day, not only when someone has time and motivation.",
-      "The design narrative connects mood and time context to manageable activities, non-punitive progress, and easy re-entry. It describes a product concept rather than a clinically validated intervention."
-    ],
-    "discovery": {
-      "title": "Design for the day that does not go to plan.",
-      "paragraphs": [
-        "The discovery frame examines the gap between an ideal routine and a real day. A rigid plan can create friction when energy drops, time disappears, or a person returns after an interruption. The relevant question becomes what the product should do in those moments.",
-        "The project’s existing themes suggest flexible routines, a mood-and-time check-in, and progress that does not punish missed days. The synthesis below turns those themes into explicit design hypotheses without inventing participant quotes or study counts."
-      ],
-      "methods": [
-        [
-          "Routine mapping",
-          "Identify entry, activity selection, completion, and return after interruption."
-        ],
-        [
-          "Friction analysis",
-          "Examine how time pressure, low energy, and missed sessions affect the next step."
-        ],
-        [
-          "Content review",
-          "Evaluate whether prompts support choice or create unnecessary obligation."
-        ]
-      ]
-    },
-    "problem": {
-      "statement": "Wellbeing routines can become harder to maintain when the product assumes consistent time, energy, and attendance. Rigid plans and punitive progress signals can make returning feel like recovering from failure.",
-      "hmw": "How might we help someone choose a useful practice for today and make returning feel straightforward?",
-      "constraints": [
-        "Keep the check-in brief and optional where appropriate.",
-        "Respect sensitive wellbeing information.",
-        "Avoid clinical or therapeutic claims unsupported by evidence."
-      ]
-    },
-    "insights": [
-      [
-        "Capacity changes from day to day",
-        "A useful recommendation should fit the time and energy available now. The plan should be adjustable without making the person feel they have broken it."
-      ],
-      [
-        "Re-entry is a core journey",
-        "Returning after a gap deserves deliberate design. A welcoming next step can be more useful than emphasizing lost continuity."
-      ],
-      [
-        "Progress should support reflection",
-        "Completion counts alone do not describe value. The experience should help people notice what fits them without ranking their wellbeing."
-      ]
-    ],
-    "audiences": [
-      [
-        "Person building a routine",
-        "Needs a small starting point and freedom to adapt it."
-      ],
-      [
-        "Person returning after a gap",
-        "Needs a clear, welcoming route back without accumulated obligations."
-      ]
-    ],
-    "journey": [
-      [
-        "Check in",
-        "Recognize current capacity",
-        "A long setup adds effort",
-        "Ask only relevant mood and time questions"
-      ],
-      [
-        "Choose",
-        "Find a suitable practice",
-        "Too many options create friction",
-        "Offer a manageable recommendation"
-      ],
-      [
-        "Practice",
-        "Start a brief activity",
-        "Commitment feels too large",
-        "Make duration and expectations clear"
-      ],
-      [
-        "Reflect",
-        "Notice what helped",
-        "Progress becomes a score",
-        "Use lightweight reflection"
-      ],
-      [
-        "Return",
-        "Resume after a gap",
-        "Missed days create pressure",
-        "Offer a fresh next step"
-      ]
-    ],
-    "strategy": {
-      "title": "Make the smallest useful action easy.",
-      "paragraphs": [
-        "The core scope is a short loop: check in, choose a suitable activity, complete or stop, and reflect. This makes the product’s value testable without requiring an extensive content catalog or complex personalization engine.",
-        "Recommendations should support agency. People need to change a suggestion, skip a check-in, or choose a different duration without feeling that the system’s plan is more important than their own circumstances."
-      ],
-      "priorities": [
-        [
-          "Core",
-          "Brief check-in, flexible activity selection, and supportive return."
-        ],
-        [
-          "Next",
-          "Personal preferences and reflective progress."
-        ],
-        [
-          "Later",
-          "Richer personalization after relevance and control are validated."
-        ]
-      ]
-    },
-    "architecture": {
-      "title": "Create a calm path with room to change direction.",
-      "paragraphs": [
-        "The structure centers on a current-day entry point and a clear activity choice. Reflection and history sit nearby without competing with the next useful action. A missed day should not create a backlog the person must clear.",
-        "Wireframes should explore how much context is needed before a recommendation and how easily someone can choose an alternative. The visual design should reinforce clear hierarchy and low interaction effort rather than relying on a calming palette alone."
-      ],
-      "wireframes": [
-        [
-          "Today view",
-          "Show a manageable next action and access to alternatives."
-        ],
-        [
-          "Check-in",
-          "Gather minimal context without creating a mandatory assessment."
-        ],
-        [
-          "Return state",
-          "Welcome the person back and offer an appropriate starting point."
-        ]
-      ]
-    },
-    "tradeoffs": [
-      [
-        "Personalization versus effort",
-        "Ask only for information that changes the recommendation. More input is not automatically a more caring experience."
-      ],
-      [
-        "Motivation versus pressure",
-        "Show continuity and reflection without turning missed days into punishment. The design should support return as well as completion."
-      ],
-      [
-        "Guidance versus autonomy",
-        "A recommendation should be easy to understand and easy to replace. People remain in control of their routine."
-      ]
-    ],
-    "validation": {
-      "paragraphs": [
-        "The proposed evaluation tests relevance, ease of starting, and emotional interpretation of progress. Include scenarios with low time, low energy, and a return after a gap rather than testing only an ideal first session.",
-        "Observe whether the language feels supportive and whether alternatives are easy to find. This plan does not establish clinical efficacy or claim a completed wellbeing study."
-      ],
-      "tasks": [
-        [
-          "Limited time",
-          "Find a practice with only a few minutes available.",
-          "Understand duration and start a manageable activity."
-        ],
-        [
-          "Change a suggestion",
-          "Reject the recommended activity.",
-          "Find an alternative without losing context."
-        ],
-        [
-          "Return after a gap",
-          "Resume after missing several days.",
-          "Recognize a welcoming next step without a perceived penalty."
-        ]
-      ]
-    },
-    "delivery": {
-      "paragraphs": [
-        "Delivery should define content tone, recommendation boundaries, and the treatment of skipped or incomplete activities. The system should not interpret every incomplete session as a negative outcome.",
-        "Accessibility includes readable text, reduced-motion support, clear audio alternatives where relevant, and predictable focus. Privacy decisions should minimize sensitive data collection and explain any information retained for personalization."
-      ],
-      "checks": [
-        "Supportive language across missed and incomplete states",
-        "Accessible content and reduced-motion behavior",
-        "Clear privacy choices and recommendation controls"
-      ]
-    }
-  },
-  "loop-learning": {
-    "executive": {
-      "mandate": "Connect cohort learning, learner questions, and instructor feedback in one understandable workflow.",
-      "decision": "Make confusion visible in context and turn feedback into a clear next action.",
-      "value": "Help learners progress while giving instructors a manageable view of where support is needed."
-    },
-    "context": [
-      "Loop Learning explores a cohort-based learning experience where lessons, questions, feedback, and progress often become fragmented across tools. The challenge is not simply to centralize content; it is to keep the learning conversation connected to the work.",
-      "The design focuses on contextual support, visible feedback cycles, and instructor triage. AI assistance is treated as a supporting mechanism with boundaries, rather than a substitute for instructor judgment."
-    ],
-    "discovery": {
-      "title": "Follow the feedback loop, not just the lesson.",
-      "paragraphs": [
-        "The discovery frame traces how a learner moves from content to a question, an attempt, feedback, and revision. Friction appears when context is lost between those steps or when a learner’s confusion remains invisible until an assessment.",
-        "The existing project themes include fragmented tools, hidden confusion, and instructor overload. The synthesis turns these into design questions about context, prioritization, and ownership to guide the proposed evaluation."
-      ],
-      "methods": [
-        [
-          "Learning journey map",
-          "Connect lesson context, questions, submissions, feedback, and revision."
-        ],
-        [
-          "Role analysis",
-          "Separate learner needs from instructor triage and cohort oversight."
-        ],
-        [
-          "Support-flow review",
-          "Identify when contextual help is sufficient and when a human response is needed."
-        ]
-      ]
-    },
-    "problem": {
-      "statement": "Learning slows when questions and feedback are detached from the material that prompted them. Learners lose the next step, while instructors must recover context and prioritize support across fragmented channels.",
-      "hmw": "How might we keep help connected to the learning task and make the next feedback action clear for both roles?",
-      "constraints": [
-        "Preserve lesson and submission context across interactions.",
-        "Keep instructor workload visible and manageable.",
-        "Make AI assistance distinguishable from authoritative feedback."
-      ]
-    },
-    "insights": [
-      [
-        "Context reduces repeated explanation",
-        "A question attached to a lesson or submission gives both learner and instructor a stronger starting point than an isolated message."
-      ],
-      [
-        "Feedback must lead somewhere",
-        "Receiving a comment is not the end of the loop. The learner needs to understand what to revise and how to resubmit or continue."
-      ],
-      [
-        "Visibility needs prioritization",
-        "Showing every signal at equal weight creates a new overload. Instructors need to identify blocked learners and unresolved issues without scanning every interaction."
-      ]
-    ],
-    "audiences": [
-      [
-        "Cohort learner",
-        "Needs contextual help, understandable feedback, and a clear next learning action."
-      ],
-      [
-        "Instructor",
-        "Needs actionable signals, linked context, and a manageable response queue."
-      ]
-    ],
-    "journey": [
-      [
-        "Learn",
-        "Engage with a lesson",
-        "Content and support are separated",
-        "Keep help in lesson context"
-      ],
-      [
-        "Ask",
-        "Express confusion",
-        "Questions lack relevant detail",
-        "Attach questions to the learning task"
-      ],
-      [
-        "Attempt",
-        "Submit work",
-        "Expectations are unclear",
-        "Show criteria and submission status"
-      ],
-      [
-        "Revise",
-        "Act on feedback",
-        "Comments lack a next step",
-        "Connect feedback to revision"
-      ],
-      [
-        "Support",
-        "Prioritize intervention",
-        "Signals overwhelm the instructor",
-        "Group unresolved and blocked work"
-      ]
-    ],
-    "strategy": {
-      "title": "Close the loop before expanding the platform.",
-      "paragraphs": [
-        "The first scope connects lesson context, questions, submissions, and actionable feedback. This creates a complete learning loop that can be evaluated without building every feature of a learning management system.",
-        "Instructor triage should focus on signals that require action. AI support can help with context and explanation, but escalation and authorship need to remain visible so people understand the source and limits of an answer."
-      ],
-      "priorities": [
-        [
-          "Core",
-          "Contextual questions, submission states, feedback, and revision."
-        ],
-        [
-          "Next",
-          "Instructor triage and clear escalation paths."
-        ],
-        [
-          "Later",
-          "Broader AI assistance after trust and learning value are evaluated."
-        ]
-      ]
-    },
-    "architecture": {
-      "title": "Connect two roles around shared learning objects.",
-      "paragraphs": [
-        "The information architecture centers on lessons, questions, submissions, and feedback. Learner and instructor views can prioritize different actions while referring to the same underlying context and status.",
-        "Wireframes should test whether a learner can move from feedback to revision and whether an instructor can find the relevant work from a support signal. These transitions matter more than a dashboard that summarizes activity without enabling action."
-      ],
-      "wireframes": [
-        [
-          "Learner workspace",
-          "Connect current lesson, work, and the next required action."
-        ],
-        [
-          "Contextual support",
-          "Keep the question and relevant learning material together."
-        ],
-        [
-          "Instructor queue",
-          "Surface unresolved work with context and response controls."
-        ]
-      ]
-    },
-    "tradeoffs": [
-      [
-        "Centralization versus density",
-        "Connect related information without showing everything at once. Use contextual detail so the active learning task remains clear."
-      ],
-      [
-        "Automation versus accountability",
-        "AI can support understanding, but its contribution should be identifiable and escalatable. Instructor feedback must remain distinct."
-      ],
-      [
-        "Visibility versus surveillance",
-        "Use learning signals to offer support rather than imply that every click measures comprehension. Prioritize meaningful actions and explicit learner needs."
-      ]
-    ],
-    "validation": {
-      "paragraphs": [
-        "The proposed evaluation follows both sides of the same feedback loop. A learner asks a contextual question and revises work; an instructor identifies the issue, inspects the submission, and responds.",
-        "Observe whether each role understands the status, owner, and next action. AI-assisted scenarios should also test whether people recognize the response source and know how to seek human support. These are planned evaluations, not claimed completed sessions."
-      ],
-      "tasks": [
-        [
-          "Ask in context",
-          "Request help from a difficult lesson.",
-          "Attach sufficient context without repeating the whole task."
-        ],
-        [
-          "Revise work",
-          "Act on feedback and submit a revision.",
-          "Identify the requested change and the updated status."
-        ],
-        [
-          "Triage support",
-          "Find a blocked learner and respond.",
-          "Locate relevant evidence and resolve or escalate the issue."
-        ]
-      ]
-    },
-    "delivery": {
-      "paragraphs": [
-        "Delivery should define shared statuses for questions, submissions, feedback, and revisions. Notifications need to point to a useful action and avoid generating repeated noise for a single unresolved issue.",
-        "Accessibility includes semantic lesson structure, keyboard navigation, clear form feedback, and media alternatives. AI-related content needs visible attribution, appropriate uncertainty, and a route to human review."
-      ],
-      "checks": [
-        "Shared status and ownership across learner and instructor views",
-        "Actionable notification and escalation behavior",
-        "Accessible learning content and transparent AI assistance"
+        "Reconcile target percentages with current and target amounts.",
+        "Standardize currency separators, dates, and reporting periods.",
+        "Provide text alternatives for charts and keyboard access to controls.",
+        "Specify loading, empty, and error states before live integration."
       ]
     }
   },
@@ -1895,6 +1527,1164 @@
         "Undo, persistence and recovery for authoring changes",
         "Keyboard composition and focus behavior",
         "Email-client rendering and delivery verification before production sending"
+      ]
+    }
+  },
+  "flownode": {
+    "executive": {
+      "mandate": "Explore how people can compose AI-assisted workflows while retaining visibility into the steps, decisions, and operational consequences.",
+      "decision": "Make the proposed plan reviewable, the workflow editable, and the human handoff visible before introducing execution complexity.",
+      "value": "The prototype demonstrates a connected authoring and oversight experience. Its value proposition is clearer control of automation; adoption and efficiency gains remain to be evaluated."
+    },
+    "context": [
+      "Flownode explores the gap between describing an automation and trusting it enough to use it. A natural-language request can express an intention quickly, but the resulting workflow still needs a structure that people can understand, revise, and supervise. The design connects that initial request to an inspectable plan and a graphical workflow.",
+      "The supplied React and TypeScript application provides the basis for this case study. Its canvas, configuration panels, plan builder, execution history, and operations screens form an interactive frontend prototype. Authentication, generated plans, and execution activity are simulated; the screens demonstrate the experience rather than a deployed automation service."
+    ],
+    "discovery": {
+      "title": "Examine where intention becomes uncertainty.",
+      "paragraphs": [
+        "The starting point is the workflow represented in the prototype: choose or describe an automation, review its steps, configure the graph, and inspect activity. Examining this sequence surfaces several design questions. Can someone explain what a generated plan will do? Can they identify the step that requires their judgment? Can they distinguish a waiting task from a failed one?",
+        "These questions frame a product opportunity without implying completed user interviews. The discovery work presented here is an examination of the supplied interface and implementation, with audience needs expressed as hypotheses for future research."
+      ],
+      "methods": [
+        [
+          "Interface walkthrough",
+          "Reviewed the dashboard, AI plan modal, canvas, configuration panel, execution history, and operations view to connect the authoring experience with its oversight surfaces."
+        ],
+        [
+          "Implementation review",
+          "Examined seeded workflow data and the local plan-selection logic. This identifies which behaviors are interactive and which depend on simulated responses."
+        ],
+        [
+          "Risk-oriented framing",
+          "Prioritized ambiguity around scope, human approval, execution status, and cost because each could affect whether a person understands the consequences of an automation."
+        ]
+      ]
+    },
+    "problem": {
+      "statement": "People need a way to turn an automation intention into a workflow they can explain and control. A generated answer alone does not reveal enough about sequence, conditions, human responsibility, or the state of work after it starts.",
+      "hmw": "How might we make AI-assisted workflow creation feel inspectable at every consequential decision?",
+      "constraints": [
+        "The available implementation is a frontend prototype with predefined plans and demonstration activity.",
+        "Complex graphs must remain understandable alongside detailed step settings.",
+        "Approval, errors, and cost need clear meaning before a live execution service can be connected."
+      ]
+    },
+    "insights": [
+      [
+        "A proposal needs a review boundary",
+        "Separating plan generation from insertion gives people a moment to evaluate intent and scope. This is a design hypothesis about comprehension, not a measured finding."
+      ],
+      [
+        "Control needs a visible location",
+        "Putting approval into the graph makes the handoff tangible. The next question is whether people can recognize who acts and what remains paused."
+      ],
+      [
+        "Monitoring completes the authoring story",
+        "A workflow becomes an ongoing responsibility once it runs. Status and operational views should help explain what happened and what action is available."
+      ]
+    ],
+    "audiences": [
+      [
+        "Workflow author",
+        "Needs to translate an intended process into understandable steps and adjust the details without losing the overall sequence."
+      ],
+      [
+        "Operations reviewer",
+        "Needs to identify waiting or failed work, understand its context, and decide where human intervention is required."
+      ]
+    ],
+    "journey": [
+      [
+        "Describe",
+        "Express the intended automation.",
+        "A short prompt can conceal important conditions.",
+        "Start from an example and make the proposed sequence explicit."
+      ],
+      [
+        "Review",
+        "Check that the plan matches the intention.",
+        "Generated steps may imply actions the author did not expect.",
+        "Show the plan and estimated cost before insertion."
+      ],
+      [
+        "Configure",
+        "Adjust the workflow and its decisions.",
+        "Detailed settings can obscure the wider process.",
+        "Keep the canvas beside step configuration."
+      ],
+      [
+        "Supervise",
+        "Identify work needing attention.",
+        "Waiting and failed states require different responses.",
+        "Use distinct statuses and an explicit human gate."
+      ],
+      [
+        "Improve",
+        "Understand patterns across activity.",
+        "Individual runs do not reveal recurring problems.",
+        "Provide an operations view for failure and routing patterns."
+      ]
+    ],
+    "strategy": {
+      "title": "Make the automation legible before making it powerful.",
+      "paragraphs": [
+        "The experience is organized around progressive commitment. A person first expresses an intention, then reviews a proposed plan, and finally edits the workflow in context. Each stage introduces more detail while preserving an opportunity to revise the previous decision.",
+        "The Build and Operate navigation groups reflect two different modes of work. Authoring benefits from a focused canvas and configuration tools; oversight benefits from comparable statuses, activity records, and operational signals. The structure keeps these responsibilities connected without forcing them into one crowded screen."
+      ],
+      "priorities": [
+        [
+          "01 / Comprehension",
+          "Make each proposed step and its place in the sequence understandable."
+        ],
+        [
+          "02 / Control",
+          "Expose the points where configuration or human judgment changes what happens next."
+        ],
+        [
+          "03 / Visibility",
+          "Carry the workflow context into activity and operations views."
+        ]
+      ]
+    },
+    "architecture": {
+      "title": "Connect the plan, the graph, and the operational record.",
+      "paragraphs": [
+        "The prototype uses a persistent sidebar to establish the product’s major workspaces. The workflow canvas occupies the main authoring area, with step details available in an adjacent panel. This supports moving between the overall process and a specific setting without changing the underlying task context.",
+        "The AI plan modal acts as a transition between language and structure. Execution history then presents activity as a list, while operations aggregates signals across runs. Together, these surfaces demonstrate an information architecture that moves from intent to configuration to oversight."
+      ],
+      "wireframes": [
+        [
+          "Plan hierarchy",
+          "Evaluate whether people notice the proposed sequence, approval requirement, and cost before accepting a plan."
+        ],
+        [
+          "Canvas and detail balance",
+          "Explore how much space the configuration panel can occupy before connections become difficult to follow."
+        ],
+        [
+          "Attention hierarchy",
+          "Compare the visibility of waiting, failed, and running states when several appear together."
+        ]
+      ]
+    },
+    "tradeoffs": [
+      [
+        "Speed versus inspection",
+        "A review step adds friction to generation, but provides a place to catch an unexpected action before the plan is adopted. Validation should establish whether that pause improves understanding."
+      ],
+      [
+        "Canvas density versus context",
+        "Showing the entire workflow helps explain relationships, while small nodes limit readable detail. Zoom and the adjacent configuration panel divide these responsibilities."
+      ],
+      [
+        "Broad concept versus proven capability",
+        "The prototype covers authoring and operations to show the complete product idea. Live integration, reliability, and multi-user permissions still require implementation and evaluation."
+      ]
+    ],
+    "validation": {
+      "paragraphs": [
+        "Local walkthroughs confirmed that the supplied prototype can display a proposed plan, expose step configuration, and navigate to execution and operations screens. These are interface checks, not evidence of successful automation or user comprehension.",
+        "A proposed usability study would focus on whether participants can predict the workflow’s behavior and identify the appropriate intervention. Observation should capture misunderstandings and reasoning, alongside completion and recovery behavior. No participant results or performance improvements are claimed here."
+      ],
+      "tasks": [
+        [
+          "Plan comprehension",
+          "Review the support-reply plan and explain how refund requests are handled.",
+          "The participant identifies the human approval step and explains its purpose."
+        ],
+        [
+          "Configuration confidence",
+          "Locate a step that needs adjustment and explain its upstream and downstream connections.",
+          "The participant changes context without losing the overall sequence."
+        ],
+        [
+          "Operational judgment",
+          "Compare a waiting run with a failed run and describe the next action.",
+          "The participant distinguishes a human handoff from an execution problem."
+        ],
+        [
+          "Cost interpretation",
+          "Explain what the proposed credit estimate does and does not establish.",
+          "The participant treats it as an estimate rather than a guaranteed total."
+        ]
+      ]
+    },
+    "delivery": {
+      "paragraphs": [
+        "The available artifact is an interactive React, TypeScript, and Tailwind frontend. The case-study screenshots were captured from that local prototype and preserve its actual interface. Seeded activity supports exploration of operational states, while the predefined plan logic makes the intended review interaction demonstrable.",
+        "The next iteration should concentrate on the contract between the interface and a real execution system: explicit approval ownership, predictable error recovery, accurate cost feedback, and persistent workflow versions. These priorities follow from the experience’s central promise of visible control."
+      ],
+      "checks": [
+        "Define permissions and approval ownership before enabling consequential actions.",
+        "Specify loading, empty, error, and retry behavior for real service responses.",
+        "Test graph navigation and step editing with keyboard and assistive technology.",
+        "Validate plan comprehension with intended users before making efficiency claims."
+      ]
+    }
+  },
+  "agent-os": {
+    "executive": {
+      "mandate": "Explain a broad AI agent proposition through an understandable product-discovery journey.",
+      "decision": "Connect a high-level introduction to agent discovery, platform context, workflows, and plan comparison.",
+      "value": "The website prototype demonstrates the evaluation journey. It does not establish deployment capability, customer adoption, or conversion improvements."
+    },
+    "context": [
+      "Agent OS presents a platform concept for building and orchestrating AI agent teams. The design challenge begins before someone uses such a platform: visitors need to understand the proposition, identify a relevant application, and decide what to explore next. The case study focuses on that discovery and evaluation experience.",
+      "The supplied Next.js project is a marketing website with dedicated pages for agents, platform capabilities, workflows, use cases, pricing, and supporting information. The screenshots show the hosted frontend. Product claims and plan content within the prototype are not treated here as evidence of operational services or verified customer results."
+    ],
+    "discovery": {
+      "title": "Start with the visitor’s decision, not the feature list.",
+      "paragraphs": [
+        "The available website offers several ways to explore the product. Reviewing its navigation and page structure surfaces three questions: what does the platform do, where could it fit into a person’s work, and what distinguishes the available plans? A useful discovery experience needs to connect those questions rather than treat each page as an isolated pitch.",
+        "The discovery material here comes from the supplied source and a walkthrough of the hosted website. Audience descriptions and synthesis themes are working hypotheses for evaluation. No interviews, customer research findings, or conversion measurements are attributed to this review."
+      ],
+      "methods": [
+        [
+          "Content inventory",
+          "Examined the homepage, agent catalog, platform overview, workflows, and pricing destinations to identify the role of each page in the evaluation journey."
+        ],
+        [
+          "Navigation walkthrough",
+          "Followed the main navigation between discovery and comparison pages, checking whether a visitor has a visible route to deeper detail."
+        ],
+        [
+          "Decision framing",
+          "Separated understanding the proposition, assessing relevance, and selecting a next step so each page can support a specific decision."
+        ]
+      ]
+    },
+    "problem": {
+      "statement": "An AI platform can appear compelling while leaving visitors uncertain about what it enables and whether it fits their needs. Broad claims, overlapping capability pages, and plan lists need a clear relationship so product exploration leads to understanding.",
+      "hmw": "How might we help visitors move from curiosity about AI agents to a concrete understanding of relevance and next steps?",
+      "constraints": [
+        "The available artifact is a marketing frontend, not a demonstrated agent execution system.",
+        "Several capability destinations must feel connected without repeating the same explanation.",
+        "Plan details and calls to action must accurately communicate the destination and level of commitment."
+      ]
+    },
+    "insights": [
+      [
+        "Different visitors start with different questions",
+        "Some need an introduction to agents; others arrive looking for a workflow or a plan. Navigation should support those starting points without requiring a fixed reading order."
+      ],
+      [
+        "Relevance requires a concrete bridge",
+        "A capability becomes easier to evaluate when it connects to an understandable sequence of work. The workflows destination is an opportunity to make that connection explicit."
+      ],
+      [
+        "Comparison should resolve uncertainty",
+        "Plan cards should clarify limits and support differences, then accurately describe what happens after the call to action. Visual emphasis alone cannot explain suitability."
+      ]
+    ],
+    "audiences": [
+      [
+        "Individual explorer",
+        "Needs to understand the agent concept and find a plausible first use without navigating enterprise detail too early."
+      ],
+      [
+        "Team evaluator",
+        "Needs to connect capabilities, workflow fit, and plan differences before deciding whether to begin a conversation."
+      ]
+    ],
+    "journey": [
+      [
+        "Orient",
+        "Understand the proposition.",
+        "An abstract AI promise can be difficult to interpret.",
+        "Use a concise introduction with visible exploration routes."
+      ],
+      [
+        "Discover",
+        "Find relevant capabilities.",
+        "A broad platform contains many possible entry points.",
+        "Separate agents and platform context into dedicated destinations."
+      ],
+      [
+        "Connect",
+        "Relate capabilities to work.",
+        "Feature lists do not explain a sequence of use.",
+        "Provide a workflow explanation."
+      ],
+      [
+        "Compare",
+        "Understand plan differences.",
+        "Limits and support vary across tiers.",
+        "Present comparable plan cards."
+      ],
+      [
+        "Continue",
+        "Choose the next step.",
+        "A CTA can imply more than its destination provides.",
+        "Make the contact or trial destination explicit."
+      ]
+    ],
+    "strategy": {
+      "title": "Build a connected path through the product story.",
+      "paragraphs": [
+        "The strategy uses progressive detail. The homepage establishes a recognizable proposition; exploration pages provide context; pricing brings the visitor to a comparison. This structure should allow a person to enter at different points while still finding the information needed for the next decision.",
+        "The experience also needs a clear distinction between explanation and action. A marketing prototype can communicate a platform concept, but its calls to action should not imply an available self-service setup when the actual destination is contact. That alignment is a priority for the next iteration."
+      ],
+      "priorities": [
+        [
+          "Understand",
+          "Explain the agent proposition with a concise hierarchy and recognizable routes."
+        ],
+        [
+          "Explore",
+          "Connect agent and platform content to workflows and applications."
+        ],
+        [
+          "Evaluate",
+          "Make plan differences and the next-step destination understandable."
+        ]
+      ]
+    },
+    "architecture": {
+      "title": "Give each destination a distinct responsibility.",
+      "paragraphs": [
+        "The main navigation organizes Agents, Platform, Workflows, Use Cases, and Pricing as separate destinations. Supporting pages cover integrations, resources, security, and contact. The distinction supports a broad exploration path while giving deeper evaluation content a place outside the homepage.",
+        "Shared page heroes, cards, pricing components, and FAQ patterns provide visual consistency across the site. The key architecture question is whether visitors can predict what each label contains and understand where to go next. A low-fidelity evaluation should test that structure before adding more visual complexity."
+      ],
+      "wireframes": [
+        [
+          "Navigation labels",
+          "Check whether visitors can distinguish agent discovery, platform context, and workflows from the labels alone."
+        ],
+        [
+          "Page-to-page continuity",
+          "Explore how a capability page can point to a relevant workflow or plan without repeating the full introduction."
+        ],
+        [
+          "Pricing hierarchy",
+          "Compare the visibility of tier names, limits, support, and action destinations during a short scan."
+        ]
+      ]
+    },
+    "tradeoffs": [
+      [
+        "Impact versus explanation",
+        "Large headlines and motion create a strong first impression, but supporting content must make the product proposition concrete."
+      ],
+      [
+        "Breadth versus overlap",
+        "Dedicated pages support different evaluation needs, but overlapping descriptions can increase the effort required to understand the platform."
+      ],
+      [
+        "Simple tiers versus precise expectations",
+        "Three plan cards are easy to compare at a glance. Limits, availability, and the meaning of each action still require careful content design."
+      ]
+    ],
+    "validation": {
+      "paragraphs": [
+        "The hosted homepage, agents, platform, workflows, and pricing pages were inspected and captured. This verifies the presence of the discovery surfaces, not the availability of underlying agent infrastructure or commercial plans.",
+        "A proposed usability evaluation should focus on explanation and wayfinding. Ask participants to describe the product, locate a relevant workflow, compare plans, and predict what will happen after selecting a call to action. Record misunderstandings alongside task completion rather than relying on preference alone."
+      ],
+      "tasks": [
+        [
+          "Explain the proposition",
+          "Describe Agent OS after reviewing the homepage and one exploration page.",
+          "The participant identifies a concrete intended use rather than repeating the headline."
+        ],
+        [
+          "Find relevant detail",
+          "Locate the page that would help evaluate a workflow.",
+          "The participant selects a suitable destination and explains its purpose."
+        ],
+        [
+          "Compare plans",
+          "Explain two meaningful differences between available tiers.",
+          "The participant distinguishes feature scope from support and limits."
+        ],
+        [
+          "Predict the next step",
+          "Describe what a pricing action will open before selecting it.",
+          "Expectation matches the actual contact destination."
+        ]
+      ]
+    },
+    "delivery": {
+      "paragraphs": [
+        "The supplied implementation uses Next.js, TypeScript, Tailwind, and Framer Motion, with shared page and UI components. Static data supplies agents, pricing, integrations, and resources. The case-study screenshots were captured from the hosted website rather than invented as product evidence.",
+        "The next iteration should tighten the relationship between navigation labels, page purpose, and calls to action. It should also review reduced-motion behavior, keyboard access, and content accuracy before a broader launch. Any future claims about conversion, customer outcomes, or operational capability need separate evidence."
+      ],
+      "checks": [
+        "Align trial and contact labels with their actual destinations.",
+        "Review plan content and product claims before public commercial use.",
+        "Test keyboard navigation, focus visibility, and reduced-motion behavior.",
+        "Evaluate comprehension and wayfinding with intended visitors."
+      ]
+    }
+  },
+  "arca": {
+    "executive": {
+      "mandate": "Bring everyday financial orientation and card management into a coherent mobile experience.",
+      "decision": "Layer the home overview, dedicate a destination to activity, and keep card controls close to the selected card.",
+      "value": "The prototype demonstrates a navigable wallet concept. Improvements in confidence, speed, or financial behavior require user evaluation."
+    },
+    "context": [
+      "Arca explores the moment between checking money and deciding what to do next. A small screen must accommodate balances, card context, spending categories, and common actions without giving every item equal priority. The experience uses a layered home view and persistent bottom navigation to organize those responsibilities.",
+      "The supplied HTML package and hosted mobile prototype form the evidence for this case study. The walkthrough covered onboarding, the demo passcode entry, home, activity, and cards. Sample balances and transactions illustrate the interface; real account connectivity, payments, and biometric security are not established by this artifact."
+    ],
+    "discovery": {
+      "title": "Understand what a quick money check needs to reveal.",
+      "paragraphs": [
+        "The interface brings several tasks together: viewing a balance, checking recent activity, monitoring budgets, and finding card controls. Those tasks differ in urgency and depth. The discovery frame asks what someone needs to see immediately and which details can remain one navigation step away.",
+        "The available material supports an interface and task review rather than a claim of completed user research. Audience needs and the synthesis map below are hypotheses. A future study should investigate which information people use to explain their current position and where they become uncertain about a number or action."
+      ],
+      "methods": [
+        [
+          "Prototype walkthrough",
+          "Explored the onboarding, sample unlock flow, home, activity, and card destinations to identify the visible sequence and navigation model."
+        ],
+        [
+          "Information hierarchy review",
+          "Examined how balance, actions, card summaries, budgets, and recent transactions compete for space within the mobile viewport."
+        ],
+        [
+          "State and content review",
+          "Identified demo passcode behavior, masked card information, and sample balances as areas that need explicit production contracts and consistent data rules."
+        ]
+      ]
+    },
+    "problem": {
+      "statement": "A mobile wallet must help people understand their financial position while keeping important actions easy to find. When summaries, account details, and controls lack a clear relationship, a routine check can require unnecessary interpretation.",
+      "hmw": "How might we connect a calm financial overview to understandable activity and card controls on a small screen?",
+      "constraints": [
+        "The prototype uses demonstration data and does not establish live banking capabilities.",
+        "A compact mobile viewport limits how much context can be visible at once.",
+        "Balances, categories, and reporting periods need consistent definitions across views."
+      ]
+    },
+    "insights": [
+      [
+        "Orientation needs a clear starting point",
+        "A prominent balance can support a quick check, but its scope must be understandable in relation to individual cards and accounts."
+      ],
+      [
+        "Navigation should separate recurring questions",
+        "Home, Activity, and Cards represent different tasks. Their labels should make it easy to predict where supporting information lives."
+      ],
+      [
+        "Control requires visible context",
+        "A management action is easier to interpret when the selected card and its state are visible nearby. This hypothesis needs evaluation with intended users."
+      ]
+    ],
+    "audiences": [
+      [
+        "Everyday wallet user",
+        "Needs to understand current money context and review recent activity during a short visit."
+      ],
+      [
+        "Multi-card customer",
+        "Needs to identify a specific card, understand its available information, and find relevant management controls."
+      ]
+    ],
+    "journey": [
+      [
+        "Enter",
+        "Reach the wallet.",
+        "An entry flow can obscure how to explore a demo.",
+        "Provide onboarding and a sample unlock interaction."
+      ],
+      [
+        "Orient",
+        "Understand current position.",
+        "Several balances can be difficult to reconcile.",
+        "Lead with a defined overview and supporting account context."
+      ],
+      [
+        "Inspect",
+        "Explain a recent change.",
+        "A summary does not show individual events.",
+        "Provide a dedicated activity destination."
+      ],
+      [
+        "Manage",
+        "Find a card control.",
+        "Actions can become detached from the selected card.",
+        "Place controls beside card context."
+      ],
+      [
+        "Monitor",
+        "Return to spending context.",
+        "Details can obscure the broader picture.",
+        "Keep home navigation persistent."
+      ]
+    ],
+    "strategy": {
+      "title": "Separate a quick check from a deeper investigation.",
+      "paragraphs": [
+        "The overview acts as an entry point rather than a complete financial report. It introduces the main balance, visible actions, and supporting summaries, while Activity and Cards provide stable destinations for deeper tasks. This gives the experience a repeatable structure across visits.",
+        "The next design priority is consistency between those layers. A total needs a clear definition, a card needs an unambiguous selected state, and an activity entry needs enough description to explain its amount. Calm presentation depends on those content relationships as much as spacing or color."
+      ],
+      "priorities": [
+        [
+          "Orient",
+          "Make balance scope and reporting period understandable."
+        ],
+        [
+          "Inspect",
+          "Connect summary information to activity and card detail."
+        ],
+        [
+          "Control",
+          "Make the selected object and available action clear."
+        ]
+      ]
+    },
+    "architecture": {
+      "title": "Use persistent navigation to preserve orientation.",
+      "paragraphs": [
+        "The prototype separates Home, Activity, Cards, and More in a bottom navigation bar. A central action entry provides another route to common tasks. This architecture distinguishes recurring destinations from actions that someone may initiate from several contexts.",
+        "Within the Cards view, the card summary precedes management controls, masked details, and spending context. The structure suggests a progression from identifying the card to inspecting or managing it. Low-fidelity exploration should evaluate that order and the discoverability of actions before adding more features."
+      ],
+      "wireframes": [
+        [
+          "Home density",
+          "Test which information remains visible during a quick glance and whether lower content is discoverable."
+        ],
+        [
+          "Action versus destination",
+          "Evaluate whether visitors understand the difference between bottom navigation and the central action entry."
+        ],
+        [
+          "Card context",
+          "Check whether the selected card remains unambiguous while reading details or locating controls."
+        ]
+      ]
+    },
+    "tradeoffs": [
+      [
+        "Density versus calm",
+        "A combined wallet creates convenience but introduces many summaries. Progressive detail should preserve the most important context."
+      ],
+      [
+        "Convenience versus certainty",
+        "Quick actions reduce navigation, but the amount, recipient, and consequences would still need a deliberate review in a live payment flow."
+      ],
+      [
+        "Prototype fidelity versus real security",
+        "Passcode and masked-detail interactions communicate intent. They do not demonstrate secure authentication, biometric enforcement, or issuer connectivity."
+      ]
+    ],
+    "validation": {
+      "paragraphs": [
+        "The hosted prototype was navigated through its demo unlock flow and the Home, Activity, and Cards destinations. These checks confirm visible interface behavior, not financial execution or customer outcomes.",
+        "A proposed study should focus on interpretation: ask people to explain the balance scope, locate an activity record, identify the selected card, and describe what they expect a control to do. Numerical inconsistencies in sample data should be resolved before using those tasks to evaluate confidence."
+      ],
+      "tasks": [
+        [
+          "Read the overview",
+          "Explain the total balance and its relationship to card summaries.",
+          "The participant can describe the scope or identify missing context."
+        ],
+        [
+          "Inspect activity",
+          "Find an individual transaction and explain its amount and description.",
+          "The participant distinguishes individual activity from aggregate summaries."
+        ],
+        [
+          "Locate a control",
+          "Identify the selected card and find its management actions without activating them.",
+          "The participant names the intended card and predicts the action."
+        ],
+        [
+          "Return home",
+          "Move from a detailed view back to the overview.",
+          "The participant retains orientation across destinations."
+        ]
+      ]
+    },
+    "delivery": {
+      "paragraphs": [
+        "The supplied package includes HTML, styles, shared design tokens, icons, and a runtime for the interactive screens. The screenshots in this case study were captured from the hosted mobile prototype. The project is presented as a wallet experience concept, with sample account and activity content.",
+        "The next iteration should reconcile totals and card balances, improve demo-entry guidance, and specify accessible labels and focus behavior for controls. Live financial integrations would require separate authentication, authorization, error handling, and transaction-state design beyond the demonstrated interface."
+      ],
+      "checks": [
+        "Define and reconcile total, available, and card balance values.",
+        "Make demo access instructions visible before passcode entry.",
+        "Test accessible names, keyboard navigation, and touch targets.",
+        "Specify review, failure, and recovery states before connecting real payments."
+      ]
+    }
+  },
+  "shoppulse": {
+    "executive": {
+      "mandate": "Connect commerce performance monitoring to practical product and order investigation.",
+      "decision": "Use Overview for orientation, with dedicated Products and Orders destinations for detail.",
+      "value": "The prototype demonstrates the navigation and information hierarchy. Operational efficiency and business impact remain to be evaluated."
+    },
+    "context": [
+      "ShopPulse addresses the transition from seeing a summary to understanding the work behind it. On a desktop commerce workspace, an operator needs to connect performance signals with product and order records. The interface separates broad monitoring from detailed management.",
+      "The case study is grounded in the supplied source package and hosted prototype. Screenshots preserve the actual interface and its demonstration records. The narrative does not claim completed interviews, live operational integrations, or measured business results."
+    ],
+    "discovery": {
+      "title": "Follow the question from overview to detail.",
+      "paragraphs": [
+        "A walkthrough of ShopPulse focused on Overview, Products, Orders. These destinations represent different depths of attention: noticing a signal, finding a relevant record, and interpreting its current state. The discovery question is whether the navigation makes that progression understandable.",
+        "The available evidence supports an interface and task review. The audience needs and process map below are working hypotheses for future evaluation. Research should establish which exceptions matter most, which labels match daily language, and where people need more context before acting."
+      ],
+      "methods": [
+        [
+          "Prototype walkthrough",
+          "Explored the Overview, Products, and Orders destinations and captured their visible states."
+        ],
+        [
+          "Information inventory",
+          "Separated aggregate information, individual records, and status indicators to clarify the purpose of each surface."
+        ],
+        [
+          "Task framing",
+          "Mapped the move from noticing a signal to inspecting a record, identifying the context needed at each transition."
+        ]
+      ]
+    },
+    "problem": {
+      "statement": "Commerce dashboards can show performance without making the supporting product and order context easy to find. People need a clear route from a summary to the record that explains it.",
+      "hmw": "How might we connect the overview to actionable context while preserving orientation?",
+      "constraints": [
+        "The available interface uses demonstration records; live synchronization is not verified.",
+        "Summary labels and detailed records need consistent meaning.",
+        "Status must remain understandable before an operator takes a consequential action."
+      ]
+    },
+    "insights": [
+      [
+        "A summary should suggest where to look",
+        "Overview content becomes more useful when people can identify a relevant destination for investigation. This is a hypothesis about wayfinding, not a reported research result."
+      ],
+      [
+        "A record needs recognizable context",
+        "Names, identifiers, and status should help people confirm that they are inspecting the right object. The required detail depends on the task and device."
+      ],
+      [
+        "Status language carries operational meaning",
+        "A label needs a clear definition and next step. Color can support scanning, but should not carry the meaning alone."
+      ]
+    ],
+    "audiences": [
+      [
+        "Store operator",
+        "Needs to connect an overall performance signal to the underlying products and orders."
+      ],
+      [
+        "Commerce analyst",
+        "Needs to explore trends while keeping the meaning and reporting scope of metrics clear."
+      ]
+    ],
+    "journey": [
+      [
+        "Orient",
+        "Understand the overview.",
+        "Several signals compete for attention.",
+        "Group related information and highlight relevant context."
+      ],
+      [
+        "Locate",
+        "Find an item or product.",
+        "Summary information lacks record detail.",
+        "Provide a stable Products destination."
+      ],
+      [
+        "Inspect",
+        "Understand an individual record.",
+        "Identity and status can be ambiguous.",
+        "Keep identifiers and state visible together."
+      ],
+      [
+        "Review",
+        "Understand order progress.",
+        "Work can be waiting at different stages.",
+        "Provide a dedicated order view."
+      ],
+      [
+        "Return",
+        "Resume monitoring.",
+        "Detailed inspection can lose context.",
+        "Keep navigation back to the overview predictable."
+      ]
+    ],
+    "strategy": {
+      "title": "Give orientation and investigation their own space.",
+      "paragraphs": [
+        "The design separates Overview from Products and Orders, allowing each destination to support a distinct question. The overview establishes context; record views support a more deliberate inspection. This structure avoids treating every piece of information as equally important.",
+        "The next priority is continuity between those views. Labels, counts, dates, and status definitions should remain consistent so people can explain how a detail relates to the summary. A polished overview cannot compensate for uncertainty in the underlying record."
+      ],
+      "priorities": [
+        [
+          "Orient",
+          "Establish the most useful starting signals."
+        ],
+        [
+          "Inspect",
+          "Provide recognizable records and understandable status."
+        ],
+        [
+          "Validate",
+          "Test whether people can trace a signal to supporting context."
+        ]
+      ]
+    },
+    "architecture": {
+      "title": "Organize destinations around recurring tasks.",
+      "paragraphs": [
+        "The primary navigation includes Overview, Products, Orders, Analytics. A persistent navigation structure separates monitoring from management destinations.",
+        "The information model moves from a broad summary to records and their state. Low-fidelity evaluation should focus on label comprehension, record recognition, and return navigation before adding further capabilities."
+      ],
+      "wireframes": [
+        [
+          "Overview priority",
+          "Compare which signals visitors notice first and whether those match the intended task."
+        ],
+        [
+          "Record recognition",
+          "Check whether identifiers and descriptions support choosing the correct record."
+        ],
+        [
+          "Status hierarchy",
+          "Explore how waiting and completed work can be distinguished without relying only on color."
+        ]
+      ]
+    },
+    "tradeoffs": [
+      [
+        "Coverage versus focus",
+        "A broad overview is useful for monitoring, but every added metric competes with the next decision."
+      ],
+      [
+        "Density versus readability",
+        "Detailed records need sufficient context; the layout must preserve readable labels and values on the intended device."
+      ],
+      [
+        "Fast access versus safe action",
+        "Reducing navigation should not remove review, permissions, or clear feedback from consequential changes."
+      ]
+    ],
+    "validation": {
+      "paragraphs": [
+        "The prototype walkthrough confirmed that the captured destinations can be reached. This is interface verification, not a user study or proof of live commerce and inventory operations.",
+        "A proposed evaluation should observe how people interpret a summary, locate a relevant record, and explain its state. Record misunderstandings and wrong turns alongside completion, using realistic but non-sensitive test data."
+      ],
+      "tasks": [
+        [
+          "Orient",
+          "Explain the main overview and choose an area to investigate.",
+          "The participant distinguishes a summary from an individual record."
+        ],
+        [
+          "Locate a record",
+          "Find a relevant entry in Products.",
+          "The participant recognizes the intended record using its visible context."
+        ],
+        [
+          "Interpret status",
+          "Inspect an order and explain its current state.",
+          "The participant describes what the status means and where more information is needed."
+        ],
+        [
+          "Return",
+          "Navigate back to the overview after inspection.",
+          "The participant retains orientation without restarting the task."
+        ]
+      ]
+    },
+    "delivery": {
+      "paragraphs": [
+        "The supplied React project includes dedicated overview, analytics, reporting, products, and orders pages, with reusable UI components and sample datasets. The case-study captures come from the hosted prototype.",
+        "The next iteration should specify consistent state definitions, accessible control labels, and loading, empty, and error behavior. Real integrations would additionally require data synchronization rules, permission checks, and reliable feedback for changes. Those operational capabilities are outside the evidence provided by the captured frontend."
+      ],
+      "checks": [
+        "Define metrics, reporting periods, and status terminology consistently.",
+        "Test navigation and record recognition with intended operators.",
+        "Verify keyboard access, readable values, and non-color status indicators.",
+        "Specify review, failure, and recovery behavior before live integration."
+      ]
+    }
+  },
+  "interoly": {
+    "executive": {
+      "mandate": "Make inventory and fulfilment context accessible during short mobile sessions.",
+      "decision": "Use Home for orientation, with dedicated Items and Orders destinations for detail.",
+      "value": "The prototype demonstrates the navigation and information hierarchy. Operational efficiency and business impact remain to be evaluated."
+    },
+    "context": [
+      "Interoly addresses the transition from seeing a summary to understanding the work behind it. On mobile, an operator needs a short route to an item or order without losing their place. The interface organizes recurring tasks around a compact overview and bottom navigation.",
+      "The case study is grounded in the supplied source package and hosted prototype. Screenshots preserve the actual interface and its demonstration records. The narrative does not claim completed interviews, live operational integrations, or measured business results."
+    ],
+    "discovery": {
+      "title": "Follow the question from overview to detail.",
+      "paragraphs": [
+        "A walkthrough of Interoly focused on Home, Items, Orders. These destinations represent different depths of attention: noticing a signal, finding a relevant record, and interpreting its current state. The discovery question is whether the navigation makes that progression understandable.",
+        "The available evidence supports an interface and task review. The audience needs and process map below are working hypotheses for future evaluation. Research should establish which exceptions matter most, which labels match daily language, and where people need more context before acting."
+      ],
+      "methods": [
+        [
+          "Prototype walkthrough",
+          "Explored the Home, Items, and Orders destinations and captured their visible states."
+        ],
+        [
+          "Information inventory",
+          "Separated aggregate information, individual records, and status indicators to clarify the purpose of each surface."
+        ],
+        [
+          "Task framing",
+          "Mapped the move from noticing a signal to inspecting a record, identifying the context needed at each transition."
+        ]
+      ]
+    },
+    "problem": {
+      "statement": "Inventory work on a small screen can become difficult when alerts, item records, and order states feel disconnected. People need a clear route from an exception to the context that explains it.",
+      "hmw": "How might we connect the overview to actionable context while preserving orientation?",
+      "constraints": [
+        "The available interface uses demonstration records; live synchronization is not verified.",
+        "Summary labels and detailed records need consistent meaning.",
+        "Status must remain understandable before an operator takes a consequential action."
+      ]
+    },
+    "insights": [
+      [
+        "A summary should suggest where to look",
+        "Overview content becomes more useful when people can identify a relevant destination for investigation. This is a hypothesis about wayfinding, not a reported research result."
+      ],
+      [
+        "A record needs recognizable context",
+        "Names, identifiers, and status should help people confirm that they are inspecting the right object. The required detail depends on the task and device."
+      ],
+      [
+        "Status language carries operational meaning",
+        "A label needs a clear definition and next step. Color can support scanning, but should not carry the meaning alone."
+      ]
+    ],
+    "audiences": [
+      [
+        "Inventory operator",
+        "Needs to identify an item and understand stock context during a short mobile session."
+      ],
+      [
+        "Fulfilment coordinator",
+        "Needs to inspect order status and recognize where work is waiting."
+      ]
+    ],
+    "journey": [
+      [
+        "Orient",
+        "Understand the overview.",
+        "Several signals compete for attention.",
+        "Group related information and highlight relevant context."
+      ],
+      [
+        "Locate",
+        "Find an item or product.",
+        "Summary information lacks record detail.",
+        "Provide a stable Items destination."
+      ],
+      [
+        "Inspect",
+        "Understand an individual record.",
+        "Identity and status can be ambiguous.",
+        "Keep identifiers and state visible together."
+      ],
+      [
+        "Review",
+        "Understand order progress.",
+        "Work can be waiting at different stages.",
+        "Provide a dedicated order view."
+      ],
+      [
+        "Return",
+        "Resume monitoring.",
+        "Detailed inspection can lose context.",
+        "Keep navigation back to the overview predictable."
+      ]
+    ],
+    "strategy": {
+      "title": "Give orientation and investigation their own space.",
+      "paragraphs": [
+        "The design separates Home from Items and Orders, allowing each destination to support a distinct question. The overview establishes context; record views support a more deliberate inspection. This structure avoids treating every piece of information as equally important.",
+        "The next priority is continuity between those views. Labels, counts, dates, and status definitions should remain consistent so people can explain how a detail relates to the summary. A polished overview cannot compensate for uncertainty in the underlying record."
+      ],
+      "priorities": [
+        [
+          "Orient",
+          "Establish the most useful starting signals."
+        ],
+        [
+          "Inspect",
+          "Provide recognizable records and understandable status."
+        ],
+        [
+          "Validate",
+          "Test whether people can trace a signal to supporting context."
+        ]
+      ]
+    },
+    "architecture": {
+      "title": "Organize destinations around recurring tasks.",
+      "paragraphs": [
+        "The primary navigation includes Home, Items, Orders, More. Bottom navigation preserves access to recurring destinations in the mobile frame.",
+        "The information model moves from a broad summary to records and their state. Low-fidelity evaluation should focus on label comprehension, record recognition, and return navigation before adding further capabilities."
+      ],
+      "wireframes": [
+        [
+          "Overview priority",
+          "Compare which signals visitors notice first and whether those match the intended task."
+        ],
+        [
+          "Record recognition",
+          "Check whether identifiers and descriptions support choosing the correct record."
+        ],
+        [
+          "Status hierarchy",
+          "Explore how waiting and completed work can be distinguished without relying only on color."
+        ]
+      ]
+    },
+    "tradeoffs": [
+      [
+        "Coverage versus focus",
+        "A broad overview is useful for monitoring, but every added metric competes with the next decision."
+      ],
+      [
+        "Density versus readability",
+        "Detailed records need sufficient context; the layout must preserve readable labels and values on the intended device."
+      ],
+      [
+        "Fast access versus safe action",
+        "Reducing navigation should not remove review, permissions, or clear feedback from consequential changes."
+      ]
+    ],
+    "validation": {
+      "paragraphs": [
+        "The prototype walkthrough confirmed that the captured destinations can be reached. This is interface verification, not a user study or proof of live commerce and inventory operations.",
+        "A proposed evaluation should observe how people interpret a summary, locate a relevant record, and explain its state. Record misunderstandings and wrong turns alongside completion, using realistic but non-sensitive test data."
+      ],
+      "tasks": [
+        [
+          "Orient",
+          "Explain the main overview and choose an area to investigate.",
+          "The participant distinguishes a summary from an individual record."
+        ],
+        [
+          "Locate a record",
+          "Find a relevant entry in Items.",
+          "The participant recognizes the intended record using its visible context."
+        ],
+        [
+          "Interpret status",
+          "Inspect an order and explain its current state.",
+          "The participant describes what the status means and where more information is needed."
+        ],
+        [
+          "Return",
+          "Navigate back to the overview after inspection.",
+          "The participant retains orientation without restarting the task."
+        ]
+      ]
+    },
+    "delivery": {
+      "paragraphs": [
+        "The supplied HTML package includes interface styles, components, icons, and a runtime for the mobile prototype. The case-study captures come from the hosted prototype.",
+        "The next iteration should specify consistent state definitions, accessible control labels, and loading, empty, and error behavior. Real integrations would additionally require data synchronization rules, permission checks, and reliable feedback for changes. Those operational capabilities are outside the evidence provided by the captured frontend."
+      ],
+      "checks": [
+        "Define metrics, reporting periods, and status terminology consistently.",
+        "Test navigation and record recognition with intended operators.",
+        "Verify keyboard access, readable values, and non-color status indicators.",
+        "Specify review, failure, and recovery behavior before live integration."
+      ]
+    }
+  },
+  "urbandrive": {
+    "executive": {
+      "mandate": "Connect rental discovery with the practical information needed to evaluate a booking.",
+      "decision": "Bring trip inputs forward, standardize vehicle cards, and keep booking context beside configuration.",
+      "value": "The frontend demonstrates a discovery-to-booking journey. Completed reservations and conversion improvements are not established."
+    },
+    "context": [
+      "UrbanDrive explores a car rental experience where a visitor moves from a travel intention to comparing vehicles and configuring a rental. The product challenge is to preserve the practical context—location, dates, suitability, and cost—through a visually rich browsing experience.",
+      "The supplied Next.js source and hosted frontend support this case study. Screenshots show the homepage, fleet listing, and initial rental-details step. No reservation or payment was submitted. Marketing ratings, availability claims, and sample offers within the prototype are not treated as verified business results."
+    ],
+    "discovery": {
+      "title": "Follow the decisions behind a rental choice.",
+      "paragraphs": [
+        "A rental decision combines several questions: where the trip starts, how long the vehicle is needed, whether the vehicle fits, and what the rental includes. The walkthrough followed the visible route from homepage search and fleet browsing to the rental-details screen.",
+        "The available evidence supports interface analysis and design hypotheses. It does not establish completed customer interviews. Future discovery should examine which cost or policy questions cause visitors to pause and how they compare vehicle suitability."
+      ],
+      "methods": [
+        [
+          "Journey walkthrough",
+          "Inspected homepage trip inputs, the fleet destination, and the first booking step."
+        ],
+        [
+          "Comparison review",
+          "Examined the information repeated across vehicle cards, including daily rate, seating, and transmission."
+        ],
+        [
+          "Content consistency",
+          "Reviewed the relationship between rental inputs, protection options, and the summary, identifying sample-date consistency as a next-iteration concern."
+        ]
+      ]
+    },
+    "problem": {
+      "statement": "A visually compelling rental site can still leave visitors uncertain about whether a vehicle fits their trip and what the booking will cost. Search context, comparison details, and rental configuration need to remain connected.",
+      "hmw": "How might we help visitors compare suitable vehicles and understand the rental before committing?",
+      "constraints": [
+        "The prototype does not establish live vehicle availability or payment processing.",
+        "Daily rates must be distinguished from the total rental cost.",
+        "Dates, locations, and protection selections need to remain consistent across steps."
+      ]
+    },
+    "insights": [
+      [
+        "Trip context should lead",
+        "Location and dates determine relevance. Keeping those inputs prominent helps connect browsing to a practical need."
+      ],
+      [
+        "Comparison needs repeated structure",
+        "Consistent vehicle attributes can reduce the effort of comparing alternatives. The selected attributes should reflect the visitor’s actual decision."
+      ],
+      [
+        "A summary must stay trustworthy",
+        "A visible summary helps only when it reflects current choices. Sample dates and prices must be reconciled before evaluating cost comprehension."
+      ]
+    ],
+    "audiences": [
+      [
+        "Trip planner",
+        "Needs to compare vehicles against location, timing, passenger capacity, and budget."
+      ],
+      [
+        "Considered renter",
+        "Needs to understand protection choices, rental duration, and the cost breakdown before continuing."
+      ]
+    ],
+    "journey": [
+      [
+        "Plan",
+        "Set the trip context.",
+        "Browsing can begin without clear dates or location.",
+        "Bring trip inputs into the entry experience."
+      ],
+      [
+        "Browse",
+        "Find a suitable vehicle.",
+        "A broad fleet can be difficult to scan.",
+        "Provide categories and repeated card attributes."
+      ],
+      [
+        "Compare",
+        "Evaluate suitability and price.",
+        "Daily rates do not explain the complete rental.",
+        "Carry vehicle context into booking."
+      ],
+      [
+        "Configure",
+        "Review dates and extras.",
+        "Choices can change the expected cost.",
+        "Keep a summary beside the configuration."
+      ],
+      [
+        "Continue",
+        "Understand the next commitment.",
+        "A multistep flow can obscure what remains.",
+        "Show rental, information, payment, and confirmation stages."
+      ]
+    ],
+    "strategy": {
+      "title": "Carry the trip context through the journey.",
+      "paragraphs": [
+        "The design combines an inspirational entry with practical search inputs, then separates fleet discovery from booking configuration. Each stage should resolve a different uncertainty without asking the visitor to reconstruct their choices.",
+        "The next priority is the continuity of data and meaning. Dates, rate units, duration, and extras should remain consistent from discovery to review. Clear labels and accurate summaries are central to the experience’s credibility."
+      ],
+      "priorities": [
+        [
+          "Plan",
+          "Establish location and timing early."
+        ],
+        [
+          "Compare",
+          "Make vehicle attributes easy to scan."
+        ],
+        [
+          "Review",
+          "Explain the selected rental and its cost before commitment."
+        ]
+      ]
+    },
+    "architecture": {
+      "title": "Move from collection to configuration.",
+      "paragraphs": [
+        "Home and Fleets support discovery, while a vehicle’s Rent Now link opens a staged booking experience. The initial step exposes rental inputs and extras; a progress indicator names the later information, payment, and confirmation stages.",
+        "The summary alongside the initial form keeps the vehicle and pricing context visible. Wireframe evaluation should examine whether visitors can distinguish editable choices from the calculated summary and predict the next step."
+      ],
+      "wireframes": [
+        [
+          "Search hierarchy",
+          "Check whether location, pickup, and return controls are recognized as the primary starting point."
+        ],
+        [
+          "Comparison cards",
+          "Evaluate which attributes support vehicle selection without overwhelming the card."
+        ],
+        [
+          "Review context",
+          "Test the relationship between rental inputs, extras, and the booking summary."
+        ]
+      ]
+    },
+    "tradeoffs": [
+      [
+        "Inspiration versus focus",
+        "Promotional imagery can establish a tone but competes with practical search inputs."
+      ],
+      [
+        "Simple rates versus complete cost",
+        "A daily rate supports comparison; duration and extras need equal clarity before commitment."
+      ],
+      [
+        "Progressive steps versus continuity",
+        "Separating stages reduces form density, but the rental context must remain visible and accurate."
+      ]
+    ],
+    "validation": {
+      "paragraphs": [
+        "The walkthrough reached the rental-details screen without submitting a booking or payment. It verifies the visible navigation path, not reservation processing or availability.",
+        "A proposed evaluation would ask visitors to choose a vehicle for a scenario and explain the configured rental. Attention should focus on date consistency, rate interpretation, protection choices, and the predicted next step."
+      ],
+      "tasks": [
+        [
+          "Plan a trip",
+          "Locate pickup and return inputs.",
+          "Recognize the information needed to begin."
+        ],
+        [
+          "Compare vehicles",
+          "Choose an option for a passenger and transmission requirement.",
+          "Use the repeated attributes to justify the choice."
+        ],
+        [
+          "Read the rental",
+          "Explain the rate, duration, and extras shown in the summary.",
+          "Distinguish a daily rate from a total and identify unclear values."
+        ],
+        [
+          "Predict the next step",
+          "Describe what follows Rental Details.",
+          "Recognize the remaining stages before commitment."
+        ]
+      ]
+    },
+    "delivery": {
+      "paragraphs": [
+        "The supplied implementation uses Next.js and React, with dedicated search, fleet, and booking routes. The case-study images were captured from the hosted frontend and preserve its actual interface.",
+        "The next iteration should reconcile date and price state, review sample marketing content, and define unavailable-vehicle and booking-error behavior. Accessible date entry, clear form errors, and keyboard navigation should be evaluated before connecting live inventory or payment services."
+      ],
+      "checks": [
+        "Keep dates, duration, rates, and extras consistent across steps.",
+        "Distinguish sample availability and offers from live inventory.",
+        "Test accessible form labels, date controls, and error recovery.",
+        "Validate cost comprehension before measuring conversion."
       ]
     }
   }
