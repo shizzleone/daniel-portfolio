@@ -1,5 +1,132 @@
 [
   {
+    "id": "meridian",
+    "name": "Meridian",
+    "category": "Developer platform · Payments API",
+    "summary": "A payments and ledger workspace that helps engineers move from API evaluation to a confident first integration.",
+    "role": "Lead product designer",
+    "scope": "Developer journey · Information architecture · API explorer · Documentation",
+    "platform": "Responsive web application",
+    "image": "meridian/overview.svg",
+    "alt": "Meridian payments API workspace with a guided quickstart and runnable request panel.",
+    "intro": "Turn a complex payments API into a sequence developers can understand, test, and take to production.",
+    "overview": "Meridian is a payments and ledger developer workspace I designed around the moments that determine adoption: evaluating a capability, configuring safe access, making the first call, recovering from errors, tracing events, and preparing for production.",
+    "decisions": [
+      [
+        "Keep guidance beside execution",
+        "The API reference and runnable request share one working context so developers can learn a field, change a value, and inspect the response without rebuilding context across tools."
+      ],
+      [
+        "Make recovery part of the flow",
+        "Authentication, permission, and validation failures each explain the cause and the next corrective action, so a developer can retry without starting over."
+      ],
+      [
+        "Separate request and delivery state",
+        "A successful payment or ledger write is distinct from webhook delivery. Stable IDs and attempt history make the operational relationship visible."
+      ],
+      [
+        "Make production readiness explicit",
+        "A launch checklist carries the journey beyond a green sandbox response into credentials, idempotency, observability, versioning, and data controls."
+      ]
+    ],
+    "gallery": [
+      [
+        "meridian/setup.png",
+        "Sandbox application setup with task-specific access and a visible environment boundary.",
+        "discovery"
+      ],
+      [
+        "meridian/docs.png",
+        "API reference and implementation guidance organized around the developer’s next decision.",
+        "architecture"
+      ],
+      [
+        "meridian/explorer.png",
+        "Runnable request playground with code, inputs, and a response contract in one view.",
+        "decision-0"
+      ],
+      [
+        "meridian/error-recovery.png",
+        "Actionable error recovery that names the cause, corrective change, and retry path.",
+        "decision-1"
+      ],
+      [
+        "meridian/webhooks.png",
+        "Webhook attempts remain traceable to the originating request without collapsing delivery state.",
+        "decision-2"
+      ],
+      [
+        "meridian/readiness.png",
+        "Production-readiness review turns operational responsibilities into explicit decisions.",
+        "decision-3"
+      ]
+    ]
+  },
+  {
+    "id": "dev-mode",
+    "name": "API Launchpad",
+    "category": "Developer platform · API integration",
+    "summary": "An API developer workspace that connects discovery, first call, debugging, and operational readiness.",
+    "role": "Principal product designer",
+    "scope": "Journey strategy · Information architecture · Interaction design · Prototype",
+    "platform": "Responsive web application",
+    "image": "dev-mode/overview.png",
+    "alt": "API Launchpad developer workspace showing a guided three-step API integration path.",
+    "intro": "Help developers move from API evaluation to a confident first integration.",
+    "overview": "API Launchpad is a developer platform experience I designed to keep documentation, execution, error recovery, event delivery, and readiness in one coherent workspace.",
+    "prototypeUrl": "./dev-mode-prototype.html",
+    "decisions": [
+      [
+        "Keep guidance beside execution",
+        "The API reference and runnable request share a workspace so developers can understand a field, change a value, and inspect the response without rebuilding context across separate tools."
+      ],
+      [
+        "Turn errors into recovery paths",
+        "Authentication, permission, and validation failures each identify a distinct cause and the next corrective action. The prototype lets an interviewer trigger a failure, apply the suggested fix, and retry in place."
+      ],
+      [
+        "Separate business state from delivery state",
+        "A successful reconciliation and an acknowledged webhook are treated as different milestones. Stable event IDs and an attempt history make retry behavior visible without implying that a successful API response guarantees downstream delivery."
+      ],
+      [
+        "Make production readiness explicit",
+        "The final checklist carries the journey beyond a green sandbox response into credential lifecycle, idempotency, observability, versioning, and financial-data controls."
+      ]
+    ],
+    "gallery": [
+      [
+        "dev-mode/setup.png",
+        "Sandbox application setup with a task-specific permission.",
+        "discovery"
+      ],
+      [
+        "dev-mode/docs.png",
+        "In-product documentation connects the quickstart, authentication, endpoint contract, errors, webhooks, and production guidance.",
+        "architecture"
+      ],
+      [
+        "dev-mode/explorer.png",
+        "The request playground after a successful simulated reconciliation.",
+        "decision-0"
+      ],
+      [
+        "dev-mode/error-recovery.png",
+        "A 403 response explains the missing permission and offers a direct recovery step.",
+        "decision-1"
+      ],
+      [
+        "dev-mode/webhooks.png",
+        "Webhook history distinguishes delivery attempts from the reconciliation result.",
+        "decision-2"
+      ],
+      [
+        "dev-mode/readiness.png",
+        "Production-readiness checklist and operational contract considerations.",
+        "decision-3"
+      ]
+    ]
+  },
+  {
     "id": "forma",
     "name": "FORMA",
     "category": "Casting studio / Design system",

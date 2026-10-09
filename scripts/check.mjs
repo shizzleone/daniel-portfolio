@@ -1,8 +1,8 @@
 import {readFileSync, existsSync} from 'node:fs';
 import assert from 'node:assert/strict';
 const projects=JSON.parse(readFileSync('src/projects.json'));
-assert.equal(projects.length,15);
-assert.equal(new Set(projects.map(p=>p.id)).size,15);
+assert.equal(projects.length,17);
+assert.equal(new Set(projects.map(p=>p.id)).size,17);
 for(const p of projects){
  assert(existsSync(`${p.id}.html`),`Missing route: ${p.id}`);
  assert(existsSync(`dist/${p.id}.html`),`Missing built route: ${p.id}`);
@@ -19,7 +19,7 @@ for(const page of ['index','about',...projects.map(p=>p.id)]){
  assert(html.includes('name="description"'));
  for(const match of html.matchAll(/(?:src|href)="\.\/([^"#]+)"/g))assert(existsSync(`dist/${match[1]}`),`Broken built reference ${match[1]}`);
 }
-console.log('Passed: 17 production entrypoints, 15 case studies, all project assets, metadata and résumé.');
+console.log('Passed: 19 production entrypoints, 17 case studies, all project assets, metadata and résumé.');
 const cases=JSON.parse(readFileSync('src/case-studies.json'));
 for(const p of projects){
  if(p.showcase){const showcase=JSON.parse(readFileSync('src/forma-showcase.json'));assert(showcase.sections.length>=8);assert(showcase.sections.flatMap(s=>s.images).length>=25);continue;}
@@ -27,7 +27,7 @@ for(const p of projects){
  for(const key of ['executive','context','discovery','problem','insights','audiences','journey','strategy','architecture','tradeoffs','validation','delivery'])assert(c[key],`Missing ${key}: ${p.id}`);
  assert.equal(c.journey.length,5);assert(c.validation.tasks.length>=3);
 }
-console.log('Passed: 14 process narratives and the FORMA foundations, components, and screen showcase.');
+console.log('Passed: 16 process narratives and the FORMA foundations, components, and screen showcase.');
 assert(projects.some(p=>p.id==='iretv'));
 assert(!projects.some(p=>p.id==='pattern-library'));
 assert(!cases['pattern-library']);

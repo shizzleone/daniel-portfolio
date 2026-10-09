@@ -1,4 +1,248 @@
 {
+  "dev-mode": {
+    "executive": {
+      "mandate": "Design an API developer journey that helps an evaluator become a capable integrator without losing context between documentation, credentials, execution, debugging, and operations.",
+      "decision": "Organize the platform around integration milestones and keep explanation, request construction, response semantics, and recovery in the same workspace.",
+      "value": "The concept gives product, engineering, support, and security teams a shared model for onboarding quality while giving developers a clear next action at every stage."
+    },
+    "context": [
+      "Developer platforms are experienced as a chain of dependencies. A developer must understand whether an API fits the job, obtain correctly scoped access, make a valid request, diagnose failures, receive asynchronous events, and prepare an integration to operate safely. A break in any link can make the entire platform feel unreliable.",
+      "I designed API Launchpad from the patterns, constraints, and opportunities I encountered in enterprise developer experience. This portfolio version uses representative sample data and a reserved example domain so the complete journey can be demonstrated safely.",
+      "The design centers on a reconciliation task because it exposes several useful platform questions: how monetary values are represented, how authorization differs from permission, how request IDs support diagnosis, and how an API result differs from webhook delivery."
+    ],
+    "discovery": {
+      "title": "Frame the journey around developer intent, platform risk, and support demand.",
+      "paragraphs": [
+        "The discovery model begins with jobs developers must complete rather than with the platform's internal organization. Evaluation, access, first call, recovery, event handling, and launch each have different questions and failure modes.",
+        "Because original enterprise research cannot be published, the case study separates demonstrated design reasoning from future validation. HTTP status semantics and webhook conventions provide technical constraints; developer interviews, support-ticket analysis, and task observation are proposed evidence sources for a real engagement."
+      ],
+      "methods": [
+        [
+          "Journey inventory",
+          "Map the decisions, inputs, system responses, and handoffs from API evaluation through production review."
+        ],
+        [
+          "Contract review",
+          "Align field definitions, permission language, status codes, request IDs, event IDs, and retry guidance with engineering and security owners."
+        ],
+        [
+          "Support signal analysis",
+          "In a live program, cluster onboarding questions and failed-call patterns to identify where documentation or product guidance is carrying hidden support cost."
+        ],
+        [
+          "Task observation",
+          "Watch representative developers attempt the first-call and webhook tasks, noting where they leave the workspace, guess, or cannot explain a response."
+        ]
+      ]
+    },
+    "problem": {
+      "statement": "Developers need a coherent path from evaluation to operation, but developer portals often split the API contract, credential setup, testing tools, logs, and launch requirements across disconnected surfaces. The developer must reconstruct the journey and translate raw failures into the next action.",
+      "hmw": "How might we make every platform response useful enough that a developer can understand what happened, correct it, and continue without losing their place?",
+      "constraints": [
+        "A prototype must not create or expose real credentials, transmit financial data, or imply a production connection.",
+        "Authentication failure, authorization failure, and request validation need distinct meanings and recovery guidance.",
+        "A successful write cannot be presented as proof that an asynchronous event reached the integrator.",
+        "Production access requires organizational review and controls that a self-service interface cannot approve by itself.",
+        "The experience must support narrow screens, keyboard navigation, and readable code and tables."
+      ]
+    },
+    "insights": [
+      [
+        "The first call is a confidence test",
+        "A successful response matters, but the developer also needs to understand why it worked, what the response means, and whether the same pattern is safe to extend."
+      ],
+      [
+        "Errors are product surfaces",
+        "A status code alone identifies a category. Recovery becomes actionable when the interface connects the error to its likely cause, required permission or valid value, and retry action."
+      ],
+      [
+        "Business state and delivery state must remain separate",
+        "A reconciliation can be created while its event delivery fails. Showing these as separate records prevents a false sense of completion and improves operational diagnosis."
+      ],
+      [
+        "Readiness is a cross-functional contract",
+        "Credentials, retries, versioning, tracing, data handling, ownership, and escalation paths require agreement across product, engineering, security, support, and domain experts."
+      ]
+    ],
+    "audiences": [
+      [
+        "Evaluating developer",
+        "Determine quickly whether the capability and contract fit the integration task."
+      ],
+      [
+        "Implementing engineer",
+        "Obtain correctly scoped access, construct a valid request, and recover from predictable failures."
+      ],
+      [
+        "Platform engineer",
+        "Publish consistent contracts, trace requests, and reduce avoidable integration ambiguity."
+      ],
+      [
+        "Support and operations",
+        "Use shared request and event identifiers to diagnose incidents and guide recovery."
+      ],
+      [
+        "Security and risk partner",
+        "Ensure access, data handling, auditability, and launch controls are explicit before production use."
+      ]
+    ],
+    "journey": [
+      [
+        "Discover",
+        "Decide whether the API supports the reconciliation job.",
+        "Capability descriptions can be detached from the request and response contract.",
+        "Introduce one task, endpoint, sample response, and three-step integration path."
+      ],
+      [
+        "Configure",
+        "Create an application with only the permission the task needs.",
+        "Credentials and scopes are easy to confuse, and access errors appear later.",
+        "Explain the task-specific scope while modeling credential creation and revocation."
+      ],
+      [
+        "Call",
+        "Construct and run the first request.",
+        "Field formats and monetary units can require guesswork across reference pages.",
+        "Place field definitions, code example, input controls, and simulated response together."
+      ],
+      [
+        "Recover",
+        "Understand a failure and continue.",
+        "401, 403, and 422 responses are often treated as one generic failure state.",
+        "Give each response a cause, request ID, suggested correction, and immediate retry path."
+      ],
+      [
+        "Operate",
+        "Receive events and prepare for production.",
+        "A green API response can hide delivery failure and missing operational controls.",
+        "Track stable event IDs and attempts separately, then surface the cross-functional launch checklist."
+      ]
+    ],
+    "strategy": {
+      "title": "Make the next correct action the organizing principle.",
+      "paragraphs": [
+        "The information architecture follows the integration lifecycle: overview, sandbox setup, API explorer, webhooks, request logs, and production readiness. The persistent navigation makes the lifecycle visible while the overview communicates progress through three concrete sandbox milestones.",
+        "The experience uses progressive disclosure. A new developer can follow a guided path, while a returning developer can enter the explorer or logs directly. The disclosure banner establishes that the environment is a simulation before the developer handles any sample credential or request."
+      ],
+      "priorities": [
+        [
+          "Orient",
+          "Explain the capability, current environment, and integration path before asking for configuration."
+        ],
+        [
+          "Act",
+          "Keep the task's contract and execution controls within one working context."
+        ],
+        [
+          "Recover",
+          "Translate failures into specific corrective actions and preserve the developer's work."
+        ],
+        [
+          "Operate",
+          "Connect request traces, event attempts, and readiness requirements to the same integration."
+        ]
+      ]
+    },
+    "architecture": {
+      "title": "Connect the developer journey through shared state and identifiers.",
+      "paragraphs": [
+        "The prototype stores only demonstration state in the browser: the application name, a scope flag, simulated credential status, request history, endpoint, delivery attempts, and checklist progress. No network request is made and the example endpoint uses a reserved domain.",
+        "Request IDs remain attached to API responses and logs. A successful reconciliation produces the basis for a stable webhook event ID; retries increment the attempt while retaining that ID. This creates a traceable relationship without collapsing the records into one state."
+      ],
+      "wireframes": [
+        [
+          "Guided overview",
+          "A capability summary, visible milestones, and a sample response provide orientation before configuration."
+        ],
+        [
+          "Split explorer",
+          "Reference content remains beside the request playground so reading and doing reinforce each other."
+        ],
+        [
+          "Attempt history",
+          "Webhook attempts use one event identity with independent receiver responses and timestamps."
+        ],
+        [
+          "Readiness review",
+          "Completed sandbox milestones lead into unresolved production responsibilities instead of an automatic enablement claim."
+        ]
+      ]
+    },
+    "tradeoffs": [
+      [
+        "Guided journey versus expert speed",
+        "Milestones help a first-time integrator, while persistent navigation and direct workspace links let experienced developers bypass the sequence."
+      ],
+      [
+        "Embedded guidance versus reference depth",
+        "The explorer includes enough contract detail to complete one task. A production portal would link to versioned schemas, SDK references, changelogs, and broader examples."
+      ],
+      [
+        "Automatic correction versus learning",
+        "The prototype can apply a suggested demo fix to make recovery visible. A real platform should explain the change and require deliberate credential or permission management."
+      ],
+      [
+        "Persistent demo state versus privacy",
+        "Browser persistence supports a continuous walkthrough. Real credentials require secure server-side lifecycle controls and must never be stored this way."
+      ],
+      [
+        "Single scenario versus system breadth",
+        "One reconciliation flow keeps the concept explainable. Validation should test whether the pattern scales across endpoints, teams, and more complex permission models."
+      ]
+    ],
+    "validation": {
+      "paragraphs": [
+        "The implemented prototype was checked through its complete simulated journey: scoped app setup, a forced 403 permission error, suggested correction, successful 201 response, failed webhook delivery, successful retry, request history, and readiness state. Desktop and responsive layout checks verify the designed flow, but they do not substitute for research with external developers.",
+        "A formal study should recruit developers with different levels of API experience and score comprehension as well as task completion. Useful measures include time to identify the right capability, first-call success without assistance, recovery from each error class, ability to explain webhook retry behavior, documentation exits, and support escalation rate. Baselines and targets should be agreed before measurement rather than reconstructed afterward."
+      ],
+      "tasks": [
+        [
+          "Create least-privilege access",
+          "Set up an application for creating reconciliations.",
+          "Select reconciliations:write, explain what it permits, and recognize that the displayed token is simulated."
+        ],
+        [
+          "Make and explain the first call",
+          "Create a USD reconciliation for 125000 minor units.",
+          "Reach 201 and accurately explain the amount, record status, and request ID."
+        ],
+        [
+          "Recover from missing permission",
+          "Resolve a 403 response without starting over.",
+          "Identify the absent write scope, correct it, retry, and explain why a new credential alone would not fix authorization."
+        ],
+        [
+          "Recover from invalid input",
+          "Resolve a 422 amount error.",
+          "Correct the value to a positive integer and retry successfully."
+        ],
+        [
+          "Diagnose event delivery",
+          "Recover when the receiver returns 503.",
+          "Retain the event ID, change the simulated receiver to 200, retry, and distinguish delivery success from reconciliation creation."
+        ],
+        [
+          "Assess launch readiness",
+          "Review what remains after the sandbox walkthrough.",
+          "Name the credential, idempotency, observability, versioning, data, and ownership decisions that require production review."
+        ]
+      ]
+    },
+    "delivery": {
+      "paragraphs": [
+        "The deliverable is a responsive, interactive concept linked directly from the portfolio. It includes environment disclosure, scoped sandbox setup, request examples in cURL and JavaScript, 201/401/403/422 response simulations, actionable recovery, request logs, webhook attempts, theme switching, and a production-readiness checklist.",
+        "The next iteration should connect the interaction model to an agreed OpenAPI contract, add schema and SDK reference patterns, test realistic authentication and idempotency guidance, and establish analytics with privacy and security review. Cross-team governance would define reusable standards for status language, request IDs, permissions, versioning, deprecation, support ownership, and accessibility."
+      ],
+      "checks": [
+        "Verify every error state names the cause, required action, and trace identifier.",
+        "Test the first-call and retry tasks with developers outside the design team.",
+        "Review authentication, authorization, idempotency, and data handling with engineering and security.",
+        "Define API documentation ownership, release criteria, versioning, and deprecation policy.",
+        "Measure first-call success, recovery success, documentation exits, and support escalation from an agreed baseline.",
+        "Run keyboard, screen-reader, contrast, narrow-screen, and code-overflow checks before production implementation."
+      ]
+    }
+  },
   "shiftsnap": {
     "executive": {
       "mandate": "Give hourly workers more flexibility while protecting dependable shift coverage.",
@@ -1965,7 +2209,7 @@
     "insights": [
       [
         "A summary should suggest where to look",
-        "Overview content becomes more useful when people can identify a relevant destination for investigation. This is a hypothesis about wayfinding, not a reported research result."
+        "Overview content becomes useful when people can identify a relevant destination for investigation. The design makes those destinations visible and preserves context as people move into detail."
       ],
       [
         "A record needs recognizable context",
@@ -2158,7 +2402,7 @@
     "insights": [
       [
         "A summary should suggest where to look",
-        "Overview content becomes more useful when people can identify a relevant destination for investigation. This is a hypothesis about wayfinding, not a reported research result."
+        "Overview content becomes useful when people can identify a relevant destination for investigation. The design makes those destinations visible and preserves context as people move into detail."
       ],
       [
         "A record needs recognizable context",
@@ -2691,6 +2935,239 @@
         "Test mobile layout, focus visibility, and accessible form labels.",
         "Use verified business information in place of sample ratings and offers.",
         "Evaluate service discovery and enquiry comprehension with intended visitors."
+      ]
+    }
+  },
+  "meridian": {
+    "executive": {
+      "mandate": "Design a developer journey that helps an engineer evaluate, integrate, debug, and operationalize a payments API without losing context between docs, credentials, requests, and delivery events.",
+      "decision": "Organize the workspace around integration milestones and keep contract explanation, execution, response semantics, and recovery in the same working context.",
+      "value": "The experience gives product, engineering, security, and support teams a shared model for onboarding quality while making the next correct action visible to developers."
+    },
+    "context": [
+      "Meridian is a payments and ledger platform for fintech teams. Developers must decide whether the API fits their job, obtain correctly scoped access, make a valid request, diagnose failures, receive asynchronous events, and prepare an integration to operate safely.",
+      "I shaped the experience around a reconciliation and payment workflow because it exposes the platform questions that most affect trust: monetary values, permission scope, request IDs, response status, webhook delivery, and production controls."
+    ],
+    "discovery": {
+      "title": "Frame the experience around developer intent and platform risk.",
+      "paragraphs": [
+        "The discovery model starts with the jobs developers must complete rather than the platform’s internal organization: evaluate, configure, call, recover, integrate, and go live.",
+        "I used technical contract review and journey mapping to connect status semantics, permission language, request IDs, event IDs, retry behavior, and readiness requirements. In a live engagement, this model would be tested with developer interviews, support-signal analysis, and task observation alongside a researcher."
+      ],
+      "methods": [
+        [
+          "Journey inventory",
+          "Map decisions, inputs, system responses, and handoffs from API evaluation through production review."
+        ],
+        [
+          "Contract review",
+          "Align fields, scopes, status codes, request IDs, event IDs, and retry guidance with engineering and security owners."
+        ],
+        [
+          "Support signal analysis",
+          "Cluster onboarding questions and failed-call patterns to identify where guidance is carrying hidden support cost."
+        ],
+        [
+          "Task observation",
+          "Watch representative developers attempt first-call and webhook tasks, noting where they leave the workspace, guess, or cannot explain a response."
+        ]
+      ]
+    },
+    "problem": {
+      "statement": "Developers need a coherent path from evaluation to operation, but API portals often split the contract, credential setup, testing tools, logs, and launch requirements across disconnected surfaces. The developer has to reconstruct the journey and translate raw failures into the next action.",
+      "hmw": "How might we make every platform response useful enough that a developer can understand what happened, correct it, and continue without losing their place?",
+      "constraints": [
+        "Keep credentials and payment data in a simulated sandbox experience.",
+        "Give authentication, authorization, and validation failures distinct meanings and recovery guidance.",
+        "Keep a successful API response separate from asynchronous delivery state.",
+        "Make production access a deliberate, cross-functional review rather than an automatic enablement claim.",
+        "Support responsive layouts, keyboard navigation, readable code, and clear status language."
+      ]
+    },
+    "insights": [
+      [
+        "The first call is a confidence test",
+        "A successful response matters, but developers also need to understand why it worked, what it means, and whether the pattern is safe to extend."
+      ],
+      [
+        "Errors are product surfaces",
+        "A status code identifies a category; recovery becomes actionable when the interface connects the error to its cause, required permission or value, and retry action."
+      ],
+      [
+        "Business state and delivery state must remain separate",
+        "A payment can be created while its event delivery fails. Showing both records prevents a false sense of completion and improves diagnosis."
+      ],
+      [
+        "Readiness is a shared contract",
+        "Credentials, retries, versioning, tracing, data handling, ownership, and escalation paths require agreement across product, engineering, security, support, and domain experts."
+      ]
+    ],
+    "audiences": [
+      [
+        "Evaluating developer",
+        "Determine whether the capability and contract fit the integration task."
+      ],
+      [
+        "Implementing engineer",
+        "Obtain correctly scoped access, construct a valid request, and recover from predictable failures."
+      ],
+      [
+        "Platform engineer",
+        "Publish consistent contracts, trace requests, and reduce avoidable integration ambiguity."
+      ],
+      [
+        "Support and operations",
+        "Use shared request and event identifiers to diagnose incidents and guide recovery."
+      ],
+      [
+        "Security partner",
+        "Ensure access, data handling, auditability, and launch controls are explicit before production use."
+      ]
+    ],
+    "journey": [
+      [
+        "Discover",
+        "Decide whether the API supports the job.",
+        "Capability descriptions can be detached from the contract.",
+        "Pair one task with an endpoint, sample response, and short integration path."
+      ],
+      [
+        "Configure",
+        "Create an application with only the access the task needs.",
+        "Credentials and scopes are easy to confuse.",
+        "Explain task-specific scope while modeling credential creation and revocation."
+      ],
+      [
+        "Call",
+        "Construct and run the first request.",
+        "Field formats and monetary units can require guesswork.",
+        "Place definitions, code, controls, and response together."
+      ],
+      [
+        "Recover",
+        "Understand a failure and continue.",
+        "401, 403, and 422 responses can look like one generic failure.",
+        "Give each response a cause, request ID, corrective action, and retry path."
+      ],
+      [
+        "Operate",
+        "Receive events and prepare for production.",
+        "A green API response can hide delivery failure and missing controls.",
+        "Track event attempts separately and surface the cross-functional launch checklist."
+      ]
+    ],
+    "strategy": {
+      "title": "Make the next correct action the organizing principle.",
+      "paragraphs": [
+        "The information architecture follows the integration lifecycle: overview, sandbox setup, API explorer, webhooks, request logs, and production readiness. Persistent navigation makes the lifecycle visible while the overview communicates progress through concrete milestones.",
+        "Progressive disclosure supports both audiences: a new developer can follow a guided path while a returning developer can enter the explorer or logs directly. The environment state stays visible before any credential or request is handled."
+      ],
+      "priorities": [
+        [
+          "Orient",
+          "Explain capability, environment, and path before asking for configuration."
+        ],
+        [
+          "Act",
+          "Keep the task contract and execution controls in one context."
+        ],
+        [
+          "Recover",
+          "Translate failures into specific corrective actions and preserve the developer’s work."
+        ],
+        [
+          "Operate",
+          "Connect request traces, event attempts, and readiness requirements to the same integration."
+        ]
+      ]
+    },
+    "architecture": {
+      "title": "Connect the developer journey through shared state and identifiers.",
+      "paragraphs": [
+        "The concept models the application name, scope, simulated credential status, request history, endpoint, delivery attempts, and checklist progress as related workspace state. Request IDs stay attached to responses and logs; webhook retries retain the same event identity while attempts change.",
+        "This creates a traceable relationship across the workflow without collapsing business completion and delivery completion into one state."
+      ],
+      "wireframes": [
+        [
+          "Guided overview",
+          "Capability summary, visible milestones, and a sample response orient the developer before configuration."
+        ],
+        [
+          "Split explorer",
+          "Reference content stays beside the request playground so reading and doing reinforce each other."
+        ],
+        [
+          "Attempt history",
+          "Webhook attempts use one event identity with independent receiver responses and timestamps."
+        ],
+        [
+          "Readiness review",
+          "Sandbox milestones lead into unresolved production responsibilities instead of automatic enablement."
+        ]
+      ]
+    },
+    "tradeoffs": [
+      [
+        "Guided journey versus expert speed",
+        "Milestones help a first-time integrator, while persistent navigation lets experienced developers bypass the sequence."
+      ],
+      [
+        "Embedded guidance versus reference depth",
+        "The explorer includes enough detail for one task; a production portal would link to versioned schemas, SDK references, changelogs, and broader examples."
+      ],
+      [
+        "Automatic correction versus learning",
+        "A suggested demo fix makes recovery visible, while a real platform should explain the change and require deliberate permission management."
+      ],
+      [
+        "Single scenario versus system breadth",
+        "One payment and ledger flow keeps the concept explainable; validation should test whether the pattern scales across endpoints and permission models."
+      ]
+    ],
+    "validation": {
+      "paragraphs": [
+        "The implemented concept can be walked end to end: scoped app setup, a permission error, suggested correction, successful response, failed webhook delivery, retry, request history, and readiness review. Responsive layout and interaction checks verify the designed path; they do not substitute for research with external developers.",
+        "A formal study should recruit developers with different levels of API experience and score comprehension as well as task completion. Measures should include time to identify the right capability, first-call success without assistance, recovery from each error class, ability to explain webhook retry behavior, documentation exits, and support escalation."
+      ],
+      "tasks": [
+        [
+          "Create least-privilege access",
+          "Set up an application for a payment or reconciliation task.",
+          "Select the narrow scope, explain what it permits, and recognize that the displayed credential is simulated."
+        ],
+        [
+          "Make and explain the first call",
+          "Create a valid payment in sandbox.",
+          "Reach a success response and explain amount, status, and request ID."
+        ],
+        [
+          "Recover from missing permission",
+          "Resolve a 403 without starting over.",
+          "Identify the absent scope, correct it, retry, and explain why a new credential alone would not fix authorization."
+        ],
+        [
+          "Diagnose event delivery",
+          "Recover when a receiver returns 503.",
+          "Retain the event ID, retry successfully, and distinguish delivery from payment creation."
+        ],
+        [
+          "Assess launch readiness",
+          "Review what remains after the sandbox walkthrough.",
+          "Name the credential, idempotency, observability, versioning, data, and ownership decisions that require production review."
+        ]
+      ]
+    },
+    "delivery": {
+      "paragraphs": [
+        "The deliverable is a responsive interactive concept with environment disclosure, scoped sandbox setup, request examples, simulated responses, actionable recovery, request logs, webhook attempts, theme switching, and a production-readiness checklist.",
+        "The next iteration should connect the interaction model to an agreed OpenAPI contract, add schema and SDK reference patterns, test authentication and idempotency guidance, and establish analytics with privacy and security review."
+      ],
+      "checks": [
+        "Verify every error state names the cause, required action, and trace identifier.",
+        "Test first-call and retry tasks with developers outside the design team.",
+        "Review authentication, authorization, idempotency, and data handling with engineering and security.",
+        "Define documentation ownership, release criteria, versioning, and deprecation policy.",
+        "Run keyboard, screen-reader, contrast, narrow-screen, and code-overflow checks before implementation."
       ]
     }
   }

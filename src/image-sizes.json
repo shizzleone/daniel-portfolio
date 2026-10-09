@@ -1,4 +1,33 @@
 {
+  "meridian/overview.svg": [1723, 1240],
+  "dev-mode/overview.png": [
+    1723,
+    1240
+  ],
+  "dev-mode/setup.png": [
+    1723,
+    1240
+  ],
+  "dev-mode/docs.png": [
+    1723,
+    1240
+  ],
+  "dev-mode/explorer.png": [
+    1723,
+    1240
+  ],
+  "dev-mode/error-recovery.png": [
+    1723,
+    1240
+  ],
+  "dev-mode/webhooks.png": [
+    1723,
+    1240
+  ],
+  "dev-mode/readiness.png": [
+    1723,
+    1240
+  ],
   "uba-product.png": [
     773,
     650
@@ -510,5 +539,33 @@
   "forma/icons.png": [
     1440,
     900
+  ],
+  "meridian/overview.png": [
+    1723,
+    1240
+  ],
+  "meridian/setup.png": [
+    1723,
+    1240
+  ],
+  "meridian/docs.png": [
+    1723,
+    1240
+  ],
+  "meridian/explorer.png": [
+    1723,
+    1240
+  ],
+  "meridian/error-recovery.png": [
+    1723,
+    1240
+  ],
+  "meridian/webhooks.png": [
+    1723,
+    1240
+  ],
+  "meridian/readiness.png": [
+    1723,
+    1240
   ]
 }

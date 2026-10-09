@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1723" height="1240" viewBox="0 0 1723 1240">
+  <rect width="1723" height="1240" fill="#111218"/>
+  <rect x="36" y="36" width="1651" height="1168" rx="20" fill="#181920" stroke="#2b2d37"/>
+  <rect x="36" y="36" width="286" height="1168" rx="20" fill="#15161d"/>
+  <text x="78" y="108" fill="#f2f2f6" font-family="Arial, sans-serif" font-size="28" font-weight="700">◆ meridian</text>
+  <text x="78" y="170" fill="#7d8290" font-family="Arial, sans-serif" font-size="14">PAYMENTS WORKSPACE</text>
+  <text x="78" y="222" fill="#55c99c" font-family="Arial, sans-serif" font-size="17">Overview</text>
+  <text x="78" y="270" fill="#aaaeba" font-family="Arial, sans-serif" font-size="17">API reference</text>
+  <text x="78" y="318" fill="#aaaeba" font-family="Arial, sans-serif" font-size="17">API keys</text>
+  <text x="78" y="366" fill="#aaaeba" font-family="Arial, sans-serif" font-size="17">Webhooks</text>
+  <text x="78" y="414" fill="#aaaeba" font-family="Arial, sans-serif" font-size="17">Request logs</text>
+  <text x="78" y="462" fill="#aaaeba" font-family="Arial, sans-serif" font-size="17">Go live</text>
+  <text x="376" y="126" fill="#7d8290" font-family="Arial, sans-serif" font-size="15">SANDBOX WORKSPACE</text>
+  <text x="376" y="188" fill="#f2f2f6" font-family="Arial, sans-serif" font-size="42" font-weight="700">Build financial products, faster.</text>
+  <text x="376" y="232" fill="#aaaeba" font-family="Arial, sans-serif" font-size="20">One API for payments and ledgers—designed to get you from first request to production.</text>
+  <rect x="376" y="286" width="780" height="304" rx="18" fill="#202129" stroke="#393b48"/>
+  <text x="410" y="330" fill="#8580ff" font-family="Arial, sans-serif" font-size="14">QUICKSTART</text>
+  <text x="410" y="380" fill="#f2f2f6" font-family="Arial, sans-serif" font-size="30" font-weight="700">Make your first API call in 5 minutes.</text>
+  <text x="410" y="423" fill="#aaaeba" font-family="Arial, sans-serif" font-size="18">Create a sandbox payment with a guided request.</text>
+  <rect x="410" y="470" width="174" height="44" rx="8" fill="#8580ff"/><text x="437" y="498" fill="#111218" font-family="Arial, sans-serif" font-size="16" font-weight="700">Start quickstart</text>
+  <rect x="1194" y="286" width="446" height="304" rx="18" fill="#0c0d12" stroke="#393b48"/>
+  <text x="1230" y="328" fill="#7d8290" font-family="monospace" font-size="14">POST /v1/payments</text>
+  <text x="1230" y="378" fill="#aaaeba" font-family="monospace" font-size="16">{</text><text x="1250" y="408" fill="#55c99c" font-family="monospace" font-size="16">"amount": 2500,</text><text x="1250" y="438" fill="#55c99c" font-family="monospace" font-size="16">"currency": "usd",</text><text x="1250" y="468" fill="#55c99c" font-family="monospace" font-size="16">"status": "succeeded"</text><text x="1230" y="498" fill="#aaaeba" font-family="monospace" font-size="16">}</text>
+  <text x="376" y="680" fill="#7d8290" font-family="Arial, sans-serif" font-size="15">YOUR INTEGRATION PATH</text>
+  <text x="376" y="730" fill="#f2f2f6" font-family="Arial, sans-serif" font-size="28" font-weight="700">From first request to production confidence.</text>
+  <g fill="#202129" stroke="#393b48"><rect x="376" y="780" width="385" height="164" rx="14"/><rect x="785" y="780" width="385" height="164" rx="14"/><rect x="1194" y="780" width="446" height="164" rx="14"/></g>
+  <text x="410" y="830" fill="#55c99c" font-family="Arial, sans-serif" font-size="16">01  ✓  CREATE AN APP</text><text x="410" y="874" fill="#aaaeba" font-family="Arial, sans-serif" font-size="16">Choose the permission your task needs.</text>
+  <text x="819" y="830" fill="#55c99c" font-family="Arial, sans-serif" font-size="16">02  ✓  MAKE YOUR FIRST CALL</text><text x="819" y="874" fill="#aaaeba" font-family="Arial, sans-serif" font-size="16">Inspect a request and useful response.</text>
+  <text x="1228" y="830" fill="#55c99c" font-family="Arial, sans-serif" font-size="16">03  ○  RECEIVE AN EVENT</text><text x="1228" y="874" fill="#aaaeba" font-family="Arial, sans-serif" font-size="16">Follow delivery, failure, and recovery.</text>
+</svg>
