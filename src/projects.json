@@ -141,62 +141,6 @@
     ]
   },
   {
-    "id": "navflow-ai",
-    "name": "NAVFlow AI",
-    "category": "Enterprise · AI operations",
-    "summary": "A clearer path through complex financial operations.",
-    "role": "Lead Product Designer",
-    "scope": "Strategy, workflow design, AI trust patterns",
-    "platform": "Enterprise web application",
-    "image": "navflow/human-approval-wide.png",
-    "alt": "NAVFlow AI approval workspace showing financial data, evidence and sign-off controls",
-    "intro": "Making automation visible, explainable, and accountable.",
-    "overview": "NAVFlow AI brings the Net Asset Value lifecycle into one workspace: ingest reports, extract financial data, validate fields, review exceptions, and approve delivery. The design keeps people in control of consequential decisions.",
-    "challenge": "Critical work was spread across email, spreadsheets, validation tools, and manual handoffs. Operators needed to understand where a value came from, what changed, and when their judgment was required.",
-    "decisions": [
-      [
-        "Make the workflow visible",
-        "A shared pipeline establishes where each report sits, what is happening automatically, and what needs attention."
-      ],
-      [
-        "Keep evidence beside decisions",
-        "Source data, extracted values, confidence, and validation rules stay together so analysts can investigate without reconstructing context."
-      ],
-      [
-        "Reserve interruption for consequential actions",
-        "Detailed investigation uses side panels. Overrides and final approvals use focused confirmation steps with an explicit record of the decision."
-      ]
-    ],
-    "outcome": "The resulting design connects ingestion, validation, approval, and delivery while preserving source lineage and human oversight. The next evaluation priorities are manual verification time, straight-through processing, and delivered data accuracy.",
-    "gallery": [
-      [
-        "navflow/email-ingestion-wide.png",
-        "Email ingestion brings incoming material and its processing status into one place, preserving the context needed for downstream review.",
-        "strategy"
-      ],
-      [
-        "navflow/workflow-pipeline-wide.png",
-        "The pipeline makes stage, ownership, and exceptions visible across the NAV lifecycle.",
-        "architecture"
-      ],
-      [
-        "navflow/validation-tollgate-wide.png",
-        "Field-level validation places source evidence next to the values that require a decision.",
-        "decision-0"
-      ],
-      [
-        "navflow/agent-operations-wide.png",
-        "Agent operations expose automated activity, status, and intervention points.",
-        "delivery"
-      ],
-      [
-        "navflow/executive-dashboard-wide.png",
-        "The executive dashboard brings operational status into an overview for oversight and follow-up.",
-        "delivery"
-      ]
-    ]
-  },
-  {
     "id": "enta",
     "name": "Enta",
     "category": "Fintech · Cross-border money",
@@ -447,6 +391,7 @@
   {
     "id": "iretv",
     "name": "IreTV",
+    "prototypeUrl": "https://iretv.net",
     "category": "Streaming · Independent product",
     "summary": "Meaningful stories. A clearer path to play.",
     "role": "Independent Product Designer & Creator",
