@@ -142,6 +142,61 @@
     ]
   },
   {
+    "id": "sendory",
+    "name": "Sendory",
+    "category": "Innovation · Newsletter creation",
+    "summary": "Turning reusable components into polished newsletters.",
+    "role": "Product Designer",
+    "scope": "Innovation concept, composition workflow and interactive prototype",
+    "platform": "Web-based authoring prototype",
+    "image": "sendory/builder.png",
+    "alt": "Sendory newsletter builder with a component palette, live canvas and contextual properties",
+    "intro": "Make a polished newsletter without starting from a blank page.",
+    "overview": "Sendory brings templates, reusable layout structures and content blocks into a visual newsletter workspace.",
+    "challenge": "Help authors compose with confidence while retaining the flexibility to shape each edition.",
+    "decisions": [
+      [
+        "Offer a useful starting point",
+        "Three starter templates—Client digest, Announcement and Editorial brief—give an author a structure to adapt. The choice is based on the communication they want to create, so they can begin with a recognizable purpose and refine the content without first arranging every section."
+      ],
+      [
+        "Separate structure from content",
+        "The palette distinguishes eight layout structures from 24 content blocks. Columns and containers define the space; headlines, cards, images, events and calls to action fill it. That separation lets a reusable layout support different stories rather than locking every newsletter into one finished design."
+      ],
+      [
+        "Make controls follow the selection",
+        "Selecting a content block exposes its content and typography controls. Selecting a layout exposes spacing, direction and background controls. Keeping these property groups contextual lets the author focus on the decision at hand while seeing the composition beside it."
+      ]
+    ],
+    "gallery": [
+      [
+        "sendory/templates.png",
+        "Three existing starter templates offer a purpose-led beginning: Client digest, Announcement and Editorial brief.",
+        "decision-0"
+      ],
+      [
+        "sendory/components.png",
+        "Searching the palette narrows the reusable content blocks; the selected card exposes its own editing controls. Demonstration content.",
+        "decision-1"
+      ],
+      [
+        "sendory/layout-controls.png",
+        "Layout selection exposes direction, spacing, padding and background controls rather than text formatting.",
+        "decision-2"
+      ],
+      [
+        "sendory/preview-desktop.png",
+        "Desktop preview removes editing outlines and controls so the author can inspect the newsletter as a reader.",
+        "validation"
+      ],
+      [
+        "sendory/preview-mobile.png",
+        "The same sample composition in Mobile preview makes narrow-width wrapping and hierarchy visible.",
+        "validation"
+      ]
+    ]
+  },
+  {
     "id": "iretv",
     "name": "IreTV",
     "category": "Streaming · Independent product",

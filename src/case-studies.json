@@ -1695,5 +1695,207 @@
         "Readable tables, keyboard access and non-color status meaning"
       ]
     }
+  },
+  "sendory": {
+    "executive": {
+      "mandate": "Make newsletter creation approachable through reusable pieces and practical starting points.",
+      "decision": "Combine templates, a searchable component palette, a live canvas and contextual editing in one workspace.",
+      "value": "Let authors spend more attention on their message while retaining control of structure and visual presentation."
+    },
+    "context": [
+      "Sendory is an innovation project exploring a familiar production problem: creating a newsletter requires content, layout, hierarchy and visual consistency to come together. Starting from an empty canvas makes every edition feel like a new design exercise, while a rigid template can become difficult to adapt when the message changes.",
+      "My work explores a middle ground: a composition system with reusable elements and flexible templates. The saved interactive prototype makes that idea tangible through a building-block palette, a central newsletter canvas and a properties inspector. The case study follows how those parts help an author start, assemble, refine and review an edition."
+    ],
+    "evidence": [
+      [
+        "Working authoring prototype",
+        "The saved app includes eight layout structures, 24 content blocks, three starter templates, undo/redo, local saving and preview controls."
+      ],
+      [
+        "Documented interaction checks",
+        "Project QA notes record checks of block addition, nested layouts, contextual properties, insertion feedback and preview behavior."
+      ],
+      [
+        "Current screen captures",
+        "The screens show the existing application with a sample newsletter composed for this walkthrough. They are product demonstrations rather than historical research records."
+      ]
+    ],
+    "discovery": {
+      "title": "Understand the work hidden inside “make a newsletter.”",
+      "paragraphs": [
+        "The starting point is the composition task described in the project: an author needs components, elements and templates readily available so they can turn content into a polished newsletter. That task involves several kinds of decisions. Choosing a structure is different from writing a headline, adjusting spacing or checking the result on a narrow screen.",
+        "The design exploration separates those decisions into a sequence: start with a purpose, assemble the message, adjust individual pieces, inspect the whole, and retain the work. Reviewing the saved implementation and its QA notes provides evidence of the intended interaction model. The audience needs below are design hypotheses; no interview counts or research quotations are assumed."
+      ],
+      "methods": [
+        [
+          "Task decomposition",
+          "Map the steps between an idea and a reviewable edition. Identify where layout choices interrupt writing or where content changes require structural adjustment."
+        ],
+        [
+          "Component inventory",
+          "Separate layout primitives from content modules, then inspect which settings each type genuinely needs. Avoid presenting every control for every selection."
+        ],
+        [
+          "Prototype walkthrough",
+          "Exercise template loading, text editing, component search, layout selection and preview switching. Compare the authoring surface with the reader-facing presentation."
+        ]
+      ]
+    },
+    "problem": {
+      "statement": "Newsletter authors need to combine varied content into a coherent, polished edition. A blank canvas demands too many initial design decisions, while inflexible templates make adaptation difficult. The experience needs to provide structure without removing useful creative control.",
+      "hmw": "How might we help people compose a distinctive newsletter from reusable pieces without asking them to design every detail from scratch?",
+      "constraints": [
+        "Support both template-led and blank-canvas starting points.",
+        "Keep structural layout choices distinct from content editing.",
+        "Make changes reversible and the resulting presentation easy to inspect."
+      ]
+    },
+    "insights": [
+      [
+        "Starting is a design decision",
+        "A useful template does more than supply decoration: it proposes a sequence of content. Naming templates by communication purpose helps authors choose a starting structure."
+      ],
+      [
+        "Reuse needs composability",
+        "A card, event or call to action becomes more useful when it can sit within different layouts. Separating the content module from its container makes reuse more flexible."
+      ],
+      [
+        "Polish comes from visible feedback",
+        "Authors need to see the effect of typography, color and spacing changes close to the controls that caused them. A separate preview provides a second perspective without editing boundaries."
+      ]
+    ],
+    "audiences": [
+      [
+        "Newsletter author",
+        "Needs a practical starting point, recognizable content blocks and a clear way to revise an edition."
+      ],
+      [
+        "Designer supporting recurring communication",
+        "Needs reusable patterns and enough control to guide hierarchy, spacing and presentation across varied content."
+      ]
+    ],
+    "journey": [
+      [
+        "Start",
+        "Find a suitable structure",
+        "An empty canvas creates too many initial choices",
+        "Offer purpose-led starter templates"
+      ],
+      [
+        "Compose",
+        "Build the message",
+        "Authors must repeatedly recreate familiar sections",
+        "Provide searchable layout and content libraries"
+      ],
+      [
+        "Refine",
+        "Adjust a selected piece",
+        "Unrelated controls compete for attention",
+        "Show properties that match the selected block"
+      ],
+      [
+        "Review",
+        "Inspect the reading experience",
+        "Editing outlines obscure the final presentation",
+        "Offer clean desktop, tablet and mobile previews"
+      ],
+      [
+        "Retain",
+        "Keep and reuse the work",
+        "Experiments can be lost or difficult to reverse",
+        "Support local saving and undo/redo"
+      ]
+    ],
+    "strategy": {
+      "title": "Make reuse the foundation of creative control.",
+      "paragraphs": [
+        "The innovation is the relationship between the building blocks, rather than the number of controls. A template provides a beginning; layout primitives provide structure; content modules supply recurring communication patterns. Together they create a workspace in which a polished result can emerge from composition instead of repeated manual formatting.",
+        "The prototype prioritizes that authoring loop over campaign operations. Its strongest demonstrated capabilities are assembling, editing and previewing. Features such as production email delivery, collaboration and email-client rendering require their own implementation and verification; they should not be inferred from a button label in the prototype."
+      ],
+      "priorities": [
+        [
+          "Core",
+          "Template selection, reusable blocks, live composition and contextual properties."
+        ],
+        [
+          "Next",
+          "Reliable reuse and recovery, with clear preview and persistence behavior."
+        ],
+        [
+          "Later",
+          "Production delivery and email-client compatibility after the authoring model is validated."
+        ]
+      ]
+    },
+    "architecture": {
+      "title": "Give each part of the workspace a clear responsibility.",
+      "paragraphs": [
+        "The interface uses three working areas: discover blocks on the left, compose in the center, and refine the selection on the right. The top toolbar keeps document-level actions separate from block-level settings. This division helps the author understand whether an action changes the whole newsletter or only the selected element.",
+        "Layout and content are represented differently in the palette. A layout provides a place for children; a content block supplies a familiar unit such as a title, paragraph, card or event. The implementation also provides move, duplicate and delete actions on selections, while undo/redo supports experimentation across the composition."
+      ],
+      "wireframes": [
+        [
+          "Palette and starting points",
+          "Group layout and content choices, with search and templates available before composing."
+        ],
+        [
+          "Live composition canvas",
+          "Make selection and insertion locations visible while keeping the newsletter hierarchy recognizable."
+        ],
+        [
+          "Contextual inspector",
+          "Separate canvas settings, layout controls and content properties according to the active selection."
+        ]
+      ]
+    },
+    "tradeoffs": [
+      [
+        "Guidance versus freedom",
+        "Starter templates reduce the decisions needed to begin, but the underlying blocks must remain editable. The composition should be a useful starting point rather than a fixed result the author has to work around."
+      ],
+      [
+        "Discoverability versus palette size",
+        "A broad block library supports varied content but increases scanning effort. Categories, recognizable names and search provide different ways to find the right component."
+      ],
+      [
+        "Editing affordances versus reader clarity",
+        "Borders, drop targets and action controls are useful while building. Removing them in Preview creates a cleaner review surface without hiding the tools during authoring."
+      ]
+    ],
+    "validation": {
+      "paragraphs": [
+        "A current walkthrough confirmed that a starter template loads into the canvas, text changes appear in the composition, palette search narrows the available blocks, and selecting a layout changes the inspector controls. Desktop and Mobile preview were opened for the same sample newsletter. Earlier project QA also records checks of undo/redo, nested insertion and clean preview rendering.",
+        "These are functional checks of the prototype. A usability study would ask authors to create a realistic edition, adapt its layout and review it without coaching. Observe where they confuse layout with content, cannot find a block, or lose confidence after a change. The study should establish whether the component model helps people compose—not assume a time-saving percentage in advance."
+      ],
+      "tasks": [
+        [
+          "Start an edition",
+          "Choose a suitable template and replace its sample content.",
+          "Author recognizes the starting structure and can make it their own."
+        ],
+        [
+          "Adapt the composition",
+          "Find a content block and adjust a layout or property.",
+          "Author distinguishes structural controls from content editing."
+        ],
+        [
+          "Review and recover",
+          "Inspect a narrow preview and undo an unwanted change.",
+          "Author can identify presentation issues and return to a useful state."
+        ]
+      ]
+    },
+    "delivery": {
+      "paragraphs": [
+        "The saved prototype is a working exploration of the authoring experience, with local persistence and a basic HTML export path. Its export implementation does not establish faithful output for every complex or nested component, and an in-browser preview does not establish compatibility with email clients. Those boundaries shape the handoff requirements.",
+        "A production implementation should define a portable document model, component serialization, supported email markup and a rendering test matrix. Accessibility should cover keyboard insertion and reordering as well as pointer interactions. Shared spacing and typography rules can preserve consistency while leaving room for each newsletter’s content and identity."
+      ],
+      "checks": [
+        "Document structure and component serialization, including nested layouts",
+        "Undo, persistence and recovery for authoring changes",
+        "Keyboard composition and focus behavior",
+        "Email-client rendering and delivery verification before production sending"
+      ]
+    }
   }
 }

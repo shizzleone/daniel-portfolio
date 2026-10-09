@@ -242,5 +242,29 @@
   "pulse/exception.png": [
     1269,
     714
+  ],
+  "sendory/templates.png": [
+    1265,
+    712
+  ],
+  "sendory/preview-desktop.png": [
+    1265,
+    712
+  ],
+  "sendory/layout-controls.png": [
+    1265,
+    712
+  ],
+  "sendory/builder.png": [
+    1265,
+    712
+  ],
+  "sendory/preview-mobile.png": [
+    1265,
+    712
+  ],
+  "sendory/components.png": [
+    1265,
+    712
   ]
 }

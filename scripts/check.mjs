@@ -1,8 +1,8 @@
 import {readFileSync, existsSync} from 'node:fs';
 import assert from 'node:assert/strict';
 const projects=JSON.parse(readFileSync('src/projects.json'));
-assert.equal(projects.length,9);
-assert.equal(new Set(projects.map(p=>p.id)).size,9);
+assert.equal(projects.length,10);
+assert.equal(new Set(projects.map(p=>p.id)).size,10);
 for(const p of projects){
  assert(existsSync(`${p.id}.html`),`Missing route: ${p.id}`);
  assert(existsSync(`dist/${p.id}.html`),`Missing built route: ${p.id}`);
@@ -19,14 +19,14 @@ for(const page of ['index','about',...projects.map(p=>p.id)]){
  assert(html.includes('name="description"'));
  for(const match of html.matchAll(/(?:src|href)="\.\/([^"#]+)"/g))assert(existsSync(`dist/${match[1]}`),`Broken built reference ${match[1]}`);
 }
-console.log('Passed: 11 production entrypoints, 9 case studies, all project assets, metadata and résumé.');
+console.log('Passed: 12 production entrypoints, 10 case studies, all project assets, metadata and résumé.');
 const cases=JSON.parse(readFileSync('src/case-studies.json'));
 for(const p of projects){
  const c=cases[p.id];assert(c,`Missing narrative ${p.id}`);
  for(const key of ['executive','context','discovery','problem','insights','audiences','journey','strategy','architecture','tradeoffs','validation','delivery'])assert(c[key],`Missing ${key}: ${p.id}`);
  assert.equal(c.journey.length,5);assert(c.validation.tasks.length>=3);
 }
-console.log('Passed: 9 complete process narratives, journey maps, validation plans, and sticky-note synthesis boards.');
+console.log('Passed: 10 complete process narratives, journey maps, validation plans, and sticky-note synthesis boards.');
 assert(projects.some(p=>p.id==='iretv'));
 assert(!projects.some(p=>p.id==='pattern-library'));
 assert(!cases['pattern-library']);
