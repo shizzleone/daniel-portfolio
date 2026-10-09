@@ -1,0 +1,214 @@
+{
+  "sections": [
+    {
+      "id": "intent",
+      "label": "Product & scope",
+      "title": "An editorial identity with an operational backbone.",
+      "paragraphs": [
+        "FORMA brings the public face of a casting studio together with its internal workspace. The file covers talent discovery, individual profiles, project shortlists, availability, bookings, media management, and client review. The challenge is to let portrait-led browsing coexist with the precise information needed to coordinate a casting.",
+        "The design separates three layers: foundations establish the visual rules; reusable components express those rules in controls and records; complete desktop and mobile screens show how the system supports a workflow. This showcase follows that order so the connection from a color or type decision to a finished interface remains visible."
+      ],
+      "images": [
+        [
+          "forma/overview.png",
+          "Studio overview: the operational entry point."
+        ]
+      ]
+    },
+    {
+      "id": "color",
+      "label": "Color & surfaces",
+      "title": "Graphite for structure. Copper for focus. Cream for action.",
+      "paragraphs": [
+        "The foundation page documents 29 semantic colors. Dark stage and surface values establish depth, while cream distinguishes a primary action from its surroundings. Accent orange and success green have separate roles, keeping brand emphasis distinct from availability feedback.",
+        "The surface recipes specify one dominant copper plane per view. Its gradient moves from #F47B25 through #713311 to #21110C; supporting copy sits on the deeper end or a dark inset. Website recipes add a radial hero atmosphere, reading veil, and contact wash. These are documented usage rules from the file, rather than colors inferred from screenshots."
+      ],
+      "images": [
+        [
+          "forma/colors.png",
+          "The complete 29-color semantic palette."
+        ],
+        [
+          "forma/surfaces.png",
+          "Copper, graphite, orb, and portrait-stage surface recipes."
+        ],
+        [
+          "forma/website-color.png",
+          "Website atmosphere, reading veil, and contact wash."
+        ]
+      ]
+    },
+    {
+      "id": "type",
+      "label": "Typography & geometry",
+      "title": "One typeface, two levels of expression.",
+      "paragraphs": [
+        "Manrope is the documented typeface throughout the system. Studio UI starts at 12 px and uses a compact hierarchy for captions, body copy, labels, section headings, and task titles. The public website uses a separate editorial scale, giving large statements their own space while retaining readable supporting copy.",
+        "The geometry system follows a 4 px spacing rhythm, with a documented 6 px exception for compact groups. Radii range from 8 px to pill shapes. The guidance connects nested radii to inset spacing and asks containers to grow with content—useful rules for maintaining the same visual language when labels or records change."
+      ],
+      "images": [
+        [
+          "forma/typography.png",
+          "Studio typography: Manrope sizes, weights, line heights, and reading order."
+        ],
+        [
+          "forma/display-type.png",
+          "Website typography: expressive display sizes and tracking."
+        ],
+        [
+          "forma/spacing.png",
+          "Spacing tokens, corner geometry, and content-sizing rules."
+        ]
+      ]
+    },
+    {
+      "id": "components",
+      "label": "Component library",
+      "title": "From a single action to a casting-specific pattern.",
+      "paragraphs": [
+        "The library covers core actions, fields, selection controls, navigation, portraits, talent records, project dialogs, and media elements. Component sets are present in the source file, including buttons, navigation items, calendar days, studio fields, and selected-talent patterns. This moves the system beyond a collection of unrelated polished screens.",
+        "The examples below show how visual consistency is carried into task-specific controls. A candidate portrait belongs to a shortlist workflow; a project dialog establishes the destination for an action; media controls preserve the relationship between a person and their supporting photographs. The component documentation gives each of these patterns a visible place in the system."
+      ],
+      "images": [
+        [
+          "forma/actions.png",
+          "Action components and visual emphasis."
+        ],
+        [
+          "forma/forms.png",
+          "Forms, fields, feedback, and selection patterns."
+        ],
+        [
+          "forma/navigation.png",
+          "Navigation patterns across workspace destinations."
+        ],
+        [
+          "forma/portraits.png",
+          "Candidate portrait components."
+        ],
+        [
+          "forma/records.png",
+          "Talent and project record patterns."
+        ],
+        [
+          "forma/dialogs.png",
+          "Project selection dialogs."
+        ],
+        [
+          "forma/media.png",
+          "Media building blocks and supporting controls."
+        ],
+        [
+          "forma/icons.png",
+          "Icon glyph library and documented usage."
+        ]
+      ]
+    },
+    {
+      "id": "workflow",
+      "label": "Journey & handoffs",
+      "title": "Keep the person, project, and date connected.",
+      "paragraphs": [
+        "The file includes a dedicated product workflow guide, alongside screens for creating a casting, building a shortlist, checking availability, and progressing a booking. The design needs to retain the context of the selected person and project while the task changes.",
+        "Availability is date-specific in the design documentation. That distinction matters: a generally available profile does not automatically establish availability for a particular shoot. The workflow screens make space for proposed dates and booking states, while client-review screens separate feedback from internal coordination."
+      ],
+      "images": [
+        [
+          "forma/journey.png",
+          "The original product workflow guide from the Figma file."
+        ],
+        [
+          "forma/create.png",
+          "Create a casting with project-specific context."
+        ],
+        [
+          "forma/availability.png",
+          "Shoot-date availability view."
+        ],
+        [
+          "forma/booking.png",
+          "Booking detail within the studio lifecycle."
+        ],
+        [
+          "forma/client.png",
+          "Client shortlist review and feedback."
+        ]
+      ]
+    },
+    {
+      "id": "desktop",
+      "label": "Desktop screens",
+      "title": "A workspace built around the casting task.",
+      "paragraphs": [
+        "The desktop designs use a portrait-led focal area with supporting information grouped around the task. The casting passport brings identity, media, measurements, and date context into one composition. The talent directory changes the emphasis toward finding and comparing records, while the shortlist gives a project its own collection.",
+        "These screens are direct exports from the supplied Figma file. They show the intended product interface and sample content, not evidence of a deployed casting platform. The full design link provides access to the additional record, account, settings, and lifecycle screens beyond the representative exports shown here."
+      ],
+      "images": [
+        [
+          "forma/passport.png",
+          "Casting passport: identity, media, measurements, and availability."
+        ],
+        [
+          "forma/directory.png",
+          "Talent directory and selected profile context."
+        ],
+        [
+          "forma/shortlist.png",
+          "Project shortlist."
+        ],
+        [
+          "forma/library.png",
+          "Media library and collection management."
+        ]
+      ]
+    },
+    {
+      "id": "mobile",
+      "label": "Mobile screens",
+      "title": "Preserve the task while changing the layout.",
+      "paragraphs": [
+        "The file contains a dedicated mobile page spanning the same major workflow families as desktop. The examples below pair the casting passport, talent directory, and studio overview so the responsive direction can be assessed across distinct kinds of work.",
+        "The aim is to preserve the relationship between the primary subject, the supporting details, and the next action as space narrows. These are mobile design frames; keyboard behavior, screen-reader semantics, and touch interactions still require implementation-level validation."
+      ],
+      "images": [
+        [
+          "forma/mobile-passport.png",
+          "Mobile casting passport."
+        ],
+        [
+          "forma/mobile-directory.png",
+          "Mobile talent directory."
+        ],
+        [
+          "forma/mobile-overview.png",
+          "Mobile studio overview."
+        ]
+      ]
+    },
+    {
+      "id": "website",
+      "label": "Public website",
+      "title": "The studio’s public identity belongs to the same system.",
+      "paragraphs": [
+        "The public website extends the copper and graphite language into a more editorial presentation. Its large Manrope display scale supports the brand expression, while the talent roster, public profiles, and casting-enquiry flow connect that presentation to a concrete studio task.",
+        "The complete homepage below shows the broader composition. The Figma file also includes public talent profiles, studio services, work studies, and a multi-stage casting brief. Together they connect the public enquiry journey to the incoming-request and casting-handoff screens inside the workspace."
+      ],
+      "images": [
+        [
+          "forma/website.png",
+          "Full public website homepage, exported from Figma."
+        ]
+      ]
+    },
+    {
+      "id": "next",
+      "label": "Next iteration",
+      "title": "Validate the system in the moments where context can be lost.",
+      "paragraphs": [
+        "The next evaluation should follow a complete task: find talent, create a shortlist for a particular date, review availability, and explain the booking state. That sequence can reveal whether visual hierarchy and component consistency translate into task understanding.",
+        "Implementation review should test long names, missing photographs, empty collections, error messages, keyboard access, contrast across gradient stops, and responsive content growth. The design file supplies substantial visual and state coverage; it does not by itself establish usability results or production accessibility."
+      ],
+      "images": []
+    }
+  ]
+}

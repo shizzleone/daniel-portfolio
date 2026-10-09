@@ -2687,5 +2687,198 @@
         "Validate cost comprehension before measuring conversion."
       ]
     }
+  },
+  "solshine": {
+    "executive": {
+      "mandate": "Design a complete, adaptable Framer website template for solar and renewable-energy service businesses.",
+      "decision": "Connect a clear category introduction with repeatable service layouts and an accessible enquiry destination.",
+      "value": "The published template demonstrates the page system and exploration path. Commercial results depend on the adopting business and remain unmeasured here."
+    },
+    "context": [
+      "Solshine is a full website-template design for businesses offering solar installation, maintenance, and related renewable-energy services. The challenge combines two needs: visitors must understand the offering, while the business adapting the template needs a coherent structure for its own content.",
+      "The work is presented as full template design, as confirmed by the designer. The published Framer site provides the visual evidence. Its demonstration testimonials, ratings, pricing, partner logos, and company claims are template content rather than verified outcomes of this project."
+    ],
+    "discovery": {
+      "title": "Design for the visitor and the template adopter.",
+      "paragraphs": [
+        "The product framing separates two audiences. A prospective customer wants to recognize a relevant service and understand how to contact the provider. A template adopter wants to replace imagery, copy, and offerings without rebuilding the page hierarchy. These needs make repeatable content structure central to the design.",
+        "The case-study review followed the published homepage, service collection, company page, and contact destination. It supports an account of the visible design and its intended behavior. Research themes below are hypotheses; no interviews or measured customer findings are attributed to this review."
+      ],
+      "methods": [
+        [
+          "Content structure review",
+          "Examined the relationship between the category introduction, service collection, company context, and enquiry route."
+        ],
+        [
+          "Journey walkthrough",
+          "Followed primary navigation and the Get in touch action to establish the visible exploration path."
+        ],
+        [
+          "Adaptability framing",
+          "Considered which sections can repeat across different service businesses and which content requires careful replacement before use."
+        ]
+      ]
+    },
+    "problem": {
+      "statement": "A service-business template must communicate an offering clearly while remaining flexible enough for different businesses. When generic content or competing sections obscure the service journey, visitors can struggle to understand relevance and the next step.",
+      "hmw": "How might we make a renewable-energy website clear for visitors and coherent for the business adapting it?",
+      "constraints": [
+        "The template must accommodate different service names, images, and company stories.",
+        "Sample ratings, offers, and company information need replacement with accurate business content.",
+        "Repeated layouts should remain legible across screen sizes and content lengths."
+      ]
+    },
+    "insights": [
+      [
+        "The category should be recognizable quickly",
+        "A direct proposition and relevant visual context help orient visitors before they explore the details."
+      ],
+      [
+        "Repetition should support distinct services",
+        "A shared layout makes the collection easier to navigate, but each service still needs specific information."
+      ],
+      [
+        "Enquiry is part of discovery",
+        "A visible contact route should be available when a visitor has enough context, without requiring them to return to the top."
+      ]
+    ],
+    "audiences": [
+      [
+        "Prospective customer",
+        "Needs to identify a relevant service, understand the provider, and find an enquiry route."
+      ],
+      [
+        "Template adopter",
+        "Needs a consistent page system that can accommodate their own services and business information."
+      ]
+    ],
+    "journey": [
+      [
+        "Orient",
+        "Recognize the offering.",
+        "A broad energy message can lack practical context.",
+        "Lead with a clear solar-services proposition."
+      ],
+      [
+        "Explore",
+        "Find a relevant service.",
+        "Different services may sound similar.",
+        "Provide a recognizable service collection."
+      ],
+      [
+        "Evaluate",
+        "Understand the provider.",
+        "A service list alone does not establish context.",
+        "Connect to company and supporting information."
+      ],
+      [
+        "Enquire",
+        "Reach the provider.",
+        "A contact route may be difficult to locate.",
+        "Repeat a clear Get in touch action."
+      ],
+      [
+        "Adapt",
+        "Fit the template to a business.",
+        "Generic sample content can undermine relevance.",
+        "Use repeatable layouts with specific content responsibilities."
+      ]
+    ],
+    "strategy": {
+      "title": "Build a reusable structure around a clear service journey.",
+      "paragraphs": [
+        "The template connects the homepage to services, company information, and contact. This creates a navigable path without assuming that every visitor will read the page from beginning to end. Each destination has a distinct responsibility in the evaluation process.",
+        "Adaptability depends on the content model as well as appearance. A business should know what belongs in a service description, a company section, and an enquiry prompt. Demonstration pricing and proof points should be replaced with information appropriate to the actual business."
+      ],
+      "priorities": [
+        [
+          "Orient",
+          "Make the category and service proposition immediately recognizable."
+        ],
+        [
+          "Explore",
+          "Keep the service collection and supporting pages consistent."
+        ],
+        [
+          "Enquire",
+          "Provide a visible and accurately described next step."
+        ]
+      ]
+    },
+    "architecture": {
+      "title": "Connect the page system through recurring patterns.",
+      "paragraphs": [
+        "The published navigation includes Home, About us, Team, News, and Services, with a prominent enquiry link. The homepage introduces several of these content types, while dedicated pages give them space for deeper reading.",
+        "The full template includes recurring headings, imagery, service summaries, and calls to action. The private Framer editor could not be inspected without login, so this case study does not assert specific internal component or CMS configuration. The visible page system is the basis for the architecture discussion."
+      ],
+      "wireframes": [
+        [
+          "Service hierarchy",
+          "Test whether visitors can distinguish offerings from the collection labels and short descriptions."
+        ],
+        [
+          "Supporting context",
+          "Explore how company information can support evaluation without overwhelming the service journey."
+        ],
+        [
+          "Enquiry placement",
+          "Compare where a contact prompt is most useful after a visitor has reviewed an offering."
+        ]
+      ]
+    },
+    "tradeoffs": [
+      [
+        "Flexibility versus specificity",
+        "A reusable template needs adaptable sections, but generic copy should not replace the details a real customer needs."
+      ],
+      [
+        "Rich content versus focus",
+        "Multiple sections demonstrate the template’s range. An adopting business should retain the sections that support its actual visitor journey."
+      ],
+      [
+        "Visual proof versus verified evidence",
+        "Ratings and logos can suggest credibility, but real deployments need accurate, authorized content rather than demonstration claims."
+      ]
+    ],
+    "validation": {
+      "paragraphs": [
+        "The published homepage, services, company, and contact pages were reviewed and captured. No enquiry form was submitted, and no conversion or business results were measured.",
+        "A proposed evaluation would include prospective customers and template adopters. Customers should identify a relevant service and predict the contact step; adopters should determine where their own information belongs and recognize sample content that needs replacement."
+      ],
+      "tasks": [
+        [
+          "Recognize the offering",
+          "Describe the business after viewing the homepage.",
+          "Identify the solar-services category and a plausible next destination."
+        ],
+        [
+          "Find a service",
+          "Locate a relevant installation or maintenance offering.",
+          "Distinguish the selected service from adjacent offerings."
+        ],
+        [
+          "Find contact",
+          "Locate an enquiry route after reviewing services.",
+          "Predict the destination and purpose of the action."
+        ],
+        [
+          "Adapt the content",
+          "Identify which sample sections need business-specific replacement.",
+          "Recognize demonstration pricing, proof points, and company information."
+        ]
+      ]
+    },
+    "delivery": {
+      "paragraphs": [
+        "The deliverable is the published Solshine Framer template, covering the full website experience rather than a single landing page. The screenshots capture the actual public page designs. The supplied editor link provides a reference for future work once access is available.",
+        "The next iteration should refine content relevance, test longer replacement copy and smaller screens, and verify accessible navigation and form behavior. Before a business launches with the template, its service descriptions, contact details, pricing, and credibility claims should accurately reflect that business."
+      ],
+      "checks": [
+        "Review replacement content across repeated service layouts.",
+        "Test mobile layout, focus visibility, and accessible form labels.",
+        "Use verified business information in place of sample ratings and offers.",
+        "Evaluate service discovery and enquiry comprehension with intended visitors."
+      ]
+    }
   }
 }

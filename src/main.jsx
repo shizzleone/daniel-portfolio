@@ -9,6 +9,7 @@ import './styles.css';
 import projects from './projects.json';
 import caseStudies from './case-studies.json';
 import imageSizes from './image-sizes.json';
+import FormaShowcase from './FormaShowcase';
 
 const resume='./assets/daniel-johnson-resume.pdf';
 const email='folaseyi@gmail.com';
@@ -61,7 +62,7 @@ function CaseStudy({p}){
  <Chapter id="delivery" title="Carry the intent into implementation."><Paragraphs items={c.delivery.paragraphs}/><ul className="case-checks">{c.delivery.checks.map(x=><li key={x}>{x}</li>)}</ul><ProjectScreens p={p} section="delivery"/><a className="text-link" href={`mailto:${email}?subject=${encodeURIComponent('Let’s talk about '+p.name)}`}>Let’s discuss this work<ArrowUpRight size={16}/></a></Chapter>
  </div></div></>}<a className="next-project" href={`./${next.id}.html`}><div><p className="eyebrow">Next case study</p><h2>{next.name}</h2><p>{next.summary}</p></div><ArrowRight size={32}/></a></main><Footer/></>}
 function NotFound(){return <main id="main" className="gate"><p className="eyebrow">Page not found</p><h1>Let’s get you back to the work.</h1><Button asChild><a href="./">Return home<ArrowRight/></a></Button></main>}
-function App(){return <div className="site-shell"><Header/>{project?<CaseStudy p={project}/>:isAbout?<About/>:!current||current==='index'?<Home/>:<NotFound/>}</div>}
+function App(){return <div className="site-shell"><Header/>{project?(project.showcase?<FormaShowcase p={project} Figure={Figure} Gate={Gate} Footer={Footer}/>:<CaseStudy p={project}/>):isAbout?<About/>:!current||current==='index'?<Home/>:<NotFound/>}</div>}
 const root = import.meta.hot?.data.root ?? createRoot(document.getElementById('root'));
 if (import.meta.hot) import.meta.hot.data.root = root;
 root.render(<App/>);

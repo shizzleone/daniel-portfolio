@@ -382,5 +382,133 @@
   "urbandrive/home.png": [
     1265,
     712
+  ],
+  "solshine/services.png": [
+    1265,
+    712
+  ],
+  "solshine/home.png": [
+    1265,
+    712
+  ],
+  "solshine/contact.png": [
+    1265,
+    712
+  ],
+  "solshine/about.png": [
+    1265,
+    712
+  ],
+  "forma/journey.png": [
+    1584,
+    1416
+  ],
+  "forma/mobile-directory.png": [
+    390,
+    2190
+  ],
+  "forma/booking.png": [
+    1440,
+    900
+  ],
+  "forma/colors.png": [
+    1440,
+    900
+  ],
+  "forma/actions.png": [
+    1440,
+    900
+  ],
+  "forma/website.png": [
+    1366,
+    4096
+  ],
+  "forma/surfaces.png": [
+    1440,
+    900
+  ],
+  "forma/website-color.png": [
+    1440,
+    900
+  ],
+  "forma/records.png": [
+    1440,
+    900
+  ],
+  "forma/typography.png": [
+    1440,
+    900
+  ],
+  "forma/availability.png": [
+    1440,
+    900
+  ],
+  "forma/shortlist.png": [
+    1440,
+    900
+  ],
+  "forma/overview.png": [
+    1440,
+    900
+  ],
+  "forma/library.png": [
+    1440,
+    900
+  ],
+  "forma/spacing.png": [
+    1440,
+    900
+  ],
+  "forma/create.png": [
+    1440,
+    900
+  ],
+  "forma/passport.png": [
+    1440,
+    900
+  ],
+  "forma/display-type.png": [
+    1440,
+    1080
+  ],
+  "forma/dialogs.png": [
+    1440,
+    900
+  ],
+  "forma/portraits.png": [
+    1440,
+    900
+  ],
+  "forma/directory.png": [
+    1440,
+    900
+  ],
+  "forma/media.png": [
+    1440,
+    900
+  ],
+  "forma/mobile-overview.png": [
+    390,
+    2114
+  ],
+  "forma/navigation.png": [
+    1440,
+    900
+  ],
+  "forma/forms.png": [
+    1440,
+    900
+  ],
+  "forma/client.png": [
+    1440,
+    900
+  ],
+  "forma/mobile-passport.png": [
+    390,
+    2867
+  ],
+  "forma/icons.png": [
+    1440,
+    900
   ]
 }

@@ -1,5 +1,146 @@
 [
   {
+    "id": "forma",
+    "name": "FORMA",
+    "category": "Casting studio / Design system",
+    "summary": "From color and typography to a complete casting workspace and public website.",
+    "role": "Product & design system design",
+    "scope": "Foundations · Components · Desktop & mobile · Public website",
+    "platform": "Figma design system & UI kit",
+    "image": "forma/passport.png",
+    "alt": "FORMA casting passport with graphite and copper panels around a talent portrait.",
+    "intro": "A complete visual system for the business of casting.",
+    "showcase": true,
+    "decisions": [
+      [
+        "Foundations",
+        "Semantic color and typography."
+      ],
+      [
+        "Components",
+        "Reusable studio patterns."
+      ],
+      [
+        "Screens",
+        "Desktop and mobile journeys."
+      ]
+    ],
+    "gallery": [
+      [
+        "forma/overview.png",
+        "Studio overview: the operational entry point."
+      ],
+      [
+        "forma/colors.png",
+        "The complete 29-color semantic palette."
+      ],
+      [
+        "forma/surfaces.png",
+        "Copper, graphite, orb, and portrait-stage surface recipes."
+      ],
+      [
+        "forma/website-color.png",
+        "Website atmosphere, reading veil, and contact wash."
+      ],
+      [
+        "forma/typography.png",
+        "Studio typography: Manrope sizes, weights, line heights, and reading order."
+      ],
+      [
+        "forma/display-type.png",
+        "Website typography: expressive display sizes and tracking."
+      ],
+      [
+        "forma/spacing.png",
+        "Spacing tokens, corner geometry, and content-sizing rules."
+      ],
+      [
+        "forma/actions.png",
+        "Action components and visual emphasis."
+      ],
+      [
+        "forma/forms.png",
+        "Forms, fields, feedback, and selection patterns."
+      ],
+      [
+        "forma/navigation.png",
+        "Navigation patterns across workspace destinations."
+      ],
+      [
+        "forma/portraits.png",
+        "Candidate portrait components."
+      ],
+      [
+        "forma/records.png",
+        "Talent and project record patterns."
+      ],
+      [
+        "forma/dialogs.png",
+        "Project selection dialogs."
+      ],
+      [
+        "forma/media.png",
+        "Media building blocks and supporting controls."
+      ],
+      [
+        "forma/journey.png",
+        "The original product workflow guide from the Figma file."
+      ],
+      [
+        "forma/create.png",
+        "Create a casting with project-specific context."
+      ],
+      [
+        "forma/availability.png",
+        "Shoot-date availability view."
+      ],
+      [
+        "forma/booking.png",
+        "Booking detail within the studio lifecycle."
+      ],
+      [
+        "forma/client.png",
+        "Client shortlist review and feedback."
+      ],
+      [
+        "forma/passport.png",
+        "Casting passport: identity, media, measurements, and availability."
+      ],
+      [
+        "forma/directory.png",
+        "Talent directory and selected profile context."
+      ],
+      [
+        "forma/shortlist.png",
+        "Project shortlist."
+      ],
+      [
+        "forma/library.png",
+        "Media library and collection management."
+      ],
+      [
+        "forma/mobile-passport.png",
+        "Mobile casting passport."
+      ],
+      [
+        "forma/mobile-directory.png",
+        "Mobile talent directory."
+      ],
+      [
+        "forma/mobile-overview.png",
+        "Mobile studio overview."
+      ],
+      [
+        "forma/website.png",
+        "Full public website homepage, exported from Figma."
+      ],
+      [
+        "forma/icons.png",
+        "Icon glyph library and documented usage."
+      ]
+    ]
+  },
+  {
     "id": "navflow-ai",
     "name": "NAVFlow AI",
     "category": "Enterprise · AI operations",
@@ -649,6 +790,52 @@
         "urbandrive/booking.png",
         "Rental details and booking summary before advancing to personal information or payment.",
         "decision-2"
+      ]
+    ]
+  },
+  {
+    "id": "solshine",
+    "name": "Solshine",
+    "category": "Clean energy / Framer template",
+    "summary": "A complete website template for solar services and renewable-energy businesses.",
+    "role": "Template designer",
+    "scope": "Full template design · Page layouts · Service discovery · Enquiry experience",
+    "platform": "Framer website template",
+    "prototypeUrl": "https://solshine.framer.ai/",
+    "image": "solshine/home.png",
+    "alt": "Solshine solar energy website homepage.",
+    "intro": "Making solar services easier to explore—and a reusable website easier to adapt.",
+    "overview": "A full Framer template for renewable-energy service businesses.",
+    "challenge": "Connect a clear service proposition to detailed information and a visible enquiry path.",
+    "decisions": [
+      [
+        "Make the service proposition visible first",
+        "The homepage combines a direct solar-energy headline, relevant imagery, and an exploration link. This establishes the category before presenting the broader service collection. The template needs to work with different businesses, so the hierarchy should remain understandable when images and copy are replaced."
+      ],
+      [
+        "Give services repeatable structure",
+        "The service collection creates a predictable route into installation, maintenance, and related offerings. Repeated layouts help visitors compare the kinds of support available while giving a template adopter a consistent place to introduce each service. The content must still distinguish those offerings rather than repeat a generic value proposition."
+      ],
+      [
+        "Keep enquiry within reach",
+        "Get in touch appears in the main navigation and alongside service content, connecting exploration to a clear next step. The contact page gives the enquiry its own destination. This is a designed conversion path; no conversion-rate improvement or enquiry volume is claimed."
+      ]
+    ],
+    "gallery": [
+      [
+        "solshine/services.png",
+        "Published service collection in the Framer template.",
+        "decision-1"
+      ],
+      [
+        "solshine/contact.png",
+        "Enquiry destination reached from the primary call to action.",
+        "decision-2"
+      ],
+      [
+        "solshine/about.png",
+        "Company-information layout supporting the wider template.",
+        "architecture"
       ]
     ]
   }
