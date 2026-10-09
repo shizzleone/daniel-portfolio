@@ -1,0 +1,405 @@
+[
+  {
+    "id": "navflow-ai",
+    "name": "NAVFlow AI",
+    "category": "Enterprise · AI operations",
+    "summary": "A clearer path through complex financial operations.",
+    "role": "Lead Product Designer",
+    "scope": "Strategy, workflow design, AI trust patterns",
+    "platform": "Enterprise web application",
+    "image": "navflow/human-approval-wide.png",
+    "alt": "NAVFlow AI approval workspace showing financial data, evidence and sign-off controls",
+    "intro": "Making automation visible, explainable, and accountable.",
+    "overview": "NAVFlow AI brings the Net Asset Value lifecycle into one workspace: ingest reports, extract financial data, validate fields, review exceptions, and approve delivery. The design keeps people in control of consequential decisions.",
+    "challenge": "Critical work was spread across email, spreadsheets, validation tools, and manual handoffs. Operators needed to understand where a value came from, what changed, and when their judgment was required.",
+    "decisions": [
+      [
+        "Make the workflow visible",
+        "A shared pipeline establishes where each report sits, what is happening automatically, and what needs attention."
+      ],
+      [
+        "Keep evidence beside decisions",
+        "Source data, extracted values, confidence, and validation rules stay together so analysts can investigate without reconstructing context."
+      ],
+      [
+        "Reserve interruption for consequential actions",
+        "Detailed investigation uses side panels. Overrides and final approvals use focused confirmation steps with an explicit record of the decision."
+      ]
+    ],
+    "outcome": "The resulting design connects ingestion, validation, approval, and delivery while preserving source lineage and human oversight. The next evaluation priorities are manual verification time, straight-through processing, and delivered data accuracy.",
+    "gallery": [
+      [
+        "navflow/email-ingestion-wide.png",
+        "Email ingestion brings incoming material and its processing status into one place, preserving the context needed for downstream review.",
+        "strategy"
+      ],
+      [
+        "navflow/workflow-pipeline-wide.png",
+        "The pipeline makes stage, ownership, and exceptions visible across the NAV lifecycle.",
+        "architecture"
+      ],
+      [
+        "navflow/validation-tollgate-wide.png",
+        "Field-level validation places source evidence next to the values that require a decision.",
+        "decision-0"
+      ],
+      [
+        "navflow/agent-operations-wide.png",
+        "Agent operations expose automated activity, status, and intervention points.",
+        "delivery"
+      ],
+      [
+        "navflow/executive-dashboard-wide.png",
+        "The executive dashboard brings operational status into an overview for oversight and follow-up.",
+        "delivery"
+      ]
+    ]
+  },
+  {
+    "id": "enta",
+    "name": "Enta",
+    "category": "Fintech · Cross-border money",
+    "summary": "Connecting everyday payments and digital assets in one account.",
+    "role": "Lead Designer",
+    "scope": "Product experience and interface design",
+    "platform": "Web application",
+    "image": "enta/dashboard.png",
+    "alt": "Enta public product demo showing account balances, recent transactions and receive controls",
+    "intro": "One account. Clearer choices for moving and holding money.",
+    "overview": "Enta combines cross-border money movement with digital asset balances in a shared workspace.",
+    "challenge": "Make currencies, destinations, fees and transaction states understandable without requiring people to become experts in payment infrastructure.",
+    "decisions": [
+      [
+        "Start with the destination",
+        "The send experience distinguishes an Enta wallet, an external address, and a bank account before asking for route-specific details. This choice helps people recognize what they are trying to do while giving the interface a clear basis for the information it asks for next."
+      ],
+      [
+        "Explain both sides of a purchase",
+        "The purchase interface separates what the customer pays from what they receive. Asset selection, conversion and review belong to one continuous decision, so the customer can assess the exchange before following payment instructions."
+      ],
+      [
+        "Keep the balance connected to the next action",
+        "The wallet view combines an aggregate balance with individual holdings and a move-money action. The hierarchy supports a quick overview while retaining the currency and network context needed to act deliberately."
+      ]
+    ],
+    "gallery": [
+      [
+        "enta/send.png",
+        "Send destination selection in Enta’s public product demo.",
+        "decision-0"
+      ],
+      [
+        "enta/buy.png",
+        "A frame from the public purchase demo, showing the pay-and-receive hierarchy.",
+        "decision-1"
+      ],
+      [
+        "enta/wallet.png",
+        "Public wallet demo with illustrative balances and asset-level detail.",
+        "decision-2"
+      ]
+    ]
+  },
+  {
+    "id": "metric-os",
+    "name": "Metric OS",
+    "category": "Enterprise · Observability",
+    "summary": "Making system performance easier to understand.",
+    "role": "Product Design Lead",
+    "scope": "Research synthesis, interaction design, prototyping",
+    "platform": "Web application · 16 weeks",
+    "image": "metric-os-product.png",
+    "alt": "Metric OS incident workspace with service topology, correlated logs and a rollback recommendation",
+    "intro": "From a storm of alerts to a clear next action.",
+    "overview": "Metric OS connects telemetry, service dependencies, and incident investigation in one workspace. It helps engineering teams understand what changed, who is affected, and which response is safe.",
+    "challenge": "Teams had plenty of monitoring data but little shared context. Switching between logs, traces, infrastructure metrics, and conversations made it difficult to connect symptoms to causes.",
+    "decisions": [
+      [
+        "Group signals into an incident",
+        "Correlated alerts become a single investigation with the affected services, suspected origin, and confidence visible."
+      ],
+      [
+        "Keep topology and evidence connected",
+        "A split workspace shows service relationships alongside the supporting logs. Investigation stays within one operational context."
+      ],
+      [
+        "Make remediation accountable",
+        "A rollback recommendation includes supporting evidence, expected impact, permission requirements, and post-action verification."
+      ]
+    ],
+    "outcome": "The design provides a continuous path from detection to investigation and governed remediation. Evaluation focuses on time to assigned action, time spent reconciling evidence, and confidence in the response workflow.",
+    "gallery": [
+      [
+        "screens/metric-health.png",
+        "System-health overview: service availability, signal composition, latency, capacity, and resolution work share a common context. Interface values are sample data.",
+        "architecture"
+      ],
+      [
+        "screens/metric-evidence.png",
+        "Investigation detail: correlated logs and a root-cause hypothesis lead into an explicit action review. Sample incident data illustrates the interaction.",
+        "decision-1"
+      ]
+    ]
+  },
+  {
+    "id": "iretv",
+    "name": "IreTV",
+    "category": "Streaming · Independent product",
+    "summary": "Meaningful stories. A clearer path to play.",
+    "role": "Independent Product Designer & Creator",
+    "scope": "Product strategy, UX architecture, interface design",
+    "platform": "Responsive web · Personal project",
+    "image": "iretv/welcome.png",
+    "alt": "IreTV welcome experience with cinematic imagery and clear paths into faith-centered entertainment",
+    "intro": "From discovering a meaningful story to pressing play with confidence.",
+    "overview": "IreTV is my independent streaming-platform project. It brings Christian films, series, live television, children’s programming, podcasts, radio, and devotionals into one product. The central design challenge is to give that breadth a clear structure while helping a viewer make a confident choice about what to watch.",
+    "challenge": "A faith-centered catalog needs to communicate more than availability. Viewers need enough story and content context to choose confidently, a clear distinction between saving and accessing a title, and a dependable path back to their viewing. If those states blur together, a visually rich interface can still leave basic questions unanswered.",
+    "decisions": [
+      [
+        "Organize around viewing intent",
+        "The product architecture connects discovery, evaluation, access, playback, and return. Curated collections provide an editorial entry point while the library supports a different task: finding something already saved or started."
+      ],
+      [
+        "Make access understandable before commitment",
+        "The current first-film page presents the price, viewing window, and absence of a subscription beside the primary action. Earlier prototype rental terms differed; the launch-specific offer replaces those assumptions rather than inheriting them silently."
+      ],
+      [
+        "Build continuity beyond the first play",
+        "Watchlists, history, and saved progress support the return journey. The interface separates interest from entitlement and gives unfinished viewing its own place. This makes the library part of the core experience rather than an account-management afterthought."
+      ]
+    ],
+    "outcome": "The work connects product strategy, a detailed UX specification, reusable interface patterns, and an implemented streaming experience. The saved iterations demonstrate how discovery, title context, and return viewing were structured; the current screens show the IreTV identity and first-film offer. The documented controlled rental and playback are a concrete milestone, with their limits kept visible.",
+    "gallery": [
+      [
+        "iretv/catalog-iteration.png",
+        "Earlier catalog iteration from the project archive, using inherited Mighty Arrow branding and sample titles. Featured content, curated rows, and return viewing establish the discovery hierarchy."
+      ],
+      [
+        "iretv/detail-iteration.png",
+        "Earlier title-detail prototype: story context and a Faith & Family Guide support evaluation. Sample title data and rental pricing are design content, not the current live offer."
+      ],
+      [
+        "iretv/library-iteration.png",
+        "Earlier library prototype: active viewing, Watchlist, and History are separate tasks. Progress values are prototype data."
+      ],
+      [
+        "iretv/film-detail.png",
+        "Current local IreTV film page for The Travails of Maria. Price and the 14-day window appear beside the rental action; this capture does not represent a new payment test."
+      ]
+    ]
+  },
+  {
+    "id": "finwise",
+    "name": "Finwise",
+    "category": "Fintech · Independent initiative",
+    "summary": "Everyday banking, with confidence built in.",
+    "role": "Lead Product Designer",
+    "scope": "Discovery through high-fidelity product design",
+    "platform": "iOS & Android · 12 weeks",
+    "image": "finwise-product-screens.png",
+    "alt": "Finwise mobile banking product screens",
+    "intro": "Making everyday money decisions feel reassuringly simple.",
+    "overview": "Finwise explores a calmer mobile banking experience for understanding spending, transferring money, and building savings habits.",
+    "challenge": "Feature-heavy banking tools can make simple decisions feel complicated. People need a clear picture of their money and transparent consequences before taking action.",
+    "decisions": [
+      [
+        "Make the full picture easy to scan",
+        "Balances, recent activity, and upcoming payments sit in a focused account overview."
+      ],
+      [
+        "Clarify transfers before confirmation",
+        "Recipient details, timing, fees, and confirmation states support deliberate decisions."
+      ],
+      [
+        "Turn savings into visible progress",
+        "Goals connect current progress to a practical next action without overwhelming the main banking experience."
+      ]
+    ],
+    "outcome": "The initiative produced core task flows, an interactive prototype, six product screens, and design-system foundations. The work focuses on clarity, transfer confidence, and visible savings progress.",
+    "gallery": [
+      [
+        "finwise-dashboard.png",
+        "Account overview and everyday financial context.",
+        "decision-0"
+      ],
+      [
+        "finwise-transfer.png",
+        "A focused transfer journey.",
+        "decision-1"
+      ],
+      [
+        "finwise-savings.png",
+        "Savings goals with visible progress.",
+        "decision-2"
+      ]
+    ]
+  },
+  {
+    "id": "pulse",
+    "name": "Pulse",
+    "category": "Fintech · Settlement infrastructure",
+    "summary": "Making payment operations traceable from quote to settlement.",
+    "role": "Product design",
+    "scope": "Settlement operations and partner experience",
+    "platform": "Partner web console",
+    "image": "pulse/dashboard.png",
+    "alt": "Pulse public test-mode dashboard showing business performance and settlement by asset",
+    "intro": "Clear operational control over complex money movement.",
+    "overview": "Pulse connects collection, conversion and payout with a partner console for monitoring and investigation.",
+    "challenge": "Help teams distinguish a customer payment from completed settlement and investigate exceptions with a shared transaction record.",
+    "decisions": [
+      [
+        "Separate paid from settled",
+        "The transaction table keeps the pegged amount, customer payment and final settlement in separate columns. A completed deposit is meaningful progress, but it does not establish that the partner received the expected value. This distinction makes reconciliation more precise."
+      ],
+      [
+        "Bring the exception and its evidence together",
+        "The detail view starts with the underpayment warning and the difference between expected and received amounts. A timeline then connects that exception to the remaining conversion and settlement steps, so the operator can explain what happened without assembling a story from disconnected records."
+      ],
+      [
+        "Make integration health visible",
+        "Webhook endpoints expose delivery performance and status within the same console used for payment operations. This gives developers a place to assess the communication path while finance and operations retain transaction-level evidence."
+      ]
+    ],
+    "gallery": [
+      [
+        "pulse/transactions.png",
+        "The public Test-mode transaction list separates pegged amount, customer payment and final settlement. All values are demo data.",
+        "decision-0"
+      ],
+      [
+        "pulse/exception.png",
+        "Underpayment review connects expected and received amounts with a transaction timeline and settlement details. Public demo data.",
+        "decision-1"
+      ],
+      [
+        "pulse/webhooks.png",
+        "Webhook endpoint visibility supports integration monitoring. This capture is from the public Test-mode demo.",
+        "decision-2"
+      ]
+    ]
+  },
+  {
+    "id": "shiftsnap",
+    "name": "ShiftSnap",
+    "category": "Mobile SaaS · Workforce",
+    "summary": "Clearer schedules for people working in shifts.",
+    "role": "Product Designer",
+    "scope": "Mobile workforce experience",
+    "platform": "Mobile application",
+    "image": "shiftsnap-hero-phones.png",
+    "alt": "ShiftSnap mobile scheduling and shift management screens",
+    "intro": "Helping hourly workers stay on top of their day.",
+    "overview": "ShiftSnap brings shift management into a focused mobile experience, helping hourly workers understand schedules and coordinate changes.",
+    "challenge": "Shift changes require clear status and dependable communication. Workers need to know what is scheduled, what is pending, and which action comes next.",
+    "decisions": [
+      [
+        "Make schedules easy to find",
+        "The experience prioritizes upcoming work and the information needed to plan the day."
+      ],
+      [
+        "Clarify shift changes",
+        "Swap and request flows make the action and its status visible."
+      ],
+      [
+        "Keep the experience mobile-first",
+        "Focused screens support quick checks and everyday coordination."
+      ]
+    ],
+    "outcome": "The product design connects onboarding and shift management in a consistent mobile experience. The complete experience board below shows the core flows and screen relationships.",
+    "gallery": [
+      [
+        "shiftsnap-complete-user-experience.png",
+        "The complete ShiftSnap experience and its core flows.",
+        "architecture"
+      ]
+    ]
+  },
+  {
+    "id": "grounded",
+    "name": "Grounded",
+    "category": "Wellness · Mobile product",
+    "summary": "Healthier habits, without the pressure.",
+    "role": "Lead Product Designer",
+    "scope": "Research strategy, interaction design, visual direction",
+    "platform": "iOS & Android · 14 weeks",
+    "image": "grounded-product.png",
+    "alt": "Grounded daily wellbeing check-in and guided breathing screen",
+    "intro": "Wellness that fits real life.",
+    "overview": "Grounded helps people notice their energy, build flexible routines, and recover with intention. Guidance adapts to mood, available time, and personal goals.",
+    "challenge": "Rigid streaks and dense dashboards can make self-care feel like another performance metric. People need support that accommodates changing days.",
+    "decisions": [
+      [
+        "Ask before advising",
+        "A lightweight check-in shapes guidance around mood, energy, and time."
+      ],
+      [
+        "Celebrate returning",
+        "Progress language encourages recovery after disruption instead of punishing a missed day."
+      ],
+      [
+        "Make small actions meaningful",
+        "Short practices explain their benefit and offer an approachable next step."
+      ]
+    ],
+    "outcome": "The design connects daily check-ins, recommendations, guided practices, and gentle progress reflection. Evaluation targets sustainable return, completion of short practices, and perceived usefulness.",
+    "gallery": [
+      [
+        "screens/grounded-checkin.png",
+        "The check-in pairs current needs with available time. The progress view brings reflection and return into the same experience; values shown are sample interface data.",
+        "decision-0"
+      ],
+      [
+        "screens/grounded-practices.png",
+        "Welcome, practice discovery, and the guided reset show how a small next step carries through the product.",
+        "decision-2"
+      ]
+    ]
+  },
+  {
+    "id": "loop-learning",
+    "name": "Loop Learning",
+    "category": "Edtech · Cohort learning",
+    "summary": "A closer connection between learning and feedback.",
+    "role": "Lead Product Designer",
+    "scope": "Learning strategy, UX writing, interaction design",
+    "platform": "Web application",
+    "image": "loop-product.png",
+    "alt": "Loop Learning cohort workspace with learning activity and study guidance",
+    "intro": "Learning that feels connected, even at a distance.",
+    "overview": "Loop Learning brings live sessions, practice, feedback, reflection, and instructor support into a shared cohort experience.",
+    "challenge": "Remote learning often fragments across video calls, assignments, messages, and private notes. Instructors need better signals about who is confident and who needs support.",
+    "decisions": [
+      [
+        "Make the next step visible",
+        "Learners can find today’s objective, preparation, and cohort activity in one place."
+      ],
+      [
+        "Close the feedback loop",
+        "Practice checkpoints and structured critique connect effort to useful guidance."
+      ],
+      [
+        "Support without surveillance",
+        "Instructor signals include context, helping distinguish normal struggle from disengagement."
+      ]
+    ],
+    "outcome": "The design connects a student hub, live studio, feedback workspace, AI study coach, and instructor console. Evaluation focuses on participation, recovery after missed work, and learner confidence.",
+    "gallery": [
+      [
+        "screens/loop-learning-hub.png",
+        "The learning hub connects the current session, progress, practice tasks, and study guidance in one workspace. Values and learner details are sample content.",
+        "architecture"
+      ],
+      [
+        "screens/loop-feedback.png",
+        "Live critique and contextual coaching keep feedback close to the learning task. The study uses sample conversation and session data.",
+        "decision-1"
+      ],
+      [
+        "screens/loop-instructor.png",
+        "The instructor console combines cohort signals with learner context to support intervention decisions. Sample data illustrates the interface.",
+        "decision-2"
+      ]
+    ]
+  }
+]

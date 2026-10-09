@@ -1,0 +1,1699 @@
+{
+  "shiftsnap": {
+    "executive": {
+      "mandate": "Give hourly workers more flexibility while protecting dependable shift coverage.",
+      "decision": "Treat a shift change as a shared, stateful workflow rather than a message between two people.",
+      "value": "Connect employee autonomy, manager oversight, and operational clarity in one mobile experience."
+    },
+    "context": [
+      "ShiftSnap addresses a coordination problem that sits between employee wellbeing and daily operations. A worker may need to change a shift because of class, caregiving, or an unexpected conflict. A manager still needs to know that the replacement is qualified and that the location will remain covered. Making one side faster without supporting the other simply moves the work elsewhere.",
+      "My design remit spans the employee journey and the manager decision: finding a shift, requesting a change, identifying coverage, reviewing consequences, and confirming the updated schedule. The leadership challenge is to create one shared understanding of the request across these roles, while keeping the employee experience lightweight enough to use between tasks."
+    ],
+    "discovery": {
+      "title": "Understand how a schedule change actually gets resolved.",
+      "paragraphs": [
+        "The discovery frame follows a real scheduling exception from the moment a conflict appears to the moment everyone trusts the updated roster. The important unit of analysis is the handoff: who knows about the request, who can act on it, and what evidence the next person needs. This reveals friction that a screen-by-screen review alone would miss.",
+        "The existing project narrative describes worker and manager interviews, contextual inquiry, and competitor review. The discovery approach connects these methods to the project’s stated themes. The questions below make the reasoning inspectable."
+      ],
+      "methods": [
+        [
+          "Worker and manager perspectives",
+          "Examine how each role defines a successful change. Workers need flexibility and reassurance; managers need eligibility, coverage, and a clear decision trail."
+        ],
+        [
+          "Workflow observation",
+          "Trace where requests leave the schedule and move into chats, calls, or informal agreements. Look for duplicate work and moments when responsibility becomes unclear."
+        ],
+        [
+          "Comparative task review",
+          "Compare the same swap and approval scenario across scheduling products. Evaluate status clarity, mobile effort, and recovery paths rather than counting features."
+        ]
+      ]
+    },
+    "problem": {
+      "statement": "Hourly workers need to resolve schedule conflicts without repeated follow-up, while managers need enough context to approve changes without creating coverage or eligibility risks. Fragmented communication prevents both groups from trusting the same version of the schedule.",
+      "hmw": "How might we make a shift change easy to initiate, safe to approve, and unmistakably confirmed?",
+      "constraints": [
+        "Support quick, interrupted mobile use.",
+        "Keep worker requests distinct from manager approval.",
+        "Account for qualification, availability, and coverage rules."
+      ]
+    },
+    "insights": [
+      [
+        "Autonomy depends on visibility",
+        "A request can be easy to send and still feel stressful if its status is invisible. The design therefore treats pending, accepted, approved, declined, and expired as meaningful states with clear ownership."
+      ],
+      [
+        "Approval is a contextual decision",
+        "Managers need the original shift, proposed replacement, eligibility, and operational impact together. A simple approve button is insufficient when the cost of a mistaken decision is an uncovered shift."
+      ],
+      [
+        "Confirmation must change the shared record",
+        "A conversation ending is not the same as a schedule being updated. The experience needs a clear completion state and a reliable way for both people to check the final roster."
+      ]
+    ],
+    "audiences": [
+      [
+        "Hourly worker",
+        "Needs to understand the next shift, request help without losing context, and know whether a change is final."
+      ],
+      [
+        "Scheduling manager",
+        "Needs to resolve requests efficiently while retaining visibility into coverage, qualifications, and exceptions."
+      ]
+    ],
+    "journey": [
+      [
+        "Notice conflict",
+        "Review an upcoming shift",
+        "The worker must leave the schedule to coordinate",
+        "Start a request from shift details"
+      ],
+      [
+        "Request change",
+        "Explain the desired swap or coverage",
+        "The ask may lack essential context",
+        "Carry shift details into the request"
+      ],
+      [
+        "Find coverage",
+        "Identify an eligible teammate",
+        "Availability and qualifications are uncertain",
+        "Show eligible options and request status"
+      ],
+      [
+        "Review",
+        "Manager evaluates the change",
+        "Decision context is spread across messages",
+        "Bring coverage and eligibility into one review"
+      ],
+      [
+        "Confirm",
+        "Everyone checks the updated roster",
+        "An accepted request may be mistaken for approval",
+        "Distinguish agreement from final confirmation"
+      ]
+    ],
+    "strategy": {
+      "title": "Prioritize the complete exception, not a collection of features.",
+      "paragraphs": [
+        "The first release should make one scheduling change understandable from beginning to end. A broad workforce platform would add time tracking, payroll, analytics, and messaging before proving the core coordination model. The tighter strategy is to establish a trusted schedule, a request lifecycle, and a contextual manager decision.",
+        "The prioritization lens balances employee effort with operational risk. An improvement belongs in the core experience when it removes an unnecessary handoff or prevents a mistaken assumption about coverage. Convenience features follow once the request lifecycle is dependable."
+      ],
+      "priorities": [
+        [
+          "Core",
+          "Schedule visibility, request status, eligible coverage, and manager approval."
+        ],
+        [
+          "Next",
+          "Recurring availability, reminders, and easier handling of repeated requests."
+        ],
+        [
+          "Later",
+          "Broader workforce integrations once ownership and exception rules are established."
+        ]
+      ]
+    },
+    "architecture": {
+      "title": "Build the information model around a shift and its state.",
+      "paragraphs": [
+        "The central objects are a shift, a person, a request, and an approval. The employee schedule is the entry point; request details retain the original shift context. The manager queue groups decisions needing attention, with a detailed view that explains the proposed change and its implications. This keeps the two roles connected without giving them identical interfaces.",
+        "Low-fidelity exploration should resolve the request model before visual polish. A useful comparison is a multi-step request flow versus a single dense form: the former may reduce initial effort, while the latter offers more context at once. The chosen direction should be judged by whether people can explain what is pending, who acts next, and when the schedule changes."
+      ],
+      "wireframes": [
+        [
+          "Schedule first",
+          "Make the upcoming shift and its available actions visible before introducing management tools."
+        ],
+        [
+          "Explicit review",
+          "Separate request creation from confirmation, preserving the details needed to correct mistakes."
+        ],
+        [
+          "State continuity",
+          "Use the same status language in the schedule, request detail, and manager view."
+        ]
+      ]
+    },
+    "tradeoffs": [
+      [
+        "Fast requests versus safe decisions",
+        "Reduce typing by carrying shift context forward, but retain an explicit manager decision where coverage rules require it. Fewer interactions are valuable only when the remaining ones communicate the consequence clearly."
+      ],
+      [
+        "Notifications versus a dependable record",
+        "Notifications can draw attention, but the request detail must remain the source of truth. A missed notification should not make a worker unable to determine the current state."
+      ],
+      [
+        "Employee simplicity versus manager depth",
+        "Keep the employee path focused. Give managers additional operational context progressively, rather than exposing every scheduling rule on every worker screen."
+      ]
+    ],
+    "validation": {
+      "paragraphs": [
+        "The validation plan tests whether workers and managers share the same mental model of a request. Task completion alone is insufficient: a person can finish a flow while incorrectly believing that an unapproved change is final. Comprehension checks should therefore accompany the interaction tasks.",
+        "These are proposed evaluation scenarios for the proposed experience, not a claim that new participant sessions have occurred. Observed confusion would drive iteration on status labels, confirmation hierarchy, and the placement of approval context."
+      ],
+      "tasks": [
+        [
+          "Worker requests coverage",
+          "Ask the worker to explain who acts next and whether the original shift still applies.",
+          "Correctly distinguishes pending from confirmed."
+        ],
+        [
+          "Manager reviews an exception",
+          "Introduce an eligibility or coverage conflict and observe what the manager checks.",
+          "Uses the relevant context before making a decision."
+        ],
+        [
+          "Request is declined or expires",
+          "Ask the worker to determine what happens to the schedule and what to do next.",
+          "Finds a clear recovery path without guessing."
+        ]
+      ]
+    },
+    "delivery": {
+      "paragraphs": [
+        "The handoff should specify the request state model alongside the interface. Engineering needs the same definitions for pending, approved, declined, cancelled, and expired that appear in the design. Each state requires copy, available actions, ownership, and notification behavior.",
+        "A reusable mobile pattern set covers schedule rows, shift details, status indicators, review summaries, and confirmations. Accessibility review focuses on readable time information, status that does not rely on color alone, large touch targets, and announcing important updates to assistive technology."
+      ],
+      "checks": [
+        "State transitions and cancellation rules",
+        "Notification and stale-data behavior",
+        "Text scaling and accessible status labels"
+      ]
+    }
+  },
+  "navflow-ai": {
+    "executive": {
+      "mandate": "Accelerate financial operations while retaining explainability, review, and accountable sign-off.",
+      "decision": "Design a governed workflow around evidence and exceptions instead of treating AI as an invisible automation layer.",
+      "value": "Make automated work easier to inspect and human intervention easier to direct."
+    },
+    "context": [
+      "Net Asset Value operations connect incoming reports, extracted values, validation rules, approvals, and downstream delivery. A failure in one step can create work or uncertainty in another. The product problem therefore extends beyond processing speed: operators must understand how a result was produced and whether it is safe to move forward.",
+      "My role in the project narrative combines product strategy, workflow architecture, interaction design, and AI trust patterns. The design responsibility is to connect analyst detail with operational oversight. A reviewer needs field-level evidence; an operations lead needs to see bottlenecks and exceptions across the pipeline without losing the ability to investigate."
+    ],
+    "discovery": {
+      "title": "Locate the moments where automation needs human judgment.",
+      "paragraphs": [
+        "Discovery starts with the lifecycle of one report rather than an inventory of AI features. The analysis follows source arrival, extraction, rule checks, exception handling, approval, and delivery. At each handoff, the key questions are what evidence is retained, how confidence is communicated, and who is accountable for the next action.",
+        "The design study uses the existing workflow descriptions and product screens as its grounding material. Analyst, approver, operations, and compliance perspectives are treated as role-based needs, not as newly interviewed participants. Unresolved policy questions are explicit inputs to the design rather than assumptions hidden in the interface."
+      ],
+      "methods": [
+        [
+          "Workflow decomposition",
+          "Map the lifecycle into stages with inputs, outputs, ownership, and exception conditions. This makes automation boundaries visible."
+        ],
+        [
+          "Evidence and exception review",
+          "Identify which source fields, transformations, and rule results a reviewer needs to understand a discrepancy."
+        ],
+        [
+          "Role and risk mapping",
+          "Separate the authority to investigate from the authority to override or approve. Use that distinction to frame actions and confirmation."
+        ]
+      ]
+    },
+    "problem": {
+      "statement": "Financial operations teams need to move reports through validation and delivery efficiently, but disconnected tools and opaque transformations make it difficult to establish trust in a result. Reviewers need a clear connection between the source, the generated value, the rule, and the accountable decision.",
+      "hmw": "How might we accelerate routine NAV work while making exceptions explainable and consequential decisions accountable?",
+      "constraints": [
+        "Preserve source lineage and decision history.",
+        "Distinguish model confidence from policy approval.",
+        "Support investigation without prematurely committing an action."
+      ]
+    },
+    "insights": [
+      [
+        "Confidence needs evidence",
+        "A percentage alone cannot explain why a value should be accepted. Confidence becomes useful when it sits beside source material, extraction context, and validation results."
+      ],
+      [
+        "Exceptions determine the operating model",
+        "The routine path can be automated, but ambiguous cases reveal whether the system is usable. Exception ownership and recovery deserve the same design attention as throughput."
+      ],
+      [
+        "Operational and analytical views serve different questions",
+        "A pipeline answers where work is stalled. A review workspace answers what is wrong with a particular item. Both need a shared underlying state model."
+      ]
+    ],
+    "audiences": [
+      [
+        "NAV analyst and approver",
+        "Needs source-linked detail, understandable exceptions, and clear authority at the point of review."
+      ],
+      [
+        "Operations lead and platform administrator",
+        "Needs pipeline health, agent visibility, ownership, and an auditable account of how work progresses."
+      ]
+    ],
+    "journey": [
+      [
+        "Ingest",
+        "Receive a report",
+        "Source formats and arrival conditions vary",
+        "Show provenance and ingestion status"
+      ],
+      [
+        "Extract",
+        "Interpret financial fields",
+        "Generated values can appear authoritative",
+        "Expose source links and confidence"
+      ],
+      [
+        "Validate",
+        "Check rules and exceptions",
+        "Errors are difficult to trace across tools",
+        "Compare evidence and rule results together"
+      ],
+      [
+        "Approve",
+        "Make a consequential decision",
+        "Authority and rationale may be implicit",
+        "Require contextual, accountable sign-off"
+      ],
+      [
+        "Deliver",
+        "Send the approved payload",
+        "Completion may be confused with dispatch",
+        "Show delivery outcome and recoverable failures"
+      ]
+    ],
+    "strategy": {
+      "title": "Automate the routine and design deeply for the exception.",
+      "paragraphs": [
+        "The product strategy places the governed lifecycle ahead of conversational novelty. The priority is not to put an assistant on every screen; it is to make the status and evidence of automated work legible. AI assistance is most useful where it reduces interpretation effort while leaving the reviewer able to verify the reasoning.",
+        "Scope is organized around the minimum complete operating loop: intake, extraction, validation, approval, and delivery. Deeper predictive capabilities belong after the lifecycle is observable and the ownership model is clear. This sequence reduces the risk of scaling automation that people cannot explain or recover."
+      ],
+      "priorities": [
+        [
+          "Core",
+          "Pipeline status, source-linked validation, exception ownership, and final approval."
+        ],
+        [
+          "Next",
+          "Agent health, investigation assistance, and richer operational reporting."
+        ],
+        [
+          "Later",
+          "Predictive risk signals after decision lineage and operating controls are established."
+        ]
+      ]
+    },
+    "architecture": {
+      "title": "A stable workspace for each level of operational depth.",
+      "paragraphs": [
+        "The architecture distinguishes command-level monitoring, workflow progress, item-level review, and agent operations. Persistent pages hold tasks requiring broad comparison or a durable location. Supporting evidence appears alongside the work so reviewers can investigate without abandoning the item they are evaluating.",
+        "Wireframe exploration centers on progressive disclosure. Showing every source field, rule, activity entry, and AI explanation at once creates density without clarity. The design should keep the primary comparison visible, with deeper explanation available on demand. The approval step then narrows attention to the exact scope and consequence of the decision."
+      ],
+      "wireframes": [
+        [
+          "Pipeline hierarchy",
+          "Expose stage, owner, and exception status before secondary throughput detail."
+        ],
+        [
+          "Side-by-side evidence",
+          "Keep original input and generated output close enough for meaningful comparison."
+        ],
+        [
+          "Deliberate confirmation",
+          "Summarize the approved payload and decision scope before final sign-off."
+        ]
+      ]
+    },
+    "tradeoffs": [
+      [
+        "Automation speed versus reviewability",
+        "Automating extraction reduces manual work, but hidden transformations undermine confidence. The interface spends space on provenance and rule results so a reviewer can inspect the basis of a value."
+      ],
+      [
+        "Persistent context versus interruption",
+        "Side panels support explanation and investigation. Focused confirmation is reserved for overrides or approvals with consequences, avoiding unnecessary modal interruptions during routine review."
+      ],
+      [
+        "A simple status versus an honest state",
+        "A single success indicator can conceal partial completion. Separate validation, approval, and delivery states make the operational truth clearer, even when that introduces more nuance."
+      ]
+    ],
+    "validation": {
+      "paragraphs": [
+        "Validation should test appropriate reliance on automation, not only task speed. An analyst needs to recognize a discrepancy, locate supporting evidence, explain the risk, and choose the correct path. A polished screen that encourages unjustified acceptance would fail the product goal.",
+        "The scenarios below are a proposed validation plan for the proposed design. They deliberately include uncertainty and failure so that the evaluation tests the controls as well as the happy path. Iteration would focus on evidence hierarchy, action language, and recovery visibility."
+      ],
+      "tasks": [
+        [
+          "Resolve a source mismatch",
+          "Present an extracted value that conflicts with its source.",
+          "Reviewer locates evidence and explains the discrepancy."
+        ],
+        [
+          "Review a low-confidence item",
+          "Ask whether the item may proceed and who has authority.",
+          "Confidence is not mistaken for approval."
+        ],
+        [
+          "Recover a failed delivery",
+          "Show an approved payload with an unsuccessful downstream result.",
+          "Operator distinguishes approval from delivery and finds the recovery action."
+        ]
+      ]
+    },
+    "delivery": {
+      "paragraphs": [
+        "Handoff must connect interface states to the underlying lifecycle. For each stage, the specification should describe ownership, permitted actions, failure conditions, retry behavior, and the evidence retained. Error handling is part of the product model rather than a collection of generic messages added at the end.",
+        "The design system uses semantic states for progress, risk, and review requirements. High-density tables need stable alignment, readable numeric formatting, keyboard access, and status labels beyond color. Approval and override patterns require particular care around scope, permissions, and acknowledgement."
+      ],
+      "checks": [
+        "Source lineage and permission states",
+        "Partial completion and retry behavior",
+        "Keyboard review and non-color risk indicators"
+      ]
+    }
+  },
+  "metric-os": {
+    "executive": {
+      "mandate": "Help engineering teams turn fragmented telemetry into an understandable incident and a safe response.",
+      "decision": "Keep service relationships, causal evidence, and remediation in one connected investigation workspace.",
+      "value": "Reduce context design study while making the reasoning behind operational action visible."
+    },
+    "context": [
+      "Metric OS addresses the gap between collecting telemetry and deciding what to do about it. Logs, traces, metrics, deployment changes, and service dependencies can describe the same event from different angles. During an incident, the cost is not only the number of tools; it is the effort required to form a reliable explanation across them.",
+      "The documented design remit spans product framing, research synthesis, information architecture, interaction design, and prototyping. The product needs to serve both rapid triage and detailed investigation. The design challenge is to preserve depth without making the operator repeatedly rebuild context or treat an AI hypothesis as a verified cause."
+    ],
+    "discovery": {
+      "title": "Study the investigation, not just the dashboard.",
+      "paragraphs": [
+        "The discovery frame follows an incident from detection through recovery. It asks which signals trigger attention, how an operator determines the affected services, what evidence supports a hypothesis, and what must be checked before remediation. This moves the discussion from dashboard preference to the quality of the operational decision.",
+        "The existing narrative identifies fragmented context, unstructured logs, and alert fatigue. The synthesis below treats those as the project’s stated problem themes. It does not create new research participants or measured outcomes. The proposed activities make clear how those themes could be examined in a defensible evaluation."
+      ],
+      "methods": [
+        [
+          "Incident journey review",
+          "Trace the transitions between alert, triage, investigation, action, and verification. Identify where evidence is lost or re-entered."
+        ],
+        [
+          "Telemetry relationship mapping",
+          "Connect a service, deployment, trace, and log entry to the same incident context. Determine which relationships need to remain visible."
+        ],
+        [
+          "Decision-risk review",
+          "Examine what an operator must know before accepting a suggested action, including blast radius, authority, and recovery options."
+        ]
+      ]
+    },
+    "problem": {
+      "statement": "Site reliability engineers need to establish a credible cause and choose a safe response under time pressure. Disconnected telemetry surfaces and competing alerts increase context-switching and make it difficult to distinguish a plausible explanation from sufficient evidence for action.",
+      "hmw": "How might we help an engineer move from signal to verified recovery without losing the causal thread?",
+      "constraints": [
+        "Maintain access to detailed technical evidence.",
+        "Communicate uncertainty in AI-generated hypotheses.",
+        "Keep remediation permissions and expected impact explicit."
+      ]
+    },
+    "insights": [
+      [
+        "More signals do not necessarily create more understanding",
+        "An alert needs context: what changed, what is affected, and why it matters now. Grouping should reduce noise while keeping the underlying evidence available."
+      ],
+      [
+        "Relationships and raw evidence are complementary",
+        "A topology view explains how a failure propagates; logs explain what happened in a specific service. Separating them forces the engineer to mentally reconnect the same story."
+      ],
+      [
+        "Recovery is a verification problem",
+        "Executing an action is not the end of the journey. The operator needs to know whether system health actually recovered and whether the intervention introduced a new issue."
+      ]
+    ],
+    "audiences": [
+      [
+        "Site reliability engineer",
+        "Needs fast orientation, detailed evidence, and a safe path from hypothesis to action."
+      ],
+      [
+        "Incident lead and service owner",
+        "Needs shared incident context, accountable ownership, and understandable progress toward recovery."
+      ]
+    ],
+    "journey": [
+      [
+        "Detect",
+        "Identify meaningful change",
+        "Many alerts compete for attention",
+        "Group related signals into an incident"
+      ],
+      [
+        "Triage",
+        "Understand scope and urgency",
+        "Business impact is disconnected from telemetry",
+        "Show affected services and incident context"
+      ],
+      [
+        "Investigate",
+        "Evaluate a causal hypothesis",
+        "Logs and topology sit in separate tools",
+        "Link service selection to supporting evidence"
+      ],
+      [
+        "Act",
+        "Choose a safe intervention",
+        "Recommendations can hide uncertainty",
+        "Show rationale, scope, and permission"
+      ],
+      [
+        "Verify",
+        "Confirm recovery",
+        "A completed command can look like success",
+        "Compare post-action health with the incident state"
+      ]
+    ],
+    "strategy": {
+      "title": "Optimize for a continuous investigation.",
+      "paragraphs": [
+        "The priority is one coherent incident journey, not a universal monitoring replacement. Detection, investigation, and governed action should share the same incident context. That makes the design valuable even where existing telemetry sources remain in place.",
+        "The first scope emphasizes correlation, evidence navigation, and a reviewable remediation path. Broader forecasting and portfolio-level reporting follow after the core investigation model is clear. This keeps the product focused on a high-value operational moment instead of competing through dashboard breadth."
+      ],
+      "priorities": [
+        [
+          "Core",
+          "Incident grouping, service context, correlated evidence, and action review."
+        ],
+        [
+          "Next",
+          "Shared investigation history, ownership signals, and richer runbook connections."
+        ],
+        [
+          "Later",
+          "Forecasting and cross-incident intelligence once the evidence model is dependable."
+        ]
+      ]
+    },
+    "architecture": {
+      "title": "Preserve the causal thread across levels of detail.",
+      "paragraphs": [
+        "The information architecture moves from incident overview to service relationships and then to specific evidence. A split-pane workspace lets the operator retain the topology while inspecting logs. The selected service becomes a shared filter rather than a navigation event that opens an unrelated destination.",
+        "Wireframes should test the balance between topology and evidence density. A large canvas may communicate relationships well but reduce the number of comparable log events. A dense table may support analysis while making the blast radius hard to see. The proposed composition gives both a stable place and allows progressive inspection within that frame."
+      ],
+      "wireframes": [
+        [
+          "Incident before metrics",
+          "Establish the event, affected services, and urgency before secondary telemetry."
+        ],
+        [
+          "Connected selection",
+          "Selecting a service should narrow evidence without removing the larger system context."
+        ],
+        [
+          "Action with rationale",
+          "Place the recommended intervention beside its evidence and expected effect."
+        ]
+      ]
+    },
+    "tradeoffs": [
+      [
+        "Information density versus scanability",
+        "Incident response requires comparing detailed events. Density is supported through alignment, restrained status color, and readable technical text rather than by shrinking everything equally."
+      ],
+      [
+        "AI assistance versus operator judgment",
+        "A root-cause hypothesis should accelerate investigation, not replace it. The design keeps confidence, evidence, and uncertainty close to the recommendation."
+      ],
+      [
+        "Integrated action versus accidental commitment",
+        "Keeping remediation in the workspace reduces context switching. A deliberate review boundary still separates exploring an action from executing it."
+      ]
+    ],
+    "validation": {
+      "paragraphs": [
+        "Evaluation should ask whether the operator can explain the incident and defend a response, not merely locate a button. The prototype scenarios need enough evidence to support competing interpretations, so the interface’s guidance can be tested under realistic ambiguity.",
+        "These tasks form a proposed validation plan. A future study should capture task success, evidence consulted, confidence, and unsafe assumptions together. An apparently faster workflow would not be an improvement if it encouraged premature remediation."
+      ],
+      "tasks": [
+        [
+          "Find the affected service",
+          "Begin with several related alerts and ask for the likely investigation starting point.",
+          "Operator identifies scope and relevant evidence."
+        ],
+        [
+          "Challenge the suggested cause",
+          "Present a plausible AI hypothesis with incomplete support.",
+          "Operator checks evidence rather than accepting confidence alone."
+        ],
+        [
+          "Confirm a recovery",
+          "Show a completed rollback with mixed service health.",
+          "Operator distinguishes executed action from verified recovery."
+        ]
+      ]
+    },
+    "delivery": {
+      "paragraphs": [
+        "Handoff needs a shared incident vocabulary across design and engineering: signal, incident, affected service, hypothesis, action, and verification. Selection and filtering behavior should be specified alongside empty, loading, stale, and partially unavailable states so the workspace remains understandable when data is incomplete.",
+        "Accessibility in a dense operational interface requires deliberate keyboard paths, persistent focus, readable log formatting, and status conveyed through text as well as color. Remediation states should explain permission restrictions and the consequence of a choice without requiring the operator to infer them from disabled controls."
+      ],
+      "checks": [
+        "Linked selection and evidence filtering",
+        "Stale data and unavailable telemetry",
+        "Permission, confirmation, and post-action states"
+      ]
+    }
+  },
+  "finwise": {
+    "executive": {
+      "mandate": "Make personal finance easier to understand and act on across everyday banking tasks.",
+      "decision": "Connect financial visibility to a clear next action and an understandable consequence.",
+      "value": "Help people move from checking balances to making informed decisions."
+    },
+    "context": [
+      "Finwise explores a mobile banking experience organized around financial understanding, transfers, and savings. The product challenge is not simply displaying more data: people need a reliable sense of where they stand and what a choice will change.",
+      "This independent initiative is presented through preserved product screens and a discovery narrative. The case study connects the dashboard, money movement, and savings flows through a common principle: provide context before asking for commitment."
+    ],
+    "discovery": {
+      "title": "Understand the gap between seeing and deciding.",
+      "paragraphs": [
+        "The discovery frame separates three needs: understanding current finances, deciding whether an action is affordable, and knowing whether it completed. A competitive review can reveal common conventions, but the design opportunity lies in the moments where the interface leaves the person to calculate or infer meaning.",
+        "The synthesis below uses the project’s existing themes of fragmented visibility, unclear consequences, and passive insights. These themes guide design hypotheses; they are not presented as newly conducted interviews or attributed participant statements."
+      ],
+      "methods": [
+        [
+          "Competitive review",
+          "Examine balance hierarchy, transfer confirmation, and goal progress across banking experiences."
+        ],
+        [
+          "Task analysis",
+          "Trace the information required before, during, and after a financial action."
+        ],
+        [
+          "Journey synthesis",
+          "Connect uncertainty to a specific intervention rather than collecting generic pain points."
+        ]
+      ]
+    },
+    "problem": {
+      "statement": "People can see financial information but still struggle to translate it into a confident next step. Separate balances, opaque transaction consequences, and passive summaries make everyday decisions require extra interpretation.",
+      "hmw": "How might we connect a clear financial picture to actions whose consequences people can understand before confirming?",
+      "constraints": [
+        "Keep sensitive financial information legible and appropriately scoped.",
+        "Make fees, recipients, and transaction status explicit.",
+        "Support both quick checks and deeper review."
+      ]
+    },
+    "insights": [
+      [
+        "The overview needs a hierarchy",
+        "A dashboard should establish current position before introducing secondary trends. Equal visual weight makes a simple financial check feel like analysis."
+      ],
+      [
+        "Trust is built before confirmation",
+        "Recipient, amount, fees, and expected timing belong in the decision moment. A receipt cannot repair uncertainty that prevented someone from acting."
+      ],
+      [
+        "Goals need an actionable next step",
+        "Progress becomes useful when people can connect the gap to a manageable contribution rather than only seeing a percentage."
+      ]
+    ],
+    "audiences": [
+      [
+        "Everyday banking customer",
+        "Needs quick orientation and confidence when moving money."
+      ],
+      [
+        "Goal-oriented saver",
+        "Needs understandable progress and a realistic way to adjust contributions."
+      ]
+    ],
+    "journey": [
+      [
+        "Orient",
+        "Understand current position",
+        "Information is fragmented",
+        "Prioritize a coherent overview"
+      ],
+      [
+        "Explore",
+        "Inspect a financial detail",
+        "Summary lacks context",
+        "Connect overview to transactions"
+      ],
+      [
+        "Decide",
+        "Choose an action",
+        "Consequences are unclear",
+        "Preview amount, fees, and impact"
+      ],
+      [
+        "Confirm",
+        "Commit with confidence",
+        "Details are easy to miss",
+        "Provide a focused review step"
+      ],
+      [
+        "Track",
+        "Know what changed",
+        "Completion is ambiguous",
+        "Show status and an accessible record"
+      ]
+    ],
+    "strategy": {
+      "title": "Make the next step feel informed.",
+      "paragraphs": [
+        "The core scope links an understandable overview with dependable transfers and practical savings management. These flows demonstrate whether the navigation and information hierarchy can support both frequent and considered decisions.",
+        "Additional insights should earn their place by helping a person act or understand a change. A feed of observations without relevance or control adds content without necessarily adding confidence."
+      ],
+      "priorities": [
+        [
+          "Core",
+          "Financial overview, transaction context, transfer review, and savings progress."
+        ],
+        [
+          "Next",
+          "Relevant prompts and adjustable goal contributions."
+        ],
+        [
+          "Later",
+          "Broader personalization after basic comprehension is validated."
+        ]
+      ]
+    },
+    "architecture": {
+      "title": "Move from overview to detail to commitment.",
+      "paragraphs": [
+        "The structure separates orientation from action while maintaining a clear connection between them. People should be able to inspect the source account, understand the transfer, review its details, and return to a meaningful updated state.",
+        "Wireframe exploration should test hierarchy and sequence before visual refinement. The preserved screens then show how dashboard summaries, savings cards, and transfer steps can share a consistent language."
+      ],
+      "wireframes": [
+        [
+          "Overview hierarchy",
+          "Establish balance context, recent activity, and primary actions."
+        ],
+        [
+          "Transfer sequence",
+          "Separate entry, review, and status so commitment remains explicit."
+        ],
+        [
+          "Savings detail",
+          "Show progress, contribution controls, and the effect of an adjustment."
+        ]
+      ]
+    },
+    "tradeoffs": [
+      [
+        "Simplicity versus financial detail",
+        "Keep the overview scannable while making supporting information easy to inspect. Hiding essential transaction consequences is not simplification."
+      ],
+      [
+        "Guidance versus control",
+        "Offer helpful next steps without implying that the product knows a person’s full financial circumstances. Make assumptions and controls visible."
+      ],
+      [
+        "Speed versus verification",
+        "Allow familiar tasks to move quickly while preserving a deliberate final review of recipient and amount. The cost of a mistaken transfer justifies this checkpoint."
+      ]
+    ],
+    "validation": {
+      "paragraphs": [
+        "The proposed usability evaluation focuses on comprehension as well as completion. Participants should explain what an amount represents, what a transfer will do, and how a savings adjustment changes their plan.",
+        "Use representative test data and compare understanding across overview, review, and completion states. These scenarios describe future evaluation, not newly verified customer findings."
+      ],
+      "tasks": [
+        [
+          "Understand finances",
+          "Explain the overview and locate a recent transaction.",
+          "Distinguish summary information from transaction detail."
+        ],
+        [
+          "Review a transfer",
+          "Check a transfer with fees and a delayed arrival.",
+          "Identify recipient, total cost, and expected timing before confirming."
+        ],
+        [
+          "Adjust a goal",
+          "Change a savings contribution.",
+          "Understand how the adjustment affects the goal."
+        ]
+      ]
+    },
+    "delivery": {
+      "paragraphs": [
+        "Delivery should specify content rules for currency, dates, masked account details, transaction status, and errors. Consistent formatting reduces the cognitive work of interpreting each screen.",
+        "The state model needs pending, failed, cancelled, and completed transactions, including safe retry guidance. Accessibility review should cover input labels, error association, readable monetary values, and status announcements."
+      ],
+      "checks": [
+        "Currency, timing, and fee clarity",
+        "Transaction lifecycle and retry behavior",
+        "Accessible forms and confirmation states"
+      ]
+    }
+  },
+  "grounded": {
+    "executive": {
+      "mandate": "Help people sustain a wellbeing routine that can adapt to changing energy and time.",
+      "decision": "Replace rigid progress pressure with a small, relevant next step and supportive return paths.",
+      "value": "Make continued participation feel achievable, including after a missed day."
+    },
+    "context": [
+      "Grounded explores a wellbeing experience shaped around flexible routines and a lightweight check-in. The design opportunity is to make a useful practice accessible on an ordinary difficult day, not only when someone has time and motivation.",
+      "The design narrative connects mood and time context to manageable activities, non-punitive progress, and easy re-entry. It describes a product concept rather than a clinically validated intervention."
+    ],
+    "discovery": {
+      "title": "Design for the day that does not go to plan.",
+      "paragraphs": [
+        "The discovery frame examines the gap between an ideal routine and a real day. A rigid plan can create friction when energy drops, time disappears, or a person returns after an interruption. The relevant question becomes what the product should do in those moments.",
+        "The project’s existing themes suggest flexible routines, a mood-and-time check-in, and progress that does not punish missed days. The synthesis below turns those themes into explicit design hypotheses without inventing participant quotes or study counts."
+      ],
+      "methods": [
+        [
+          "Routine mapping",
+          "Identify entry, activity selection, completion, and return after interruption."
+        ],
+        [
+          "Friction analysis",
+          "Examine how time pressure, low energy, and missed sessions affect the next step."
+        ],
+        [
+          "Content review",
+          "Evaluate whether prompts support choice or create unnecessary obligation."
+        ]
+      ]
+    },
+    "problem": {
+      "statement": "Wellbeing routines can become harder to maintain when the product assumes consistent time, energy, and attendance. Rigid plans and punitive progress signals can make returning feel like recovering from failure.",
+      "hmw": "How might we help someone choose a useful practice for today and make returning feel straightforward?",
+      "constraints": [
+        "Keep the check-in brief and optional where appropriate.",
+        "Respect sensitive wellbeing information.",
+        "Avoid clinical or therapeutic claims unsupported by evidence."
+      ]
+    },
+    "insights": [
+      [
+        "Capacity changes from day to day",
+        "A useful recommendation should fit the time and energy available now. The plan should be adjustable without making the person feel they have broken it."
+      ],
+      [
+        "Re-entry is a core journey",
+        "Returning after a gap deserves deliberate design. A welcoming next step can be more useful than emphasizing lost continuity."
+      ],
+      [
+        "Progress should support reflection",
+        "Completion counts alone do not describe value. The experience should help people notice what fits them without ranking their wellbeing."
+      ]
+    ],
+    "audiences": [
+      [
+        "Person building a routine",
+        "Needs a small starting point and freedom to adapt it."
+      ],
+      [
+        "Person returning after a gap",
+        "Needs a clear, welcoming route back without accumulated obligations."
+      ]
+    ],
+    "journey": [
+      [
+        "Check in",
+        "Recognize current capacity",
+        "A long setup adds effort",
+        "Ask only relevant mood and time questions"
+      ],
+      [
+        "Choose",
+        "Find a suitable practice",
+        "Too many options create friction",
+        "Offer a manageable recommendation"
+      ],
+      [
+        "Practice",
+        "Start a brief activity",
+        "Commitment feels too large",
+        "Make duration and expectations clear"
+      ],
+      [
+        "Reflect",
+        "Notice what helped",
+        "Progress becomes a score",
+        "Use lightweight reflection"
+      ],
+      [
+        "Return",
+        "Resume after a gap",
+        "Missed days create pressure",
+        "Offer a fresh next step"
+      ]
+    ],
+    "strategy": {
+      "title": "Make the smallest useful action easy.",
+      "paragraphs": [
+        "The core scope is a short loop: check in, choose a suitable activity, complete or stop, and reflect. This makes the product’s value testable without requiring an extensive content catalog or complex personalization engine.",
+        "Recommendations should support agency. People need to change a suggestion, skip a check-in, or choose a different duration without feeling that the system’s plan is more important than their own circumstances."
+      ],
+      "priorities": [
+        [
+          "Core",
+          "Brief check-in, flexible activity selection, and supportive return."
+        ],
+        [
+          "Next",
+          "Personal preferences and reflective progress."
+        ],
+        [
+          "Later",
+          "Richer personalization after relevance and control are validated."
+        ]
+      ]
+    },
+    "architecture": {
+      "title": "Create a calm path with room to change direction.",
+      "paragraphs": [
+        "The structure centers on a current-day entry point and a clear activity choice. Reflection and history sit nearby without competing with the next useful action. A missed day should not create a backlog the person must clear.",
+        "Wireframes should explore how much context is needed before a recommendation and how easily someone can choose an alternative. The visual design should reinforce clear hierarchy and low interaction effort rather than relying on a calming palette alone."
+      ],
+      "wireframes": [
+        [
+          "Today view",
+          "Show a manageable next action and access to alternatives."
+        ],
+        [
+          "Check-in",
+          "Gather minimal context without creating a mandatory assessment."
+        ],
+        [
+          "Return state",
+          "Welcome the person back and offer an appropriate starting point."
+        ]
+      ]
+    },
+    "tradeoffs": [
+      [
+        "Personalization versus effort",
+        "Ask only for information that changes the recommendation. More input is not automatically a more caring experience."
+      ],
+      [
+        "Motivation versus pressure",
+        "Show continuity and reflection without turning missed days into punishment. The design should support return as well as completion."
+      ],
+      [
+        "Guidance versus autonomy",
+        "A recommendation should be easy to understand and easy to replace. People remain in control of their routine."
+      ]
+    ],
+    "validation": {
+      "paragraphs": [
+        "The proposed evaluation tests relevance, ease of starting, and emotional interpretation of progress. Include scenarios with low time, low energy, and a return after a gap rather than testing only an ideal first session.",
+        "Observe whether the language feels supportive and whether alternatives are easy to find. This plan does not establish clinical efficacy or claim a completed wellbeing study."
+      ],
+      "tasks": [
+        [
+          "Limited time",
+          "Find a practice with only a few minutes available.",
+          "Understand duration and start a manageable activity."
+        ],
+        [
+          "Change a suggestion",
+          "Reject the recommended activity.",
+          "Find an alternative without losing context."
+        ],
+        [
+          "Return after a gap",
+          "Resume after missing several days.",
+          "Recognize a welcoming next step without a perceived penalty."
+        ]
+      ]
+    },
+    "delivery": {
+      "paragraphs": [
+        "Delivery should define content tone, recommendation boundaries, and the treatment of skipped or incomplete activities. The system should not interpret every incomplete session as a negative outcome.",
+        "Accessibility includes readable text, reduced-motion support, clear audio alternatives where relevant, and predictable focus. Privacy decisions should minimize sensitive data collection and explain any information retained for personalization."
+      ],
+      "checks": [
+        "Supportive language across missed and incomplete states",
+        "Accessible content and reduced-motion behavior",
+        "Clear privacy choices and recommendation controls"
+      ]
+    }
+  },
+  "loop-learning": {
+    "executive": {
+      "mandate": "Connect cohort learning, learner questions, and instructor feedback in one understandable workflow.",
+      "decision": "Make confusion visible in context and turn feedback into a clear next action.",
+      "value": "Help learners progress while giving instructors a manageable view of where support is needed."
+    },
+    "context": [
+      "Loop Learning explores a cohort-based learning experience where lessons, questions, feedback, and progress often become fragmented across tools. The challenge is not simply to centralize content; it is to keep the learning conversation connected to the work.",
+      "The design focuses on contextual support, visible feedback cycles, and instructor triage. AI assistance is treated as a supporting mechanism with boundaries, rather than a substitute for instructor judgment."
+    ],
+    "discovery": {
+      "title": "Follow the feedback loop, not just the lesson.",
+      "paragraphs": [
+        "The discovery frame traces how a learner moves from content to a question, an attempt, feedback, and revision. Friction appears when context is lost between those steps or when a learner’s confusion remains invisible until an assessment.",
+        "The existing project themes include fragmented tools, hidden confusion, and instructor overload. The synthesis turns these into design questions about context, prioritization, and ownership to guide the proposed evaluation."
+      ],
+      "methods": [
+        [
+          "Learning journey map",
+          "Connect lesson context, questions, submissions, feedback, and revision."
+        ],
+        [
+          "Role analysis",
+          "Separate learner needs from instructor triage and cohort oversight."
+        ],
+        [
+          "Support-flow review",
+          "Identify when contextual help is sufficient and when a human response is needed."
+        ]
+      ]
+    },
+    "problem": {
+      "statement": "Learning slows when questions and feedback are detached from the material that prompted them. Learners lose the next step, while instructors must recover context and prioritize support across fragmented channels.",
+      "hmw": "How might we keep help connected to the learning task and make the next feedback action clear for both roles?",
+      "constraints": [
+        "Preserve lesson and submission context across interactions.",
+        "Keep instructor workload visible and manageable.",
+        "Make AI assistance distinguishable from authoritative feedback."
+      ]
+    },
+    "insights": [
+      [
+        "Context reduces repeated explanation",
+        "A question attached to a lesson or submission gives both learner and instructor a stronger starting point than an isolated message."
+      ],
+      [
+        "Feedback must lead somewhere",
+        "Receiving a comment is not the end of the loop. The learner needs to understand what to revise and how to resubmit or continue."
+      ],
+      [
+        "Visibility needs prioritization",
+        "Showing every signal at equal weight creates a new overload. Instructors need to identify blocked learners and unresolved issues without scanning every interaction."
+      ]
+    ],
+    "audiences": [
+      [
+        "Cohort learner",
+        "Needs contextual help, understandable feedback, and a clear next learning action."
+      ],
+      [
+        "Instructor",
+        "Needs actionable signals, linked context, and a manageable response queue."
+      ]
+    ],
+    "journey": [
+      [
+        "Learn",
+        "Engage with a lesson",
+        "Content and support are separated",
+        "Keep help in lesson context"
+      ],
+      [
+        "Ask",
+        "Express confusion",
+        "Questions lack relevant detail",
+        "Attach questions to the learning task"
+      ],
+      [
+        "Attempt",
+        "Submit work",
+        "Expectations are unclear",
+        "Show criteria and submission status"
+      ],
+      [
+        "Revise",
+        "Act on feedback",
+        "Comments lack a next step",
+        "Connect feedback to revision"
+      ],
+      [
+        "Support",
+        "Prioritize intervention",
+        "Signals overwhelm the instructor",
+        "Group unresolved and blocked work"
+      ]
+    ],
+    "strategy": {
+      "title": "Close the loop before expanding the platform.",
+      "paragraphs": [
+        "The first scope connects lesson context, questions, submissions, and actionable feedback. This creates a complete learning loop that can be evaluated without building every feature of a learning management system.",
+        "Instructor triage should focus on signals that require action. AI support can help with context and explanation, but escalation and authorship need to remain visible so people understand the source and limits of an answer."
+      ],
+      "priorities": [
+        [
+          "Core",
+          "Contextual questions, submission states, feedback, and revision."
+        ],
+        [
+          "Next",
+          "Instructor triage and clear escalation paths."
+        ],
+        [
+          "Later",
+          "Broader AI assistance after trust and learning value are evaluated."
+        ]
+      ]
+    },
+    "architecture": {
+      "title": "Connect two roles around shared learning objects.",
+      "paragraphs": [
+        "The information architecture centers on lessons, questions, submissions, and feedback. Learner and instructor views can prioritize different actions while referring to the same underlying context and status.",
+        "Wireframes should test whether a learner can move from feedback to revision and whether an instructor can find the relevant work from a support signal. These transitions matter more than a dashboard that summarizes activity without enabling action."
+      ],
+      "wireframes": [
+        [
+          "Learner workspace",
+          "Connect current lesson, work, and the next required action."
+        ],
+        [
+          "Contextual support",
+          "Keep the question and relevant learning material together."
+        ],
+        [
+          "Instructor queue",
+          "Surface unresolved work with context and response controls."
+        ]
+      ]
+    },
+    "tradeoffs": [
+      [
+        "Centralization versus density",
+        "Connect related information without showing everything at once. Use contextual detail so the active learning task remains clear."
+      ],
+      [
+        "Automation versus accountability",
+        "AI can support understanding, but its contribution should be identifiable and escalatable. Instructor feedback must remain distinct."
+      ],
+      [
+        "Visibility versus surveillance",
+        "Use learning signals to offer support rather than imply that every click measures comprehension. Prioritize meaningful actions and explicit learner needs."
+      ]
+    ],
+    "validation": {
+      "paragraphs": [
+        "The proposed evaluation follows both sides of the same feedback loop. A learner asks a contextual question and revises work; an instructor identifies the issue, inspects the submission, and responds.",
+        "Observe whether each role understands the status, owner, and next action. AI-assisted scenarios should also test whether people recognize the response source and know how to seek human support. These are planned evaluations, not claimed completed sessions."
+      ],
+      "tasks": [
+        [
+          "Ask in context",
+          "Request help from a difficult lesson.",
+          "Attach sufficient context without repeating the whole task."
+        ],
+        [
+          "Revise work",
+          "Act on feedback and submit a revision.",
+          "Identify the requested change and the updated status."
+        ],
+        [
+          "Triage support",
+          "Find a blocked learner and respond.",
+          "Locate relevant evidence and resolve or escalate the issue."
+        ]
+      ]
+    },
+    "delivery": {
+      "paragraphs": [
+        "Delivery should define shared statuses for questions, submissions, feedback, and revisions. Notifications need to point to a useful action and avoid generating repeated noise for a single unresolved issue.",
+        "Accessibility includes semantic lesson structure, keyboard navigation, clear form feedback, and media alternatives. AI-related content needs visible attribution, appropriate uncertainty, and a route to human review."
+      ],
+      "checks": [
+        "Shared status and ownership across learner and instructor views",
+        "Actionable notification and escalation behavior",
+        "Accessible learning content and transparent AI assistance"
+      ]
+    }
+  },
+  "iretv": {
+    "executive": {
+      "mandate": "Create a welcoming home for faith-centered films, live programming, and audio, with a clear path from discovery to viewing.",
+      "decision": "Organize the experience around viewer intent and make access, content context, and return viewing explicit.",
+      "value": "Connect an independent product vision to a working web experience and a documented first-film rental milestone."
+    },
+    "context": [
+      "IreTV is my independent streaming-platform project. It brings Christian films, series, live television, children’s programming, podcasts, radio, and devotionals into one product. The central design challenge is to give that breadth a clear structure while helping a viewer make a confident choice about what to watch.",
+      "The product evolved from a movie-rental architecture into a broader viewing and listening experience. This case study follows that evolution using the project’s information architecture, design-system contract, saved interface iterations, current local screens, and first-film launch notes. The process board explains the design direction alongside product screens."
+    ],
+    "evidence": [
+      [
+        "Product definition",
+        "The saved UX specification defines Discover → Evaluate → Rent → Watch → Return and separates public discovery, rental, viewing, account, and administration."
+      ],
+      [
+        "Design evolution",
+        "Earlier captures show the movie-first prototype under the inherited Mighty Arrow design-system branding. Current local captures show the IreTV welcome and film pages."
+      ],
+      [
+        "Documented milestone",
+        "The newer launch checklist records a controlled paid rental, a matching 14-day entitlement, and buyer-confirmed playback for The Travails of Maria. It also lists unresolved launch checks."
+      ]
+    ],
+    "discovery": {
+      "title": "Start with the viewing decision, not the content grid.",
+      "paragraphs": [
+        "The initial product specification provides a concrete discovery frame: a person needs to find something relevant, judge whether it fits the moment, understand the terms of access, watch successfully, and return later. That sequence makes the experience more than a collection of film posters. Each stage carries a different question, and the interface needs to answer it before asking for the next commitment.",
+        "The discovery approach separates the documented requirements from assumptions that still need viewer research. The requirements establish curated collections, content guidance, transparent rental terms, watchlists, and resume behavior. The working hypotheses concern why someone hesitates: uncertainty about suitability, confusion between free and paid content, or difficulty recovering a previous viewing session. These hypotheses guide the next evaluation rather than being presented as interview findings."
+      ],
+      "methods": [
+        [
+          "Requirements synthesis",
+          "Map the existing product specification to the decisions a viewer makes before and after pressing play. Keep public discovery, account identity, and paid access separate."
+        ],
+        [
+          "Artifact review",
+          "Compare saved catalog, detail, and library iterations with the current product to explain how the hierarchy and brand evolved."
+        ],
+        [
+          "State and dependency mapping",
+          "Trace what happens when a viewer is signed out, has saved a film, has paid, has an expired rental, or cannot start playback."
+        ]
+      ]
+    },
+    "problem": {
+      "statement": "A faith-centered catalog needs to communicate more than availability. Viewers need enough story and content context to choose confidently, a clear distinction between saving and accessing a title, and a dependable path back to their viewing. If those states blur together, a visually rich interface can still leave basic questions unanswered.",
+      "hmw": "How might we help viewers discover a meaningful title, understand their access, and continue watching with confidence?",
+      "constraints": [
+        "Support multiple media formats without overloading the primary navigation.",
+        "Keep a saved title, a confirmed rental, and playback progress as distinct states.",
+        "Use the existing design system while allowing IreTV’s cinematic identity to develop."
+      ]
+    },
+    "insights": [
+      [
+        "Suitability is part of discovery",
+        "The specification pairs synopsis and trailer with a Faith & Family Guide. The design hypothesis is that context about themes and content helps a household make its own choice; the platform should provide useful information rather than imply that one rating fits every family."
+      ],
+      [
+        "Saving is not ownership",
+        "A watchlist expresses interest. A rental grants time-limited access. Keeping those concepts separate avoids a misleading moment where a saved film appears playable or a completed payment is confused with a bookmark."
+      ],
+      [
+        "Return viewing needs its own architecture",
+        "Continue Watching, Watchlist, and History serve different intentions. Treating them as distinct library views helps a viewer resume unfinished content, revisit a saved choice, or find something previously watched."
+      ]
+    ],
+    "audiences": [
+      [
+        "Viewer choosing for a household",
+        "Needs story context, runtime, content guidance, and clear access terms before choosing a film. This is a provisional audience model, not a research persona."
+      ],
+      [
+        "Returning viewer or listener",
+        "Needs a familiar route back to saved content and previous progress across the product’s different media experiences."
+      ]
+    ],
+    "journey": [
+      [
+        "Discover",
+        "Find a relevant film or program",
+        "A broad catalog can feel undifferentiated",
+        "Use clear media categories and curated collections"
+      ],
+      [
+        "Evaluate",
+        "Decide whether it fits the moment",
+        "Artwork alone cannot explain suitability",
+        "Provide synopsis, trailer, runtime, and content guidance"
+      ],
+      [
+        "Access",
+        "Understand how to watch",
+        "Free, saved, and rented states can blur",
+        "Show the applicable access action and rental terms"
+      ],
+      [
+        "Watch",
+        "Start and continue playback",
+        "A confirmed payment does not guarantee a working player",
+        "Connect entitlement checks, player feedback, and recovery"
+      ],
+      [
+        "Return",
+        "Resume or find a saved title",
+        "Progress and interest are different kinds of data",
+        "Separate Continue Watching, Watchlist, and History"
+      ]
+    ],
+    "strategy": {
+      "title": "Make one complete viewing journey work.",
+      "paragraphs": [
+        "The early architecture is rental-first, while the current welcome experience introduces a wider mix of films, live programming, and audio. The strategic thread is the same: help someone move from intent to a useful viewing session. The first-film launch provides a concrete delivery slice inside that wider ambition, rather than requiring every platform feature to mature at once.",
+        "Scope also needs to reflect implementation reality. The project has account and library code, a first-film payment and entitlement flow, and documented playback checks. Broader household controls and some account surfaces remain previews in the older documentation. The case study therefore describes specific delivered capabilities and open work instead of implying the entire platform is complete."
+      ],
+      "priorities": [
+        [
+          "Foundation",
+          "Discovery hierarchy, film evaluation, account identity, and a persistent library."
+        ],
+        [
+          "Launch slice",
+          "The Travails of Maria: explicit offer, authenticated checkout, verified access, and protected playback."
+        ],
+        [
+          "Next",
+          "Complete remaining launch checks, evaluate viewer comprehension, and refine cross-format navigation."
+        ]
+      ]
+    },
+    "architecture": {
+      "title": "Separate where to look from what you can do.",
+      "paragraphs": [
+        "The information architecture groups public discovery, title evaluation, access, playback, and the personal library. Within discovery, genres classify the catalog while collections provide an editorial lens such as a viewing occasion or theme. This distinction lets the product merchandise content without constantly changing its underlying classification.",
+        "The concept wireframes below reduces the experience to three decisions: find a title, evaluate it, and return to it. Its purpose is to expose hierarchy and state relationships beneath the final artwork. The complete product specification also covers checkout, payment failure, expiration, and playback recovery."
+      ],
+      "wireframes": [
+        [
+          "Discover",
+          "Give the featured title one clear action, then offer curated groups and a visible route to search."
+        ],
+        [
+          "Evaluate",
+          "Place story context and access terms near the primary action; keep trailer and watchlist as distinct alternatives."
+        ],
+        [
+          "Return",
+          "Separate unfinished viewing from saved interest and history, with a clear status and next action for each title."
+        ]
+      ]
+    },
+    "tradeoffs": [
+      [
+        "Cinematic presentation versus decision clarity",
+        "Large artwork establishes the entertainment experience, but it cannot substitute for runtime, synopsis, content guidance, and access terms. The interface needs enough contrast and hierarchy for those details to remain readable over imagery."
+      ],
+      [
+        "Account continuity versus browsing friction",
+        "Accounts support private libraries and progress, but authentication can interrupt discovery. The current local welcome journey leads into sign-in for catalog exploration. That boundary deserves usability testing: a viewer should understand why an account is needed and retain the context that prompted the action."
+      ],
+      [
+        "Broad platform ambition versus a dependable launch",
+        "Films, live television, kids programming, and audio create a compelling vision but also different playback and persistence requirements. A complete, verified first-film path is a stronger delivery milestone than presenting every design preview as production-ready."
+      ]
+    ],
+    "validation": {
+      "paragraphs": [
+        "The available evidence includes technical and launch checks rather than a documented viewer usability study. The newer launch checklist records one controlled paid capture, a matching 336-hour entitlement, and buyer-confirmed playback. It also records an initial playback referrer issue that was fixed, plus checks denying playback to signed-out and unpaid requests. Those are useful delivery signals, but they do not establish general usability or conversion performance.",
+        "The next evaluation should observe how people interpret the experience. Use the tasks below with representative viewers, ask them to explain their understanding in their own words, and record hesitation as well as completion. No participant counts, satisfaction scores, or conversion improvements are invented here. Real refund behavior, territory coverage, account-email flows, and support readiness remain explicit follow-ups in the launch documentation."
+      ],
+      "tasks": [
+        [
+          "Choose for a household",
+          "Find a film for an evening together and explain why it fits.",
+          "Locate relevant story, runtime, and content guidance without relying only on artwork."
+        ],
+        [
+          "Explain access",
+          "Compare a saved film, free content, and the featured rental before committing.",
+          "Distinguish saving from access and accurately describe the applicable price and viewing window."
+        ],
+        [
+          "Return and recover",
+          "Resume an interrupted title, then encounter an unavailable or expired state.",
+          "Find the correct library item, understand the status, and identify the appropriate next step."
+        ]
+      ]
+    },
+    "delivery": {
+      "paragraphs": [
+        "The implementation uses a shared component and token system for navigation, cards, forms, dialogs, tabs, and feedback. The existing design-system contract explicitly favors adapting compositions over adding page-specific styling. That provides continuity across a cinematic public experience and more functional account and library screens.",
+        "For the first paid film, the important handoff boundary is between the customer’s payment action and confirmed access. The project implements server-side verification and time-limited playback access; a browser success message alone is not treated as permission to watch. From a UX perspective, the same distinction must remain visible in pending, failed, expired, and recovery states. Accessibility work should cover keyboard navigation through content rails, dialog focus, text over artwork, captions where available, and understandable playback feedback."
+      ],
+      "checks": [
+        "Consistent access language across detail, checkout, library, and player.",
+        "Clear state handling for pending payment, failed playback, expiration, and return viewing.",
+        "Keyboard and focus behavior, readable imagery overlays, and accessible media controls."
+      ]
+    }
+  },
+  "enta": {
+    "executive": {
+      "mandate": "Make cross-border payments and digital asset management understandable within one account.",
+      "decision": "Organize the experience around customer intent, with destination, conversion and review made explicit.",
+      "value": "Help people understand where their money is, where it will go, and what they must check before committing."
+    },
+    "context": [
+      "Enta brings local bank rails and digital assets into the same product experience. Its public interface supports receiving, sending, buying and holding, with separate entry points for individuals and businesses. That breadth creates a design challenge: a familiar action such as sending money can involve different currencies, destinations and processing conditions.",
+      "As Lead Designer, my responsibility is represented here through the product experience and interface decisions. The case study examines the publicly visible dashboard and transaction demonstrations, focusing on hierarchy, decision clarity and continuity across steps. The screens show demonstration data rather than customer accounts."
+    ],
+    "discovery": {
+      "title": "Follow the money task, not the underlying technology.",
+      "paragraphs": [
+        "The discovery frame begins with the customer’s situation: receiving income, paying someone, buying an asset, or checking a balance. Each situation calls for different information, even when it shares the same payment infrastructure. Mapping these intents helps distinguish the customer’s goal from the technical choices the system must resolve.",
+        "The public product walkthrough provides a concrete starting point for reviewing terminology, sequence and feedback. The key questions concern the moment a destination is selected, the point a conversion becomes clear, and the transition from an instruction to a confirmed transaction. These observations inform the design hypotheses below; they are not presented as interview findings."
+      ],
+      "methods": [
+        [
+          "Task walkthrough",
+          "Trace the visible send, purchase and wallet flows. Identify what the customer needs to know before each consequential choice."
+        ],
+        [
+          "Information hierarchy review",
+          "Compare account-level totals with asset-level amounts, transaction activity and action controls. Check whether each answers a distinct question."
+        ],
+        [
+          "State and dependency mapping",
+          "Separate a quote, an order, payment instructions and confirmed receipt. Identify where external bank or network processing can interrupt the journey."
+        ]
+      ]
+    },
+    "problem": {
+      "statement": "People moving between local currency and digital assets need to understand the destination, conversion and status of their money. When technical distinctions or processing steps are implicit, a simple task can become difficult to verify or recover.",
+      "hmw": "How might we make moving and holding money feel coherent while keeping the details of each transaction visible?",
+      "constraints": [
+        "Keep currency, asset and network meanings distinct.",
+        "Show the amount paid and received before commitment.",
+        "Explain pending and time-sensitive steps without implying completion."
+      ]
+    },
+    "insights": [
+      [
+        "Intent provides the entry point",
+        "Send, receive, buy and hold describe recognizable goals. Technical choices should appear when they are relevant to the selected goal, with enough context to support a correct decision."
+      ],
+      [
+        "A balance is only useful with context",
+        "A combined total supports orientation, but the individual holdings and display currency remain important. People need to understand what the number represents before moving money."
+      ],
+      [
+        "Instructions and confirmation are different states",
+        "A purchase can require a bank payment after an order is created. The interface needs to explain what remains to be done and preserve access to the transaction record."
+      ]
+    ],
+    "audiences": [
+      [
+        "Individual moving money across borders",
+        "Needs to understand destination, recipient amount and the next step without decoding infrastructure terminology."
+      ],
+      [
+        "Customer managing multiple holdings",
+        "Needs a coherent overview with enough asset-level detail to make an informed action."
+      ]
+    ],
+    "journey": [
+      [
+        "Orient",
+        "Understand available money",
+        "Different holdings can obscure what a total means",
+        "Show the display currency and asset breakdown"
+      ],
+      [
+        "Choose",
+        "Identify the intended action",
+        "Payment routes have different requirements",
+        "Begin with intent and destination"
+      ],
+      [
+        "Review",
+        "Understand the exchange",
+        "Paid and received amounts may be confused",
+        "Pair amounts, currency and relevant details"
+      ],
+      [
+        "Complete",
+        "Follow the required payment step",
+        "An order may still need external payment",
+        "Explain instructions and time limits"
+      ],
+      [
+        "Track",
+        "Know what happened",
+        "Submitted may be mistaken for completed",
+        "Retain status and access to transaction detail"
+      ]
+    ],
+    "strategy": {
+      "title": "Build a coherent account around distinct money tasks.",
+      "paragraphs": [
+        "The experience uses a shared account model while allowing each transaction type to expose its own requirements. A single generic form would conceal meaningful differences between a bank destination and an external wallet. Separate task entry points preserve those distinctions without fragmenting the overall experience.",
+        "The scope prioritizes orientation, destination selection and review. These are the points where interface clarity can support informed action. Additional services should inherit the same language for amounts, states and next steps so that breadth does not erode consistency."
+      ],
+      "priorities": [
+        [
+          "Core",
+          "Account orientation, clear task entry and destination-specific review."
+        ],
+        [
+          "Next",
+          "Consistent transaction tracking and guidance when an external step remains."
+        ],
+        [
+          "Later",
+          "Broader services using the same amount, status and confirmation patterns."
+        ]
+      ]
+    },
+    "architecture": {
+      "title": "Move from account overview to a focused transaction.",
+      "paragraphs": [
+        "The public dashboard places balances, recent transactions and transaction tools within a persistent account shell. Navigation separates wallets, payment links, beneficiaries and transactions. This lets a customer orient at account level before entering a task that requires more concentrated attention.",
+        "The transaction model progresses from intent to relevant details, review, required action and status. A low-fidelity exploration should test that hierarchy before visual polish: can someone distinguish the amount they send from what arrives, identify the selected destination, and explain whether another action is needed?"
+      ],
+      "wireframes": [
+        [
+          "Account overview",
+          "Prioritize the balance context and common actions; retain access to recent activity."
+        ],
+        [
+          "Transaction review",
+          "Bring destination, paid amount, received amount and relevant conditions into one decision surface."
+        ],
+        [
+          "Instructions and status",
+          "Separate the remaining action from the transaction record, with a clear path back to details."
+        ]
+      ]
+    },
+    "tradeoffs": [
+      [
+        "A unified account versus different payment routes",
+        "Shared navigation helps orientation, but transaction forms need to respect route-specific information. Consistency should preserve meaning rather than force every flow into identical fields."
+      ],
+      [
+        "A simple total versus financial detail",
+        "An aggregate balance is useful for scanning. Individual holdings and display currency should remain accessible so the summary does not obscure its components."
+      ],
+      [
+        "Motion versus readability",
+        "Animated demonstrations can explain sequence, but a case-study reader also needs stable frames to inspect labels and hierarchy. Still captures are paired with a link to the live demonstration."
+      ]
+    ],
+    "validation": {
+      "paragraphs": [
+        "The proposed evaluation should focus on comprehension before speed. Ask participants to describe the destination, amount paid, amount received and next required action at each key step. Observe misunderstandings without explaining the interface in advance.",
+        "Include incomplete and delayed scenarios alongside the happy path. A successful evaluation should show whether someone can distinguish an order from a completed payment and locate a useful transaction record. No participant counts or measured improvements are claimed here."
+      ],
+      "tasks": [
+        [
+          "Choose a destination",
+          "Send to a bank account rather than an external wallet.",
+          "Customer chooses the appropriate route and explains the distinction."
+        ],
+        [
+          "Review a purchase",
+          "Explain what is paid and what is received before continuing.",
+          "Customer identifies both amounts and their currencies correctly."
+        ],
+        [
+          "Understand an incomplete order",
+          "Encounter bank payment instructions before completion.",
+          "Customer recognizes the outstanding action and finds the order details."
+        ]
+      ]
+    },
+    "delivery": {
+      "paragraphs": [
+        "Delivery should translate the visual sequence into an explicit state model. The interface needs dependable labels for initiation, review, required payment, pending processing, completion and failure. Time-sensitive instructions should state what happens when their window expires and how the customer can safely continue.",
+        "Reusable amount displays, destination summaries and status messages can keep the experience consistent across transaction routes. Keyboard operation, clear focus, readable labels and reduced-motion behavior should accompany the visual design. The public product demos provide the visual reference for this case study; the live experience is linked for readers who want to see the interaction sequence."
+      ],
+      "checks": [
+        "Currency, asset and destination labels across review surfaces",
+        "Distinct instructions, pending and confirmed states",
+        "Accessible controls, status announcements and reduced motion"
+      ]
+    }
+  },
+  "pulse": {
+    "executive": {
+      "mandate": "Give partner teams a shared view of collection, conversion and settlement.",
+      "decision": "Separate lifecycle stages and connect exceptions to the evidence needed to investigate them.",
+      "value": "Support clearer reconciliation and handoffs between operations, finance and integration teams."
+    },
+    "context": [
+      "Pulse is a settlement platform connecting digital assets and local currency. The partner experience sits between an integration and the people responsible for its operation. An API can initiate a flow, but a team still needs to understand which payments arrived, which converted, which settled, and which require attention.",
+      "This case study focuses on the partner console visible in Pulse’s public interactive demo. The dashboard, transaction list, exception detail and webhook screens provide a connected view of the operating model. Their figures and customer records are Test-mode examples; they illustrate interface behavior rather than measured business performance."
+    ],
+    "discovery": {
+      "title": "Find the gaps between a payment event and an operational answer.",
+      "paragraphs": [
+        "The discovery frame follows one order across systems and responsibilities. A customer may have paid while conversion is pending, settlement has failed, or an amount mismatch requires review. Treating these situations as one generic processing state would obscure both the cause and the next responsible team.",
+        "Reviewing the public demo reveals the questions the experience must answer at different levels. The dashboard summarizes activity, the transaction list supports comparison, and the detail page provides a sequence of evidence. The proposed discovery work would test that hierarchy with operational and integration roles, particularly during exceptions."
+      ],
+      "methods": [
+        [
+          "Lifecycle walkthrough",
+          "Follow an order from its pegged amount through payment, conversion and settlement. Record where each stage changes the meaning of the transaction."
+        ],
+        [
+          "Exception comparison",
+          "Compare underpaid, expired, failed and unsettled examples. Check whether labels distinguish what happened from what remains unresolved."
+        ],
+        [
+          "Cross-role information review",
+          "Identify the fields finance needs for reconciliation, the status operations needs for triage, and the event evidence developers need for diagnosis."
+        ]
+      ]
+    },
+    "problem": {
+      "statement": "Partner teams need to explain and reconcile money movement across multiple stages. When incoming payment, conversion and settlement are collapsed into a single status, they cannot reliably identify a delay, understand an amount mismatch, or determine where investigation should begin.",
+      "hmw": "How might we make every payment’s progress and exceptions understandable across operations, finance and engineering?",
+      "constraints": [
+        "Preserve the distinction between received, converted and settled value.",
+        "Keep amounts, currencies and transaction identifiers readable in dense views.",
+        "Expose exceptions without implying that every operator has authority to resolve them."
+      ]
+    },
+    "insights": [
+      [
+        "A transaction has several meaningful amounts",
+        "Expected value, received payment and settled value answer different operational questions. Keeping them separate reduces ambiguity in both scanning and investigation."
+      ],
+      [
+        "Exceptions need an explanation, not just a badge",
+        "An underpayment label becomes useful when it is paired with the expected amount, actual amount and difference. The next layer should show which stages remain pending."
+      ],
+      [
+        "Integration delivery is part of operational visibility",
+        "A partner may need to know whether an event was delivered as well as whether a payment progressed. Transaction evidence and webhook monitoring serve related but distinct questions."
+      ]
+    ],
+    "audiences": [
+      [
+        "Finance and payment operations",
+        "Need to reconcile amounts, triage exceptions and explain the current state of a transaction."
+      ],
+      [
+        "Partner integration team",
+        "Needs to inspect event delivery and understand whether the integration is receiving lifecycle updates."
+      ]
+    ],
+    "journey": [
+      [
+        "Monitor",
+        "Understand settlement performance",
+        "Aggregate activity can conceal unresolved orders",
+        "Separate performance measures and attention queues"
+      ],
+      [
+        "Locate",
+        "Find a payment or exception",
+        "Dense records are difficult to scan",
+        "Use search, filters and explicit status labels"
+      ],
+      [
+        "Compare",
+        "Identify an amount mismatch",
+        "Expected and received values may be conflated",
+        "Display pegged, paid and settled amounts separately"
+      ],
+      [
+        "Investigate",
+        "Explain where progress stopped",
+        "Evidence is distributed across stages",
+        "Connect warnings, timeline and transaction details"
+      ],
+      [
+        "Coordinate",
+        "Share a reliable operational account",
+        "Payment state and event delivery can diverge",
+        "Expose identifiers and webhook evidence"
+      ]
+    ],
+    "strategy": {
+      "title": "Design the console around the questions teams need to answer.",
+      "paragraphs": [
+        "The operating strategy connects summary, comparison and investigation. A dashboard should help someone decide where to look; a list should help them find the relevant record; a detail page should explain that record. Each level has a distinct purpose, so the interface can become more detailed without becoming repetitive.",
+        "The first priority is a coherent lifecycle vocabulary. Labels such as paid, converted and settled must carry the same meaning in cards, tables and timelines. Integration tools then extend the view to event delivery, without forcing every operator to work through developer terminology to understand a payment."
+      ],
+      "priorities": [
+        [
+          "Core",
+          "Settlement overview, transaction search and evidence-led exception detail."
+        ],
+        [
+          "Next",
+          "Consistent event delivery visibility and clear handoffs between teams."
+        ],
+        [
+          "Later",
+          "Broader reporting and configuration built on the same lifecycle definitions."
+        ]
+      ]
+    },
+    "architecture": {
+      "title": "Create a path from business performance to transaction evidence.",
+      "paragraphs": [
+        "The public console separates workspace functions from developer tools and organization settings. Home and Transactions support the frequent operational loop, while Webhooks and other integration controls remain available in a distinct navigation group. This preserves access without giving every function equal prominence.",
+        "Within a transaction, the exception summary precedes the timeline and supporting details. The low-fidelity question is whether that order matches the operator’s reasoning: what is wrong, how far did the transaction progress, and what evidence identifies it? The structure should support that sequence before adding more controls."
+      ],
+      "wireframes": [
+        [
+          "Monitoring overview",
+          "Separate settled volume, activity and settlement rate; provide a route into unresolved work."
+        ],
+        [
+          "Comparison table",
+          "Keep customer, amount, asset and status aligned for scanning and investigation."
+        ],
+        [
+          "Exception workspace",
+          "Place the issue above a stage timeline, with identifiers and settlement details alongside."
+        ]
+      ]
+    },
+    "tradeoffs": [
+      [
+        "Information density versus scanability",
+        "Operations needs detailed records, but dense tables can make critical distinctions harder to see. Stable column alignment and explicit status text help preserve comparison while detail pages hold the deeper evidence."
+      ],
+      [
+        "Shared visibility versus role-specific control",
+        "Finance and developers benefit from a common transaction reference. That does not mean they need identical permissions or actions. The information architecture should support a shared understanding with appropriate control boundaries."
+      ],
+      [
+        "Summary metrics versus diagnostic evidence",
+        "A settlement rate can signal a question but cannot explain an individual exception. The dashboard should lead into supporting records rather than become a substitute for investigation."
+      ]
+    ],
+    "validation": {
+      "paragraphs": [
+        "The proposed evaluation would test whether participants can explain the lifecycle in their own words. Give an operator a paid but unsettled record and ask whether the partner has received the funds. Give a finance reviewer an underpayment and ask which values establish the discrepancy.",
+        "For integration work, test whether a developer can distinguish transaction progress from event delivery. Observe the path from a record to its supporting evidence and note any terminology that causes the participant to infer completion too early. These are proposed evaluation scenarios, not reported study results."
+      ],
+      "tasks": [
+        [
+          "Reconcile a record",
+          "Compare the pegged, customer-paid and settled amounts.",
+          "Reviewer identifies the meaning and currency of each amount."
+        ],
+        [
+          "Investigate underpayment",
+          "Explain the warning and remaining timeline stages.",
+          "Operator identifies the mismatch without confusing it with completed settlement."
+        ],
+        [
+          "Check integration visibility",
+          "Inspect webhook delivery alongside transaction evidence.",
+          "Developer distinguishes event delivery from the underlying payment state."
+        ]
+      ]
+    },
+    "delivery": {
+      "paragraphs": [
+        "Implementation should preserve the lifecycle model across data, labels and interaction states. The same order should not appear complete in one surface while retaining an unexplained pending state elsewhere. Empty, stale, failed and partially completed states need defined behavior alongside the populated Test-mode examples.",
+        "Reusable tables, status labels, amount formatting and timeline components can support consistency across the console. Accessible table headers, keyboard navigation, readable focus states and text equivalents for colored status indicators are particularly important in dense operational interfaces. The public demo is linked so readers can explore these screens in context."
+      ],
+      "checks": [
+        "Consistent amount and status definitions across summary and detail",
+        "Role-aware actions and clear Test-mode context",
+        "Readable tables, keyboard access and non-color status meaning"
+      ]
+    }
+  }
+}

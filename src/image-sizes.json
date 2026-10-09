@@ -1,0 +1,246 @@
+{
+  "uba-product.png": [
+    773,
+    650
+  ],
+  "shiftsnap-hero-phones.png": [
+    1349,
+    1166
+  ],
+  "pattern-library-thumbnail.png": [
+    1800,
+    1360
+  ],
+  "finwise-dashboard.png": [
+    852,
+    1846
+  ],
+  "daniel-johnson-about-portrait.png": [
+    832,
+    1248
+  ],
+  "finwise-transfer.png": [
+    853,
+    1844
+  ],
+  "loop-product.png": [
+    664,
+    807
+  ],
+  "finwise-savings.png": [
+    853,
+    1844
+  ],
+  "shiftsnap-complete-user-experience.png": [
+    1410,
+    1972
+  ],
+  "shiftsnap-case-study.png": [
+    172,
+    1600
+  ],
+  "daniel-johnson-portrait.png": [
+    896,
+    1152
+  ],
+  "finwise-research-process.png": [
+    1672,
+    941
+  ],
+  "finwise-product-screens.png": [
+    1672,
+    941
+  ],
+  "metric-os-product.png": [
+    1305,
+    993
+  ],
+  "grounded-product.png": [
+    773,
+    680
+  ],
+  "daniel-johnson-cutout.png": [
+    1173,
+    1341
+  ],
+  "navflow/executive-dashboard.png": [
+    1050,
+    1600
+  ],
+  "navflow/workflow-pipeline.png": [
+    1600,
+    1280
+  ],
+  "navflow/workflow-pipeline-wide.png": [
+    1920,
+    1200
+  ],
+  "navflow/agent-operations-wide.png": [
+    1905,
+    1200
+  ],
+  "navflow/validation-tollgate.png": [
+    1600,
+    1280
+  ],
+  "navflow/human-approval.png": [
+    1600,
+    1280
+  ],
+  "navflow/email-ingestion.png": [
+    1600,
+    1222
+  ],
+  "navflow/executive-dashboard-wide.png": [
+    1905,
+    1200
+  ],
+  "navflow/logo.png": [
+    1024,
+    1024
+  ],
+  "navflow/human-approval-wide.png": [
+    1920,
+    1200
+  ],
+  "navflow/email-ingestion-wide.png": [
+    1920,
+    1200
+  ],
+  "navflow/validation-tollgate-wide.png": [
+    1920,
+    1200
+  ],
+  "navflow/agent-operations.png": [
+    1353,
+    1600
+  ],
+  "process/pattern-library-board.png": [
+    1536,
+    1024
+  ],
+  "process/grounded-board.png": [
+    1536,
+    1024
+  ],
+  "process/metric-os-board.png": [
+    1536,
+    1024
+  ],
+  "process/uba-mobile-board.png": [
+    1536,
+    1024
+  ],
+  "process/navflow-ai-board.png": [
+    1536,
+    1024
+  ],
+  "process/loop-learning-board.png": [
+    1536,
+    1024
+  ],
+  "process/shiftsnap-board.png": [
+    1536,
+    1024
+  ],
+  "process/finwise-board.png": [
+    1536,
+    1024
+  ],
+  "iretv/detail-iteration.png": [
+    1440,
+    1376
+  ],
+  "iretv/catalog-iteration.png": [
+    1440,
+    2211
+  ],
+  "iretv/library-iteration.png": [
+    1440,
+    1100
+  ],
+  "iretv/film-detail.png": [
+    1265,
+    712
+  ],
+  "iretv/welcome.png": [
+    1265,
+    712
+  ],
+  "process/iretv-board.png": [
+    1536,
+    1024
+  ],
+  "screens/uba-payments.png": [
+    1265,
+    842
+  ],
+  "screens/grounded-checkin.png": [
+    1265,
+    842
+  ],
+  "screens/uba-controls.png": [
+    1265,
+    842
+  ],
+  "screens/uba-onboarding.png": [
+    1265,
+    842
+  ],
+  "screens/metric-evidence.png": [
+    1265,
+    777
+  ],
+  "screens/metric-health.png": [
+    1265,
+    1269
+  ],
+  "screens/loop-learning-hub.png": [
+    1265,
+    981
+  ],
+  "screens/loop-feedback.png": [
+    1265,
+    860
+  ],
+  "screens/loop-instructor.png": [
+    1265,
+    783
+  ],
+  "screens/grounded-practices.png": [
+    1265,
+    842
+  ],
+  "enta/buy.png": [
+    1265,
+    712
+  ],
+  "enta/dashboard.png": [
+    1265,
+    712
+  ],
+  "enta/wallet.png": [
+    1265,
+    712
+  ],
+  "enta/send.png": [
+    1265,
+    712
+  ],
+  "pulse/transactions.png": [
+    1269,
+    714
+  ],
+  "pulse/dashboard.png": [
+    1269,
+    714
+  ],
+  "pulse/webhooks.png": [
+    1280,
+    720
+  ],
+  "pulse/exception.png": [
+    1269,
+    714
+  ]
+}
