@@ -7,6 +7,7 @@
     "role": "Lead product designer",
     "scope": "Developer journey · Information architecture · API explorer · Documentation",
     "platform": "Responsive web application",
+    "prototypeUrl": "./meridian-prototype.html",
     "image": "meridian/overview.svg",
     "alt": "Meridian payments API workspace with a guided quickstart and runnable request panel.",
     "intro": "Turn a complex payments API into a sequence developers can understand, test, and take to production.",
