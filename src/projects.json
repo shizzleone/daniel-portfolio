@@ -315,51 +315,6 @@
     "prototypeUrl": "https://www.entashiga.io/"
   },
   {
-    "id": "metric-os",
-    "name": "AURA",
-    "category": "Enterprise \u00b7 Incident intelligence",
-    "summary": "An AI-assisted incident triage workspace that helps SREs move from alert overload to a safe, verified response.",
-    "role": "Lead UX & systems designer",
-    "scope": "Incident journey \u00b7 Information architecture \u00b7 AI interaction \u00b7 Design system \u00b7 React prototype",
-    "platform": "Web application prototype \u00b7 8 weeks",
-    "image": "metric-os-product.png",
-    "alt": "Metric OS incident workspace with service topology, correlated logs and a rollback recommendation",
-    "intro": "Turn a storm of alerts into a clear, accountable path to recovery.",
-    "overview": "AURA is an incident triage workspace that brings service topology, live telemetry, AI diagnosis, and human-approved remediation into one investigation canvas.",
-    "challenge": "During a P0/P1 incident, SREs lose time moving between alerting, logs, infrastructure dashboards, and runbooks. The design challenge was to preserve technical depth while making the causal thread and the next safe action visible.",
-    "decisions": [
-      [
-        "Keep the investigation in one canvas",
-        "A three-column workspace keeps impacted services, streaming telemetry, and AI-supported reasoning visible together so operators do not rebuild context across tools."
-      ],
-      [
-        "Make AI recommendations inspectable",
-        "The diagnosis shows its confidence, supporting signal, and exact command before a person can approve an action."
-      ],
-      [
-        "Design remediation as a human decision",
-        "The operator reviews the proposed change, understands its expected impact, and explicitly approves execution."
-      ],
-      [
-        "Make recovery verifiable",
-        "The workspace distinguishes an action being applied from the system actually returning to a healthy state."
-      ]
-    ],
-    "outcome": "The prototype makes the incident decision chain visible: detect, understand, evaluate, approve, act, and verify. Proposed measures include time to assigned action, time spent reconciling evidence, remediation approval confidence, and recovery verification time.",
-    "gallery": [
-      [
-        "screens/metric-health.png",
-        "System-health overview: service availability, signal composition, latency, capacity, and resolution work share a common context. Interface values are sample data.",
-        "architecture"
-      ],
-      [
-        "screens/metric-evidence.png",
-        "Investigation detail: correlated logs and a root-cause hypothesis lead into an explicit action review. Sample incident data illustrates the interaction.",
-        "decision-1"
-      ]
-    ]
-  },
-  {
     "id": "sendory",
     "name": "Sendory",
     "category": "Innovation \u00b7 Newsletter creation",

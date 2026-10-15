@@ -1,5 +1,8 @@
 {
-  "meridian/overview.svg": [1723, 1240],
+  "meridian/overview.svg": [
+    1723,
+    1240
+  ],
   "dev-mode/overview.png": [
     1723,
     1240
@@ -80,10 +83,6 @@
     1672,
     941
   ],
-  "metric-os-product.png": [
-    1305,
-    993
-  ],
   "grounded-product.png": [
     773,
     680
@@ -152,10 +151,6 @@
     1536,
     1024
   ],
-  "process/metric-os-board.png": [
-    1536,
-    1024
-  ],
   "process/uba-mobile-board.png": [
     1536,
     1024
@@ -215,14 +210,6 @@
   "screens/uba-onboarding.png": [
     1265,
     842
-  ],
-  "screens/metric-evidence.png": [
-    1265,
-    777
-  ],
-  "screens/metric-health.png": [
-    1265,
-    1269
   ],
   "screens/loop-learning-hub.png": [
     1265,
