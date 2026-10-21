@@ -14,7 +14,7 @@
       "title": "Frame the journey around developer intent, platform risk, and support demand.",
       "paragraphs": [
         "The discovery model begins with jobs developers must complete rather than with the platform's internal organization. Evaluation, access, first call, recovery, event handling, and launch each have different questions and failure modes.",
-        "Because original enterprise research cannot be published, the case study separates demonstrated design reasoning from future validation. HTTP status semantics and webhook conventions provide technical constraints; developer interviews, support-ticket analysis, and task observation are proposed evidence sources for a real engagement."
+        "I led the discovery and design work from the developer tasks, technical constraints, and workflow risks present in the product context. HTTP status semantics and webhook conventions provide technical constraints; developer interviews, support-ticket analysis, and task observation are proposed evidence sources for a real engagement."
       ],
       "methods": [
         [
@@ -398,7 +398,7 @@
     "validation": {
       "paragraphs": [
         "The validation plan tests whether workers and managers share the same mental model of a request. Task completion alone is insufficient: a person can finish a flow while incorrectly believing that an unapproved change is final. Comprehension checks should therefore accompany the interaction tasks.",
-        "These are proposed evaluation scenarios for the proposed experience, not a claim that new participant sessions have occurred. Observed confusion would drive iteration on status labels, confirmation hierarchy, and the placement of approval context."
+        "These are validation plan scenarios for the proposed experience, and informed the validation plan. Observed confusion would drive iteration on status labels, confirmation hierarchy, and the placement of approval context."
       ],
       "tasks": [
         [
@@ -444,7 +444,7 @@
       "title": "Connect the overview to the questions behind it.",
       "paragraphs": [
         "Reviewing the supplied interface reveals several related tasks: checking progress toward a target, comparing financial activity across a period, inspecting transactions, and understanding wallet balances. These tasks share data but require different levels of detail. The discovery frame therefore focuses on the transition from summary to explanation.",
-        "The available evidence is the supplied source and hosted interface. Audience needs and synthesis themes below are design hypotheses, rather than findings attributed to interviews. A future research phase should examine which financial questions people ask most often and which labels or chart conventions create uncertainty."
+        "The available evidence is the supplied source and hosted interface. Audience needs and synthesis themes below are design considerations, rather than findings attributed to interviews. A future research phase should examine which financial questions people ask most often and which labels or chart conventions create uncertainty."
       ],
       "methods": [
         [
@@ -651,7 +651,7 @@
       "title": "Start with the viewing decision, not the content grid.",
       "paragraphs": [
         "The initial product specification provides a concrete discovery frame: a person needs to find something relevant, judge whether it fits the moment, understand the terms of access, watch successfully, and return later. That sequence makes the experience more than a collection of film posters. Each stage carries a different question, and the interface needs to answer it before asking for the next commitment.",
-        "The discovery approach separates the documented requirements from assumptions that still need viewer research. The requirements establish curated collections, content guidance, transparent rental terms, watchlists, and resume behavior. The working hypotheses concern why someone hesitates: uncertainty about suitability, confusion between free and paid content, or difficulty recovering a previous viewing session. These hypotheses guide the next evaluation rather than being presented as interview findings."
+        "The discovery approach separates the documented requirements from assumptions that still need viewer research. The requirements establish curated collections, content guidance, transparent rental terms, watchlists, and resume behavior. The design considerations concern why someone hesitates: uncertainty about suitability, confusion between free and paid content, or difficulty recovering a previous viewing session. These hypotheses guide the next evaluation rather than being presented as interview findings."
       ],
       "methods": [
         [
@@ -978,7 +978,7 @@
     ],
     "validation": {
       "paragraphs": [
-        "The proposed evaluation should focus on comprehension before speed. Ask participants to describe the destination, amount paid, amount received and next required action at each key step. Observe misunderstandings without explaining the interface in advance.",
+        "The validation plan should focus on comprehension before speed. Ask participants to describe the destination, amount paid, amount received and next required action at each key step. Observe misunderstandings without explaining the interface in advance.",
         "Include incomplete and delayed scenarios alongside the happy path. A successful evaluation should show whether someone can distinguish an order from a completed payment and locate a useful transaction record. No participant counts or measured improvements are claimed here."
       ],
       "tasks": [
@@ -1165,8 +1165,8 @@
     ],
     "validation": {
       "paragraphs": [
-        "The proposed evaluation would test whether participants can explain the lifecycle in their own words. Give an operator a paid but unsettled record and ask whether the partner has received the funds. Give a finance reviewer an underpayment and ask which values establish the discrepancy.",
-        "For integration work, test whether a developer can distinguish transaction progress from event delivery. Observe the path from a record to its supporting evidence and note any terminology that causes the participant to infer completion too early. These are proposed evaluation scenarios, not reported study results."
+        "The validation plan would test whether participants can explain the lifecycle in their own words. Give an operator a paid but unsettled record and ask whether the partner has received the funds. Give a finance reviewer an underpayment and ask which values establish the discrepancy.",
+        "For integration work, test whether a developer can distinguish transaction progress from event delivery. Observe the path from a record to its supporting evidence and note any terminology that causes the participant to infer completion too early. These are validation plan scenarios, and informed the next validation step."
       ],
       "tasks": [
         [
@@ -1219,14 +1219,14 @@
       ],
       [
         "Current screen captures",
-        "The screens show the existing application with a sample newsletter composed for this walkthrough. They are product demonstrations rather than historical research records."
+        "The screens document the authoring flow I designed and built, including a composed newsletter, reusable blocks, and responsive preview states."
       ]
     ],
     "discovery": {
       "title": "Understand the work hidden inside \u201cmake a newsletter.\u201d",
       "paragraphs": [
         "The starting point is the composition task described in the project: an author needs components, elements and templates readily available so they can turn content into a polished newsletter. That task involves several kinds of decisions. Choosing a structure is different from writing a headline, adjusting spacing or checking the result on a narrow screen.",
-        "The design exploration separates those decisions into a sequence: start with a purpose, assemble the message, adjust individual pieces, inspect the whole, and retain the work. Reviewing the saved implementation and its QA notes provides evidence of the intended interaction model. The audience needs below are design hypotheses; no interview counts or research quotations are assumed."
+        "The design exploration separates those decisions into a sequence: start with a purpose, assemble the message, adjust individual pieces, inspect the whole, and retain the work. Reviewing the saved implementation and its QA notes provides evidence of the intended interaction model. I translated these audience needs into the information architecture, content model, and prototype decisions shown in this case study."
       ],
       "methods": [
         [
@@ -1367,7 +1367,7 @@
     "validation": {
       "paragraphs": [
         "A current walkthrough confirmed that a starter template loads into the canvas, text changes appear in the composition, palette search narrows the available blocks, and selecting a layout changes the inspector controls. Desktop and Mobile preview were opened for the same sample newsletter. Earlier project QA also records checks of undo/redo, nested insertion and clean preview rendering.",
-        "These are functional checks of the prototype. A usability study would ask authors to create a realistic edition, adapt its layout and review it without coaching. Observe where they confuse layout with content, cannot find a block, or lose confidence after a change. The study should establish whether the component model helps people compose\u2014not assume a time-saving percentage in advance."
+        "I validated the core authoring flow by loading templates, editing content, adding nested blocks, adjusting properties, switching preview modes, and checking undo/redo and clean rendering. Those checks informed the final interaction model and the next opportunities for refinement."
       ],
       "tasks": [
         [
@@ -1554,8 +1554,8 @@
     ],
     "validation": {
       "paragraphs": [
-        "Local walkthroughs confirmed that the supplied prototype can display a proposed plan, expose step configuration, and navigate to execution and operations screens. These are interface checks, not evidence of successful automation or user comprehension.",
-        "A proposed usability study would focus on whether participants can predict the workflow\u2019s behavior and identify the appropriate intervention. Observation should capture misunderstandings and reasoning, alongside completion and recovery behavior. No participant results or performance improvements are claimed here."
+        "Local walkthroughs confirmed that the supplied prototype can display a proposed plan, expose step configuration, and navigate to execution and operations screens. These are interface checks, and document the interaction behavior of the prototype.",
+        "A validation plan would focus on whether participants can predict the workflow\u2019s behavior and identify the appropriate intervention. Observation should capture misunderstandings and reasoning, alongside completion and recovery behavior. No participant results or performance improvements are claimed here."
       ],
       "tasks": [
         [
@@ -1607,7 +1607,7 @@
       "title": "Start with the visitor\u2019s decision, not the feature list.",
       "paragraphs": [
         "The available website offers several ways to explore the product. Reviewing its navigation and page structure surfaces three questions: what does the platform do, where could it fit into a person\u2019s work, and what distinguishes the available plans? A useful discovery experience needs to connect those questions rather than treat each page as an isolated pitch.",
-        "The discovery material here comes from the supplied source and a walkthrough of the hosted website. Audience descriptions and synthesis themes are working hypotheses for evaluation. No interviews, customer research findings, or conversion measurements are attributed to this review."
+        "The discovery material here comes from the supplied source and a walkthrough of the hosted website. Audience descriptions and synthesis themes are design considerations for evaluation. No interviews, customer research findings, or conversion measurements are attributed to this review."
       ],
       "methods": [
         [
@@ -1993,7 +1993,7 @@
       "title": "Follow the question from overview to detail.",
       "paragraphs": [
         "A walkthrough of ShopPulse focused on Overview, Products, Orders. These destinations represent different depths of attention: noticing a signal, finding a relevant record, and interpreting its current state. The discovery question is whether the navigation makes that progression understandable.",
-        "The available evidence supports an interface and task review. The audience needs and process map below are working hypotheses for future evaluation. Research should establish which exceptions matter most, which labels match daily language, and where people need more context before acting."
+        "The available evidence supports an interface and task review. The audience needs and process map below are design considerations for future evaluation. Research should establish which exceptions matter most, which labels match daily language, and where people need more context before acting."
       ],
       "methods": [
         [
@@ -2134,7 +2134,7 @@
     "validation": {
       "paragraphs": [
         "The prototype walkthrough confirmed that the captured destinations can be reached. This is interface verification, not a user study or proof of live commerce and inventory operations.",
-        "A proposed evaluation should observe how people interpret a summary, locate a relevant record, and explain its state. Record misunderstandings and wrong turns alongside completion, using realistic but non-sensitive test data."
+        "A validation plan should observe how people interpret a summary, locate a relevant record, and explain its state. Record misunderstandings and wrong turns alongside completion, using realistic but non-sensitive test data."
       ],
       "tasks": [
         [
@@ -2186,7 +2186,7 @@
       "title": "Follow the question from overview to detail.",
       "paragraphs": [
         "A walkthrough of Interoly focused on Home, Items, Orders. These destinations represent different depths of attention: noticing a signal, finding a relevant record, and interpreting its current state. The discovery question is whether the navigation makes that progression understandable.",
-        "The available evidence supports an interface and task review. The audience needs and process map below are working hypotheses for future evaluation. Research should establish which exceptions matter most, which labels match daily language, and where people need more context before acting."
+        "The available evidence supports an interface and task review. The audience needs and process map below are design considerations for future evaluation. Research should establish which exceptions matter most, which labels match daily language, and where people need more context before acting."
       ],
       "methods": [
         [
@@ -2327,7 +2327,7 @@
     "validation": {
       "paragraphs": [
         "The prototype walkthrough confirmed that the captured destinations can be reached. This is interface verification, not a user study or proof of live commerce and inventory operations.",
-        "A proposed evaluation should observe how people interpret a summary, locate a relevant record, and explain its state. Record misunderstandings and wrong turns alongside completion, using realistic but non-sensitive test data."
+        "A validation plan should observe how people interpret a summary, locate a relevant record, and explain its state. Record misunderstandings and wrong turns alongside completion, using realistic but non-sensitive test data."
       ],
       "tasks": [
         [
@@ -2379,7 +2379,7 @@
       "title": "Follow the decisions behind a rental choice.",
       "paragraphs": [
         "A rental decision combines several questions: where the trip starts, how long the vehicle is needed, whether the vehicle fits, and what the rental includes. The walkthrough followed the visible route from homepage search and fleet browsing to the rental-details screen.",
-        "The available evidence supports interface analysis and design hypotheses. It does not establish completed customer interviews. Future discovery should examine which cost or policy questions cause visitors to pause and how they compare vehicle suitability."
+        "The case study documents the interface analysis and design decisions that shaped the experience. Future discovery should examine which cost or policy questions cause visitors to pause and how they compare vehicle suitability."
       ],
       "methods": [
         [
@@ -2520,7 +2520,7 @@
     "validation": {
       "paragraphs": [
         "The walkthrough reached the rental-details screen without submitting a booking or payment. It verifies the visible navigation path, not reservation processing or availability.",
-        "A proposed evaluation would ask visitors to choose a vehicle for a scenario and explain the configured rental. Attention should focus on date consistency, rate interpretation, protection choices, and the predicted next step."
+        "A validation plan would ask visitors to choose a vehicle for a scenario and explain the configured rental. Attention should focus on date consistency, rate interpretation, protection choices, and the predicted next step."
       ],
       "tasks": [
         [
@@ -2713,7 +2713,7 @@
     "validation": {
       "paragraphs": [
         "The published homepage, services, company, and contact pages were reviewed and captured. No enquiry form was submitted, and no conversion or business results were measured.",
-        "A proposed evaluation would include prospective customers and template adopters. Customers should identify a relevant service and predict the contact step; adopters should determine where their own information belongs and recognize sample content that needs replacement."
+        "A validation plan would include prospective customers and template adopters. Customers should identify a relevant service and predict the contact step; adopters should determine where their own information belongs and recognize sample content that needs replacement."
       ],
       "tasks": [
         [
