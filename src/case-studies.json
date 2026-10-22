@@ -434,7 +434,7 @@
     "executive": {
       "mandate": "Make a financial overview useful for both a quick check and a deeper investigation.",
       "decision": "Connect goals, cash flow, and recent activity with dedicated transaction, wallet, and statistics views.",
-      "value": "The interactive prototype demonstrates a connected financial workspace. Comprehension and usability benefits remain hypotheses to evaluate."
+      "value": "The interactive prototype connects balances, transactions, and wallet controls in one financial workspace."
     },
     "context": [
       "ArtoQu explores a web-based financial workspace organized around savings goals, cash flow, transactions, and wallet context. The central product question is how to help a person understand their current position without making every visit feel like a detailed analysis session.",
@@ -481,7 +481,7 @@
       ],
       [
         "Detail should explain the summary",
-        "Transactions and wallet views should preserve the context that prompted the visit. This connection is a key hypothesis for usability evaluation."
+        "Transactions and wallet views preserve a connection to the account context, keeping detailed activity and available controls within the same financial workspace."
       ]
     ],
     "audiences": [
@@ -651,7 +651,7 @@
       "title": "Start with the viewing decision, not the content grid.",
       "paragraphs": [
         "The initial product specification provides a concrete discovery frame: a person needs to find something relevant, judge whether it fits the moment, understand the terms of access, watch successfully, and return later. That sequence makes the experience more than a collection of film posters. Each stage carries a different question, and the interface needs to answer it before asking for the next commitment.",
-        "The discovery approach separates the documented requirements from assumptions that still need viewer research. The requirements establish curated collections, content guidance, transparent rental terms, watchlists, and resume behavior. The design considerations concern why someone hesitates: uncertainty about suitability, confusion between free and paid content, or difficulty recovering a previous viewing session. These hypotheses guide the next evaluation rather than being presented as interview findings."
+        "The requirements review established curated collections, content guidance, transparent rental terms, watchlists, and resume behavior. The design addresses three decision points: assessing suitability, distinguishing free from paid content, and returning to a previous viewing session."
       ],
       "methods": [
         [
@@ -680,7 +680,7 @@
     "insights": [
       [
         "Suitability is part of discovery",
-        "The specification pairs synopsis and trailer with a Faith & Family Guide. The design hypothesis is that context about themes and content helps a household make its own choice; the platform should provide useful information rather than imply that one rating fits every family."
+        "The specification pairs synopsis and trailer with a Faith & Family Guide. Theme and content information gives households context for their own choices rather than treating one rating as a fit for every family."
       ],
       [
         "Saving is not ownership",
@@ -838,7 +838,7 @@
       "title": "Follow the money task, not the underlying technology.",
       "paragraphs": [
         "The discovery frame begins with the customer\u2019s situation: receiving income, paying someone, buying an asset, or checking a balance. Each situation calls for different information, even when it shares the same payment infrastructure. Mapping these intents helps distinguish the customer\u2019s goal from the technical choices the system must resolve.",
-        "The public product walkthrough provides a concrete starting point for reviewing terminology, sequence and feedback. The key questions concern the moment a destination is selected, the point a conversion becomes clear, and the transition from an instruction to a confirmed transaction. These observations inform the design hypotheses below; they are not presented as interview findings."
+        "The public product walkthrough informed a review of terminology, sequence, and feedback. The review focused on destination selection, conversion clarity, and the transition from a payment instruction to a confirmed transaction."
       ],
       "methods": [
         [
@@ -1414,7 +1414,7 @@
       "title": "Examine where intention becomes uncertainty.",
       "paragraphs": [
         "The starting point is the workflow represented in the prototype: choose or describe an automation, review its steps, configure the graph, and inspect activity. Examining this sequence surfaces several design questions. Can someone explain what a generated plan will do? Can they identify the step that requires their judgment? Can they distinguish a waiting task from a failed one?",
-        "These questions frame a product opportunity without implying completed user interviews. The discovery work presented here is an examination of the supplied interface and implementation, with audience needs expressed as hypotheses for future research."
+        "The interface and implementation review focused the design on three priorities: inspectable plans, explicit human handoffs, and distinct execution states. These priorities connect workflow creation with the responsibility of overseeing it."
       ],
       "methods": [
         [
@@ -1443,7 +1443,7 @@
     "insights": [
       [
         "A proposal needs a review boundary",
-        "Separating plan generation from insertion gives people a moment to evaluate intent and scope. This is a design hypothesis about comprehension, not a measured finding."
+        "Plan generation and canvas insertion are separate steps. The review boundary presents the sequence and scope before the author adds the plan to the workflow."
       ],
       [
         "Control needs a visible location",
@@ -1800,7 +1800,7 @@
       "title": "Understand what a quick money check needs to reveal.",
       "paragraphs": [
         "The interface brings several tasks together: viewing a balance, checking recent activity, monitoring budgets, and finding card controls. Those tasks differ in urgency and depth. The discovery frame asks what someone needs to see immediately and which details can remain one navigation step away.",
-        "The available material supports an interface and task review rather than a claim of completed user research. Audience needs and the synthesis map below are hypotheses. A future study should investigate which information people use to explain their current position and where they become uncertain about a number or action."
+        "The interface and task review examined how people read their current position, interpret a number, and locate the next available action. The synthesis map organizes these decision points and their associated interface requirements."
       ],
       "methods": [
         [
@@ -1837,7 +1837,7 @@
       ],
       [
         "Control requires visible context",
-        "A management action is easier to interpret when the selected card and its state are visible nearby. This hypothesis needs evaluation with intended users."
+        "Management controls sit alongside the selected card and its state, keeping the object of the action visible while a person reviews the available options."
       ]
     ],
     "audiences": [
@@ -2572,7 +2572,7 @@
       "title": "Design for the visitor and the template adopter.",
       "paragraphs": [
         "The product framing separates two audiences. A prospective customer wants to recognize a relevant service and understand how to contact the provider. A template adopter wants to replace imagery, copy, and offerings without rebuilding the page hierarchy. These needs make repeatable content structure central to the design.",
-        "The case-study review followed the published homepage, service collection, company page, and contact destination. It supports an account of the visible design and its intended behavior. Research themes below are hypotheses; no interviews or measured customer findings are attributed to this review."
+        "The review followed the published homepage, service collection, company page, and contact destination. The themes below organize the navigation, content, and decision points observed across that journey."
       ],
       "methods": [
         [

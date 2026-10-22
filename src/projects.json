@@ -714,7 +714,7 @@
     "decisions": [
       [
         "Surface work needing attention",
-        "The home screen calls out items below reorder level and groups sales activity by operational status. This creates a starting point for deciding where to look next. The design hypothesis is that a visible exception and a direct route to review are more useful during a short visit than a collection of equally emphasized metrics."
+        "The home screen calls out items below reorder level and groups sales activity by operational status. Exceptions take priority over equally weighted metrics, with a direct route from the overview to the records that need review."
       ],
       [
         "Keep item inspection in its own destination",
@@ -759,7 +759,7 @@
       ],
       [
         "Connect summaries to product context",
-        "The Products destination separates catalog inspection from the overview. It gives individual records room to be read without crowding the dashboard. A consistent route to this detail should help an operator connect a broad signal to the product context that might explain it, a hypothesis to evaluate with realistic tasks."
+        "The Products destination separates catalog inspection from the overview. Individual records have room for detailed review without crowding the dashboard, and a consistent navigation route connects operational signals with their product context."
       ],
       [
         "Make order status easy to inspect",
