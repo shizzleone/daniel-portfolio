@@ -13,3 +13,10 @@
 .audience-status{display:inline-block;margin-bottom:12px;color:var(--primary);font-size:9px;text-transform:uppercase;letter-spacing:.1em}
 @media(max-width:760px){.ownership-panel{padding:22px}.ownership-panel h2{font-size:24px}.ownership-panel ul{grid-template-columns:1fr}.ownership-panel .ownership-lead{font-size:15px}}
 @media(max-width:760px){.case-layout aside nav a{padding:10px 14px}.research-partnership{grid-template-columns:1fr;padding:22px;gap:18px}.research-partnership h3{font-size:20px!important}}
+
+/* Prevent collaboration headlines from being squeezed into narrow columns. */
+.research-partnership{grid-template-columns:minmax(300px,1fr) minmax(0,1fr);align-items:start}
+.research-partnership h3{max-width:none;overflow-wrap:normal;word-break:normal}
+.research-partnership p{max-width:none}
+@media(max-width:900px){.research-partnership{grid-template-columns:1fr 1.15fr}}
+@media(max-width:760px){.research-partnership{grid-template-columns:1fr}}

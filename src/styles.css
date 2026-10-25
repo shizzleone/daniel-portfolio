@@ -29,7 +29,7 @@
 /* Text-based synthesis boards remain readable at every screen size. */
 .process-board{margin:2rem 0 3rem;padding:28px;border:1px solid var(--border);border-radius:14px;background:var(--surface);color:var(--text)}
 .process-board header{margin-bottom:24px}.process-board header p{font-size:23px!important;font-weight:600;margin:8px 0!important}.process-key{font-size:12px;color:var(--muted)}
-.process-audiences{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-bottom:30px}.process-audiences article{border-top:3px solid #818cf8;background:var(--bg);padding:16px;border-radius:5px}.process-audiences span{font-size:13px;font-weight:600}.process-audiences p,.process-node p{font-size:13px!important;line-height:1.65!important;margin:8px 0 0!important}
+.process-audiences{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-bottom:30px}.process-audiences article{border-top:3px solid var(--primary);background:var(--bg);padding:16px;border-radius:5px}.process-audiences span{font-size:13px;font-weight:600}.process-audiences p,.process-node p{font-size:13px!important;line-height:1.65!important;margin:8px 0 0!important}
 .process-labels{display:grid;grid-template-columns:120px 1fr 1fr;gap:26px;padding-bottom:12px;font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted)}.process-flow{display:grid;gap:16px}.process-row{display:grid;grid-template-columns:110px minmax(0,1fr) 20px minmax(0,1fr);gap:12px;align-items:center}.process-stage{display:grid;gap:6px;font-size:13px;overflow-wrap:anywhere}.process-stage>span{color:var(--muted);font-size:11px}.process-node{align-self:stretch;border:1px solid var(--border);border-radius:7px;padding:14px;background:var(--bg)}.process-node>span{display:none}.process-node p{margin:0!important}.process-response{border-color:#6d8c7d;background:color-mix(in srgb,var(--bg) 92%,#83b59a)}.process-arrow{color:var(--muted)}.process-board figcaption{font-size:12px;color:var(--muted);margin-top:22px}
 @media(max-width:700px){.process-board{padding:20px 16px}.process-audiences{grid-template-columns:1fr}.process-labels{display:none}.process-row{grid-template-columns:1fr;gap:10px;padding-bottom:20px;border-bottom:1px solid var(--border)}.process-stage{display:flex;gap:10px}.process-node>span{display:block;font-size:10px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:8px}.process-arrow{transform:rotate(90deg);justify-self:center}.process-board header p{font-size:20px!important}}
 
@@ -48,3 +48,125 @@
 .case-roadmap small{font-size:11px;color:var(--muted);line-height:1.4}
 @media(max-width:900px){.case-roadmap{grid-template-columns:repeat(3,minmax(0,1fr))}}
 @media(max-width:600px){.case-roadmap{grid-template-columns:1fr 1fr}.case-roadmap a{min-height:94px}.case-roadmap a:last-child{grid-column:span 2}}
+
+/* Visual product story layer */
+.story-sequence{max-width:1120px;margin:0 auto 110px;padding:56px 0 0;border-top:1px solid var(--border)}
+.story-sequence-heading{display:grid;grid-template-columns:minmax(0,1fr) minmax(300px, .9fr);column-gap:72px;align-items:end;margin-bottom:32px}
+.story-sequence-heading .eyebrow{grid-column:1/-1;margin-bottom:14px}
+.story-sequence-heading h2{font-size:38px;max-width:560px}
+.story-sequence-heading>p:last-child{font-size:16px;line-height:1.65;max-width:390px}
+.story-beats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;background:var(--border);border:1px solid var(--border);border-radius:12px;overflow:hidden}
+.story-beat{min-height:230px;padding:24px;background:var(--surface);display:flex;flex-direction:column;align-items:flex-start}
+.story-beat-number{font-size:13px;color:var(--primary);font-variant-numeric:tabular-nums;margin-bottom:34px}
+.story-beat .eyebrow{font-size:9px;margin-bottom:12px}
+.story-beat h3{font-size:20px;margin-bottom:12px}
+.story-beat p{font-size:14px;line-height:1.65;margin-top:auto}
+.story-strip{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin-top:24px}
+.story-strip .case-figure{margin:0}
+.story-strip .case-figure img{aspect-ratio:1.35/1;object-fit:cover}
+.story-strip .enlarge-label{display:none}
+@media(max-width:900px){.story-sequence{margin-bottom:72px;padding:42px 0 0}.story-sequence-heading{grid-template-columns:1fr;gap:16px}.story-sequence-heading>p:last-child{max-width:560px}.story-beats{grid-template-columns:repeat(2,minmax(0,1fr))}.story-beat{min-height:210px}.story-strip{grid-template-columns:1fr 1fr}}
+@media(max-width:600px){.story-beats{grid-template-columns:1fr}.story-beat{min-height:180px}.story-strip{grid-template-columns:1fr}.story-sequence-heading h2{font-size:32px}}
+
+/* Editorial mockup treatment: let the product screens lead the narrative. */
+.story-strip{grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);grid-template-rows:repeat(2,220px);gap:18px;margin-top:30px}
+.story-strip .case-figure{height:100%;position:relative;overflow:hidden;border-radius:14px;background:var(--image-bg);border:1px solid var(--border)}
+.story-strip .case-figure:first-child{grid-row:1 / span 2}
+.story-strip .case-figure img{width:100%;height:100%;aspect-ratio:auto;object-fit:cover;object-position:center top}
+.story-strip .case-figure figcaption{position:absolute;left:18px;right:18px;bottom:14px;padding:11px 13px;border-radius:7px;background:color-mix(in srgb,var(--background) 88%,transparent);backdrop-filter:blur(8px);font-size:12px;line-height:1.45;color:var(--foreground)}
+.story-strip .case-figure:first-child figcaption{font-size:14px}
+@media(max-width:900px){.story-strip{grid-template-rows:260px 200px}.story-strip .case-figure:first-child{grid-row:1 / span 2}}
+@media(max-width:600px){.story-strip{display:grid;grid-template-columns:1fr;grid-template-rows:280px 200px 200px}.story-strip .case-figure:first-child{grid-row:auto}}
+
+/* Behance-inspired editorial overview: short, visual, and easy to scan. */
+.editorial-overview{max-width:1120px;margin:0 auto 96px}
+.editorial-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:1px;background:var(--border);border:1px solid var(--border);border-radius:14px;overflow:hidden}
+.editorial-card{min-height:220px;padding:30px;background:var(--surface);display:flex;flex-direction:column;justify-content:space-between}
+.editorial-card .eyebrow{margin-bottom:22px}
+.editorial-card h2{font-size:31px;max-width:450px}
+.editorial-card h3{font-size:23px;max-width:420px}
+.editorial-card p{font-size:15px;line-height:1.65;max-width:520px}
+.editorial-challenge{min-height:300px;background:linear-gradient(135deg,var(--surface),color-mix(in srgb,var(--surface) 78%,var(--primary)))}
+.editorial-challenge p{margin-top:28px}
+.editorial-contribution{min-height:300px}
+.editorial-contribution p{margin-top:28px}
+.editorial-learning,.editorial-decision{min-height:200px}
+.editorial-outcome{display:grid;grid-template-columns:1fr auto;gap:32px;align-items:end;margin-top:1px;padding:30px;border:1px solid var(--border);border-top:0;border-radius:0 0 14px 14px;background:var(--background)}
+.editorial-outcome h2{font-size:29px;max-width:820px;margin-top:12px}
+.editorial-arrow{font-size:38px;color:var(--primary);line-height:1}
+@media(max-width:800px){.editorial-grid{grid-template-columns:1fr}.editorial-card,.editorial-challenge,.editorial-contribution{min-height:220px}.editorial-outcome{grid-template-columns:1fr}.editorial-outcome h2{font-size:25px}}
+
+/* Keep the opening editorial; reserve navigation for the deeper process review. */
+.case-hero{padding-bottom:72px}
+.case-hero .case-roadmap{display:none}
+.case-layout>aside nav{position:sticky;top:118px}
+.case-layout>aside nav a{padding-left:12px;margin-left:0;border-left:1px solid transparent}
+.case-layout>aside nav a[aria-current="location"]{border-left-color:var(--primary)}
+
+.capabilities p{display:flex;align-items:center;gap:14px}.capabilities p span{color:var(--primary);font-size:11px;font-variant-numeric:tabular-nums}
+
+/* Give editorial copy room to breathe without forcing narrow, report-like columns. */
+.case-body{max-width:980px}
+.case-body p{max-width:900px;line-height:1.65}
+.case-body>section>p:not(.eyebrow){max-width:900px;font-size:16px;line-height:1.7}
+.case-body .executive-summary p,.case-body .process-notes p{max-width:none}
+@media(max-width:1100px){.case-body{max-width:none}.case-body>section>p:not(.eyebrow){max-width:760px}}
+
+/* Keep story-card content on one shared baseline across different copy lengths. */
+.story-beat{align-items:flex-start}
+.story-beat .story-beat-number{display:block;height:20px;line-height:20px}
+.story-beat .eyebrow{min-height:18px}
+.story-beat h3{min-height:48px;display:flex;align-items:flex-start}
+.story-beat p{min-height:70px}
+@media(max-width:600px){.story-beat h3,.story-beat p{min-height:0}}
+
+/* Shorter case studies keep the visual story focused; deep projects retain the full process. */
+.compact-case .case-body>#journey,
+.compact-case .case-body>#strategy,
+.compact-case .case-body>#validation{display:none}
+.compact-case .case-body>#delivery{margin-top:48px}
+/* What I do */
+.what-i-do{display:grid;grid-template-columns:minmax(260px,.85fr) minmax(0,1.5fr);gap:64px;padding:76px 0 82px;border-bottom:1px solid var(--border)}
+.what-i-do-intro h2{font-size:clamp(32px,3.4vw,48px);max-width:520px;margin:18px 0 18px}
+.what-i-do-intro>p:not(.eyebrow){max-width:440px;font-size:16px}
+.what-i-do-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 32px}
+.what-i-do-grid article{padding:22px 0 25px;border-top:1px solid var(--border)}
+.what-i-do-grid article:nth-child(-n+2){padding-top:0;border-top:0}
+.what-i-do-grid span{color:var(--primary);font-size:11px;font-variant-numeric:tabular-nums}
+.what-i-do-grid h3{font-size:21px;margin:14px 0 9px;letter-spacing:-.03em}
+.what-i-do-grid p{font-size:14px;line-height:1.6;max-width:280px}
+@media(max-width:760px){.what-i-do{display:block;padding:48px 0 54px}.what-i-do-intro h2{font-size:32px}.what-i-do-intro>p:not(.eyebrow){font-size:15px}.what-i-do-grid{margin-top:32px;grid-template-columns:1fr;gap:0}.what-i-do-grid article,.what-i-do-grid article:nth-child(-n+2){padding:20px 0;border-top:1px solid var(--border)}.what-i-do-grid h3{margin-top:10px}}
+.what-i-do-icon{display:flex!important;align-items:center;justify-content:center;width:42px;height:42px;border:1px solid var(--border);border-radius:50%;color:var(--primary)}
+.what-i-do-grid h3{margin-top:13px}
+/* Keep the opening project banner visually separate from the overview cards. */
+.case-hero + .hero-figure{margin:0 0 48px}
+@media(max-width:760px){.case-hero + .hero-figure{margin-bottom:28px}}
+.tools-row{grid-column:1/-1;margin-top:42px;padding-top:28px;border-top:1px solid var(--border)}
+.tools-list{display:flex;flex-wrap:wrap;gap:10px;margin-top:17px}
+.tool-chip{display:inline-flex;align-items:center;gap:9px;padding:8px 12px;border:1px solid var(--border);border-radius:999px;color:var(--muted);font-size:12px;line-height:1;background:var(--surface)}
+.tool-chip b{display:inline-flex;align-items:center;justify-content:center;min-width:23px;height:23px;padding:0 3px;border-radius:6px;background:var(--secondary);color:var(--foreground);font-size:10px;font-weight:600;letter-spacing:-.03em}
+@media(max-width:760px){.tools-row{margin-top:28px;padding-top:24px}.tools-list{gap:8px}.tool-chip{font-size:11px;padding:7px 10px}}
+.tools-list{align-items:center;gap:18px}
+.tool-chip{width:56px;height:56px;padding:4px;justify-content:center;border:0;border-radius:10px;background:transparent}
+.tool-chip img{width:48px;height:48px;object-fit:contain}
+.tool-chip:hover{background:var(--surface)}
+@media(max-width:760px){.tools-list{gap:10px}.tool-chip{width:52px;height:52px}.tool-chip img{width:44px;height:44px}}
+/* Tighten the What I do rhythm around the tools divider. */
+.what-i-do{padding-bottom:46px}
+.tools-row{margin-top:20px;padding-top:18px}
+@media(max-width:760px){.what-i-do{padding-bottom:34px}.tools-row{margin-top:14px;padding-top:16px}}
+/* Bring the divider closer to the capability content. */
+.what-i-do{padding-bottom:30px}
+.tools-row{margin-top:0;padding-top:12px}
+@media(max-width:760px){.what-i-do{padding-bottom:24px}.tools-row{padding-top:10px}}
+.editorial-card h2,.editorial-card h3,.editorial-card p,.editorial-outcome h2{overflow-wrap:anywhere;word-break:normal}
+.editorial-outcome{grid-template-columns:1fr}
+/* Show full project screens instead of cropping tall mobile captures. */
+.case-figure:not(.hero-figure) .figure-button>img{max-height:none;height:auto;object-fit:contain}
+.editorial-outcome h2{max-width:none}
+.case-figure figcaption{white-space:normal;overflow:visible;max-width:none;overflow-wrap:anywhere}
+.case-body .case-figure,.case-body .case-figure .figure-button{overflow:visible;max-width:100%}
+.case-body .case-figure figcaption{display:block;width:100%;height:auto;min-height:1.6em;white-space:normal;line-height:1.6;overflow:visible;text-overflow:clip}
+/* Keep decision evidence visually attached to the decision it supports. */
+.case-body .decision + .case-figure{margin-top:18px;margin-bottom:34px}
+.case-body .decision + .case-figure figcaption{padding-top:10px}
