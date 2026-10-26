@@ -2,10 +2,10 @@
   {
     "id": "meridian",
     "name": "Meridian",
-    "category": "Developer platform \u00b7 Payments API",
+    "category": "Developer platform · Payments API",
     "summary": "A payments and ledger workspace that helps engineers move from API evaluation to a confident first integration.",
     "role": "Lead product designer",
-    "scope": "Developer journey \u00b7 Information architecture \u00b7 API explorer \u00b7 Documentation",
+    "scope": "Developer journey · Information architecture · API explorer · Documentation",
     "platform": "Responsive web application",
     "prototypeUrl": "./meridian-prototype.html",
     "image": "meridian/overview.svg",
@@ -38,7 +38,7 @@
       ],
       [
         "meridian/docs.png",
-        "API reference and implementation guidance organized around the developer\u2019s next decision.",
+        "API reference and implementation guidance organized around the developer’s next decision.",
         "architecture"
       ],
       [
@@ -66,10 +66,10 @@
   {
     "id": "dev-mode",
     "name": "API Launchpad",
-    "category": "Developer platform \u00b7 API integration",
+    "category": "Developer platform · API integration",
     "summary": "An API developer workspace that connects discovery, first call, debugging, and operational readiness.",
     "role": "Principal product designer",
-    "scope": "Journey strategy \u00b7 Information architecture \u00b7 Interaction design \u00b7 Prototype",
+    "scope": "Journey strategy · Information architecture · Interaction design · Prototype",
     "platform": "Responsive web application",
     "image": "dev-mode/overview.png",
     "alt": "API Launchpad developer workspace showing a guided three-step API integration path.",
@@ -133,7 +133,7 @@
     "category": "Casting studio / Design system",
     "summary": "From color and typography to a complete casting workspace and public website.",
     "role": "Product & design system design",
-    "scope": "Foundations \u00b7 Components \u00b7 Desktop & mobile \u00b7 Public website",
+    "scope": "Foundations · Components · Desktop & mobile · Public website",
     "platform": "Figma design system & UI kit",
     "image": "forma/passport.png",
     "alt": "FORMA casting passport with graphite and copper panels around a talent portrait.",
@@ -274,7 +274,7 @@
     "category": "Financial services / Web experience",
     "summary": "A clearer homepage experience for finding the right banking path and offer.",
     "role": "Lead UX / Content Designer",
-    "scope": "Homepage strategy \u00b7 Journey design \u00b7 Content hierarchy \u00b7 Responsive UX",
+    "scope": "Homepage strategy · Journey design · Content hierarchy · Responsive UX",
     "platform": "Citi web experience",
     "prototypeUrl": "",
     "image": "citi-homepage-desktop.png",
@@ -322,7 +322,7 @@
   {
     "id": "enta",
     "name": "Enta",
-    "category": "Fintech \u00b7 Cross-border money",
+    "category": "Fintech · Cross-border money",
     "summary": "Connecting everyday payments and digital assets in one account.",
     "role": "Lead Designer",
     "scope": "Product experience and interface design",
@@ -349,7 +349,7 @@
     "gallery": [
       [
         "enta/send.png",
-        "Send destination selection in Enta\u2019s public product demo.",
+        "Send destination selection in Enta’s public product demo.",
         "decision-0"
       ],
       [
@@ -368,7 +368,7 @@
   {
     "id": "sendory",
     "name": "Sendory",
-    "category": "Innovation \u00b7 Newsletter creation",
+    "category": "Innovation · Newsletter creation",
     "summary": "Turning reusable components into polished newsletters.",
     "role": "Product Designer",
     "scope": "Innovation concept, composition workflow and interactive prototype",
@@ -381,7 +381,7 @@
     "decisions": [
       [
         "Offer a useful starting point",
-        "Three starter templates\u2014Client digest, Announcement and Editorial brief\u2014give an author a structure to adapt. The choice is based on the communication they want to create, so they can begin with a recognizable purpose and refine the content without first arranging every section."
+        "Three starter templates—Client digest, Announcement and Editorial brief—give an author a structure to adapt. The choice is based on the communication they want to create, so they can begin with a recognizable purpose and refine the content without first arranging every section."
       ],
       [
         "Separate structure from content",
@@ -424,13 +424,13 @@
     "id": "flownode",
     "name": "Flownode",
     "category": "Innovation / AI workflow design",
-    "summary": "Making AI automation understandable and controllable\u2014from a plain-language idea to a workflow people can inspect.",
+    "summary": "Making AI automation understandable and controllable—from a plain-language idea to a workflow people can inspect.",
     "role": "Product design",
-    "scope": "Workflow experience \u00b7 Interface design \u00b7 Interactive prototype",
+    "scope": "Workflow experience · Interface design · Interactive prototype",
     "platform": "Web application prototype",
     "image": "flownode/canvas.png",
     "alt": "Flownode prototype showing a connected workflow with branching steps and a human approval gate.",
-    "intro": "Turning an automation idea into a visible, editable plan\u2014without losing human control.",
+    "intro": "Turning an automation idea into a visible, editable plan—without losing human control.",
     "overview": "An AI workflow authoring and operations concept.",
     "challenge": "Make generated automation understandable before execution.",
     "decisions": [
@@ -479,15 +479,15 @@
     "id": "iretv",
     "name": "IreTV",
     "prototypeUrl": "https://iretv.net",
-    "category": "Streaming \u00b7 Independent product",
+    "category": "Streaming · Independent product",
     "summary": "Meaningful stories. A clearer path to play.",
     "role": "Independent Product Designer & Creator",
     "scope": "Product strategy, UX architecture, interface design",
-    "platform": "Responsive web \u00b7 Personal project",
+    "platform": "Responsive web · Personal project",
     "image": "iretv/welcome.png",
     "alt": "IreTV welcome experience with cinematic imagery and clear paths into faith-centered entertainment",
     "intro": "From discovering a meaningful story to pressing play with confidence.",
-    "overview": "IreTV is my independent streaming-platform project. It brings Christian films, series, live television, children\u2019s programming, podcasts, radio, and devotionals into one product. The central design challenge is to give that breadth a clear structure while helping a viewer make a confident choice about what to watch.",
+    "overview": "IreTV is my independent streaming-platform project. It brings Christian films, series, live television, children’s programming, podcasts, radio, and devotionals into one product. The central design challenge is to give that breadth a clear structure while helping a viewer make a confident choice about what to watch.",
     "challenge": "A faith-centered catalog needs to communicate more than availability. Viewers need enough story and content context to choose confidently, a clear distinction between saving and accessing a title, and a dependable path back to their viewing. If those states blur together, a visually rich interface can still leave basic questions unanswered.",
     "decisions": [
       [
@@ -529,7 +529,7 @@
     "category": "Fintech / Finance dashboard",
     "summary": "A clearer view of spending, savings, and everyday money.",
     "role": "Product design",
-    "scope": "Dashboard experience \u00b7 Financial information hierarchy \u00b7 Interactive prototype",
+    "scope": "Dashboard experience · Financial information hierarchy · Interactive prototype",
     "platform": "Web application prototype",
     "image": "finwise-web/dashboard.png",
     "alt": "ArtoQu finance dashboard prototype",
@@ -539,7 +539,7 @@
     "decisions": [
       [
         "Bring goals into the everyday overview",
-        "Savings targets appear alongside cash flow and account context, connecting longer-term intentions to the routine act of checking money. Each target combines a label, time horizon, amount, and progress indicator. This hierarchy is intended to make goals recognizable without requiring a separate planning session. The prototype\u2019s sample values illustrate the layout; calculation consistency remains a validation priority."
+        "Savings targets appear alongside cash flow and account context, connecting longer-term intentions to the routine act of checking money. Each target combines a label, time horizon, amount, and progress indicator. This hierarchy is intended to make goals recognizable without requiring a separate planning session. The prototype’s sample values illustrate the layout; calculation consistency remains a validation priority."
       ],
       [
         "Give transactions a dedicated workspace",
@@ -572,7 +572,7 @@
   {
     "id": "pulse",
     "name": "Pulse",
-    "category": "Fintech \u00b7 Settlement infrastructure",
+    "category": "Fintech · Settlement infrastructure",
     "summary": "Making payment operations traceable from quote to settlement.",
     "role": "Product design",
     "scope": "Settlement operations and partner experience",
@@ -621,7 +621,7 @@
     "category": "Fintech / Mobile wallet",
     "summary": "Balances, budgets, and card controls in one calm mobile experience.",
     "role": "Product design",
-    "scope": "Mobile experience \u00b7 Financial hierarchy \u00b7 Interactive prototype",
+    "scope": "Mobile experience · Financial hierarchy · Interactive prototype",
     "platform": "Mobile web prototype",
     "prototypeUrl": "https://personal-finance-wallet-mobile-app.vercel.app/",
     "image": "arca/home.png",
@@ -664,7 +664,7 @@
   {
     "id": "shiftsnap",
     "name": "ShiftSnap",
-    "category": "Mobile SaaS \u00b7 Workforce",
+    "category": "Mobile SaaS · Workforce",
     "summary": "Clearer schedules for people working in shifts.",
     "role": "Product Designer",
     "scope": "Mobile workforce experience",
@@ -703,7 +703,7 @@
     "category": "Commerce / Mobile inventory",
     "summary": "Stock and order context, close to the work.",
     "role": "Product design",
-    "scope": "Information architecture \u00b7 Operational workflows \u00b7 Interactive prototype",
+    "scope": "Information architecture · Operational workflows · Interactive prototype",
     "platform": "Mobile web prototype",
     "prototypeUrl": "https://inventory-management-mobile-app.vercel.app/",
     "image": "interoly/home.png",
@@ -739,7 +739,7 @@
     "category": "E-commerce / Analytics workspace",
     "summary": "Connecting store performance to the products and orders behind it.",
     "role": "Product design",
-    "scope": "Information architecture \u00b7 Operational workflows \u00b7 Interactive prototype",
+    "scope": "Information architecture · Operational workflows · Interactive prototype",
     "platform": "Web dashboard prototype",
     "prototypeUrl": "https://shoppulse-saas.vercel.app/dashboard",
     "image": "shoppulse/dashboard.png",
@@ -785,7 +785,7 @@
     "category": "Travel / Car rental experience",
     "summary": "From finding the right vehicle to understanding the rental.",
     "role": "Product design",
-    "scope": "Search experience \u00b7 Vehicle comparison \u00b7 Booking flow",
+    "scope": "Search experience · Vehicle comparison · Booking flow",
     "platform": "Web booking prototype",
     "prototypeUrl": "https://urbandrive-host.netlify.app/",
     "image": "urbandrive/home.png",
@@ -826,12 +826,12 @@
     "category": "Clean energy / Framer template",
     "summary": "A complete website template for solar services and renewable-energy businesses.",
     "role": "Template designer",
-    "scope": "Full template design \u00b7 Page layouts \u00b7 Service discovery \u00b7 Enquiry experience",
+    "scope": "Full template design · Page layouts · Service discovery · Enquiry experience",
     "platform": "Framer website template",
     "prototypeUrl": "https://solshine.framer.ai/",
     "image": "solshine/home.png",
     "alt": "Solshine solar energy website homepage.",
-    "intro": "Making solar services easier to explore\u2014and a reusable website easier to adapt.",
+    "intro": "Making solar services easier to explore—and a reusable website easier to adapt.",
     "overview": "A full Framer template for renewable-energy service businesses.",
     "challenge": "Connect a clear service proposition to detailed information and a visible enquiry path.",
     "decisions": [
@@ -869,17 +869,17 @@
   {
     "id": "rapidbi",
     "name": "Signal BI",
-    "category": "Business intelligence \u00b7 Analytics workspace",
-    "summary": "A configurable analytics canvas that helps teams move from a high-level signal to the data underneath.",
-    "role": "Product designer \u00b7 Prototyper",
-    "scope": "Product direction \u00b7 Interaction model \u00b7 Design system \u00b7 React prototype",
-    "platform": "Responsive web application",
+    "category": "Developer tooling · Analytics platform",
+    "summary": "A developer-facing analytics workbench for composing, configuring, and embedding explainable data experiences.",
+    "role": "Lead product designer · Developer experience",
+    "scope": "Developer workflow · Interaction model · Design system · React prototype",
+    "platform": "Responsive web application · Component workbench",
     "prototypeUrl": "./rapidbi-prototype.html",
     "storybookUrl": "./rapidbi-storybook/index.html",
     "image": "rapidbi/overview.png",
     "alt": "Signal BI analytics workspace showing KPI cards and an interactive commerce dashboard.",
-    "intro": "Help teams move from a business signal to an explainable decision without losing the thread.",
-    "overview": "Signal BI is a configurable analytics workspace designed around the loop of scanning performance, exploring the evidence, explaining the finding, and carrying the view into the next decision.",
+    "intro": "Give product and engineering teams a clearer path from data capability to a dependable analytics experience.",
+    "overview": "Signal BI is a developer-facing analytics workbench for composing canvases, configuring widgets, reviewing data states, and carrying a reusable experience into a host product.",
     "decisions": [
       [
         "Keep overview and evidence connected",
@@ -895,7 +895,7 @@
       ],
       [
         "Keep automation reviewable",
-        "Assistant suggestions are shown for review before they change the canvas, preserving user control and making the system\u2019s actions legible."
+        "Assistant suggestions are shown for review before they change the canvas, preserving user control and making the system’s actions legible."
       ]
     ],
     "gallery": [
