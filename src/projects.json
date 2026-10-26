@@ -922,5 +922,86 @@
       ]
     ],
     "portfolioCategory": "Developer tools"
+  },
+  {
+    "id": "metric-os",
+    "name": "Metric OS",
+    "category": "Developer tools · Observability",
+    "summary": "A governed incident workspace that turns noisy system signals into an explainable path to resolution.",
+    "role": "Lead product designer · Systems UX",
+    "scope": "Incident workflow · Information architecture · Interaction design · Prototype",
+    "platform": "Responsive web application",
+    "prototypeUrl": "",
+    "image": "metric-os/overview.png",
+    "alt": "Metric OS incident response workspace with service topology and correlated logs.",
+    "intro": "Make complex system performance clear and actionable when every minute matters.",
+    "overview": "Metric OS brings alert correlation, service topology, debugging evidence, and governed remediation into one incident response workspace.",
+    "portfolioCategory": "Developer tools",
+    "decisions": [
+      [
+        "Compress noise into an incident container",
+        "Correlate alerts, traces, metrics, and dependencies so operators can start with one explainable incident."
+      ],
+      [
+        "Keep topology and evidence together",
+        "Pair spatial service context with the exact logs and traces that explain the failure."
+      ],
+      [
+        "Make remediation governed",
+        "Show permissions, impact, rollback progress, and post-action health in the same flow."
+      ]
+    ],
+    "gallery": []
+  },
+  {
+    "id": "navflow-ai",
+    "name": "NAVFlow AI",
+    "category": "Developer tools · AI operations",
+    "summary": "A governed AI workflow that helps financial operations teams move from incoming NAV reports to auditable delivery.",
+    "role": "Lead product designer · AI workflow",
+    "scope": "Product strategy · Workflow architecture · Trust patterns · Prototyping",
+    "platform": "Enterprise web application",
+    "prototypeUrl": "",
+    "image": "navflow/executive-dashboard-wide.png",
+    "alt": "NAVFlow AI executive command center showing workflow health and agent activity.",
+    "intro": "Turn manual NAV operations into a transparent, governed workflow where people retain control.",
+    "overview": "NAVFlow AI coordinates ingestion, extraction, validation, approval, and delivery while keeping source evidence, confidence, exceptions, and audit history visible.",
+    "portfolioCategory": "Developer tools",
+    "decisions": [
+      [
+        "Make the operating model visible",
+        "A live workflow view connects each stage from ingestion through delivery."
+      ],
+      [
+        "Keep evidence attached to decisions",
+        "Source-linked fields, confidence, and validation results make AI work inspectable."
+      ],
+      [
+        "Route exceptions to people",
+        "Tollgates prioritize risk and give approvers a complete context before action."
+      ]
+    ],
+    "gallery": [
+      [
+        "navflow/executive-dashboard-wide.png",
+        "Executive command center connecting workflow health, exceptions, and agent activity.",
+        "discovery"
+      ],
+      [
+        "navflow/workflow-pipeline-wide.png",
+        "End-to-end orchestration from onboarding through delivery.",
+        "architecture"
+      ],
+      [
+        "navflow/email-ingestion-wide.png",
+        "Source-linked extraction workspace for reviewing AI decisions.",
+        "decision-0"
+      ],
+      [
+        "navflow/validation-tollgate-wide.png",
+        "Validation and tollgate center for governed exception handling.",
+        "decision-1"
+      ]
+    ]
   }
 ]
