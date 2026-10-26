@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="220" height="48" viewBox="0 0 220 48" role="img" aria-label="Signal BI">
+  <title>Signal BI</title>
+  <g fill="#237e96">
+    <rect x="132" y="25" width="5" height="13" rx="2.5" />
+    <rect x="141" y="17" width="5" height="21" rx="2.5" />
+    <rect x="150" y="9" width="5" height="29" rx="2.5" />
+  </g>
+  <text x="0" y="34" font-family="Arial, sans-serif" font-size="29" font-weight="700" letter-spacing="-1.1" fill="#174f62">SIGNAL</text>
+  <text x="165" y="34" font-family="Arial, sans-serif" font-size="29" font-weight="600" letter-spacing="-0.6" fill="#174f62">BI</text>
+</svg>
