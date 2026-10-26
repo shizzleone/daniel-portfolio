@@ -170,11 +170,3 @@
 /* Keep decision evidence visually attached to the decision it supports. */
 .case-body .decision + .case-figure{margin-top:18px;margin-bottom:34px}
 .case-body .decision + .case-figure figcaption{padding-top:10px}
-
-/* Signal BI portfolio thumbnail */
-.signal-card-art{position:absolute;inset:0;background:linear-gradient(135deg,#10131f,#1d2440);padding:28px;display:grid;grid-template-columns:repeat(3,1fr);align-items:end;gap:10px;overflow:hidden}
-.signal-card-art:before{content:'SIGNAL BI';position:absolute;top:20px;left:24px;color:#d6dcff;font:600 11px/1.2 Inter,sans-serif;letter-spacing:.14em}
-.signal-card-bar{height:32%;background:linear-gradient(180deg,#8b8cff,#5758d8);border-radius:6px 6px 2px 2px;box-shadow:0 0 24px rgba(120,120,255,.25)}
-.signal-card-bar:nth-child(2){height:58%;background:linear-gradient(180deg,#59d5c7,#2a8f9d)}
-.signal-card-bar:nth-child(3){height:43%;background:linear-gradient(180deg,#ffb46e,#d96d65)}
-.signal-card-grid{position:absolute;right:22px;top:54px;width:31%;height:25%;border:1px solid rgba(214,220,255,.22);background:repeating-linear-gradient(0deg,transparent 0 12px,rgba(214,220,255,.1) 13px),repeating-linear-gradient(90deg,transparent 0 24px,rgba(214,220,255,.1) 25px);border-radius:5px}
