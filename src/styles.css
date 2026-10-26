@@ -171,3 +171,13 @@
 .case-body .decision + .case-figure{margin-top:18px;margin-bottom:34px}
 .case-body .decision + .case-figure figcaption{padding-top:10px}
 .signal-card-art{position:absolute;inset:0;background:linear-gradient(135deg,#10131f,#1d2440);padding:28px;display:grid;grid-template-columns:repeat(3,1fr);align-items:end;gap:10px;overflow:hidden}.signal-card-label{position:absolute;top:20px;left:24px;color:#d6dcff;font:600 11px/1.2 Inter,sans-serif;letter-spacing:.14em}.signal-card-bar{height:32%;background:linear-gradient(180deg,#8b8cff,#5758d8);border-radius:6px 6px 2px 2px}.signal-card-bar:nth-of-type(3){height:58%;background:linear-gradient(180deg,#59d5c7,#2a8f9d)}.signal-card-bar:nth-of-type(4){height:43%;background:linear-gradient(180deg,#ffb46e,#d96d65)}.signal-card-grid{position:absolute;right:22px;top:54px;width:31%;height:25%;border:1px solid rgba(214,220,255,.22);background:repeating-linear-gradient(0deg,transparent 0 12px,rgba(214,220,255,.1) 13px),repeating-linear-gradient(90deg,transparent 0 24px,rgba(214,220,255,.1) 25px);border-radius:5px}
+
+/* Editorial product-story rhythm across every case study */
+.full-case .case-hero{padding-top:54px;padding-bottom:64px}.full-case .case-hero h1{font-size:clamp(58px,8vw,104px)}
+.full-case .editorial-overview,.full-case .story-sequence{max-width:1120px}
+.full-case .case-body>section{padding:42px 34px;border:1px solid var(--border);border-radius:14px;background:var(--surface)}
+.full-case .case-body>section:nth-child(odd){background:linear-gradient(135deg,var(--surface),color-mix(in srgb,var(--surface) 88%,var(--primary)))}
+.full-case .case-body>section+section{margin-top:28px}
+.full-case .case-body>section .case-figure{margin-left:0;margin-right:0}
+.full-case .case-body>section h2{max-width:760px}
+@media(max-width:760px){.full-case .case-body>section{padding:28px 20px;border-radius:10px}.full-case .case-hero{padding-top:30px;padding-bottom:38px}.full-case .case-hero h1{font-size:52px}}
