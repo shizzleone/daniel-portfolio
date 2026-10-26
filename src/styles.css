@@ -181,3 +181,5 @@
 .full-case .case-body>section .case-figure{margin-left:0;margin-right:0}
 .full-case .case-body>section h2{max-width:760px}
 @media(max-width:760px){.full-case .case-body>section{padding:28px 20px;border-radius:10px}.full-case .case-hero{padding-top:30px;padding-bottom:38px}.full-case .case-hero h1{font-size:52px}}
+.prototype-actions{display:flex;flex-wrap:wrap;gap:.75rem;align-items:center}
+@media (max-width:640px){.prototype-actions{flex-direction:column;align-items:stretch}.prototype-actions a{justify-content:center}}

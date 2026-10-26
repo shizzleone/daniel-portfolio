@@ -875,6 +875,7 @@
     "scope": "Product direction \u00b7 Interaction model \u00b7 Design system \u00b7 React prototype",
     "platform": "Responsive web application",
     "prototypeUrl": "./rapidbi-prototype.html",
+    "storybookUrl": "./rapidbi-storybook/index.html",
     "image": "rapidbi/overview.png",
     "alt": "Signal BI analytics workspace showing KPI cards and an interactive commerce dashboard.",
     "intro": "Help teams move from a business signal to an explainable decision without losing the thread.",
