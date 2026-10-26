@@ -61,7 +61,8 @@
         "Production-readiness review turns operational responsibilities into explicit decisions.",
         "decision-3"
       ]
-    ]
+    ],
+    "portfolioCategory": "Developer tools"
   },
   {
     "id": "dev-mode",
@@ -125,7 +126,8 @@
         "Production-readiness checklist and operational contract considerations.",
         "decision-3"
       ]
-    ]
+    ],
+    "portfolioCategory": "Developer tools"
   },
   {
     "id": "forma",
@@ -266,7 +268,8 @@
         "forma/icons.png",
         "Icon glyph library and documented usage."
       ]
-    ]
+    ],
+    "portfolioCategory": "Design systems"
   },
   {
     "id": "citi-homepage",
@@ -317,7 +320,8 @@
         "Polished mobile prototype showing the proposed responsive direction.",
         "decision-2"
       ]
-    ]
+    ],
+    "portfolioCategory": "Content & web"
   },
   {
     "id": "enta",
@@ -363,7 +367,8 @@
         "decision-2"
       ]
     ],
-    "prototypeUrl": "https://www.entashiga.io/"
+    "prototypeUrl": "https://www.entashiga.io/",
+    "portfolioCategory": "Content & web"
   },
   {
     "id": "sendory",
@@ -418,7 +423,8 @@
         "The same sample composition in Mobile preview makes narrow-width wrapping and hierarchy visible.",
         "validation"
       ]
-    ]
+    ],
+    "portfolioCategory": "Content & web"
   },
   {
     "id": "flownode",
@@ -473,7 +479,8 @@
         "Operations concept: failure patterns and model routing, illustrated with demo data.",
         "delivery"
       ]
-    ]
+    ],
+    "portfolioCategory": "Developer tools"
   },
   {
     "id": "iretv",
@@ -521,7 +528,8 @@
         "iretv/film-detail.png",
         "Current local IreTV film page for The Travails of Maria. Price and the 14-day window appear beside the rental action; this capture does not represent a new payment test."
       ]
-    ]
+    ],
+    "portfolioCategory": "Content & web"
   },
   {
     "id": "finwise",
@@ -567,7 +575,8 @@
         "strategy"
       ]
     ],
-    "prototypeUrl": "https://finance-dashboard-slice-ui.vercel.app/dashboard"
+    "prototypeUrl": "https://finance-dashboard-slice-ui.vercel.app/dashboard",
+    "portfolioCategory": "Product & UX"
   },
   {
     "id": "pulse",
@@ -613,7 +622,8 @@
         "decision-2"
       ]
     ],
-    "prototypeUrl": "https://www.pulseshiga.io/"
+    "prototypeUrl": "https://www.pulseshiga.io/",
+    "portfolioCategory": "Content & web"
   },
   {
     "id": "arca",
@@ -659,7 +669,8 @@
         "Card management with masked details and contextual controls. Demonstration data.",
         "decision-2"
       ]
-    ]
+    ],
+    "portfolioCategory": "Mobile"
   },
   {
     "id": "shiftsnap",
@@ -695,7 +706,8 @@
         "The complete ShiftSnap experience and its core flows.",
         "architecture"
       ]
-    ]
+    ],
+    "portfolioCategory": "Mobile"
   },
   {
     "id": "interoly",
@@ -731,7 +743,8 @@
         "Mobile item catalog with sample inventory records.",
         "decision-1"
       ]
-    ]
+    ],
+    "portfolioCategory": "Mobile"
   },
   {
     "id": "shoppulse",
@@ -777,7 +790,8 @@
         "Analytics view for deeper performance exploration.",
         "strategy"
       ]
-    ]
+    ],
+    "portfolioCategory": "Mobile"
   },
   {
     "id": "urbandrive",
@@ -818,7 +832,8 @@
         "Rental details and booking summary before advancing to personal information or payment.",
         "decision-2"
       ]
-    ]
+    ],
+    "portfolioCategory": "Product & UX"
   },
   {
     "id": "solshine",
@@ -864,7 +879,8 @@
         "Company-information layout supporting the wider template.",
         "architecture"
       ]
-    ]
+    ],
+    "portfolioCategory": "Content & web"
   },
   {
     "id": "rapidbi",
@@ -904,6 +920,7 @@
         "Signal BI commerce overview with KPI tiles, charts, a product grid, and contextual commentary.",
         "discovery"
       ]
-    ]
+    ],
+    "portfolioCategory": "Developer tools"
   }
 ]
