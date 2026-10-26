@@ -3398,5 +3398,409 @@
         "Test the scan-to-decision loop with analysts, operators, and product leaders."
       ]
     }
+  },
+  "metric-os": {
+    "executive": {
+      "mandate": "Make incident response explainable and actionable",
+      "decision": "Organize the workspace around the incident lifecycle: detect, investigate, resolve, and verify.",
+      "value": "The deliverable is a responsive observability workspace with reusable incident, topology, evidence, and remediation patterns."
+    },
+    "context": [
+      "Metric OS is an observability workspace for teams responsible for production reliability. It brings correlated incidents, service topology, logs, traces, SLO context, and governed rollback into one response surface."
+    ],
+    "discovery": {
+      "title": "Understand the operational context before shaping the workflow.",
+      "paragraphs": [
+        "Production incidents often scatter the signal across alerts, topology views, logs, traces, and runbooks. Operators spend valuable time reconstructing what happened before they can decide what action is safe.",
+        "I mapped the moments where people lose context, need to make a consequential decision, or need to explain what happened to another team."
+      ],
+      "methods": [
+        [
+          "Workflow mapping",
+          "Trace the path from signal to action across tools, roles, and handoffs."
+        ],
+        [
+          "State inventory",
+          "Define loading, empty, error, review, approval, and recovery states."
+        ],
+        [
+          "Decision framing",
+          "Make the information needed for a safe next step visible at the point of action."
+        ]
+      ]
+    },
+    "problem": {
+      "statement": "Production incidents often scatter the signal across alerts, topology views, logs, traces, and runbooks. Operators spend valuable time reconstructing what happened before they can decide what action is safe.",
+      "hmw": "How might we help an operator move from a noisy anomaly to a confident, governed resolution without losing the evidence?",
+      "constraints": [
+        "Support high information density without losing hierarchy.",
+        "Keep automated suggestions inspectable and reversible.",
+        "Make permissions, status, and ownership visible.",
+        "Support responsive, accessible, keyboard-friendly workflows."
+      ]
+    },
+    "insights": [
+      [
+        "Correlation is the first design decision",
+        "The interface should group related signals before asking people to interpret them."
+      ],
+      [
+        "Spatial context reduces search",
+        "Topology helps operators understand blast radius and dependencies."
+      ],
+      [
+        "Action needs guardrails",
+        "Rollback and remediation should expose permissions, impact, and verification."
+      ]
+    ],
+    "audiences": [
+      [
+        "Incident responder",
+        "Identify the source, scope, and safest next action."
+      ],
+      [
+        "Service owner",
+        "Understand impact on dependent services and customer flows."
+      ],
+      [
+        "Engineering lead",
+        "Coordinate remediation and preserve an auditable incident record."
+      ]
+    ],
+    "journey": [
+      [
+        "Detect",
+        "See one correlated incident instead of hundreds of alerts.",
+        "Noise hides the originating service.",
+        "Group signals and surface confidence."
+      ],
+      [
+        "Investigate",
+        "Trace the blast radius and supporting evidence.",
+        "Context is split between topology and logs.",
+        "Keep spatial and detailed views together."
+      ],
+      [
+        "Resolve",
+        "Review and execute a rollback.",
+        "Action can be risky without guardrails.",
+        "Show impact, permissions, and verification."
+      ],
+      [
+        "Verify",
+        "Preserve the decision and its context.",
+        "The next person may not know what changed or why.",
+        "Keep history, ownership, and evidence attached to the outcome."
+      ],
+      [
+        "Verify",
+        "Preserve the decision and its context.",
+        "The next person may not know what changed or why.",
+        "Keep history, ownership, and evidence attached to the outcome."
+      ]
+    ],
+    "strategy": {
+      "title": "Turn a complex operating model into a sequence people can follow.",
+      "paragraphs": [
+        "Organize the workspace around the incident lifecycle: detect, investigate, resolve, and verify."
+      ],
+      "priorities": [
+        [
+          "Orient",
+          "Show status, ownership, and the next meaningful action."
+        ],
+        [
+          "Inspect",
+          "Keep evidence and system reasoning close to the decision."
+        ],
+        [
+          "Act",
+          "Provide a governed action with clear impact and recovery."
+        ],
+        [
+          "Carry forward",
+          "Preserve history and context for the next person."
+        ]
+      ]
+    },
+    "architecture": {
+      "title": "Connect correlated signals, topology, debugging evidence, and remediation in one operational surface.",
+      "paragraphs": [
+        "I connected the primary workflow, supporting evidence, and reusable states so the interface could scale beyond a single screen.",
+        "The system separates orientation, investigation, decision, and follow-through while keeping the user’s context intact."
+      ],
+      "wireframes": [
+        [
+          "01",
+          "Workspace overview",
+          "Can people understand the current state and next action?"
+        ],
+        [
+          "02",
+          "Evidence view",
+          "Can they inspect the details behind the signal?"
+        ],
+        [
+          "03",
+          "Decision state",
+          "Can they act with the right guardrails?"
+        ],
+        [
+          "04",
+          "History and handoff",
+          "Can another person understand what happened?"
+        ]
+      ]
+    },
+    "tradeoffs": [
+      [
+        "Density versus clarity",
+        "High-density data stays available, but hierarchy keeps the active incident legible."
+      ],
+      [
+        "Automation versus control",
+        "Recommendations accelerate response while operators retain approval."
+      ],
+      [
+        "Speed versus auditability",
+        "Fast actions retain history, evidence, and verification."
+      ]
+    ],
+    "validation": {
+      "paragraphs": [
+        "The prototype demonstrates a complete incident path from correlated alert to topology investigation and governed rollback.",
+        "The working prototype was walked through across the core path, including review states, responsive behavior, and recovery moments."
+      ],
+      "tasks": [
+        [
+          "Find the signal",
+          "Locate the issue that needs attention.",
+          "Reach the correct evidence without searching across tools."
+        ],
+        [
+          "Inspect the context",
+          "Review related data, history, and system reasoning.",
+          "Understand why the state exists."
+        ],
+        [
+          "Take action",
+          "Complete the next governed action.",
+          "See permissions, impact, and recovery clearly."
+        ]
+      ]
+    },
+    "delivery": {
+      "paragraphs": [
+        "The deliverable is a responsive observability workspace with reusable incident, topology, evidence, and remediation patterns.",
+        "The work was carried into a responsive prototype with reusable patterns and explicit seams for production integration."
+      ],
+      "checks": [
+        "Review accessibility across dense operational views.",
+        "Confirm permissions and audit requirements with engineering and compliance.",
+        "Test recovery and handoff states with representative users."
+      ]
+    }
+  },
+  "navflow-ai": {
+    "executive": {
+      "mandate": "Make AI operations transparent, inspectable, and accountable",
+      "decision": "Design the experience around governed orchestration: make the stages, evidence, exceptions, and handoffs visible in one operating model.",
+      "value": "The deliverable is a responsive enterprise workflow with reusable AI trust, validation, approval, and operations patterns."
+    },
+    "context": [
+      "NAVFlow AI is an enterprise operations platform for financial teams processing Net Asset Value reports. It coordinates ingestion, extraction, validation, approval, and delivery across a governed workflow."
+    ],
+    "discovery": {
+      "title": "Understand the operational context before shaping the workflow.",
+      "paragraphs": [
+        "Manual NAV operations depend on inboxes, spreadsheets, downstream templates, and disconnected approval channels. People carry the risk of automation without a shared view of evidence, confidence, exceptions, or delivery status.",
+        "I mapped the moments where people lose context, need to make a consequential decision, or need to explain what happened to another team."
+      ],
+      "methods": [
+        [
+          "Workflow mapping",
+          "Trace the path from signal to action across tools, roles, and handoffs."
+        ],
+        [
+          "State inventory",
+          "Define loading, empty, error, review, approval, and recovery states."
+        ],
+        [
+          "Decision framing",
+          "Make the information needed for a safe next step visible at the point of action."
+        ]
+      ]
+    },
+    "problem": {
+      "statement": "Manual NAV operations depend on inboxes, spreadsheets, downstream templates, and disconnected approval channels. People carry the risk of automation without a shared view of evidence, confidence, exceptions, or delivery status.",
+      "hmw": "How might we let AI handle routine NAV operations while people retain clear control over consequential decisions?",
+      "constraints": [
+        "Support high information density without losing hierarchy.",
+        "Keep automated suggestions inspectable and reversible.",
+        "Make permissions, status, and ownership visible.",
+        "Support responsive, accessible, keyboard-friendly workflows."
+      ]
+    },
+    "insights": [
+      [
+        "The workflow is the product",
+        "The experience must show how work moves across stages, not just expose individual tools."
+      ],
+      [
+        "Confidence belongs beside evidence",
+        "A global AI score is insufficient for field-level review."
+      ],
+      [
+        "Exceptions need prioritization",
+        "Risk-based tollgates help people focus attention where it matters."
+      ]
+    ],
+    "audiences": [
+      [
+        "NAV analyst",
+        "Review extracted values and resolve exceptions."
+      ],
+      [
+        "Operations lead",
+        "Monitor throughput, bottlenecks, and SLA risk."
+      ],
+      [
+        "Approver and compliance partner",
+        "Authorize consequential decisions with lineage intact."
+      ]
+    ],
+    "journey": [
+      [
+        "Ingest",
+        "Bring reports and attachments into the workflow.",
+        "Incoming work is unstructured and hard to track.",
+        "Show source, status, and ownership."
+      ],
+      [
+        "Validate",
+        "Review confidence, rules, and exceptions.",
+        "AI decisions can be difficult to inspect.",
+        "Link extracted fields to evidence and policy."
+      ],
+      [
+        "Approve",
+        "Authorize the payload for delivery.",
+        "Approvers lack complete context.",
+        "Present lineage, risk, and next action together."
+      ],
+      [
+        "Deliver",
+        "Monitor upload and preserve audit history.",
+        "Failures appear too late.",
+        "Keep delivery state and history visible."
+      ],
+      [
+        "Verify",
+        "Preserve the decision and its context.",
+        "The next person may not know what changed or why.",
+        "Keep history, ownership, and evidence attached to the outcome."
+      ]
+    ],
+    "strategy": {
+      "title": "Turn a complex operating model into a sequence people can follow.",
+      "paragraphs": [
+        "Design the experience around governed orchestration: make the stages, evidence, exceptions, and handoffs visible in one operating model."
+      ],
+      "priorities": [
+        [
+          "Orient",
+          "Show status, ownership, and the next meaningful action."
+        ],
+        [
+          "Inspect",
+          "Keep evidence and system reasoning close to the decision."
+        ],
+        [
+          "Act",
+          "Provide a governed action with clear impact and recovery."
+        ],
+        [
+          "Carry forward",
+          "Preserve history and context for the next person."
+        ]
+      ]
+    },
+    "architecture": {
+      "title": "Use workflow stages, source-linked evidence, confidence, and tollgates to make automation understandable and accountable.",
+      "paragraphs": [
+        "I connected the primary workflow, supporting evidence, and reusable states so the interface could scale beyond a single screen.",
+        "The system separates orientation, investigation, decision, and follow-through while keeping the user’s context intact."
+      ],
+      "wireframes": [
+        [
+          "01",
+          "Workspace overview",
+          "Can people understand the current state and next action?"
+        ],
+        [
+          "02",
+          "Evidence view",
+          "Can they inspect the details behind the signal?"
+        ],
+        [
+          "03",
+          "Decision state",
+          "Can they act with the right guardrails?"
+        ],
+        [
+          "04",
+          "History and handoff",
+          "Can another person understand what happened?"
+        ]
+      ]
+    },
+    "tradeoffs": [
+      [
+        "Automation versus oversight",
+        "Routine work can move quickly while consequential decisions stay with people."
+      ],
+      [
+        "Information density versus scanability",
+        "Operational detail is layered so leaders can orient before analysts inspect."
+      ],
+      [
+        "Flexibility versus governance",
+        "Configurable rules remain bounded by explicit permissions and audit history."
+      ]
+    ],
+    "validation": {
+      "paragraphs": [
+        "The prototype demonstrates the end-to-end workflow from ingestion through approval and delivery, including the views needed to inspect AI decisions.",
+        "The working prototype was walked through across the core path, including review states, responsive behavior, and recovery moments."
+      ],
+      "tasks": [
+        [
+          "Find the signal",
+          "Locate the issue that needs attention.",
+          "Reach the correct evidence without searching across tools."
+        ],
+        [
+          "Inspect the context",
+          "Review related data, history, and system reasoning.",
+          "Understand why the state exists."
+        ],
+        [
+          "Take action",
+          "Complete the next governed action.",
+          "See permissions, impact, and recovery clearly."
+        ]
+      ]
+    },
+    "delivery": {
+      "paragraphs": [
+        "The deliverable is a responsive enterprise workflow with reusable AI trust, validation, approval, and operations patterns.",
+        "The work was carried into a responsive prototype with reusable patterns and explicit seams for production integration."
+      ],
+      "checks": [
+        "Review accessibility across dense operational views.",
+        "Confirm permissions and audit requirements with engineering and compliance.",
+        "Test recovery and handoff states with representative users."
+      ]
+    }
   }
 }

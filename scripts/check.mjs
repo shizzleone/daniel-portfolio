@@ -1,8 +1,8 @@
 import {readFileSync, existsSync} from 'node:fs';
 import assert from 'node:assert/strict';
 const projects=JSON.parse(readFileSync('src/projects.json'));
-assert.equal(projects.length,17);
-assert.equal(new Set(projects.map(p=>p.id)).size,17);
+assert.equal(projects.length,19);
+assert.equal(new Set(projects.map(p=>p.id)).size,19);
 for(const p of projects){
  assert(existsSync(`${p.id}.html`),`Missing route: ${p.id}`);
  assert(existsSync(`dist/${p.id}.html`),`Missing built route: ${p.id}`);
@@ -27,7 +27,7 @@ for(const p of projects){
  for(const key of ['executive','context','discovery','problem','insights','audiences','journey','strategy','architecture','tradeoffs','validation','delivery'])assert(c[key],`Missing ${key}: ${p.id}`);
  assert.equal(c.journey.length,5);assert(c.validation.tasks.length>=3);
 }
-console.log('Passed: 16 process narratives and the FORMA foundations, components, and screen showcase.');
+console.log('Passed: 18 process narratives and the FORMA foundations, components, and screen showcase.');
 assert(projects.some(p=>p.id==='iretv'));
 assert(!projects.some(p=>p.id==='pattern-library'));
 assert(!cases['pattern-library']);
@@ -40,6 +40,6 @@ assert(!cases['uba-mobile']);
 assert(readFileSync('dist/uba-mobile.html','utf8').includes('url=./pulse.html'));
 console.log('Passed: Pulse replaces UBA Bank Mobile; legacy URL redirects to Pulse.');
 
-assert(!projects.some(p=>p.id==='navflow-ai'));
-assert(!cases['navflow-ai']);
-assert(readFileSync('dist/navflow-ai.html','utf8').includes('url=./#work'));
+assert(projects.some(p=>p.id==='navflow-ai'));
+assert(cases['navflow-ai']);
+assert(readFileSync('dist/navflow-ai.html','utf8').includes('Signal BI')===false);
