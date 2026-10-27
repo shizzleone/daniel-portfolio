@@ -951,7 +951,23 @@
         "Show permissions, impact, rollback progress, and post-action health in the same flow."
       ]
     ],
-    "gallery": []
+    "gallery": [
+      [
+        "metric-os/incident-response.svg",
+        "Incident response workspace combining topology, correlated logs, and governed rollback.",
+        "gallery"
+      ],
+      [
+        "metric-os/observability-cockpit.svg",
+        "Observability cockpit for scanning service health, telemetry mix, and capacity.",
+        "gallery"
+      ],
+      [
+        "metric-os/design-system.svg",
+        "Metric OS foundations for semantic status, data density, and accessibility.",
+        "gallery"
+      ]
+    ]
   },
   {
     "id": "navflow-ai",
