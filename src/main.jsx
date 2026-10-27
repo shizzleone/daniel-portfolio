@@ -88,7 +88,7 @@ function ownershipData(p){return ownership[p.id]||null}
 
 function ProjectScreens({p,section}){return p.gallery.filter(([, ,placement])=>(placement||'gallery')===section).map(([file,caption])=><Figure key={file} file={file} caption={caption}/>)}
 function CaseStudy({p}){
- const compactCase=['enta','iretv','arca','shiftsnap','interoly','shoppulse','urbandrive','solshine'].includes(p.id);
+ const compactCase=['citi-homepage','enta','iretv','finwise','arca','shiftsnap','interoly','shoppulse','urbandrive','solshine','agent-os','flownode'].includes(p.id);
  const [unlocked,setUnlocked]=useState(()=>getStored('daniel-projects-unlocked','false',true)==='true');
  const [active,setActive]=useState('overview');const c=caseStudies[p.id];
  const next=projects[(projects.findIndex(x=>x.id===p.id)+1)%projects.length];
