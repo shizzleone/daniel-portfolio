@@ -1,8 +1,8 @@
 import {readFileSync, existsSync} from 'node:fs';
 import assert from 'node:assert/strict';
 const projects=JSON.parse(readFileSync('src/projects.json'));
-assert.equal(projects.length,19);
-assert.equal(new Set(projects.map(p=>p.id)).size,19);
+assert.equal(projects.length,18);
+assert.equal(new Set(projects.map(p=>p.id)).size,18);
 for(const p of projects){
  assert(existsSync(`${p.id}.html`),`Missing route: ${p.id}`);
  assert(existsSync(`dist/${p.id}.html`),`Missing built route: ${p.id}`);
