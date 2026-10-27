@@ -16,3 +16,19 @@ html.dark .ag-theme-quartz, body.dark .ag-theme-quartz, .dark .ag-theme-quartz, 
  color-scheme:dark
 }
 html.dark .ag-theme-quartz .ag-root-wrapper,html.dark .ag-theme-quartz .ag-root,html.dark .ag-theme-quartz .ag-header,html.dark .ag-theme-quartz .ag-row,html.dark .ag-theme-quartz .ag-cell,html.dark .ag-theme-quartz .ag-body-viewport,html.dark .ag-theme-quartz .ag-center-cols-viewport,html.dark .ag-theme-quartz .ag-center-cols-container,html.dark .ag-theme-quartz .ag-paging-panel,.dark .ag-theme-quartz .ag-root-wrapper,.dark .ag-theme-quartz .ag-root,.dark .ag-theme-quartz .ag-header,.dark .ag-theme-quartz .ag-row,.dark .ag-theme-quartz .ag-cell,.dark .ag-theme-quartz .ag-body-viewport,.dark .ag-theme-quartz .ag-center-cols-viewport,.dark .ag-theme-quartz .ag-center-cols-container,.dark .ag-theme-quartz .ag-paging-panel{background-color:var(--signal-surface,#18262b)!important;color:var(--signal-ink,#edf4f5)!important;border-color:var(--signal-border,#34474d)!important}
+/* Dark mode header labels and column controls. */
+html.dark .ag-theme-quartz .ag-header-cell-text,
+body.dark .ag-theme-quartz .ag-header-cell-text,
+.dark .ag-theme-quartz .ag-header-cell-text,
+html.dark .ag-theme-quartz .ag-header-group-cell-label,
+body.dark .ag-theme-quartz .ag-header-group-cell-label,
+.dark .ag-theme-quartz .ag-header-group-cell-label,
+html.dark .ag-theme-quartz .ag-header-icon,
+body.dark .ag-theme-quartz .ag-header-icon,
+.dark .ag-theme-quartz .ag-header-icon,
+html.dark .ag-theme-quartz .ag-icon,
+body.dark .ag-theme-quartz .ag-icon,
+.dark .ag-theme-quartz .ag-icon{color:var(--signal-ink,#edf4f5)!important;fill:var(--signal-ink,#edf4f5)!important}
+html.dark .ag-theme-quartz .ag-header-cell-label,
+body.dark .ag-theme-quartz .ag-header-cell-label,
+.dark .ag-theme-quartz .ag-header-cell-label{color:var(--signal-ink,#edf4f5)!important}

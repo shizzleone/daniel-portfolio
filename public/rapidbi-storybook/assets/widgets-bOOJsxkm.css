@@ -36,3 +36,6 @@
 .story-stage.dark .ag-theme-quartz .ag-header-row{background-color:var(--signal-surface-raised)!important}
 .story-stage.dark .ag-theme-quartz .ag-row-odd{background-color:var(--signal-canvas)!important}
 .story-stage.dark .ag-theme-quartz .ag-row-hover{background-color:var(--signal-hover)!important}
+/* Keep Storybook AG Grid column titles and filter icons readable in dark mode. */
+html.dark .ag-theme-quartz .ag-header-cell-text,body.dark .ag-theme-quartz .ag-header-cell-text,.dark .ag-theme-quartz .ag-header-cell-text,html.dark .ag-theme-quartz .ag-header-group-cell-label,body.dark .ag-theme-quartz .ag-header-group-cell-label,.dark .ag-theme-quartz .ag-header-group-cell-label,html.dark .ag-theme-quartz .ag-header-icon,body.dark .ag-theme-quartz .ag-header-icon,.dark .ag-theme-quartz .ag-header-icon,html.dark .ag-theme-quartz .ag-icon,body.dark .ag-theme-quartz .ag-icon,.dark .ag-theme-quartz .ag-icon{color:var(--signal-ink,#edf4f5)!important;fill:var(--signal-ink,#edf4f5)!important}
+html.dark .ag-theme-quartz .ag-header-cell-label,body.dark .ag-theme-quartz .ag-header-cell-label,.dark .ag-theme-quartz .ag-header-cell-label{color:var(--signal-ink,#edf4f5)!important}
