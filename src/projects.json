@@ -924,67 +924,6 @@
     "portfolioCategory": "Developer tools"
   },
   {
-    "id": "metric-os",
-    "name": "Metric OS",
-    "category": "Developer tools \u00b7 Observability",
-    "summary": "A governed incident workspace that turns noisy system signals into an explainable path to resolution.",
-    "role": "Lead product designer \u00b7 Systems UX",
-    "scope": "Incident workflow \u00b7 Information architecture \u00b7 Interaction design \u00b7 Prototype",
-    "platform": "Responsive web application",
-    "prototypeUrl": "",
-    "image": "metric-os/overview.svg",
-    "alt": "Metric OS incident workspace showing service topology, correlated logs, and root-cause guidance.",
-    "intro": "Make complex system performance clear and actionable when every minute matters.",
-    "overview": "Metric OS brings alert correlation, service topology, debugging evidence, and governed remediation into one incident response workspace.",
-    "portfolioCategory": "Developer tools",
-    "decisions": [
-      [
-        "Compress noise into an incident container",
-        "Correlate alerts, traces, metrics, and dependencies so operators can start with one explainable incident."
-      ],
-      [
-        "Keep topology and evidence together",
-        "Pair spatial service context with the exact logs and traces that explain the failure."
-      ],
-      [
-        "Make remediation governed",
-        "Show permissions, impact, rollback progress, and post-action health in the same flow."
-      ]
-    ],
-    "gallery": [
-      [
-        "metric-os/incident-response.svg",
-        "Incident response workspace combining topology, correlated logs, and governed rollback.",
-        "gallery"
-      ],
-      [
-        "metric-os/observability-cockpit.svg",
-        "Observability cockpit for scanning service health, telemetry mix, and capacity.",
-        "gallery"
-      ],
-      [
-        "metric-os/design-system.svg",
-        "Metric OS foundations for semantic status, data density, and accessibility.",
-        "gallery"
-      ],
-      [
-        "metric-os/critical-workflow.svg",
-        "Critical workflow from anomaly detection to governed resolution.",
-        "gallery"
-      ],
-      [
-        "metric-os/sre-persona.svg",
-        "SRE persona and the friction behind the observability workflow.",
-        "gallery"
-      ],
-      [
-        "metric-os/impact-outcomes.svg",
-        "Impact and outcome framing for the Metric OS experience.",
-        "gallery"
-      ]
-    ]
-  },
-  {
     "id": "navflow-ai",
     "name": "NAVFlow AI",
     "category": "Developer tools \u00b7 AI operations",
