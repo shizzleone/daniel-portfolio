@@ -257,7 +257,7 @@
       "title": "Understand how a schedule change actually gets resolved.",
       "paragraphs": [
         "The discovery frame follows a real scheduling exception from the moment a conflict appears to the moment everyone trusts the updated roster. The important unit of analysis is the handoff: who knows about the request, who can act on it, and what evidence the next person needs. This reveals friction that a screen-by-screen review alone would miss.",
-        "The existing project narrative describes worker and manager interviews, contextual inquiry, and competitor review. The discovery approach connects these methods to the project’s stated themes. The questions below make the reasoning inspectable."
+        "The existing project narrative describes worker and manager interviews, contextual inquiry, and competitor review. The discovery approach connects these methods to the project\u2019s stated themes. The questions below make the reasoning inspectable."
       ],
       "methods": [
         [
@@ -590,7 +590,7 @@
       "tasks": [
         [
           "Orient",
-          "Explain the dashboard’s goals, cash flow, and account context.",
+          "Explain the dashboard\u2019s goals, cash flow, and account context.",
           "Distinguish current amounts from goals and period-based summaries."
         ],
         [
@@ -630,13 +630,13 @@
       "value": "Connect an independent product vision to a working web experience and a documented first-film rental milestone."
     },
     "context": [
-      "IreTV is my independent streaming-platform project. It brings Christian films, series, live television, children’s programming, podcasts, radio, and devotionals into one product. The central design challenge is to give that breadth a clear structure while helping a viewer make a confident choice about what to watch.",
-      "The product evolved from a movie-rental architecture into a broader viewing and listening experience. This case study follows that evolution using the project’s information architecture, design-system contract, saved interface iterations, current local screens, and first-film launch notes. The process board explains the design direction alongside product screens."
+      "IreTV is my independent streaming-platform project. It brings Christian films, series, live television, children\u2019s programming, podcasts, radio, and devotionals into one product. The central design challenge is to give that breadth a clear structure while helping a viewer make a confident choice about what to watch.",
+      "The product evolved from a movie-rental architecture into a broader viewing and listening experience. This case study follows that evolution using the project\u2019s information architecture, design-system contract, saved interface iterations, current local screens, and first-film launch notes. The process board explains the design direction alongside product screens."
     ],
     "evidence": [
       [
         "Product definition",
-        "The saved UX specification defines Discover → Evaluate → Rent → Watch → Return and separates public discovery, rental, viewing, account, and administration."
+        "The saved UX specification defines Discover \u2192 Evaluate \u2192 Rent \u2192 Watch \u2192 Return and separates public discovery, rental, viewing, account, and administration."
       ],
       [
         "Design evolution",
@@ -674,7 +674,7 @@
       "constraints": [
         "Support multiple media formats without overloading the primary navigation.",
         "Keep a saved title, a confirmed rental, and playback progress as distinct states.",
-        "Use the existing design system while allowing IreTV’s cinematic identity to develop."
+        "Use the existing design system while allowing IreTV\u2019s cinematic identity to develop."
       ]
     },
     "insights": [
@@ -698,7 +698,7 @@
       ],
       [
         "Returning viewer or listener",
-        "Needs a familiar route back to saved content and previous progress across the product’s different media experiences."
+        "Needs a familiar route back to saved content and previous progress across the product\u2019s different media experiences."
       ]
     ],
     "journey": [
@@ -815,7 +815,7 @@
     "delivery": {
       "paragraphs": [
         "The implementation uses a shared component and token system for navigation, cards, forms, dialogs, tabs, and feedback. The existing design-system contract explicitly favors adapting compositions over adding page-specific styling. That provides continuity across a cinematic public experience and more functional account and library screens.",
-        "For the first paid film, the important handoff boundary is between the customer’s payment action and confirmed access. The project implements server-side verification and time-limited playback access; a browser success message alone is not treated as permission to watch. From a UX perspective, the same distinction must remain visible in pending, failed, expired, and recovery states. Accessibility work should cover keyboard navigation through content rails, dialog focus, text over artwork, captions where available, and understandable playback feedback."
+        "For the first paid film, the important handoff boundary is between the customer\u2019s payment action and confirmed access. The project implements server-side verification and time-limited playback access; a browser success message alone is not treated as permission to watch. From a UX perspective, the same distinction must remain visible in pending, failed, expired, and recovery states. Accessibility work should cover keyboard navigation through content rails, dialog focus, text over artwork, captions where available, and understandable playback feedback."
       ],
       "checks": [
         "Consistent access language across detail, checkout, library, and player.",
@@ -837,7 +837,7 @@
     "discovery": {
       "title": "Follow the money task, not the underlying technology.",
       "paragraphs": [
-        "The discovery frame begins with the customer’s situation: receiving income, paying someone, buying an asset, or checking a balance. Each situation calls for different information, even when it shares the same payment infrastructure. Mapping these intents helps distinguish the customer’s goal from the technical choices the system must resolve.",
+        "The discovery frame begins with the customer\u2019s situation: receiving income, paying someone, buying an asset, or checking a balance. Each situation calls for different information, even when it shares the same payment infrastructure. Mapping these intents helps distinguish the customer\u2019s goal from the technical choices the system must resolve.",
         "The public product walkthrough informed a review of terminology, sequence, and feedback. The review focused on destination selection, conversion clarity, and the transition from a payment instruction to a confirmed transaction."
       ],
       "methods": [
@@ -1019,7 +1019,7 @@
     },
     "context": [
       "Pulse is a settlement platform connecting digital assets and local currency. The partner experience sits between an integration and the people responsible for its operation. An API can initiate a flow, but a team still needs to understand which payments arrived, which converted, which settled, and which require attention.",
-      "This case study focuses on the partner console visible in Pulse’s public interactive demo. The dashboard, transaction list, exception detail and webhook screens provide a connected view of the operating model. Their figures and customer records are Test-mode examples; they illustrate interface behavior rather than measured business performance."
+      "This case study focuses on the partner console visible in Pulse\u2019s public interactive demo. The dashboard, transaction list, exception detail and webhook screens provide a connected view of the operating model. Their figures and customer records are Test-mode examples; they illustrate interface behavior rather than measured business performance."
     ],
     "discovery": {
       "title": "Find the gaps between a payment event and an operational answer.",
@@ -1044,7 +1044,7 @@
     },
     "problem": {
       "statement": "Partner teams need to explain and reconcile money movement across multiple stages. When incoming payment, conversion and settlement are collapsed into a single status, they cannot reliably identify a delay, understand an amount mismatch, or determine where investigation should begin.",
-      "hmw": "How might we make every payment’s progress and exceptions understandable across operations, finance and engineering?",
+      "hmw": "How might we make every payment\u2019s progress and exceptions understandable across operations, finance and engineering?",
       "constraints": [
         "Preserve the distinction between received, converted and settled value.",
         "Keep amounts, currencies and transaction identifiers readable in dense views.",
@@ -1132,7 +1132,7 @@
       "title": "Create a path from business performance to transaction evidence.",
       "paragraphs": [
         "The public console separates workspace functions from developer tools and organization settings. Home and Transactions support the frequent operational loop, while Webhooks and other integration controls remain available in a distinct navigation group. This preserves access without giving every function equal prominence.",
-        "Within a transaction, the exception summary precedes the timeline and supporting details. The low-fidelity question is whether that order matches the operator’s reasoning: what is wrong, how far did the transaction progress, and what evidence identifies it? The structure should support that sequence before adding more controls."
+        "Within a transaction, the exception summary precedes the timeline and supporting details. The low-fidelity question is whether that order matches the operator\u2019s reasoning: what is wrong, how far did the transaction progress, and what evidence identifies it? The structure should support that sequence before adding more controls."
       ],
       "wireframes": [
         [
@@ -1223,7 +1223,7 @@
       ]
     ],
     "discovery": {
-      "title": "Understand the work hidden inside “make a newsletter.”",
+      "title": "Understand the work hidden inside \u201cmake a newsletter.\u201d",
       "paragraphs": [
         "The starting point is the composition task described in the project: an author needs components, elements and templates readily available so they can turn content into a polished newsletter. That task involves several kinds of decisions. Choosing a structure is different from writing a headline, adjusting spacing or checking the result on a narrow screen.",
         "The design exploration separates those decisions into a sequence: start with a purpose, assemble the message, adjust individual pieces, inspect the whole, and retain the work. Reviewing the saved implementation and its QA notes provides evidence of the intended interaction model. I translated these audience needs into the information architecture, content model, and prototype decisions shown in this case study."
@@ -1390,7 +1390,7 @@
     "delivery": {
       "paragraphs": [
         "The saved prototype is a working exploration of the authoring experience, with local persistence and a basic HTML export path. Its export implementation does not establish faithful output for every complex or nested component, and an in-browser preview does not establish compatibility with email clients. Those boundaries shape the handoff requirements.",
-        "A production implementation should define a portable document model, component serialization, supported email markup and a rendering test matrix. Accessibility should cover keyboard insertion and reordering as well as pointer interactions. Shared spacing and typography rules can preserve consistency while leaving room for each newsletter’s content and identity."
+        "A production implementation should define a portable document model, component serialization, supported email markup and a rendering test matrix. Accessibility should cover keyboard insertion and reordering as well as pointer interactions. Shared spacing and typography rules can preserve consistency while leaving room for each newsletter\u2019s content and identity."
       ],
       "checks": [
         "Document structure and component serialization, including nested layouts",
@@ -1520,7 +1520,7 @@
     "architecture": {
       "title": "Connect the plan, the graph, and the operational record.",
       "paragraphs": [
-        "The prototype uses a persistent sidebar to establish the product’s major workspaces. The workflow canvas occupies the main authoring area, with step details available in an adjacent panel. This supports moving between the overall process and a specific setting without changing the underlying task context.",
+        "The prototype uses a persistent sidebar to establish the product\u2019s major workspaces. The workflow canvas occupies the main authoring area, with step details available in an adjacent panel. This supports moving between the overall process and a specific setting without changing the underlying task context.",
         "The AI plan modal acts as a transition between language and structure. Execution history then presents activity as a list, while operations aggregates signals across runs. Together, these surfaces demonstrate an information architecture that moves from intent to configuration to oversight."
       ],
       "wireframes": [
@@ -1555,7 +1555,7 @@
     "validation": {
       "paragraphs": [
         "Local walkthroughs confirmed that the supplied prototype can display a proposed plan, expose step configuration, and navigate to execution and operations screens. These are interface checks, and document the interaction behavior of the prototype.",
-        "A validation plan would focus on whether participants can predict the workflow’s behavior and identify the appropriate intervention. Observation should capture misunderstandings and reasoning, alongside completion and recovery behavior. No participant results or performance improvements are claimed here."
+        "A validation plan would focus on whether participants can predict the workflow\u2019s behavior and identify the appropriate intervention. Observation should capture misunderstandings and reasoning, alongside completion and recovery behavior. No participant results or performance improvements are claimed here."
       ],
       "tasks": [
         [
@@ -1583,7 +1583,7 @@
     "delivery": {
       "paragraphs": [
         "The available artifact is an interactive React, TypeScript, and Tailwind frontend. The case-study screenshots were captured from that local prototype and preserve its actual interface. Seeded activity supports exploration of operational states, while the predefined plan logic makes the intended review interaction demonstrable.",
-        "The next iteration should concentrate on the contract between the interface and a real execution system: explicit approval ownership, predictable error recovery, accurate cost feedback, and persistent workflow versions. These priorities follow from the experience’s central promise of visible control."
+        "The next iteration should concentrate on the contract between the interface and a real execution system: explicit approval ownership, predictable error recovery, accurate cost feedback, and persistent workflow versions. These priorities follow from the experience\u2019s central promise of visible control."
       ],
       "checks": [
         "Define permissions and approval ownership before enabling consequential actions.",
@@ -1604,9 +1604,9 @@
       "The supplied Next.js project is a marketing website with dedicated pages for agents, platform capabilities, workflows, use cases, pricing, and supporting information. The screenshots show the hosted frontend. Product claims and plan content within the prototype are not treated here as evidence of operational services or verified customer results."
     ],
     "discovery": {
-      "title": "Start with the visitor’s decision, not the feature list.",
+      "title": "Start with the visitor\u2019s decision, not the feature list.",
       "paragraphs": [
-        "The available website offers several ways to explore the product. Reviewing its navigation and page structure surfaces three questions: what does the platform do, where could it fit into a person’s work, and what distinguishes the available plans? A useful discovery experience needs to connect those questions rather than treat each page as an isolated pitch.",
+        "The available website offers several ways to explore the product. Reviewing its navigation and page structure surfaces three questions: what does the platform do, where could it fit into a person\u2019s work, and what distinguishes the available plans? A useful discovery experience needs to connect those questions rather than treat each page as an isolated pitch.",
         "The discovery material here comes from the supplied source and a walkthrough of the hosted website. Audience descriptions and synthesis themes are design considerations for evaluation. No interviews, customer research findings, or conversion measurements are attributed to this review."
       ],
       "methods": [
@@ -2372,7 +2372,7 @@
       "value": "The frontend demonstrates a discovery-to-booking journey. Completed reservations and conversion improvements are not established."
     },
     "context": [
-      "UrbanDrive explores a car rental experience where a visitor moves from a travel intention to comparing vehicles and configuring a rental. The product challenge is to preserve the practical context—location, dates, suitability, and cost—through a visually rich browsing experience.",
+      "UrbanDrive explores a car rental experience where a visitor moves from a travel intention to comparing vehicles and configuring a rental. The product challenge is to preserve the practical context\u2014location, dates, suitability, and cost\u2014through a visually rich browsing experience.",
       "The supplied Next.js source and hosted frontend support this case study. Screenshots show the homepage, fleet listing, and initial rental-details step. No reservation or payment was submitted. Marketing ratings, availability claims, and sample offers within the prototype are not treated as verified business results."
     ],
     "discovery": {
@@ -2412,7 +2412,7 @@
       ],
       [
         "Comparison needs repeated structure",
-        "Consistent vehicle attributes can reduce the effort of comparing alternatives. The selected attributes should reflect the visitor’s actual decision."
+        "Consistent vehicle attributes can reduce the effort of comparing alternatives. The selected attributes should reflect the visitor\u2019s actual decision."
       ],
       [
         "A summary must stay trustworthy",
@@ -2465,7 +2465,7 @@
       "title": "Carry the trip context through the journey.",
       "paragraphs": [
         "The design combines an inspirational entry with practical search inputs, then separates fleet discovery from booking configuration. Each stage should resolve a different uncertainty without asking the visitor to reconstruct their choices.",
-        "The next priority is the continuity of data and meaning. Dates, rate units, duration, and extras should remain consistent from discovery to review. Clear labels and accurate summaries are central to the experience’s credibility."
+        "The next priority is the continuity of data and meaning. Dates, rate units, duration, and extras should remain consistent from discovery to review. Clear labels and accurate summaries are central to the experience\u2019s credibility."
       ],
       "priorities": [
         [
@@ -2485,7 +2485,7 @@
     "architecture": {
       "title": "Move from collection to configuration.",
       "paragraphs": [
-        "Home and Fleets support discovery, while a vehicle’s Rent Now link opens a staged booking experience. The initial step exposes rental inputs and extras; a progress indicator names the later information, payment, and confirmation stages.",
+        "Home and Fleets support discovery, while a vehicle\u2019s Rent Now link opens a staged booking experience. The initial step exposes rental inputs and extras; a progress indicator names the later information, payment, and confirmation stages.",
         "The summary alongside the initial form keeps the vehicle and pricing context visible. Wireframe evaluation should examine whether visitors can distinguish editable choices from the calculated summary and predict the next step."
       ],
       "wireframes": [
@@ -2703,7 +2703,7 @@
       ],
       [
         "Rich content versus focus",
-        "Multiple sections demonstrate the template’s range. An adopting business should retain the sections that support its actual visitor journey."
+        "Multiple sections demonstrate the template\u2019s range. An adopting business should retain the sections that support its actual visitor journey."
       ],
       [
         "Visual proof versus verified evidence",
@@ -2764,7 +2764,7 @@
     "discovery": {
       "title": "Frame the experience around developer intent and platform risk.",
       "paragraphs": [
-        "The discovery model starts with the jobs developers must complete rather than the platform’s internal organization: evaluate, configure, call, recover, integrate, and go live.",
+        "The discovery model starts with the jobs developers must complete rather than the platform\u2019s internal organization: evaluate, configure, call, recover, integrate, and go live.",
         "I used technical contract review and journey mapping to connect status semantics, permission language, request IDs, event IDs, retry behavior, and readiness requirements. In a live engagement, this model would be tested with developer interviews, support-signal analysis, and task observation alongside a researcher."
       ],
       "methods": [
@@ -2886,7 +2886,7 @@
         ],
         [
           "Recover",
-          "Translate failures into specific corrective actions and preserve the developer’s work."
+          "Translate failures into specific corrective actions and preserve the developer\u2019s work."
         ],
         [
           "Operate",
@@ -3230,7 +3230,7 @@
       ],
       [
         "Evidence deserves equal footing",
-        "A grid, chart, or commentary block can each be the part of the workspace that resolves the user’s question."
+        "A grid, chart, or commentary block can each be the part of the workspace that resolves the user\u2019s question."
       ],
       [
         "Automation should remain reviewable",
@@ -3401,48 +3401,49 @@
   },
   "metric-os": {
     "executive": {
-      "mandate": "Make incident response explainable and actionable",
-      "decision": "Organize the workspace around the incident lifecycle: detect, investigate, resolve, and verify.",
-      "value": "The deliverable is a responsive observability workspace with reusable incident, topology, evidence, and remediation patterns."
+      "mandate": "Make operational signals explainable and actionable",
+      "decision": "Turn alert noise into one incident narrative, then carry the operator through investigation, governed action, and verification.",
+      "value": "The case study shows how topology, evidence, confidence, and remediation can share one operational surface."
     },
     "context": [
-      "Metric OS is an observability workspace for teams responsible for production reliability. It brings correlated incidents, service topology, logs, traces, SLO context, and governed rollback into one response surface."
+      "Metric OS is an observability workspace for teams responsible for production reliability. It brings applications, infrastructure, services, user journeys, correlated incidents, logs, traces, SLO context, and governed rollback into one response surface.",
+      "The design goal was to help teams understand what changed, why it matters, who is affected, and what action is safe to take."
     ],
     "discovery": {
-      "title": "Understand the operational context before shaping the workflow.",
+      "title": "Start with the operational question, not the monitoring tool.",
       "paragraphs": [
-        "Production incidents often scatter the signal across alerts, topology views, logs, traces, and runbooks. Operators spend valuable time reconstructing what happened before they can decide what action is safe.",
-        "I mapped the moments where people lose context, need to make a consequential decision, or need to explain what happened to another team."
+        "Engineering teams had more monitoring data than answers. A critical issue could require switching between alerts, topology, logs, traces, runbooks, and team chat before anyone could explain the causal chain.",
+        "I mapped the path from first signal to assigned action, focusing on where people lost context, reconciled conflicting evidence, or needed to make a consequential decision."
       ],
       "methods": [
         [
           "Workflow mapping",
-          "Trace the path from signal to action across tools, roles, and handoffs."
+          "Trace the journey from anomaly detection to investigation, rollback, and post-action verification."
+        ],
+        [
+          "Evidence inventory",
+          "Identify the logs, traces, metrics, dependencies, ownership, and SLO context needed at each decision point."
         ],
         [
           "State inventory",
-          "Define loading, empty, error, review, approval, and recovery states."
-        ],
-        [
-          "Decision framing",
-          "Make the information needed for a safe next step visible at the point of action."
+          "Define active, degraded, review, approval, rollback, recovery, and handoff states before shaping the screens."
         ]
       ]
     },
     "problem": {
-      "statement": "Production incidents often scatter the signal across alerts, topology views, logs, traces, and runbooks. Operators spend valuable time reconstructing what happened before they can decide what action is safe.",
+      "statement": "Production incidents scatter the signal across alerts, topology views, logs, traces, and runbooks. Operators spend valuable time reconstructing what happened before they can decide what action is safe.",
       "hmw": "How might we help an operator move from a noisy anomaly to a confident, governed resolution without losing the evidence?",
       "constraints": [
         "Support high information density without losing hierarchy.",
         "Keep automated suggestions inspectable and reversible.",
-        "Make permissions, status, and ownership visible.",
+        "Make permissions, status, ownership, and blast radius visible.",
         "Support responsive, accessible, keyboard-friendly workflows."
       ]
     },
     "insights": [
       [
         "Correlation is the first design decision",
-        "The interface should group related signals before asking people to interpret them."
+        "Group related signals before asking people to interpret them."
       ],
       [
         "Spatial context reduces search",
@@ -3451,6 +3452,10 @@
       [
         "Action needs guardrails",
         "Rollback and remediation should expose permissions, impact, and verification."
+      ],
+      [
+        "Confidence must be legible",
+        "AI hypotheses need supporting evidence and a clear path to human review."
       ]
     ],
     "audiences": [
@@ -3476,7 +3481,7 @@
       ],
       [
         "Investigate",
-        "Trace the blast radius and supporting evidence.",
+        "Trace blast radius and supporting evidence.",
         "Context is split between topology and logs.",
         "Keep spatial and detailed views together."
       ],
@@ -3502,12 +3507,12 @@
     "strategy": {
       "title": "Turn a complex operating model into a sequence people can follow.",
       "paragraphs": [
-        "Organize the workspace around the incident lifecycle: detect, investigate, resolve, and verify."
+        "The primary experience follows the incident lifecycle: detect, investigate, resolve, and verify. Each stage answers one operational question while keeping the next action visible."
       ],
       "priorities": [
         [
           "Orient",
-          "Show status, ownership, and the next meaningful action."
+          "Show status, ownership, severity, and the next meaningful action."
         ],
         [
           "Inspect",
@@ -3526,8 +3531,8 @@
     "architecture": {
       "title": "Connect correlated signals, topology, debugging evidence, and remediation in one operational surface.",
       "paragraphs": [
-        "I connected the primary workflow, supporting evidence, and reusable states so the interface could scale beyond a single screen.",
-        "The system separates orientation, investigation, decision, and follow-through while keeping the user’s context intact."
+        "The main response screen uses a 40/60 split: a spatial topology canvas preserves relationships while the evidence pane exposes logs, KPIs, traces, and root-cause reasoning. Selecting a service pivots the evidence without opening another tab.",
+        "Reusable incident, topology, evidence, trust-state, and remediation patterns let the workspace scale beyond one screen."
       ],
       "wireframes": [
         [
@@ -3564,12 +3569,16 @@
       [
         "Speed versus auditability",
         "Fast actions retain history, evidence, and verification."
+      ],
+      [
+        "Depth versus orientation",
+        "Detailed evidence stays one interaction away without overwhelming the first view."
       ]
     ],
     "validation": {
       "paragraphs": [
         "The prototype demonstrates a complete incident path from correlated alert to topology investigation and governed rollback.",
-        "The working prototype was walked through across the core path, including review states, responsive behavior, and recovery moments."
+        "The working walkthrough covered review states, responsive behavior, recovery moments, and the handoff needed after an incident."
       ],
       "tasks": [
         [
@@ -3592,7 +3601,7 @@
     "delivery": {
       "paragraphs": [
         "The deliverable is a responsive observability workspace with reusable incident, topology, evidence, and remediation patterns.",
-        "The work was carried into a responsive prototype with reusable patterns and explicit seams for production integration."
+        "The design system uses semantic status, compact data typography, keyboard-first workflows, non-color state cues, and reduced-motion support so dense operational views remain trustworthy."
       ],
       "checks": [
         "Review accessibility across dense operational views.",
@@ -3729,7 +3738,7 @@
       "title": "Use workflow stages, source-linked evidence, confidence, and tollgates to make automation understandable and accountable.",
       "paragraphs": [
         "I connected the primary workflow, supporting evidence, and reusable states so the interface could scale beyond a single screen.",
-        "The system separates orientation, investigation, decision, and follow-through while keeping the user’s context intact."
+        "The system separates orientation, investigation, decision, and follow-through while keeping the user\u2019s context intact."
       ],
       "wireframes": [
         [
