@@ -966,6 +966,21 @@
         "metric-os/design-system.svg",
         "Metric OS foundations for semantic status, data density, and accessibility.",
         "gallery"
+      ],
+      [
+        "metric-os/critical-workflow.svg",
+        "Critical workflow from anomaly detection to governed resolution.",
+        "gallery"
+      ],
+      [
+        "metric-os/sre-persona.svg",
+        "SRE persona and the friction behind the observability workflow.",
+        "gallery"
+      ],
+      [
+        "metric-os/impact-outcomes.svg",
+        "Impact and outcome framing for the Metric OS experience.",
+        "gallery"
       ]
     ]
   },
