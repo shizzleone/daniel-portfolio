@@ -973,50 +973,5 @@
         "decision-1"
       ]
     ]
-  },
-  {
-    "id": "forge",
-    "name": "Forge",
-    "category": "Developer platform · Governed AI app building",
-    "summary": "A governed workspace for turning an app idea into an inspectable, publishable experience.",
-    "role": "Lead product designer",
-    "scope": "Journey strategy · Workflow architecture · Interaction design · Prototype",
-    "platform": "Responsive web application",
-    "prototypeUrl": "./forge-prototype.html",
-    "image": "forge/overview.svg",
-    "alt": "Forge workspace showing prompt, build preview, and deployment inspector.",
-    "intro": "Make AI-assisted app building feel fast without hiding the work behind it.",
-    "overview": "Forge is an internal developer platform I designed around the full handoff from idea to launch: describe an app, watch the build, inspect the generated work, iterate in context, and publish through governance.",
-    "decisions": [
-      [
-        "Make the build lifecycle visible",
-        "Queued, building, live, and failed states are treated as product moments with logs, progress, and recovery actions."
-      ],
-      [
-        "Keep creation and inspection together",
-        "The three-pane workspace keeps chat, preview, code, deploys, and logs in one working context."
-      ],
-      [
-        "Make publishing a governed journey",
-        "A reviewable publish modal carries metadata, policy checks, visibility, and the final domain into one explicit flow."
-      ],
-      [
-        "Design for reusable seams",
-        "Shared UI primitives, templates, tokens, and state models make the platform extensible without fragmenting the experience."
-      ]
-    ],
-    "gallery": [
-      [
-        "forge/overview.svg",
-        "Forge workspace connecting the prompt, build preview, and inspector.",
-        "discovery"
-      ],
-      [
-        "forge/lifecycle.svg",
-        "The end-to-end lifecycle from describe through governed publish.",
-        "architecture"
-      ]
-    ],
-    "portfolioCategory": "Developer tools"
   }
 ]
