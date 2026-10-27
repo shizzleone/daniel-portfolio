@@ -187,3 +187,9 @@
 @media(prefers-reduced-motion:reduce){.portfolio-filters button{transition:none}}
 
 .metric-gallery{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1.5rem;margin:clamp(2rem,5vw,4rem) 0}.metric-gallery .case-figure{margin:0}.metric-gallery .case-figure:first-child{grid-column:1/-1}@media (max-width:700px){.metric-gallery{grid-template-columns:1fr}.metric-gallery .case-figure:first-child{grid-column:auto}}
+/* Metric OS case-study visuals use the portfolio shell tokens while preserving product UI detail. */
+.metric-gallery{padding:clamp(1rem,2vw,1.5rem);background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-lg,1.25rem)}
+.metric-gallery .case-figure{background:var(--background);border-color:var(--line);box-shadow:none}
+.metric-gallery .case-figure img{display:block;width:100%;height:auto;border-radius:calc(var(--radius-lg,1.25rem) - .25rem)}
+.metric-gallery figcaption{color:var(--muted);padding:.8rem .2rem .15rem}
+@media (prefers-reduced-motion: reduce){.metric-gallery *{scroll-behavior:auto!important;transition:none!important}}
