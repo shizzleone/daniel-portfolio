@@ -705,6 +705,8 @@ function ProjectPage({ project }: { project: CaseStudyProject }) {
   ]
   const num = (id: string) => sections.findIndex(([s]) => s === id) + 1
   const [active, setActive] = useState("overview")
+  const [personaQuote, setPersonaQuote] = useState(0)
+  const quotes = project.personaQuotes ?? []
 
   useEffect(() => {
     const obs = new IntersectionObserver(
@@ -861,13 +863,30 @@ function ProjectPage({ project }: { project: CaseStudyProject }) {
           label="Persona"
           title="Who the experience is designed to support."
         >
-          <div className="persona-card">
+          {quotes.length > 0 ? (
+          <div className="persona-card persona-carousel">
             <div>
               <span className="eyebrow">Designed for</span>
-              <h3>{(project.journeyFlow[0]?.actor ?? project.role).replace(/^#+\s*/, '')}</h3>
+              <h3>{project.audienceTitle ?? (project.journeyFlow[0]?.actor ?? project.role).replace(/^#+\s*/, '')}</h3>
             </div>
-            <p>{project.journeyFlow[0]?.userGoal ?? project.discoverySummary}</p>
+            <div className="persona-quote-wrap">
+              <blockquote>“{quotes[personaQuote].quote}”</blockquote>
+              <p className="persona-byline"><strong>{quotes[personaQuote].name}</strong><span>{quotes[personaQuote].designation}</span></p>
+              <div className="persona-controls">
+                <button type="button" className="icon-btn" aria-label="Previous user statement" onClick={() => setPersonaQuote((personaQuote - 1 + quotes.length) % quotes.length)}><Icon name="arrow-left" size={16} /></button>
+                <span>{String(personaQuote + 1).padStart(2, "0")} / {String(quotes.length).padStart(2, "0")}</span>
+                <button type="button" className="icon-btn" aria-label="Next user statement" onClick={() => setPersonaQuote((personaQuote + 1) % quotes.length)}><Icon name="arrow-right" size={16} /></button>
+              </div>
+            </div>
           </div>
+          ) : <div className="persona-card">
+            <div>
+              <span className="eyebrow">Designed for</span>
+              <h3>{project.audienceTitle ?? (project.journeyFlow[0]?.actor ?? project.role).replace(/^#+\s*/, '')}</h3>
+            </div>
+            <p>{project.audienceGoal ?? project.journeyFlow[0]?.userGoal ?? project.discoverySummary}</p>
+          </div>
+          }
         </Section>
 
         <Section

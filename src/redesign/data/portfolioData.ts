@@ -21,6 +21,11 @@ export interface WireframeSpec {
   caption: string
   layout: "dashboard" | "drawer" | "grid" | "split" | "mobile-home" | "mobile-queue" | "mobile-heatmap" | "mobile-ledger"
 }
+export interface PersonaQuote {
+  quote: string
+  name: string
+  designation: string
+}
 
 export interface CollabTrack {
   phase: string
@@ -46,6 +51,9 @@ export interface CaseStudyProject {
   scope: string
   platform: string
   heroImage: string
+  audienceTitle?: string
+  audienceGoal?: string
+  personaQuotes?: PersonaQuote[]
   secondaryImage?: string
   liveUrl?: string
   mandateTitle: string
@@ -1733,8 +1741,48 @@ const rawCatalog: {
     ],
   },
   {
-    id: "solshine",
+    id: "pennwise",
     index: "18",
+    name: "Pennwise",
+    category: "Fintech · Personal finance planning",
+    portfolioCategory: "Product & UX",
+    summary:
+      "A personal finance app that turns accounts, budgets, goals, debt, and future scenarios into one understandable planning system.",
+    role: "Lead Product Designer",
+    team: "Product · UX research · Engineering",
+    scope:
+      "Financial compass · Planning flows · Scenario analysis · Design system",
+    platform: "Responsive Web & Mobile Product System",
+    audienceTitle: "People building a confident financial plan",
+    audienceGoal:
+      "“I want to see where my money stands today, understand the trade-offs behind my goals, and know which next step I can act on.”",
+    personaQuotes: [
+      { quote: "I want to see where my money stands today before I make another decision.", name: "Maya Thompson", designation: "Early-career professional" },
+      { quote: "Show me the trade-offs behind a goal, not just a number that looks optimistic.", name: "Jordan Lee", designation: "Household planner" },
+      { quote: "I need to understand what changes if my income, spending, or returns move.", name: "Omar Khan", designation: "Long-term planner" },
+      { quote: "Give me a next step I can act on without becoming a financial expert first.", name: "Priya Shah", designation: "First-time investor" },
+    ],
+    image: "/pennwise-overview.svg",
+    liveUrl:
+      "https://www.figma.com/design/NZbmIQrN9GMHgTasujs7Xv/Pennwise-%E2%80%94-Personal-Finance-App?m=auto&t=MkSK5hpyyhXRYMvc-6",
+    decisions: [
+      [
+        "Start with a financial compass, not a pile of accounts",
+        "Made current position, upcoming milestones, and the next useful action visible from the dashboard.",
+      ],
+      [
+        "Turn long-term planning into comparable scenarios",
+        "Designed sensitivity views that show how returns, inflation, and income changes affect a plan without hiding the assumptions.",
+      ],
+      [
+        "Use one semantic system across dense financial states",
+        "Defined light/dark tokens, accessible status colors, and reusable mobile components across the product journeys.",
+      ],
+    ],
+  },
+  {
+    id: "solshine",
+    index: "19",
     name: "Solshine",
     category: "Clean energy · Reusable Framer web system",
     portfolioCategory: "Content & web",
@@ -1772,6 +1820,12 @@ const generatedMandates: Record<CaseStudyProject["portfolioCategory"], string> =
   "Content & web": "I organized the experience around audience intent, making the content hierarchy, entry points, and next actions easier to scan across responsive states.",
 }
 
+const personaNames = [
+  ["Alex Morgan", "Primary operator"],
+  ["Taylor Reed", "Daily user"],
+  ["Jordan Ellis", "Team lead"],
+]
+
 const generatedProjects: CaseStudyProject[] = rawCatalog.map((item) => ({
   id: item.id,
   index: item.index,
@@ -1787,6 +1841,30 @@ const generatedProjects: CaseStudyProject[] = rawCatalog.map((item) => ({
   scope: item.scope,
   platform: item.platform,
   heroImage: item.image,
+  audienceTitle:
+    item.audienceTitle ??
+    ({
+      "Developer tools": "Developers and platform teams",
+      Mobile: "People managing work or daily tasks on the move",
+      "Design systems": "Product teams building consistently",
+      "Product & UX": "Operators making high-context decisions",
+      "Content & web": "People looking for a clear next step",
+    } satisfies Record<CaseStudyProject["portfolioCategory"], string>)[item.portfolioCategory],
+  audienceGoal:
+    item.audienceGoal ??
+    "Understand the current state, find the right starting path, and move through the workflow with confidence.",
+  personaQuotes:
+    item.personaQuotes ??
+    personaNames.map(([name, designation], index) => ({
+      quote:
+        index === 0
+          ? `I need ${item.name} to show me where I am, what matters now, and where to begin.`
+          : index === 1
+            ? `I need the important detail in context so I can make the right decision without rebuilding the workflow.`
+            : `I need a clear next action and enough feedback to know the work is moving forward.`,
+      name,
+      designation,
+    })),
   liveUrl: item.liveUrl,
   mandateTitle: item.summary,
   mandateBody: generatedMandates[item.portfolioCategory],

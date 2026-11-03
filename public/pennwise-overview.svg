@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
+  <title id="title">Pennwise personal finance planning workspace</title>
+  <desc id="desc">A calm personal finance dashboard with a lime accent, planning cards and a net worth chart.</desc>
+  <rect width="1600" height="900" fill="#0a0a0a"/>
+  <rect x="72" y="72" width="1456" height="756" rx="28" fill="#171717" stroke="#3f3f46" stroke-width="2"/>
+  <text x="128" y="166" fill="#bef264" font-family="Arial, sans-serif" font-size="24" font-weight="700">PENNWlSE</text>
+  <text x="128" y="236" fill="#fafafa" font-family="Arial, sans-serif" font-size="52" font-weight="700">Your financial compass</text>
+  <text x="128" y="278" fill="#a3a3a3" font-family="Arial, sans-serif" font-size="22">See the plan. Understand the trade-offs. Move with confidence.</text>
+  <rect x="128" y="348" width="610" height="330" rx="20" fill="#242424"/>
+  <text x="164" y="402" fill="#a3a3a3" font-family="Arial, sans-serif" font-size="18">Net worth projection</text>
+  <text x="164" y="458" fill="#fafafa" font-family="Arial, sans-serif" font-size="42" font-weight="700">$505k</text>
+  <path d="M164 600 C250 562 302 584 372 516 S510 526 580 448 S660 440 706 402" fill="none" stroke="#bef264" stroke-width="8" stroke-linecap="round"/>
+  <line x1="164" y1="616" x2="706" y2="616" stroke="#52525b" stroke-width="2"/>
+  <rect x="786" y="348" width="684" height="154" rx="20" fill="#f4f7ee"/>
+  <text x="826" y="408" fill="#737373" font-family="Arial, sans-serif" font-size="18">Next milestone</text>
+  <text x="826" y="458" fill="#171717" font-family="Arial, sans-serif" font-size="28" font-weight="700">Buy a home in 2029</text>
+  <rect x="786" y="524" width="328" height="154" rx="20" fill="#242424"/>
+  <text x="824" y="580" fill="#a3a3a3" font-family="Arial, sans-serif" font-size="18">Monthly cash flow</text>
+  <text x="824" y="630" fill="#bef264" font-family="Arial, sans-serif" font-size="30" font-weight="700">+$1,240</text>
+  <rect x="1142" y="524" width="328" height="154" rx="20" fill="#242424"/>
+  <text x="1180" y="580" fill="#a3a3a3" font-family="Arial, sans-serif" font-size="18">Plan confidence</text>
+  <text x="1180" y="630" fill="#fafafa" font-family="Arial, sans-serif" font-size="30" font-weight="700">On track</text>
+</svg>
