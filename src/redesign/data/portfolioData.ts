@@ -1825,6 +1825,25 @@ const personaNames = [
   ["Taylor Reed", "Daily user"],
   ["Jordan Ellis", "Team lead"],
 ]
+const generatedAudiences: Record<string, [string, string]> = {
+  rapidbi: ["Analytics developers and data product teams", "I need to compose, inspect, and explain trusted data without losing the context behind a metric."],
+  shiftsnap: ["Hourly employees and store managers", "I need to see the right shift, request a change, and know when the schedule is confirmed."],
+  "navflow-ai": ["Workflow authors and operations leads", "I need to turn a business process into a reviewable flow without losing control of what automation will do."],
+  meridian: ["API developers and platform teams", "I need to understand an API quickly, recover from errors, and know what is safe to ship."],
+  "dev-mode": ["Developers integrating a new API", "I need a guided path from first request to a working integration, with docs and recovery guidance in the same place."],
+  "citi-homepage": ["People comparing banking products", "I need to start from my financial goal and compare the right options without translating internal product language."],
+  enta: ["People moving money across currencies", "I need to know where my money is going, what it will cost, and what I need to check before confirming."],
+  sendory: ["Newsletter authors and content teams", "I need a strong starting structure, flexible content blocks, and a reliable way to review the finished message."],
+  flownode: ["Operations teams managing AI workflows", "I need to understand what an automated flow will do, approve it safely, and monitor what happens after launch."],
+  iretv: ["Viewers discovering and returning to content", "I need to find something worth watching, understand why it fits, and continue without losing my place."],
+  finwise: ["People managing everyday finances", "I need a quick read on my money, clear trends, and practical next actions instead of another dense ledger."],
+  pulse: ["Mobile banking customers", "I need to check my money, complete a payment, and recover confidently when something needs attention."],
+  arca: ["People managing personal finances on mobile", "I need important balances and activity to be readable at a glance, even when I am moving quickly."],
+  interoly: ["Inventory and order operators", "I need to locate an item, inspect its status, and move from a record to the next operational action."],
+  shoppulse: ["E-commerce operators and store owners", "I need to connect performance signals to the products, orders, and inventory decisions behind them."],
+  urbandrive: ["Travelers booking a rental vehicle", "I need to compare vehicles and protection choices clearly before I commit to a reservation."],
+  solshine: ["Homeowners and commercial solar buyers", "I need to understand the opportunity, trust the proof, and know how to request the right next conversation."],
+}
 
 const generatedProjects: CaseStudyProject[] = rawCatalog.map((item) => ({
   id: item.id,
@@ -1842,7 +1861,7 @@ const generatedProjects: CaseStudyProject[] = rawCatalog.map((item) => ({
   platform: item.platform,
   heroImage: item.image,
   audienceTitle:
-    item.audienceTitle ??
+    item.audienceTitle ?? generatedAudiences[item.id]?.[0] ??
     ({
       "Developer tools": "Developers and platform teams",
       Mobile: "People managing work or daily tasks on the move",
@@ -1851,7 +1870,7 @@ const generatedProjects: CaseStudyProject[] = rawCatalog.map((item) => ({
       "Content & web": "People looking for a clear next step",
     } satisfies Record<CaseStudyProject["portfolioCategory"], string>)[item.portfolioCategory],
   audienceGoal:
-    item.audienceGoal ??
+    item.audienceGoal ?? generatedAudiences[item.id]?.[1] ??
     "Understand the current state, find the right starting path, and move through the workflow with confidence.",
   personaQuotes:
     item.personaQuotes ??
@@ -2113,7 +2132,31 @@ const generatedProjects: CaseStudyProject[] = rawCatalog.map((item) => ({
   ],
 }))
 
+const withPersonaContent = (project: CaseStudyProject): CaseStudyProject => {
+  const audience = generatedAudiences[project.id]
+  return {
+    ...project,
+    audienceTitle: project.audienceTitle ?? audience?.[0] ?? project.role,
+    audienceGoal:
+      project.audienceGoal ??
+      audience?.[1] ??
+      "I need a clear starting point, useful feedback, and a confident next action.",
+    personaQuotes:
+      project.personaQuotes ??
+      personaNames.map(([name, designation], index) => ({
+        quote:
+          index === 0
+            ? `I need ${project.name} to show me where I am, what matters now, and where to begin.`
+            : index === 1
+              ? "I need the important detail in context so I can make the right decision without rebuilding the workflow."
+              : "I need a clear next action and enough feedback to know the work is moving forward.",
+        name,
+        designation,
+      })),
+  }
+}
+
 export const allCaseStudies: CaseStudyProject[] = [
   ...portfolioProjects,
   ...generatedProjects,
-]
+].map(withPersonaContent)
