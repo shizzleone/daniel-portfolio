@@ -1,0 +1,38 @@
+type IconName = "arrow-right" | "arrow-left" | "arrow-up-right" | "arrow-down" | "sun" | "moon" | "search" | "menu" | "close" | "mail"
+
+const paths: Record<IconName, string> = {
+  "arrow-right": "M5 12h14M13 6l6 6-6 6",
+  "arrow-left": "M19 12H5M11 6l-6 6 6 6",
+  "arrow-up-right": "M7 17 17 7M8 7h9v9",
+  sun: "M12 4V2m0 20v-2m8-8h2M2 12h2m13.66-5.66 1.41-1.41M4.93 19.07l1.41-1.41m0-11.32L4.93 4.93m14.14 14.14-1.41-1.41M16 12a4 4 0 1 1-8 0 4 4 0 0 1 8 0Z",
+  moon: "M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5Z",
+  "arrow-down": "M12 5v14M6 13l6 6 6-6",
+  mail: "M4 6h16v12H4zM4 7l8 6 8-6",
+  menu: "M4 8h16M4 16h16",
+  close: "M6 6l12 12M18 6 6 18",
+  search: "m20 20-4.5-4.5M17 10.5a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0Z",
+}
+
+interface IconProps {
+  name: IconName
+  size?: number
+}
+
+export function Icon({ name, size = 16 }: IconProps) {
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={1.6}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+      className="shrink-0"
+    >
+      <path d={paths[name]} />
+    </svg>
+  )
+}
