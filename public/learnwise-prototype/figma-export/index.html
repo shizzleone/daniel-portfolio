@@ -1,0 +1,46 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>Lumen — screen export for Figma</title>
+<style>
+  *{box-sizing:border-box}
+  body{margin:0;background:#101413;font-family:-apple-system,Segoe UI,Roboto,sans-serif;padding:48px}
+  h1{color:#fff;font-size:22px;margin:0 0 6px}
+  p{color:rgba(255,255,255,.6);font-size:13px;margin:0 0 32px}
+  .grid{display:flex;flex-wrap:wrap;gap:28px}
+  .card{width:200px}
+  a.thumb{display:block;height:180px;border-radius:14px;background:#fff;overflow:hidden;box-shadow:0 12px 30px -10px rgba(0,0,0,.6);text-decoration:none;position:relative}
+  a.thumb iframe{width:393px;height:852px;border:0;transform:scale(0.436);transform-origin:top left;pointer-events:none}
+  .label{margin-top:10px;font-size:12px;color:#fff;font-weight:600}
+  .sub{font-size:11px;color:rgba(255,255,255,.45)}
+</style>
+</head>
+<body>
+<h1>Lumen — 20 screens</h1>
+<p>Each card opens a standalone, self-contained screen file. Import individually into your HTML-to-design plugin.</p>
+<div class="grid" id="grid"></div>
+<script>
+var screens = [
+  ["01-splash.html","Splash"],["02-onboarding.html","Onboarding"],["03-sign-in.html","Sign in"],
+  ["04-sign-up.html","Sign up"],["05-goals.html","Goals"],["06-home.html","Home"],
+  ["07-catalog.html","Catalog"],["08-course-detail.html","Course detail"],["09-lesson-player.html","Lesson player"],
+  ["10-quiz-intro.html","Quiz intro"],["11-quiz.html","Quiz"],["12-quiz-result.html","Quiz result"],
+  ["13-path-map.html","Path map"],["14-ai-tutor.html","AI tutor"],["15-progress.html","Progress"],
+  ["16-inbox.html","Inbox"],["17-profile.html","Profile"],["18-settings.html","Settings"],
+  ["19-plans.html","Plans"],["20-certificate.html","Certificate"]
+];
+var grid = document.getElementById('grid');
+screens.forEach(function(s){
+  var card = document.createElement('div'); card.className = 'card';
+  var a = document.createElement('a'); a.className = 'thumb'; a.href = s[0]; a.target = '_blank';
+  var f = document.createElement('iframe'); f.src = s[0];
+  a.appendChild(f); card.appendChild(a);
+  var l = document.createElement('div'); l.className = 'label'; l.textContent = s[1];
+  var sub = document.createElement('div'); sub.className = 'sub'; sub.textContent = s[0];
+  card.appendChild(l); card.appendChild(sub);
+  grid.appendChild(card);
+});
+</script>
+</body>
+</html>

@@ -1741,8 +1741,41 @@ const rawCatalog: {
     ],
   },
   {
-    id: "pennwise",
+    id: "learnwise",
     index: "18",
+    name: "Learnwise",
+    category: "Education · AI-powered learning companion",
+    portfolioCategory: "Mobile",
+    summary:
+      "An AI-powered learning app connecting onboarding goals, course discovery, guided lessons, quizzes, progress, and an AI tutor in one mobile experience.",
+    role: "Lead Product Designer",
+    team: "Product · UX research · Engineering",
+    scope:
+      "Onboarding · Course catalog · Lesson player · AI tutor · Progress",
+    platform: "Native mobile product prototype",
+    image: "/learnwise-prototype/assets/hero.png",
+    liveUrl: "/learnwise-prototype/index.html",
+    audienceTitle: "Learners building a consistent study habit",
+    audienceGoal:
+      "I want a clear path from my goal to the next lesson, useful feedback when I get stuck, and visible progress I can trust.",
+    decisions: [
+      [
+        "Start with goals and a personal learning path",
+        "Used onboarding choices to make course discovery feel relevant instead of presenting an undifferentiated catalog.",
+      ],
+      [
+        "Keep practice and explanation in the same loop",
+        "Connected lesson content, quizzes, results, and AI tutor support so learners can recover without leaving the flow.",
+      ],
+      [
+        "Make progress motivating and concrete",
+        "Combined completion, streaks, certificates, and next lessons into a progress model that supports return visits.",
+      ],
+    ],
+  },
+  {
+    id: "pennwise",
+    index: "19",
     name: "Pennwise",
     category: "Fintech · Personal finance planning",
     portfolioCategory: "Product & UX",
@@ -1782,7 +1815,7 @@ const rawCatalog: {
   },
   {
     id: "solshine",
-    index: "19",
+    index: "20",
     name: "Solshine",
     category: "Clean energy · Reusable Framer web system",
     portfolioCategory: "Content & web",
