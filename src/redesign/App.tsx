@@ -73,7 +73,7 @@ function hasPortfolioAccess() {
   }
 }
 
-function PortfolioGate({ onUnlock }: { onUnlock: () => void }) {
+function PortfolioGate({ onUnlock, onClose }: { onUnlock: () => void; onClose?: () => void }) {
   const [password, setPassword] = useState("")
   const [error, setError] = useState("")
   const submit = (event: FormEvent<HTMLFormElement>) => {
@@ -92,6 +92,7 @@ function PortfolioGate({ onUnlock }: { onUnlock: () => void }) {
   }
   return (
     <section className="portfolio-gate shell" aria-labelledby="gate-title">
+      {onClose && <button className="gate-close icon-btn" type="button" onClick={onClose} aria-label="Close password dialog"><Icon name="close" /></button>}
       <Icon name="lock" size={28} />
       <span className="eyebrow">Private work</span>
       <h2 id="gate-title">The work is available by request.</h2>
@@ -126,6 +127,7 @@ export default function App() {
   const [theme, setTheme] = useState<"light" | "dark">(readTheme)
   const [menuOpen, setMenuOpen] = useState(false)
   const [portfolioAccess, setPortfolioAccess] = useState(hasPortfolioAccess)
+  const [gateOpen, setGateOpen] = useState(false)
   const [pendingAnchor, setPendingAnchor] = useState<string | null>(null)
 
   useEffect(() => {
@@ -181,7 +183,7 @@ export default function App() {
 
   const navItems = (
     <>
-      <button type="button" onClick={() => goHomeSection("work")}>
+      <button type="button" onClick={() => portfolioAccess ? goHomeSection("work") : setGateOpen(true)}>
         Work
       </button>
       <a
@@ -266,6 +268,14 @@ export default function App() {
           <Home portfolioAccess={portfolioAccess} onUnlock={() => setPortfolioAccess(true)} />
         )}
       </main>
+
+      {gateOpen && !portfolioAccess && (
+        <div className="gate-modal" role="presentation" onMouseDown={(event) => event.target === event.currentTarget && setGateOpen(false)}>
+          <div className="gate-dialog" role="dialog" aria-modal="true" aria-labelledby="gate-title">
+            <PortfolioGate onUnlock={() => { setPortfolioAccess(true); setGateOpen(false) }} onClose={() => setGateOpen(false)} />
+          </div>
+        </div>
+      )}
 
       <section
         id="contact"
