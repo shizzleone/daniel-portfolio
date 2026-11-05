@@ -876,6 +876,14 @@ html body .gate-close{position:absolute;top:18px;right:18px;z-index:1}
   align-items: end;
   margin-bottom: 40px;
 }
+.cs-sec-head .eyebrow {
+  padding: 7px 13px;
+  border-color: color-mix(in srgb, var(--accent) 38%, var(--line));
+  background: color-mix(in srgb, var(--accent) 12%, var(--surface));
+  color: var(--ink);
+  font-weight: 650;
+  letter-spacing: .01em;
+}
 .cs-sec-head h2 {
   margin-top: 16px;
   font-size: clamp(30px, 3.6vw, 48px);
