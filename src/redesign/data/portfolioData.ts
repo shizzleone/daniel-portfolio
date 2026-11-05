@@ -15,6 +15,12 @@ export interface StickyNote {
   text: string
 }
 
+export interface SynthesisSignal {
+  theme: string
+  evidence: string
+  response: string
+}
+
 export interface WireframeSpec {
   id: string
   title: string
@@ -62,6 +68,7 @@ export interface CaseStudyProject {
   discoverySummary: string
   discoveryMethods: [string, string][]
   figmaNotes: StickyNote[]
+  synthesis?: SynthesisSignal[]
   principles: [string, string][]
   journeySummary: string
   journeyFlow: JourneyNode[]
@@ -161,7 +168,7 @@ export const leadershipPillars = [
     number: "04",
     title: "Prototyping & Delivery",
     summary:
-      "Build production-grade React and TypeScript prototypes to validate complex state transitions alongside engineering.",
+      "Create high-fidelity interactive prototypes to validate complex state transitions and give engineering a clear path to build.",
     tags: ["React + TypeScript", "WCAG Accessibility", "Zero-Loss Handoff"],
   },
 ]
@@ -1548,6 +1555,25 @@ const rawCatalog: {
     platform: "Responsive Web Platform",
     image: `${assetBase}iretv/welcome.png`,
     liveUrl: "https://iretv.net",
+    audienceTitle: "Christian families choosing what to watch together",
+    audienceGoal: "I want to discover thoughtfully curated films without social-media noise, and feel confident that what my children and family watch is clean and safe.",
+    personaQuotes: [
+      {
+        quote: "I want recommendations with a point of view—not an endless feed shaped by noise.",
+        name: "Tasha",
+        designation: "Parent · Faith & family viewer",
+      },
+      {
+        quote: "I need to know what a title contains before I put it on for my family.",
+        name: "Michael",
+        designation: "Father · Household decision-maker",
+      },
+      {
+        quote: "I want something meaningful to watch without spending half the evening searching.",
+        name: "Chloe",
+        designation: "Viewer · Curated discovery seeker",
+      },
+    ],
     decisions: [
       [
         "Make suitability part of discovery",
@@ -1887,7 +1913,7 @@ const generatedProjects: CaseStudyProject[] = rawCatalog.map((item) => ({
   summary: item.summary,
   headlineStart: `${item.name}: `,
   headlineAccent: "architected for clarity.",
-  lede: `As ${item.role.toLowerCase()}, I led the end-to-end UX architecture, interaction model, and engineering alignment for ${item.name}—turning complex requirements into a cohesive, production-ready system.`,
+  lede: `As ${item.role.toLowerCase()}, I led discovery, UX architecture, interaction design, and design-to-engineering alignment for ${item.name}—turning complex requirements into a clear, testable experience.`,
   role: item.role,
   team: item.team ?? "UX researchers · Product · Engineering",
   scope: item.scope,
@@ -1931,7 +1957,7 @@ const generatedProjects: CaseStudyProject[] = rawCatalog.map((item) => ({
     ],
     [
       "Engineering Collaboration",
-      "Delivered tokenized specs, responsive rules, and interactive prototypes aligned with code.",
+      "Partnered with engineering on tokenized specs, responsive rules, and an interactive prototype that made the intended experience clear.",
     ],
   ],
   discoverySummary: `Working alongside our UX researchers, we audited the end-to-end workflow for ${item.name} and mapped where users lost context. I then partnered with engineering to establish a single shared state model.`,
@@ -1969,6 +1995,23 @@ const generatedProjects: CaseStudyProject[] = rawCatalog.map((item) => ({
       tone: "rose",
       tag: "Engineering Sync",
       text: "Align Figma component props and status tokens 1:1 with frontend state.",
+    },
+  ],
+  synthesis: [
+    {
+      theme: "Orientation",
+      evidence: "People needed a clear read on status before choosing a path.",
+      response: "Lead with scope, status, and one obvious starting action.",
+    },
+    {
+      theme: "Context continuity",
+      evidence: "Switching views could make the current filter or selection disappear.",
+      response: "Keep task context persistent across lists, details, and states.",
+    },
+    {
+      theme: "Confidence",
+      evidence: "The next decision depended on supporting detail, not a summary alone.",
+      response: "Pair every high-level signal with the evidence needed to act.",
     },
   ],
   principles: [
@@ -2093,7 +2136,7 @@ const generatedProjects: CaseStudyProject[] = rawCatalog.map((item) => ({
     before: "Disconnected multi-page steps",
     after: "Connected workspace with persistent context",
   },
-  engineeringSummary: `I partnered with engineers to translate ${item.name} into clean component contracts, responsive layout rules, and accessible state semantics.`,
+  engineeringSummary: `I partnered with engineers to translate the design direction for ${item.name} into clear component contracts, responsive layout rules, and accessible state semantics.`,
   collabTracks: [
     {
       phase: "01 / Architecture",

@@ -925,6 +925,50 @@ function ProjectPage({ project }: { project: CaseStudyProject }) {
               ))}
             </ul>
           </div>
+          <div className="synthesis" aria-label="Research synthesis">
+            <div className="synthesis-heading">
+              <span className="eyebrow">Synthesis</span>
+              <p>Signals we carried forward</p>
+            </div>
+            <div className="synthesis-grid">
+              {(project.synthesis ?? project.figmaNotes.slice(0, 3).map((note, i) => ({
+                theme: note.tag,
+                evidence: note.text.replace(/[“”]/g, ""),
+                response: project.principles[i]?.[1] ?? "Turn the signal into a visible product rule.",
+              }))).map((signal) => (
+                <article key={signal.theme} className="synthesis-card">
+                  <strong>{signal.theme}</strong>
+                  <span>Observed</span>
+                  <p>{signal.evidence}</p>
+                  <span>Changed the design</span>
+                  <p>{signal.response}</p>
+                </article>
+              ))}
+            </div>
+          </div>
+          <div className="artifact-row" aria-label="Working artifacts">
+            <article className="artifact-card artifact-wireflow">
+              <span className="eyebrow">Low-fi flow</span>
+              <div className="mini-flow" aria-hidden="true">
+                {project.wireframes.slice(0, 3).map((wireframe, i) => (
+                  <span key={wireframe.id}><b>{String(i + 1).padStart(2, "0")}</b>{wireframe.title}</span>
+                ))}
+              </div>
+              <p>Structure tested before visual polish.</p>
+            </article>
+            <article className="artifact-card">
+              <span className="eyebrow">Decision snapshot</span>
+              <strong>{project.decisions[0]?.title ?? "Make the next action visible"}</strong>
+              <p>{project.decisions[0]?.body ?? project.principles[0]?.[1]}</p>
+            </article>
+            <article className="artifact-card">
+              <span className="eyebrow">Collaboration</span>
+              <div className="collab-strip">
+                {project.collabTracks.slice(0, 3).map((track) => <span key={track.phase} title={track.detail}>{track.title}</span>)}
+              </div>
+              <p>Research, product, design, and engineering decisions stayed connected.</p>
+            </article>
+          </div>
           <ol className="principles">
             {project.principles.map(([t, d], i) => (
               <li key={t}>
