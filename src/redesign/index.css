@@ -871,7 +871,7 @@ html body .gate-close{position:absolute;top:18px;right:18px;z-index:1}
 }
 .cs-sec-head {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: minmax(0, 0.7fr) minmax(0, 1.8fr);
   gap: 24px 64px;
   align-items: end;
   margin-bottom: 40px;
@@ -887,7 +887,7 @@ html body .gate-close{position:absolute;top:18px;right:18px;z-index:1}
   font-size: 17px;
   line-height: 1.65;
   color: var(--ink-2);
-  max-width: 72ch;
+  max-width: none;
 }
 .tiles {
   display: grid;
@@ -1053,6 +1053,8 @@ html body .gate-close{position:absolute;top:18px;right:18px;z-index:1}
 .synthesis-card strong { display: block; font-size: 16px; margin-bottom: 12px; }
 .synthesis-card span { display: block; font-family: var(--mono); font-size: 10px; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); margin-top: 9px; }
 .synthesis-card p { margin-top: 4px; color: var(--muted); font-size: 13px; line-height: 1.45; }
+.problem-callout { max-width: 760px; padding: 24px 26px; border-left: 3px solid var(--accent); border-radius: 0 18px 18px 0; background: var(--surface); }
+.problem-callout p { margin-top: 12px; font-size: clamp(20px, 2.2vw, 30px); line-height: 1.25; letter-spacing: -0.02em; }
 .artifact-row { display: grid; grid-template-columns: 1.05fr 1fr 1fr; gap: 12px; margin-top: 14px; }
 .artifact-card { min-height: 172px; padding: 18px; border: 1px solid var(--line); border-radius: 18px; background: var(--surface); }
 .artifact-card > strong { display: block; margin: 16px 0 8px; font-size: 17px; line-height: 1.2; }

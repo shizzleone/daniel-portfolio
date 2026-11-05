@@ -64,6 +64,7 @@ export interface CaseStudyProject {
   liveUrl?: string
   mandateTitle: string
   mandateBody: string
+  problemStatement?: string
   ownershipPillars: [string, string][]
   discoverySummary: string
   discoveryMethods: [string, string][]
@@ -1946,6 +1947,7 @@ const generatedProjects: CaseStudyProject[] = rawCatalog.map((item) => ({
   liveUrl: item.liveUrl,
   mandateTitle: item.summary,
   mandateBody: generatedMandates[item.portfolioCategory],
+  problemStatement: `The existing ${item.name} experience made the core task harder to understand and act on, especially when people needed context before moving forward.`,
   ownershipPillars: [
     [
       "Information Architecture",

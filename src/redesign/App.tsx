@@ -844,16 +844,12 @@ function ProjectPage({ project }: { project: CaseStudyProject }) {
           id="problem"
           n={num("problem")}
           label="Problem"
-          title="The user and business friction."
+          title="The problem to solve."
+          intro={project.problemStatement}
         >
-          <div className="painpoint-grid">
-            {project.journeyFlow.slice(0, 3).map((node) => (
-              <article key={node.step} className="painpoint-card">
-                <span className="tile-no">{node.step}</span>
-                <h3>{node.stage}</h3>
-                <p>{node.frictionEliminated}</p>
-              </article>
-            ))}
+          <div className="problem-callout">
+            <span className="eyebrow">Problem statement</span>
+            <p>{project.problemStatement ?? project.mandateBody}</p>
           </div>
         </Section>
 
