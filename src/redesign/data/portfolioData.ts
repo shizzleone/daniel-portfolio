@@ -523,7 +523,7 @@ export const portfolioProjects: CaseStudyProject[] = [
         "Zero-risk scenario planning",
       ],
     ],
-  },,
+  },
   {
     id: "navflow-ai",
     index: "03",
@@ -815,7 +815,7 @@ export const portfolioProjects: CaseStudyProject[] = [
         "100% traceable sign-off trail",
       ],
     ],
-  },,
+  },
   {
     id: "simplelist",
     liveUrl: "https://ui8-bento-landing.vercel.app",
@@ -1159,7 +1159,7 @@ export const portfolioProjects: CaseStudyProject[] = [
         "Full production delivery",
       ],
     ],
-  },,
+  },
   {
     id: "motive",
     liveUrl: "./motive-prototype/index.html",
@@ -1492,7 +1492,7 @@ export const portfolioProjects: CaseStudyProject[] = [
         "Eliminates surprise upsells",
       ],
     ],
-  },,
+  },
   {
     id: "rapidbi",
     liveUrl: "./rapidbi-storybook/index.html",
@@ -1798,7 +1798,7 @@ export const portfolioProjects: CaseStudyProject[] = [
         "Direct design-to-code parity",
       ],
     ],
-  },,
+  },
   {
     id: "shiftsnap",
     index: "02",
@@ -3469,6 +3469,7 @@ const generatedProjects: CaseStudyProject[] = rawCatalog.map((item) => {
 })
 
 const withPersonaContent = (project: CaseStudyProject): CaseStudyProject => {
+  if (!project) return project
   const audience = generatedAudiences[project.id]
   return {
     ...project,
@@ -3496,6 +3497,7 @@ export const allCaseStudies: CaseStudyProject[] = [
   ...portfolioProjects,
   ...generatedProjects,
 ]
+  .filter(Boolean)
   .map(withPersonaContent)
   .map((project, idx) => ({
     ...project,
