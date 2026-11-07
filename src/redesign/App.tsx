@@ -1002,9 +1002,9 @@ function ProjectPage({ project }: { project: CaseStudyProject }) {
     ["overview", "Overview"],
     ["problem", "Challenge"],
     ["discovery", "Research & Insights"],
-    ["process", "Architecture & Principles"],
-    ["final-design", "Key Screens"],
-    ["results", "Impact & Closing"],
+    ["process", "Flow & Architecture"],
+    ["final-design", "The Solution"],
+    ["results", "Impact & Outcomes"],
   ]
   const num = (id: string) => sections.findIndex(([s]) => s === id) + 1
   const [active, setActive] = useState("overview")
@@ -1469,7 +1469,7 @@ function ProjectPage({ project }: { project: CaseStudyProject }) {
         <Section
           id="final-design"
           n={num("final-design")}
-          label="Final Design & Key Screens"
+          label="The Solution · Final Design & Key Screens"
           title="High-fidelity screens, interaction states, and key features."
           intro="Every screen translates research insights and user needs into clear visual hierarchy, intuitive interaction patterns, and production-ready design craft."
         >
@@ -1550,7 +1550,7 @@ function ProjectPage({ project }: { project: CaseStudyProject }) {
         <Section
           id="results"
           n={num("results")}
-          label="Impact & Closing"
+          label="Impact & Outcomes"
           title="Measurable outcomes, validation, and design leadership reflection."
           intro={project.engineeringSummary}
         >
