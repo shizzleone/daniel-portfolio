@@ -3623,7 +3623,7 @@ html body .stage-about .stage-lede {
   height: 7px;
   border-radius: 50%;
   background: #10b981;
-  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.22);
+  animation: live-pulse 2s infinite ease-in-out;
 }
 
 /* Floating Section Tabs Numbering */
@@ -4087,6 +4087,44 @@ html body .stage-about .stage-lede {
   height: 6px;
   border-radius: 50%;
   background: #2be38c;
+  animation: live-pulse 2s infinite ease-in-out;
+}
+@keyframes live-pulse {
+  0% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(43, 227, 140, 0.7);
+  }
+  70% {
+    transform: scale(1.15);
+    box-shadow: 0 0 0 6px rgba(43, 227, 140, 0);
+  }
+  100% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(43, 227, 140, 0);
+  }
+}
+.archive-toggle-row {
+  display: flex;
+  justify-content: center;
+  margin-top: 36px;
+}
+.archive-toggle-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 10px 22px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: var(--surface);
+  color: var(--ink);
+  transition: all 0.2s ease;
+}
+.archive-toggle-btn:hover {
+  background: var(--surface-hover, var(--surface));
+  border-color: var(--tint-ink, var(--ink));
+  transform: translateY(-1px);
 }
 .card-hover-cta {
   position: absolute;

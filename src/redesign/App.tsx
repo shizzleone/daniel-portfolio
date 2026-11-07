@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState, type FormEvent, type ReactNode } from "react"
+import { useEffect, useMemo, useState, type ReactNode } from "react"
 import {
   allCaseStudies,
   experienceTimeline,
@@ -14,7 +14,6 @@ import { Sparkle, SparkLabel, Squiggle, Typed } from "./components/Decor"
 
 const RESUME = "https://danieljohnson.bio/assets/daniel-johnson-resume.pdf"
 const EMAIL = "folaseyi@gmail.com"
-const PORTFOLIO_PASSWORD = "Daniel2026"
 const LINKEDIN = "https://www.linkedin.com/in/dannyshizzle"
 const PORTRAIT = "/daniel-johnson-cutout.webp"
 const ABOUT_PORTRAIT = "/daniel-johnson-about.webp"
@@ -66,75 +65,14 @@ const scrollToId = (id: string) =>
     .getElementById(id)
     ?.scrollIntoView({ behavior: "smooth", block: "start" })
 
-function hasPortfolioAccess() {
-  try {
-    return sessionStorage.getItem("daniel-projects-unlocked") === "true"
-  } catch {
-    return false
-  }
-}
-
-function PortfolioGate({ onUnlock, onClose }: { onUnlock: () => void; onClose?: () => void }) {
-  const [password, setPassword] = useState("")
-  const [error, setError] = useState("")
-  const submit = (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault()
-    if (password === PORTFOLIO_PASSWORD) {
-      try {
-        sessionStorage.setItem("daniel-projects-unlocked", "true")
-      } catch {
-        /* access can still continue for this session */
-      }
-      onUnlock()
-      return
-    }
-    setError("That password doesn’t match. Please try again.")
-    setPassword("")
-  }
-  return (
-    <section className="portfolio-gate shell" aria-labelledby="gate-title">
-      {onClose && <button className="gate-close icon-btn" type="button" onClick={onClose} aria-label="Close password dialog"><Icon name="close" /></button>}
-      <Icon name="lock" size={28} />
-      <span className="eyebrow">Private work</span>
-      <h2 id="gate-title">The work is available by request.</h2>
-      <p>Enter the portfolio password to view case studies and prototypes.</p>
-      <form onSubmit={submit}>
-        <label htmlFor="portfolio-password">Portfolio password</label>
-        <div className="gate-row">
-          <input
-            id="portfolio-password"
-            type="password"
-            autoComplete="current-password"
-            required
-            value={password}
-            onChange={(event) => setPassword(event.target.value)}
-            aria-invalid={Boolean(error)}
-          />
-          <button className="btn btn-mint" type="submit">
-            Unlock work <Icon name="arrow-up-right" size={15} />
-          </button>
-        </div>
-        {error && <p className="gate-error" role="alert">{error}</p>}
-      </form>
-      <a className="text-link" href={`mailto:${EMAIL}?subject=Portfolio%20access`}>
-        Request access <Icon name="mail" size={15} />
-      </a>
-    </section>
-  )
-}
-
 function CommandPalette({
   open,
   onClose,
-  portfolioAccess,
-  onRequestUnlock,
   theme,
   onToggleTheme,
 }: {
   open: boolean
   onClose: () => void
-  portfolioAccess: boolean
-  onRequestUnlock: () => void
   theme: "light" | "dark"
   onToggleTheme: () => void
 }) {
@@ -163,10 +101,6 @@ function CommandPalette({
 
   const goProject = (id: string) => {
     onClose()
-    if (!portfolioAccess) {
-      onRequestUnlock()
-      return
-    }
     window.location.hash = `/work/${id}`
   }
 
@@ -304,8 +238,6 @@ export default function App() {
   const [theme, setTheme] = useState<"light" | "dark">(readTheme)
   const [menuOpen, setMenuOpen] = useState(false)
   const [cmdOpen, setCmdOpen] = useState(false)
-  const [portfolioAccess, setPortfolioAccess] = useState(hasPortfolioAccess)
-  const [gateOpen, setGateOpen] = useState(false)
   const [pendingAnchor, setPendingAnchor] = useState<string | null>(null)
 
   useEffect(() => {
@@ -410,7 +342,7 @@ export default function App() {
 
   const navItems = (
     <>
-      <button type="button" onClick={() => portfolioAccess ? goHomeSection("work") : setGateOpen(true)}>
+      <button type="button" onClick={() => goHomeSection("featured")}>
         Work
       </button>
       <a
@@ -498,27 +430,17 @@ export default function App() {
 
       <main id="main">
         {project ? (
-          portfolioAccess ? <ProjectPage key={project.id} project={project} /> : <PortfolioGate onUnlock={() => setPortfolioAccess(true)} />
+          <ProjectPage key={project.id} project={project} />
         ) : route.name === "about" ? (
           <About />
         ) : (
-          <Home portfolioAccess={portfolioAccess} onUnlock={() => setPortfolioAccess(true)} />
+          <Home />
         )}
       </main>
-
-      {gateOpen && !portfolioAccess && (
-        <div className="gate-modal" role="presentation" onMouseDown={(event) => event.target === event.currentTarget && setGateOpen(false)}>
-          <div className="gate-dialog" role="dialog" aria-modal="true" aria-labelledby="gate-title">
-            <PortfolioGate onUnlock={() => { setPortfolioAccess(true); setGateOpen(false) }} onClose={() => setGateOpen(false)} />
-          </div>
-        </div>
-      )}
 
       <CommandPalette
         open={cmdOpen}
         onClose={() => setCmdOpen(false)}
-        portfolioAccess={portfolioAccess}
-        onRequestUnlock={() => setGateOpen(true)}
         theme={theme}
         onToggleTheme={() => setTheme(theme === "light" ? "dark" : "light")}
       />
@@ -625,9 +547,11 @@ function SectionTitle({
   )
 }
 
-function Home({ portfolioAccess, onUnlock }: { portfolioAccess: boolean; onUnlock: () => void }) {
+function Home() {
   const featured = allCaseStudies.filter((p) => p.featured)
   const [filter, setFilter] = useState<typeof categories[number]>("All")
+  const [showAllArchive, setShowAllArchive] = useState(false)
+
   const list = useMemo(
     () =>
       allCaseStudies.filter(
@@ -635,6 +559,11 @@ function Home({ portfolioAccess, onUnlock }: { portfolioAccess: boolean; onUnloc
       ),
     [filter],
   )
+
+  const displayedArchive = useMemo(() => {
+    if (filter !== "All" || showAllArchive) return list
+    return list.slice(0, 6)
+  }, [list, filter, showAllArchive])
 
   return (
     <>
@@ -718,6 +647,74 @@ function Home({ portfolioAccess, onUnlock }: { portfolioAccess: boolean; onUnloc
         </div>
       </div>
 
+      {/* FEATURED WORK: Promoted right below the hero & ticker */}
+      <section
+        id="featured"
+        className="shell block"
+        aria-labelledby="featured-h"
+      >
+        <div className="block-row">
+          <SectionTitle label="Featured Projects" id="featured-h">
+            My featured <em>portfolio</em>
+          </SectionTitle>
+          <button
+            type="button"
+            className="btn btn-mint"
+            onClick={() => scrollToId("work")}
+          >
+            Explore archive
+            <Icon name="arrow-up-right" />
+          </button>
+        </div>
+        <ul className="fp-grid">
+          {featured.map((p, i) => (
+            <li key={p.id}>
+              <a href={`#/work/${p.id}`} className="fp">
+                <div className={`fp-media ${tint(p)}`}>
+                  <div className="card-hover-pills" aria-hidden="true">
+                    <span className="card-pill-platform">{p.platform}</span>
+                    {p.liveUrl && (
+                      <span className="card-pill-live">
+                        <i /> Live Prototype
+                      </span>
+                    )}
+                  </div>
+                  <img
+                    src={p.heroImage}
+                    alt=""
+                    loading={i > 1 ? "lazy" : undefined}
+                  />
+                  <span className="card-hover-cta" aria-hidden="true">
+                    Explore Case Study
+                    <Icon name="arrow-up-right" size={14} />
+                  </span>
+                </div>
+                <div className="fp-meta">
+                  <div>
+                    <span className="fp-cat">{p.category}</span>
+                    <h3>{p.name}</h3>
+                    <p>{p.summary}</p>
+                    {p.outcomes && p.outcomes.length > 0 && (
+                      <div className="card-metrics-row">
+                        {p.outcomes.slice(0, 2).map(([k, , val]) => (
+                          <span key={k} className="card-metric-chip">
+                            <strong>{val}</strong> · {k}
+                          </span>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                  <span className="circle-arrow" aria-hidden="true">
+                    <Icon name="arrow-up-right" size={18} />
+                  </span>
+                </div>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      {/* ABOUT ME & LEADERSHIP */}
       <section className="shell intro" aria-labelledby="intro-h">
         <div className="intro-copy">
           <SectionTitle label="About me" id="intro-h">
@@ -784,80 +781,11 @@ function Home({ portfolioAccess, onUnlock }: { portfolioAccess: boolean; onUnloc
         </div>
       </section>
 
-      {!portfolioAccess ? (
-        <PortfolioGate onUnlock={onUnlock} />
-      ) : (
-      <section
-        id="featured"
-        className="shell block"
-        aria-labelledby="featured-h"
-      >
+      {/* ARCHIVE / ALL PROJECTS */}
+      <section id="work" className="shell block" aria-labelledby="work-h">
         <div className="block-row">
-          <SectionTitle label="Projects" id="featured-h">
-            My featured <em>portfolio</em>
-          </SectionTitle>
-          <button
-            type="button"
-            className="btn btn-mint"
-            onClick={() => scrollToId("work")}
-          >
-            All projects
-            <Icon name="arrow-up-right" />
-          </button>
-        </div>
-        <ul className="fp-grid">
-          {featured.map((p, i) => (
-            <li key={p.id}>
-              <a href={`#/work/${p.id}`} className="fp">
-                <div className={`fp-media ${tint(p)}`}>
-                  <div className="card-hover-pills" aria-hidden="true">
-                    <span className="card-pill-platform">{p.platform}</span>
-                    {p.liveUrl && (
-                      <span className="card-pill-live">
-                        <i /> Live Prototype
-                      </span>
-                    )}
-                  </div>
-                  <img
-                    src={p.heroImage}
-                    alt=""
-                    loading={i > 1 ? "lazy" : undefined}
-                  />
-                  <span className="card-hover-cta" aria-hidden="true">
-                    Explore Case Study
-                    <Icon name="arrow-up-right" size={14} />
-                  </span>
-                </div>
-                <div className="fp-meta">
-                  <div>
-                    <span className="fp-cat">{p.category}</span>
-                    <h3>{p.name}</h3>
-                    <p>{p.summary}</p>
-                    {p.outcomes && p.outcomes.length > 0 && (
-                      <div className="card-metrics-row">
-                        {p.outcomes.slice(0, 2).map(([k, , val]) => (
-                          <span key={k} className="card-metric-chip">
-                            <strong>{val}</strong> · {k}
-                          </span>
-                        ))}
-                      </div>
-                    )}
-                  </div>
-                  <span className="circle-arrow" aria-hidden="true">
-                    <Icon name="arrow-up-right" size={18} />
-                  </span>
-                </div>
-              </a>
-            </li>
-          ))}
-        </ul>
-      </section>
-      )}
-
-      {portfolioAccess && <section id="work" className="shell block" aria-labelledby="work-h">
-        <div className="block-row">
-          <SectionTitle label="Archive" id="work-h">
-            Every <em>project</em>, one place
+          <SectionTitle label="Selected Archive" id="work-h">
+            Additional <em>work</em> &amp; platforms
           </SectionTitle>
           <div className="filters" role="group" aria-label="Filter projects">
             {categories.map((c) => (
@@ -874,7 +802,7 @@ function Home({ portfolioAccess, onUnlock }: { portfolioAccess: boolean; onUnloc
           </div>
         </div>
         <ul className="cards">
-          {list.map((p) => (
+          {displayedArchive.map((p) => (
             <li key={p.id}>
               <a href={`#/work/${p.id}`} className="card">
                 <div className={`card-media ${tint(p)}`}>
@@ -912,9 +840,25 @@ function Home({ portfolioAccess, onUnlock }: { portfolioAccess: boolean; onUnloc
             </li>
           ))}
         </ul>
-      </section>}
 
-      {portfolioAccess && <section className="dark-band" aria-labelledby="exp-h">
+        {filter === "All" && list.length > 6 && (
+          <div className="archive-toggle-row">
+            <button
+              type="button"
+              className="btn btn-outline archive-toggle-btn"
+              onClick={() => setShowAllArchive((v) => !v)}
+            >
+              {showAllArchive
+                ? "Show fewer archive projects"
+                : `View all ${list.length} archive projects`}
+              <Icon name={showAllArchive ? "arrow-down" : "arrow-right"} size={14} />
+            </button>
+          </div>
+        )}
+      </section>
+
+      {/* EXPERIENCE & TOOLS */}
+      <section className="dark-band" aria-labelledby="exp-h">
         <div className="shell">
           <SectionTitle label="My experience" id="exp-h" dark center>
             My work <em>experience</em>
@@ -937,7 +881,7 @@ function Home({ portfolioAccess, onUnlock }: { portfolioAccess: boolean; onUnloc
             ))}
           </ul>
         </div>
-      </section>}
+      </section>
     </>
   )
 }

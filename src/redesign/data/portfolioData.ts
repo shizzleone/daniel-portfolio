@@ -192,1257 +192,6 @@ export const toolStack = [
 
 export const portfolioProjects: CaseStudyProject[] = [
   {
-    id: "rapidbi",
-    liveUrl: "./rapidbi-storybook/index.html",
-    index: "01",
-    name: "RapidBI (Signal BI)",
-    codename: "Signal BI Workbench",
-    category: "Developer tools · Analytics platform",
-    portfolioCategory: "Developer tools",
-    featured: true,
-    summary:
-      "A developer-facing analytics workbench for composing canvases, configuring widgets, inspecting 1,440+ commerce records, and shipping reusable data experiences.",
-    headlineStart: "Analytics built to drive a ",
-    headlineAccent: "confident decision.",
-    lede: "As Design Lead, I partnered with frontend and data platform engineers to unify KPI signals, Highcharts visualizations, AG Grid row models, and Storybook 10.6 component contracts into one coherent workbench.",
-    role: "Lead Designer",
-    team: "UX researchers · Product · Engineering",
-    scope:
-      "Developer workflow · Interaction model · Salt tokens · Storybook 10.6",
-    platform: "Responsive Web Application & Component Workbench",
-    heroImage: `${assetBase}rapidbi/canvas-commerce.png`,
-    secondaryImage: `${assetBase}rapidbi/storybook-workbench.png`,
-    panoramaTitle: "Live Analytics Canvas & Storybook 10.6 Workbench",
-    panoramaLabel: "Highcharts Visualizations · AG Grid Row Model · Salt Tokens",
-    frictionTitle: "Disconnected Metrics & Configuration Overhead",
-    resolutionTitle: "Unified Governed Analytics Workbench",
-    resolutionBody: "Synthesized Highcharts visualizations, server-side AG Grid row models, and filter schemas into one coherent canvas with inline commentary and one-click Storybook tokens.",
-    problemStatement: "Engineering had powerful data, charting, and export primitives, but product teams experienced them as disconnected demos and dense settings panels that slowed down decision-making.",
-    mandateTitle:
-      "Turn fragmented charting and grid capabilities into one governed analytics loop.",
-    mandateBody:
-      "Engineering had powerful data, charting, grid, and export primitives, but product teams experienced them as disconnected demos and dense settings panels. I led the end-to-end UX architecture, progressive configuration model, and React + Storybook delivery.",
-    ownershipPillars: [
-      [
-        "Canvas Architecture",
-        "Connected KPIs, charts, filters, server-side grids, and inline commentary on one surface.",
-      ],
-      [
-        "Engineering Contracts",
-        "Co-defined `groupBy`, `pivotBy`, `delta`, and filter schemas with frontend engineers.",
-      ],
-      [
-        "System Delivery",
-        "Shipped Salt token foundations, density modes, and automated a11y checks in Storybook 10.6.",
-      ],
-    ],
-    discoverySummary:
-      "Working alongside our UX researchers, we audited existing analytics implementations across product squads. I then paired with engineers on AG Grid and Highcharts constraints and mapped every state transition required for production.",
-    discoveryMethods: [
-      [
-        "Decision Mapping",
-        "Traced every step from spotting a metric delta to inspecting rows and exporting a decision.",
-      ],
-      [
-        "Technical Pairing",
-        "Aligned directly with engineering on server-side grouping, pivots, and 1,440-row pagination.",
-      ],
-      [
-        "State Inventory",
-        "Specified empty, loading, configured, filtered, saved, and assistant-review states upfront.",
-      ],
-    ],
-    figmaNotes: [
-      {
-        tone: "amber",
-        tag: "Analyst Truth",
-        text: "“A chart only earns trust when I can open the exact commerce rows behind the spike.”",
-      },
-      {
-        tone: "rose",
-        tag: "Layout Constraint",
-        text: "Configuration must never replace the canvas; keep edits mounted beside the active widget.",
-      },
-      {
-        tone: "sky",
-        tag: "Hierarchy Rule",
-        text: "Every analytical view must immediately answer: What changed? Why? What action comes next?",
-      },
-      {
-        tone: "emerald",
-        tag: "Engineering Sync",
-        text: "Map every Figma variant directly to typed Storybook controls (`groupBy`, `pivotBy`, `delta`).",
-      },
-      {
-        tone: "orange",
-        tag: "AI Governance",
-        text: "Assistant recommendations must preview their impact and wait for explicit human approval.",
-      },
-      {
-        tone: "violet",
-        tag: "Continuity",
-        text: "Persist the filtered analytical state and inline commentary—never just export a static image.",
-      },
-    ],
-    principles: [
-      [
-        "Orient first",
-        "Lead with the KPI signal, active timeframe, and comparison delta before exposing controls.",
-      ],
-      [
-        "Progressive depth",
-        "Reveal grouping, pivot, and display rules in a contextual drawer only when needed.",
-      ],
-      [
-        "Equal footing for evidence",
-        "Keep the server-side data grid and commentary synchronized with the active chart.",
-      ],
-      [
-        "Reviewable automation",
-        "Present AI assistant changes as inspectable proposals before mutating the canvas.",
-      ],
-    ],
-    journeySummary:
-      "I architected a 5-stage loop where user intent, interface resolution, and React/Storybook contracts stay locked in sync.",
-    journeyFlow: [
-      {
-        step: "01",
-        stage: "Scan",
-        actor: "Product / Ops Lead",
-        userGoal:
-          "Identify what changed across net revenue, orders, and conversion",
-        frictionEliminated:
-          "Headline KPIs were previously detached from time range and comparison baselines.",
-        uxResolution:
-          "Unified KPI header strip with explicit period selector and directional delta badges.",
-        engineeringContract:
-          "SavedView header state + Salt semantic status tokens",
-        touchpoints: ["KPI Strip", "Period Selector", "Delta Badges"],
-      },
-      {
-        step: "02",
-        stage: "Explore",
-        actor: "Data Analyst",
-        userGoal:
-          "Drill from a Q1 revenue spike into product groups and underlying records",
-        frictionEliminated:
-          "Switching between chart views and data tables reset active filters.",
-        uxResolution:
-          "Synchronized Highcharts + AG Grid canvas sharing a single filter state.",
-        engineeringContract:
-          "Shared query context across chart and 1,440-row server model",
-        touchpoints: ["Chart Switcher", "Advanced Filters", "AG Grid Groups"],
-      },
-      {
-        step: "03",
-        stage: "Configure",
-        actor: "Product Builder",
-        userGoal:
-          "Adjust grouping, monthly pivots, and delta calculations in real time",
-        frictionEliminated:
-          "Full-screen settings pages hid the visualization being configured.",
-        uxResolution:
-          "Contextual side inspector updates the active widget in place without unmounting.",
-        engineeringContract:
-          'Typed props (`groupBy: ["product"]`, `pivotBy: ["month"]`, `delta: boolean`)',
-        touchpoints: ["Contextual Drawer", "Pivot Controls", "Density Toggle"],
-      },
-      {
-        step: "04",
-        stage: "Explain",
-        actor: "Analyst + Stakeholders",
-        userGoal:
-          "Attach rationale and review AI-suggested segment comparisons",
-        frictionEliminated:
-          "Insights were copied into Slack or decks, losing the live data context.",
-        uxResolution:
-          "Inline commentary threads and human-reviewed assistant suggestion cards.",
-        engineeringContract:
-          "Annotation schema bound to view ID + approval gate",
-        touchpoints: ["Inline Commentary", "@Mentions", "AI Review Card"],
-      },
-      {
-        step: "05",
-        stage: "Hand Off",
-        actor: "Design & Engineering",
-        userGoal:
-          "Save the view or embed the verified component into a host application",
-        frictionEliminated:
-          "Engineers had to reverse-engineer behavior from static mocks.",
-        uxResolution:
-          "Persistent saved views paired with live Storybook 10.6 component documentation.",
-        engineeringContract:
-          "Storybook Controls, Actions, Interactions & 3 A11y checks",
-        touchpoints: ["Saved Views", "CSV / PDF Export", "Storybook 10.6"],
-      },
-    ],
-    wireframes: [
-      {
-        id: "01",
-        title: "Canvas overview hierarchy",
-        caption:
-          "Establishes KPI signal, timeframe, and primary trend before any settings.",
-        layout: "dashboard",
-      },
-      {
-        id: "02",
-        title: "Mounted configuration drawer",
-        caption:
-          "Keeps the active chart and grid visible while adjusting data rules.",
-        layout: "drawer",
-      },
-      {
-        id: "03",
-        title: "Grouped grid investigation",
-        caption: "Expands product groups across Jan/Feb/Mar summary columns.",
-        layout: "grid",
-      },
-      {
-        id: "04",
-        title: "Inline commentary & assistant gate",
-        caption:
-          "Links human rationale and reviewable AI prompts to the filtered state.",
-        layout: "split",
-      },
-    ],
-    architecturalPivot: {
-      summary:
-        "During joint architecture reviews with engineering, we replaced the legacy full-page widget editor with an adjacent contextual drawer so the live canvas state never unmounts.",
-      before: "Detached settings route (context lost)",
-      after: "In-place drawer synced with live canvas",
-    },
-    engineeringSummary:
-      "I worked side-by-side with frontend engineers to align Salt design tokens, AG Grid server-side row models, and Storybook 10.6 controls.",
-    collabTracks: [
-      {
-        phase: "01 / API & Props",
-        title: "Co-authored widget prop schemas",
-        detail:
-          "Defined exact TypeScript interfaces for `groupBy`, `pivotBy`, `delta`, and multi-condition filters prior to UI lock.",
-        deliverable: "Typed React component contracts",
-      },
-      {
-        phase: "02 / Grid & Charts",
-        title: "Engineered 1,440-record grid fluency",
-        detail:
-          "Aligned Highcharts drilldowns with AG Grid server-side row grouping, summary aggregations, and keyboard navigation.",
-        deliverable: "Synchronized chart-to-grid workbench",
-      },
-      {
-        phase: "03 / System QA",
-        title: "Delivered Storybook 10.6 workbench",
-        detail:
-          "Documented Salt foundations, Light/Dark themes, medium density modes, and automated accessibility assertions.",
-        deliverable: "Storybook 10.6 system artifact",
-      },
-    ],
-    contractBridge: {
-      figmaTitle: "Figma Component Spec · Advanced Grid",
-      codeTitle: "Storybook 10.6 & React Implementation",
-      figmaSpecs: [
-        ["Row hierarchy", "Group by Product → Expandable monthly summaries"],
-        [
-          "Theme & density",
-          "Salt Light/Dark tokens · Compact / Medium / Touch",
-        ],
-        [
-          "Interaction states",
-          "Empty, Loading, Filtered, Grouped, Saved, Export",
-        ],
-      ],
-      codeSpecs: [
-        [
-          "groupBy: string[]",
-          '["product"] (Server-side row model · 1,440 records)',
-        ],
-        ["pivotBy: string[]", '["month"] (Jan, Feb, Mar sum aggregations)'],
-        ["delta: boolean", "false | true + 3 automated a11y checks"],
-      ],
-    },
-    decisions: [
-      {
-        title: "Keep overview and evidence on a single canvas.",
-        body: "KPI tiles, charts, and the server-side AG Grid share one state model so analysts move from a high-level delta to product-level rows without losing context.",
-        badge: "Signal → Evidence Continuity",
-        image: `${assetBase}rapidbi/canvas-grid-commentary.png`,
-      },
-      {
-        title: "Progressive configuration with zero context switching.",
-        body: "Common actions stay on the surface while advanced grouping, pivot rules, and delta toggles unfold in an adjacent drawer.",
-        badge: "Progressive Disclosure",
-        image: `${assetBase}rapidbi/widget-settings.png`,
-      },
-      {
-        title: "Human-reviewed AI assistant recommendations.",
-        body: "Assistant suggestions explain which filters or chart changes will occur and wait for explicit approval before modifying the canvas.",
-        badge: "Governed AI Pattern",
-        image: `${assetBase}rapidbi/ai-assistant.png`,
-      },
-    ],
-    outcomes: [
-      [
-        "Signal orientation",
-        "Unified KPI header, timeframe context, and comparison deltas",
-        "Immediate executive & analyst scan",
-      ],
-      [
-        "Deep data inspection",
-        "Synchronized Highcharts + 1,440-row AG Grid grouping",
-        "Zero context loss across drilldowns",
-      ],
-      [
-        "Engineering velocity",
-        "Storybook 10.6 workbench with live controls & a11y checks",
-        "Direct design-to-code parity",
-      ],
-    ],
-  },
-  {
-    id: "shiftsnap",
-    index: "02",
-    name: "ShiftSnap",
-    codename: "Dual-Role Workforce Mobile App",
-    category: "Mobile SaaS · Workforce scheduling",
-    portfolioCategory: "Mobile",
-    featured: true,
-    summary:
-      "A dual-role mobile scheduling and shift-swap platform connecting hourly workers and store managers through a shared, auditable state machine.",
-    headlineStart: "Shift changes that protect ",
-    headlineAccent: "everybody’s day.",
-    lede: "As Design Lead, I architected the dual-role mobile experience and 5-state swap engine connecting hourly baristas (Maya) and store managers (Priya) from schedule conflict to approved store coverage.",
-    role: "Lead Designer",
-    team: "UX researchers · Product · Engineering",
-    scope:
-      "Dual-role mobile UX · 5-state swap engine · Coverage heatmap · 9-screen system",
-    platform: "iOS & Android Mobile Application",
-    heroImage: "/shiftsnap-hero-phones.png",
-    secondaryImage: "/shiftsnap-complete-user-experience.png",
-    panoramaTitle: "The Complete Multi-Role Mobile Experience",
-    panoramaLabel: "9 Core Mobile Screens · Barista & Store Manager Views",
-    frictionTitle: "Fragmented Chat Threads & Unverified Coverage",
-    resolutionTitle: "Atomic 5-State Dual-Role Roster Engine",
-    resolutionBody: "Replaced informal message promises with a stateful mobile workflow that validates shift qualifications, enforces overtime guardrails, and updates store rosters in real time.",
-    problemStatement: "Shift changes were happening across fragmented group chats and text messages—leaving employees uncertain if a swap was official and managers blind to certification gaps or overtime risk.",
-    mandateTitle:
-      "Give hourly workers schedule flexibility while protecting store coverage.",
-    mandateBody:
-      "Shift changes were happening across fragmented group chats and text messages—leaving employees uncertain if a swap was official and managers blind to certification gaps or overtime risk. I designed one stateful workflow serving both roles.",
-    ownershipPillars: [
-      [
-        "5-State Swap Lifecycle",
-        "Defined Pending, Accepted, Approved, Declined, and Expired states across client and API.",
-      ],
-      [
-        "Manager Risk Guardrails",
-        "Surfaced coverage heatmaps, certification badges, and overtime risk at the moment of approval.",
-      ],
-      [
-        "Role-Aware Mobile System",
-        "Designed automatic SSO role routing and thumb-friendly mobile patterns for floor use.",
-      ],
-    ],
-    discoverySummary:
-      "Together with our UX researchers, we traced real scheduling exceptions across hourly workers and store managers. I then partnered with mobile and backend engineers to turn informal chat promises into an atomic roster transaction.",
-    discoveryMethods: [
-      [
-        "Dual-Role Task Mapping",
-        "Balanced worker speed (request a swap in seconds) with manager safety (coverage & qualifications).",
-      ],
-      [
-        "Exception Triage Audit",
-        "Identified why swaps failed: uncertified replacements, evening rush gaps, and overtime spikes.",
-      ],
-      [
-        "State Contract Modeling",
-        "Mapped exact ownership and notifications for every handoff between worker, peer, and manager.",
-      ],
-    ],
-    figmaNotes: [
-      {
-        tone: "amber",
-        tag: "Operational Rule",
-        text: "“A coworker saying yes in a chat thread is not an approved schedule change.”",
-      },
-      {
-        tone: "emerald",
-        tag: "Role Routing",
-        text: "Detect role on work SSO sign-in: Team Member vs. Manager requires a distinct home screen.",
-      },
-      {
-        tone: "rose",
-        tag: "Manager Triage",
-        text: "Surface 3 coverage gaps today, 5 open shifts, and 8 overtime risks before approving trades.",
-      },
-      {
-        tone: "sky",
-        tag: "Zero-Typing Flow",
-        text: "Carry shift date, time (7:00 AM–3:00 PM), store, and Barista role automatically into the request.",
-      },
-      {
-        tone: "orange",
-        tag: "Coverage Heatmap",
-        text: "Color-code weekly coverage (90%+ green, 75–89% amber, <75% red) so rush gaps jump out.",
-      },
-      {
-        tone: "violet",
-        tag: "Audit Ledger",
-        text: "Show a permanent “You gave up / You received” summary with manager approval timestamps.",
-      },
-    ],
-    principles: [
-      [
-        "Schedule first",
-        "Anchor the worker home view on Today’s Confirmed Shift and a 1-tap Request Swap action.",
-      ],
-      [
-        "Agreement ≠ Approval",
-        "Distinguish peer acceptance from manager approval with explicit status pills and timeline steps.",
-      ],
-      [
-        "Eligibility in context",
-        "Expose Barista, Shift Lead, and Certified badges plus weekly hours directly in the roster.",
-      ],
-      [
-        "Exception-led manager view",
-        "Prioritize urgent coverage gaps and pending approvals at the top of the manager workspace.",
-      ],
-    ],
-    journeySummary:
-      "The 5-stage journey connects Maya (Barista), Jordan (Certified Peer), and Priya (Store Manager) through one synchronized backend state contract.",
-    journeyFlow: [
-      {
-        step: "01",
-        stage: "Role Sign-In",
-        actor: "Work SSO + Router",
-        userGoal:
-          "Sign in with Harbor Coffee account and land on the right role home",
-        frictionEliminated:
-          "Generic navigation hid urgent manager approvals and worker shift cards.",
-        uxResolution:
-          "Work SSO verifies identity and routes Team Member vs. Manager workspaces.",
-        engineeringContract:
-          "Auth session role claim (`TEAM_MEMBER` | `MANAGER`)",
-        touchpoints: ["Work SSO", "Account Verified", "Role-Scoped Nav"],
-      },
-      {
-        step: "02",
-        stage: "Initiate Swap",
-        actor: "Maya · Barista",
-        userGoal:
-          "Request coverage for Mon, May 29 (7:00 AM–3:00 PM) at Downtown",
-        frictionEliminated:
-          "Workers had to manually type shift details and message coworkers one by one.",
-        uxResolution:
-          "One-tap “Request swap” on Today’s Shift card pre-populates shift metadata.",
-        engineeringContract:
-          "`SwapRequest` payload initialized in `PENDING_PEER` state",
-        touchpoints: [
-          "Today’s Shift Card",
-          "1-Tap Request Swap",
-          "Pending Banner",
-        ],
-      },
-      {
-        step: "03",
-        stage: "Match Certified Peer",
-        actor: "Jordan · Teammate",
-        userGoal:
-          "Claim the swap with verified certification and safe weekly hours",
-        frictionEliminated:
-          "Swaps collapsed when replacements lacked Barista/Shift Lead certification.",
-        uxResolution:
-          "Team Roster filters by role and displays `Certified` badges and weekly hour totals.",
-        engineeringContract:
-          "Eligibility guard (`isCertified && weeklyHours + shiftHours <= 40`)",
-        touchpoints: ["Team Roster", "Certified Filter", "Peer Acceptance"],
-      },
-      {
-        step: "04",
-        stage: "Manager Triage",
-        actor: "Priya · Manager",
-        userGoal:
-          "Approve the trade while protecting evening rush coverage and labor budget",
-        frictionEliminated:
-          "Managers approved requests blind to store coverage gaps and overtime risk.",
-        uxResolution:
-          "Manager home pairs 12 Pending Approvals with the 6AM–9PM Coverage Heatmap.",
-        engineeringContract:
-          "Coverage matrix (`>=90%`, `75-89%`, `<75%`) + manager approval lock",
-        touchpoints: [
-          "Manager Queue",
-          "Coverage Heatmap",
-          "Critical Gap Alert",
-        ],
-      },
-      {
-        step: "05",
-        stage: "Confirmed Roster",
-        actor: "Both Calendars",
-        userGoal: "Confirm the swap is official and both schedules are updated",
-        frictionEliminated:
-          "Employees confused peer agreement with final manager confirmation.",
-        uxResolution:
-          "Swap Status ledger displays “You gave up / You received” cards and audit timeline.",
-        engineeringContract:
-          "Atomic calendar mutation (`APPROVED` → `COMPLETED` at 2:15 PM)",
-        touchpoints: [
-          "Swap Status Ledger",
-          "Gave Up / Received Diff",
-          "Activity Timeline",
-        ],
-      },
-    ],
-    wireframes: [
-      {
-        id: "01",
-        title: "Employee schedule home",
-        caption:
-          "Confirmed shift card, pending approval banner, and thumb-zone Request Swap CTA.",
-        layout: "mobile-home",
-      },
-      {
-        id: "02",
-        title: "Manager exception dashboard",
-        caption:
-          "Red coverage gap alert + 2×2 operational KPI grid (Open, Pending, Gaps, Overtime).",
-        layout: "mobile-queue",
-      },
-      {
-        id: "03",
-        title: "Weekly coverage heatmap",
-        caption:
-          "Mon–Sat hourly matrix (6AM–9PM) flagging <75% critical windows.",
-        layout: "mobile-heatmap",
-      },
-      {
-        id: "04",
-        title: "Two-party swap ledger",
-        caption:
-          "Explicit “You gave up / You received” shift diff and timestamped approval trail.",
-        layout: "mobile-ledger",
-      },
-    ],
-    architecturalPivot: {
-      summary:
-        "In early reviews with engineering, we separated peer acceptance from manager approval and introduced the “You gave up / You received” ledger so no worker ever mistakes a pending trade for a confirmed schedule update.",
-      before: "Single chat-style acceptance state",
-      after: "Two-party diff ledger + timestamped manager approval",
-    },
-    engineeringSummary:
-      "I partnered with mobile and backend engineers to lock the 5-state swap lifecycle, coverage threshold math, and accessible non-color status badges.",
-    collabTracks: [
-      {
-        phase: "01 / State Machine",
-        title: "Co-authored 5-state swap API",
-        detail:
-          "Mapped deterministic transitions and cancellation rules across `Pending`, `Accepted`, `Approved`, `Declined`, and `Expired`.",
-        deliverable: "Shared state contract & notification triggers",
-      },
-      {
-        phase: "02 / Coverage Math",
-        title: "Engineered real-time coverage heatmaps",
-        detail:
-          "Defined hourly store staffing thresholds (`90%+`, `75–89%`, `<75%`) and critical gap alerts for manager triage.",
-        deliverable: "Coverage View & exception cards",
-      },
-      {
-        phase: "03 / Mobile Design System",
-        title: "Built accessible dual-role components",
-        detail:
-          "Paired every status color with semantic icons and labels (`Confirmed`, `Urgent`, `Certified`) for fast floor scanning.",
-        deliverable: "9-screen production mobile system",
-      },
-    ],
-    contractBridge: {
-      figmaTitle: "Figma Mobile Spec · Dual-Role System",
-      codeTitle: "Mobile Client & Backend State Contract",
-      figmaSpecs: [
-        [
-          "Role home routing",
-          "Team Member (Maya) vs. Manager (Priya) home layouts",
-        ],
-        [
-          "Coverage heatmap tiers",
-          "Green ≥90% · Amber 75–89% · Red <75% critical gap",
-        ],
-        [
-          "Swap confirmation ledger",
-          "Gave up (Mon 7a–3p) ↔ Received (Tue 2p–10p)",
-        ],
-      ],
-      codeSpecs: [
-        [
-          "userRole: RoleEnum",
-          '"TEAM_MEMBER" | "MANAGER" (auto-detected via SSO)',
-        ],
-        ["swapStatus: StateEnum", '"PENDING" | "APPROVED" | "COMPLETED"'],
-        ["rosterEligibility", "isCertified === true && weeklyHours <= 40"],
-      ],
-    },
-    decisions: [
-      {
-        title: "Role-aware onboarding and home hierarchies.",
-        body: "Work SSO automatically detects whether the user is a Team Member or Manager, tailoring the home screen to either personal shift actions or store-wide exception triage.",
-        badge: "Role-Verified UX",
-        image: `${assetBase}shiftsnap/sso-onboarding-screens.png`,
-      },
-      {
-        title: "6-screen operational loop across worker and manager.",
-        body: "Connects Employee Home, Manager Exception Home, and the Weekly Coverage Heatmap so shift coverage and overtime risks are visible at a glance.",
-        badge: "94% Store Coverage Rate",
-        image: `${assetBase}shiftsnap/role-coverage-screens.png`,
-      },
-      {
-        title: "Auditable “You gave up / You received” ledger.",
-        body: "Replaces ambiguous chat threads with a structured shift diff, Certified Team Roster, and timestamped activity log (`Manager approved 11:30 AM` → `Swap completed 2:15 PM`).",
-        badge: "Zero Schedule Ambiguity",
-        image: `${assetBase}shiftsnap/ledger-roster-screens.png`,
-      },
-    ],
-    outcomes: [
-      [
-        "Role-verified onboarding",
-        "Work SSO detects Harbor Coffee role and scopes navigation",
-        "Zero setup friction",
-      ],
-      [
-        "Stateful swap resolution",
-        "1-tap swap initiation through two-party ledger confirmation",
-        "Eliminated chat ambiguity",
-      ],
-      [
-        "Manager coverage safety",
-        "6AM–9PM coverage heatmap + Certified roster filters",
-        "94% coverage rate visibility",
-      ],
-    ],
-  },
-  {
-    id: "navflow-ai",
-    index: "03",
-    name: "NAVFlow AI",
-    codename: "Governed Financial AI Operations",
-    category: "Developer tools · AI operations",
-    portfolioCategory: "Developer tools",
-    featured: true,
-    summary:
-      "A governed AI workflow platform that helps financial operations teams move from incoming Net Asset Value (NAV) reports to auditable delivery.",
-    headlineStart: "Governed AI for ",
-    headlineAccent: "high-stakes operations.",
-    lede: "As Design Lead, I architected the human-in-the-loop AI command center that coordinates ingestion, extraction, field-level confidence review, exception triage, and auditable sign-off.",
-    role: "Lead Designer",
-    team: "UX researchers · Product · Engineering",
-    scope:
-      "AI governance · Field-level confidence · Exception routing · Enterprise UI",
-    platform: "Enterprise Web Application",
-    heroImage: `${assetBase}navflow/executive-dashboard-wide.png`,
-    secondaryImage: `${assetBase}navflow/workflow-pipeline-wide.png`,
-    panoramaTitle: "End-to-End NAV Orchestration & Pipeline Telemetry",
-    panoramaLabel: "Field Confidence Scoring · Tollgate Verification · Audit Trail",
-    frictionTitle: "Manual Extraction Bottlenecks & Audit Blindspots",
-    resolutionTitle: "Governed Human-in-the-Loop AI Operations",
-    resolutionBody: "Combined automated multi-format ingestion with confidence-scored field validation and explicit tollgates, turning risky manual audits into an inspectable, governed process.",
-    problemStatement: "Manual NAV operations relied on inboxes, spreadsheets, and disconnected approval chains, creating error risk and compliance exposure during high-volume accounting windows.",
-    mandateTitle:
-      "Let AI automate routine NAV extraction while humans retain explicit control over exceptions.",
-    mandateBody:
-      "Manual NAV operations relied on inboxes, spreadsheets, and disconnected approval chains. I designed a governed orchestration model where stages, source evidence, confidence scores, and human sign-offs live in one operating surface.",
-    ownershipPillars: [
-      [
-        "Stage Orchestration",
-        "Connected Ingestion → Extraction → Validation → Approval → Delivery in one pipeline.",
-      ],
-      [
-        "Field-Level Trust",
-        "Placed AI confidence scores and source document highlights directly beside extracted values.",
-      ],
-      [
-        "Audit-Ready Handoff",
-        "Designed immutable approval gates and exception routing with engineering.",
-      ],
-    ],
-    discoverySummary:
-      "Alongside our UX researchers, we mapped end-to-end NAV processing across operations analysts and fund controllers, identifying every moment where automation required source evidence and human sign-off.",
-    discoveryMethods: [
-      [
-        "Pipeline Mapping",
-        "Traced report ingestion, schema extraction, tolerance checks, and controller release.",
-      ],
-      [
-        "Exception Taxonomy",
-        "Categorized low-confidence fields, variance breaches, and missing attachments.",
-      ],
-      [
-        "Governance Modeling",
-        "Defined role permissions and audit trail requirements with platform engineers.",
-      ],
-    ],
-    figmaNotes: [
-      {
-        tone: "amber",
-        tag: "Trust Rule",
-        text: "“A global AI confidence score is useless—show confidence per extracted field.”",
-      },
-      {
-        tone: "rose",
-        tag: "Risk Triage",
-        text: "Route high-variance NAV exceptions to the top of the operator queue automatically.",
-      },
-      {
-        tone: "sky",
-        tag: "Evidence Link",
-        text: "Clicking any extracted number must highlight the exact line in the source PDF.",
-      },
-      {
-        tone: "emerald",
-        tag: "Human Gate",
-        text: "Downstream delivery remains locked until a controller signs off on flagged fields.",
-      },
-    ],
-    principles: [
-      [
-        "The workflow is the product",
-        "Make pipeline stage health and bottlenecks visible at a glance.",
-      ],
-      [
-        "Confidence beside evidence",
-        "Pair every extracted figure with its source document snippet and tolerance check.",
-      ],
-      [
-        "Risk-ranked exceptions",
-        "Prioritize human attention by financial impact and confidence threshold.",
-      ],
-      [
-        "Accountable sign-off",
-        "Record who approved an override, when, and why before downstream release.",
-      ],
-    ],
-    journeySummary:
-      "The 5-stage operating model keeps AI agents and financial operators aligned from raw document arrival to downstream ledger delivery.",
-    journeyFlow: [
-      {
-        step: "01",
-        stage: "Ingest",
-        actor: "Ingestion Agent",
-        userGoal: "Capture incoming fund reports and classify document schemas",
-        frictionEliminated:
-          "Analysts manually hunted through shared inboxes for arriving NAV packets.",
-        uxResolution:
-          "Live ingestion queue with automated fund matching and SLA timers.",
-        engineeringContract:
-          "Document ingestion webhook + schema classifier state",
-        touchpoints: ["Ingestion Queue", "SLA Tracker", "Source Hash"],
-      },
-      {
-        step: "02",
-        stage: "Extract",
-        actor: "Extraction Agent",
-        userGoal:
-          "Parse line items with field-level confidence and source coordinates",
-        frictionEliminated:
-          "Black-box extraction forced analysts to re-key numbers manually.",
-        uxResolution:
-          "Split-pane PDF bounding boxes linked to structured table rows.",
-        engineeringContract:
-          "Bounding-box coordinate map + per-field confidence float",
-        touchpoints: ["Source Viewer", "Field Confidence", "Auto-Parse"],
-      },
-      {
-        step: "03",
-        stage: "Validate",
-        actor: "Validation Engine",
-        userGoal: "Run tolerance and period-over-period variance checks",
-        frictionEliminated:
-          "Spreadsheet formula errors hid reconciliation discrepancies.",
-        uxResolution:
-          "Automated variance rules flag anomalies in amber/crimson.",
-        engineeringContract:
-          "Deterministic reconciliation ruleset + exception severity",
-        touchpoints: ["Variance Rules", "Exception Badges", "Delta Check"],
-      },
-      {
-        step: "04",
-        stage: "Approve",
-        actor: "Fund Controller",
-        userGoal:
-          "Review flagged fields, apply overrides, and sign off with audit notes",
-        frictionEliminated:
-          "Approvals happened in email threads detached from the data.",
-        uxResolution:
-          "Explicit human approval gate with required rationale on overrides.",
-        engineeringContract:
-          "Role-gated approval mutation + immutable audit log",
-        touchpoints: ["Approval Gate", "Override Note", "Audit Trail"],
-      },
-      {
-        step: "05",
-        stage: "Deliver",
-        actor: "Downstream Systems",
-        userGoal:
-          "Publish verified NAV package to accounting and client portals",
-        frictionEliminated:
-          "Unclear post-approval status caused duplicate downstream exports.",
-        uxResolution: "Real-time delivery receipt with payload verification.",
-        engineeringContract:
-          "Idempotent delivery dispatch + acknowledgement status",
-        touchpoints: ["Delivery Receipt", "Payload Log", "SLA Complete"],
-      },
-    ],
-    wireframes: [
-      {
-        id: "01",
-        title: "Executive command center",
-        caption: "Pipeline health, agent throughput, and SLA risk queue.",
-        layout: "dashboard",
-      },
-      {
-        id: "02",
-        title: "Split evidence verifier",
-        caption: "Source PDF bounding boxes beside extracted NAV fields.",
-        layout: "split",
-      },
-      {
-        id: "03",
-        title: "Exception triage table",
-        caption: "Risk-sorted anomalies with confidence and variance columns.",
-        layout: "grid",
-      },
-      {
-        id: "04",
-        title: "Controller approval drawer",
-        caption: "Override rationale and cryptographic audit trail.",
-        layout: "drawer",
-      },
-    ],
-    architecturalPivot: {
-      summary:
-        "We replaced a document-level AI confidence badge with field-level confidence tied directly to source PDF coordinates so operators only review the exact cells that need judgment.",
-      before: "Single document-level AI score",
-      after: "Field-level confidence + source PDF bounding box",
-    },
-    engineeringSummary:
-      "Co-designed the agent state machine, bounding-box coordinate overlay, and role-based approval locks with AI and backend engineers.",
-    collabTracks: [
-      {
-        phase: "01 / AI Trust",
-        title: "Field-level provenance schema",
-        detail:
-          "Mapped every extracted value to PDF page, bounding box, and confidence score.",
-        deliverable: "Provenance UI contract",
-      },
-      {
-        phase: "02 / Orchestration",
-        title: "Stage & exception routing",
-        detail:
-          "Defined state transitions between automated checks and human review queues.",
-        deliverable: "Command center workflow",
-      },
-      {
-        phase: "03 / Governance",
-        title: "Audit-compliant sign-off",
-        detail:
-          "Enforced controller permissions and rationale capture on manual overrides.",
-        deliverable: "Immutable audit log pattern",
-      },
-    ],
-    contractBridge: {
-      figmaTitle: "Figma Spec · AI Evidence & Approval",
-      codeTitle: "AI Pipeline & Audit API",
-      figmaSpecs: [
-        [
-          "Confidence display",
-          "High (≥98% Green) · Review (90–97% Amber) · Low (<90% Red)",
-        ],
-        [
-          "Source linkage",
-          "Click field → highlight PDF bounding box coordinates",
-        ],
-        ["Approval gate", "Locked until all Low/Review fields are resolved"],
-      ],
-      codeSpecs: [
-        [
-          "fieldConfidence",
-          "{ value: string, score: number, bbox: [x,y,w,h] }",
-        ],
-        [
-          "workflowState",
-          '"INGESTED" | "NEEDS_REVIEW" | "APPROVED" | "DELIVERED"',
-        ],
-        ["auditRecord", "{ actorId, timestamp, overrideReason }"],
-      ],
-    },
-    decisions: [
-      {
-        title: "Pipeline command center with live agent telemetry.",
-        body: "Surfaces active NAV packets, SLA health, and exception queues in one operational cockpit.",
-        badge: "Governed Orchestration",
-        image: `${assetBase}navflow/agent-operations-wide.png`,
-      },
-      {
-        title: "Side-by-side source PDF evidence and extracted schema.",
-        body: "Eliminates manual hunting by syncing every extracted number directly to the source paragraph or table cell.",
-        badge: "Verifiable AI Extraction",
-        image: `${assetBase}navflow/validation-tollgate-wide.png`,
-      },
-      {
-        title: "Mandatory human approval gate on tolerance breaches.",
-        body: "Protects downstream accounting systems by requiring explicit controller sign-off whenever variance thresholds are exceeded.",
-        badge: "Human-in-the-Loop Safety",
-        image: `${assetBase}navflow/human-approval-wide.png`,
-      },
-    ],
-    outcomes: [
-      [
-        "Pipeline visibility",
-        "End-to-end status from inbox ingestion to downstream delivery",
-        "Zero blind handoffs",
-      ],
-      [
-        "Focused review",
-        "Field-level confidence and source PDF highlighting",
-        "Operators review exceptions, not entire PDFs",
-      ],
-      [
-        "Audit readiness",
-        "Role-gated approvals with timestamped override rationale",
-        "100% traceable sign-off trail",
-      ],
-    ],
-  },
-  {
-    id: "motive",
-    liveUrl: "./motive-prototype/index.html",
-    index: "19",
-    name: "Motive",
-    codename: "Motive EV & Luxury Mobility",
-    category: "Mobility · EV & luxury car rental mobile app",
-    portfolioCategory: "Mobile",
-    featured: true,
-    summary:
-      "A dual-theme iOS mobility platform connecting instant EV discovery, transparent airport valet checkout, live range/charger telemetry, and a BLE/NFC Digital Key.",
-    headlineStart: "Skip the counter. Unlock ",
-    headlineAccent: "with your phone.",
-    lede: "As Lead Product Designer, I architected the end-to-end iOS product experience and dual-theme design system for Motive—eliminating rental counter lines, opaque protection fees, and EV range anxiety through one continuous mobile loop.",
-    role: "Lead Product Designer",
-    team: "Product · iOS Engineering · Fleet Telemetry",
-    scope:
-      "End-to-end iOS product · Dual-theme token system · Digital Key & EV telemetry · Interactive prototype",
-    platform: "iOS Mobile Application (Light & Dark Mode)",
-    heroImage: `${assetBase}motive/hero-light-mode.png`,
-    secondaryImage: `${assetBase}motive/design-system-styleguide.png`,
-    panoramaTitle: "Motive Design System · Burnt Amber & Graphite Semantic Tokens",
-    panoramaLabel: "Encode Sans Expanded · Instrument Sans · Light & Dark Mode Parity",
-    frictionTitle: "Rental Counter Queues, Surprise Upsells & EV Charging Anxiety",
-    resolutionTitle: "Direct-to-Vehicle Digital Key & Live Telemetry Loop",
-    resolutionBody: "Unified search, itemized protection pricing, 15-minute payment-decline reservation holds, and live BLE/NFC vehicle unlock with 350kW charger routing into one tactile mobile system.",
-    problemStatement: "Traditional car rental apps stop at a reservation barcode—forcing travelers into 45-minute airport counter queues, surprise insurance upsells, and unfamiliar EV charging networks without live vehicle telemetry.",
-    audienceTitle: "Frequent travelers & EV-curious drivers arriving at major airports",
-    audienceGoal: "I want to book the exact car I see, know my real all-in total upfront, walk straight to my bay at LAX, and unlock the doors from my phone.",
-    personaQuotes: [
-      {
-        quote: "After a five-hour flight into LAX, the last thing I want is a 40-minute counter line and a surprise $45/day insurance argument.",
-        name: "Daniel Reyes",
-        designation: "Principal Consultant · 18 rentals/year",
-      },
-      {
-        quote: "I love renting EVs like the Genesis GV60 or Ioniq 5, but I need to know the real fast-charge speed and closest 350kW stall before I commit.",
-        name: "Elena Vance",
-        designation: "Creative Director · EV adopter",
-      },
-      {
-        quote: "When my bank flags an airport travel charge, don't cancel my car—hold the vehicle for 15 minutes so I can tap Apple Pay and keep moving.",
-        name: "Marcus Sterling",
-        designation: "Founder · Frequent flyer",
-      },
-    ],
-    mandateTitle:
-      "Replace the airport rental counter with an automotive-grade Digital Key and transparent EV telemetry.",
-    mandateBody:
-      "Most rental apps treat booking, pickup, and on-trip driving as disconnected silos. I designed Motive across eight cohesive product modules (Auth, Onboarding, Discovery, Vehicle Stage, Checkout, Active Trip Telemetry, Profile, and Edge-Case Recovery) so vehicle discovery, itemized checkout, Face ID key provisioning, and active-trip EV telemetry share one unmistakable visual and interaction language.",
-    ownershipPillars: [
-      [
-        "End-to-End Mobile IA",
-        "Architected the complete iOS user journey spanning Onboarding, Map/List Discovery, Car Stage, Checkout, Digital Key, and Edge-Case Recovery.",
-      ],
-      [
-        "Dual-Theme Design System",
-        "Authored semantic Graphite (`#151515`) and Burnt Amber (`#C8642A`) tokens with full Light/Dark mode parity and dark automotive photo stages.",
-      ],
-      [
-        "Resilient On-Trip & Edge Flows",
-        "Engineered the persistent Active Trip Strip, 2×2 telemetry action bento, and a 15-minute vehicle hold when a card declines at checkout.",
-      ],
-    ],
-    discoverySummary:
-      "We shadowed airport pickups and audited leading peer-to-peer and fleet rental apps to pinpoint where traveler trust breaks down between browsing a fleet and returning a vehicle.",
-    discoveryMethods: [
-      [
-        "LAX Pickup & Return Shadowing",
-        "Timed every step from baggage claim to garage exit across traditional counter vs. mobile-key workflows.",
-      ],
-      [
-        "EV Renter Telemetry Interviews",
-        "Identified the 4 exact specs EV renters check first: real range (`294 mi`), `10–80%` fast-charge minutes (`18 min`), luggage capacity, and charger proximity.",
-      ],
-      [
-        "Checkout Drop-Off & Decline Audit",
-        "Found that opaque insurance tiers and travel-card fraud declines caused the highest checkout abandonment.",
-      ],
-    ],
-    figmaNotes: [
-      {
-        tone: "amber",
-        tag: "Zero-Tab Hunt",
-        text: "“If I have an active rental, put the Digital Key strip right at the top of Home—never bury it two tabs deep.”",
-      },
-      {
-        tone: "emerald",
-        tag: "EV Confidence",
-        text: "Pair 294 mi range with '18 min 10→80% charge' on the vehicle stage so first-time EV drivers feel instant clarity.",
-      },
-      {
-        tone: "sky",
-        tag: "Upfront Math",
-        text: "Show the exact 3-day total ($276) on every search card and itemize protection, delivery, and refundable hold ($250) before payment.",
-      },
-      {
-        tone: "rose",
-        tag: "Decline Recovery",
-        text: "When a card declines (H06), lock the car in a 14:32 hold timer and offer 1-tap Apple Pay so the user never loses their vehicle.",
-      },
-    ],
-    synthesis: [
-      {
-        theme: "Active trip immediacy",
-        evidence: "Drivers returning to their car in a parking garage fumbled through navigation tabs to find lock/unlock controls.",
-        response: "Added a persistent dark glass Active Trip Strip (`C01 Home`) that launches the Digital Key in one tap.",
-      },
-      {
-        theme: "EV range & charging literacy",
-        evidence: "Renters hesitated to book electric crossovers because kilowatt curves and luggage fit were hidden in fine print.",
-        response: "Elevated `Encode Sans Expanded Light` spec numerals (`294 mi | 4.0s | 5 seats`) and a 2×2 charge/luggage bento on `D01 Car Detail`.",
-      },
-      {
-        theme: "Graceful payment recovery",
-        evidence: "Travelers frequently triggered bank fraud holds when booking at airports, losing their selected car immediately.",
-        response: "Designed `H06 Payment Declined` with a live 15-minute vehicle hold badge and instant Apple Pay fallback.",
-      },
-    ],
-    principles: [
-      [
-        "Stage the vehicle like hardware",
-        "Use dark graded photo stages (`#111111`) on both light and dark themes so vehicle silhouettes and telemetry numerals pop.",
-      ],
-      [
-        "Show the all-in total early",
-        "Pair daily rates (`$92/day`) with the multi-day total (`$276 total`) and explicit refundable deposit (`$250`).",
-      ],
-      [
-        "Keep active controls one thumb away",
-        "Surface the ongoing rental strip on Home and anchor primary actions (`Slide to unlock`, `Reserve`) in the bottom thumb zone.",
-      ],
-      [
-        "Design for real-world exceptions",
-        "Treat late returns, EV charging detours, and declined travel cards as first-class flows rather than dead-end alerts.",
-      ],
-    ],
-    journeySummary:
-      "A continuous 5-stage mobile loop taking the driver from airport fleet discovery to biometric vehicle unlock and Bay C4 return.",
-    journeyFlow: [
-      {
-        step: "01",
-        stage: "Discover & Filter",
-        actor: "Arriving Traveler",
-        userGoal: "Find an Instant-Book EV available at LAX for a 3-day trip",
-        frictionEliminated:
-          "Generic car-class labels ('Intermediate Or Similar') hid the actual vehicle model and total price.",
-        uxResolution:
-          "Exact-model fleet cards (`Genesis GV60 · 2025`) with category chips (`Electric`, `SUV`, `Luxury`) and upfront 3-day total.",
-        engineeringContract:
-          "Geo-fenced hub inventory query + real-time availability lock",
-        touchpoints: ["C01 Home", "C06 Map View", "Filter Chips"],
-      },
-      {
-        step: "02",
-        stage: "Inspect Vehicle Stage",
-        actor: "Arriving Traveler",
-        userGoal: "Verify EV range, fast-charge speed, luggage fit, and pickup window",
-        frictionEliminated:
-          "Dense specification tables buried critical EV charge times and delivery fees.",
-        uxResolution:
-          "Dark cinematic stage with big numerals (`294 mi · 4.0s · 5 seats`), 2×2 feature bento, and LAX delivery toggle.",
-        engineeringContract:
-          "Vehicle telemetry manifest + dynamic delivery window slotter",
-        touchpoints: ["D01 Car Detail", "D03 Gallery", "D06 Compare"],
-      },
-      {
-        step: "03",
-        stage: "Transparent Checkout",
-        actor: "Arriving Traveler + Payment Gateway",
-        userGoal: "Select protection coverage and confirm payment without losing the car on card decline",
-        frictionEliminated:
-          "Surprise counter upsells and instant reservation loss on bank travel holds.",
-        uxResolution:
-          "Itemized `E08 Review & Pay` ledger (`$403.26`) paired with `H06` 15-minute reservation hold recovery.",
-        engineeringContract:
-          "Idempotent payment intent + 900s inventory hold TTL + Apple Pay fallback",
-        touchpoints: ["E02 Protection", "E08 Review & Pay", "H06 Payment Declined"],
-      },
-      {
-        step: "04",
-        stage: "Unlock & Drive",
-        actor: "Driver + Vehicle BLE/NFC",
-        userGoal: "Locate the car in Bay C4, inspect condition, and unlock doors via Digital Key",
-        frictionEliminated:
-          "Waiting at a kiosk for physical keys or paper inspection sheets.",
-        uxResolution:
-          "Guided 4-corner photo check (`F05`) and `F08 Active Trip` glassmorphic `Slide to unlock` pill with honk/flash locator.",
-        engineeringContract:
-          "BLE/NFC cryptographic key token + live CAN-bus SOC (`62% · 232 mi`)",
-        touchpoints: ["F05 Inspection", "F06 Unlocked", "F08 Active Trip"],
-      },
-      {
-        step: "05",
-        stage: "Charge & Return",
-        actor: "Driver + Hub Operations",
-        userGoal: "Top up at a nearby 350kW charger or extend the trip by 1 day before Bay C4 drop-off",
-        frictionEliminated:
-          "Hunting across third-party charging apps or calling support to extend a rental.",
-        uxResolution:
-          "In-app `F07 Charging Nearby` (`Electrify America · 4 of 6 free · $0.48/kWh`) and 1-tap `+$68/day` extension.",
-        engineeringContract:
-          "OCPI live stall availability feed + automated return bay check-in",
-        touchpoints: ["F07 Charging Nearby", "F11 Trip Completed", "E11 Receipt"],
-      },
-    ],
-    wireframes: [
-      {
-        id: "01",
-        title: "Home + Active Trip Strip (C01)",
-        caption: "Persistent ongoing rental key strip above the airport search card and category chips.",
-        layout: "mobile-home",
-      },
-      {
-        id: "02",
-        title: "Vehicle Stage & Spec Bento (D01)",
-        caption: "Dark stage header with 3-column numerals and 2×2 EV charging & trunk bento.",
-        layout: "mobile-heatmap",
-      },
-      {
-        id: "03",
-        title: "Itemized Review & Pay (E08)",
-        caption: "44px total header, 3-tier protection selector, and line-by-line fee ledger.",
-        layout: "mobile-ledger",
-      },
-      {
-        id: "04",
-        title: "Active Trip Digital Key (F08)",
-        caption: "Live battery SOC, Bay C4 progress bar, 2×2 action tiles, and Slide-to-Unlock control.",
-        layout: "mobile-queue",
-      },
-    ],
-    architecturalPivot: {
-      summary:
-        "Early explorations placed dark-mode styling only in system settings, which made vehicle photos look washed out on light screens. We pivoted to a hybrid 'Dark Stage' architecture where vehicle showcases (`D01`, `F08`) always render on a `#111111` automotive stage while forms and receipts adapt cleanly between warm alabaster (`#FAF9F7`) and carbon dark (`#121211`).",
-      before: "Flat light-grey car cards with low-contrast spec lists",
-      after: "Cinematic Dark Photo Stage + Dual-Theme Semantic Surface Tokens",
-    },
-    engineeringSummary:
-      "Structured the Figma component architecture with strict variable bindings (`--color-primary-default`, `--color-contrast-default`, `--bg-card`), 402px iOS responsive constraints, and deterministic state props for iOS SwiftUI & React Native implementation.",
-    collabTracks: [
-      {
-        phase: "01 / Token Foundation",
-        title: "Graphite & Burnt Amber variable system",
-        detail:
-          "Mapped 12 Graphite neutrals, 8 Burnt Amber accents, and semantic surface/border tokens across Light and Dark modes.",
-        deliverable: "Figma Variables & Style Guide (11:379)",
-      },
-      {
-        phase: "02 / Component Architecture",
-        title: "Reusable mobile primitives",
-        detail:
-          "Built parameterized components for `Trip Strip`, `Car Card`, `Price Bar`, `Status Chip`, and `Motive Tab Bar`.",
-        deliverable: "Tokenized iOS Component Library",
-      },
-      {
-        phase: "03 / Interactive Sandbox",
-        title: "Playable 5-flow mobile prototype",
-        detail:
-          "Implemented live category filtering, dynamic protection pricing, digital key unlock, and declined-payment hold recovery.",
-        deliverable: "Live Embedded Mobile Prototype",
-      },
-    ],
-    contractBridge: {
-      figmaTitle: "Figma Variable & Component Spec · Motive Mobile System",
-      codeTitle: "Mobile Client & Telemetry State Contract",
-      figmaSpecs: [
-        [
-          "Typography scale",
-          "Encode Sans Expanded (Display 30/36, H1 26/32) + Instrument Sans (Body 14/20, Label 12/16)",
-        ],
-        [
-          "Color & surface tokens",
-          "Primary Ink `#151515` · Burnt Amber `#C8642A` · Card `#FAF9F7` · Subtle `#F3F1EE` · Success `#2FB98E`",
-        ],
-        [
-          "Component variants",
-          "Status Bar (`Default` | `Inverse`) · Tab Item (`Active` pill) · Circle Button (`Outline` | `Dark` glass)",
-        ],
-      ],
-      codeSpecs: [
-        [
-          "activeTripState",
-          '{ vehicleId: "ioniq5", socPct: 62, rangeMi: 232, keyLocked: true, bay: "C4" }',
-        ],
-        [
-          "checkoutBreakdown",
-          '{ base3d: 276, protection: 54, pass: 43, delivery: 35, promo: -41.40, total: 403.26 }',
-        ],
-        [
-          "holdRecoveryTTL",
-          '{ status: "DECLINED_HOLD", holdSecondsRemaining: 872, fallback: ["APPLE_PAY", "MC_0921"] }',
-        ],
-      ],
-    },
-    decisions: [
-      {
-        title: "Pair dark automotive stages with instant EV range and fast-charge numerals.",
-        body: "Instead of burying battery size and charging speed inside a secondary spec sheet, the vehicle stage surfaces 294 mi range, 4.0s 0–60 mph, and 18-minute 10–80% fast-charge telemetry above the fold.",
-        badge: "01 · Discovery & Vehicle Stage",
-        image: `${assetBase}motive/flow-discovery-detail.png`,
-      },
-      {
-        title: "Eliminate checkout anxiety with itemized protection, delivery windows, and 15-minute decline holds.",
-        body: "Travelers toggle between Hub pickup and LAX valet delivery, see every protection tier and refundable deposit ($250) calculated in real time, and keep their reserved vehicle for 15 minutes even if a travel card triggers a bank hold.",
-        badge: "02 · Transparent Checkout & Recovery",
-        image: `${assetBase}motive/flow-booking-checkout.png`,
-      },
-      {
-        title: "Turn the active rental into a live Digital Key and 350kW charging companion.",
-        body: "From the persistent Home Trip Strip to the full Active Trip screen, drivers unlock doors with Face ID, flash headlights in crowded airport garages, and route directly to available Electrify America stalls.",
-        badge: "03 · Digital Key & Dark Mode Telemetry",
-        image: `${assetBase}motive/dark-mode-telemetry.png`,
-      },
-    ],
-    outcomes: [
-      [
-        "8 product modules",
-        "Complete Light & Dark mode system across onboarding, discovery, checkout, and telemetry",
-        "Cohesive iOS product architecture",
-      ],
-      [
-        "Zero counter wait",
-        "Direct-to-bay BLE/NFC Digital Key with 4-corner photo inspection",
-        "Bypass airport kiosk lines",
-      ],
-      [
-        "100% fee clarity",
-        "Upfront multi-day totals, refundable hold math, and 15-min decline protection",
-        "Eliminates surprise upsells",
-      ],
-    ],
-  },
-  {
     id: "pennwise",
     liveUrl: "./pennwise-prototype/index.html",
     index: "20",
@@ -1774,7 +523,299 @@ export const portfolioProjects: CaseStudyProject[] = [
         "Zero-risk scenario planning",
       ],
     ],
-  },
+  },,
+  {
+    id: "navflow-ai",
+    index: "03",
+    name: "NAVFlow AI",
+    codename: "Governed Financial AI Operations",
+    category: "Developer tools · AI operations",
+    portfolioCategory: "Developer tools",
+    featured: true,
+    summary:
+      "A governed AI workflow platform that helps financial operations teams move from incoming Net Asset Value (NAV) reports to auditable delivery.",
+    headlineStart: "Governed AI for ",
+    headlineAccent: "high-stakes operations.",
+    lede: "As Design Lead, I architected the human-in-the-loop AI command center that coordinates ingestion, extraction, field-level confidence review, exception triage, and auditable sign-off.",
+    role: "Lead Designer",
+    team: "UX researchers · Product · Engineering",
+    scope:
+      "AI governance · Field-level confidence · Exception routing · Enterprise UI",
+    platform: "Enterprise Web Application",
+    heroImage: `${assetBase}navflow/executive-dashboard-wide.png`,
+    secondaryImage: `${assetBase}navflow/workflow-pipeline-wide.png`,
+    panoramaTitle: "End-to-End NAV Orchestration & Pipeline Telemetry",
+    panoramaLabel: "Field Confidence Scoring · Tollgate Verification · Audit Trail",
+    frictionTitle: "Manual Extraction Bottlenecks & Audit Blindspots",
+    resolutionTitle: "Governed Human-in-the-Loop AI Operations",
+    resolutionBody: "Combined automated multi-format ingestion with confidence-scored field validation and explicit tollgates, turning risky manual audits into an inspectable, governed process.",
+    problemStatement: "Manual NAV operations relied on inboxes, spreadsheets, and disconnected approval chains, creating error risk and compliance exposure during high-volume accounting windows.",
+    mandateTitle:
+      "Let AI automate routine NAV extraction while humans retain explicit control over exceptions.",
+    mandateBody:
+      "Manual NAV operations relied on inboxes, spreadsheets, and disconnected approval chains. I designed a governed orchestration model where stages, source evidence, confidence scores, and human sign-offs live in one operating surface.",
+    ownershipPillars: [
+      [
+        "Stage Orchestration",
+        "Connected Ingestion → Extraction → Validation → Approval → Delivery in one pipeline.",
+      ],
+      [
+        "Field-Level Trust",
+        "Placed AI confidence scores and source document highlights directly beside extracted values.",
+      ],
+      [
+        "Audit-Ready Handoff",
+        "Designed immutable approval gates and exception routing with engineering.",
+      ],
+    ],
+    discoverySummary:
+      "Alongside our UX researchers, we mapped end-to-end NAV processing across operations analysts and fund controllers, identifying every moment where automation required source evidence and human sign-off.",
+    discoveryMethods: [
+      [
+        "Pipeline Mapping",
+        "Traced report ingestion, schema extraction, tolerance checks, and controller release.",
+      ],
+      [
+        "Exception Taxonomy",
+        "Categorized low-confidence fields, variance breaches, and missing attachments.",
+      ],
+      [
+        "Governance Modeling",
+        "Defined role permissions and audit trail requirements with platform engineers.",
+      ],
+    ],
+    figmaNotes: [
+      {
+        tone: "amber",
+        tag: "Trust Rule",
+        text: "“A global AI confidence score is useless—show confidence per extracted field.”",
+      },
+      {
+        tone: "rose",
+        tag: "Risk Triage",
+        text: "Route high-variance NAV exceptions to the top of the operator queue automatically.",
+      },
+      {
+        tone: "sky",
+        tag: "Evidence Link",
+        text: "Clicking any extracted number must highlight the exact line in the source PDF.",
+      },
+      {
+        tone: "emerald",
+        tag: "Human Gate",
+        text: "Downstream delivery remains locked until a controller signs off on flagged fields.",
+      },
+    ],
+    principles: [
+      [
+        "The workflow is the product",
+        "Make pipeline stage health and bottlenecks visible at a glance.",
+      ],
+      [
+        "Confidence beside evidence",
+        "Pair every extracted figure with its source document snippet and tolerance check.",
+      ],
+      [
+        "Risk-ranked exceptions",
+        "Prioritize human attention by financial impact and confidence threshold.",
+      ],
+      [
+        "Accountable sign-off",
+        "Record who approved an override, when, and why before downstream release.",
+      ],
+    ],
+    journeySummary:
+      "The 5-stage operating model keeps AI agents and financial operators aligned from raw document arrival to downstream ledger delivery.",
+    journeyFlow: [
+      {
+        step: "01",
+        stage: "Ingest",
+        actor: "Ingestion Agent",
+        userGoal: "Capture incoming fund reports and classify document schemas",
+        frictionEliminated:
+          "Analysts manually hunted through shared inboxes for arriving NAV packets.",
+        uxResolution:
+          "Live ingestion queue with automated fund matching and SLA timers.",
+        engineeringContract:
+          "Document ingestion webhook + schema classifier state",
+        touchpoints: ["Ingestion Queue", "SLA Tracker", "Source Hash"],
+      },
+      {
+        step: "02",
+        stage: "Extract",
+        actor: "Extraction Agent",
+        userGoal:
+          "Parse line items with field-level confidence and source coordinates",
+        frictionEliminated:
+          "Black-box extraction forced analysts to re-key numbers manually.",
+        uxResolution:
+          "Split-pane PDF bounding boxes linked to structured table rows.",
+        engineeringContract:
+          "Bounding-box coordinate map + per-field confidence float",
+        touchpoints: ["Source Viewer", "Field Confidence", "Auto-Parse"],
+      },
+      {
+        step: "03",
+        stage: "Validate",
+        actor: "Validation Engine",
+        userGoal: "Run tolerance and period-over-period variance checks",
+        frictionEliminated:
+          "Spreadsheet formula errors hid reconciliation discrepancies.",
+        uxResolution:
+          "Automated variance rules flag anomalies in amber/crimson.",
+        engineeringContract:
+          "Deterministic reconciliation ruleset + exception severity",
+        touchpoints: ["Variance Rules", "Exception Badges", "Delta Check"],
+      },
+      {
+        step: "04",
+        stage: "Approve",
+        actor: "Fund Controller",
+        userGoal:
+          "Review flagged fields, apply overrides, and sign off with audit notes",
+        frictionEliminated:
+          "Approvals happened in email threads detached from the data.",
+        uxResolution:
+          "Explicit human approval gate with required rationale on overrides.",
+        engineeringContract:
+          "Role-gated approval mutation + immutable audit log",
+        touchpoints: ["Approval Gate", "Override Note", "Audit Trail"],
+      },
+      {
+        step: "05",
+        stage: "Deliver",
+        actor: "Downstream Systems",
+        userGoal:
+          "Publish verified NAV package to accounting and client portals",
+        frictionEliminated:
+          "Unclear post-approval status caused duplicate downstream exports.",
+        uxResolution: "Real-time delivery receipt with payload verification.",
+        engineeringContract:
+          "Idempotent delivery dispatch + acknowledgement status",
+        touchpoints: ["Delivery Receipt", "Payload Log", "SLA Complete"],
+      },
+    ],
+    wireframes: [
+      {
+        id: "01",
+        title: "Executive command center",
+        caption: "Pipeline health, agent throughput, and SLA risk queue.",
+        layout: "dashboard",
+      },
+      {
+        id: "02",
+        title: "Split evidence verifier",
+        caption: "Source PDF bounding boxes beside extracted NAV fields.",
+        layout: "split",
+      },
+      {
+        id: "03",
+        title: "Exception triage table",
+        caption: "Risk-sorted anomalies with confidence and variance columns.",
+        layout: "grid",
+      },
+      {
+        id: "04",
+        title: "Controller approval drawer",
+        caption: "Override rationale and cryptographic audit trail.",
+        layout: "drawer",
+      },
+    ],
+    architecturalPivot: {
+      summary:
+        "We replaced a document-level AI confidence badge with field-level confidence tied directly to source PDF coordinates so operators only review the exact cells that need judgment.",
+      before: "Single document-level AI score",
+      after: "Field-level confidence + source PDF bounding box",
+    },
+    engineeringSummary:
+      "Co-designed the agent state machine, bounding-box coordinate overlay, and role-based approval locks with AI and backend engineers.",
+    collabTracks: [
+      {
+        phase: "01 / AI Trust",
+        title: "Field-level provenance schema",
+        detail:
+          "Mapped every extracted value to PDF page, bounding box, and confidence score.",
+        deliverable: "Provenance UI contract",
+      },
+      {
+        phase: "02 / Orchestration",
+        title: "Stage & exception routing",
+        detail:
+          "Defined state transitions between automated checks and human review queues.",
+        deliverable: "Command center workflow",
+      },
+      {
+        phase: "03 / Governance",
+        title: "Audit-compliant sign-off",
+        detail:
+          "Enforced controller permissions and rationale capture on manual overrides.",
+        deliverable: "Immutable audit log pattern",
+      },
+    ],
+    contractBridge: {
+      figmaTitle: "Figma Spec · AI Evidence & Approval",
+      codeTitle: "AI Pipeline & Audit API",
+      figmaSpecs: [
+        [
+          "Confidence display",
+          "High (≥98% Green) · Review (90–97% Amber) · Low (<90% Red)",
+        ],
+        [
+          "Source linkage",
+          "Click field → highlight PDF bounding box coordinates",
+        ],
+        ["Approval gate", "Locked until all Low/Review fields are resolved"],
+      ],
+      codeSpecs: [
+        [
+          "fieldConfidence",
+          "{ value: string, score: number, bbox: [x,y,w,h] }",
+        ],
+        [
+          "workflowState",
+          '"INGESTED" | "NEEDS_REVIEW" | "APPROVED" | "DELIVERED"',
+        ],
+        ["auditRecord", "{ actorId, timestamp, overrideReason }"],
+      ],
+    },
+    decisions: [
+      {
+        title: "Pipeline command center with live agent telemetry.",
+        body: "Surfaces active NAV packets, SLA health, and exception queues in one operational cockpit.",
+        badge: "Governed Orchestration",
+        image: `${assetBase}navflow/agent-operations-wide.png`,
+      },
+      {
+        title: "Side-by-side source PDF evidence and extracted schema.",
+        body: "Eliminates manual hunting by syncing every extracted number directly to the source paragraph or table cell.",
+        badge: "Verifiable AI Extraction",
+        image: `${assetBase}navflow/validation-tollgate-wide.png`,
+      },
+      {
+        title: "Mandatory human approval gate on tolerance breaches.",
+        body: "Protects downstream accounting systems by requiring explicit controller sign-off whenever variance thresholds are exceeded.",
+        badge: "Human-in-the-Loop Safety",
+        image: `${assetBase}navflow/human-approval-wide.png`,
+      },
+    ],
+    outcomes: [
+      [
+        "Pipeline visibility",
+        "End-to-end status from inbox ingestion to downstream delivery",
+        "Zero blind handoffs",
+      ],
+      [
+        "Focused review",
+        "Field-level confidence and source PDF highlighting",
+        "Operators review exceptions, not entire PDFs",
+      ],
+      [
+        "Audit readiness",
+        "Role-gated approvals with timestamped override rationale",
+        "100% traceable sign-off trail",
+      ],
+    ],
+  },,
   {
     id: "simplelist",
     liveUrl: "https://ui8-bento-landing.vercel.app",
@@ -2116,6 +1157,965 @@ export const portfolioProjects: CaseStudyProject[] = [
         "Live interactive prototype",
         "Shipped responsive web application and marketing landing experience",
         "Full production delivery",
+      ],
+    ],
+  },,
+  {
+    id: "motive",
+    liveUrl: "./motive-prototype/index.html",
+    index: "19",
+    name: "Motive",
+    codename: "Motive EV & Luxury Mobility",
+    category: "Mobility · EV & luxury car rental mobile app",
+    portfolioCategory: "Mobile",
+    featured: true,
+    summary:
+      "A dual-theme iOS mobility platform connecting instant EV discovery, transparent airport valet checkout, live range/charger telemetry, and a BLE/NFC Digital Key.",
+    headlineStart: "Skip the counter. Unlock ",
+    headlineAccent: "with your phone.",
+    lede: "As Lead Product Designer, I architected the end-to-end iOS product experience and dual-theme design system for Motive—eliminating rental counter lines, opaque protection fees, and EV range anxiety through one continuous mobile loop.",
+    role: "Lead Product Designer",
+    team: "Product · iOS Engineering · Fleet Telemetry",
+    scope:
+      "End-to-end iOS product · Dual-theme token system · Digital Key & EV telemetry · Interactive prototype",
+    platform: "iOS Mobile Application (Light & Dark Mode)",
+    heroImage: `${assetBase}motive/hero-light-mode.png`,
+    secondaryImage: `${assetBase}motive/design-system-styleguide.png`,
+    panoramaTitle: "Motive Design System · Burnt Amber & Graphite Semantic Tokens",
+    panoramaLabel: "Encode Sans Expanded · Instrument Sans · Light & Dark Mode Parity",
+    frictionTitle: "Rental Counter Queues, Surprise Upsells & EV Charging Anxiety",
+    resolutionTitle: "Direct-to-Vehicle Digital Key & Live Telemetry Loop",
+    resolutionBody: "Unified search, itemized protection pricing, 15-minute payment-decline reservation holds, and live BLE/NFC vehicle unlock with 350kW charger routing into one tactile mobile system.",
+    problemStatement: "Traditional car rental apps stop at a reservation barcode—forcing travelers into 45-minute airport counter queues, surprise insurance upsells, and unfamiliar EV charging networks without live vehicle telemetry.",
+    audienceTitle: "Frequent travelers & EV-curious drivers arriving at major airports",
+    audienceGoal: "I want to book the exact car I see, know my real all-in total upfront, walk straight to my bay at LAX, and unlock the doors from my phone.",
+    personaQuotes: [
+      {
+        quote: "After a five-hour flight into LAX, the last thing I want is a 40-minute counter line and a surprise $45/day insurance argument.",
+        name: "Daniel Reyes",
+        designation: "Principal Consultant · 18 rentals/year",
+      },
+      {
+        quote: "I love renting EVs like the Genesis GV60 or Ioniq 5, but I need to know the real fast-charge speed and closest 350kW stall before I commit.",
+        name: "Elena Vance",
+        designation: "Creative Director · EV adopter",
+      },
+      {
+        quote: "When my bank flags an airport travel charge, don't cancel my car—hold the vehicle for 15 minutes so I can tap Apple Pay and keep moving.",
+        name: "Marcus Sterling",
+        designation: "Founder · Frequent flyer",
+      },
+    ],
+    mandateTitle:
+      "Replace the airport rental counter with an automotive-grade Digital Key and transparent EV telemetry.",
+    mandateBody:
+      "Most rental apps treat booking, pickup, and on-trip driving as disconnected silos. I designed Motive across eight cohesive product modules (Auth, Onboarding, Discovery, Vehicle Stage, Checkout, Active Trip Telemetry, Profile, and Edge-Case Recovery) so vehicle discovery, itemized checkout, Face ID key provisioning, and active-trip EV telemetry share one unmistakable visual and interaction language.",
+    ownershipPillars: [
+      [
+        "End-to-End Mobile IA",
+        "Architected the complete iOS user journey spanning Onboarding, Map/List Discovery, Car Stage, Checkout, Digital Key, and Edge-Case Recovery.",
+      ],
+      [
+        "Dual-Theme Design System",
+        "Authored semantic Graphite (`#151515`) and Burnt Amber (`#C8642A`) tokens with full Light/Dark mode parity and dark automotive photo stages.",
+      ],
+      [
+        "Resilient On-Trip & Edge Flows",
+        "Engineered the persistent Active Trip Strip, 2×2 telemetry action bento, and a 15-minute vehicle hold when a card declines at checkout.",
+      ],
+    ],
+    discoverySummary:
+      "We shadowed airport pickups and audited leading peer-to-peer and fleet rental apps to pinpoint where traveler trust breaks down between browsing a fleet and returning a vehicle.",
+    discoveryMethods: [
+      [
+        "LAX Pickup & Return Shadowing",
+        "Timed every step from baggage claim to garage exit across traditional counter vs. mobile-key workflows.",
+      ],
+      [
+        "EV Renter Telemetry Interviews",
+        "Identified the 4 exact specs EV renters check first: real range (`294 mi`), `10–80%` fast-charge minutes (`18 min`), luggage capacity, and charger proximity.",
+      ],
+      [
+        "Checkout Drop-Off & Decline Audit",
+        "Found that opaque insurance tiers and travel-card fraud declines caused the highest checkout abandonment.",
+      ],
+    ],
+    figmaNotes: [
+      {
+        tone: "amber",
+        tag: "Zero-Tab Hunt",
+        text: "“If I have an active rental, put the Digital Key strip right at the top of Home—never bury it two tabs deep.”",
+      },
+      {
+        tone: "emerald",
+        tag: "EV Confidence",
+        text: "Pair 294 mi range with '18 min 10→80% charge' on the vehicle stage so first-time EV drivers feel instant clarity.",
+      },
+      {
+        tone: "sky",
+        tag: "Upfront Math",
+        text: "Show the exact 3-day total ($276) on every search card and itemize protection, delivery, and refundable hold ($250) before payment.",
+      },
+      {
+        tone: "rose",
+        tag: "Decline Recovery",
+        text: "When a card declines (H06), lock the car in a 14:32 hold timer and offer 1-tap Apple Pay so the user never loses their vehicle.",
+      },
+    ],
+    synthesis: [
+      {
+        theme: "Active trip immediacy",
+        evidence: "Drivers returning to their car in a parking garage fumbled through navigation tabs to find lock/unlock controls.",
+        response: "Added a persistent dark glass Active Trip Strip (`C01 Home`) that launches the Digital Key in one tap.",
+      },
+      {
+        theme: "EV range & charging literacy",
+        evidence: "Renters hesitated to book electric crossovers because kilowatt curves and luggage fit were hidden in fine print.",
+        response: "Elevated `Encode Sans Expanded Light` spec numerals (`294 mi | 4.0s | 5 seats`) and a 2×2 charge/luggage bento on `D01 Car Detail`.",
+      },
+      {
+        theme: "Graceful payment recovery",
+        evidence: "Travelers frequently triggered bank fraud holds when booking at airports, losing their selected car immediately.",
+        response: "Designed `H06 Payment Declined` with a live 15-minute vehicle hold badge and instant Apple Pay fallback.",
+      },
+    ],
+    principles: [
+      [
+        "Stage the vehicle like hardware",
+        "Use dark graded photo stages (`#111111`) on both light and dark themes so vehicle silhouettes and telemetry numerals pop.",
+      ],
+      [
+        "Show the all-in total early",
+        "Pair daily rates (`$92/day`) with the multi-day total (`$276 total`) and explicit refundable deposit (`$250`).",
+      ],
+      [
+        "Keep active controls one thumb away",
+        "Surface the ongoing rental strip on Home and anchor primary actions (`Slide to unlock`, `Reserve`) in the bottom thumb zone.",
+      ],
+      [
+        "Design for real-world exceptions",
+        "Treat late returns, EV charging detours, and declined travel cards as first-class flows rather than dead-end alerts.",
+      ],
+    ],
+    journeySummary:
+      "A continuous 5-stage mobile loop taking the driver from airport fleet discovery to biometric vehicle unlock and Bay C4 return.",
+    journeyFlow: [
+      {
+        step: "01",
+        stage: "Discover & Filter",
+        actor: "Arriving Traveler",
+        userGoal: "Find an Instant-Book EV available at LAX for a 3-day trip",
+        frictionEliminated:
+          "Generic car-class labels ('Intermediate Or Similar') hid the actual vehicle model and total price.",
+        uxResolution:
+          "Exact-model fleet cards (`Genesis GV60 · 2025`) with category chips (`Electric`, `SUV`, `Luxury`) and upfront 3-day total.",
+        engineeringContract:
+          "Geo-fenced hub inventory query + real-time availability lock",
+        touchpoints: ["C01 Home", "C06 Map View", "Filter Chips"],
+      },
+      {
+        step: "02",
+        stage: "Inspect Vehicle Stage",
+        actor: "Arriving Traveler",
+        userGoal: "Verify EV range, fast-charge speed, luggage fit, and pickup window",
+        frictionEliminated:
+          "Dense specification tables buried critical EV charge times and delivery fees.",
+        uxResolution:
+          "Dark cinematic stage with big numerals (`294 mi · 4.0s · 5 seats`), 2×2 feature bento, and LAX delivery toggle.",
+        engineeringContract:
+          "Vehicle telemetry manifest + dynamic delivery window slotter",
+        touchpoints: ["D01 Car Detail", "D03 Gallery", "D06 Compare"],
+      },
+      {
+        step: "03",
+        stage: "Transparent Checkout",
+        actor: "Arriving Traveler + Payment Gateway",
+        userGoal: "Select protection coverage and confirm payment without losing the car on card decline",
+        frictionEliminated:
+          "Surprise counter upsells and instant reservation loss on bank travel holds.",
+        uxResolution:
+          "Itemized `E08 Review & Pay` ledger (`$403.26`) paired with `H06` 15-minute reservation hold recovery.",
+        engineeringContract:
+          "Idempotent payment intent + 900s inventory hold TTL + Apple Pay fallback",
+        touchpoints: ["E02 Protection", "E08 Review & Pay", "H06 Payment Declined"],
+      },
+      {
+        step: "04",
+        stage: "Unlock & Drive",
+        actor: "Driver + Vehicle BLE/NFC",
+        userGoal: "Locate the car in Bay C4, inspect condition, and unlock doors via Digital Key",
+        frictionEliminated:
+          "Waiting at a kiosk for physical keys or paper inspection sheets.",
+        uxResolution:
+          "Guided 4-corner photo check (`F05`) and `F08 Active Trip` glassmorphic `Slide to unlock` pill with honk/flash locator.",
+        engineeringContract:
+          "BLE/NFC cryptographic key token + live CAN-bus SOC (`62% · 232 mi`)",
+        touchpoints: ["F05 Inspection", "F06 Unlocked", "F08 Active Trip"],
+      },
+      {
+        step: "05",
+        stage: "Charge & Return",
+        actor: "Driver + Hub Operations",
+        userGoal: "Top up at a nearby 350kW charger or extend the trip by 1 day before Bay C4 drop-off",
+        frictionEliminated:
+          "Hunting across third-party charging apps or calling support to extend a rental.",
+        uxResolution:
+          "In-app `F07 Charging Nearby` (`Electrify America · 4 of 6 free · $0.48/kWh`) and 1-tap `+$68/day` extension.",
+        engineeringContract:
+          "OCPI live stall availability feed + automated return bay check-in",
+        touchpoints: ["F07 Charging Nearby", "F11 Trip Completed", "E11 Receipt"],
+      },
+    ],
+    wireframes: [
+      {
+        id: "01",
+        title: "Home + Active Trip Strip (C01)",
+        caption: "Persistent ongoing rental key strip above the airport search card and category chips.",
+        layout: "mobile-home",
+      },
+      {
+        id: "02",
+        title: "Vehicle Stage & Spec Bento (D01)",
+        caption: "Dark stage header with 3-column numerals and 2×2 EV charging & trunk bento.",
+        layout: "mobile-heatmap",
+      },
+      {
+        id: "03",
+        title: "Itemized Review & Pay (E08)",
+        caption: "44px total header, 3-tier protection selector, and line-by-line fee ledger.",
+        layout: "mobile-ledger",
+      },
+      {
+        id: "04",
+        title: "Active Trip Digital Key (F08)",
+        caption: "Live battery SOC, Bay C4 progress bar, 2×2 action tiles, and Slide-to-Unlock control.",
+        layout: "mobile-queue",
+      },
+    ],
+    architecturalPivot: {
+      summary:
+        "Early explorations placed dark-mode styling only in system settings, which made vehicle photos look washed out on light screens. We pivoted to a hybrid 'Dark Stage' architecture where vehicle showcases (`D01`, `F08`) always render on a `#111111` automotive stage while forms and receipts adapt cleanly between warm alabaster (`#FAF9F7`) and carbon dark (`#121211`).",
+      before: "Flat light-grey car cards with low-contrast spec lists",
+      after: "Cinematic Dark Photo Stage + Dual-Theme Semantic Surface Tokens",
+    },
+    engineeringSummary:
+      "Structured the Figma component architecture with strict variable bindings (`--color-primary-default`, `--color-contrast-default`, `--bg-card`), 402px iOS responsive constraints, and deterministic state props for iOS SwiftUI & React Native implementation.",
+    collabTracks: [
+      {
+        phase: "01 / Token Foundation",
+        title: "Graphite & Burnt Amber variable system",
+        detail:
+          "Mapped 12 Graphite neutrals, 8 Burnt Amber accents, and semantic surface/border tokens across Light and Dark modes.",
+        deliverable: "Figma Variables & Style Guide (11:379)",
+      },
+      {
+        phase: "02 / Component Architecture",
+        title: "Reusable mobile primitives",
+        detail:
+          "Built parameterized components for `Trip Strip`, `Car Card`, `Price Bar`, `Status Chip`, and `Motive Tab Bar`.",
+        deliverable: "Tokenized iOS Component Library",
+      },
+      {
+        phase: "03 / Interactive Sandbox",
+        title: "Playable 5-flow mobile prototype",
+        detail:
+          "Implemented live category filtering, dynamic protection pricing, digital key unlock, and declined-payment hold recovery.",
+        deliverable: "Live Embedded Mobile Prototype",
+      },
+    ],
+    contractBridge: {
+      figmaTitle: "Figma Variable & Component Spec · Motive Mobile System",
+      codeTitle: "Mobile Client & Telemetry State Contract",
+      figmaSpecs: [
+        [
+          "Typography scale",
+          "Encode Sans Expanded (Display 30/36, H1 26/32) + Instrument Sans (Body 14/20, Label 12/16)",
+        ],
+        [
+          "Color & surface tokens",
+          "Primary Ink `#151515` · Burnt Amber `#C8642A` · Card `#FAF9F7` · Subtle `#F3F1EE` · Success `#2FB98E`",
+        ],
+        [
+          "Component variants",
+          "Status Bar (`Default` | `Inverse`) · Tab Item (`Active` pill) · Circle Button (`Outline` | `Dark` glass)",
+        ],
+      ],
+      codeSpecs: [
+        [
+          "activeTripState",
+          '{ vehicleId: "ioniq5", socPct: 62, rangeMi: 232, keyLocked: true, bay: "C4" }',
+        ],
+        [
+          "checkoutBreakdown",
+          '{ base3d: 276, protection: 54, pass: 43, delivery: 35, promo: -41.40, total: 403.26 }',
+        ],
+        [
+          "holdRecoveryTTL",
+          '{ status: "DECLINED_HOLD", holdSecondsRemaining: 872, fallback: ["APPLE_PAY", "MC_0921"] }',
+        ],
+      ],
+    },
+    decisions: [
+      {
+        title: "Pair dark automotive stages with instant EV range and fast-charge numerals.",
+        body: "Instead of burying battery size and charging speed inside a secondary spec sheet, the vehicle stage surfaces 294 mi range, 4.0s 0–60 mph, and 18-minute 10–80% fast-charge telemetry above the fold.",
+        badge: "01 · Discovery & Vehicle Stage",
+        image: `${assetBase}motive/flow-discovery-detail.png`,
+      },
+      {
+        title: "Eliminate checkout anxiety with itemized protection, delivery windows, and 15-minute decline holds.",
+        body: "Travelers toggle between Hub pickup and LAX valet delivery, see every protection tier and refundable deposit ($250) calculated in real time, and keep their reserved vehicle for 15 minutes even if a travel card triggers a bank hold.",
+        badge: "02 · Transparent Checkout & Recovery",
+        image: `${assetBase}motive/flow-booking-checkout.png`,
+      },
+      {
+        title: "Turn the active rental into a live Digital Key and 350kW charging companion.",
+        body: "From the persistent Home Trip Strip to the full Active Trip screen, drivers unlock doors with Face ID, flash headlights in crowded airport garages, and route directly to available Electrify America stalls.",
+        badge: "03 · Digital Key & Dark Mode Telemetry",
+        image: `${assetBase}motive/dark-mode-telemetry.png`,
+      },
+    ],
+    outcomes: [
+      [
+        "8 product modules",
+        "Complete Light & Dark mode system across onboarding, discovery, checkout, and telemetry",
+        "Cohesive iOS product architecture",
+      ],
+      [
+        "Zero counter wait",
+        "Direct-to-bay BLE/NFC Digital Key with 4-corner photo inspection",
+        "Bypass airport kiosk lines",
+      ],
+      [
+        "100% fee clarity",
+        "Upfront multi-day totals, refundable hold math, and 15-min decline protection",
+        "Eliminates surprise upsells",
+      ],
+    ],
+  },,
+  {
+    id: "rapidbi",
+    liveUrl: "./rapidbi-storybook/index.html",
+    index: "01",
+    name: "RapidBI (Signal BI)",
+    codename: "Signal BI Workbench",
+    category: "Developer tools · Analytics platform",
+    portfolioCategory: "Developer tools",
+    featured: true,
+    summary:
+      "A developer-facing analytics workbench for composing canvases, configuring widgets, inspecting 1,440+ commerce records, and shipping reusable data experiences.",
+    headlineStart: "Analytics built to drive a ",
+    headlineAccent: "confident decision.",
+    lede: "As Design Lead, I partnered with frontend and data platform engineers to unify KPI signals, Highcharts visualizations, AG Grid row models, and Storybook 10.6 component contracts into one coherent workbench.",
+    role: "Lead Designer",
+    team: "UX researchers · Product · Engineering",
+    scope:
+      "Developer workflow · Interaction model · Salt tokens · Storybook 10.6",
+    platform: "Responsive Web Application & Component Workbench",
+    heroImage: `${assetBase}rapidbi/canvas-commerce.png`,
+    secondaryImage: `${assetBase}rapidbi/storybook-workbench.png`,
+    panoramaTitle: "Live Analytics Canvas & Storybook 10.6 Workbench",
+    panoramaLabel: "Highcharts Visualizations · AG Grid Row Model · Salt Tokens",
+    frictionTitle: "Disconnected Metrics & Configuration Overhead",
+    resolutionTitle: "Unified Governed Analytics Workbench",
+    resolutionBody: "Synthesized Highcharts visualizations, server-side AG Grid row models, and filter schemas into one coherent canvas with inline commentary and one-click Storybook tokens.",
+    problemStatement: "Engineering had powerful data, charting, and export primitives, but product teams experienced them as disconnected demos and dense settings panels that slowed down decision-making.",
+    mandateTitle:
+      "Turn fragmented charting and grid capabilities into one governed analytics loop.",
+    mandateBody:
+      "Engineering had powerful data, charting, grid, and export primitives, but product teams experienced them as disconnected demos and dense settings panels. I led the end-to-end UX architecture, progressive configuration model, and React + Storybook delivery.",
+    ownershipPillars: [
+      [
+        "Canvas Architecture",
+        "Connected KPIs, charts, filters, server-side grids, and inline commentary on one surface.",
+      ],
+      [
+        "Engineering Contracts",
+        "Co-defined `groupBy`, `pivotBy`, `delta`, and filter schemas with frontend engineers.",
+      ],
+      [
+        "System Delivery",
+        "Shipped Salt token foundations, density modes, and automated a11y checks in Storybook 10.6.",
+      ],
+    ],
+    discoverySummary:
+      "Working alongside our UX researchers, we audited existing analytics implementations across product squads. I then paired with engineers on AG Grid and Highcharts constraints and mapped every state transition required for production.",
+    discoveryMethods: [
+      [
+        "Decision Mapping",
+        "Traced every step from spotting a metric delta to inspecting rows and exporting a decision.",
+      ],
+      [
+        "Technical Pairing",
+        "Aligned directly with engineering on server-side grouping, pivots, and 1,440-row pagination.",
+      ],
+      [
+        "State Inventory",
+        "Specified empty, loading, configured, filtered, saved, and assistant-review states upfront.",
+      ],
+    ],
+    figmaNotes: [
+      {
+        tone: "amber",
+        tag: "Analyst Truth",
+        text: "“A chart only earns trust when I can open the exact commerce rows behind the spike.”",
+      },
+      {
+        tone: "rose",
+        tag: "Layout Constraint",
+        text: "Configuration must never replace the canvas; keep edits mounted beside the active widget.",
+      },
+      {
+        tone: "sky",
+        tag: "Hierarchy Rule",
+        text: "Every analytical view must immediately answer: What changed? Why? What action comes next?",
+      },
+      {
+        tone: "emerald",
+        tag: "Engineering Sync",
+        text: "Map every Figma variant directly to typed Storybook controls (`groupBy`, `pivotBy`, `delta`).",
+      },
+      {
+        tone: "orange",
+        tag: "AI Governance",
+        text: "Assistant recommendations must preview their impact and wait for explicit human approval.",
+      },
+      {
+        tone: "violet",
+        tag: "Continuity",
+        text: "Persist the filtered analytical state and inline commentary—never just export a static image.",
+      },
+    ],
+    principles: [
+      [
+        "Orient first",
+        "Lead with the KPI signal, active timeframe, and comparison delta before exposing controls.",
+      ],
+      [
+        "Progressive depth",
+        "Reveal grouping, pivot, and display rules in a contextual drawer only when needed.",
+      ],
+      [
+        "Equal footing for evidence",
+        "Keep the server-side data grid and commentary synchronized with the active chart.",
+      ],
+      [
+        "Reviewable automation",
+        "Present AI assistant changes as inspectable proposals before mutating the canvas.",
+      ],
+    ],
+    journeySummary:
+      "I architected a 5-stage loop where user intent, interface resolution, and React/Storybook contracts stay locked in sync.",
+    journeyFlow: [
+      {
+        step: "01",
+        stage: "Scan",
+        actor: "Product / Ops Lead",
+        userGoal:
+          "Identify what changed across net revenue, orders, and conversion",
+        frictionEliminated:
+          "Headline KPIs were previously detached from time range and comparison baselines.",
+        uxResolution:
+          "Unified KPI header strip with explicit period selector and directional delta badges.",
+        engineeringContract:
+          "SavedView header state + Salt semantic status tokens",
+        touchpoints: ["KPI Strip", "Period Selector", "Delta Badges"],
+      },
+      {
+        step: "02",
+        stage: "Explore",
+        actor: "Data Analyst",
+        userGoal:
+          "Drill from a Q1 revenue spike into product groups and underlying records",
+        frictionEliminated:
+          "Switching between chart views and data tables reset active filters.",
+        uxResolution:
+          "Synchronized Highcharts + AG Grid canvas sharing a single filter state.",
+        engineeringContract:
+          "Shared query context across chart and 1,440-row server model",
+        touchpoints: ["Chart Switcher", "Advanced Filters", "AG Grid Groups"],
+      },
+      {
+        step: "03",
+        stage: "Configure",
+        actor: "Product Builder",
+        userGoal:
+          "Adjust grouping, monthly pivots, and delta calculations in real time",
+        frictionEliminated:
+          "Full-screen settings pages hid the visualization being configured.",
+        uxResolution:
+          "Contextual side inspector updates the active widget in place without unmounting.",
+        engineeringContract:
+          'Typed props (`groupBy: ["product"]`, `pivotBy: ["month"]`, `delta: boolean`)',
+        touchpoints: ["Contextual Drawer", "Pivot Controls", "Density Toggle"],
+      },
+      {
+        step: "04",
+        stage: "Explain",
+        actor: "Analyst + Stakeholders",
+        userGoal:
+          "Attach rationale and review AI-suggested segment comparisons",
+        frictionEliminated:
+          "Insights were copied into Slack or decks, losing the live data context.",
+        uxResolution:
+          "Inline commentary threads and human-reviewed assistant suggestion cards.",
+        engineeringContract:
+          "Annotation schema bound to view ID + approval gate",
+        touchpoints: ["Inline Commentary", "@Mentions", "AI Review Card"],
+      },
+      {
+        step: "05",
+        stage: "Hand Off",
+        actor: "Design & Engineering",
+        userGoal:
+          "Save the view or embed the verified component into a host application",
+        frictionEliminated:
+          "Engineers had to reverse-engineer behavior from static mocks.",
+        uxResolution:
+          "Persistent saved views paired with live Storybook 10.6 component documentation.",
+        engineeringContract:
+          "Storybook Controls, Actions, Interactions & 3 A11y checks",
+        touchpoints: ["Saved Views", "CSV / PDF Export", "Storybook 10.6"],
+      },
+    ],
+    wireframes: [
+      {
+        id: "01",
+        title: "Canvas overview hierarchy",
+        caption:
+          "Establishes KPI signal, timeframe, and primary trend before any settings.",
+        layout: "dashboard",
+      },
+      {
+        id: "02",
+        title: "Mounted configuration drawer",
+        caption:
+          "Keeps the active chart and grid visible while adjusting data rules.",
+        layout: "drawer",
+      },
+      {
+        id: "03",
+        title: "Grouped grid investigation",
+        caption: "Expands product groups across Jan/Feb/Mar summary columns.",
+        layout: "grid",
+      },
+      {
+        id: "04",
+        title: "Inline commentary & assistant gate",
+        caption:
+          "Links human rationale and reviewable AI prompts to the filtered state.",
+        layout: "split",
+      },
+    ],
+    architecturalPivot: {
+      summary:
+        "During joint architecture reviews with engineering, we replaced the legacy full-page widget editor with an adjacent contextual drawer so the live canvas state never unmounts.",
+      before: "Detached settings route (context lost)",
+      after: "In-place drawer synced with live canvas",
+    },
+    engineeringSummary:
+      "I worked side-by-side with frontend engineers to align Salt design tokens, AG Grid server-side row models, and Storybook 10.6 controls.",
+    collabTracks: [
+      {
+        phase: "01 / API & Props",
+        title: "Co-authored widget prop schemas",
+        detail:
+          "Defined exact TypeScript interfaces for `groupBy`, `pivotBy`, `delta`, and multi-condition filters prior to UI lock.",
+        deliverable: "Typed React component contracts",
+      },
+      {
+        phase: "02 / Grid & Charts",
+        title: "Engineered 1,440-record grid fluency",
+        detail:
+          "Aligned Highcharts drilldowns with AG Grid server-side row grouping, summary aggregations, and keyboard navigation.",
+        deliverable: "Synchronized chart-to-grid workbench",
+      },
+      {
+        phase: "03 / System QA",
+        title: "Delivered Storybook 10.6 workbench",
+        detail:
+          "Documented Salt foundations, Light/Dark themes, medium density modes, and automated accessibility assertions.",
+        deliverable: "Storybook 10.6 system artifact",
+      },
+    ],
+    contractBridge: {
+      figmaTitle: "Figma Component Spec · Advanced Grid",
+      codeTitle: "Storybook 10.6 & React Implementation",
+      figmaSpecs: [
+        ["Row hierarchy", "Group by Product → Expandable monthly summaries"],
+        [
+          "Theme & density",
+          "Salt Light/Dark tokens · Compact / Medium / Touch",
+        ],
+        [
+          "Interaction states",
+          "Empty, Loading, Filtered, Grouped, Saved, Export",
+        ],
+      ],
+      codeSpecs: [
+        [
+          "groupBy: string[]",
+          '["product"] (Server-side row model · 1,440 records)',
+        ],
+        ["pivotBy: string[]", '["month"] (Jan, Feb, Mar sum aggregations)'],
+        ["delta: boolean", "false | true + 3 automated a11y checks"],
+      ],
+    },
+    decisions: [
+      {
+        title: "Keep overview and evidence on a single canvas.",
+        body: "KPI tiles, charts, and the server-side AG Grid share one state model so analysts move from a high-level delta to product-level rows without losing context.",
+        badge: "Signal → Evidence Continuity",
+        image: `${assetBase}rapidbi/canvas-grid-commentary.png`,
+      },
+      {
+        title: "Progressive configuration with zero context switching.",
+        body: "Common actions stay on the surface while advanced grouping, pivot rules, and delta toggles unfold in an adjacent drawer.",
+        badge: "Progressive Disclosure",
+        image: `${assetBase}rapidbi/widget-settings.png`,
+      },
+      {
+        title: "Human-reviewed AI assistant recommendations.",
+        body: "Assistant suggestions explain which filters or chart changes will occur and wait for explicit approval before modifying the canvas.",
+        badge: "Governed AI Pattern",
+        image: `${assetBase}rapidbi/ai-assistant.png`,
+      },
+    ],
+    outcomes: [
+      [
+        "Signal orientation",
+        "Unified KPI header, timeframe context, and comparison deltas",
+        "Immediate executive & analyst scan",
+      ],
+      [
+        "Deep data inspection",
+        "Synchronized Highcharts + 1,440-row AG Grid grouping",
+        "Zero context loss across drilldowns",
+      ],
+      [
+        "Engineering velocity",
+        "Storybook 10.6 workbench with live controls & a11y checks",
+        "Direct design-to-code parity",
+      ],
+    ],
+  },,
+  {
+    id: "shiftsnap",
+    index: "02",
+    name: "ShiftSnap",
+    codename: "Dual-Role Workforce Mobile App",
+    category: "Mobile SaaS · Workforce scheduling",
+    portfolioCategory: "Mobile",
+    featured: true,
+    summary:
+      "A dual-role mobile scheduling and shift-swap platform connecting hourly workers and store managers through a shared, auditable state machine.",
+    headlineStart: "Shift changes that protect ",
+    headlineAccent: "everybody’s day.",
+    lede: "As Design Lead, I architected the dual-role mobile experience and 5-state swap engine connecting hourly baristas (Maya) and store managers (Priya) from schedule conflict to approved store coverage.",
+    role: "Lead Designer",
+    team: "UX researchers · Product · Engineering",
+    scope:
+      "Dual-role mobile UX · 5-state swap engine · Coverage heatmap · 9-screen system",
+    platform: "iOS & Android Mobile Application",
+    heroImage: "/shiftsnap-hero-phones.png",
+    secondaryImage: "/shiftsnap-complete-user-experience.png",
+    panoramaTitle: "The Complete Multi-Role Mobile Experience",
+    panoramaLabel: "9 Core Mobile Screens · Barista & Store Manager Views",
+    frictionTitle: "Fragmented Chat Threads & Unverified Coverage",
+    resolutionTitle: "Atomic 5-State Dual-Role Roster Engine",
+    resolutionBody: "Replaced informal message promises with a stateful mobile workflow that validates shift qualifications, enforces overtime guardrails, and updates store rosters in real time.",
+    problemStatement: "Shift changes were happening across fragmented group chats and text messages—leaving employees uncertain if a swap was official and managers blind to certification gaps or overtime risk.",
+    mandateTitle:
+      "Give hourly workers schedule flexibility while protecting store coverage.",
+    mandateBody:
+      "Shift changes were happening across fragmented group chats and text messages—leaving employees uncertain if a swap was official and managers blind to certification gaps or overtime risk. I designed one stateful workflow serving both roles.",
+    ownershipPillars: [
+      [
+        "5-State Swap Lifecycle",
+        "Defined Pending, Accepted, Approved, Declined, and Expired states across client and API.",
+      ],
+      [
+        "Manager Risk Guardrails",
+        "Surfaced coverage heatmaps, certification badges, and overtime risk at the moment of approval.",
+      ],
+      [
+        "Role-Aware Mobile System",
+        "Designed automatic SSO role routing and thumb-friendly mobile patterns for floor use.",
+      ],
+    ],
+    discoverySummary:
+      "Together with our UX researchers, we traced real scheduling exceptions across hourly workers and store managers. I then partnered with mobile and backend engineers to turn informal chat promises into an atomic roster transaction.",
+    discoveryMethods: [
+      [
+        "Dual-Role Task Mapping",
+        "Balanced worker speed (request a swap in seconds) with manager safety (coverage & qualifications).",
+      ],
+      [
+        "Exception Triage Audit",
+        "Identified why swaps failed: uncertified replacements, evening rush gaps, and overtime spikes.",
+      ],
+      [
+        "State Contract Modeling",
+        "Mapped exact ownership and notifications for every handoff between worker, peer, and manager.",
+      ],
+    ],
+    figmaNotes: [
+      {
+        tone: "amber",
+        tag: "Operational Rule",
+        text: "“A coworker saying yes in a chat thread is not an approved schedule change.”",
+      },
+      {
+        tone: "emerald",
+        tag: "Role Routing",
+        text: "Detect role on work SSO sign-in: Team Member vs. Manager requires a distinct home screen.",
+      },
+      {
+        tone: "rose",
+        tag: "Manager Triage",
+        text: "Surface 3 coverage gaps today, 5 open shifts, and 8 overtime risks before approving trades.",
+      },
+      {
+        tone: "sky",
+        tag: "Zero-Typing Flow",
+        text: "Carry shift date, time (7:00 AM–3:00 PM), store, and Barista role automatically into the request.",
+      },
+      {
+        tone: "orange",
+        tag: "Coverage Heatmap",
+        text: "Color-code weekly coverage (90%+ green, 75–89% amber, <75% red) so rush gaps jump out.",
+      },
+      {
+        tone: "violet",
+        tag: "Audit Ledger",
+        text: "Show a permanent “You gave up / You received” summary with manager approval timestamps.",
+      },
+    ],
+    principles: [
+      [
+        "Schedule first",
+        "Anchor the worker home view on Today’s Confirmed Shift and a 1-tap Request Swap action.",
+      ],
+      [
+        "Agreement ≠ Approval",
+        "Distinguish peer acceptance from manager approval with explicit status pills and timeline steps.",
+      ],
+      [
+        "Eligibility in context",
+        "Expose Barista, Shift Lead, and Certified badges plus weekly hours directly in the roster.",
+      ],
+      [
+        "Exception-led manager view",
+        "Prioritize urgent coverage gaps and pending approvals at the top of the manager workspace.",
+      ],
+    ],
+    journeySummary:
+      "The 5-stage journey connects Maya (Barista), Jordan (Certified Peer), and Priya (Store Manager) through one synchronized backend state contract.",
+    journeyFlow: [
+      {
+        step: "01",
+        stage: "Role Sign-In",
+        actor: "Work SSO + Router",
+        userGoal:
+          "Sign in with Harbor Coffee account and land on the right role home",
+        frictionEliminated:
+          "Generic navigation hid urgent manager approvals and worker shift cards.",
+        uxResolution:
+          "Work SSO verifies identity and routes Team Member vs. Manager workspaces.",
+        engineeringContract:
+          "Auth session role claim (`TEAM_MEMBER` | `MANAGER`)",
+        touchpoints: ["Work SSO", "Account Verified", "Role-Scoped Nav"],
+      },
+      {
+        step: "02",
+        stage: "Initiate Swap",
+        actor: "Maya · Barista",
+        userGoal:
+          "Request coverage for Mon, May 29 (7:00 AM–3:00 PM) at Downtown",
+        frictionEliminated:
+          "Workers had to manually type shift details and message coworkers one by one.",
+        uxResolution:
+          "One-tap “Request swap” on Today’s Shift card pre-populates shift metadata.",
+        engineeringContract:
+          "`SwapRequest` payload initialized in `PENDING_PEER` state",
+        touchpoints: [
+          "Today’s Shift Card",
+          "1-Tap Request Swap",
+          "Pending Banner",
+        ],
+      },
+      {
+        step: "03",
+        stage: "Match Certified Peer",
+        actor: "Jordan · Teammate",
+        userGoal:
+          "Claim the swap with verified certification and safe weekly hours",
+        frictionEliminated:
+          "Swaps collapsed when replacements lacked Barista/Shift Lead certification.",
+        uxResolution:
+          "Team Roster filters by role and displays `Certified` badges and weekly hour totals.",
+        engineeringContract:
+          "Eligibility guard (`isCertified && weeklyHours + shiftHours <= 40`)",
+        touchpoints: ["Team Roster", "Certified Filter", "Peer Acceptance"],
+      },
+      {
+        step: "04",
+        stage: "Manager Triage",
+        actor: "Priya · Manager",
+        userGoal:
+          "Approve the trade while protecting evening rush coverage and labor budget",
+        frictionEliminated:
+          "Managers approved requests blind to store coverage gaps and overtime risk.",
+        uxResolution:
+          "Manager home pairs 12 Pending Approvals with the 6AM–9PM Coverage Heatmap.",
+        engineeringContract:
+          "Coverage matrix (`>=90%`, `75-89%`, `<75%`) + manager approval lock",
+        touchpoints: [
+          "Manager Queue",
+          "Coverage Heatmap",
+          "Critical Gap Alert",
+        ],
+      },
+      {
+        step: "05",
+        stage: "Confirmed Roster",
+        actor: "Both Calendars",
+        userGoal: "Confirm the swap is official and both schedules are updated",
+        frictionEliminated:
+          "Employees confused peer agreement with final manager confirmation.",
+        uxResolution:
+          "Swap Status ledger displays “You gave up / You received” cards and audit timeline.",
+        engineeringContract:
+          "Atomic calendar mutation (`APPROVED` → `COMPLETED` at 2:15 PM)",
+        touchpoints: [
+          "Swap Status Ledger",
+          "Gave Up / Received Diff",
+          "Activity Timeline",
+        ],
+      },
+    ],
+    wireframes: [
+      {
+        id: "01",
+        title: "Employee schedule home",
+        caption:
+          "Confirmed shift card, pending approval banner, and thumb-zone Request Swap CTA.",
+        layout: "mobile-home",
+      },
+      {
+        id: "02",
+        title: "Manager exception dashboard",
+        caption:
+          "Red coverage gap alert + 2×2 operational KPI grid (Open, Pending, Gaps, Overtime).",
+        layout: "mobile-queue",
+      },
+      {
+        id: "03",
+        title: "Weekly coverage heatmap",
+        caption:
+          "Mon–Sat hourly matrix (6AM–9PM) flagging <75% critical windows.",
+        layout: "mobile-heatmap",
+      },
+      {
+        id: "04",
+        title: "Two-party swap ledger",
+        caption:
+          "Explicit “You gave up / You received” shift diff and timestamped approval trail.",
+        layout: "mobile-ledger",
+      },
+    ],
+    architecturalPivot: {
+      summary:
+        "In early reviews with engineering, we separated peer acceptance from manager approval and introduced the “You gave up / You received” ledger so no worker ever mistakes a pending trade for a confirmed schedule update.",
+      before: "Single chat-style acceptance state",
+      after: "Two-party diff ledger + timestamped manager approval",
+    },
+    engineeringSummary:
+      "I partnered with mobile and backend engineers to lock the 5-state swap lifecycle, coverage threshold math, and accessible non-color status badges.",
+    collabTracks: [
+      {
+        phase: "01 / State Machine",
+        title: "Co-authored 5-state swap API",
+        detail:
+          "Mapped deterministic transitions and cancellation rules across `Pending`, `Accepted`, `Approved`, `Declined`, and `Expired`.",
+        deliverable: "Shared state contract & notification triggers",
+      },
+      {
+        phase: "02 / Coverage Math",
+        title: "Engineered real-time coverage heatmaps",
+        detail:
+          "Defined hourly store staffing thresholds (`90%+`, `75–89%`, `<75%`) and critical gap alerts for manager triage.",
+        deliverable: "Coverage View & exception cards",
+      },
+      {
+        phase: "03 / Mobile Design System",
+        title: "Built accessible dual-role components",
+        detail:
+          "Paired every status color with semantic icons and labels (`Confirmed`, `Urgent`, `Certified`) for fast floor scanning.",
+        deliverable: "9-screen production mobile system",
+      },
+    ],
+    contractBridge: {
+      figmaTitle: "Figma Mobile Spec · Dual-Role System",
+      codeTitle: "Mobile Client & Backend State Contract",
+      figmaSpecs: [
+        [
+          "Role home routing",
+          "Team Member (Maya) vs. Manager (Priya) home layouts",
+        ],
+        [
+          "Coverage heatmap tiers",
+          "Green ≥90% · Amber 75–89% · Red <75% critical gap",
+        ],
+        [
+          "Swap confirmation ledger",
+          "Gave up (Mon 7a–3p) ↔ Received (Tue 2p–10p)",
+        ],
+      ],
+      codeSpecs: [
+        [
+          "userRole: RoleEnum",
+          '"TEAM_MEMBER" | "MANAGER" (auto-detected via SSO)',
+        ],
+        ["swapStatus: StateEnum", '"PENDING" | "APPROVED" | "COMPLETED"'],
+        ["rosterEligibility", "isCertified === true && weeklyHours <= 40"],
+      ],
+    },
+    decisions: [
+      {
+        title: "Role-aware onboarding and home hierarchies.",
+        body: "Work SSO automatically detects whether the user is a Team Member or Manager, tailoring the home screen to either personal shift actions or store-wide exception triage.",
+        badge: "Role-Verified UX",
+        image: `${assetBase}shiftsnap/sso-onboarding-screens.png`,
+      },
+      {
+        title: "6-screen operational loop across worker and manager.",
+        body: "Connects Employee Home, Manager Exception Home, and the Weekly Coverage Heatmap so shift coverage and overtime risks are visible at a glance.",
+        badge: "94% Store Coverage Rate",
+        image: `${assetBase}shiftsnap/role-coverage-screens.png`,
+      },
+      {
+        title: "Auditable “You gave up / You received” ledger.",
+        body: "Replaces ambiguous chat threads with a structured shift diff, Certified Team Roster, and timestamped activity log (`Manager approved 11:30 AM` → `Swap completed 2:15 PM`).",
+        badge: "Zero Schedule Ambiguity",
+        image: `${assetBase}shiftsnap/ledger-roster-screens.png`,
+      },
+    ],
+    outcomes: [
+      [
+        "Role-verified onboarding",
+        "Work SSO detects Harbor Coffee role and scopes navigation",
+        "Zero setup friction",
+      ],
+      [
+        "Stateful swap resolution",
+        "1-tap swap initiation through two-party ledger confirmation",
+        "Eliminated chat ambiguity",
+      ],
+      [
+        "Manager coverage safety",
+        "6AM–9PM coverage heatmap + Certified roster filters",
+        "94% coverage rate visibility",
       ],
     ],
   },
