@@ -1143,8 +1143,8 @@ function ProjectPage({ project }: { project: CaseStudyProject }) {
                 >
                   <Icon name="play" size={11} />
                   {heroView === "sandbox"
-                    ? "Exit Interactive Sandbox"
-                    : "Try Interactive Sandbox"}
+                    ? "Exit Sandbox · View Mockup"
+                    : "⚡ Test Live App in Browser"}
                 </button>
               )}
               {project.liveUrl && (
@@ -1313,7 +1313,7 @@ function ProjectPage({ project }: { project: CaseStudyProject }) {
                         setHeroView("sandbox")
                       }}
                     >
-                      <Icon name="play" size={10} /> Interactive Sandbox
+                      <Icon name="play" size={10} /> ⚡ Test Live App
                     </button>
                   )}
                   <span className="ui-frame-zoom">

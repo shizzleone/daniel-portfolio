@@ -215,8 +215,8 @@ export const portfolioProjects: CaseStudyProject[] = [
     platform: "iOS Mobile Application (Light & Dark Mode)",
     heroImage: `${assetBase}pennwise/hero-cover.png`,
     secondaryImage: `${assetBase}pennwise/design-system.png`,
-    panoramaTitle: "Pennwise Semantic Color & Surface Architecture · Light & Dark Mode",
-    panoramaLabel: "Pennwise Lime (#B6F256) · Neutral Ink (#0A0A0A) · Single-Hero Accent Rule",
+    panoramaTitle: "Pennwise Visual Restraint & Interface Architecture · Light & Dark Mode",
+    panoramaLabel: "High-Contrast Neutrals · Single Intentional Lime Accent · Dark & Light Mode Parity",
     frictionTitle: "Disconnected Account Balances, Goal Anxiety & Opaque Projections",
     resolutionTitle: "4-Pillar Financial Compass & Sandbox What-If Simulator",
     resolutionBody: "Connected live Net Worth ($128,420.50), a weighted 72/100 Financial Compass score, automated surplus routing ($870/mo), and a non-destructive 10-year What-If scenario simulator in one calm mobile system.",
@@ -243,7 +243,7 @@ export const portfolioProjects: CaseStudyProject[] = [
     mandateTitle:
       "Replace passive transaction lists with an actionable Financial Compass and sandbox What-If simulator.",
     mandateBody:
-      "I structured Pennwise around a strict visual restraint rule—using neutral shadcn/ui surfaces (`#FAFAFA` / `#0A0A0A`) and reserving Pennwise Lime (`#B6F256`) for the single highest-leverage element per screen—so dense financial data, 4-pillar health scores, and 10-year sensitivity charts remain effortless to scan.",
+      "I structured Pennwise around strict visual restraint—pairing calm, high-contrast neutral surfaces with a single, deliberate neon lime accent reserved exclusively for the highest-leverage element per screen. This ensures dense financial metrics, 4-pillar health scores, and 10-year compounding charts remain effortless to scan without cognitive fatigue.",
     ownershipPillars: [
       [
         "Financial Compass Architecture",
@@ -255,7 +255,7 @@ export const portfolioProjects: CaseStudyProject[] = [
       ],
       [
         "Semantic Token & Component System",
-        "Built Light/Dark mode variables (`bg/default`, `brand/default #B6F256`, `status/positive #15803D`) and reusable chart/sheet primitives.",
+        "Engineered semantic Light and Dark mode variable foundations, high-contrast data visualization tokens, and modular financial chart primitives.",
       ],
     ],
     discoverySummary:
@@ -271,14 +271,14 @@ export const portfolioProjects: CaseStudyProject[] = [
       ],
       [
         "Visual Density & Color Restraint Testing",
-        "Validated that limiting `#B6F256` lime to one hero indicator per screen reduced cognitive load on dense multi-account views.",
+        "Validated that reserving accent color for the single highest-leverage indicator per screen reduced cognitive load on dense multi-account views.",
       ],
     ],
     figmaNotes: [
       {
         tone: "emerald",
         tag: "One Lime Hero",
-        text: "“Keep the `#B6F256` lime accent to one hero element per screen—let neutral ink `#0A0A0A` and `#FAFAFA` carry the structure.”",
+        text: "“Keep the vibrant lime accent strictly to one hero element per screen—let neutral dark ink and clean alabaster carry the structural hierarchy.”",
       },
       {
         tone: "amber",
@@ -320,7 +320,7 @@ export const portfolioProjects: CaseStudyProject[] = [
       ],
       [
         "One brand accent per screen",
-        "Reserve Pennwise Lime (`#B6F256`) for the primary score, active progress bar, or primary CTA so alerts remain unmistakable.",
+        "Reserve the vibrant brand accent for the primary health score or high-leverage CTA so critical financial alerts remain unmistakable.",
       ],
       [
         "Make every projection inspectable",
@@ -428,7 +428,7 @@ export const portfolioProjects: CaseStudyProject[] = [
     ],
     architecturalPivot: {
       summary:
-        "Early prototypes treated Budgeting, Debt, Investments, and Retirement as separate calculators with different visual scales. We unified the entire product around the `Financial Compass` and a single semantic token architecture (`#B6F256` brand lime + `#0A0A0A` neutral ink) so every adjustment in spending or debt immediately reflects in the user's Compass Score and 2036 What-If trajectory.",
+        "Early prototypes treated Budgeting, Debt, Investments, and Retirement as separate calculators with conflicting visual scales. We unified the entire product around the Financial Compass and a single design system foundation, so every adjustment in daily spending or debt payoff immediately reflects in the user's overall health score and 10-year scenario trajectory.",
       before: "Isolated budget, debt, and retirement calculators",
       after: "Unified Financial Compass + Live What-If Trade-Off Engine",
     },
@@ -511,19 +511,19 @@ export const portfolioProjects: CaseStudyProject[] = [
     ],
     outcomes: [
       [
-        "16 product modules",
-        "Cohesive mobile architecture from onboarding & dashboard to tax/year-in-review",
-        "End-to-end personal finance system",
+        "Mobile architecture",
+        "Cohesive 16-module product suite spanning onboarding, net worth, and life planning",
+        "16 iOS Modules",
       ],
       [
-        "72/100 Compass clarity",
+        "Financial clarity",
         "Turns multi-account balances into 4 transparent pillars and a 3-step action plan",
-        "Immediate next-step confidence",
+        "72/100 Compass",
       ],
       [
-        "Live What-If sandbox",
+        "What-If simulation",
         "Models 10-year net worth sensitivity across home purchases, raises, and sabbaticals",
-        "Zero-risk scenario planning",
+        "10-Yr Sandbox",
       ],
     ],
   },
@@ -534,7 +534,7 @@ export const portfolioProjects: CaseStudyProject[] = [
     codename: "Governed Financial AI Operations",
     category: "Developer tools · AI operations",
     portfolioCategory: "Developer tools",
-    featured: true,
+    featured: false,
     summary:
       "A governed AI workflow platform that helps financial operations teams move from incoming Net Asset Value (NAV) reports to auditable delivery.",
     headlineStart: "Governed AI for ",
@@ -843,7 +843,7 @@ export const portfolioProjects: CaseStudyProject[] = [
     heroImage: `${assetBase}bluewave/fleet-live-map.png`,
     secondaryImage: `${assetBase}bluewave/vessel-overview.png`,
     panoramaTitle: "Global Maritime Trade Corridors & Real-Time AIS Tracking",
-    panoramaLabel: "BlueWave Blue (#3676F5) · Maritime Land (#E9EFF9) · Coastal Blue (#C3D7FF)",
+    panoramaLabel: "Nautical Blue Accents · High-Contrast Daylight Panels · Coastal Telemetry",
     frictionTitle: "Opaque Ocean Transit, Unexpected Port Queues & Disconnected Cargo Feeds",
     resolutionTitle: "Interactive Live Fleet Map & Predictive Voyage Telemetry",
     resolutionBody:
@@ -1057,7 +1057,7 @@ export const portfolioProjects: CaseStudyProject[] = [
     decisions: [
       {
         title: "Light Coastal Palette for Maritime Cockpits",
-        body: "While developer tools favor dark mode, maritime operations centers are bright, sunlit rooms where high-contrast coastal blue (#C3D7FF) and clean white panels dramatically reduce glare and visual fatigue.",
+        body: "While developer tools favor dark mode, maritime operations centers are sunlit bridge environments where high-contrast nautical blue accents and clean daylight panels dramatically reduce glare and screen reflections during long watch shifts.",
         badge: "Visual Ergonomics",
         image: `${assetBase}bluewave/fleet-live-map.png`,
       },
@@ -1075,9 +1075,21 @@ export const portfolioProjects: CaseStudyProject[] = [
       },
     ],
     outcomes: [
-      ["+44%", "Dispatch efficiency across global operations squads"],
-      ["6.2x", "Faster response to typhoon weather and canal delays"],
-      ["$8.4M", "Annual bunker fuel waste eliminated via speed optimization"],
+      [
+        "Dispatch efficiency",
+        "Empowers operations squads to route vessels and book berths with live telemetry",
+        "+44% Turnaround",
+      ],
+      [
+        "Incident response",
+        "Cuts emergency reaction time when rerouting around typhoons and canal delays",
+        "6.2x Faster",
+      ],
+      [
+        "Fuel optimization",
+        "Eliminates wasteful idle steaming through predictive waypoint scheduling",
+        "$8.4M Saved",
+      ],
     ],
   },
   {
@@ -1088,7 +1100,7 @@ export const portfolioProjects: CaseStudyProject[] = [
     codename: "Simplest List · Minimalist Bento Task Architecture",
     category: "Productivity · Minimalist task manager & bento design system",
     portfolioCategory: "Product & UX",
-    featured: true,
+    featured: false,
     summary:
       "A distraction-free macOS & web task management system connecting keyboard-first list capture, dark glassmorphic bento cards, and real-time collaborative state.",
     headlineStart: "Your tasks, ",
@@ -1432,7 +1444,7 @@ export const portfolioProjects: CaseStudyProject[] = [
     codename: "Motive EV & Luxury Mobility",
     category: "Mobility · EV & luxury car rental mobile app",
     portfolioCategory: "Mobile",
-    featured: true,
+    featured: false,
     summary:
       "A dual-theme iOS mobility platform connecting instant EV discovery, transparent airport valet checkout, live range/charger telemetry, and a BLE/NFC Digital Key.",
     headlineStart: "Skip the counter. Unlock ",
