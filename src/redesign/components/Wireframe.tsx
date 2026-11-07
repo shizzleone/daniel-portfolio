@@ -154,6 +154,10 @@ interface WireframeProps {
   n: number
 }
 
+export function WireframeFrame({ layout }: { layout: WireframeSpec["layout"] }) {
+  return <Frame layout={layout} />
+}
+
 export function Wireframe({ spec, n }: WireframeProps) {
   return (
     <figure className="wf">

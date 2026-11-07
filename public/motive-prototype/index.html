@@ -1,0 +1,1995 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Motive — EV & Luxury Car Rental Interactive Prototype</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Encode+Sans+Expanded:wght@300;400;500;600;700&family=Instrument+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --font-heading: 'Encode Sans Expanded', -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-body: 'Instrument Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+
+      /* Motive Light Mode Tokens (from Figma variable defs) */
+      --bg-canvas: #ebe7e1;
+      --bg-surface: #ffffff;
+      --bg-card: #faf9f7;
+      --bg-subtle: #f3f1ee;
+      --bg-muted: #e8e5e0;
+      --text-primary: #151515;
+      --text-secondary: #57534d;
+      --text-tertiary: #7a756e;
+      --border-subtle: #f3f1ee;
+      --border-default: #e8e5e0;
+      --primary-default: #151515;
+      --text-on-primary: #ffffff;
+      --copper: #c8642a;
+      --copper-subtle: #fbf2eb;
+      --copper-on-subtle: #7e3c17;
+      --success: #2fb98e;
+      --success-subtle: #edfdf7;
+      --success-on-subtle: #1f7a60;
+      --warning: #f5b301;
+      --danger: #e5484d;
+      --danger-subtle: #fff0f0;
+    }
+
+    [data-theme="dark"] {
+      --bg-canvas: #0a0a0a;
+      --bg-surface: #121211;
+      --bg-card: #1b1a19;
+      --bg-subtle: #242321;
+      --bg-muted: #2d2b29;
+      --text-primary: #f7f5f2;
+      --text-secondary: #b5b0a8;
+      --text-tertiary: #857f77;
+      --border-subtle: #232220;
+      --border-default: #2e2c29;
+      --primary-default: #f7f5f2;
+      --text-on-primary: #151515;
+      --copper: #e07638;
+      --copper-subtle: rgba(200, 100, 42, 0.16);
+      --copper-on-subtle: #f3a172;
+      --success-subtle: rgba(47, 185, 142, 0.16);
+      --success-on-subtle: #5ce0b5;
+      --danger-subtle: rgba(229, 72, 77, 0.16);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body {
+      font-family: var(--font-body);
+      background: radial-gradient(circle at 50% 0%, #262320 0%, #121110 65%, #090909 100%);
+      color: var(--text-primary);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 16px 16px 32px;
+      overflow-x: hidden;
+    }
+
+    /* Top Reviewer Control Bar */
+    .proto-toolbar {
+      width: 100%;
+      max-width: 1080px;
+      background: rgba(24, 23, 22, 0.88);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 999px;
+      padding: 6px 10px 6px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 18px;
+      flex-wrap: wrap;
+      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.35);
+    }
+
+    .proto-brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: #fff;
+      font-family: var(--font-heading);
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      white-space: nowrap;
+    }
+
+    .proto-brand-mark {
+      width: 26px;
+      height: 26px;
+      border-radius: 8px;
+      background: #c8642a;
+      color: #fff;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 13px;
+    }
+
+    .proto-brand-sub {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: rgba(255, 255, 255, 0.55);
+      padding: 2px 8px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.07);
+    }
+
+    .proto-flows {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      flex-wrap: wrap;
+    }
+
+    .proto-flow-btn {
+      appearance: none;
+      border: 1px solid transparent;
+      background: transparent;
+      color: rgba(255, 255, 255, 0.68);
+      font-family: var(--font-body);
+      font-size: 12px;
+      font-weight: 500;
+      padding: 7px 12px;
+      border-radius: 999px;
+      cursor: pointer;
+      transition: all 0.18s ease;
+      white-space: nowrap;
+    }
+
+    .proto-flow-btn:hover {
+      color: #fff;
+      background: rgba(255, 255, 255, 0.07);
+    }
+
+    .proto-flow-btn.active {
+      background: #c8642a;
+      color: #fff;
+      font-weight: 600;
+      box-shadow: 0 4px 12px rgba(200, 100, 42, 0.35);
+    }
+
+    .proto-actions {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .theme-toggle {
+      appearance: none;
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      background: rgba(255, 255, 255, 0.06);
+      color: #fff;
+      font-family: var(--font-body);
+      font-size: 12px;
+      font-weight: 500;
+      padding: 7px 12px;
+      border-radius: 999px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.18s ease;
+    }
+
+    .theme-toggle:hover {
+      background: rgba(255, 255, 255, 0.14);
+    }
+
+    /* Stage Layout: Phone + Side Context Card on Wide Screens */
+    .proto-stage {
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      gap: 28px;
+      width: 100%;
+      max-width: 1080px;
+    }
+
+    /* iPhone 16 Pro Frame (402px width from Figma spec) */
+    .phone-shell {
+      width: 402px;
+      max-width: 100%;
+      height: 836px;
+      background: #0d0d0d;
+      border-radius: 54px;
+      padding: 11px;
+      box-shadow:
+        0 30px 80px rgba(0, 0, 0, 0.65),
+        0 0 0 1px rgba(255, 255, 255, 0.14),
+        inset 0 0 0 2px #262524;
+      position: relative;
+      flex-shrink: 0;
+    }
+
+    .phone-viewport {
+      width: 100%;
+      height: 100%;
+      background: var(--bg-surface);
+      color: var(--text-primary);
+      border-radius: 44px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      transition: background 0.25s ease, color 0.25s ease;
+    }
+
+    /* Status Bar */
+    .status-bar {
+      height: 50px;
+      padding: 0 26px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 15px;
+      font-weight: 600;
+      letter-spacing: -0.3px;
+      flex-shrink: 0;
+      z-index: 10;
+      position: relative;
+    }
+
+    .status-bar.inverse {
+      color: #ffffff;
+    }
+
+    .dynamic-island {
+      width: 116px;
+      height: 32px;
+      background: #000;
+      border-radius: 999px;
+      position: absolute;
+      left: 50%;
+      top: 10px;
+      transform: translateX(-50%);
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      padding-right: 12px;
+    }
+
+    .island-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #1c2938;
+      box-shadow: inset 0 0 2px #3b82f6;
+    }
+
+    .status-icons {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+    }
+
+    /* Scrollable Screen Content */
+    .screen-scroll {
+      flex: 1;
+      overflow-y: auto;
+      overflow-x: hidden;
+      scrollbar-width: none;
+    }
+    .screen-scroll::-webkit-scrollbar {
+      display: none;
+    }
+
+    /* Screen Padding & Common UI */
+    .screen-pad {
+      padding: 6px 22px 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    /* C01 Home Header */
+    .home-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .user-greet {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .avatar {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #c8642a, #7e3c17);
+      color: #fff;
+      font-family: var(--font-heading);
+      font-weight: 600;
+      font-size: 15px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 2px solid var(--border-default);
+    }
+
+    .greet-eyebrow {
+      font-size: 12px;
+      color: var(--text-tertiary);
+      line-height: 16px;
+    }
+
+    .greet-name {
+      font-family: var(--font-heading);
+      font-size: 17px;
+      font-weight: 600;
+      letter-spacing: -0.34px;
+      color: var(--text-primary);
+    }
+
+    .circle-btn {
+      width: 44px;
+      height: 44px;
+      border-radius: 999px;
+      border: 1px solid var(--border-default);
+      background: var(--bg-surface);
+      color: var(--text-primary);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      position: relative;
+      transition: transform 0.15s ease, background 0.15s ease;
+    }
+
+    .circle-btn:hover {
+      background: var(--bg-subtle);
+      transform: scale(1.03);
+    }
+
+    .notif-dot {
+      position: absolute;
+      top: 10px;
+      right: 11px;
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #e5484d;
+    }
+
+    /* Active Trip Strip (Node 4017:3657) */
+    .trip-strip {
+      background: #151515;
+      color: #ffffff;
+      border-radius: 20px;
+      padding: 15px 16px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      cursor: pointer;
+      box-shadow: 0 14px 30px -12px rgba(21, 21, 21, 0.35);
+      transition: transform 0.18s ease, box-shadow 0.18s ease;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .trip-strip:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 18px 36px -10px rgba(200, 100, 42, 0.28);
+    }
+
+    .glass-key-btn {
+      width: 42px;
+      height: 42px;
+      border-radius: 999px;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.18), rgba(255, 255, 255, 0.05));
+      border: 1px solid rgba(255, 255, 255, 0.35);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 16px;
+    }
+
+    .trip-strip-meta {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .trip-strip-eyebrow {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      color: #e07638;
+      margin-bottom: 2px;
+    }
+
+    .trip-strip-title {
+      font-family: var(--font-heading);
+      font-size: 15px;
+      font-weight: 600;
+      color: #fff;
+      letter-spacing: -0.075px;
+    }
+
+    .trip-strip-sub {
+      font-size: 12px;
+      color: rgba(255, 255, 255, 0.72);
+    }
+
+    /* Search Card (Node 4017:3658) */
+    .search-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: 24px;
+      padding: 18px;
+      box-shadow:
+        0 20px 44px -18px rgba(46, 38, 30, 0.08),
+        0 8px 20px -8px rgba(46, 38, 30, 0.05);
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .route-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 4px 0;
+      cursor: pointer;
+    }
+
+    .dot-amber {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--copper);
+      flex-shrink: 0;
+    }
+
+    .dot-ring {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      border: 1.5px solid var(--copper);
+      flex-shrink: 0;
+    }
+
+    .route-label {
+      font-size: 11px;
+      color: var(--text-tertiary);
+    }
+
+    .route-val {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--text-primary);
+    }
+
+    .date-pill-box {
+      background: var(--bg-subtle);
+      border-radius: 14px;
+      padding: 11px 14px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      cursor: pointer;
+    }
+
+    .duration-badge {
+      background: var(--bg-surface);
+      padding: 4px 10px;
+      border-radius: 999px;
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--text-primary);
+      box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+    }
+
+    .btn-primary {
+      width: 100%;
+      height: 50px;
+      border-radius: 999px;
+      background: var(--primary-default);
+      color: var(--text-on-primary);
+      border: none;
+      font-family: var(--font-body);
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: transform 0.15s ease, opacity 0.15s ease;
+    }
+
+    .btn-primary:hover {
+      opacity: 0.92;
+      transform: translateY(-1px);
+    }
+
+    /* Filter Chips */
+    .chip-row {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      padding-bottom: 2px;
+      scrollbar-width: none;
+    }
+    .chip-row::-webkit-scrollbar { display: none; }
+
+    .filter-chip {
+      height: 36px;
+      padding: 0 15px;
+      border-radius: 999px;
+      border: 1px solid var(--border-default);
+      background: var(--bg-surface);
+      color: var(--text-primary);
+      font-family: var(--font-body);
+      font-size: 13px;
+      font-weight: 500;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all 0.15s ease;
+    }
+
+    .filter-chip.active {
+      background: var(--primary-default);
+      color: var(--text-on-primary);
+      border-color: var(--primary-default);
+    }
+
+    /* Weekend Edit Hero Card */
+    .weekend-card {
+      background: linear-gradient(160deg, #1b1b1b 0%, #0e0e0e 100%);
+      border-radius: 24px;
+      padding: 18px;
+      color: #fff;
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .weekend-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 10px;
+    }
+
+    .weekend-tag {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      color: #e07638;
+    }
+
+    .glass-pill {
+      background: rgba(255, 255, 255, 0.14);
+      backdrop-filter: blur(6px);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      padding: 4px 10px;
+      border-radius: 999px;
+      font-size: 11px;
+      font-weight: 500;
+      color: #fff;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    /* Vehicle SVG Illustration Stage */
+    .car-art-stage {
+      height: 110px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      margin: 4px 0 10px;
+    }
+
+    .weekend-bottom {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+    }
+
+    .weekend-title {
+      font-family: var(--font-heading);
+      font-size: 20px;
+      font-weight: 500;
+      letter-spacing: -0.4px;
+    }
+
+    .weekend-price {
+      font-family: var(--font-heading);
+      font-size: 20px;
+      font-weight: 400;
+    }
+
+    /* Section Header */
+    .sec-head {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+    }
+
+    .sec-title {
+      font-family: var(--font-heading);
+      font-size: 18px;
+      font-weight: 600;
+      letter-spacing: -0.35px;
+    }
+
+    .sec-link {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text-secondary);
+      cursor: pointer;
+    }
+
+    /* Car Compact Cards */
+    .car-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 22px;
+      padding: 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      cursor: pointer;
+      transition: transform 0.16s ease, border-color 0.16s ease;
+    }
+
+    .car-card:hover {
+      transform: translateY(-2px);
+      border-color: var(--copper);
+    }
+
+    .car-card-visual {
+      height: 136px;
+      border-radius: 16px;
+      background: linear-gradient(180deg, #1b1d21 0%, #101113 100%);
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .car-card-top-badges {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      right: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .car-card-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+
+    .car-card-name {
+      font-family: var(--font-heading);
+      font-size: 17px;
+      font-weight: 600;
+      letter-spacing: -0.3px;
+    }
+
+    .car-card-sub {
+      font-size: 12px;
+      color: var(--text-tertiary);
+      margin-top: 2px;
+    }
+
+    .rating-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    .star { color: #f5b301; }
+
+    .car-card-footer {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      padding-top: 8px;
+      border-top: 1px solid var(--border-subtle);
+    }
+
+    .price-day {
+      font-family: var(--font-heading);
+      font-size: 19px;
+      font-weight: 500;
+    }
+
+    /* D01 Car Detail Dark Stage */
+    .detail-hero-stage {
+      background: linear-gradient(180deg, #171a20 0%, #111214 65%, #0e0e0f 100%);
+      color: #fff;
+      padding: 8px 22px 24px;
+      border-bottom-left-radius: 28px;
+      border-bottom-right-radius: 28px;
+    }
+
+    .detail-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+
+    .dark-circle-btn {
+      width: 42px;
+      height: 42px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.24);
+      color: #fff;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+
+    .spec-numerals {
+      display: flex;
+      align-items: stretch;
+      justify-content: space-between;
+      margin-top: 16px;
+      padding-top: 14px;
+      border-top: 1px solid rgba(255, 255, 255, 0.12);
+    }
+
+    .spec-col {
+      flex: 1;
+    }
+
+    .spec-col + .spec-col {
+      border-left: 1px solid rgba(255, 255, 255, 0.15);
+      padding-left: 16px;
+    }
+
+    .spec-big {
+      font-family: var(--font-heading);
+      font-size: 25px;
+      font-weight: 300;
+      letter-spacing: -0.65px;
+      line-height: 30px;
+    }
+
+    .spec-unit {
+      font-size: 12px;
+      opacity: 0.72;
+      margin-left: 2px;
+    }
+
+    .spec-caption {
+      font-size: 12px;
+      opacity: 0.68;
+      margin-top: 2px;
+    }
+
+    /* 2x2 Feature Bento */
+    .bento-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    .bento-tile {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 18px;
+      padding: 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .bento-icon {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 15px;
+    }
+
+    .bento-title {
+      font-family: var(--font-heading);
+      font-size: 15px;
+      font-weight: 600;
+    }
+
+    .bento-sub {
+      font-size: 12px;
+      color: var(--text-tertiary);
+    }
+
+    /* Sticky Bottom Bar */
+    .sticky-footer {
+      background: var(--bg-surface);
+      border-top: 1px solid var(--border-subtle);
+      padding: 12px 22px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      flex-shrink: 0;
+    }
+
+    /* E08 Review & Pay Breakdown */
+    .receipt-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 20px;
+      padding: 6px 18px;
+    }
+
+    .receipt-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 11px 0;
+      font-size: 13px;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .receipt-row:last-child {
+      border-bottom: none;
+      font-weight: 600;
+      font-size: 15px;
+      padding: 14px 0;
+    }
+
+    /* Protection Tier Selector */
+    .tier-selector {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+    }
+
+    .tier-card {
+      background: var(--bg-card);
+      border: 1.5px solid var(--border-default);
+      border-radius: 16px;
+      padding: 10px;
+      cursor: pointer;
+      text-align: left;
+      transition: all 0.15s ease;
+    }
+
+    .tier-card.active {
+      border-color: var(--copper);
+      background: var(--copper-subtle);
+    }
+
+    .tier-name {
+      font-family: var(--font-heading);
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+
+    .tier-cost {
+      font-size: 12px;
+      color: var(--copper);
+      font-weight: 600;
+      margin-top: 2px;
+    }
+
+    /* F08 Active Trip Digital Key Slide Button */
+    .unlock-pill-btn {
+      width: 100%;
+      height: 64px;
+      border-radius: 999px;
+      background: #1e1d1c;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      padding: 6px 20px 6px 6px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      color: #fff;
+      cursor: pointer;
+      transition: all 0.22s ease;
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.22);
+    }
+
+    .unlock-pill-btn.unlocked {
+      background: #14382d;
+      border-color: #2fb98e;
+    }
+
+    .unlock-knob {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      background: linear-gradient(180deg, rgba(255,255,255,0.22), rgba(255,255,255,0.06));
+      border: 1px solid rgba(255,255,255,0.38);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .unlock-pill-btn.unlocked .unlock-knob {
+      background: #2fb98e;
+      border-color: #6ee7b7;
+    }
+
+    /* Bottom Tab Bar */
+    .motive-tabbar {
+      background: var(--bg-surface);
+      border-top: 1px solid var(--border-subtle);
+      padding: 8px 20px 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-shrink: 0;
+    }
+
+    .tab-item {
+      height: 42px;
+      padding: 0 12px;
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text-tertiary);
+      cursor: pointer;
+      border: none;
+      background: transparent;
+      font-family: var(--font-body);
+    }
+
+    .tab-item.active {
+      background: var(--primary-default);
+      color: var(--text-on-primary);
+      padding: 0 16px;
+    }
+
+    /* Side Inspector / Design Notes Card */
+    .proto-inspector {
+      flex: 1;
+      max-width: 380px;
+      background: rgba(24, 23, 22, 0.82);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 28px;
+      padding: 24px;
+      color: #f5f3ef;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    @media (max-width: 860px) {
+      .proto-inspector {
+        display: none;
+      }
+    }
+
+    .insp-kicker {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #e07638;
+    }
+
+    .insp-title {
+      font-family: var(--font-heading);
+      font-size: 20px;
+      font-weight: 600;
+      letter-spacing: -0.4px;
+      margin-top: 4px;
+    }
+
+    .insp-body {
+      font-size: 13.5px;
+      line-height: 1.55;
+      color: rgba(255, 255, 255, 0.72);
+    }
+
+    .insp-tokens {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+
+    .insp-token {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 12px;
+      padding: 10px;
+      font-family: var(--font-mono);
+      font-size: 11px;
+    }
+
+    .toast-banner {
+      position: absolute;
+      bottom: 88px;
+      left: 22px;
+      right: 22px;
+      background: #151515;
+      color: #fff;
+      border: 1px solid rgba(255,255,255,0.18);
+      padding: 12px 16px;
+      border-radius: 16px;
+      font-size: 13px;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: 0 12px 28px rgba(0,0,0,0.35);
+      z-index: 40;
+      animation: fadeUp 0.2s ease;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Flow & Theme Bar -->
+  <header class="proto-toolbar">
+    <div class="proto-brand">
+      <span class="proto-brand-mark">M</span>
+      <span>Motive Mobility</span>
+      <span class="proto-brand-sub">IOS DIGITAL KEY & EV TELEMETRY</span>
+    </div>
+    <nav class="proto-flows" id="flowNav">
+      <button class="proto-flow-btn active" data-screen="home">1 · Discover (C01)</button>
+      <button class="proto-flow-btn" data-screen="detail">2 · Car Detail (D01)</button>
+      <button class="proto-flow-btn" data-screen="checkout">3 · Review & Pay (E08)</button>
+      <button class="proto-flow-btn" data-screen="trip">4 · Active Trip Key (F08)</button>
+      <button class="proto-flow-btn" data-screen="declined">5 · Hold Recovery (H06)</button>
+    </nav>
+    <div class="proto-actions">
+      <button class="theme-toggle" id="themeBtn" title="Toggle Light / Dark Mode">
+        <span id="themeIcon">🌙</span>
+        <span id="themeLabel">Dark mode</span>
+      </button>
+    </div>
+  </header>
+
+  <main class="proto-stage">
+    <!-- iPhone 16 Pro Viewport -->
+    <div class="phone-shell">
+      <div class="phone-viewport" id="phoneViewport"></div>
+    </div>
+
+    <!-- Side Context & Figma Spec Card -->
+    <aside class="proto-inspector" id="inspectorCard">
+      <div>
+        <div class="insp-kicker" id="inspStep">SECTION C · DISCOVER FLOW</div>
+        <h2 class="insp-title" id="inspTitle">C01 Home & Active Trip Strip</h2>
+      </div>
+      <p class="insp-body" id="inspDesc">
+        Surfaces the ongoing rental ("Hyundai Ioniq 5 · Day 2 of 3") as a persistent glassmorphic strip above the next-trip search card so returning drivers never hunt through tabs to unlock their car.
+      </p>
+      <div class="insp-tokens">
+        <div class="insp-token">
+          <div style="color:rgba(255,255,255,0.5)">HEADING FONT</div>
+          <div style="margin-top:3px;color:#fff">Encode Sans Exp</div>
+        </div>
+        <div class="insp-token">
+          <div style="color:rgba(255,255,255,0.5)">BODY FONT</div>
+          <div style="margin-top:3px;color:#fff">Instrument Sans</div>
+        </div>
+        <div class="insp-token">
+          <div style="color:rgba(255,255,255,0.5)">BURNT AMBER</div>
+          <div style="margin-top:3px;color:#e07638">#C8642A</div>
+        </div>
+        <div class="insp-token">
+          <div style="color:rgba(255,255,255,0.5)">GRAPHITE INK</div>
+          <div style="margin-top:3px;color:#fff">#151515</div>
+        </div>
+      </div>
+      <div style="border-top:1px solid rgba(255,255,255,0.1);padding-top:14px;font-size:12px;color:rgba(255,255,255,0.62);line-height:1.5">
+        <strong style="color:#fff">Try interacting:</strong> Filter EV categories, tap any vehicle card to inspect its 294-mi telemetry stage, switch protection tiers in checkout, or slide the Digital Key on the Active Trip screen.
+      </div>
+    </aside>
+  </main>
+
+  <script>
+    const FLEET = [
+      {
+        id: "gv60",
+        name: "Genesis GV60",
+        subtitle: "Electric crossover · 2025 · Matte Grey",
+        hub: "Culver City",
+        category: "Electric",
+        range: "294",
+        accel: "4.0",
+        seats: "5",
+        rating: "4.8",
+        trips: 164,
+        priceDay: 92,
+        chargeSpeed: "18 min",
+        bags: "2 large bags",
+        colorHex: "#9ca3af"
+      },
+      {
+        id: "ev6",
+        name: "Kia EV6 GT-Line",
+        subtitle: "Electric crossover · 2025 · Yacht Blue",
+        hub: "Santa Monica",
+        category: "Electric",
+        range: "310",
+        accel: "4.6",
+        seats: "5",
+        rating: "4.9",
+        trips: 188,
+        priceDay: 79,
+        chargeSpeed: "18 min",
+        bags: "2 large bags",
+        colorHex: "#3b82f6"
+      },
+      {
+        id: "sl55",
+        name: "Mercedes-Benz SL 55",
+        subtitle: "AMG Roadster · 2025 · Obsidian Black",
+        hub: "Beverly Hills",
+        category: "Luxury",
+        range: "285",
+        accel: "3.8",
+        seats: "4",
+        rating: "5.0",
+        trips: 94,
+        priceDay: 240,
+        chargeSpeed: "Premium 91",
+        bags: "2 weekend bags",
+        colorHex: "#e07638"
+      },
+      {
+        id: "tiguan",
+        name: "Volkswagen Tiguan R",
+        subtitle: "Allspace SUV · 2025 · Pearl White",
+        hub: "West Hollywood",
+        category: "SUV",
+        range: "410",
+        accel: "6.1",
+        seats: "7",
+        rating: "4.7",
+        trips: 112,
+        priceDay: 74,
+        chargeSpeed: "Regular Unleaded",
+        bags: "4 large bags",
+        colorHex: "#cbd5e1"
+      }
+    ];
+
+    const state = {
+      screen: "home",
+      theme: "light",
+      category: "All",
+      selectedCarId: "gv60",
+      deliveryToLax: true,
+      protectionTier: "standard", // basic (0), standard (54), premier (96)
+      promoApplied: true,
+      carUnlocked: false,
+      tripExtended: false,
+      cabinClimateOn: false,
+      differentReturn: false,
+      toast: null
+    };
+
+    function showToast(msg) {
+      state.toast = msg;
+      render();
+      setTimeout(() => {
+        if (state.toast === msg) {
+          state.toast = null;
+          render();
+        }
+      }, 2600);
+    }
+
+    function carSvg(accentColor = "#9ca3af") {
+      return `
+        <svg width="240" height="86" viewBox="0 0 240 86" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <ellipse cx="120" cy="74" rx="96" ry="8" fill="rgba(0,0,0,0.45)"/>
+          <path d="M36 52L58 26C64 20 74 17 88 17H154C168 17 180 22 190 31L210 46C216 50 218 56 216 62C214 66 209 68 202 68H38C30 68 26 63 28 57C29 54 32 52 36 52Z" fill="url(#bodyGrad_${accentColor.replace('#','')})" stroke="rgba(255,255,255,0.22)" stroke-width="1.2"/>
+          <path d="M66 28C71 23 79 21 90 21H148C159 21 169 25 176 32L186 41H56L66 28Z" fill="#0F1115" fill-opacity="0.82"/>
+          <rect x="196" y="47" width="16" height="4" rx="2" fill="#FFF"/>
+          <rect x="196" y="53" width="14" height="3" rx="1.5" fill="#C8642A"/>
+          <rect x="28" y="46" width="12" height="4" rx="2" fill="#E5484D"/>
+          <circle cx="68" cy="65" r="15" fill="#141414" stroke="#52525B" stroke-width="3"/>
+          <circle cx="68" cy="65" r="6" fill="${accentColor}"/>
+          <circle cx="176" cy="65" r="15" fill="#141414" stroke="#52525B" stroke-width="3"/>
+          <circle cx="176" cy="65" r="6" fill="${accentColor}"/>
+          <defs>
+            <linearGradient id="bodyGrad_${accentColor.replace('#','')}" x1="30" y1="16" x2="210" y2="70" gradientUnits="userSpaceOnUse">
+              <stop stop-color="${accentColor}"/>
+              <stop offset="0.55" stop-color="#3F3F46"/>
+              <stop offset="1" stop-color="#18181B"/>
+            </linearGradient>
+          </defs>
+        </svg>
+      `;
+    }
+
+    function updateInspector() {
+      const meta = {
+        home: {
+          step: "SECTION C · DISCOVER FLOW (NODE 4017:3644)",
+          title: "C01 Home & Active Trip Strip",
+          desc: "Surfaces the ongoing rental ('Hyundai Ioniq 5 · Day 2 of 3') as a persistent glassmorphic strip above the search card so returning drivers can jump straight to their Digital Key."
+        },
+        detail: {
+          step: "SECTION D · VEHICLE STAGE (NODE 4018:3910)",
+          title: "D01 Dark Photo Stage & EV Telemetry",
+          desc: "Replaces cluttered spec tables with a dark automotive stage, Encode Sans Expanded Light numerals (294 mi · 4.0s · 5 seats), and a 2×2 charging & luggage bento."
+        },
+        checkout: {
+          step: "SECTION E · TRANSPARENT CHECKOUT (NODE 4056:2006)",
+          title: "E08 Review & Pay Breakdown",
+          desc: "Eliminates surprise counter fees by itemizing rental days, protection tier, charging/toll pass, LAX delivery, promo code FALL15, and refundable hold upfront."
+        },
+        trip: {
+          step: "SECTION F · ON-TRIP TELEMETRY (NODE 4112:7701)",
+          title: "F08 Active Trip & Digital Key",
+          desc: "Real-time BLE/NFC vehicle control with battery range telemetry (62% · 232 mi), Bay C4 return progress, nearby 350kW charger routing, and one-tap Digital Key unlock."
+        },
+        declined: {
+          step: "SECTION H · SYSTEM EDGE CASES (NODE 4112:9830)",
+          title: "H06 Payment Declined · 15-Min Reservation Hold",
+          desc: "Instead of canceling a booking when a bank flags a travel charge, Motive locks the vehicle in a 14:32 countdown hold and surfaces one-tap Apple Pay recovery."
+        }
+      }[state.screen];
+
+      document.getElementById("inspStep").textContent = meta.step;
+      document.getElementById("inspTitle").textContent = meta.title;
+      document.getElementById("inspDesc").textContent = meta.desc;
+
+      document.querySelectorAll(".proto-flow-btn").forEach((btn) => {
+        btn.classList.toggle("active", btn.dataset.screen === state.screen);
+      });
+    }
+
+    function renderStatusBar(inverse = false) {
+      return `
+        <div class="status-bar ${inverse ? 'inverse' : ''}">
+          <span>9:41</span>
+          <div class="dynamic-island"><span class="island-dot"></span></div>
+          <div class="status-icons">
+            <span>▮▮▮</span>
+            <span>Wi-Fi</span>
+            <span>🔋</span>
+          </div>
+        </div>
+      `;
+    }
+
+    function renderTabBar(activeTab = "home") {
+      return `
+        <nav class="motive-tabbar">
+          <button class="tab-item ${activeTab === 'home' ? 'active' : ''}" onclick="setScreen('home')">
+            <span>⌂</span> ${activeTab === 'home' ? '<span>Home</span>' : ''}
+          </button>
+          <button class="tab-item ${activeTab === 'detail' ? 'active' : ''}" onclick="setScreen('detail')">
+            <span>🧭</span> ${activeTab === 'detail' ? '<span>Explore</span>' : ''}
+          </button>
+          <button class="tab-item ${activeTab === 'trip' ? 'active' : ''}" onclick="setScreen('trip')">
+            <span>🔑</span> ${activeTab === 'trip' ? '<span>Trips</span>' : ''}
+          </button>
+          <button class="tab-item ${activeTab === 'checkout' ? 'active' : ''}" onclick="setScreen('checkout')">
+            <span>💳</span> ${activeTab === 'checkout' ? '<span>Pay</span>' : ''}
+          </button>
+          <button class="tab-item ${activeTab === 'declined' ? 'active' : ''}" onclick="setScreen('declined')">
+            <span>⚡</span> ${activeTab === 'declined' ? '<span>Hold</span>' : ''}
+          </button>
+        </nav>
+      `;
+    }
+
+    function renderHomeScreen() {
+      const visibleCars = state.category === "All"
+        ? FLEET
+        : FLEET.filter(c => c.category.toLowerCase() === state.category.toLowerCase());
+
+      return `
+        ${renderStatusBar(state.theme === 'dark')}
+        <div class="screen-scroll">
+          <div class="screen-pad">
+            <!-- Greeting -->
+            <div class="home-header">
+              <div class="user-greet">
+                <div class="avatar">DR</div>
+                <div>
+                  <div class="greet-eyebrow">Good afternoon</div>
+                  <div class="greet-name">Daniel Reyes</div>
+                </div>
+              </div>
+              <button class="circle-btn" onclick="showToast('All telemetry & LAX hub alerts up to date')">
+                🔔
+                <span class="notif-dot"></span>
+              </button>
+            </div>
+
+            <!-- Active Trip Strip -->
+            <div class="trip-strip" onclick="setScreen('trip')" title="Open F08 Active Trip">
+              <div class="glass-key-btn">🔑</div>
+              <div class="trip-strip-meta">
+                <div class="trip-strip-eyebrow">ACTIVE TRIP · DAY 2 OF ${state.tripExtended ? '4' : '3'}</div>
+                <div class="trip-strip-title">Hyundai Ioniq 5</div>
+                <div class="trip-strip-sub">Return Thu, 10:00 · 1d 21h left</div>
+              </div>
+              <span style="color:rgba(255,255,255,0.6);font-size:18px">›</span>
+            </div>
+
+            <!-- Search Card -->
+            <div class="search-card">
+              <div class="route-row" onclick="showToast('Pick-up hub: LAX Airport Terminal B')">
+                <span class="dot-amber"></span>
+                <div style="flex:1">
+                  <div class="route-label">Pick-up</div>
+                  <div class="route-val">LAX Airport</div>
+                </div>
+                <span style="color:var(--text-tertiary)">⊕</span>
+              </div>
+              <div style="height:1px;background:var(--border-subtle)"></div>
+              <div class="route-row" onclick="toggleDifferentReturn()">
+                <span class="dot-ring"></span>
+                <div style="flex:1">
+                  <div class="route-label">Return</div>
+                  <div class="route-val">${state.differentReturn ? 'Motive Hub Santa Monica' : 'Same as pick-up'}</div>
+                </div>
+                <span style="font-size:11px;color:var(--copper);font-weight:600">Change</span>
+              </div>
+              <div class="date-pill-box" onclick="showToast('Dates locked: Fri, Oct 30 – Mon, Nov 2 (3 days)')">
+                <div>
+                  <div class="route-label">Fri, Oct 30</div>
+                  <div class="route-val">10:00</div>
+                </div>
+                <span class="duration-badge">🕒 3 days</span>
+                <div style="text-align:right">
+                  <div class="route-label">Mon, Nov 2</div>
+                  <div class="route-val">10:00</div>
+                </div>
+              </div>
+              <button class="btn-primary" onclick="setScreen('detail')">Find a car</button>
+            </div>
+
+            <!-- Category Chips -->
+            <div class="chip-row">
+              ${["All", "Electric", "SUV", "Luxury"].map(cat => `
+                <button class="filter-chip ${state.category === cat ? 'active' : ''}" onclick="setCategory('${cat}')">${cat}</button>
+              `).join("")}
+            </div>
+
+            <!-- Weekend Edit Hero -->
+            <div class="weekend-card" onclick="selectCar('sl55')">
+              <div class="weekend-top">
+                <span class="weekend-tag">WEEKEND EDIT</span>
+                <span class="glass-pill">⚡ Instant book</span>
+              </div>
+              <div class="car-art-stage">
+                ${carSvg("#e07638")}
+              </div>
+              <div class="weekend-bottom">
+                <div>
+                  <div style="font-size:12px;color:rgba(255,255,255,0.68)">Roadster · Beverly Hills</div>
+                  <div class="weekend-title">Mercedes-Benz SL 55</div>
+                </div>
+                <div style="text-align:right">
+                  <span class="weekend-price">$240</span>
+                  <span style="font-size:12px;color:rgba(255,255,255,0.68)">/day</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Near You Fleet -->
+            <div class="sec-head">
+              <h3 class="sec-title">Near you</h3>
+              <span class="sec-link" onclick="setCategory('All')">See all 48 cars ›</span>
+            </div>
+
+            ${visibleCars.map(car => `
+              <div class="car-card" onclick="selectCar('${car.id}')">
+                <div class="car-card-visual">
+                  <div class="car-card-top-badges">
+                    <span class="glass-pill">⚡ ${car.category}</span>
+                    <span class="glass-pill">♥</span>
+                  </div>
+                  ${carSvg(car.colorHex)}
+                </div>
+                <div class="car-card-meta">
+                  <div>
+                    <div class="car-card-name">${car.name}</div>
+                    <div class="car-card-sub">${car.subtitle} · ${car.hub}</div>
+                  </div>
+                  <div class="rating-pill">
+                    <span class="star">★</span> ${car.rating}
+                    <span style="color:var(--text-tertiary);font-weight:400">(${car.trips})</span>
+                  </div>
+                </div>
+                <div class="car-card-footer">
+                  <div>
+                    <span class="price-day">$${car.priceDay}</span>
+                    <span style="font-size:12px;color:var(--text-tertiary)">/day</span>
+                  </div>
+                  <div style="font-size:12px;color:var(--text-secondary)">
+                    ⚡ ${car.range} mi · $${car.priceDay * 3} total (3d)
+                  </div>
+                </div>
+              </div>
+            `).join("")}
+          </div>
+        </div>
+        ${renderTabBar("home")}
+      `;
+    }
+
+    function renderDetailScreen() {
+      const car = FLEET.find(c => c.id === state.selectedCarId) || FLEET[0];
+      const total3d = car.priceDay * 3;
+      return `
+        <div class="screen-scroll">
+          <!-- Dark Photo Stage (Node 4018:3910) -->
+          <div class="detail-hero-stage">
+            ${renderStatusBar(true)}
+            <div class="detail-nav">
+              <button class="dark-circle-btn" onclick="setScreen('home')">←</button>
+              <div style="display:flex;gap:8px">
+                <button class="dark-circle-btn" onclick="showToast('Share link copied to clipboard')">⤴</button>
+                <button class="dark-circle-btn" style="color:#e5484d" onclick="showToast('Saved ${car.name} to Favorites')">♥</button>
+              </div>
+            </div>
+            <div class="car-art-stage" style="height:130px">
+              ${carSvg(car.colorHex)}
+            </div>
+            <span class="glass-pill" style="margin-bottom:8px">⚡ ${car.category}</span>
+            <h1 style="font-family:var(--font-heading);font-size:28px;font-weight:500;letter-spacing:-0.7px">${car.name}</h1>
+            <p style="font-size:12px;color:rgba(255,255,255,0.72);margin-top:2px">${car.subtitle}</p>
+
+            <!-- Spec Numerals -->
+            <div class="spec-numerals">
+              <div class="spec-col">
+                <div><span class="spec-big">${car.range}</span><span class="spec-unit">mi</span></div>
+                <div class="spec-caption">Range</div>
+              </div>
+              <div class="spec-col">
+                <div><span class="spec-big">${car.accel}</span><span class="spec-unit">s</span></div>
+                <div class="spec-caption">0-60 mph</div>
+              </div>
+              <div class="spec-col">
+                <div><span class="spec-big">${car.seats}</span></div>
+                <div class="spec-caption">Seats</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="screen-pad" style="padding-top:18px">
+            <!-- Rating & Superhost Row -->
+            <div style="display:flex;align-items:center;justify-content:space-between">
+              <div style="display:flex;align-items:center;gap:6px;font-size:13px">
+                <span class="star">★</span>
+                <strong>${car.rating}</strong>
+                <span style="color:var(--text-secondary)">${car.trips} trips · Superhost</span>
+              </div>
+              <span style="background:var(--copper-subtle);color:var(--copper-on-subtle);padding:5px 10px;border-radius:999px;font-size:12px;font-weight:600">
+                ⚡ Instant book
+              </span>
+            </div>
+
+            <!-- 2x2 Feature Bento -->
+            <div class="bento-grid">
+              <div class="bento-tile">
+                <div class="bento-icon">⚡</div>
+                <div>
+                  <div class="bento-title">${car.chargeSpeed}</div>
+                  <div class="bento-sub">10 to 80% fast charge</div>
+                </div>
+              </div>
+              <div class="bento-tile">
+                <div class="bento-icon">⚙️</div>
+                <div>
+                  <div class="bento-title">Automatic</div>
+                  <div class="bento-sub">AWD · Single speed</div>
+                </div>
+              </div>
+              <div class="bento-tile">
+                <div class="bento-icon">🧳</div>
+                <div>
+                  <div class="bento-title">${car.bags}</div>
+                  <div class="bento-sub">Trunk 15 cu ft</div>
+                </div>
+              </div>
+              <div class="bento-tile">
+                <div class="bento-icon">🛡️</div>
+                <div>
+                  <div class="bento-title">Protected</div>
+                  <div class="bento-sub">Basic cover incl.</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Your Trip Card -->
+            <div class="sec-head">
+              <h3 class="sec-title">Your trip</h3>
+              <span class="sec-link" onclick="toggleDelivery()">
+                ${state.deliveryToLax ? '✓ LAX Delivery (+$35)' : 'Switch to LAX Delivery'}
+              </span>
+            </div>
+            <div class="car-card" onclick="toggleDelivery()">
+              <div style="display:flex;justify-content:space-between;align-items:center">
+                <div>
+                  <div style="font-weight:600;font-size:14px">
+                    ${state.deliveryToLax ? 'LAX Airport Terminal Valet' : `Motive Hub ${car.hub}`}
+                  </div>
+                  <div style="font-size:12px;color:var(--text-tertiary);margin-top:2px">
+                    ${state.deliveryToLax ? 'Hand-off window · 9:00 - 10:00' : '1.2 mi away · Digital key self-serve'}
+                  </div>
+                </div>
+                <span style="color:var(--copper);font-size:12px;font-weight:600">Toggle</span>
+              </div>
+              <div style="height:1px;background:var(--border-subtle)"></div>
+              <div style="display:flex;justify-content:space-between;font-size:13px">
+                <div>
+                  <div style="font-size:11px;color:var(--text-tertiary)">Pick-up</div>
+                  <div style="font-weight:500">Oct 30, 10:00</div>
+                </div>
+                <div style="text-align:right">
+                  <div style="font-size:11px;color:var(--text-tertiary)">Return</div>
+                  <div style="font-weight:500">Nov 2, 10:00</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Sticky Price Bar -->
+        <div class="sticky-footer">
+          <div>
+            <div>
+              <span style="font-family:var(--font-heading);font-size:22px;font-weight:500">$${car.priceDay}</span>
+              <span style="font-size:12px;color:var(--text-tertiary)">/day</span>
+            </div>
+            <div style="font-size:12px;color:var(--text-secondary);text-decoration:underline">
+              $${total3d} before extras (3 days)
+            </div>
+          </div>
+          <button class="btn-primary" style="width:auto;padding:0 32px" onclick="setScreen('checkout')">
+            Reserve
+          </button>
+        </div>
+      `;
+    }
+
+    function renderCheckoutScreen() {
+      const car = FLEET.find(c => c.id === state.selectedCarId) || FLEET[0];
+      const baseCost = car.priceDay * 3;
+      const protCost = state.protectionTier === "basic" ? 0 : state.protectionTier === "standard" ? 54 : 96;
+      const tollPass = 43;
+      const deliveryCost = state.deliveryToLax ? 35 : 0;
+      const promoDiscount = state.promoApplied ? 41.40 : 0;
+      const taxes = 36.66;
+      const grandTotal = (baseCost + protCost + tollPass + deliveryCost - promoDiscount + taxes).toFixed(2);
+
+      return `
+        ${renderStatusBar(state.theme === 'dark')}
+        <div class="screen-scroll">
+          <div class="screen-pad">
+            <!-- Nav Header -->
+            <div style="display:flex;align-items:center;justify-content:space-between">
+              <button class="circle-btn" onclick="setScreen('detail')">←</button>
+              <span style="font-family:var(--font-heading);font-size:15px;font-weight:600">Review and pay</span>
+              <span style="width:44px"></span>
+            </div>
+
+            <!-- Total Display (Node 4056:2031) -->
+            <div>
+              <div style="font-size:12px;color:var(--text-tertiary)">Trip total</div>
+              <div style="font-family:var(--font-heading);font-size:42px;font-weight:300;letter-spacing:-1.6px;line-height:48px;margin:2px 0">
+                $${grandTotal}
+              </div>
+              <div style="font-size:12px;color:var(--text-secondary)">
+                ${car.name} · Fri, Oct 30 – Mon, Nov 2
+              </div>
+            </div>
+
+            <!-- Spec Numerals -->
+            <div style="display:flex;border-top:1px solid var(--border-subtle);border-bottom:1px solid var(--border-subtle);padding:12px 0">
+              <div style="flex:1">
+                <div style="font-family:var(--font-heading);font-size:22px;font-weight:300">3 <span style="font-size:12px;color:var(--text-tertiary)">days</span></div>
+                <div style="font-size:11px;color:var(--text-tertiary)">Trip length</div>
+              </div>
+              <div style="flex:1;border-left:1px solid var(--border-default);padding-left:14px">
+                <div style="font-family:var(--font-heading);font-size:22px;font-weight:300">600 <span style="font-size:12px;color:var(--text-tertiary)">mi</span></div>
+                <div style="font-size:11px;color:var(--text-tertiary)">Included</div>
+              </div>
+              <div style="flex:1;border-left:1px solid var(--border-default);padding-left:14px">
+                <div style="font-family:var(--font-heading);font-size:22px;font-weight:300">$250</div>
+                <div style="font-size:11px;color:var(--text-tertiary)">Refundable hold</div>
+              </div>
+            </div>
+
+            <!-- Interactive Protection Tier Selector (E02) -->
+            <div>
+              <div style="font-size:12px;font-weight:600;margin-bottom:8px;color:var(--text-secondary)">
+                Protection coverage (tap to compare)
+              </div>
+              <div class="tier-selector">
+                <button class="tier-card ${state.protectionTier === 'basic' ? 'active' : ''}" onclick="setProtection('basic')">
+                  <div class="tier-name">Basic</div>
+                  <div class="tier-cost">Included</div>
+                </button>
+                <button class="tier-card ${state.protectionTier === 'standard' ? 'active' : ''}" onclick="setProtection('standard')">
+                  <div class="tier-name">Standard</div>
+                  <div class="tier-cost">+$54 total</div>
+                </button>
+                <button class="tier-card ${state.protectionTier === 'premier' ? 'active' : ''}" onclick="setProtection('premier')">
+                  <div class="tier-name">Premier $0</div>
+                  <div class="tier-cost">+$96 total</div>
+                </button>
+              </div>
+            </div>
+
+            <!-- Itemized Breakdown Card (Node 4056:2073) -->
+            <div class="receipt-card">
+              <div class="receipt-row">
+                <span style="color:var(--text-secondary)">Rental · 3 days × $${car.priceDay}</span>
+                <span>$${baseCost.toFixed(2)}</span>
+              </div>
+              <div class="receipt-row">
+                <span style="color:var(--text-secondary)">${state.protectionTier.charAt(0).toUpperCase() + state.protectionTier.slice(1)} protection</span>
+                <span>$${protCost.toFixed(2)}</span>
+              </div>
+              <div class="receipt-row">
+                <span style="color:var(--text-secondary)">Charging and toll pass</span>
+                <span>$${tollPass.toFixed(2)}</span>
+              </div>
+              ${state.deliveryToLax ? `
+                <div class="receipt-row">
+                  <span style="color:var(--text-secondary)">Delivery to LAX</span>
+                  <span>$35.00</span>
+                </div>
+              ` : ''}
+              <div class="receipt-row" style="cursor:pointer" onclick="togglePromo()">
+                <span style="color:var(--text-secondary)">Promo FALL15 (tap to toggle)</span>
+                <span style="color:var(--success);font-weight:600">${state.promoApplied ? '-$41.40' : '$0.00'}</span>
+              </div>
+              <div class="receipt-row">
+                <span style="color:var(--text-secondary)">Taxes and fees</span>
+                <span>$${taxes.toFixed(2)}</span>
+              </div>
+              <div class="receipt-row">
+                <span>Total</span>
+                <span>$${grandTotal}</span>
+              </div>
+            </div>
+
+            <!-- Payment Method Row -->
+            <div class="car-card" style="flex-direction:row;align-items:center;justify-content:space-between" onclick="setScreen('declined')">
+              <div style="display:flex;align-items:center;gap:12px">
+                <div style="padding:6px 10px;border-radius:8px;border:1px solid var(--border-default);background:#fff;color:#1a1f71;font-weight:800;font-size:12px">VISA</div>
+                <div>
+                  <div style="font-weight:600;font-size:14px">Visa ending 4417</div>
+                  <div style="font-size:11px;color:var(--text-tertiary)">Tap to test H06 Declined Hold recovery</div>
+                </div>
+              </div>
+              <span style="color:var(--text-tertiary)">›</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="sticky-footer">
+          <button class="btn-primary" onclick="completeBooking('${grandTotal}')">
+            Pay $${grandTotal}
+          </button>
+        </div>
+      `;
+    }
+
+    function renderActiveTripScreen() {
+      return `
+        ${renderStatusBar(state.theme === 'dark')}
+        <div class="screen-scroll">
+          <div class="screen-pad">
+            <!-- Header (Node 4112:7704) -->
+            <div style="display:flex;justify-content:space-between;align-items:flex-start">
+              <div>
+                <div style="display:inline-flex;align-items:center;gap:6px;background:var(--success-subtle);color:var(--success-on-subtle);padding:5px 12px;border-radius:999px;font-size:12px;font-weight:600;margin-bottom:6px">
+                  <span>●</span> Active · Day 2 of ${state.tripExtended ? '4' : '3'}
+                </div>
+                <h1 style="font-family:var(--font-heading);font-size:25px;font-weight:500;letter-spacing:-0.5px">Hyundai Ioniq 5</h1>
+                <div style="font-size:12px;color:var(--text-secondary)">
+                  Plate 8LXR 552 · Return ${state.tripExtended ? 'Fri, Oct 30' : 'Thu, Oct 29'}, 10:00
+                </div>
+              </div>
+              <button class="circle-btn" onclick="setScreen('home')">←</button>
+            </div>
+
+            <!-- Dark Telemetry Car Stage (Node 4112:7710) -->
+            <div style="background:linear-gradient(180deg,#161616 0%,#111111 65%,#1d1d1d 100%);border-radius:26px;padding:18px;color:#fff;position:relative">
+              <div style="display:flex;justify-content:space-between;align-items:flex-start">
+                <span class="glass-pill" style="${state.carUnlocked ? 'border-color:#2fb98e;background:rgba(47,185,142,0.22)' : ''}">
+                  ${state.carUnlocked ? '🔓 Unlocked · Ready to drive' : '🔒 Locked · 0.2 mi away'}
+                </span>
+                <div style="text-align:right">
+                  <div style="font-family:var(--font-heading);font-size:24px;font-weight:300">⚡ 62%</div>
+                  <div style="font-size:11px;color:rgba(255,255,255,0.72)">232 mi range</div>
+                </div>
+              </div>
+
+              <div class="car-art-stage" style="height:115px;margin:10px 0">
+                ${carSvg(state.carUnlocked ? "#2fb98e" : "#9ca3af")}
+              </div>
+
+              <div class="spec-numerals" style="margin-top:6px">
+                <div class="spec-col">
+                  <div class="spec-big">${state.tripExtended ? '2d 21h' : '1d 21h'}</div>
+                  <div class="spec-caption">Time left</div>
+                </div>
+                <div class="spec-col">
+                  <div><span class="spec-big">84</span><span class="spec-unit">mi</span></div>
+                  <div class="spec-caption">Driven</div>
+                </div>
+                <div class="spec-col">
+                  <div><span class="spec-big">0.6</span><span class="spec-unit">mi</span></div>
+                  <div class="spec-caption">Charger</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Trip Progress Card (Node 4112:7740) -->
+            <div class="car-card" style="cursor:default">
+              <div style="display:flex;justify-content:space-between;font-weight:600;font-size:14px">
+                <span>Trip progress</span>
+                <span style="color:var(--text-secondary)">Day 2 of ${state.tripExtended ? '4' : '3'}</span>
+              </div>
+              <div style="height:5px;background:var(--border-default);border-radius:999px;overflow:hidden">
+                <div style="width:${state.tripExtended ? '48%' : '64%'};height:100%;background:var(--copper);border-radius:999px"></div>
+              </div>
+              <div style="display:flex;justify-content:space-between;font-size:12px">
+                <div>
+                  <div style="color:var(--text-tertiary)">Picked up</div>
+                  <div style="font-weight:600;margin-top:2px">Mon, Oct 26 · 10:00</div>
+                </div>
+                <div style="text-align:right">
+                  <div style="color:var(--text-tertiary)">Return to Bay C4</div>
+                  <div style="font-weight:600;margin-top:2px">${state.tripExtended ? 'Fri, Oct 30' : 'Thu, Oct 29'} · 10:00</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 2x2 Trip Action Tiles (Node 4112:7741) -->
+            <div class="bento-grid">
+              <div class="bento-tile" style="cursor:pointer" onclick="showToast('🔊 Headlights flashed & horn chirped (Bay C4)')">
+                <div class="bento-icon">📍</div>
+                <div>
+                  <div class="bento-title">Find my car</div>
+                  <div class="bento-sub">Honk and flash</div>
+                </div>
+              </div>
+              <div class="bento-tile" style="cursor:pointer" onclick="toggleExtendTrip()">
+                <div class="bento-icon">📅</div>
+                <div>
+                  <div class="bento-title">${state.tripExtended ? 'Extended (+1d)' : 'Extend trip'}</div>
+                  <div class="bento-sub">+$68 per day</div>
+                </div>
+              </div>
+              <div class="bento-tile" style="cursor:pointer" onclick="showToast('⚡ Electrify America Culver City · 350kW · 4/6 stalls free')">
+                <div class="bento-icon">⚡</div>
+                <div>
+                  <div class="bento-title">Chargers</div>
+                  <div class="bento-sub">Closest 0.6 mi</div>
+                </div>
+              </div>
+              <div class="bento-tile" style="cursor:pointer" onclick="toggleClimate()">
+                <div class="bento-icon">❄️</div>
+                <div>
+                  <div class="bento-title">${state.cabinClimateOn ? 'Cabin 70°F On' : 'Climate 70°F'}</div>
+                  <div class="bento-sub">${state.cabinClimateOn ? 'Pre-conditioning' : 'Tap to cool cabin'}</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Digital Key Slide/Tap Pill (Node 4112:7748) -->
+            <button class="unlock-pill-btn ${state.carUnlocked ? 'unlocked' : ''}" onclick="toggleUnlock()">
+              <div class="unlock-knob">🔑</div>
+              <span style="font-size:15px;font-weight:600">
+                ${state.carUnlocked ? 'Vehicle Unlocked · Tap to lock' : 'Slide or tap to unlock'}
+              </span>
+              <span style="letter-spacing:-2px;opacity:0.65">›››</span>
+            </button>
+          </div>
+        </div>
+        ${renderTabBar("trip")}
+      `;
+    }
+
+    function renderDeclinedScreen() {
+      return `
+        ${renderStatusBar(state.theme === 'dark')}
+        <div class="screen-scroll">
+          <div class="screen-pad">
+            <div style="display:flex;align-items:center;justify-content:space-between">
+              <button class="circle-btn" onclick="setScreen('checkout')">←</button>
+              <span style="font-family:var(--font-heading);font-size:15px;font-weight:600">Payment recovery</span>
+              <span style="width:44px"></span>
+            </div>
+
+            <!-- Hold Timer Badge (Node 4112:9830) -->
+            <div style="display:inline-flex;align-items:center;gap:8px;background:var(--copper-subtle);color:var(--copper-on-subtle);padding:7px 14px;border-radius:999px;font-size:12px;font-weight:600;align-self:flex-start">
+              <span>⏳</span> Car held for 14:32 · Genesis GV60 reserved
+            </div>
+
+            <div>
+              <h1 style="font-family:var(--font-heading);font-size:26px;font-weight:500;letter-spacing:-0.6px">Payment declined</h1>
+              <p style="font-size:13px;color:var(--text-secondary);margin-top:6px;line-height:1.5">
+                Your bank declined the $403.26 authorization on <strong>Visa •••• 4417</strong>. We locked your Genesis GV60 at LAX so nobody else can take it while you switch cards.
+              </p>
+            </div>
+
+            <!-- Declined Card Diagnostic -->
+            <div class="car-card" style="border-color:var(--danger);background:var(--danger-subtle)">
+              <div style="display:flex;justify-content:space-between;align-items:center">
+                <div>
+                  <div style="font-weight:600;font-size:14px">Visa ending 4417</div>
+                  <div style="font-size:12px;color:var(--danger);margin-top:2px">Issuer reason: Cardholder travel verification required</div>
+                </div>
+                <span style="font-size:18px">⚠️</span>
+              </div>
+            </div>
+
+            <div class="sec-head">
+              <h3 class="sec-title">Instant fallback options</h3>
+            </div>
+
+            <div class="car-card" onclick="completeBooking('403.26')">
+              <div style="display:flex;justify-content:space-between;align-items:center">
+                <div style="display:flex;align-items:center;gap:12px">
+                  <div style="padding:6px 10px;border-radius:8px;background:#151515;color:#fff;font-weight:600;font-size:12px">Pay</div>
+                  <div>
+                    <div style="font-weight:600;font-size:14px">Apple Pay · Daniel's iPhone</div>
+                    <div style="font-size:12px;color:var(--text-tertiary)">Biometric token · Instant approval</div>
+                  </div>
+                </div>
+                <span style="color:var(--copper);font-weight:600;font-size:12px">Use ›</span>
+              </div>
+            </div>
+
+            <div class="car-card" onclick="completeBooking('403.26')">
+              <div style="display:flex;justify-content:space-between;align-items:center">
+                <div style="display:flex;align-items:center;gap:12px">
+                  <div style="padding:6px 10px;border-radius:8px;background:#eb001b;color:#fff;font-weight:700;font-size:12px">MC</div>
+                  <div>
+                    <div style="font-weight:600;font-size:14px">Mastercard ending 0921</div>
+                    <div style="font-size:12px;color:var(--text-tertiary)">Backup corporate card on file</div>
+                  </div>
+                </div>
+                <span style="color:var(--copper);font-weight:600;font-size:12px">Use ›</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="sticky-footer">
+          <button class="btn-primary" onclick="completeBooking('403.26')">
+            Pay $403.26 with Pay
+          </button>
+        </div>
+      `;
+    }
+
+    function setScreen(scr) {
+      state.screen = scr;
+      render();
+    }
+
+    function setCategory(cat) {
+      state.category = cat;
+      render();
+    }
+
+    function selectCar(carId) {
+      state.selectedCarId = carId;
+      state.screen = "detail";
+      render();
+    }
+
+    function toggleDelivery() {
+      state.deliveryToLax = !state.deliveryToLax;
+      showToast(state.deliveryToLax ? "Added LAX Terminal Delivery (+$35)" : "Switched to Culver City Hub self-pickup ($0)");
+    }
+
+    function setProtection(tier) {
+      state.protectionTier = tier;
+      render();
+    }
+
+    function togglePromo() {
+      state.promoApplied = !state.promoApplied;
+      render();
+    }
+
+    function toggleDifferentReturn() {
+      state.differentReturn = !state.differentReturn;
+      render();
+    }
+
+    function toggleUnlock() {
+      state.carUnlocked = !state.carUnlocked;
+      showToast(state.carUnlocked ? "🔓 Digital Key authenticated — Doors unlocked" : "🔒 Doors locked & mirrors folded");
+    }
+
+    function toggleExtendTrip() {
+      state.tripExtended = !state.tripExtended;
+      showToast(state.tripExtended ? "📅 Trip extended through Fri, Oct 30 (+$68)" : "Reverted to original 3-day return");
+    }
+
+    function toggleClimate() {
+      state.cabinClimateOn = !state.cabinClimateOn;
+      showToast(state.cabinClimateOn ? "❄️ Cabin cooling to 70°F started" : "Cabin climate control turned off");
+    }
+
+    function completeBooking(total) {
+      state.carUnlocked = true;
+      state.screen = "trip";
+      showToast(`✓ Booking MTV-4K92 confirmed ($${total}) · Digital key active`);
+    }
+
+    function render() {
+      const vp = document.getElementById("phoneViewport");
+      let html = "";
+      if (state.screen === "home") html = renderHomeScreen();
+      else if (state.screen === "detail") html = renderDetailScreen();
+      else if (state.screen === "checkout") html = renderCheckoutScreen();
+      else if (state.screen === "trip") html = renderActiveTripScreen();
+      else if (state.screen === "declined") html = renderDeclinedScreen();
+
+      if (state.toast) {
+        html += `<div class="toast-banner"><span>${state.toast}</span></div>`;
+      }
+      vp.innerHTML = html;
+      updateInspector();
+    }
+
+    document.getElementById("flowNav").addEventListener("click", (e) => {
+      const btn = e.target.closest(".proto-flow-btn");
+      if (!btn) return;
+      setScreen(btn.dataset.screen);
+    });
+
+    document.getElementById("themeBtn").addEventListener("click", () => {
+      state.theme = state.theme === "light" ? "dark" : "light";
+      document.documentElement.setAttribute("data-theme", state.theme);
+      document.getElementById("themeIcon").textContent = state.theme === "light" ? "🌙" : "☀️";
+      document.getElementById("themeLabel").textContent = state.theme === "light" ? "Dark mode" : "Light mode";
+      render();
+    });
+
+    render();
+  </script>
+</body>
+</html>

@@ -1,0 +1,1166 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pennwise — Personal Finance & Wealth Simulation Prototype</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+
+      /* Pennwise Semantic Tokens (from Figma variable defs 343:2) */
+      --bg-canvas: #eef0eb;
+      --bg: #ffffff;
+      --subtle: #fafafa;
+      --muted: #f5f5f5;
+      --card: #ffffff;
+      --inverse: #0a0a0a;
+      --inverse-fg: #fafafa;
+      --fg: #0a0a0a;
+      --muted-fg: #737373;
+      --subtle-fg: #a1a1a1;
+      --primary: #171717;
+      --primary-fg: #fafafa;
+      --brand: #b6f256;
+      --brand-hover: #a3e635;
+      --brand-soft: #ecfccb;
+      --brand-strong: #84cc16;
+      --brand-ink: #1a2e05;
+      --mint: #a7f3d0;
+      --border: #e5e5e5;
+      --positive: #15803d;
+      --positive-bg: #f0fdf4;
+      --warning: #b45309;
+      --warning-bg: #fffbeb;
+      --destructive: #e7000b;
+    }
+
+    [data-theme="dark"] {
+      --bg-canvas: #090a08;
+      --bg: #0a0a0a;
+      --subtle: #121212;
+      --muted: #262626;
+      --card: #171717;
+      --inverse: #fafafa;
+      --inverse-fg: #0a0a0a;
+      --fg: #fafafa;
+      --muted-fg: #a1a1a1;
+      --subtle-fg: #737373;
+      --primary: #e5e5e5;
+      --primary-fg: #171717;
+      --brand: #b6f256;
+      --brand-soft: #1a2e05;
+      --brand-strong: #a3e635;
+      --brand-ink: #0a0a0a;
+      --border: #262626;
+      --positive: #4ade80;
+      --positive-bg: #052e16;
+      --warning: #fbbf24;
+      --warning-bg: #451a03;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body {
+      font-family: var(--font-sans);
+      background: radial-gradient(circle at 20% 0%, rgba(182, 242, 86, 0.14), transparent 45%), var(--bg-canvas);
+      color: var(--fg);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      transition: background 0.25s ease, color 0.25s ease;
+    }
+
+    .proto-toolbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 12px 20px;
+      background: rgba(15, 16, 14, 0.92);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      color: #fff;
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      flex-wrap: wrap;
+    }
+
+    .proto-brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 600;
+      font-size: 14px;
+      letter-spacing: -0.02em;
+    }
+
+    .proto-brand-mark {
+      width: 26px;
+      height: 26px;
+      border-radius: 8px;
+      background: #b6f256;
+      color: #0a0a0a;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 13px;
+    }
+
+    .proto-brand-sub {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: rgba(255, 255, 255, 0.56);
+      padding-left: 8px;
+      border-left: 1px solid rgba(255, 255, 255, 0.15);
+    }
+
+    .proto-flows {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+
+    .proto-flow-btn {
+      appearance: none;
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      background: rgba(255, 255, 255, 0.05);
+      color: rgba(255, 255, 255, 0.78);
+      font-family: var(--font-sans);
+      font-size: 12px;
+      font-weight: 500;
+      padding: 6px 12px;
+      border-radius: 999px;
+      cursor: pointer;
+      transition: all 0.18s ease;
+    }
+
+    .proto-flow-btn:hover {
+      background: rgba(255, 255, 255, 0.12);
+      color: #fff;
+    }
+
+    .proto-flow-btn.active {
+      background: #b6f256;
+      border-color: #b6f256;
+      color: #0a0a0a;
+      font-weight: 600;
+    }
+
+    .theme-toggle {
+      appearance: none;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      background: rgba(255, 255, 255, 0.08);
+      color: #fff;
+      font-family: var(--font-sans);
+      font-size: 12px;
+      font-weight: 500;
+      padding: 6px 12px;
+      border-radius: 999px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .proto-stage {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 36px;
+      padding: 28px 20px 40px;
+      flex-wrap: wrap;
+    }
+
+    .phone-shell {
+      width: 390px;
+      height: 824px;
+      border-radius: 52px;
+      padding: 11px;
+      background: linear-gradient(145deg, #27272a, #09090b);
+      box-shadow:
+        0 30px 70px rgba(0, 0, 0, 0.34),
+        0 0 0 1px rgba(255, 255, 255, 0.12) inset;
+      position: relative;
+      flex-shrink: 0;
+    }
+
+    .phone-viewport {
+      width: 100%;
+      height: 100%;
+      border-radius: 42px;
+      background: var(--subtle);
+      color: var(--fg);
+      overflow-y: auto;
+      overflow-x: hidden;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      scrollbar-width: none;
+    }
+    .phone-viewport::-webkit-scrollbar {
+      display: none;
+    }
+
+    .status-bar {
+      height: 46px;
+      padding: 14px 24px 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 13px;
+      font-weight: 600;
+      flex-shrink: 0;
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: inherit;
+    }
+
+    .dynamic-island {
+      width: 104px;
+      height: 26px;
+      background: #09090b;
+      border-radius: 999px;
+    }
+
+    .screen-body {
+      flex: 1;
+      padding: 6px 20px 96px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .pw-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    .pw-avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, #b6f256, #15803d);
+      color: #0a0a0a;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 14px;
+    }
+
+    .pw-icon-btn {
+      width: 40px;
+      height: 40px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: var(--bg);
+      color: var(--fg);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 15px;
+    }
+
+    /* Hero Net Worth Card (033 · Main Dashboard) */
+    .nw-card {
+      border-radius: 28px;
+      padding: 20px;
+      background: radial-gradient(120% 120% at 95% 10%, rgba(182, 242, 86, 0.55) 0%, rgba(167, 243, 208, 0.22) 48%, var(--card) 100%);
+      border: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .nw-val {
+      font-size: 34px;
+      font-weight: 700;
+      letter-spacing: -1.4px;
+      line-height: 1.1;
+    }
+
+    .nw-val span {
+      font-size: 20px;
+      font-weight: 600;
+      color: var(--muted-fg);
+    }
+
+    .pill-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .badge-positive {
+      background: var(--positive-bg);
+      color: var(--positive);
+      font-size: 12px;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 999px;
+    }
+
+    .badge-compass {
+      background: #0a0a0a;
+      color: #fafafa;
+      font-size: 12px;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 999px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .badge-compass::before {
+      content: "";
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: #b6f256;
+    }
+
+    .quick-actions {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+      margin-top: 6px;
+    }
+
+    .qa-btn {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      background: none;
+      border: none;
+      color: var(--fg);
+      font-family: var(--font-sans);
+      font-size: 12px;
+      font-weight: 500;
+      cursor: pointer;
+    }
+
+    .qa-circle {
+      width: 48px;
+      height: 48px;
+      border-radius: 999px;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      transition: transform 0.15s ease, background 0.15s ease;
+    }
+
+    .qa-btn:hover .qa-circle {
+      transform: translateY(-2px);
+      background: var(--brand);
+      color: #0a0a0a;
+    }
+
+    .sec-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 15px;
+      font-weight: 600;
+      letter-spacing: -0.2px;
+    }
+
+    .sec-link {
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--muted-fg);
+      cursor: pointer;
+    }
+
+    .acct-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    .acct-card {
+      border-radius: 22px;
+      padding: 16px;
+      border: 1px solid var(--border);
+      background: var(--card);
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      cursor: pointer;
+    }
+
+    .acct-card.dark {
+      background: #0a0a0a;
+      color: #fafafa;
+      border-color: #262626;
+    }
+
+    .surface-card {
+      border-radius: 24px;
+      padding: 16px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .tx-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      padding: 6px 0;
+    }
+
+    .tx-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 999px;
+      background: var(--muted);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      flex-shrink: 0;
+    }
+
+    .pillar-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 12px;
+      border-radius: 18px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      cursor: pointer;
+      transition: border-color 0.15s ease;
+    }
+
+    .pillar-row.active {
+      border-color: #84cc16;
+      box-shadow: 0 0 0 2px rgba(182, 242, 86, 0.32);
+    }
+
+    .pillar-icon {
+      width: 38px;
+      height: 38px;
+      border-radius: 999px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      flex-shrink: 0;
+    }
+
+    /* Tab Bar */
+    .pw-tabbar {
+      position: sticky;
+      bottom: 12px;
+      margin: auto 16px 12px;
+      padding: 6px;
+      border-radius: 999px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      z-index: 30;
+    }
+
+    .pw-tab {
+      width: 44px;
+      height: 44px;
+      border-radius: 999px;
+      border: none;
+      background: transparent;
+      color: var(--muted-fg);
+      font-size: 17px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.18s ease;
+    }
+
+    .pw-tab.active {
+      background: #0a0a0a;
+      color: #b6f256;
+    }
+
+    /* Inspector Aside */
+    .proto-inspector {
+      width: 320px;
+      background: rgba(15, 16, 14, 0.9);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 24px;
+      padding: 22px;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      backdrop-filter: blur(16px);
+    }
+
+    .insp-kicker {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #b6f256;
+    }
+
+    .insp-title {
+      font-size: 19px;
+      font-weight: 600;
+      letter-spacing: -0.3px;
+      line-height: 1.25;
+    }
+
+    .insp-body {
+      font-size: 13px;
+      line-height: 1.55;
+      color: rgba(255, 255, 255, 0.72);
+    }
+
+    .insp-tokens {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+
+    .insp-token {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 12px;
+      padding: 10px;
+      font-family: var(--font-mono);
+      font-size: 11px;
+    }
+
+    .sim-slider {
+      width: 100%;
+      accent-color: #84cc16;
+      cursor: pointer;
+    }
+
+    .toast-banner {
+      position: absolute;
+      bottom: 76px;
+      left: 20px;
+      right: 20px;
+      background: #0a0a0a;
+      color: #fafafa;
+      border: 1px solid rgba(182, 242, 86, 0.4);
+      padding: 11px 14px;
+      border-radius: 14px;
+      font-size: 12px;
+      font-weight: 500;
+      z-index: 40;
+      box-shadow: 0 10px 24px rgba(0,0,0,0.3);
+    }
+  </style>
+</head>
+<body>
+  <header class="proto-toolbar">
+    <div class="proto-brand">
+      <span class="proto-brand-mark">P</span>
+      <span>Pennwise</span>
+      <span class="proto-brand-sub">PERSONAL FINANCE & WEALTH SIMULATION</span>
+    </div>
+    <nav class="proto-flows" id="flowNav">
+      <button class="proto-flow-btn active" data-screen="dashboard">1 · Dashboard (033)</button>
+      <button class="proto-flow-btn" data-screen="compass">2 · Financial Compass (034)</button>
+      <button class="proto-flow-btn" data-screen="goals">3 · Savings Goals (127)</button>
+      <button class="proto-flow-btn" data-screen="portfolio">4 · Wealth Portfolio (163)</button>
+      <button class="proto-flow-btn" data-screen="simulation">5 · What-If Simulator (185)</button>
+    </nav>
+    <button class="theme-toggle" id="themeBtn">
+      <span id="themeIcon">🌙</span>
+      <span id="themeLabel">Dark mode</span>
+    </button>
+  </header>
+
+  <main class="proto-stage">
+    <div class="phone-shell">
+      <div class="phone-viewport" id="phoneViewport"></div>
+    </div>
+
+    <aside class="proto-inspector">
+      <div>
+        <div class="insp-kicker" id="inspStep">MODULE 04 · DASHBOARD & COMPASS</div>
+        <h2 class="insp-title" id="inspTitle">033 · Main Dashboard & Net Worth</h2>
+      </div>
+      <p class="insp-body" id="inspDesc">
+        Consolidates checking, high-yield savings, brokerage, and 401(k) balances into a single calm Net Worth surface with a 1-tap Financial Compass score pill.
+      </p>
+      <div class="insp-tokens">
+        <div class="insp-token">
+          <div style="color:rgba(255,255,255,0.5)">PRIMARY FONT</div>
+          <div style="margin-top:3px;color:#fff">Inter Variable</div>
+        </div>
+        <div class="insp-token">
+          <div style="color:rgba(255,255,255,0.5)">BRAND LIME</div>
+          <div style="margin-top:3px;color:#b6f256">#B6F256</div>
+        </div>
+        <div class="insp-token">
+          <div style="color:rgba(255,255,255,0.5)">SURFACE INK</div>
+          <div style="margin-top:3px;color:#fff">#0A0A0A</div>
+        </div>
+        <div class="insp-token">
+          <div style="color:rgba(255,255,255,0.5)">POSITIVE</div>
+          <div style="margin-top:3px;color:#4ade80">#15803D</div>
+        </div>
+      </div>
+      <div style="border-top:1px solid rgba(255,255,255,0.1);padding-top:14px;font-size:12px;color:rgba(255,255,255,0.65);line-height:1.5">
+        <strong style="color:#fff">Interactive highlights:</strong> Toggle privacy mode on Net Worth, inspect the 4 Financial Compass pillars, fund a Savings Goal, or drag the What-If simulator sliders to project 2036 Net Worth.
+      </div>
+    </aside>
+  </main>
+
+  <script>
+    const state = {
+      screen: "dashboard",
+      theme: "light",
+      hideBalances: false,
+      selectedPillar: "saving",
+      goalFilter: "All",
+      emergencySaved: 12300,
+      simMonthlySave: 1390,
+      simReturnRate: 6.0,
+      simScenario: "home",
+      toast: null
+    };
+
+    function showToast(msg) {
+      state.toast = msg;
+      render();
+      setTimeout(() => {
+        if (state.toast === msg) {
+          state.toast = null;
+          render();
+        }
+      }, 2400);
+    }
+
+    function setScreen(scr) {
+      state.screen = scr;
+      document.querySelectorAll(".proto-flow-btn").forEach(btn => {
+        btn.classList.toggle("active", btn.dataset.screen === scr);
+      });
+      const meta = {
+        dashboard: {
+          step: "MODULE 04 · NODE 78:2",
+          title: "033 · Main Dashboard & Net Worth",
+          desc: "Consolidates checking, high-yield savings, and investment accounts into a single calm Net Worth card ($128,420.50) with an inline Financial Compass badge."
+        },
+        compass: {
+          step: "MODULE 04 · NODE 79:2",
+          title: "034 · Financial Compass (72/100)",
+          desc: "Breaks financial health into four weighted pillars—Spending (84), Investing (80), Debt (66), and Saving (58)—and surfaces the highest-leverage next action."
+        },
+        goals: {
+          step: "MODULE 09 · NODE 307:2",
+          title: "127 · Savings Goals & Surplus Planner",
+          desc: "Tracks $37,450 across Emergency Fund, Home Down Payment, and Japan Trip with automated payday rules and +$250 instant top-ups."
+        },
+        portfolio: {
+          step: "MODULE 11 · NODE 208:2",
+          title: "163 · Portfolio & Wealth Allocation",
+          desc: "Unifies brokerage and 401(k) holdings ($132,968.12, +14.2% YTD) with clear US/International/Bond allocation bars and fee transparency."
+        },
+        simulation: {
+          step: "MODULE 12 · NODE 230:2",
+          title: "185 · What-If Financial Simulator",
+          desc: "Lets users stress-test buying a $400k home in 2029, a 10% raise, or a 3-month sabbatical against their 2036 projected net worth without touching live budgets."
+        }
+      }[scr];
+      if (meta) {
+        document.getElementById("inspStep").textContent = meta.step;
+        document.getElementById("inspTitle").textContent = meta.title;
+        document.getElementById("inspDesc").textContent = meta.desc;
+      }
+      render();
+    }
+
+    function renderDashboard() {
+      const nw = state.hideBalances ? "••••••••" : "$128,420";
+      const cents = state.hideBalances ? "" : ".50";
+      return `
+        <div class="pw-header">
+          <div style="display:flex;align-items:center;gap:10px">
+            <div class="pw-avatar">SM</div>
+            <div>
+              <div style="font-size:15px;font-weight:600">Hello Sara</div>
+              <div style="font-size:12px;color:var(--muted-fg)">It's Friday, 16 October</div>
+            </div>
+          </div>
+          <div style="display:flex;gap:8px">
+            <button class="pw-icon-btn" onclick="setScreen('simulation')" title="What-If Simulator">✦</button>
+            <button class="pw-icon-btn" onclick="showToast('All accounts synced 2m ago')">🔔</button>
+          </div>
+        </div>
+
+        <div class="nw-card">
+          <div style="display:flex;justify-content:space-between;align-items:center">
+            <span style="font-size:13px;font-weight:500;color:var(--muted-fg)">Net worth</span>
+            <button class="pw-icon-btn" style="width:32px;height:32px;border:none;background:rgba(255,255,255,0.6)" onclick="state.hideBalances=!state.hideBalances;render()">
+              ${state.hideBalances ? "👁️" : "🙈"}
+            </button>
+          </div>
+          <div class="nw-val">${nw}<span>${cents}</span></div>
+          <div class="pill-row">
+            <span class="badge-positive">↗ +$2,140.18 · 1.7%</span>
+            <button class="badge-compass" onclick="setScreen('compass')">Compass 72</button>
+          </div>
+          <div class="quick-actions">
+            <button class="qa-btn" onclick="showToast('Logged $18.50 dining expense')">
+              <span class="qa-circle">↓</span>Expense
+            </button>
+            <button class="qa-btn" onclick="showToast('Paycheck +$3,120 scheduled Oct 30')">
+              <span class="qa-circle">↑</span>Income
+            </button>
+            <button class="qa-btn" onclick="setScreen('goals')">
+              <span class="qa-circle">⇄</span>Transfer
+            </button>
+            <button class="qa-btn" onclick="setScreen('simulation')">
+              <span class="qa-circle">＋</span>What-if
+            </button>
+          </div>
+        </div>
+
+        <div class="sec-head">
+          <span>My accounts</span>
+          <span class="sec-link" onclick="setScreen('portfolio')">View all →</span>
+        </div>
+        <div class="acct-grid">
+          <div class="acct-card dark" onclick="showToast('Northwind Checking · Safe to spend $2,628')">
+            <div style="display:flex;align-items:center;gap:8px;font-size:13px;font-weight:500">
+              <span>🏦</span> Checking
+            </div>
+            <div>
+              <div style="font-size:19px;font-weight:700">${state.hideBalances ? "•••••" : "$4,756.20"}</div>
+              <div style="font-size:11px;color:#a1a1a1;margin-top:2px">•••• 4421</div>
+            </div>
+          </div>
+          <div class="acct-card" onclick="setScreen('goals')">
+            <div style="display:flex;align-items:center;gap:8px;font-size:13px;font-weight:500">
+              <span>🌱</span> High-Yield
+            </div>
+            <div>
+              <div style="font-size:19px;font-weight:700">${state.hideBalances ? "•••••" : "$" + state.emergencySaved.toLocaleString() + ".18"}</div>
+              <div style="font-size:11px;color:var(--muted-fg);margin-top:2px">4.50% APY · •••• 7730</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="sec-head">
+          <span>Recent activity</span>
+          <span class="sec-link" onclick="showToast('October net cash flow: +$870.00')">+$870 net</span>
+        </div>
+        <div class="surface-card">
+          <div class="tx-row">
+            <div style="display:flex;align-items:center;gap:10px">
+              <div class="tx-icon">🛒</div>
+              <div>
+                <div style="font-size:14px;font-weight:600">Greenleaf Market</div>
+                <div style="font-size:12px;color:var(--muted-fg)">Groceries · Today, 9:42 AM</div>
+              </div>
+            </div>
+            <div style="font-size:14px;font-weight:600">-$67.45</div>
+          </div>
+          <div class="tx-row">
+            <div style="display:flex;align-items:center;gap:10px">
+              <div class="tx-icon" style="background:var(--brand-soft);color:#15803d">↗</div>
+              <div>
+                <div style="font-size:14px;font-weight:600">Auto-Save · Emergency</div>
+                <div style="font-size:12px;color:var(--muted-fg)">Payday rule · Oct 15</div>
+              </div>
+            </div>
+            <div style="font-size:14px;font-weight:600;color:var(--positive)">+$300.00</div>
+          </div>
+          <div class="tx-row">
+            <div style="display:flex;align-items:center;gap:10px">
+              <div class="tx-icon">☕</div>
+              <div>
+                <div style="font-size:14px;font-weight:600">Sightglass Coffee</div>
+                <div style="font-size:12px;color:var(--muted-fg)">Dining out · Oct 14</div>
+              </div>
+            </div>
+            <div style="font-size:14px;font-weight:600">-$6.80</div>
+          </div>
+        </div>
+      `;
+    }
+
+    function renderCompass() {
+      const pillars = [
+        { id: "spending", name: "Spending", sub: "On budget 4 months in a row", score: 84, delta: "+6 pts", bg: "#b6f256", icon: "🛒" },
+        { id: "investing", name: "Investing", sub: "Diversified, 0.08% avg fee", score: 80, delta: "+4 pts", bg: "#f5f5f5", icon: "📈" },
+        { id: "debt", name: "Debt", sub: "Debts are 14.4% of assets", score: 66, delta: "+4 pts", bg: "#f5f5f5", icon: "💳" },
+        { id: "saving", name: "Saving", sub: "14% savings rate · aim for 20%", score: 58, delta: "+2 pts", bg: "#0a0a0a", icon: "🌱", dark: true }
+      ];
+      return `
+        <div class="pw-header">
+          <button class="pw-icon-btn" onclick="setScreen('dashboard')">←</button>
+          <span style="font-size:16px;font-weight:600">Financial Compass</span>
+          <button class="pw-icon-btn" onclick="showToast('Compass recalculates daily from synced balances')">⋯</button>
+        </div>
+
+        <div class="surface-card" style="border-radius:28px;padding:18px">
+          <div style="display:flex;justify-content:space-between;align-items:center">
+            <span style="font-size:14px;font-weight:500">Compass score</span>
+            <span style="font-size:12px;background:var(--muted);padding:5px 12px;border-radius:999px;font-weight:500">October ▾</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;align-items:flex-end">
+            <div>
+              <span style="font-size:52px;font-weight:700;letter-spacing:-2px">72</span>
+              <span style="font-size:18px;color:var(--muted-fg);font-weight:500">/100</span>
+            </div>
+            <div style="text-align:right">
+              <span style="background:#171717;color:#fff;font-size:11px;font-weight:600;padding:4px 9px;border-radius:6px">Good</span>
+              <div style="font-size:12px;font-weight:600;color:var(--positive);margin-top:4px">↗ +4 since Sep</div>
+            </div>
+          </div>
+          <div style="display:grid;grid-template-columns:1.3fr 1.2fr 1fr 0.9fr;gap:6px;height:68px;margin-top:4px">
+            <div style="background:linear-gradient(180deg,#b6f256,#84cc16);border-radius:14px"></div>
+            <div style="background:#ecfccb;border-radius:14px"></div>
+            <div style="background:var(--muted);border-radius:14px"></div>
+            <div style="background:#0a0a0a;border-radius:14px"></div>
+          </div>
+          <div style="display:flex;justify-content:space-between;font-size:11px;color:var(--muted-fg)">
+            <span>● Spending</span><span>● Investing</span><span>● Debt</span><span>● Saving</span>
+          </div>
+        </div>
+
+        <div class="sec-head">
+          <span>Your four pillars</span>
+          <span class="sec-link">Strongest first</span>
+        </div>
+
+        <div style="display:flex;flex-direction:column;gap:8px">
+          ${pillars.map(p => `
+            <div class="pillar-row ${state.selectedPillar === p.id ? 'active' : ''}" onclick="state.selectedPillar='${p.id}';render()">
+              <div style="display:flex;align-items:center;gap:12px">
+                <div class="pillar-icon" style="background:${p.bg};color:${p.dark ? '#b6f256' : '#0a0a0a'}">${p.icon}</div>
+                <div>
+                  <div style="font-size:14px;font-weight:600">${p.name}</div>
+                  <div style="font-size:12px;color:var(--muted-fg)">${p.sub}</div>
+                </div>
+              </div>
+              <div style="text-align:right">
+                <div style="font-size:15px;font-weight:700">${p.score}</div>
+                <div style="font-size:11px;font-weight:600;color:var(--positive)">${p.delta}</div>
+              </div>
+            </div>
+          `).join("")}
+        </div>
+
+        <div class="acct-card dark" style="flex-direction:row;align-items:center;justify-content:space-between" onclick="setScreen('goals')">
+          <div style="display:flex;align-items:center;gap:12px">
+            <div class="pillar-icon" style="background:#b6f256;color:#0a0a0a">✦</div>
+            <div>
+              <div style="font-size:13px;font-weight:600">Biggest lift: saving (+6 pts)</div>
+              <div style="font-size:11px;color:#a1a1a1;margin-top:2px">Moving $150/mo from dining to Emergency Fund reaches 20% rate.</div>
+            </div>
+          </div>
+          <span>›</span>
+        </div>
+      `;
+    }
+
+    function renderGoals() {
+      const totalSaved = 25150 + state.emergencySaved;
+      const pct = Math.min(100, Math.round((state.emergencySaved / 16110) * 100));
+      return `
+        <div class="pw-header">
+          <span style="font-size:22px;font-weight:700;letter-spacing:-0.5px">Goals</span>
+          <button class="pw-icon-btn" style="background:#0a0a0a;color:#fff" onclick="showToast('New goal wizard: Emergency, Home, Car, Retirement')">＋</button>
+        </div>
+
+        <div class="nw-card" style="background:linear-gradient(135deg,#b6f256 0%,#d9f99d 100%);color:#0a0a0a">
+          <div style="display:flex;justify-content:space-between;align-items:center">
+            <div>
+              <div style="font-size:12px;font-weight:600;opacity:0.75">Saved toward 3 goals</div>
+              <div style="font-size:32px;font-weight:700;letter-spacing:-1.2px">$${totalSaved.toLocaleString()}</div>
+              <div style="font-size:12px;font-weight:500;opacity:0.8">of $79,110 · +$870/mo planned</div>
+            </div>
+            <div style="width:54px;height:54px;border-radius:999px;background:#0a0a0a;color:#b6f256;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px">
+              47%
+            </div>
+          </div>
+        </div>
+
+        <div class="surface-card">
+          <div style="display:flex;justify-content:space-between;align-items:center">
+            <div style="display:flex;align-items:center;gap:10px">
+              <div class="pillar-icon" style="background:#b6f256;color:#0a0a0a">🛡️</div>
+              <div>
+                <div style="font-size:15px;font-weight:600">Emergency fund</div>
+                <div style="font-size:12px;color:var(--muted-fg)">3 months of costs · Nov 2027</div>
+              </div>
+            </div>
+            <span class="badge-positive">${pct}%</span>
+          </div>
+          <div style="height:10px;background:var(--muted);border-radius:999px;overflow:hidden">
+            <div style="width:${pct}%;height:100%;background:#84cc16;border-radius:999px"></div>
+          </div>
+          <div style="display:flex;justify-content:space-between;font-size:12px;color:var(--muted-fg)">
+            <span>$${state.emergencySaved.toLocaleString()} of $16,110</span>
+            <span>$300/mo auto</span>
+          </div>
+          <button style="margin-top:4px;padding:10px;border-radius:999px;border:none;background:#0a0a0a;color:#b6f256;font-weight:600;font-size:13px;cursor:pointer" onclick="state.emergencySaved+=250;showToast('Added +$250 to Emergency Fund!')">
+            + Top up $250 now
+          </button>
+        </div>
+
+        <div class="surface-card">
+          <div style="display:flex;justify-content:space-between;align-items:center">
+            <div style="display:flex;align-items:center;gap:10px">
+              <div class="pillar-icon" style="background:var(--muted)">🏡</div>
+              <div>
+                <div style="font-size:15px;font-weight:600">Home down payment</div>
+                <div style="font-size:12px;color:var(--muted-fg)">15% of $400k home · Mar 2029</div>
+              </div>
+            </div>
+            <span style="font-size:11px;font-weight:600;background:var(--warning-bg);color:var(--warning);padding:4px 8px;border-radius:999px">Behind 1 mo</span>
+          </div>
+          <div style="height:10px;background:var(--muted);border-radius:999px;overflow:hidden">
+            <div style="width:40%;height:100%;background:#0a0a0a;border-radius:999px"></div>
+          </div>
+          <div style="display:flex;justify-content:space-between;font-size:12px;color:var(--muted-fg)">
+            <span>$24,000 of $60,000</span>
+            <span style="color:var(--fg);font-weight:600;cursor:pointer" onclick="setScreen('simulation')">Simulate in What-If →</span>
+          </div>
+        </div>
+      `;
+    }
+
+    function renderPortfolio() {
+      return `
+        <div class="pw-header">
+          <span style="font-size:22px;font-weight:700;letter-spacing:-0.5px">Portfolio</span>
+          <button class="pw-icon-btn" onclick="showToast('Fee audit: $141/yr (0.11% blended expense ratio)')">⚖️</button>
+        </div>
+
+        <div class="acct-card dark" style="padding:20px;border-radius:26px">
+          <div style="font-size:12px;color:#a1a1a1">2 accounts · Brokerage + 401(k)</div>
+          <div style="font-size:32px;font-weight:700;letter-spacing:-1.2px">$132,968<span style="font-size:18px;color:#a1a1a1">.12</span></div>
+          <div style="display:flex;gap:8px;align-items:center">
+            <span style="background:rgba(182,242,86,0.18);color:#b6f256;font-size:12px;font-weight:600;padding:4px 10px;border-radius:999px">↗ +$18,984.70 (+14.2% YTD)</span>
+          </div>
+        </div>
+
+        <div class="surface-card">
+          <div class="sec-head">
+            <span>Asset allocation</span>
+            <span class="badge-positive">Well spread · 78%</span>
+          </div>
+          <div style="display:flex;height:14px;border-radius:999px;overflow:hidden;gap:3px">
+            <div style="width:65%;background:#84cc16" title="US Stocks 65%"></div>
+            <div style="width:22%;background:#0a0a0a" title="Int'l Stocks 22%"></div>
+            <div style="width:11%;background:#a3e635" title="Bonds 11%"></div>
+            <div style="width:2%;background:#d4d4d4" title="Cash 2%"></div>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;font-size:12px">
+            <div>● <strong>US Stocks</strong> · 65% ($85.9k)</div>
+            <div>● <strong>Int'l Stocks</strong> · 22% ($28.6k)</div>
+            <div>● <strong>Bonds</strong> · 11% ($15.2k)</div>
+            <div>● <strong>Cash</strong> · 2% ($3.1k)</div>
+          </div>
+        </div>
+
+        <div class="sec-head">
+          <span>Top holdings</span>
+          <span class="sec-link">All 7</span>
+        </div>
+        <div class="surface-card">
+          <div class="tx-row">
+            <div>
+              <div style="font-size:14px;font-weight:600">ATMX · Atlas Total Market ETF</div>
+              <div style="font-size:12px;color:var(--muted-fg)">0.03% fee · 180 shares</div>
+            </div>
+            <div style="text-align:right">
+              <div style="font-size:14px;font-weight:600">$43,416.00</div>
+              <div style="font-size:11px;color:var(--positive);font-weight:600">+16.4%</div>
+            </div>
+          </div>
+          <div class="tx-row">
+            <div>
+              <div style="font-size:14px;font-weight:600">2060 · Brightline Target Fund</div>
+              <div style="font-size:12px;color:var(--muted-fg)">401(k) core · 0.08% fee</div>
+            </div>
+            <div style="text-align:right">
+              <div style="font-size:14px;font-weight:600">$36,700.00</div>
+              <div style="font-size:11px;color:var(--positive);font-weight:600">+13.8%</div>
+            </div>
+          </div>
+          <div class="tx-row">
+            <div>
+              <div style="font-size:14px;font-weight:600">INTL · Meridian International</div>
+              <div style="font-size:12px;color:var(--muted-fg)">Developed & EM · 0.09% fee</div>
+            </div>
+            <div style="text-align:right">
+              <div style="font-size:14px;font-weight:600">$17,625.00</div>
+              <div style="font-size:11px;color:var(--positive);font-weight:600">+11.2%</div>
+            </div>
+          </div>
+        </div>
+      `;
+    }
+
+    function renderSimulation() {
+      // Compute live 10-year 2036 projection based on sliders
+      const r = state.simReturnRate / 100;
+      const years = 10;
+      const startNW = 128420;
+      const fvStart = startNW * Math.pow(1 + r, years);
+      const fvContrib = (state.simMonthlySave * 12) * ((Math.pow(1 + r, years) - 1) / r);
+      const scenarioImpact = state.simScenario === "home" ? -15000 : (state.simScenario === "raise" ? 108000 : -19000);
+      const projected = Math.round((fvStart + fvContrib + scenarioImpact) / 1000);
+      const baseProjected = Math.round((fvStart + fvContrib) / 1000);
+      const diff = projected - baseProjected;
+
+      return `
+        <div class="pw-header">
+          <span style="font-size:22px;font-weight:700;letter-spacing:-0.5px">What-ifs</span>
+          <span style="font-size:11px;background:var(--brand-soft);color:#15803d;padding:4px 10px;border-radius:999px;font-weight:600">Sandbox · Safe</span>
+        </div>
+
+        <div class="acct-card dark" style="padding:20px;border-radius:26px">
+          <div style="display:flex;justify-content:space-between;align-items:center">
+            <span style="font-size:12px;color:#a1a1a1">Projected net worth in 2036 (10 yrs)</span>
+            <span style="font-size:11px;background:#b6f256;color:#0a0a0a;padding:3px 8px;border-radius:999px;font-weight:700">Live Model</span>
+          </div>
+          <div style="font-size:40px;font-weight:700;letter-spacing:-1.6px;color:#b6f256">$${projected}k</div>
+          <div style="font-size:12px;color:#d4d4d4">
+            Base plan: $${baseProjected}k (${diff >= 0 ? "+" : ""}${diff}k scenario impact) · Up from $128k today
+          </div>
+        </div>
+
+        <div class="surface-card">
+          <div style="display:flex;justify-content:space-between;align-items:center">
+            <span style="font-size:13px;font-weight:600">Monthly savings & 401(k)</span>
+            <span style="font-size:16px;font-weight:700">$${state.simMonthlySave.toLocaleString()}/mo</span>
+          </div>
+          <input class="sim-slider" type="range" min="600" max="2800" step="50" value="${state.simMonthlySave}" oninput="state.simMonthlySave=Number(this.value);render()" />
+
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-top:6px">
+            <span style="font-size:13px;font-weight:600">Expected annual return</span>
+            <span style="font-size:16px;font-weight:700">${state.simReturnRate.toFixed(1)}% / yr</span>
+          </div>
+          <input class="sim-slider" type="range" min="4.0" max="9.0" step="0.5" value="${state.simReturnRate}" oninput="state.simReturnRate=Number(this.value);render()" />
+        </div>
+
+        <div class="sec-head">
+          <span>Compare life scenarios</span>
+          <span class="sec-link">Tap to test</span>
+        </div>
+
+        <div style="display:flex;flex-direction:column;gap:8px">
+          <div class="pillar-row ${state.simScenario === 'home' ? 'active' : ''}" onclick="state.simScenario='home';render()">
+            <div style="display:flex;align-items:center;gap:10px">
+              <div class="pillar-icon" style="background:#ecfccb">🏡</div>
+              <div>
+                <div style="font-size:14px;font-weight:600">Buy a $400k home in 2029</div>
+                <div style="font-size:12px;color:var(--muted-fg)">15% down · builds $183k home equity</div>
+              </div>
+            </div>
+            <span style="font-size:12px;font-weight:700">-$15k vs base</span>
+          </div>
+
+          <div class="pillar-row ${state.simScenario === 'raise' ? 'active' : ''}" onclick="state.simScenario='raise';render()">
+            <div style="display:flex;align-items:center;gap:10px">
+              <div class="pillar-icon" style="background:#b6f256">🚀</div>
+              <div>
+                <div style="font-size:14px;font-weight:600">10% raise next year</div>
+                <div style="font-size:12px;color:var(--muted-fg)">Save half of every raise automatically</div>
+              </div>
+            </div>
+            <span style="font-size:12px;font-weight:700;color:var(--positive)">+$108k</span>
+          </div>
+
+          <div class="pillar-row ${state.simScenario === 'sabbatical' ? 'active' : ''}" onclick="state.simScenario='sabbatical';render()">
+            <div style="display:flex;align-items:center;gap:10px">
+              <div class="pillar-icon" style="background:var(--warning-bg)">⏸️</div>
+              <div>
+                <div style="font-size:14px;font-weight:600">3 months without pay</div>
+                <div style="font-size:12px;color:var(--muted-fg)">Covered by Emergency Fund · Oct 2027</div>
+              </div>
+            </div>
+            <span style="font-size:12px;font-weight:700;color:var(--warning)">-$19k</span>
+          </div>
+        </div>
+      `;
+    }
+
+    function render() {
+      const vp = document.getElementById("phoneViewport");
+      let content = "";
+      if (state.screen === "dashboard") content = renderDashboard();
+      else if (state.screen === "compass") content = renderCompass();
+      else if (state.screen === "goals") content = renderGoals();
+      else if (state.screen === "portfolio") content = renderPortfolio();
+      else if (state.screen === "simulation") content = renderSimulation();
+
+      vp.innerHTML = `
+        <div class="status-bar">
+          <span>9:41</span>
+          <div class="dynamic-island"></div>
+          <span>5G 100%</span>
+        </div>
+        <div class="screen-body">
+          ${content}
+        </div>
+        ${state.toast ? `<div class="toast-banner">${state.toast}</div>` : ""}
+        <nav class="pw-tabbar">
+          <button class="pw-tab ${state.screen === 'dashboard' ? 'active' : ''}" onclick="setScreen('dashboard')" title="Home">⌂</button>
+          <button class="pw-tab ${state.screen === 'compass' ? 'active' : ''}" onclick="setScreen('compass')" title="Compass">◎</button>
+          <button class="pw-tab ${state.screen === 'goals' ? 'active' : ''}" onclick="setScreen('goals')" title="Goals">◐</button>
+          <button class="pw-tab ${state.screen === 'portfolio' ? 'active' : ''}" onclick="setScreen('portfolio')" title="Portfolio">◈</button>
+          <button class="pw-tab ${state.screen === 'simulation' ? 'active' : ''}" onclick="setScreen('simulation')" title="Simulator">✦</button>
+        </nav>
+      `;
+    }
+
+    document.querySelectorAll(".proto-flow-btn").forEach(btn => {
+      btn.addEventListener("click", () => setScreen(btn.dataset.screen));
+    });
+
+    document.getElementById("themeBtn").addEventListener("click", () => {
+      state.theme = state.theme === "light" ? "dark" : "light";
+      document.documentElement.setAttribute("data-theme", state.theme);
+      document.getElementById("themeIcon").textContent = state.theme === "light" ? "🌙" : "☀️";
+      document.getElementById("themeLabel").textContent = state.theme === "light" ? "Dark mode" : "Light mode";
+    });
+
+    render();
+  </script>
+</body>
+</html>

@@ -1,4 +1,4 @@
-type IconName = "arrow-right" | "arrow-left" | "arrow-up-right" | "arrow-down" | "sun" | "moon" | "search" | "menu" | "close" | "mail"
+type IconName = "arrow-right" | "arrow-left" | "arrow-up-right" | "arrow-down" | "sun" | "moon" | "search" | "menu" | "close" | "mail" | "lock" | "download" | "check" | "expand" | "copy" | "play" | "sliders"
 
 const paths: Record<IconName, string> = {
   "arrow-right": "M5 12h14M13 6l6 6-6 6",
@@ -11,6 +11,13 @@ const paths: Record<IconName, string> = {
   menu: "M4 8h16M4 16h16",
   close: "M6 6l12 12M18 6 6 18",
   search: "m20 20-4.5-4.5M17 10.5a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0Z",
+  lock: "M17 11V8A5 5 0 0 0 7 8v3M5 11h14a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-8a1 1 0 0 1 1-1Zm7 3v3",
+  download: "M12 5v14M5 12l7 7 7-7",
+  check: "M5 12l5 5L20 7",
+  expand: "M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7",
+  copy: "M9 9h10v10H9zM5 15H4a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v1",
+  play: "M7 5v14l12-7-12-7Z",
+  sliders: "M4 8h9m4 0h3M13 6v4M4 16h3m4 0h9M10 14v4",
 }
 
 interface IconProps {

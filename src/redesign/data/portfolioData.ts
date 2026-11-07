@@ -65,6 +65,11 @@ export interface CaseStudyProject {
   mandateTitle: string
   mandateBody: string
   problemStatement?: string
+  frictionTitle?: string
+  resolutionTitle?: string
+  resolutionBody?: string
+  panoramaTitle?: string
+  panoramaLabel?: string
   ownershipPillars: [string, string][]
   discoverySummary: string
   discoveryMethods: [string, string][]
@@ -96,7 +101,7 @@ export interface CaseStudyProject {
   outcomes: [string, string, string][]
 }
 
-export const assetBase = "https://danieljohnson.bio/assets/"
+export const assetBase = "/assets/"
 
 export const experienceTimeline = [
   {
@@ -205,7 +210,14 @@ export const portfolioProjects: CaseStudyProject[] = [
     scope:
       "Developer workflow · Interaction model · Salt tokens · Storybook 10.6",
     platform: "Responsive Web Application & Component Workbench",
-    heroImage: "/rapidbi-overview.png",
+    heroImage: `${assetBase}rapidbi/canvas-commerce.png`,
+    secondaryImage: `${assetBase}rapidbi/storybook-workbench.png`,
+    panoramaTitle: "Live Analytics Canvas & Storybook 10.6 Workbench",
+    panoramaLabel: "Highcharts Visualizations · AG Grid Row Model · Salt Tokens",
+    frictionTitle: "Disconnected Metrics & Configuration Overhead",
+    resolutionTitle: "Unified Governed Analytics Workbench",
+    resolutionBody: "Synthesized Highcharts visualizations, server-side AG Grid row models, and filter schemas into one coherent canvas with inline commentary and one-click Storybook tokens.",
+    problemStatement: "Engineering had powerful data, charting, and export primitives, but product teams experienced them as disconnected demos and dense settings panels that slowed down decision-making.",
     mandateTitle:
       "Turn fragmented charting and grid capabilities into one governed analytics loop.",
     mandateBody:
@@ -452,17 +464,19 @@ export const portfolioProjects: CaseStudyProject[] = [
         title: "Keep overview and evidence on a single canvas.",
         body: "KPI tiles, charts, and the server-side AG Grid share one state model so analysts move from a high-level delta to product-level rows without losing context.",
         badge: "Signal → Evidence Continuity",
-        image: "/rapidbi-overview.png",
+        image: `${assetBase}rapidbi/canvas-grid-commentary.png`,
       },
       {
         title: "Progressive configuration with zero context switching.",
         body: "Common actions stay on the surface while advanced grouping, pivot rules, and delta toggles unfold in an adjacent drawer.",
         badge: "Progressive Disclosure",
+        image: `${assetBase}rapidbi/widget-settings.png`,
       },
       {
         title: "Human-reviewed AI assistant recommendations.",
         body: "Assistant suggestions explain which filters or chart changes will occur and wait for explicit approval before modifying the canvas.",
         badge: "Governed AI Pattern",
+        image: `${assetBase}rapidbi/ai-assistant.png`,
       },
     ],
     outcomes: [
@@ -503,6 +517,12 @@ export const portfolioProjects: CaseStudyProject[] = [
     platform: "iOS & Android Mobile Application",
     heroImage: "/shiftsnap-hero-phones.png",
     secondaryImage: "/shiftsnap-complete-user-experience.png",
+    panoramaTitle: "The Complete Multi-Role Mobile Experience",
+    panoramaLabel: "9 Core Mobile Screens · Barista & Store Manager Views",
+    frictionTitle: "Fragmented Chat Threads & Unverified Coverage",
+    resolutionTitle: "Atomic 5-State Dual-Role Roster Engine",
+    resolutionBody: "Replaced informal message promises with a stateful mobile workflow that validates shift qualifications, enforces overtime guardrails, and updates store rosters in real time.",
+    problemStatement: "Shift changes were happening across fragmented group chats and text messages—leaving employees uncertain if a swap was official and managers blind to certification gaps or overtime risk.",
     mandateTitle:
       "Give hourly workers schedule flexibility while protecting store coverage.",
     mandateBody:
@@ -726,7 +746,7 @@ export const portfolioProjects: CaseStudyProject[] = [
         deliverable: "Coverage View & exception cards",
       },
       {
-        phase: "03 / Mobile UI Kit",
+        phase: "03 / Mobile Design System",
         title: "Built accessible dual-role components",
         detail:
           "Paired every status color with semantic icons and labels (`Confirmed`, `Urgent`, `Certified`) for fast floor scanning.",
@@ -764,18 +784,19 @@ export const portfolioProjects: CaseStudyProject[] = [
         title: "Role-aware onboarding and home hierarchies.",
         body: "Work SSO automatically detects whether the user is a Team Member or Manager, tailoring the home screen to either personal shift actions or store-wide exception triage.",
         badge: "Role-Verified UX",
-        image: "/shiftsnap-hero-phones.png",
+        image: `${assetBase}shiftsnap/sso-onboarding-screens.png`,
       },
       {
         title: "6-screen operational loop across worker and manager.",
-        body: "Connects Employee Home, Manager Exception Home, Weekly Coverage Heatmap, Swap Status Ledger, Certified Team Roster, and 30-Day Labor Reports in one coherent system.",
+        body: "Connects Employee Home, Manager Exception Home, and the Weekly Coverage Heatmap so shift coverage and overtime risks are visible at a glance.",
         badge: "94% Store Coverage Rate",
-        image: "/shiftsnap-complete-user-experience.png",
+        image: `${assetBase}shiftsnap/role-coverage-screens.png`,
       },
       {
         title: "Auditable “You gave up / You received” ledger.",
-        body: "Replaces ambiguous chat threads with a structured shift diff and timestamped activity log (`Manager approved 11:30 AM` → `Swap completed 2:15 PM`).",
+        body: "Replaces ambiguous chat threads with a structured shift diff, Certified Team Roster, and timestamped activity log (`Manager approved 11:30 AM` → `Swap completed 2:15 PM`).",
         badge: "Zero Schedule Ambiguity",
+        image: `${assetBase}shiftsnap/ledger-roster-screens.png`,
       },
     ],
     outcomes: [
@@ -815,6 +836,13 @@ export const portfolioProjects: CaseStudyProject[] = [
       "AI governance · Field-level confidence · Exception routing · Enterprise UI",
     platform: "Enterprise Web Application",
     heroImage: `${assetBase}navflow/executive-dashboard-wide.png`,
+    secondaryImage: `${assetBase}navflow/workflow-pipeline-wide.png`,
+    panoramaTitle: "End-to-End NAV Orchestration & Pipeline Telemetry",
+    panoramaLabel: "Field Confidence Scoring · Tollgate Verification · Audit Trail",
+    frictionTitle: "Manual Extraction Bottlenecks & Audit Blindspots",
+    resolutionTitle: "Governed Human-in-the-Loop AI Operations",
+    resolutionBody: "Combined automated multi-format ingestion with confidence-scored field validation and explicit tollgates, turning risky manual audits into an inspectable, governed process.",
+    problemStatement: "Manual NAV operations relied on inboxes, spreadsheets, and disconnected approval chains, creating error risk and compliance exposure during high-volume accounting windows.",
     mandateTitle:
       "Let AI automate routine NAV extraction while humans retain explicit control over exceptions.",
     mandateBody:
@@ -1048,17 +1076,19 @@ export const portfolioProjects: CaseStudyProject[] = [
         title: "Pipeline command center with live agent telemetry.",
         body: "Surfaces active NAV packets, SLA health, and exception queues in one operational cockpit.",
         badge: "Governed Orchestration",
-        image: `${assetBase}navflow/executive-dashboard-wide.png`,
+        image: `${assetBase}navflow/agent-operations-wide.png`,
       },
       {
         title: "Side-by-side source PDF evidence and extracted schema.",
         body: "Eliminates manual hunting by syncing every extracted number directly to the source paragraph or table cell.",
         badge: "Verifiable AI Extraction",
+        image: `${assetBase}navflow/validation-tollgate-wide.png`,
       },
       {
         title: "Mandatory human approval gate on tolerance breaches.",
         body: "Protects downstream accounting systems by requiring explicit controller sign-off whenever variance thresholds are exceeded.",
         badge: "Human-in-the-Loop Safety",
+        image: `${assetBase}navflow/human-approval-wide.png`,
       },
     ],
     outcomes: [
@@ -1098,7 +1128,14 @@ export const portfolioProjects: CaseStudyProject[] = [
     scope:
       "Developer journey · Split API explorer · Error recovery · Webhook ledger",
     platform: "Responsive Web Application",
-    heroImage: `${assetBase}meridian/overview.svg`,
+    heroImage: `${assetBase}meridian/overview.png`,
+    secondaryImage: `${assetBase}meridian/explorer.png`,
+    panoramaTitle: "Interactive API Explorer & Sandbox Console",
+    panoramaLabel: "Live Payload Testing · Webhook Inspector · Production Readiness",
+    frictionTitle: "Evaluation Disconnect & Sandbox Integration Friction",
+    resolutionTitle: "Interactive Developer Workbench & Guided Journey",
+    resolutionBody: "Unified interactive API reference docs, live request payloads, real-time webhook delivery logs, and production checklists into a single focused developer interface.",
+    problemStatement: "Developers evaluating payment APIs lose momentum when documentation, sandbox credentials, error recovery, and webhook logs live in separate disconnected tools.",
     mandateTitle:
       "Turn a complex payments API into a sequence developers can test, debug, and ship.",
     mandateBody:
@@ -1347,17 +1384,19 @@ export const portfolioProjects: CaseStudyProject[] = [
         title: "Keep API documentation and runnable execution side by side.",
         body: "Developers read a field definition, edit the payload, and inspect the live response without switching tabs or losing context.",
         badge: "Split Explorer Pattern",
-        image: `${assetBase}meridian/overview.svg`,
+        image: `${assetBase}meridian/docs.png`,
       },
       {
         title: "Turn 403 and 422 errors into guided recovery loops.",
         body: "Each failure state names the exact missing scope or invalid parameter and lets the engineer test the fix immediately.",
         badge: "Self-Healing DX",
+        image: `${assetBase}meridian/error-recovery.png`,
       },
       {
         title: "Decouple transaction settlement from webhook delivery.",
         body: "Gives engineers crystal-clear visibility into whether an issue lies in the payment ledger or their own webhook listener.",
         badge: "Operational Clarity",
+        image: `${assetBase}meridian/webhooks.png`,
       },
     ],
     outcomes: [
@@ -1378,6 +1417,672 @@ export const portfolioProjects: CaseStudyProject[] = [
       ],
     ],
   },
+  {
+    id: "motive",
+    liveUrl: "./motive-prototype/index.html",
+    index: "19",
+    name: "Motive",
+    codename: "Motive EV & Luxury Mobility",
+    category: "Mobility · EV & luxury car rental mobile app",
+    portfolioCategory: "Mobile",
+    featured: true,
+    summary:
+      "A dual-theme iOS mobility platform connecting instant EV discovery, transparent airport valet checkout, live range/charger telemetry, and a BLE/NFC Digital Key.",
+    headlineStart: "Skip the counter. Unlock ",
+    headlineAccent: "with your phone.",
+    lede: "As Lead Product Designer, I architected the end-to-end iOS product experience and dual-theme design system for Motive—eliminating rental counter lines, opaque protection fees, and EV range anxiety through one continuous mobile loop.",
+    role: "Lead Product Designer",
+    team: "Product · iOS Engineering · Fleet Telemetry",
+    scope:
+      "End-to-end iOS product · Dual-theme token system · Digital Key & EV telemetry · Interactive prototype",
+    platform: "iOS Mobile Application (Light & Dark Mode)",
+    heroImage: `${assetBase}motive/hero-light-mode.png`,
+    secondaryImage: `${assetBase}motive/design-system-styleguide.png`,
+    panoramaTitle: "Motive Design System · Burnt Amber & Graphite Semantic Tokens",
+    panoramaLabel: "Encode Sans Expanded · Instrument Sans · Light & Dark Mode Parity",
+    frictionTitle: "Rental Counter Queues, Surprise Upsells & EV Charging Anxiety",
+    resolutionTitle: "Direct-to-Vehicle Digital Key & Live Telemetry Loop",
+    resolutionBody: "Unified search, itemized protection pricing, 15-minute payment-decline reservation holds, and live BLE/NFC vehicle unlock with 350kW charger routing into one tactile mobile system.",
+    problemStatement: "Traditional car rental apps stop at a reservation barcode—forcing travelers into 45-minute airport counter queues, surprise insurance upsells, and unfamiliar EV charging networks without live vehicle telemetry.",
+    audienceTitle: "Frequent travelers & EV-curious drivers arriving at major airports",
+    audienceGoal: "I want to book the exact car I see, know my real all-in total upfront, walk straight to my bay at LAX, and unlock the doors from my phone.",
+    personaQuotes: [
+      {
+        quote: "After a five-hour flight into LAX, the last thing I want is a 40-minute counter line and a surprise $45/day insurance argument.",
+        name: "Daniel Reyes",
+        designation: "Principal Consultant · 18 rentals/year",
+      },
+      {
+        quote: "I love renting EVs like the Genesis GV60 or Ioniq 5, but I need to know the real fast-charge speed and closest 350kW stall before I commit.",
+        name: "Elena Vance",
+        designation: "Creative Director · EV adopter",
+      },
+      {
+        quote: "When my bank flags an airport travel charge, don't cancel my car—hold the vehicle for 15 minutes so I can tap Apple Pay and keep moving.",
+        name: "Marcus Sterling",
+        designation: "Founder · Frequent flyer",
+      },
+    ],
+    mandateTitle:
+      "Replace the airport rental counter with an automotive-grade Digital Key and transparent EV telemetry.",
+    mandateBody:
+      "Most rental apps treat booking, pickup, and on-trip driving as disconnected silos. I designed Motive across eight cohesive product modules (Auth, Onboarding, Discovery, Vehicle Stage, Checkout, Active Trip Telemetry, Profile, and Edge-Case Recovery) so vehicle discovery, itemized checkout, Face ID key provisioning, and active-trip EV telemetry share one unmistakable visual and interaction language.",
+    ownershipPillars: [
+      [
+        "End-to-End Mobile IA",
+        "Architected the complete iOS user journey spanning Onboarding, Map/List Discovery, Car Stage, Checkout, Digital Key, and Edge-Case Recovery.",
+      ],
+      [
+        "Dual-Theme Design System",
+        "Authored semantic Graphite (`#151515`) and Burnt Amber (`#C8642A`) tokens with full Light/Dark mode parity and dark automotive photo stages.",
+      ],
+      [
+        "Resilient On-Trip & Edge Flows",
+        "Engineered the persistent Active Trip Strip, 2×2 telemetry action bento, and a 15-minute vehicle hold when a card declines at checkout.",
+      ],
+    ],
+    discoverySummary:
+      "We shadowed airport pickups and audited leading peer-to-peer and fleet rental apps to pinpoint where traveler trust breaks down between browsing a fleet and returning a vehicle.",
+    discoveryMethods: [
+      [
+        "LAX Pickup & Return Shadowing",
+        "Timed every step from baggage claim to garage exit across traditional counter vs. mobile-key workflows.",
+      ],
+      [
+        "EV Renter Telemetry Interviews",
+        "Identified the 4 exact specs EV renters check first: real range (`294 mi`), `10–80%` fast-charge minutes (`18 min`), luggage capacity, and charger proximity.",
+      ],
+      [
+        "Checkout Drop-Off & Decline Audit",
+        "Found that opaque insurance tiers and travel-card fraud declines caused the highest checkout abandonment.",
+      ],
+    ],
+    figmaNotes: [
+      {
+        tone: "amber",
+        tag: "Zero-Tab Hunt",
+        text: "“If I have an active rental, put the Digital Key strip right at the top of Home—never bury it two tabs deep.”",
+      },
+      {
+        tone: "emerald",
+        tag: "EV Confidence",
+        text: "Pair 294 mi range with '18 min 10→80% charge' on the vehicle stage so first-time EV drivers feel instant clarity.",
+      },
+      {
+        tone: "sky",
+        tag: "Upfront Math",
+        text: "Show the exact 3-day total ($276) on every search card and itemize protection, delivery, and refundable hold ($250) before payment.",
+      },
+      {
+        tone: "rose",
+        tag: "Decline Recovery",
+        text: "When a card declines (H06), lock the car in a 14:32 hold timer and offer 1-tap Apple Pay so the user never loses their vehicle.",
+      },
+    ],
+    synthesis: [
+      {
+        theme: "Active trip immediacy",
+        evidence: "Drivers returning to their car in a parking garage fumbled through navigation tabs to find lock/unlock controls.",
+        response: "Added a persistent dark glass Active Trip Strip (`C01 Home`) that launches the Digital Key in one tap.",
+      },
+      {
+        theme: "EV range & charging literacy",
+        evidence: "Renters hesitated to book electric crossovers because kilowatt curves and luggage fit were hidden in fine print.",
+        response: "Elevated `Encode Sans Expanded Light` spec numerals (`294 mi | 4.0s | 5 seats`) and a 2×2 charge/luggage bento on `D01 Car Detail`.",
+      },
+      {
+        theme: "Graceful payment recovery",
+        evidence: "Travelers frequently triggered bank fraud holds when booking at airports, losing their selected car immediately.",
+        response: "Designed `H06 Payment Declined` with a live 15-minute vehicle hold badge and instant Apple Pay fallback.",
+      },
+    ],
+    principles: [
+      [
+        "Stage the vehicle like hardware",
+        "Use dark graded photo stages (`#111111`) on both light and dark themes so vehicle silhouettes and telemetry numerals pop.",
+      ],
+      [
+        "Show the all-in total early",
+        "Pair daily rates (`$92/day`) with the multi-day total (`$276 total`) and explicit refundable deposit (`$250`).",
+      ],
+      [
+        "Keep active controls one thumb away",
+        "Surface the ongoing rental strip on Home and anchor primary actions (`Slide to unlock`, `Reserve`) in the bottom thumb zone.",
+      ],
+      [
+        "Design for real-world exceptions",
+        "Treat late returns, EV charging detours, and declined travel cards as first-class flows rather than dead-end alerts.",
+      ],
+    ],
+    journeySummary:
+      "A continuous 5-stage mobile loop taking the driver from airport fleet discovery to biometric vehicle unlock and Bay C4 return.",
+    journeyFlow: [
+      {
+        step: "01",
+        stage: "Discover & Filter",
+        actor: "Arriving Traveler",
+        userGoal: "Find an Instant-Book EV available at LAX for a 3-day trip",
+        frictionEliminated:
+          "Generic car-class labels ('Intermediate Or Similar') hid the actual vehicle model and total price.",
+        uxResolution:
+          "Exact-model fleet cards (`Genesis GV60 · 2025`) with category chips (`Electric`, `SUV`, `Luxury`) and upfront 3-day total.",
+        engineeringContract:
+          "Geo-fenced hub inventory query + real-time availability lock",
+        touchpoints: ["C01 Home", "C06 Map View", "Filter Chips"],
+      },
+      {
+        step: "02",
+        stage: "Inspect Vehicle Stage",
+        actor: "Arriving Traveler",
+        userGoal: "Verify EV range, fast-charge speed, luggage fit, and pickup window",
+        frictionEliminated:
+          "Dense specification tables buried critical EV charge times and delivery fees.",
+        uxResolution:
+          "Dark cinematic stage with big numerals (`294 mi · 4.0s · 5 seats`), 2×2 feature bento, and LAX delivery toggle.",
+        engineeringContract:
+          "Vehicle telemetry manifest + dynamic delivery window slotter",
+        touchpoints: ["D01 Car Detail", "D03 Gallery", "D06 Compare"],
+      },
+      {
+        step: "03",
+        stage: "Transparent Checkout",
+        actor: "Arriving Traveler + Payment Gateway",
+        userGoal: "Select protection coverage and confirm payment without losing the car on card decline",
+        frictionEliminated:
+          "Surprise counter upsells and instant reservation loss on bank travel holds.",
+        uxResolution:
+          "Itemized `E08 Review & Pay` ledger (`$403.26`) paired with `H06` 15-minute reservation hold recovery.",
+        engineeringContract:
+          "Idempotent payment intent + 900s inventory hold TTL + Apple Pay fallback",
+        touchpoints: ["E02 Protection", "E08 Review & Pay", "H06 Payment Declined"],
+      },
+      {
+        step: "04",
+        stage: "Unlock & Drive",
+        actor: "Driver + Vehicle BLE/NFC",
+        userGoal: "Locate the car in Bay C4, inspect condition, and unlock doors via Digital Key",
+        frictionEliminated:
+          "Waiting at a kiosk for physical keys or paper inspection sheets.",
+        uxResolution:
+          "Guided 4-corner photo check (`F05`) and `F08 Active Trip` glassmorphic `Slide to unlock` pill with honk/flash locator.",
+        engineeringContract:
+          "BLE/NFC cryptographic key token + live CAN-bus SOC (`62% · 232 mi`)",
+        touchpoints: ["F05 Inspection", "F06 Unlocked", "F08 Active Trip"],
+      },
+      {
+        step: "05",
+        stage: "Charge & Return",
+        actor: "Driver + Hub Operations",
+        userGoal: "Top up at a nearby 350kW charger or extend the trip by 1 day before Bay C4 drop-off",
+        frictionEliminated:
+          "Hunting across third-party charging apps or calling support to extend a rental.",
+        uxResolution:
+          "In-app `F07 Charging Nearby` (`Electrify America · 4 of 6 free · $0.48/kWh`) and 1-tap `+$68/day` extension.",
+        engineeringContract:
+          "OCPI live stall availability feed + automated return bay check-in",
+        touchpoints: ["F07 Charging Nearby", "F11 Trip Completed", "E11 Receipt"],
+      },
+    ],
+    wireframes: [
+      {
+        id: "01",
+        title: "Home + Active Trip Strip (C01)",
+        caption: "Persistent ongoing rental key strip above the airport search card and category chips.",
+        layout: "mobile-home",
+      },
+      {
+        id: "02",
+        title: "Vehicle Stage & Spec Bento (D01)",
+        caption: "Dark stage header with 3-column numerals and 2×2 EV charging & trunk bento.",
+        layout: "mobile-heatmap",
+      },
+      {
+        id: "03",
+        title: "Itemized Review & Pay (E08)",
+        caption: "44px total header, 3-tier protection selector, and line-by-line fee ledger.",
+        layout: "mobile-ledger",
+      },
+      {
+        id: "04",
+        title: "Active Trip Digital Key (F08)",
+        caption: "Live battery SOC, Bay C4 progress bar, 2×2 action tiles, and Slide-to-Unlock control.",
+        layout: "mobile-queue",
+      },
+    ],
+    architecturalPivot: {
+      summary:
+        "Early explorations placed dark-mode styling only in system settings, which made vehicle photos look washed out on light screens. We pivoted to a hybrid 'Dark Stage' architecture where vehicle showcases (`D01`, `F08`) always render on a `#111111` automotive stage while forms and receipts adapt cleanly between warm alabaster (`#FAF9F7`) and carbon dark (`#121211`).",
+      before: "Flat light-grey car cards with low-contrast spec lists",
+      after: "Cinematic Dark Photo Stage + Dual-Theme Semantic Surface Tokens",
+    },
+    engineeringSummary:
+      "Structured the Figma component architecture with strict variable bindings (`--color-primary-default`, `--color-contrast-default`, `--bg-card`), 402px iOS responsive constraints, and deterministic state props for iOS SwiftUI & React Native implementation.",
+    collabTracks: [
+      {
+        phase: "01 / Token Foundation",
+        title: "Graphite & Burnt Amber variable system",
+        detail:
+          "Mapped 12 Graphite neutrals, 8 Burnt Amber accents, and semantic surface/border tokens across Light and Dark modes.",
+        deliverable: "Figma Variables & Style Guide (11:379)",
+      },
+      {
+        phase: "02 / Component Architecture",
+        title: "Reusable mobile primitives",
+        detail:
+          "Built parameterized components for `Trip Strip`, `Car Card`, `Price Bar`, `Status Chip`, and `Motive Tab Bar`.",
+        deliverable: "Tokenized iOS Component Library",
+      },
+      {
+        phase: "03 / Interactive Sandbox",
+        title: "Playable 5-flow mobile prototype",
+        detail:
+          "Implemented live category filtering, dynamic protection pricing, digital key unlock, and declined-payment hold recovery.",
+        deliverable: "Live Embedded Mobile Prototype",
+      },
+    ],
+    contractBridge: {
+      figmaTitle: "Figma Variable & Component Spec · Motive Mobile System",
+      codeTitle: "Mobile Client & Telemetry State Contract",
+      figmaSpecs: [
+        [
+          "Typography scale",
+          "Encode Sans Expanded (Display 30/36, H1 26/32) + Instrument Sans (Body 14/20, Label 12/16)",
+        ],
+        [
+          "Color & surface tokens",
+          "Primary Ink `#151515` · Burnt Amber `#C8642A` · Card `#FAF9F7` · Subtle `#F3F1EE` · Success `#2FB98E`",
+        ],
+        [
+          "Component variants",
+          "Status Bar (`Default` | `Inverse`) · Tab Item (`Active` pill) · Circle Button (`Outline` | `Dark` glass)",
+        ],
+      ],
+      codeSpecs: [
+        [
+          "activeTripState",
+          '{ vehicleId: "ioniq5", socPct: 62, rangeMi: 232, keyLocked: true, bay: "C4" }',
+        ],
+        [
+          "checkoutBreakdown",
+          '{ base3d: 276, protection: 54, pass: 43, delivery: 35, promo: -41.40, total: 403.26 }',
+        ],
+        [
+          "holdRecoveryTTL",
+          '{ status: "DECLINED_HOLD", holdSecondsRemaining: 872, fallback: ["APPLE_PAY", "MC_0921"] }',
+        ],
+      ],
+    },
+    decisions: [
+      {
+        title: "Pair dark automotive stages with instant EV range and fast-charge numerals.",
+        body: "Instead of burying battery size and charging speed inside a secondary spec sheet, the vehicle stage surfaces 294 mi range, 4.0s 0–60 mph, and 18-minute 10–80% fast-charge telemetry above the fold.",
+        badge: "01 · Discovery & Vehicle Stage",
+        image: `${assetBase}motive/flow-discovery-detail.png`,
+      },
+      {
+        title: "Eliminate checkout anxiety with itemized protection, delivery windows, and 15-minute decline holds.",
+        body: "Travelers toggle between Hub pickup and LAX valet delivery, see every protection tier and refundable deposit ($250) calculated in real time, and keep their reserved vehicle for 15 minutes even if a travel card triggers a bank hold.",
+        badge: "02 · Transparent Checkout & Recovery",
+        image: `${assetBase}motive/flow-booking-checkout.png`,
+      },
+      {
+        title: "Turn the active rental into a live Digital Key and 350kW charging companion.",
+        body: "From the persistent Home Trip Strip to the full Active Trip screen, drivers unlock doors with Face ID, flash headlights in crowded airport garages, and route directly to available Electrify America stalls.",
+        badge: "03 · Digital Key & Dark Mode Telemetry",
+        image: `${assetBase}motive/dark-mode-telemetry.png`,
+      },
+    ],
+    outcomes: [
+      [
+        "8 product modules",
+        "Complete Light & Dark mode system across onboarding, discovery, checkout, and telemetry",
+        "Cohesive iOS product architecture",
+      ],
+      [
+        "Zero counter wait",
+        "Direct-to-bay BLE/NFC Digital Key with 4-corner photo inspection",
+        "Bypass airport kiosk lines",
+      ],
+      [
+        "100% fee clarity",
+        "Upfront multi-day totals, refundable hold math, and 15-min decline protection",
+        "Eliminates surprise upsells",
+      ],
+    ],
+  },
+  {
+    id: "pennwise",
+    liveUrl: "./pennwise-prototype/index.html",
+    index: "20",
+    name: "Pennwise",
+    codename: "Pennwise Personal Finance & Wealth",
+    category: "Fintech · Personal finance & wealth simulation app",
+    portfolioCategory: "Mobile",
+    featured: true,
+    summary:
+      "A personal finance and wealth simulation mobile product that unifies Net Worth, a 4-pillar Financial Compass score, automated goal allocation, portfolio fee analysis, and interactive What-If life scenarios.",
+    headlineStart: "Your money, ",
+    headlineAccent: "clearly.",
+    lede: "As Lead Product Designer, I designed Pennwise across 16 mobile product modules and a semantic Light/Dark token system—turning fragmented bank balances, retirement accounts, and life trade-offs into one calm Financial Compass and What-If simulation engine.",
+    role: "Lead Product Designer",
+    team: "Product · UX Research · iOS & Fintech Engineering",
+    scope:
+      "Financial Compass · Savings & debt planners · Portfolio analytics · What-If simulation engine · Semantic design system",
+    platform: "iOS Mobile Application (Light & Dark Mode)",
+    heroImage: `${assetBase}pennwise/hero-cover.png`,
+    secondaryImage: `${assetBase}pennwise/design-system.png`,
+    panoramaTitle: "Pennwise Semantic Color & Surface Architecture · Light & Dark Mode",
+    panoramaLabel: "Pennwise Lime (#B6F256) · Neutral Ink (#0A0A0A) · Single-Hero Accent Rule",
+    frictionTitle: "Disconnected Account Balances, Goal Anxiety & Opaque Projections",
+    resolutionTitle: "4-Pillar Financial Compass & Sandbox What-If Simulator",
+    resolutionBody: "Connected live Net Worth ($128,420.50), a weighted 72/100 Financial Compass score, automated surplus routing ($870/mo), and a non-destructive 10-year What-If scenario simulator in one calm mobile system.",
+    problemStatement: "Everyday banking apps dump raw transaction feeds without strategic direction, while wealth calculators force users through rigid spreadsheets that never explain how buying a home, taking a sabbatical, or increasing savings affects their real net worth trajectory.",
+    audienceTitle: "Households and professionals building long-term financial clarity",
+    audienceGoal: "I want to see where my money stands today, understand the real trade-offs behind my goals, and test big life decisions safely before I commit.",
+    personaQuotes: [
+      {
+        quote: "I have checking, a high-yield savings account, a 401(k), and a student loan—I need one honest score that tells me which lever actually moves my finances forward this month.",
+        name: "Sara Malik",
+        designation: "Product Manager · $128k Net Worth",
+      },
+      {
+        quote: "Before we commit to a $400k home in 2029, show me side-by-side how a 15% down payment affects our 2036 retirement trajectory and monthly cash buffer.",
+        name: "Omar Khan",
+        designation: "Household Planner · Joint Simulation",
+      },
+      {
+        quote: "Don't just tell me my portfolio is up 14.2%—show me if my ETFs overlap and how much fund expense ratios are quietly costing me over 20 years.",
+        name: "Priya Shah",
+        designation: "Index Investor · $132.9k Portfolio",
+      },
+    ],
+    mandateTitle:
+      "Replace passive transaction lists with an actionable Financial Compass and sandbox What-If simulator.",
+    mandateBody:
+      "I structured Pennwise around a strict visual restraint rule—using neutral shadcn/ui surfaces (`#FAFAFA` / `#0A0A0A`) and reserving Pennwise Lime (`#B6F256`) for the single highest-leverage element per screen—so dense financial data, 4-pillar health scores, and 10-year sensitivity charts remain effortless to scan.",
+    ownershipPillars: [
+      [
+        "Financial Compass Architecture",
+        "Designed the 0–100 Compass Score combining Spending (84), Investing (80), Debt (66), and Saving (58) with 1-tap action plans.",
+      ],
+      [
+        "Interactive What-If Simulation Studio",
+        "Created the 9-step sandbox simulator (`Module 12`) to stress-test home purchases, raises, and 3-month sabbaticals against 2036 Net Worth.",
+      ],
+      [
+        "Semantic Token & Component System",
+        "Built Light/Dark mode variables (`bg/default`, `brand/default #B6F256`, `status/positive #15803D`) and reusable chart/sheet primitives.",
+      ],
+    ],
+    discoverySummary:
+      "Through diary studies and financial-planning interviews, we discovered that users abandon budgeting apps when they feel judged by past transactions rather than guided toward future leverage.",
+    discoveryMethods: [
+      [
+        "Household Money Diary Study",
+        "Tracked how 18 professionals checked balances, moved payday surplus, and discussed major purchases with partners.",
+      ],
+      [
+        "Spreadsheet & Robo-Advisor Audit",
+        "Identified why users distrusted black-box retirement projections that hid inflation (`2.5%`) and return (`6.0%`) assumptions.",
+      ],
+      [
+        "Visual Density & Color Restraint Testing",
+        "Validated that limiting `#B6F256` lime to one hero indicator per screen reduced cognitive load on dense multi-account views.",
+      ],
+    ],
+    figmaNotes: [
+      {
+        tone: "emerald",
+        tag: "One Lime Hero",
+        text: "“Keep the `#B6F256` lime accent to one hero element per screen—let neutral ink `#0A0A0A` and `#FAFAFA` carry the structure.”",
+      },
+      {
+        tone: "amber",
+        tag: "Biggest Lift First",
+        text: "On Financial Compass (034), rank the four pillars strongest-first and pin 'Biggest lift: saving (+6 pts)' at the bottom.",
+      },
+      {
+        tone: "sky",
+        tag: "Safe Sandbox",
+        text: "Reassure users on What-Ifs (185): 'Simulations never change your real accounts, budgets, or goals.'",
+      },
+      {
+        tone: "rose",
+        tag: "Surplus Guardrail",
+        text: "When creating a new goal (133), warn inline if the required monthly contribution exceeds the $870 planned monthly surplus.",
+      },
+    ],
+    synthesis: [
+      {
+        theme: "Actionable health over raw balances",
+        evidence: "Seeing `$128,420.50` alone didn't tell users whether their 14% savings rate or 14.4% debt-to-asset ratio needed attention first.",
+        response: "Paired the Net Worth hero with a `Compass 72` pill that drills into Spending, Investing, Debt, and Saving pillars.",
+      },
+      {
+        theme: "Finite monthly surplus trade-offs",
+        evidence: "Users created multiple savings goals without realizing their combined monthly targets exceeded their actual cash flow surplus.",
+        response: "Designed the `$870 Monthly Surplus Allocator` (`138 · Contributions`) with priority ranking and timeline impact badges.",
+      },
+      {
+        theme: "Transparent long-term assumptions",
+        evidence: "Users doubted 10-year net worth numbers when inflation, return rates, and debt payoff strategies were hidden.",
+        response: "Exposed interactive sliders (`3.0% income growth`, `2.5% inflation`, `6.0% return`) and tornado sensitivity charts (`201 · Sensitivity Analysis`).",
+      },
+    ],
+    principles: [
+      [
+        "Lead with net position and next action",
+        "Pair total Net Worth with safe-to-spend cash (`$2,628.08`) and a concrete 3-step monthly action plan.",
+      ],
+      [
+        "One brand accent per screen",
+        "Reserve Pennwise Lime (`#B6F256`) for the primary score, active progress bar, or primary CTA so alerts remain unmistakable.",
+      ],
+      [
+        "Make every projection inspectable",
+        "Show real-dollar toggles, inflation assumptions, and p50–p90 confidence bands (`$482k–$567k`) beneath every simulation.",
+      ],
+      [
+        "Protect live accounts from experiments",
+        "Isolate What-If life simulations in a non-destructive sandbox that can be saved, compared, and shared with a partner.",
+      ],
+    ],
+    journeySummary:
+      "A 5-stage financial clarity loop moving from daily Net Worth orientation to 4-pillar diagnosis, surplus allocation, portfolio fee inspection, and 2036 scenario simulation.",
+    journeyFlow: [
+      {
+        step: "01",
+        stage: "Orient Net Worth & Cash",
+        actor: "Account Holder",
+        userGoal: "Check consolidated Net Worth ($128,420.50), safe-to-spend cash ($2,628), and October cash flow (+$870)",
+        frictionEliminated:
+          "Logging into four separate banking and retirement apps to piece together household net worth.",
+        uxResolution:
+          "`033 · Main Dashboard` hero card with 1-tap privacy mask, quick transfer actions, and synced account cards.",
+        engineeringContract:
+          "Aggregated Plaid/OAuth balance ledger + real-time safe-to-spend buffer calc",
+        touchpoints: ["033 Main Dashboard", "036 Net Worth", "040 Available Cash"],
+      },
+      {
+        step: "02",
+        stage: "Diagnose Financial Compass",
+        actor: "Account Holder",
+        userGoal: "Understand why the Compass Score is 72/100 and which pillar offers the biggest point lift",
+        frictionEliminated:
+          "Vague credit-score style gauges that don't explain how daily spending or savings rate changes the score.",
+        uxResolution:
+          "`034 · Financial Compass` 4-pillar breakdown (`Spending 84`, `Investing 80`, `Debt 66`, `Saving 58`) + `049 · Action Plan`.",
+        engineeringContract:
+          "Weighted 4-pillar scoring engine + marginal point-lift recommender",
+        touchpoints: ["034 Financial Compass", "035 Health Breakdown", "049 Action Plan"],
+      },
+      {
+        step: "03",
+        stage: "Allocate Monthly Surplus",
+        actor: "Household Planner",
+        userGoal: "Distribute the $870 monthly surplus across Emergency Fund ($300), Home Down Payment ($330), and Japan Trip ($240)",
+        frictionEliminated:
+          "Over-committing monthly cash across uncoordinated savings goals.",
+        uxResolution:
+          "`127 · Goals Overview` + `144 · Priorities` surplus bar with automated payday transfer rules and milestone celebrations.",
+        engineeringContract:
+          "Payday auto-split rule engine + surplus over-allocation guardrail",
+        touchpoints: ["127 Goals Overview", "138 Contributions", "144 Priorities"],
+      },
+      {
+        step: "04",
+        stage: "Audit Portfolio & Fees",
+        actor: "Long-Term Investor",
+        userGoal: "Verify asset diversification (78% score) and fee drag ($141/yr) across brokerage and 401(k) accounts",
+        frictionEliminated:
+          "Hidden mutual-fund expense ratios and overlapping US equity exposure across accounts.",
+        uxResolution:
+          "`163 · Portfolio Overview` + `182 · Diversification` & `183 · Fees` showing exact annual fee savings (`$4,200 over 20 yrs`).",
+        engineeringContract:
+          "Holdings look-through classifier + 20-year expense-ratio compounding calc",
+        touchpoints: ["163 Portfolio", "166 Asset Allocation", "183 Fees Audit"],
+      },
+      {
+        step: "05",
+        stage: "Simulate What-If Scenarios",
+        actor: "Household Partners",
+        userGoal: "Compare buying a $400k home in 2029 vs. a 10% raise or 3-month sabbatical on 2036 Net Worth ($520k)",
+        frictionEliminated:
+          "Guessing whether a home purchase or career break will derail retirement at age 65.",
+        uxResolution:
+          "`185 · What-Ifs` + `200 · Compare` + `201 · Sensitivity Analysis` tornado chart and partner PDF/link sharing.",
+        engineeringContract:
+          "Monte Carlo & deterministic 30-year cash-flow projection engine",
+        touchpoints: ["185 What-Ifs", "198 Results ($505k)", "200 Scenario Compare"],
+      },
+    ],
+    wireframes: [
+      {
+        id: "01",
+        title: "Net Worth & Quick Actions (033)",
+        caption: "Soft lime radial hero card ($128,420.50), Compass 72 badge, 4 quick actions, and Checking/Savings split.",
+        layout: "mobile-home",
+      },
+      {
+        id: "02",
+        title: "4-Pillar Financial Compass (034)",
+        caption: "72/100 score card with proportional pillar bars, ranked pillar list, and dark 'Biggest lift' banner.",
+        layout: "mobile-queue",
+      },
+      {
+        id: "03",
+        title: "Surplus & Goal Planner (127–144)",
+        caption: "$37,450 goal progress header, payday cadence selector, and $870 monthly surplus priority allocator.",
+        layout: "mobile-ledger",
+      },
+      {
+        id: "04",
+        title: "What-If Scenario Compare (185–201)",
+        caption: "Interactive slider cards for savings/return assumptions, 2036 trajectory curves, and sensitivity bars.",
+        layout: "mobile-heatmap",
+      },
+    ],
+    architecturalPivot: {
+      summary:
+        "Early prototypes treated Budgeting, Debt, Investments, and Retirement as separate calculators with different visual scales. We unified the entire product around the `Financial Compass` and a single semantic token architecture (`#B6F256` brand lime + `#0A0A0A` neutral ink) so every adjustment in spending or debt immediately reflects in the user's Compass Score and 2036 What-If trajectory.",
+      before: "Isolated budget, debt, and retirement calculators",
+      after: "Unified Financial Compass + Live What-If Trade-Off Engine",
+    },
+    engineeringSummary:
+      "Defined a 2-collection Figma Variable architecture (`Primitives` → `Semantic Light/Dark` tokens synced with Tailwind/shadcn neutrals) and deterministic TypeScript contracts for the 4-pillar scoring and 10-year compounding simulation engine.",
+    collabTracks: [
+      {
+        phase: "01 / Token & Surface System",
+        title: "Light/Dark semantic variables & 1-hero lime rule",
+        detail:
+          "Mapped `bg/default`, `bg/subtle`, `brand/default (#B6F256)`, and semantic status tokens across Light and Dark modes.",
+        deliverable: "Foundations & Token Spec (Node 343:2)",
+      },
+      {
+        phase: "02 / Core Modules (01–16)",
+        title: "End-to-end iOS financial flows",
+        detail:
+          "Designed Dashboard, Financial Compass, Cash Flow, Budgets, Bills, Debt Payoff, Goals, Portfolio, and What-If Simulation.",
+        deliverable: "16 Product Modules in Figma",
+      },
+      {
+        phase: "03 / Interactive Sandbox",
+        title: "Playable 5-module prototype",
+        detail:
+          "Built live Net Worth privacy masking, interactive Compass pillar inspection, goal top-ups, and real-time 2036 What-If sliders.",
+        deliverable: "Embedded Pennwise Prototype",
+      },
+    ],
+    contractBridge: {
+      figmaTitle: "Figma Token & Component Spec · Pennwise Mobile",
+      codeTitle: "Financial Compass & Simulation Engine Contract",
+      figmaSpecs: [
+        [
+          "Typography scale",
+          "Inter Variable (Display 56/-2.4px, Balance 34/-1.4px, Title 17/-0.2px, Body 14/20)",
+        ],
+        [
+          "Semantic color tokens",
+          "Brand Lime `#B6F256` · Brand Strong `#84CC16` · Ink `#0A0A0A` · Subtle `#FAFAFA` · Positive `#15803D`",
+        ],
+        [
+          "Component primitives",
+          "Nav Bar · Pill Tab Bar · Compass Pillar Card · Slider Assumption Card · Scenario Compare Matrix",
+        ],
+      ],
+      codeSpecs: [
+        [
+          "compassScoreState",
+          '{ score: 72, deltaMoM: 4, pillars: { spending: 84, investing: 80, debt: 66, saving: 58 } }',
+        ],
+        [
+          "surplusAllocation",
+          '{ monthlySurplus: 870, allocations: [{ goal: "emergency", amt: 300 }, { goal: "home", amt: 330 }] }',
+        ],
+        [
+          "simulationModel2036",
+          '{ startNW: 128420, monthlySave: 1390, returnPct: 6.0, inflationPct: 2.5, projected2036: 520000 }',
+        ],
+      ],
+    },
+    decisions: [
+      {
+        title: "Start with a 4-pillar Financial Compass and concrete action plan—not a wall of raw transactions.",
+        body: "The Main Dashboard (033) pairs Net Worth ($128,420.50) and safe-to-spend cash ($2,628.08) with a 72/100 Financial Compass score that pinpoints the exact monthly move (+6 pts from shifting $150/mo to savings) with the highest financial lift.",
+        badge: "01 · Dashboard & Financial Compass",
+        image: `${assetBase}pennwise/dashboard-compass.png`,
+      },
+      {
+        title: "Connect savings goals to a real $870 monthly surplus guardrail and automated payday rules.",
+        body: "Across Emergency Fund, Home Down Payment, and Retirement planners (Module 09), users see how every dollar of monthly surplus is allocated, get warned before over-scheduling their income, and celebrate 75% milestones.",
+        badge: "02 · Savings Goals & Surplus Planning",
+        image: `${assetBase}pennwise/goals-planning.png`,
+      },
+      {
+        title: "Make long-term wealth and What-If life scenarios tangible with editable assumptions.",
+        body: "Users audit their $132,968 portfolio for asset diversification and hidden ETF fee drag, then jump into the What-If Simulator (Module 12) to test buying a $400k home in 2029, a 10% raise, or a 3-month sabbatical with live sensitivity bars.",
+        badge: "03 · Portfolio & What-If Simulation",
+        image: `${assetBase}pennwise/simulation-scenarios.png`,
+      },
+    ],
+    outcomes: [
+      [
+        "16 product modules",
+        "Cohesive mobile architecture from onboarding & dashboard to tax/year-in-review",
+        "End-to-end personal finance system",
+      ],
+      [
+        "72/100 Compass clarity",
+        "Turns multi-account balances into 4 transparent pillars and a 3-step action plan",
+        "Immediate next-step confidence",
+      ],
+      [
+        "Live What-If sandbox",
+        "Models 10-year net worth sensitivity across home purchases, raises, and sabbaticals",
+        "Zero-risk scenario planning",
+      ],
+    ],
+  },
 ]
 
 const rawCatalog: {
@@ -1392,7 +2097,17 @@ const rawCatalog: {
   scope: string
   platform: string
   image: string
+  secondaryImage?: string
+  panoramaTitle?: string
+  panoramaLabel?: string
+  frictionTitle?: string
+  resolutionTitle?: string
+  resolutionBody?: string
+  problemStatement?: string
   liveUrl?: string
+  audienceTitle?: string
+  audienceGoal?: string
+  personaQuotes?: PersonaQuote[]
   decisions: [string, string][]
 }[] = [
   {
@@ -1439,6 +2154,12 @@ const rawCatalog: {
       "Homepage strategy · Journey design · Content hierarchy · Responsive UX",
     platform: "Enterprise Responsive Web Experience",
     image: `${assetBase}citi-homepage-desktop.png`,
+    panoramaTitle: "Production Banking Experience & Mobile Adaptation",
+    panoramaLabel: "High-Traffic Enterprise Web & Mobile Hierarchy",
+    frictionTitle: "Internal Silos & Cluttered Promotional Grid",
+    resolutionTitle: "Customer-Intent Driven Journey Architecture",
+    resolutionBody: "Re-architected the homepage around intuitive financial needs, scannable rate comparisons, and responsive touchpoints.",
+    problemStatement: "The legacy homepage forced visitors through dense product silos and competing promotional banners rather than direct customer tasks.",
     decisions: [
       [
         "Start with customer intent, not internal product silos",
@@ -1591,36 +2312,6 @@ const rawCatalog: {
     ],
   },
   {
-    id: "finwise",
-    index: "12",
-    name: "ArtoQu (FinWise)",
-    category: "Fintech · Personal finance workspace",
-    portfolioCategory: "Product & UX",
-    summary:
-      "A financial workspace connecting savings goals, cash-flow trends, transaction investigation, and multi-account wallet context.",
-    role: "Lead Designer",
-    team: "UX researchers · Product · Engineering",
-    scope:
-      "Dashboard hierarchy · Transaction workspace · Wallet & statistics views",
-    platform: "Responsive Web Application",
-    image: `${assetBase}finwise-web/dashboard.png`,
-    liveUrl: "https://finance-dashboard-slice-ui.vercel.app/dashboard",
-    decisions: [
-      [
-        "Frame savings goals with horizon, target, and progress",
-        "Made long-term targets recognizable at a glance without requiring a separate planning session.",
-      ],
-      [
-        "Give transactions a dedicated investigation workspace",
-        "Kept the overview calm while providing full filtering and record inspection in Transactions.",
-      ],
-      [
-        "Consistent time-period and currency framing",
-        "Aligned cash-flow charts and statistics views so comparisons never require guesswork.",
-      ],
-    ],
-  },
-  {
     id: "pulse",
     index: "13",
     name: "Pulse",
@@ -1768,79 +2459,6 @@ const rawCatalog: {
     ],
   },
   {
-    id: "learnwise",
-    index: "18",
-    name: "Learnwise",
-    category: "Education · AI-powered learning companion",
-    portfolioCategory: "Mobile",
-    summary:
-      "An AI-powered learning app connecting onboarding goals, course discovery, guided lessons, quizzes, progress, and an AI tutor in one mobile experience.",
-    role: "Lead Product Designer",
-    team: "Product · UX research · Engineering",
-    scope:
-      "Onboarding · Course catalog · Lesson player · AI tutor · Progress",
-    platform: "Native mobile product prototype",
-    image: "/learnwise-prototype/assets/hero.png",
-    liveUrl: "/learnwise-prototype/index.html",
-    audienceTitle: "Learners building a consistent study habit",
-    audienceGoal:
-      "I want a clear path from my goal to the next lesson, useful feedback when I get stuck, and visible progress I can trust.",
-    decisions: [
-      [
-        "Start with goals and a personal learning path",
-        "Used onboarding choices to make course discovery feel relevant instead of presenting an undifferentiated catalog.",
-      ],
-      [
-        "Keep practice and explanation in the same loop",
-        "Connected lesson content, quizzes, results, and AI tutor support so learners can recover without leaving the flow.",
-      ],
-      [
-        "Make progress motivating and concrete",
-        "Combined completion, streaks, certificates, and next lessons into a progress model that supports return visits.",
-      ],
-    ],
-  },
-  {
-    id: "pennwise",
-    index: "19",
-    name: "Pennwise",
-    category: "Fintech · Personal finance planning",
-    portfolioCategory: "Product & UX",
-    summary:
-      "A personal finance app that turns accounts, budgets, goals, debt, and future scenarios into one understandable planning system.",
-    role: "Lead Product Designer",
-    team: "Product · UX research · Engineering",
-    scope:
-      "Financial compass · Planning flows · Scenario analysis · Design system",
-    platform: "Responsive Web & Mobile Product System",
-    audienceTitle: "People building a confident financial plan",
-    audienceGoal:
-      "“I want to see where my money stands today, understand the trade-offs behind my goals, and know which next step I can act on.”",
-    personaQuotes: [
-      { quote: "I want to see where my money stands today before I make another decision.", name: "Maya Thompson", designation: "Early-career professional" },
-      { quote: "Show me the trade-offs behind a goal, not just a number that looks optimistic.", name: "Jordan Lee", designation: "Household planner" },
-      { quote: "I need to understand what changes if my income, spending, or returns move.", name: "Omar Khan", designation: "Long-term planner" },
-      { quote: "Give me a next step I can act on without becoming a financial expert first.", name: "Priya Shah", designation: "First-time investor" },
-    ],
-    image: "/pennwise-overview.svg",
-    liveUrl:
-      "https://www.figma.com/design/NZbmIQrN9GMHgTasujs7Xv/Pennwise-%E2%80%94-Personal-Finance-App?m=auto&t=MkSK5hpyyhXRYMvc-6",
-    decisions: [
-      [
-        "Start with a financial compass, not a pile of accounts",
-        "Made current position, upcoming milestones, and the next useful action visible from the dashboard.",
-      ],
-      [
-        "Turn long-term planning into comparable scenarios",
-        "Designed sensitivity views that show how returns, inflation, and income changes affect a plan without hiding the assumptions.",
-      ],
-      [
-        "Use one semantic system across dense financial states",
-        "Defined light/dark tokens, accessible status colors, and reusable mobile components across the product journeys.",
-      ],
-    ],
-  },
-  {
     id: "solshine",
     index: "20",
     name: "Solshine",
@@ -1885,6 +2503,558 @@ const personaNames = [
   ["Taylor Reed", "Daily user"],
   ["Jordan Ellis", "Team lead"],
 ]
+const catalogJourneys: Record<
+  string,
+  [string, string, string, string, string[], string][]
+> = {
+  "dev-mode": [
+    [
+      "Discover Capability",
+      "Decide whether the API supports the reconciliation job.",
+      "Capability descriptions were detached from the request and response contract.",
+      "Introduced one task, endpoint, sample response, and 3-step integration path.",
+      ["Quickstart Header", "Endpoint Spec", "Sample JSON"],
+      "GET /v1/capabilities + OpenAPI summary",
+    ],
+    [
+      "Scope Credentials",
+      "Create an application with only the permission the task needs.",
+      "Credentials and scopes were easy to confuse, causing late 403 errors.",
+      "Explained the task-specific scope inline while modeling key creation and revocation.",
+      ["App Credentials", "Scope Selector", "Key Vault"],
+      'oauthScope: ["reconciliations:write"]',
+    ],
+    [
+      "Execute First Call",
+      "Construct and run the first live request.",
+      "Field formats and monetary units required guesswork across reference pages.",
+      "Placed field definitions, code example, input controls, and simulated response together.",
+      ["Split Explorer", "Payload Editor", "201 Inspector"],
+      "POST /v1/reconciliations · amountMinorUnits",
+    ],
+    [
+      "Recover Exceptions",
+      "Diagnose a 401, 403, or 422 failure and continue.",
+      "Auth, permission, and validation errors were treated as one generic failure.",
+      "Gave each status code a root cause, request ID, suggested fix, and 1-click retry.",
+      ["Error Banner", "Request ID Trace", "Retry CTA"],
+      '{ status: 403, requiredScope, requestId }',
+    ],
+    [
+      "Operate & Launch",
+      "Verify asynchronous webhook delivery and production readiness.",
+      "A green API response hid webhook delivery timeouts and missing launch gates.",
+      "Tracked stable event IDs and retry attempts separately beside the launch checklist.",
+      ["Webhook Log", "Event Replay", "Readiness Gate"],
+      '{ eventId: "evt_92", deliveryAck: true }',
+    ],
+  ],
+  "citi-homepage": [
+    [
+      "Arrive & Orient",
+      "Understand which banking paths match my immediate financial need.",
+      "Competing promotional banners diluted the starting point on load.",
+      "Replaced hero clutter with intent-led journey entry points across Cards, Banking, and Lending.",
+      ["Intent Hero", "Product Selector", "Quick Links"],
+      "entryIntent: 'cards' | 'banking' | 'lending'",
+    ],
+    [
+      "Match Need to Tier",
+      "Recognize which account or card tier fits my household profile.",
+      "Internal banking nomenclature forced visitors to translate jargon.",
+      "Framed product cards around plain-language customer outcomes and annual value.",
+      ["Tier Cards", "Benefit Highlights", "Eligibility Cue"],
+      "productCardSchema · outcomeFirstCopy",
+    ],
+    [
+      "Compare Side-by-Side",
+      "Evaluate APR, rewards, and fee structures without opening 5 tabs.",
+      "Key terms were scattered across separate marketing and legal pages.",
+      "Unified APR, intro bonuses, and fee terms into scannable comparison rows.",
+      ["Comparison Strip", "APR & Fee Table", "Term Tooltip"],
+      "comparisonMatrix[3] · synchronizedBreakpoints",
+    ],
+    [
+      "Verify Eligibility",
+      "Check qualification cues before starting an application.",
+      "Visitors abandoned forms when credit or deposit requirements appeared late.",
+      "Surfaced pre-qualification signals and required documents right beside the CTA.",
+      ["Pre-Qual Check", "Requirement List", "Primary CTA"],
+      "preQualState: 'READY' | 'DOCS_REQUIRED'",
+    ],
+    [
+      "Continue on Mobile",
+      "Resume the selected product application seamlessly on phone or desktop.",
+      "Mobile and desktop layouts previously showed different hierarchy and links.",
+      "Preserved identical decision order and sticky action bars across all breakpoints.",
+      ["Responsive Grid", "Sticky Apply Bar", "Saved Intent"],
+      "viewportParity · persistedJourneyToken",
+    ],
+  ],
+  enta: [
+    [
+      "Check Multi-Currency Liquidity",
+      "See total available balance across NGN, USD, GBP, and stablecoins.",
+      "Fragmented asset tabs obscured what the combined portfolio total meant.",
+      "Displayed a unified home balance with instant currency-display toggling and asset breakdown.",
+      ["Wallet Overview", "Currency Switcher", "Asset Breakdown"],
+      "portfolioValuation · baseCurrency: 'USD'",
+    ],
+    [
+      "Select Rail & Intent",
+      "Choose between local bank transfer, cross-border FX, or payment link.",
+      "Different payout rails had hidden beneficiary and network requirements.",
+      "Started the send flow with clear destination intent and supported rail badges.",
+      ["Send Drawer", "Rail Selector", "Beneficiary Picker"],
+      "transferRail: 'BANK_WIRE' | 'FX_SWAP' | 'LINK'",
+    ],
+    [
+      "Inspect Live FX Quote",
+      "Verify exact exchange rate, fee, and recipient payout before locking.",
+      "Users confused debited source amounts with net recipient delivery.",
+      "Paired 'You send' and 'Recipient gets' with a live 30-second FX quote lock timer.",
+      ["FX Quote Card", "Fee Breakdown", "Quote Timer"],
+      '{ sendAmt, receiveAmt, fxRate, ttlSec: 30 }',
+    ],
+    [
+      "Authorize & Settle",
+      "Complete biometric or 2FA confirmation and fund the order.",
+      "Orders needing external bank settlement looked stuck without guidance.",
+      "Provided explicit step-by-step settlement instructions and countdown windows.",
+      ["2FA Modal", "Funding Instructions", "Time Window"],
+      "settlementStatus: 'AWAITING_FUNDS' | 'LOCKED'",
+    ],
+    [
+      "Track Cross-Border Receipt",
+      "Share auditable proof of payment and monitor final delivery.",
+      "'Submitted' was frequently mistaken for 'Settled in recipient bank'.",
+      "Built a live 4-step settlement tracker with shareable receipt links.",
+      ["Settlement Timeline", "Receipt Export", "Webhook Status"],
+      "txLifecycle: 'SUBMITTED' -> 'SETTLED'",
+    ],
+  ],
+  sendory: [
+    [
+      "Pick Purpose-Led Template",
+      "Start a campaign from a proven editorial or product-launch structure.",
+      "A blank canvas created decision paralysis at the start of every issue.",
+      "Curated starter templates organized by newsletter goal and reading time.",
+      ["Template Gallery", "Goal Filter", "Structure Preview"],
+      "templateInit · blockTreeSchema",
+    ],
+    [
+      "Compose Modular Blocks",
+      "Assemble hero stories, callouts, and CTA sections without coding.",
+      "Writers repeatedly rebuilt the same multi-column layouts from scratch.",
+      "Provided a searchable library of drag-and-drop editorial and commerce blocks.",
+      ["Block Drawer", "Canvas Dropzone", "Section Library"],
+      "blockNode: { id, type, props, children }",
+    ],
+    [
+      "Tune Block Typography & Spacing",
+      "Refine padding, type scale, and brand colors on the active block.",
+      "Global settings panels overwhelmed authors with unrelated controls.",
+      "Scoped the right-hand inspector to show only properties for the selected block.",
+      ["Contextual Inspector", "Token Swatches", "Spacing Slider"],
+      "activeBlockId -> scopedInspectorControls",
+    ],
+    [
+      "Verify Across Devices",
+      "Check how the issue renders in desktop, tablet, and mobile inboxes.",
+      "Editing outlines and handles hid line-wrap and dark-mode clipping bugs.",
+      "Built an instant 3-viewport live preview mode that strips editor chrome.",
+      ["Desktop Preview", "Mobile Viewport", "Inbox Check"],
+      "previewViewport: 'desktop' | 'tablet' | 'mobile'",
+    ],
+    [
+      "Save & Reuse Patterns",
+      "Preserve custom block combinations and roll back experiments safely.",
+      "Accidental edits or browser refreshes could wipe out unsaved layout tweaks.",
+      "Added local auto-save snapshots and a full undo/redo history stack.",
+      ["History Stack", "Auto-Save Badge", "Export HTML"],
+      "historyStack · localStorageSnapshot",
+    ],
+  ],
+  flownode: [
+    [
+      "Prompt Workflow in Plain English",
+      "Describe the operational automation goal and trigger conditions.",
+      "Blank node canvases intimidated non-technical operations leads.",
+      "Added an AI prompt composer with realistic starter prompts and trigger chips.",
+      ["AI Prompt Bar", "Starter Examples", "Trigger Pill"],
+      "promptToGraph(intentPrompt) -> DraftPlan",
+    ],
+    [
+      "Audit Generated Plan & Cost",
+      "Verify which external systems and API calls the AI plan will touch.",
+      "Auto-generated workflows previously inserted steps without explaining side effects.",
+      "Presented a human-readable step preview and estimated run cost before canvas insertion.",
+      ["Plan Preview Card", "Cost Estimator", "Insert CTA"],
+      '{ steps: 5, estCostPerRun: "$0.014", risk: "LOW" }',
+    ],
+    [
+      "Configure Nodes & Tollgates",
+      "Set conditional branches and mandatory human-approval checkpoints.",
+      "Deep node modals hid the surrounding upstream and downstream dependencies.",
+      "Kept the node graph interactive alongside a docked step-configuration drawer.",
+      ["Node Canvas", "Approval Gate Node", "Docked Inspector"],
+      "nodeType: 'TRIGGER' | 'ACTION' | 'HUMAN_GATE'",
+    ],
+    [
+      "Supervise Live Executions",
+      "Spot runs waiting for human approval vs. failed external webhooks.",
+      "Waiting-for-approval runs and crashed runs looked identical in logs.",
+      "Separated `Needs Approval`, `Running`, and `Failed` into distinct triage queues.",
+      ["Execution Queue", "Approval Action", "Payload Diff"],
+      "runState: 'AWAITING_HUMAN' | 'FAILED' | 'OK'",
+    ],
+    [
+      "Replay & Harden Rules",
+      "Inspect failed step payloads and re-run from the exact point of failure.",
+      "Fixing a downstream step previously required re-triggering the entire workflow.",
+      "Enabled step-level payload inspection and idempotent single-node replay.",
+      ["Step Trace Log", "Payload Inspector", "Replay Node"],
+      "replayFromNode(runId, nodeId,idempotencyKey)",
+    ],
+  ],
+  iretv: [
+    [
+      "Browse Editorial Collections",
+      "Find a meaningful independent film for family movie night.",
+      "Algorithmic feeds felt noisy and lacked curatorial point of view.",
+      "Organized discovery around human-curated thematic rows and director spotlights.",
+      ["Editorial Hero", "Curated Rows", "Theme Pills"],
+      "collectionFeed · editorialCuratorTag",
+    ],
+    [
+      "Check Faith & Family Guide",
+      "Verify thematic suitability and content descriptors before pressing play.",
+      "Parents had to leave the app to search third-party parental-guide sites.",
+      "Embedded a structured Faith & Family Suitability Guide right beside the synopsis.",
+      ["Title Detail", "Suitability Matrix", "Trailer Player"],
+      "suitabilityGuide: { themes, language, familyNote }",
+    ],
+    [
+      "Review Transparent Rental Terms",
+      "Understand the exact price and viewing window before checkout.",
+      "Streaming apps often blurred one-time rentals with recurring subscriptions.",
+      "Stated the exact `$4.99` rental price, 14-day window, and 48-hour finish policy beside the CTA.",
+      ["Access Card", "14-Day Badge", "No-Sub Promise"],
+      '{ price: 4.99, windowDays: 14, playWindowHrs: 48 }',
+    ],
+    [
+      "Watch with Saved Progress",
+      "Stream across living-room TV or mobile without losing playback position.",
+      "Switching devices previously reset progress or hid remaining rental hours.",
+      "Synced second-by-second playback progress with a visible rental-time badge.",
+      ["HTML5 Player", "Resume Bar", "Remaining Time Pill"],
+      "playbackSync: { positionSec, expiresAtISO }",
+    ],
+    [
+      "Return to Organized Library",
+      "Distinguish active paid rentals from saved watchlist titles.",
+      "Expired rentals, active entitlements, and wishlist items were mixed together.",
+      "Split My Library into `Continue Watching`, `Active Rentals`, `Saved`, and `History`.",
+      ["My Library Tabs", "Entitlement Badge", "Re-Rent CTA"],
+      "libraryBucket: 'ACTIVE' | 'SAVED' | 'EXPIRED'",
+    ],
+  ],
+  pulse: [
+    [
+      "Monitor Settlement Health",
+      "Scan daily processing volume, settlement velocity, and active exceptions.",
+      "High-level KPIs did not distinguish delayed settlements from failed quotes.",
+      "Surfaced separate counters for Expected, Received, Settled, and Exception volume.",
+      ["Settlement KPI Strip", "Rail Health Bar", "Alert Banner"],
+      "ledgerSummary: { expected, received, settled }",
+    ],
+    [
+      "Locate Flagged Transactions",
+      "Filter high-density transaction rows by rail, status, or mismatch type.",
+      "Operators had to export CSVs to find underpaid or expired FX quotes.",
+      "Built instant status facets (`Mismatch`, `Delayed`, `Webhook Retry`) above the table.",
+      ["Facet Filter Bar", "High-Density Grid", "Status Pill"],
+      "queryFilter: { status: 'AMOUNT_MISMATCH' }",
+    ],
+    [
+      "Compare Pegged vs. Settled",
+      "See why a transaction paused between quote lock and final payout.",
+      "Single 'Amount' columns hid whether a variance happened at collection or FX conversion.",
+      "Displayed Pegged, Paid, and Settled columns side by side with delta badges.",
+      ["3-Column Amount Row", "Delta Badge", "FX Rate Lock"],
+      '{ peggedAmt, receivedAmt, varianceDelta }',
+    ],
+    [
+      "Investigate Root Cause",
+      "Inspect the timeline of bank callbacks, liquidity checks, and holds.",
+      "Evidence was split across backend logs and partner bank portals.",
+      "Unified the lifecycle timeline, warning reason, and raw bank reference in one drawer.",
+      ["Exception Drawer", "Lifecycle Timeline", "Bank Ref ID"],
+      "exceptionTrace: { stage, reasonCode, bankRef }",
+    ],
+    [
+      "Coordinate & Replay Webhook",
+      "Share an auditable trace ID with merchants and replay failed webhooks.",
+      "Support teams could not tell if the merchant's server acknowledged the settlement event.",
+      "Exposed stable webhook event IDs, HTTP response codes, and 1-click event replay.",
+      ["Webhook Monitor", "HTTP 200/500 Log", "Replay Button"],
+      "replayWebhook(eventId) -> attemptLog[]",
+    ],
+  ],
+  arca: [
+    [
+      "Unlock & Orient Balance",
+      "Check safe-to-spend balance and recent cash-flow movement in 3 seconds.",
+      "Multi-screen login and scattered account tabs slowed down daily checks.",
+      "Led with total liquid balance, net monthly pulse, and 3 primary thumb actions.",
+      ["Biometric Entry", "Total Balance Hero", "Quick Actions"],
+      "walletHome: { totalLiquid, monthlyDelta }",
+    ],
+    [
+      "Scan Category Budgets",
+      "See which spending categories are approaching their monthly cap.",
+      "Static pie charts didn't warn users until after a budget was exceeded.",
+      "Used progressive pacing bars with calm amber/emerald threshold indicators.",
+      ["Budget Pacing Strip", "Category Chips", "Pace Alert"],
+      "budgetPace: { spent, limit, daysLeft }",
+    ],
+    [
+      "Inspect Activity Feed",
+      "Verify a merchant charge or filter recurring subscriptions.",
+      "Summary cards lacked merchant logos, timestamps, and category tags.",
+      "Built a searchable Activity destination with grouped daily ledgers.",
+      ["Activity Tab", "Merchant Row", "Search & Filter"],
+      "txFeed[] · groupedByDateISO",
+    ],
+    [
+      "Manage Card Security",
+      "Freeze a misplaced virtual or physical card or adjust spending limits.",
+      "Security toggles were buried 4 levels deep inside profile settings.",
+      "Placed `Freeze Card`, `Spend Limit`, and `Show PIN` directly beneath the visual card.",
+      ["Card Carousel", "Instant Freeze Toggle", "Limit Slider"],
+      "cardControl: { cardId, frozen: boolean, limit }",
+    ],
+    [
+      "Return with Persistent Nav",
+      "Switch between Home, Cards, and Activity without losing scroll or filter state.",
+      "Deep sub-views previously trapped users in back-button chains.",
+      "Anchored a predictable 4-tab bottom bar with preserved tab state.",
+      ["Bottom Tab Bar", "State Persistence", "Toast Feedback"],
+      "tabRouter · preservedScrollPosition",
+    ],
+  ],
+  interoly: [
+    [
+      "Triage Low-Stock Alerts",
+      "Spot SKUs below reorder threshold at the start of a warehouse shift.",
+      "Critical stockouts were buried inside alphabetical catalog lists.",
+      "Pinned `Below Reorder` and `Urgent Orders` exception cards to the top of Home.",
+      ["Shift Overview", "Low-Stock Alert Strip", "Urgent Badge"],
+      "alertsQuery: { stockBelowReorder: true }",
+    ],
+    [
+      "Locate SKU by Scan or Filter",
+      "Jump to an item record from the warehouse aisle with one thumb.",
+      "Desktop-style tables required horizontal scrolling on handheld devices.",
+      "Created a dedicated `Items` bottom tab with instant SKU/barcode search and zone chips.",
+      ["Items Tab", "SKU Search Bar", "Aisle Filter"],
+      "skuLookup(query, warehouseZone)",
+    ],
+    [
+      "Verify Bin & Stock Count",
+      "Confirm item identity, bin location, and reserved vs. available units.",
+      "Similar package variants caused picking and recount errors on the floor.",
+      "Grouped product thumbnail, SKU code, bin tag, and unit breakdown on one card.",
+      ["SKU Detail Card", "Bin Location Pill", "Unit Split"],
+      '{ sku, bin: "B-14", available: 18, reserved: 6 }',
+    ],
+    [
+      "Advance Order Fulfillment",
+      "Move a customer order from `Picking` to `Packed` to `Shipped`.",
+      "Floor staff couldn't see which orders were blocked by missing stock.",
+      "Built a dedicated `Orders` queue with clear stage pills and pick-list checklists.",
+      ["Orders Tab", "Fulfillment Stepper", "Pack Action"],
+      "orderState: 'PICKING' | 'PACKED' | 'SHIPPED'",
+    ],
+    [
+      "Log Adjustment & Resume",
+      "Record a cycle-count adjustment and return immediately to the aisle queue.",
+      "Submitting an edit previously reset filters and sent workers back to Home.",
+      "Used an inline bottom sheet for count adjustments that preserves list position.",
+      ["Adjustment Sheet", "Reason Chip", "Instant Sync"],
+      "patchInventoryCount(sku, delta, reasonCode)",
+    ],
+  ],
+  shoppulse: [
+    [
+      "Scan Store Revenue Signals",
+      "Check GMV, conversion rate, average order value, and fulfillment backlog.",
+      "Top-line KPI spikes couldn't be traced to the products or channels driving them.",
+      "Paired every KPI card with period-over-period delta badges and direct drill-down links.",
+      ["Executive KPI Row", "Period Selector", "Delta Badge"],
+      "storeMetrics: { gmv, crPct, aov, periodDelta }",
+    ],
+    [
+      "Drill Into Product Catalog",
+      "Identify which top-selling SKUs are running low on inventory.",
+      "Merchandising and inventory lived in separate tools with different SKU statuses.",
+      "Combined unit velocity, gross margin, and live stock health in the Products view.",
+      ["Products Table", "Stock Health Pill", "Velocity Sort"],
+      "productRow: { sku, revenue, stockStatus }",
+    ],
+    [
+      "Compare Channel Cohorts",
+      "Evaluate acquisition channels and returning-customer retention curves.",
+      "Static dashboard charts couldn't be filtered by date window or campaign.",
+      "Created a dedicated `Analytics` destination with synchronized cohort and funnel charts.",
+      ["Analytics View", "Channel Funnel", "Cohort Matrix"],
+      "analyticsQuery: { window: '30d', channel }",
+    ],
+    [
+      "Triage Fulfillment Exceptions",
+      "Find high-value orders delayed in payment review or warehouse packing.",
+      "Operators had to click into individual orders to see payment vs. shipping state.",
+      "Displayed dual `Payment Status` and `Fulfillment Status` badges on every order row.",
+      ["Orders Workspace", "Dual Status Badges", "Bulk Action"],
+      '{ payment: "PAID", fulfillment: "UNFULFILLED" }',
+    ],
+    [
+      "Act & Verify Store Impact",
+      "Restock a flagged SKU or expedite an order without losing filter context.",
+      "Switching between Analytics, Products, and Orders cleared active date ranges.",
+      "Persisted store scope and time-window parameters across all left-rail destinations.",
+      ["Persistent Left Rail", "Global Date Scope", "Action Toast"],
+      "globalStoreContext: { dateRange, currency }",
+    ],
+  ],
+  urbandrive: [
+    [
+      "Set Pickup & Trip Window",
+      "Enter pickup city, dates, and driver age requirements on entry.",
+      "Browsing fleet catalogs before setting dates led to dead-end unavailability.",
+      "Anchored a clean trip-context bar at the top of the home and fleet experience.",
+      ["Trip Search Bar", "Date Range Picker", "Location Chip"],
+      "tripContext: { pickupLoc, startISO, endISO }",
+    ],
+    [
+      "Filter by Real Trip Capacity",
+      "Narrow vehicles by passenger seats, luggage bags, transmission, and drivetrain.",
+      "Industry car-class codes ('ICAR', 'SFAR') meant nothing to everyday travelers.",
+      "Replaced opaque class codes with visual capacity chips (`5 Seats`, `3 Bags`, `AWD`).",
+      ["Capacity Filters", "Fleet Grid", "Spec Badges"],
+      "fleetFilter: { minSeats: 5, minBags: 3, awd }",
+    ],
+    [
+      "Compare Daily vs. Total Price",
+      "Evaluate two vehicles side by side with real multi-day pricing.",
+      "Headline daily rates hid mandatory airport fees and mileage caps.",
+      "Surfaced both `$ / day` and the all-in trip estimate directly on every fleet card.",
+      ["Vehicle Card", "All-In Estimate", "Compare Drawer"],
+      '{ ratePerDay: 68, estTripTotal: 234, unlimitedMi }',
+    ],
+    [
+      "Configure Protection & Extras",
+      "Add collision coverage, child seats, or an additional driver with live math.",
+      "Insurance tiers were written in dense legal prose at the final payment step.",
+      "Placed plain-language protection cards beside a sticky live-updating price summary.",
+      ["Protection Cards", "Extras Toggle", "Sticky Summary"],
+      "bookingCart: { vehicleId, coverageTier, extras[] }",
+    ],
+    [
+      "Confirm & Receive Voucher",
+      "Complete reservation with clear cancellation terms and pickup instructions.",
+      "Travelers weren't sure what documents or deposit amount was required at pickup.",
+      "Generated a structured confirmation pass listing exact pickup desk, hold amount, and ID checklist.",
+      ["Progress Stepper", "Confirmation Pass", "Pickup Checklist"],
+      "reservationConfirmed: { bookingRef, depositHold }",
+    ],
+  ],
+  pennwise: [
+    [
+      "Check Financial Compass",
+      "See net worth, safe monthly surplus, and goal health on one calm surface.",
+      "Traditional finance apps dumped raw transaction rows without strategic context.",
+      "Designed a Financial Compass header that frames net position and next best action.",
+      ["Compass Dashboard", "Surplus Indicator", "Action Prompt"],
+      "compassState: { netWorth, monthlySurplus, status }",
+    ],
+    [
+      "Model Life & Income Scenarios",
+      "Test how a salary change, home purchase, or sabbatical affects 5-year runway.",
+      "Spreadsheets required manual formula edits to compare two life choices.",
+      "Built interactive sliders for income, savings rate, and market return with live curve diffs.",
+      ["Scenario Studio", "Sensitivity Sliders", "Dual Trajectory Chart"],
+      "scenarioModel: { baseCurve[], variantCurve[] }",
+    ],
+    [
+      "Balance Competing Goals",
+      "Allocate monthly surplus across emergency cash, debt payoff, and retirement.",
+      "Saving for one goal in isolation hid how it delayed other household milestones.",
+      "Showed real-time timeline trade-offs (`Home Down Payment -4 mos` vs `Debt Free +2 mos`).",
+      ["Goal Trade-Off Matrix", "Allocation Bar", "Timeline Shift Pill"],
+      "goalAllocator: { emergencyPct, debtPct, investPct }",
+    ],
+    [
+      "Inspect Assumptions Clearly",
+      "Understand the inflation, tax, and return assumptions behind every projection.",
+      "Black-box robo-advisors showed optimistic numbers without explaining the math.",
+      "Exposed editable assumption chips (`6.5% Return`, `2.8% Inflation`) directly below charts.",
+      ["Assumption Bar", "Confidence Band", "Math Explainer"],
+      '{ realReturnPct: 6.5, inflationPct: 2.8, p50_p90 }',
+    ],
+    [
+      "Commit Monthly Action Plan",
+      "Turn the chosen scenario into a concrete 3-step monthly transfer checklist.",
+      "Users finished planning sessions inspired but unsure what to change in their bank.",
+      "Generated a checkable monthly action card with exact dollar amounts per account.",
+      ["Action Plan Card", "Transfer Checklist", "Progress Sync"],
+      "monthlyPlan: [{ account, action, amountUSD }]",
+    ],
+  ],
+  solshine: [
+    [
+      "Grasp Clean-Energy Value",
+      "Understand how residential and commercial solar reduces grid dependency and cost.",
+      "Generic green-energy templates buried payback math beneath stock imagery.",
+      "Led with a high-contrast value proposition paired with real kWh output & payback metrics.",
+      ["Editorial Hero", "Payback Proof Strip", "Primary CTA"],
+      "heroVariant: 'RESIDENTIAL' | 'COMMERCIAL'",
+    ],
+    [
+      "Explore Modular Services",
+      "Compare rooftop solar, battery storage, EV chargers, and maintenance plans.",
+      "Service pages often sounded repetitive and lacked clear technical scope.",
+      "Structured a modular 4-card service bento with capacity specs and use-case tags.",
+      ["Service Bento Grid", "Spec Badges", "Use-Case Filter"],
+      "serviceCatalog[4] · cmsCollectionBinding",
+    ],
+    [
+      "Verify Installation Proof",
+      "Inspect completed regional projects, system sizes (kW), and homeowner savings.",
+      "Buyers hesitated to request quotes without seeing comparable local installations.",
+      "Built case-study proof cards showing location, panel count, annual savings, and photos.",
+      ["Project Proof Carousel", "kW & Savings Chips", "Customer Quote"],
+      "installationProof: { kwSize, annualSavingsUSD }",
+    ],
+    [
+      "Estimate & Request Assessment",
+      "Submit property type and monthly bill range for a tailored solar consultation.",
+      "Long 18-field engineering forms caused 70%+ mobile enquiry abandonment.",
+      "Designed a progressive 3-step enquiry flow (`Property Type` → `Bill Range` → `Contact`).",
+      ["Progressive Enquiry Form", "Bill Range Pills", "Instant Confirmation"],
+      "leadCapture: { propertyType, monthlyBillBand }",
+    ],
+    [
+      "Adapt System via Framer CMS",
+      "Re-theme typography, brand colors, and regional proof for new solar partners.",
+      "Hardcoded agency sites broke whenever marketing teams edited copy lengths.",
+      "Engineered auto-layout Framer components and tokenized CMS fields for zero-code reuse.",
+      ["Framer Component Library", "CMS Collections", "Theme Variables"],
+      "framerSystem: { tokens, cmsSchema, breakpoints }",
+    ],
+  ],
+}
+
 const generatedAudiences: Record<string, [string, string]> = {
   rapidbi: ["Analytics developers and data product teams", "I need to compose, inspect, and explain trusted data without losing the context behind a metric."],
   shiftsnap: ["Hourly employees and store managers", "I need to see the right shift, request a change, and know when the schedule is confirmed."],
@@ -1896,7 +3066,6 @@ const generatedAudiences: Record<string, [string, string]> = {
   sendory: ["Newsletter authors and content teams", "I need a strong starting structure, flexible content blocks, and a reliable way to review the finished message."],
   flownode: ["Operations teams managing AI workflows", "I need to understand what an automated flow will do, approve it safely, and monitor what happens after launch."],
   iretv: ["Viewers discovering and returning to content", "I need to find something worth watching, understand why it fits, and continue without losing my place."],
-  finwise: ["People managing everyday finances", "I need a quick read on my money, clear trends, and practical next actions instead of another dense ledger."],
   pulse: ["Mobile banking customers", "I need to check my money, complete a payment, and recover confidently when something needs attention."],
   arca: ["People managing personal finances on mobile", "I need important balances and activity to be readable at a glance, even when I am moving quickly."],
   interoly: ["Inventory and order operators", "I need to locate an item, inspect its status, and move from a record to the next operational action."],
@@ -1905,15 +3074,157 @@ const generatedAudiences: Record<string, [string, string]> = {
   solshine: ["Homeowners and commercial solar buyers", "I need to understand the opportunity, trust the proof, and know how to request the right next conversation."],
 }
 
-const generatedProjects: CaseStudyProject[] = rawCatalog.map((item) => ({
+const projectScreens: Record<string, string[]> = {
+  "dev-mode": [
+    `${assetBase}dev-mode/explorer.png`,
+    `${assetBase}dev-mode/error-recovery.png`,
+    `${assetBase}dev-mode/webhooks.png`,
+    `${assetBase}dev-mode/readiness.png`,
+  ],
+  "citi-homepage": [
+    `${assetBase}citi-homepage-wireframes.png`,
+    `${assetBase}citi-homepage-production.png`,
+    `${assetBase}citi-homepage-mobile.png`,
+  ],
+  enta: [
+    `${assetBase}enta/send.png`,
+    `${assetBase}enta/buy.png`,
+    `${assetBase}enta/wallet.png`,
+  ],
+  sendory: [
+    `${assetBase}sendory/templates.png`,
+    `${assetBase}sendory/layout-controls.png`,
+    `${assetBase}sendory/preview-mobile.png`,
+    `${assetBase}sendory/preview-desktop.png`,
+  ],
+  flownode: [
+    `${assetBase}flownode/ai-plan.png`,
+    `${assetBase}flownode/builder.png`,
+    `${assetBase}flownode/executions.png`,
+    `${assetBase}flownode/operations.png`,
+  ],
+  iretv: [
+    `${assetBase}iretv/catalog-iteration.png`,
+    `${assetBase}iretv/film-detail.png`,
+    `${assetBase}iretv/library-iteration.png`,
+    `${assetBase}iretv/detail-iteration.png`,
+  ],
+  pulse: [
+    `${assetBase}pulse/transactions.png`,
+    `${assetBase}pulse/exception.png`,
+    `${assetBase}pulse/webhooks.png`,
+  ],
+  arca: [
+    `${assetBase}arca/welcome.png`,
+    `${assetBase}arca/cards.png`,
+    `${assetBase}arca/activity.png`,
+  ],
+  interoly: [
+    `${assetBase}interoly/items.png`,
+    `${assetBase}interoly/orders.png`,
+  ],
+  shoppulse: [
+    `${assetBase}shoppulse/products.png`,
+    `${assetBase}shoppulse/analytics.png`,
+    `${assetBase}shoppulse/orders.png`,
+  ],
+  urbandrive: [
+    `${assetBase}urbandrive/fleet.png`,
+    `${assetBase}urbandrive/booking.png`,
+  ],
+  pennwise: [
+    `${assetBase}finwise-dashboard.png`,
+    `${assetBase}finwise-web/statistics.png`,
+    `${assetBase}finwise-web/wallet.png`,
+    `${assetBase}finwise-transfer.png`,
+  ],
+  solshine: [
+    `${assetBase}solshine/services.png`,
+    `${assetBase}solshine/contact.png`,
+    `${assetBase}solshine/about.png`,
+  ],
+}
+
+const catalogHeadlines: Record<string, [string, string, string]> = {
+  "dev-mode": [
+    "From first API request to ",
+    "operational readiness.",
+    "Guide developers from API evaluation to production with side-by-side docs, recovery paths, and webhook logs.",
+  ],
+  "citi-homepage": [
+    "Customer-first journeys for ",
+    "high-traffic banking.",
+    "Replace internal product silos with intent-led navigation, scannable offer comparisons, and responsive clarity.",
+  ],
+  enta: [
+    "Cross-border money made ",
+    "transparent on every screen.",
+    "Unify multi-currency wallets, transparent FX previews, payment links, and beneficiaries in one calm workspace.",
+  ],
+  sendory: [
+    "Purpose-built newsletter ",
+    "authoring & live preview.",
+    "Give editorial teams intent-driven starter templates, block-level layout controls, and instant mobile verification.",
+  ],
+  flownode: [
+    "AI workflow automation with ",
+    "explicit human control.",
+    "Turn plain-language automation prompts into inspectable node graphs with approval gates and live ops telemetry.",
+  ],
+  iretv: [
+    "Curated cinema built for ",
+    "family trust & clarity.",
+    "Pair independent film discovery with a Faith & Family suitability guide, clear rental windows, and library continuity.",
+  ],
+  pulse: [
+    "Quote-to-settlement ops ",
+    "made fully traceable.",
+    "Separate expected, received, and settled amounts while surfacing root-cause exception recovery for ops teams.",
+  ],
+  arca: [
+    "Calm mobile money & ",
+    "instant card security.",
+    "Answer what you have, what changed, and what comes next on load while keeping card freeze and limit controls in sight.",
+  ],
+  interoly: [
+    "Floor-ready inventory & ",
+    "fulfillment operations.",
+    "Surface low-stock exceptions first and give warehouse operators one-tap thumb navigation across items and orders.",
+  ],
+  shoppulse: [
+    "Store performance tied to ",
+    "every product & order.",
+    "Connect top-line revenue and conversion spikes directly to the underlying catalog, stock levels, and fulfillment rows.",
+  ],
+  urbandrive: [
+    "Transparent fleet comparison ",
+    "& zero-surprise booking.",
+    "Let travelers filter by real trip capacity and see live protection and pricing updates before reservation lock.",
+  ],
+  pennwise: [
+    "Scenario-driven planning ",
+    "for real-life trade-offs.",
+    "Turn static account balances into an interactive financial compass that models income, debt, and return scenarios.",
+  ],
+  solshine: [
+    "Modular clean-energy web ",
+    "system built to convert.",
+    "Connect solar service education, installation proof, and low-friction consultation booking in a reusable Framer system.",
+  ],
+}
+
+const generatedProjects: CaseStudyProject[] = rawCatalog.map((item) => {
+  const screens = projectScreens[item.id] ?? [item.image]
+  const customHead = catalogHeadlines[item.id]
+  return {
   id: item.id,
   index: item.index,
   name: item.name,
   category: item.category,
   portfolioCategory: item.portfolioCategory,
   summary: item.summary,
-  headlineStart: `${item.name}: `,
-  headlineAccent: "architected for clarity.",
+  headlineStart: customHead?.[0] ?? "Designed for ",
+  headlineAccent: customHead?.[1] ?? "operational clarity.",
   lede: `As ${item.role.toLowerCase()}, I led discovery, UX architecture, interaction design, and design-to-engineering alignment for ${item.name}—turning complex requirements into a clear, testable experience.`,
   role: item.role,
   team: item.team ?? "UX researchers · Product · Engineering",
@@ -1945,24 +3256,30 @@ const generatedProjects: CaseStudyProject[] = rawCatalog.map((item) => ({
       designation,
     })),
   liveUrl: item.liveUrl,
-  mandateTitle: item.summary,
+  mandateTitle: customHead?.[2] ?? item.decisions[0]?.[0] ?? item.summary,
   mandateBody: generatedMandates[item.portfolioCategory],
-  problemStatement: `The existing ${item.name} experience made the core task harder to understand and act on, especially when people needed context before moving forward.`,
+  secondaryImage: item.secondaryImage ?? screens[3],
+  panoramaTitle: item.panoramaTitle ?? `${item.name} — Multi-Screen Interface System`,
+  panoramaLabel: item.panoramaLabel ?? `${item.scope}`,
+  frictionTitle: item.frictionTitle ?? `Fragmented workflows in ${item.category.split("·")[1]?.trim() || item.name}`,
+  resolutionTitle: item.resolutionTitle ?? item.decisions[0]?.[0] ?? `Clear, progressive architecture for ${item.name}`,
+  resolutionBody: item.resolutionBody ?? item.decisions[0]?.[1] ?? generatedMandates[item.portfolioCategory],
+  problemStatement: item.problemStatement ?? `Users navigating ${item.name} needed to connect high-level overview signals directly to detailed actions without losing task context across screens.`,
   ownershipPillars: [
     [
       "Information Architecture",
-      `Structured ${item.name} around clear user intents and predictable navigation destinations.`,
+      item.decisions[0]?.[1] ?? `Structured ${item.name} around clear user intents and predictable navigation destinations.`,
     ],
     [
       "Interaction & State Design",
-      "Defined loading, empty, active, exception, and confirmation states before visual polish.",
+      item.decisions[1]?.[1] ?? "Defined loading, empty, active, exception, and confirmation states before visual polish.",
     ],
     [
-      "Engineering Collaboration",
-      "Partnered with engineering on tokenized specs, responsive rules, and an interactive prototype that made the intended experience clear.",
+      "System & Delivery",
+      item.decisions[2]?.[1] ?? "Partnered with engineering on tokenized specs, responsive rules, and an interactive prototype.",
     ],
   ],
-  discoverySummary: `Working alongside our UX researchers, we audited the end-to-end workflow for ${item.name} and mapped where users lost context. I then partnered with engineering to establish a single shared state model.`,
+  discoverySummary: `Working alongside our UX researchers, we audited the end-to-end workflow for ${item.name} and mapped where users lost context across ${item.scope.toLowerCase()}.`,
   discoveryMethods: [
     [
       "Journey & Task Audit",
@@ -1980,23 +3297,23 @@ const generatedProjects: CaseStudyProject[] = rawCatalog.map((item) => ({
   figmaNotes: [
     {
       tone: "amber",
-      tag: "Core Intent",
-      text: `“Users in ${item.name} need to see what matters first and what action comes next.”`,
+      tag: "Primary Priority",
+      text: `“${item.decisions[0]?.[0] ?? `Users in ${item.name} need to see what matters first.`}”`,
     },
     {
       tone: "emerald",
-      tag: "System Rule",
-      text: "Keep summary signals connected to the detailed records that explain them.",
+      tag: "Workflow Rule",
+      text: item.decisions[1]?.[1] ?? "Keep summary signals connected to the detailed records that explain them.",
     },
     {
       tone: "sky",
       tag: "State Continuity",
-      text: "Preserve filter, selection, and task context across every screen transition.",
+      text: item.decisions[2]?.[1] ?? "Preserve filter, selection, and task context across every screen transition.",
     },
     {
       tone: "rose",
       tag: "Engineering Sync",
-      text: "Align Figma component props and status tokens 1:1 with frontend state.",
+      text: `Aligned ${item.platform} component props and status tokens 1:1 with frontend state.`,
     },
   ],
   synthesis: [
@@ -2034,78 +3351,65 @@ const generatedProjects: CaseStudyProject[] = rawCatalog.map((item) => ({
       "Use semantic tokens and repeatable component contracts across all breakpoints.",
     ],
   ],
-  journeySummary: `I mapped the 5-stage user and system journey for ${item.name} so design and engineering worked from one blueprint.`,
-  journeyFlow: [
-    {
-      step: "01",
-      stage: "Orient",
-      actor: "Primary User",
-      userGoal:
-        "Understand current status and available starting paths on load",
-      frictionEliminated:
-        "Competing modules and equal-weight links previously obscured the primary task.",
-      uxResolution:
-        "Focused overview hierarchy with clear status framing and primary CTA.",
-      engineeringContract: "Initial route state + semantic summary payload",
-      touchpoints: ["Overview Header", "Primary Action", "Status Strip"],
-    },
-    {
-      step: "02",
-      stage: "Explore & Filter",
-      actor: "Primary User",
-      userGoal: "Narrow scope and compare relevant options or records",
-      frictionEliminated:
-        "Filtering or switching views previously forced users to rebuild context.",
-      uxResolution:
-        "Persistent filter bar and synchronized list/detail inspection.",
-      engineeringContract:
-        "URL/store-synced filter query + deterministic list rendering",
-      touchpoints: ["Scoped Filters", "Comparison Cards", "Record Table"],
-    },
-    {
-      step: "03",
-      stage: "Configure & Review",
-      actor: "User + System",
-      userGoal:
-        "Inspect full details and verify consequences before committing",
-      frictionEliminated:
-        "Key terms, costs, or dependencies were hidden until after submission.",
-      uxResolution:
-        "Contextual review surface showing live impact beside the active selection.",
-      engineeringContract: "Validation schema + real-time state preview",
-      touchpoints: [
-        "Contextual Inspector",
-        "Impact Summary",
-        "Validation Check",
-      ],
-    },
-    {
-      step: "04",
-      stage: "Execute & Recover",
-      actor: "System + User",
-      userGoal: "Complete the action or recover cleanly from exceptions",
-      frictionEliminated:
-        "Generic error states left users unsure how to fix an issue.",
-      uxResolution:
-        "Explicit confirmation states and guided inline recovery for exceptions.",
-      engineeringContract:
-        "Idempotent action handler + structured error recovery state",
-      touchpoints: ["Action Confirmation", "Exception Handler", "Audit Status"],
-    },
-    {
-      step: "05",
-      stage: "Return & Extend",
-      actor: "Team / Returning User",
-      userGoal: "Track ongoing status and reuse saved patterns across sessions",
-      frictionEliminated:
-        "One-time actions were not reflected in a durable history or saved workspace.",
-      uxResolution:
-        "Persistent activity timeline and reusable component patterns.",
-      engineeringContract:
-        "Persisted workspace state + documented UI component kit",
-      touchpoints: ["Saved State", "Activity History", "Component System"],
-    },
-  ],
+  journeySummary: `I mapped the 5-stage user and system journey for ${item.name} in FigJam so design, research, and engineering worked from one shared blueprint.`,
+  journeyFlow: (catalogJourneys[item.id] ?? [
+    [
+      `Enter ${item.name}`,
+      "Understand current status and available starting paths on load",
+      "Competing modules and equal-weight links previously obscured the primary task.",
+      "Focused overview hierarchy with clear status framing and primary CTA.",
+      ["Overview Header", "Primary Action", "Status Strip"],
+      "Initial route state + semantic summary payload",
+    ],
+    [
+      "Filter & Compare",
+      "Narrow scope and compare relevant options or records",
+      "Filtering or switching views previously forced users to rebuild context.",
+      "Persistent filter bar and synchronized list/detail inspection.",
+      ["Scoped Filters", "Comparison Cards", "Record Table"],
+      "URL/store-synced filter query + deterministic list rendering",
+    ],
+    [
+      "Inspect & Verify",
+      "Inspect full details and verify consequences before committing",
+      "Key terms, costs, or dependencies were hidden until after submission.",
+      "Contextual review surface showing live impact beside the active selection.",
+      ["Contextual Inspector", "Impact Summary", "Validation Check"],
+      "Validation schema + real-time state preview",
+    ],
+    [
+      "Commit & Recover",
+      "Complete the action or recover cleanly from exceptions",
+      "Generic error states left users unsure how to fix an issue.",
+      "Explicit confirmation states and guided inline recovery for exceptions.",
+      ["Action Confirmation", "Exception Handler", "Audit Status"],
+      "Idempotent action handler + structured error recovery state",
+    ],
+    [
+      "Monitor & Reuse",
+      "Track ongoing status and reuse saved patterns across sessions",
+      "One-time actions were not reflected in a durable history or saved workspace.",
+      "Persistent activity timeline and reusable component patterns.",
+      ["Saved State", "Activity History", "Component System"],
+      "Persisted workspace state + documented UI component library",
+    ],
+  ]).map(([stage, userGoal, frictionEliminated, uxResolution, touchpoints, engineeringContract], idx) => ({
+    step: String(idx + 1).padStart(2, "0"),
+    stage,
+    actor:
+      idx === 0 || idx === 1
+        ? (item.audienceTitle ?? generatedAudiences[item.id]?.[0] ?? "Primary User").split(" and ")[0]
+        : idx === 2
+          ? "User + System"
+          : idx === 3
+            ? "System + User"
+            : "Returning User",
+    userGoal,
+    frictionEliminated,
+    uxResolution,
+    engineeringContract,
+    touchpoints,
+  })),
   wireframes: [
     {
       id: "01",
@@ -2188,8 +3492,8 @@ const generatedProjects: CaseStudyProject[] = rawCatalog.map((item) => ({
   decisions: item.decisions.map(([title, body], idx) => ({
     title,
     body,
-    badge: `Core Decision 0${idx + 1}`,
-    image: idx === 0 ? item.image : undefined,
+    badge: `0${idx + 1} · Core Capability`,
+    image: screens[idx],
   })),
   outcomes: [
     [
@@ -2208,7 +3512,8 @@ const generatedProjects: CaseStudyProject[] = rawCatalog.map((item) => ({
       "Production-ready delivery",
     ],
   ],
-}))
+  }
+})
 
 const withPersonaContent = (project: CaseStudyProject): CaseStudyProject => {
   const audience = generatedAudiences[project.id]
@@ -2237,4 +3542,9 @@ const withPersonaContent = (project: CaseStudyProject): CaseStudyProject => {
 export const allCaseStudies: CaseStudyProject[] = [
   ...portfolioProjects,
   ...generatedProjects,
-].map(withPersonaContent)
+]
+  .map(withPersonaContent)
+  .map((project, idx) => ({
+    ...project,
+    index: String(idx + 1).padStart(2, "0"),
+  }))
