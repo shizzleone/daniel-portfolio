@@ -159,6 +159,30 @@
       font-weight: 600;
     }
 
+    .proto-figma-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 6px 14px;
+      border-radius: 999px;
+      background: rgba(168, 85, 247, 0.16);
+      border: 1px solid rgba(168, 85, 247, 0.45);
+      color: #e9d5ff;
+      font-family: var(--font-sans);
+      font-size: 12px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.18s ease;
+      cursor: pointer;
+    }
+
+    .proto-figma-btn:hover {
+      background: rgba(168, 85, 247, 0.32);
+      border-color: #c084fc;
+      color: #fff;
+      transform: translateY(-1px);
+    }
+
     .theme-toggle {
       appearance: none;
       border: 1px solid rgba(255, 255, 255, 0.18);
@@ -595,16 +619,22 @@
       <span class="proto-brand-sub">PERSONAL FINANCE & WEALTH SIMULATION</span>
     </div>
     <nav class="proto-flows" id="flowNav">
-      <button class="proto-flow-btn active" data-screen="dashboard">1 · Dashboard (033)</button>
-      <button class="proto-flow-btn" data-screen="compass">2 · Financial Compass (034)</button>
-      <button class="proto-flow-btn" data-screen="goals">3 · Savings Goals (127)</button>
-      <button class="proto-flow-btn" data-screen="portfolio">4 · Wealth Portfolio (163)</button>
-      <button class="proto-flow-btn" data-screen="simulation">5 · What-If Simulator (185)</button>
+      <button class="proto-flow-btn active" data-screen="dashboard">1 · Dashboard & Net Worth</button>
+      <button class="proto-flow-btn" data-screen="compass">2 · Financial Compass</button>
+      <button class="proto-flow-btn" data-screen="goals">3 · Savings Goals</button>
+      <button class="proto-flow-btn" data-screen="portfolio">4 · Wealth Portfolio</button>
+      <button class="proto-flow-btn" data-screen="simulation">5 · 2036 Simulator</button>
     </nav>
-    <button class="theme-toggle" id="themeBtn">
-      <span id="themeIcon">🌙</span>
-      <span id="themeLabel">Dark mode</span>
-    </button>
+    <div style="display:flex;align-items:center;gap:10px;">
+      <a href="https://www.figma.com/design/NZbmIQrN9GMHgTasujs7Xv/Pennwise-%E2%80%94-Personal-Finance-App?m=auto&t=MkSK5hpyyhXRYMvc-6" target="_blank" rel="noreferrer" class="proto-figma-btn">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 5.5A3.5 3.5 0 0 1 8.5 2H12v7H8.5A3.5 3.5 0 0 1 5 5.5z M12 2h3.5a3.5 3.5 0 1 1 0 7H12V2z M12 12.5a3.5 3.5 0 1 1 7 0 3.5 3.5 0 1 1-7 0z M5 19.5A3.5 3.5 0 0 1 8.5 16H12v3.5a3.5 3.5 0 1 1-7 0z M5 12.5A3.5 3.5 0 0 1 8.5 9H12v7H8.5A3.5 3.5 0 0 1 5 12.5z"/></svg>
+        Inspect in Figma ↗
+      </a>
+      <button class="theme-toggle" id="themeBtn">
+        <span id="themeIcon">🌙</span>
+        <span id="themeLabel">Dark mode</span>
+      </button>
+    </div>
   </header>
 
   <main class="proto-stage">
@@ -614,11 +644,17 @@
 
     <aside class="proto-inspector">
       <div>
-        <div class="insp-kicker" id="inspStep">MODULE 04 · DASHBOARD & COMPASS</div>
-        <h2 class="insp-title" id="inspTitle">033 · Main Dashboard & Net Worth</h2>
+        <div class="insp-kicker" id="inspStep">FINANCIAL OVERVIEW</div>
+        <h2 class="insp-title" id="inspTitle">Main Dashboard & Net Worth</h2>
       </div>
       <p class="insp-body" id="inspDesc">
         Consolidates checking, high-yield savings, brokerage, and 401(k) balances into a single calm Net Worth surface with a 1-tap Financial Compass score pill.
+      </p>
+      <div style="margin-bottom:12px;padding:12px;border-radius:10px;background:rgba(168,85,247,0.12);border:1px solid rgba(168,85,247,0.3)">
+        <div style="font-size:10px;font-weight:700;letter-spacing:0.08em;color:#c084fc">FIGMA SOURCE FILE</div>
+        <p style="font-size:11.5px;color:rgba(255,255,255,0.75);margin:4px 0 8px">Recruiters can inspect all 16 mobile flows, variant sets, and light/dark variable tokens directly in Figma.</p>
+        <a href="https://www.figma.com/design/NZbmIQrN9GMHgTasujs7Xv/Pennwise-%E2%80%94-Personal-Finance-App?m=auto&t=MkSK5hpyyhXRYMvc-6" target="_blank" rel="noreferrer" style="font-size:12px;font-weight:600;color:#e9d5ff;text-decoration:none;display:inline-flex;align-items:center;gap:4px">Open Pennwise in Figma →</a>
+      </div>
       </p>
       <div class="insp-tokens">
         <div class="insp-token">
@@ -676,28 +712,28 @@
       });
       const meta = {
         dashboard: {
-          step: "MODULE 04 · NODE 78:2",
-          title: "033 · Main Dashboard & Net Worth",
+          step: "FINANCIAL OVERVIEW",
+          title: "Main Dashboard & Net Worth",
           desc: "Consolidates checking, high-yield savings, and investment accounts into a single calm Net Worth card ($128,420.50) with an inline Financial Compass badge."
         },
         compass: {
-          step: "MODULE 04 · NODE 79:2",
-          title: "034 · Financial Compass (72/100)",
+          step: "FINANCIAL COMPASS",
+          title: "Financial Compass (72/100)",
           desc: "Breaks financial health into four weighted pillars—Spending (84), Investing (80), Debt (66), and Saving (58)—and surfaces the highest-leverage next action."
         },
         goals: {
-          step: "MODULE 09 · NODE 307:2",
-          title: "127 · Savings Goals & Surplus Planner",
+          step: "SAVINGS & SURPLUS",
+          title: "Savings Goals & Surplus Planner",
           desc: "Tracks $37,450 across Emergency Fund, Home Down Payment, and Japan Trip with automated payday rules and +$250 instant top-ups."
         },
         portfolio: {
-          step: "MODULE 11 · NODE 208:2",
-          title: "163 · Portfolio & Wealth Allocation",
+          step: "WEALTH ALLOCATION",
+          title: "Portfolio & Wealth Allocation",
           desc: "Unifies brokerage and 401(k) holdings ($132,968.12, +14.2% YTD) with clear US/International/Bond allocation bars and fee transparency."
         },
         simulation: {
-          step: "MODULE 12 · NODE 230:2",
-          title: "185 · What-If Financial Simulator",
+          step: "SCENARIO SANDBOX",
+          title: "2036 What-If Financial Simulator",
           desc: "Lets users stress-test buying a $400k home in 2029, a 10% raise, or a 3-month sabbatical against their 2036 projected net worth without touching live budgets."
         }
       }[scr];
