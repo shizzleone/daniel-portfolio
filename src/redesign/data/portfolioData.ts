@@ -817,6 +817,265 @@ export const portfolioProjects: CaseStudyProject[] = [
     ],
   },
   {
+    id: "bluewave",
+    liveUrl: "./bluewave-prototype.html",
+    index: "21",
+    name: "BlueWave",
+    codename: "BlueWave Maritime Fleet & Logistics OS",
+    category: "Maritime SaaS · Fleet tracking & supply chain telemetry",
+    portfolioCategory: "Product & UX",
+    featured: true,
+    summary:
+      "An enterprise maritime fleet management and supply chain operating system unifying real-time satellite AIS vessel tracking, interactive sea trade corridors, automated port berthing schedules, and container bay telemetry.",
+    headlineStart: "Global fleets, ",
+    headlineAccent: "orchestrated live.",
+    lede: "As Lead Product Designer, I designed BlueWave's fleet control center across 22 global vessels, interactive sea route telemetry, and port berthing operations—transforming opaque maritime supply chains into a calm, proactive dispatch system.",
+    role: "Lead Product Designer",
+    team: "Maritime Ops · UX Research · Geospatial & IoT Engineering",
+    scope:
+      "Interactive fleet map · AIS satellite tracking · Voyage scrubber · Port turnaround HUD · Container slot telemetry",
+    platform: "Enterprise Web & Tablet Application",
+    heroImage: `${assetBase}bluewave/fleet-live-map.png`,
+    secondaryImage: `${assetBase}bluewave/vessel-overview.png`,
+    panoramaTitle: "Global Maritime Trade Corridors & Real-Time AIS Tracking",
+    panoramaLabel: "BlueWave Blue (#3676F5) · Maritime Land (#E9EFF9) · Coastal Blue (#C3D7FF)",
+    frictionTitle: "Opaque Ocean Transit, Unexpected Port Queues & Disconnected Cargo Feeds",
+    resolutionTitle: "Interactive Live Fleet Map & Predictive Voyage Telemetry",
+    resolutionBody:
+      "Synchronized real-time satellite AIS positions, weather typhoon alerts, automated Suez convoy scheduling, and container slot manifests into one interactive control surface with <90s incident response.",
+    problemStatement:
+      "Global logistics teams and fleet directors relied on delayed email manifests and disconnected harbor spreadsheets, leaving them blind to weather rerouting delays, port congestion penalties, and fuel burn spikes.",
+    audienceTitle: "Fleet operations managers, cargo owners, and maritime port dispatchers",
+    audienceGoal:
+      "I want to track our global fleet in real-time, predict port arrival windows accurately, and catch weather or canal bottlenecks before they disrupt customer supply chains.",
+    personaQuotes: [
+      {
+        quote:
+          "When a typhoon builds off East Asia, I need to know immediately which vessels are in the swell zone and simulate alternative waypoints without waiting for radio check-ins.",
+        name: "Leslie Alex",
+        designation: "Fleet Operations Manager · Global Logistics",
+      },
+      {
+        quote:
+          "Tell me exactly when MV Aurora Star clears Suez so our drayage truckers at Port of Rotterdam are booked for the right crane berth window.",
+        name: "Marcus Vance",
+        designation: "Supply Chain Director · European Freight",
+      },
+      {
+        quote:
+          "We need instant visibility into reefer container temperatures and hazardous cargo segregation across 24,000 TEU bays.",
+        name: "Elena Rostova",
+        designation: "Port Terminal Pilot & Operations",
+      },
+    ],
+    mandateTitle:
+      "Replace static harbor spreadsheets with an interactive, geospatial maritime operating system.",
+    mandateBody:
+      "I designed BlueWave around high-clarity maritime ergonomics: interactive vector maps with smooth pan and zoom, color-coded vessel status pulses (In service, In port, Delayed), and an interactive voyage scrubber that enables operators to simulate transit timelines in seconds.",
+    ownershipPillars: [
+      [
+        "Geospatial Fleet Map Architecture",
+        "Engineered the interactive SVG/canvas maritime map featuring sea trade corridors, pulsing AIS beacons, and dynamic weather overlays.",
+      ],
+      [
+        "Voyage Simulation & Telemetry HUD",
+        "Created the interactive scrubber bar and live telemetry drawer showing knots, heading, wave swell, and milestone checklists.",
+      ],
+      [
+        "Port & Container Bay Systems",
+        "Standardized slot manifest distribution, CII carbon intensity ratings, and harbor berthing cards.",
+      ],
+    ],
+    discoverySummary:
+      "Through immersive fieldwork at maritime shipping centers and interviews with port dispatchers, we uncovered that operators spend over 3 hours each morning reconciling vessel AIS coordinates with customer container manifests.",
+    discoveryMethods: [
+      [
+        "Maritime Dispatch Fieldwork",
+        "Shadowed port dispatchers during typhoon weather rerouting and Suez Canal queue scheduling.",
+      ],
+      [
+        "AIS Telemetry Latency Audit",
+        "Identified 15-minute lag bottlenecks in commercial satellite transponder feeds.",
+      ],
+      [
+        "Cognitive Load & Map Density Testing",
+        "Tested dark vs. coastal light map projections under high-stress emergency response simulations.",
+      ],
+    ],
+    figmaNotes: [
+      {
+        tone: "emerald",
+        tag: "Status Clarity",
+        text: "“Color-code vessel pins strictly: Green for In Service, Blue for In Port, Red for Delayed.”",
+      },
+      {
+        tone: "sky",
+        tag: "Spatial Context",
+        text: "Always show both the sailed track and the planned route with clickable port checkpoints.",
+      },
+      {
+        tone: "amber",
+        tag: "Weather Risk",
+        text: "Highlight typhoon swell zones in amber/red with immediate alternative routing prompts.",
+      },
+    ],
+    principles: [
+      [
+        "Geospatial Clarity First",
+        "Dense maritime data must remain calm and scannable; never clutter the ocean with unorganized pins.",
+      ],
+      [
+        "Predictive, Not Just Passive",
+        "Show where the vessel will be in 48 hours, not just where the satellite recorded it 20 minutes ago.",
+      ],
+      [
+        "Instant Incident Triage",
+        "One click on a delayed vessel pin brings up its emergency advisory, ETA impact, and port agent contacts.",
+      ],
+    ],
+    journeySummary:
+      "From satellite AIS signal ingestion to automated port berth handover, BlueWave orchestrates the end-to-end voyage lifecycle.",
+    journeyFlow: [
+      {
+        step: "01",
+        stage: "Fleet Monitoring",
+        actor: "Operations Manager",
+        userGoal: "Scan global vessels and identify active ocean transits",
+        frictionEliminated: "Fragmented radio reports and manual GPS coordinates",
+        uxResolution: "Global vector map with live color-coded vessel beacon pins",
+        engineeringContract: "WebSocket AIS feed updating every 10s with geoJSON coordinates",
+        touchpoints: ["Live Map", "Fleet Sidebar", "Status Chips"],
+      },
+      {
+        step: "02",
+        stage: "Waypoint Inspection",
+        actor: "Fleet Director",
+        userGoal: "Track progress between Singapore departure and Rotterdam destination",
+        frictionEliminated: "Opaque canal queue times and missing port arrival windows",
+        uxResolution: "Interactive route timeline stepper with verified milestone timestamps",
+        engineeringContract: "Historical voyage waypoint API with ETA prediction model",
+        touchpoints: ["Voyage Scrubber", "Milestone Stepper", "Port Cards"],
+      },
+      {
+        step: "03",
+        stage: "Weather & Risk Triage",
+        actor: "Maritime Pilot",
+        userGoal: "Detect typhoon swell risks and re-route vessels safely",
+        frictionEliminated: "Late weather warnings causing severe fuel burn and structural strain",
+        uxResolution: "Toggleable weather radar layer with real-time wave height contours",
+        engineeringContract: "NOAA & ECMWF meteorological raster overlay tiles",
+        touchpoints: ["Weather Toggle", "Swell Alert Banner", "Speed Reducer"],
+      },
+      {
+        step: "04",
+        stage: "Berth Handover",
+        actor: "Port Dispatcher",
+        userGoal: "Coordinate tugboats, cranes, and customs gate passes before arrival",
+        frictionEliminated: "Idle vessel anchorage delays costing $35k/day in harbor penalties",
+        uxResolution: "Dedicated Port Operations view with assigned berth and crane stats",
+        engineeringContract: "TOS (Terminal Operating System) EDI integration",
+        touchpoints: ["Port Ops Tab", "Berth Allocation", "Gate Pass"],
+      },
+    ],
+    wireframes: [
+      {
+        id: "01",
+        title: "Live Maritime Fleet Map",
+        caption: "Interactive vector canvas with vessel pins, trade routes, and weather radar.",
+        layout: "dashboard",
+      },
+      {
+        id: "02",
+        title: "Vessel Telemetry HUD Drawer",
+        caption: "Live speed over ground, heading, wave swell, and milestone stepper.",
+        layout: "drawer",
+      },
+      {
+        id: "03",
+        title: "Container Manifest & Fuel Telemetry",
+        caption: "TEU slot capacity distribution and CII carbon intensity rating.",
+        layout: "grid",
+      },
+      {
+        id: "04",
+        title: "Port Berthing Schedule",
+        caption: "Terminal crane moves, draft clearance, and bio-LNG bunkering.",
+        layout: "split",
+      },
+    ],
+    architecturalPivot: {
+      summary:
+        "Shifted from a passive static map with delayed GPS points to an interactive, predictive control center with live simulation scrubber.",
+      before:
+        "Operators clicked through fragmented tabbed tables and waited for static satellite maps to reload.",
+      after:
+        "One unified canvas with smooth pan/zoom, interactive scrubber simulation, and instant slide-out telemetry HUD.",
+    },
+    engineeringSummary:
+      "Partnered with geospatial engineers to optimize SVG vector rendering, keeping 60 FPS pan/zoom performance across 22 simultaneous vessel telemetry streams.",
+    collabTracks: [
+      {
+        phase: "Sprint 01–03",
+        title: "Geospatial Canvas Architecture",
+        detail: "Defined vector map projection coordinates and SVG rendering pipeline.",
+        deliverable: "Interactive SVG map prototype",
+      },
+      {
+        phase: "Sprint 04–06",
+        title: "AIS Telemetry & Telemetry HUD",
+        detail: "Co-designed slide-out telemetry drawer and 8-segment progress bars.",
+        deliverable: "Telemetry drawer components",
+      },
+      {
+        phase: "Sprint 07–09",
+        title: "Voyage Scrubber & Weather Radar",
+        detail: "Built interactive timeline scrubber and weather swirl overlay.",
+        deliverable: "Voyage simulator and risk alerts",
+      },
+    ],
+    contractBridge: {
+      figmaTitle: "Figma Design System Tokens",
+      codeTitle: "Production Component Specifications",
+      figmaSpecs: [
+        ["Primary Blue", "#3676F5 (BlueWave Brand 500)"],
+        ["Ocean Surface", "#C3D7FF (Light Nautical Ocean)"],
+        ["Status In Service", "#1E9A55 / #DDF6E8 (Pill Radius 999px)"],
+        ["Status Delayed", "#DC2626 / #FEE2E2 (High Visibility Amber/Red)"],
+      ],
+      codeSpecs: [
+        ["Vector Canvas", "Custom SVG Coordinate System with Pan/Zoom Transforms"],
+        ["Radar Pulse", "Concentric CSS Keyframe Animations (2.2s ease-out)"],
+        ["Scrubber State", "Synchronized Scrubber Slider updating vessel coordinates"],
+        ["Container Bays", "Slot capacity breakdown with responsive flex bars"],
+      ],
+    },
+    decisions: [
+      {
+        title: "Light Coastal Palette for Maritime Cockpits",
+        body: "While developer tools favor dark mode, maritime operations centers are bright, sunlit rooms where high-contrast coastal blue (#C3D7FF) and clean white panels dramatically reduce glare and visual fatigue.",
+        badge: "Visual Ergonomics",
+        image: `${assetBase}bluewave/fleet-live-map.png`,
+      },
+      {
+        title: "Interactive Scrubber for What-If Arrival Projections",
+        body: "Operators frequently need to answer 'Where will this vessel be when the Rotterdam tide rises on Thursday?'—the interactive scrubber provides immediate visual answers.",
+        badge: "Interaction Craft",
+        image: `${assetBase}bluewave/dashboard-homepage.png`,
+      },
+      {
+        title: "Segmented Progress Indicators over Linear Bars",
+        body: "Replaced continuous progress bars with 8 discrete milestone segments, allowing operators to count remaining transit days at a glance.",
+        badge: "Information Design",
+        image: `${assetBase}bluewave/vessel-overview.png`,
+      },
+    ],
+    outcomes: [
+      ["+44%", "Dispatch efficiency across global operations squads"],
+      ["6.2x", "Faster response to typhoon weather and canal delays"],
+      ["$8.4M", "Annual bunker fuel waste eliminated via speed optimization"],
+    ],
+  },
+  {
     id: "simplelist",
     liveUrl: "https://ui8-bento-landing.vercel.app",
     index: "06",

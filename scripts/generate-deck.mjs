@@ -695,7 +695,7 @@ function addSlideHeader(slide, category, title, subtitle) {
 }
 
 // ==========================================
-// SLIDE 5: SimpleList (Bento & Productivity)
+// SLIDE 5: BlueWave SaaS (Maritime & Geospatial)
 // ==========================================
 {
   const slide = pres.addSlide();
@@ -703,7 +703,159 @@ function addSlideHeader(slide, category, title, subtitle) {
 
   addSlideHeader(
     slide,
-    'Flagship 03 · Productivity & Multi-Device SaaS',
+    'Flagship 03 · Maritime Logistics & Geospatial OS',
+    'BlueWave · Global Fleet Orchestration & Telemetry OS',
+    'Real-time satellite AIS vessel tracking, interactive sea corridors, and predictive port berthing'
+  );
+
+  const leftX = 0.8;
+  const colW = 4.2;
+
+  slide.addShape(pres.ShapeType.roundRect, {
+    x: leftX,
+    y: 1.6,
+    w: colW,
+    h: 1.05,
+    rectRadius: 0.08,
+    fill: { color: COLORS.cardBg },
+    line: { color: COLORS.cardBorder, width: 1 },
+  });
+
+  slide.addText('THE CORE CHALLENGE', {
+    x: leftX + 0.2,
+    y: 1.7,
+    w: colW - 0.4,
+    h: 0.2,
+    fontSize: 8.5,
+    fontFace: FONT_HEAD,
+    bold: true,
+    color: COLORS.accentLime,
+  });
+
+  slide.addText(
+    'Global logistics operators and harbor dispatchers relied on delayed email manifests and disconnected GPS sheets, leaving them blind to weather delays, canal bottlenecks, and fuel spikes.',
+    {
+      x: leftX + 0.2,
+      y: 1.95,
+      w: colW - 0.4,
+      h: 0.6,
+      fontSize: 9.5,
+      fontFace: FONT_BODY,
+      color: COLORS.textSecondary,
+      lineSpacingMultiple: 1.15,
+    }
+  );
+
+  slide.addShape(pres.ShapeType.roundRect, {
+    x: leftX,
+    y: 2.75,
+    w: colW,
+    h: 1.45,
+    rectRadius: 0.08,
+    fill: { color: COLORS.cardBg },
+    line: { color: COLORS.cardBorder, width: 1 },
+  });
+
+  slide.addText('STRATEGIC UX INTERVENTIONS', {
+    x: leftX + 0.2,
+    y: 2.85,
+    w: colW - 0.4,
+    h: 0.2,
+    fontSize: 8.5,
+    fontFace: FONT_HEAD,
+    bold: true,
+    color: COLORS.accentMint,
+  });
+
+  const solPoints = [
+    'Interactive vector maritime map with 60 FPS pan/zoom and radar pulses',
+    'Interactive voyage scrubber simulating 20-day transit and canal slots',
+    'Automated port turnaround HUD and container slot capacity distribution',
+  ];
+  slide.addText(solPoints.map((s) => `• ${s}`).join('\n'), {
+    x: leftX + 0.2,
+    y: 3.1,
+    w: colW - 0.4,
+    h: 0.95,
+    fontSize: 9.5,
+    fontFace: FONT_BODY,
+    color: COLORS.textSecondary,
+    lineSpacingMultiple: 1.2,
+  });
+
+  const metrics = [
+    { num: '+44%', lbl: 'Dispatch Speed' },
+    { num: '6.2x', lbl: 'Faster Triage' },
+    { num: '$8.4M', lbl: 'Fuel Waste Saved' },
+  ];
+  metrics.forEach((m, idx) => {
+    const mX = leftX + idx * 1.43;
+    slide.addShape(pres.ShapeType.roundRect, {
+      x: mX,
+      y: 4.3,
+      w: 1.35,
+      h: 0.75,
+      rectRadius: 0.06,
+      fill: { color: '0E2A38' },
+      line: { color: '38BDF8', width: 1 },
+    });
+    slide.addText(m.num, {
+      x: mX,
+      y: 4.38,
+      w: 1.35,
+      h: 0.35,
+      fontSize: 14,
+      fontFace: FONT_HEAD,
+      bold: true,
+      color: COLORS.accentBlue,
+      align: 'center',
+    });
+    slide.addText(m.lbl, {
+      x: mX,
+      y: 4.75,
+      w: 1.35,
+      h: 0.25,
+      fontSize: 8,
+      fontFace: FONT_BODY,
+      color: COLORS.textSecondary,
+      align: 'center',
+    });
+  });
+
+  // Right Visual
+  const rightX = 5.3;
+  const rightW = 4.0;
+  const bwImg = path.join(projectRoot, 'public/assets/bluewave/fleet-live-map.png');
+  if (fs.existsSync(bwImg)) {
+    slide.addImage({
+      path: bwImg,
+      x: rightX,
+      y: 1.6,
+      w: rightW,
+      h: 3.45,
+      sizing: { type: 'contain', w: rightW, h: 3.45 },
+    });
+  }
+
+  slide.addNotes(
+    `TALKING POINTS (SLIDE 5 - BLUEWAVE - 2.5 MINUTES):
+• "BlueWave showcases my expertise in complex geospatial UI, IoT hardware telemetry, and supply chain logistics."
+• "We designed an interactive vector-based maritime control center that tracks 22 global vessels in real time with sub-10-second AIS satellite updates."
+• "A core breakthrough was our Interactive Voyage Scrubber: rather than guessing when a vessel reaches the Suez Canal, operators can scrub along the trade lane to preview tidal clearances and berthing availability in seconds."
+• "Impact: +44% dispatch efficiency and $8.4M in annual fuel waste eliminated."`
+  );
+}
+
+// ==========================================
+// SLIDE 6: SimpleList (Bento & Productivity)
+// ==========================================
+{
+  const slide = pres.addSlide();
+  slide.background = { color: COLORS.bg };
+
+  addSlideHeader(
+    slide,
+    'Flagship 04 · Productivity & Multi-Device SaaS',
     'SimpleList · Keyboard-First Bento Task Management',
     'High-craft productivity combining modular Bento information architecture with live multiplayer'
   );
