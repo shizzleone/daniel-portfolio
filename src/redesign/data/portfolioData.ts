@@ -1110,314 +1110,6 @@ export const portfolioProjects: CaseStudyProject[] = [
     ],
   },
   {
-    id: "meridian",
-    liveUrl: "./meridian-prototype.html",
-    index: "04",
-    name: "Meridian",
-    codename: "Payments API Developer Workspace",
-    category: "Developer platform · Payments API",
-    portfolioCategory: "Developer tools",
-    featured: true,
-    summary:
-      "A payments and ledger developer workspace that helps engineers move from API evaluation to a confident first integration and production readiness.",
-    headlineStart: "From first API call to ",
-    headlineAccent: "production readiness.",
-    lede: "As Design Lead, I designed the guided developer journey that keeps API reference docs, runnable request playgrounds, webhook delivery logs, and production checklists in one workspace.",
-    role: "Lead Designer",
-    team: "UX researchers · Product · Engineering",
-    scope:
-      "Developer journey · Split API explorer · Error recovery · Webhook ledger",
-    platform: "Responsive Web Application",
-    heroImage: `${assetBase}meridian/overview.png`,
-    secondaryImage: `${assetBase}meridian/explorer.png`,
-    panoramaTitle: "Interactive API Explorer & Sandbox Console",
-    panoramaLabel: "Live Payload Testing · Webhook Inspector · Production Readiness",
-    frictionTitle: "Evaluation Disconnect & Sandbox Integration Friction",
-    resolutionTitle: "Interactive Developer Workbench & Guided Journey",
-    resolutionBody: "Unified interactive API reference docs, live request payloads, real-time webhook delivery logs, and production checklists into a single focused developer interface.",
-    problemStatement: "Developers evaluating payment APIs lose momentum when documentation, sandbox credentials, error recovery, and webhook logs live in separate disconnected tools.",
-    mandateTitle:
-      "Turn a complex payments API into a sequence developers can test, debug, and ship.",
-    mandateBody:
-      "Developers evaluating payment APIs lose momentum when documentation, sandbox credentials, error recovery, and webhook logs live in separate tools. I unified the entire integration loop into one stateful workspace.",
-    ownershipPillars: [
-      [
-        "Guided Quickstart",
-        "Connected scoped sandbox setup, runnable requests, and live response inspection.",
-      ],
-      [
-        "Actionable Error Recovery",
-        "Designed distinct recovery paths for 401 auth, 403 permission, and 422 validation errors.",
-      ],
-      [
-        "Webhook & Ledger Clarity",
-        "Separated payment business state from webhook delivery attempts and retries.",
-      ],
-    ],
-    discoverySummary:
-      "Working with our UX researchers and platform engineers, we mapped the integration lifecycle, identifying where first-time evaluators stall between reading docs and verifying webhook delivery.",
-    discoveryMethods: [
-      [
-        "First-Call Audit",
-        "Measured the steps required to authenticate, execute a payment request, and inspect the ledger result.",
-      ],
-      [
-        "Failure-Mode Design",
-        "Collaborated with API engineers to map status codes to human-readable recovery actions.",
-      ],
-      [
-        "Readiness Modeling",
-        "Defined the exact checklist required to promote an integration from sandbox to production.",
-      ],
-    ],
-    figmaNotes: [
-      {
-        tone: "amber",
-        tag: "Developer Trust",
-        text: "“The first API call is a confidence test—show why it worked and what changed.”",
-      },
-      {
-        tone: "rose",
-        tag: "Error UX",
-        text: "Status codes alone are not enough; every 403 or 422 must point to the exact fix.",
-      },
-      {
-        tone: "sky",
-        tag: "Split Workspace",
-        text: "Keep parameter docs beside the runnable request so reading and testing reinforce each other.",
-      },
-      {
-        tone: "emerald",
-        tag: "State Separation",
-        text: "Never conflate a settled payment with an acknowledged webhook delivery.",
-      },
-    ],
-    principles: [
-      [
-        "Keep guidance beside execution",
-        "Pair schema reference with a runnable request playground in one split view.",
-      ],
-      [
-        "Turn errors into recovery paths",
-        "Explain the root cause and offer an in-place fix for auth and scope failures.",
-      ],
-      [
-        "Separate business state from delivery state",
-        "Track ledger settlement separately from webhook retry attempts.",
-      ],
-      [
-        "Make production readiness explicit",
-        "Provide a live integration checklist tied to observed sandbox milestones.",
-      ],
-    ],
-    journeySummary:
-      "Developers move from initial sandbox orientation to verified webhook retry and production sign-off without leaving the workspace.",
-    journeyFlow: [
-      {
-        step: "01",
-        stage: "Orient & Scope",
-        actor: "Evaluating Engineer",
-        userGoal:
-          "Configure sandbox app scopes and inspect payment capabilities",
-        frictionEliminated:
-          "Developers had to hunt across multiple portals for API keys and permission scopes.",
-        uxResolution:
-          "Guided quickstart header with visible credential status and scope toggles.",
-        engineeringContract:
-          "Scoped sandbox session + OpenAPI capability manifest",
-        touchpoints: ["Quickstart Header", "Scope Selector", "Sample Response"],
-      },
-      {
-        step: "02",
-        stage: "Run First Call",
-        actor: "Backend Engineer",
-        userGoal:
-          "Execute a POST payment request alongside live parameter docs",
-        frictionEliminated:
-          "Copying curl snippets into external clients broke parameter context.",
-        uxResolution:
-          "Split explorer with editable JSON payload and instant response inspector.",
-        engineeringContract:
-          "Runnable request runner + idempotency key generator",
-        touchpoints: [
-          "Split Explorer",
-          "Request Runner",
-          "201 Response Inspector",
-        ],
-      },
-      {
-        step: "03",
-        stage: "Recover Errors",
-        actor: "Backend Engineer",
-        userGoal: "Diagnose and resolve a 403 missing-permission failure",
-        frictionEliminated:
-          "Opaque error payloads forced developers to search support forums.",
-        uxResolution:
-          "Inline recovery card names the missing scope and applies the fix in place.",
-        engineeringContract:
-          "Structured error taxonomy (`CAUSE`, `REQUIRED_SCOPE`, `RETRY_ACTION`)",
-        touchpoints: [
-          "403 Diagnostic Banner",
-          "Scope Fix Action",
-          "Instant Retry",
-        ],
-      },
-      {
-        step: "04",
-        stage: "Verify Webhooks",
-        actor: "Integration Engineer",
-        userGoal: "Inspect event delivery attempts and replay failed webhooks",
-        frictionEliminated:
-          "Engineers could not tell if a silent webhook was a ledger failure or endpoint timeout.",
-        uxResolution:
-          "Dedicated attempt timeline with stable event IDs and 1-click retry.",
-        engineeringContract:
-          "Event delivery log (`event_id`, `attempt_count`, `http_status`)",
-        touchpoints: ["Webhook Timeline", "Event ID Trace", "Replay Button"],
-      },
-      {
-        step: "05",
-        stage: "Go Live Check",
-        actor: "Engineering Lead",
-        userGoal: "Complete production readiness verification",
-        frictionEliminated:
-          "Teams launched without verifying idempotency, error handling, or webhook retries.",
-        uxResolution:
-          "Live readiness checklist that updates automatically as sandbox milestones pass.",
-        engineeringContract: "Readiness state machine + compliance gate",
-        touchpoints: [
-          "Readiness Checklist",
-          "Milestone Badges",
-          "Production Handoff",
-        ],
-      },
-    ],
-    wireframes: [
-      {
-        id: "01",
-        title: "Guided quickstart overview",
-        caption: "Capability summary, milestone strip, and sample response.",
-        layout: "dashboard",
-      },
-      {
-        id: "02",
-        title: "Split API explorer",
-        caption:
-          "Parameter documentation paired with runnable request builder.",
-        layout: "split",
-      },
-      {
-        id: "03",
-        title: "Webhook attempt ledger",
-        caption: "Event IDs, delivery status, and retry controls.",
-        layout: "grid",
-      },
-      {
-        id: "04",
-        title: "Inline error recovery drawer",
-        caption: "403 scope diagnostic with guided remediation.",
-        layout: "drawer",
-      },
-    ],
-    architecturalPivot: {
-      summary:
-        "In engineering reviews, we separated the payment ledger status from the webhook delivery log so developers never confuse a successful transaction with a failed webhook endpoint.",
-      before: "Single combined status badge",
-      after: "Distinct Ledger State vs. Webhook Delivery Timeline",
-    },
-    engineeringSummary:
-      "Partnered with API and developer-platform engineers to align OpenAPI schemas, error codes, request IDs, and webhook retry semantics.",
-    collabTracks: [
-      {
-        phase: "01 / OpenAPI Sync",
-        title: "Unified docs & runner schema",
-        detail:
-          "Connected field descriptions and validation rules directly to the request playground.",
-        deliverable: "Split API Explorer",
-      },
-      {
-        phase: "02 / Error Taxonomy",
-        title: "Structured 401/403/422 recovery",
-        detail:
-          "Standardized error payloads to include cause, required permission, and next action.",
-        deliverable: "Inline recovery patterns",
-      },
-      {
-        phase: "03 / Event Delivery",
-        title: "Traceable webhook state machine",
-        detail:
-          "Exposed stable event IDs, attempt history, and manual retry triggers.",
-        deliverable: "Webhook delivery monitor",
-      },
-    ],
-    contractBridge: {
-      figmaTitle: "Figma Spec · API Explorer & Recovery",
-      codeTitle: "Developer Portal & OpenAPI Contract",
-      figmaSpecs: [
-        [
-          "Workspace layout",
-          "Persistent reference left · Runnable request & response right",
-        ],
-        [
-          "Error remediation",
-          "403 Permission Denied → Inline scope elevation CTA",
-        ],
-        [
-          "Webhook monitor",
-          "Separate Business Milestone from Delivery Attempt status",
-        ],
-      ],
-      codeSpecs: [
-        [
-          "requestState",
-          '{ endpoint, scope: ["payments:write"], status: 201 | 403 }',
-        ],
-        ["webhookAttempt", '{ eventId: "evt_01", attempt: 2, ack: true }'],
-        [
-          "readinessChecks",
-          '["auth_verified", "error_recovered", "webhook_acked"]',
-        ],
-      ],
-    },
-    decisions: [
-      {
-        title: "Keep API documentation and runnable execution side by side.",
-        body: "Developers read a field definition, edit the payload, and inspect the live response without switching tabs or losing context.",
-        badge: "Split Explorer Pattern",
-        image: `${assetBase}meridian/docs.png`,
-      },
-      {
-        title: "Turn 403 and 422 errors into guided recovery loops.",
-        body: "Each failure state names the exact missing scope or invalid parameter and lets the engineer test the fix immediately.",
-        badge: "Self-Healing DX",
-        image: `${assetBase}meridian/error-recovery.png`,
-      },
-      {
-        title: "Decouple transaction settlement from webhook delivery.",
-        body: "Gives engineers crystal-clear visibility into whether an issue lies in the payment ledger or their own webhook listener.",
-        badge: "Operational Clarity",
-        image: `${assetBase}meridian/webhooks.png`,
-      },
-    ],
-    outcomes: [
-      [
-        "First-call speed",
-        "Guided quickstart with inline request runner",
-        "Zero context switching during evaluation",
-      ],
-      [
-        "Error resolution",
-        "Actionable 401/403/422 diagnostic and retry loop",
-        "Self-service debugging in place",
-      ],
-      [
-        "Production confidence",
-        "Separated ledger state, webhook logs, and readiness checklist",
-        "Auditable path to launch",
-      ],
-    ],
-  },
-  {
     id: "motive",
     liveUrl: "./motive-prototype/index.html",
     index: "19",
@@ -2400,36 +2092,6 @@ const rawCatalog: {
     ],
   },
   {
-    id: "shoppulse",
-    index: "16",
-    name: "ShopPulse",
-    category: "E-commerce · Store analytics & operations",
-    portfolioCategory: "Product & UX",
-    summary:
-      "An e-commerce operations workspace connecting top-line store performance signals to the product catalog, inventory, and orders behind them.",
-    role: "Lead Designer",
-    team: "UX researchers · Product · Engineering",
-    scope:
-      "Analytical journey · Information architecture · Responsive prototype",
-    platform: "Responsive Web Dashboard",
-    image: `${assetBase}shoppulse/dashboard.png`,
-    liveUrl: "https://shoppulse-saas.vercel.app/dashboard",
-    decisions: [
-      [
-        "Connect revenue signals directly to product and order records",
-        "Designed seamless transitions from dashboard KPI spikes into the underlying Products and Orders views.",
-      ],
-      [
-        "Dedicated Analytics destination for period comparisons",
-        "Kept daily store triage fast while supporting deeper cohort and channel exploration.",
-      ],
-      [
-        "Consistent status language across orders and stock",
-        "Unified fulfillment and inventory badges across tables and summary cards.",
-      ],
-    ],
-  },
-  {
     id: "urbandrive",
     index: "17",
     name: "UrbanDrive",
@@ -2885,48 +2547,6 @@ const catalogJourneys: Record<
       "patchInventoryCount(sku, delta, reasonCode)",
     ],
   ],
-  shoppulse: [
-    [
-      "Scan Store Revenue Signals",
-      "Check GMV, conversion rate, average order value, and fulfillment backlog.",
-      "Top-line KPI spikes couldn't be traced to the products or channels driving them.",
-      "Paired every KPI card with period-over-period delta badges and direct drill-down links.",
-      ["Executive KPI Row", "Period Selector", "Delta Badge"],
-      "storeMetrics: { gmv, crPct, aov, periodDelta }",
-    ],
-    [
-      "Drill Into Product Catalog",
-      "Identify which top-selling SKUs are running low on inventory.",
-      "Merchandising and inventory lived in separate tools with different SKU statuses.",
-      "Combined unit velocity, gross margin, and live stock health in the Products view.",
-      ["Products Table", "Stock Health Pill", "Velocity Sort"],
-      "productRow: { sku, revenue, stockStatus }",
-    ],
-    [
-      "Compare Channel Cohorts",
-      "Evaluate acquisition channels and returning-customer retention curves.",
-      "Static dashboard charts couldn't be filtered by date window or campaign.",
-      "Created a dedicated `Analytics` destination with synchronized cohort and funnel charts.",
-      ["Analytics View", "Channel Funnel", "Cohort Matrix"],
-      "analyticsQuery: { window: '30d', channel }",
-    ],
-    [
-      "Triage Fulfillment Exceptions",
-      "Find high-value orders delayed in payment review or warehouse packing.",
-      "Operators had to click into individual orders to see payment vs. shipping state.",
-      "Displayed dual `Payment Status` and `Fulfillment Status` badges on every order row.",
-      ["Orders Workspace", "Dual Status Badges", "Bulk Action"],
-      '{ payment: "PAID", fulfillment: "UNFULFILLED" }',
-    ],
-    [
-      "Act & Verify Store Impact",
-      "Restock a flagged SKU or expedite an order without losing filter context.",
-      "Switching between Analytics, Products, and Orders cleared active date ranges.",
-      "Persisted store scope and time-window parameters across all left-rail destinations.",
-      ["Persistent Left Rail", "Global Date Scope", "Action Toast"],
-      "globalStoreContext: { dateRange, currency }",
-    ],
-  ],
   urbandrive: [
     [
       "Set Pickup & Trip Window",
@@ -3059,7 +2679,6 @@ const generatedAudiences: Record<string, [string, string]> = {
   rapidbi: ["Analytics developers and data product teams", "I need to compose, inspect, and explain trusted data without losing the context behind a metric."],
   shiftsnap: ["Hourly employees and store managers", "I need to see the right shift, request a change, and know when the schedule is confirmed."],
   "navflow-ai": ["Workflow authors and operations leads", "I need to turn a business process into a reviewable flow without losing control of what automation will do."],
-  meridian: ["API developers and platform teams", "I need to understand an API quickly, recover from errors, and know what is safe to ship."],
   "dev-mode": ["Developers integrating a new API", "I need a guided path from first request to a working integration, with docs and recovery guidance in the same place."],
   "citi-homepage": ["People comparing banking products", "I need to start from my financial goal and compare the right options without translating internal product language."],
   enta: ["People moving money across currencies", "I need to know where my money is going, what it will cost, and what I need to check before confirming."],
@@ -3069,7 +2688,6 @@ const generatedAudiences: Record<string, [string, string]> = {
   pulse: ["Mobile banking customers", "I need to check my money, complete a payment, and recover confidently when something needs attention."],
   arca: ["People managing personal finances on mobile", "I need important balances and activity to be readable at a glance, even when I am moving quickly."],
   interoly: ["Inventory and order operators", "I need to locate an item, inspect its status, and move from a record to the next operational action."],
-  shoppulse: ["E-commerce operators and store owners", "I need to connect performance signals to the products, orders, and inventory decisions behind them."],
   urbandrive: ["Travelers booking a rental vehicle", "I need to compare vehicles and protection choices clearly before I commit to a reservation."],
   solshine: ["Homeowners and commercial solar buyers", "I need to understand the opportunity, trust the proof, and know how to request the right next conversation."],
 }
@@ -3122,11 +2740,6 @@ const projectScreens: Record<string, string[]> = {
   interoly: [
     `${assetBase}interoly/items.png`,
     `${assetBase}interoly/orders.png`,
-  ],
-  shoppulse: [
-    `${assetBase}shoppulse/products.png`,
-    `${assetBase}shoppulse/analytics.png`,
-    `${assetBase}shoppulse/orders.png`,
   ],
   urbandrive: [
     `${assetBase}urbandrive/fleet.png`,
@@ -3190,11 +2803,6 @@ const catalogHeadlines: Record<string, [string, string, string]> = {
     "Floor-ready inventory & ",
     "fulfillment operations.",
     "Surface low-stock exceptions first and give warehouse operators one-tap thumb navigation across items and orders.",
-  ],
-  shoppulse: [
-    "Store performance tied to ",
-    "every product & order.",
-    "Connect top-line revenue and conversion spikes directly to the underlying catalog, stock levels, and fulfillment rows.",
   ],
   urbandrive: [
     "Transparent fleet comparison ",

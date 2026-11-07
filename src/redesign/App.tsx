@@ -26,7 +26,6 @@ const tintById: Record<string, string> = {
   rapidbi: "blue",
   shiftsnap: "green",
   "navflow-ai": "lilac",
-  meridian: "sand",
   motive: "sand",
 }
 const tintByCategory: Record<CaseStudyProject["portfolioCategory"], string> = {
