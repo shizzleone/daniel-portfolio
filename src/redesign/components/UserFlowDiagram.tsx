@@ -116,22 +116,11 @@ export function UserFlowDiagram({ flow, id }: FlowProps) {
           </div>
           <div className="fj-journey-title">
             <i className="fj-badge-icon" aria-hidden="true" />
-            <span>FigJam · End-to-End User &amp; System Flow Architecture</span>
+            <span>FigJam · User &amp; System Flow</span>
           </div>
         </div>
-        <div className="fj-journey-collaborators" aria-label="Workshop collaborators">
-          <span className="fj-cursor-pill is-dj">
-            <i>DJ</i> Daniel Johnson
-          </span>
-          <span className="fj-cursor-pill is-ur">
-            <i>UR</i> UX Research
-          </span>
-          <span className="fj-cursor-pill is-eng">
-            <i>ENG</i> Engineering
-          </span>
-          <span className="fj-stage-count">
-            {flow.nodes.length} nodes · {flow.lanes.length} lanes
-          </span>
+        <div className="fj-stage-count">
+          {flow.nodes.length} nodes · {flow.lanes.length} swimlanes
         </div>
       </div>
 
