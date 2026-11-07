@@ -1,8 +1,6 @@
 import { useState } from "react"
 import type { JourneyNode } from "../data/portfolioData"
 
-const clean = (s: string) => s.replace(/`/g, "")
-
 export function JourneyMap({ stages }: { stages: JourneyNode[] }) {
   const [active, setActive] = useState<number | null>(null)
 
@@ -74,10 +72,6 @@ export function JourneyMap({ stages }: { stages: JourneyNode[] }) {
                     <li key={t}>{t}</li>
                   ))}
                 </ul>
-                <div className="fj-contract" title="Engineering State Contract">
-                  <span>Contract</span>
-                  <code>{clean(s.engineeringContract)}</code>
-                </div>
               </div>
             </li>
           )

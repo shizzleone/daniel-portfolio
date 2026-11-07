@@ -997,35 +997,26 @@ function isEmbeddablePrototype(url?: string): boolean {
   )
 }
 
-const tokenSwatches = ["#2be38c", "#3b82f6", "#8b5cf6", "#f59e0b", "#10b981", "#ec4899"]
-
 function ProjectPage({ project }: { project: CaseStudyProject }) {
   const flow = userFlows[project.id]
   const sections: [string, string][] = [
     ["overview", "Overview"],
-    ["problem", "Problem & Challenge"],
-    ["discovery", "Research & Discovery"],
-    ["process", "Design Process"],
-    ["final-design", "Final Design"],
-    ["results", "Results & Closing"],
+    ["problem", "Challenge"],
+    ["discovery", "Research & Journey"],
+    ["process", "Architecture & Principles"],
+    ["final-design", "Key Screens"],
+    ["results", "Impact & Closing"],
   ]
   const num = (id: string) => sections.findIndex(([s]) => s === id) + 1
   const [active, setActive] = useState("overview")
-  const [readMode, setReadMode] = useState<"deep" | "quick">("deep")
   const [heroView, setHeroView] = useState<"screen" | "sandbox">("screen")
-  const [copiedToken, setCopiedToken] = useState<string | null>(null)
-  const [personaQuote, setPersonaQuote] = useState(0)
   const [scrollProgress, setScrollProgress] = useState(0)
   const [lightbox, setLightbox] = useState<{
     src: string
     caption: string
     badge?: string
   } | null>(null)
-  const quotes = project.personaQuotes ?? []
   const canEmbed = isEmbeddablePrototype(project.liveUrl)
-  const isTechnicalProject =
-    project.portfolioCategory === "Design systems" ||
-    project.portfolioCategory === "Developer tools"
 
   const idx = allCaseStudies.findIndex((p) => p.id === project.id)
   const prev =
@@ -1034,7 +1025,6 @@ function ProjectPage({ project }: { project: CaseStudyProject }) {
 
   useEffect(() => {
     setActive("overview")
-    setPersonaQuote(0)
     setLightbox(null)
     setHeroView("screen")
 
@@ -1085,7 +1075,7 @@ function ProjectPage({ project }: { project: CaseStudyProject }) {
       window.removeEventListener("scroll", onScroll)
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [project.id, readMode])
+  }, [project.id])
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
@@ -1123,25 +1113,10 @@ function ProjectPage({ project }: { project: CaseStudyProject }) {
     }
   }, [active])
 
-  const copyToken = (key: string, val: string) => {
-    navigator.clipboard?.writeText(val)
-    setCopiedToken(key)
-    setTimeout(() => setCopiedToken((curr) => (curr === key ? null : curr)), 1600)
-  }
-
-  const noteColors = {
-    amber: "n-amber",
-    emerald: "n-green",
-    sky: "n-blue",
-    rose: "n-rose",
-    violet: "n-violet",
-    orange: "n-orange",
-  }
-
   return (
     <article
       key={project.id}
-      className={`cs-article page-enter ${readMode === "quick" ? "is-quick-mode" : ""}`}
+      className="cs-article page-enter"
     >
       <div className="cs-progress-track" aria-hidden="true">
         <div
@@ -1356,62 +1331,24 @@ function ProjectPage({ project }: { project: CaseStudyProject }) {
       </header>
 
       <nav className="cs-tabs" aria-label="Case study sections">
-        <div className="cs-tabs-bar">
-          <div className="cs-mode-switch" role="group" aria-label="Reading depth">
-            <button
-              type="button"
-              className={readMode === "quick" ? "is-active" : ""}
-              aria-pressed={readMode === "quick"}
-              onClick={() => setReadMode("quick")}
-            >
-              ⚡ 60s Summary
-            </button>
-            <button
-              type="button"
-              className={readMode === "deep" ? "is-active" : ""}
-              aria-pressed={readMode === "deep"}
-              onClick={() => setReadMode("deep")}
-            >
-              Full Case Study
-            </button>
-          </div>
-          <ol>
-            {sections.map(([id, label], i) => (
-              <li key={id}>
-                <button
-                  id={`tab-${id}`}
-                  type="button"
-                  aria-current={active === id ? "true" : undefined}
-                  onClick={() => scrollToId(id)}
-                >
-                  <span className="cs-tab-num">{pad(i + 1)}</span>
-                  {label}
-                </button>
-              </li>
-            ))}
-          </ol>
-        </div>
+        <ol>
+          {sections.map(([id, label], i) => (
+            <li key={id}>
+              <button
+                id={`tab-${id}`}
+                type="button"
+                aria-current={active === id ? "true" : undefined}
+                onClick={() => scrollToId(id)}
+              >
+                <span className="cs-tab-num">{pad(i + 1)}</span>
+                {label}
+              </button>
+            </li>
+          ))}
+        </ol>
       </nav>
 
       <div className="shell cs-body">
-        {readMode === "quick" && (
-          <div className="cs-tldr-banner" role="status">
-            <div>
-              <strong>⚡ 60-Second Executive Summary Active</strong>
-              <span>
-                Showing core business problem, high-fidelity screens, and measurable outcomes.
-              </span>
-            </div>
-            <button
-              type="button"
-              className="btn btn-sm btn-solid"
-              onClick={() => setReadMode("deep")}
-            >
-              Expand Full Research &amp; Process
-            </button>
-          </div>
-        )}
-
         <Section
           id="overview"
           n={num("overview")}
@@ -1445,7 +1382,7 @@ function ProjectPage({ project }: { project: CaseStudyProject }) {
         <Section
           id="problem"
           n={num("problem")}
-          label="Problem Statement & Business Challenge"
+          label="The Challenge"
           title="What problem we solved and why it mattered."
         >
           <div className="cs-contrast-grid">
@@ -1469,70 +1406,25 @@ function ProjectPage({ project }: { project: CaseStudyProject }) {
         <Section
           id="discovery"
           n={num("discovery")}
-          label="Research & Discovery"
-          title="User needs, field synthesis, and end-to-end journey mapping."
+          label="Research & User Journey"
+          title="User needs, real friction points, and end-to-end journey mapping."
           intro={project.discoverySummary}
         >
-          {quotes.length > 0 ? (
-            <div className="persona-card persona-carousel">
-              <div>
-                <span className="eyebrow">User Persona &amp; Needs</span>
-                <h3>{project.audienceTitle ?? (project.journeyFlow[0]?.actor ?? project.role).replace(/^#+\s*/, '')}</h3>
-                {project.audienceGoal && <p className="persona-goal">{project.audienceGoal}</p>}
-              </div>
-              <div className="persona-quote-wrap">
-                <blockquote>“{quotes[personaQuote].quote}”</blockquote>
-                <p className="persona-byline"><strong>{quotes[personaQuote].name}</strong><span>{quotes[personaQuote].designation}</span></p>
-                <div className="persona-controls">
-                  <button type="button" className="icon-btn" aria-label="Previous user statement" onClick={() => setPersonaQuote((personaQuote - 1 + quotes.length) % quotes.length)}><Icon name="arrow-left" size={16} /></button>
-                  <span>{String(personaQuote + 1).padStart(2, "0")} / {String(quotes.length).padStart(2, "0")}</span>
-                  <button type="button" className="icon-btn" aria-label="Next user statement" onClick={() => setPersonaQuote((personaQuote + 1) % quotes.length)}><Icon name="arrow-right" size={16} /></button>
-                </div>
-              </div>
+          <div className="persona-card">
+            <div>
+              <span className="eyebrow">Target User &amp; Core Needs</span>
+              <h3>{project.audienceTitle ?? (project.journeyFlow[0]?.actor ?? project.role).replace(/^#+\s*/, '')}</h3>
             </div>
-          ) : (
-            <div className="persona-card">
-              <div>
-                <span className="eyebrow">User Persona &amp; Needs</span>
-                <h3>{project.audienceTitle ?? (project.journeyFlow[0]?.actor ?? project.role).replace(/^#+\s*/, '')}</h3>
-              </div>
-              <p>{project.audienceGoal ?? project.journeyFlow[0]?.userGoal ?? project.discoverySummary}</p>
+            <p className="persona-goal">{project.audienceGoal ?? project.journeyFlow[0]?.userGoal ?? project.discoverySummary}</p>
+          </div>
+
+          <div className="cs-subblock">
+            <div className="cs-subblock-head">
+              <span className="eyebrow">Customer Journey Map</span>
+              <h3>{project.journeySummary}</h3>
             </div>
-          )}
-
-          {readMode === "deep" && (
-            <>
-              <div className="board">
-                <div className="board-bar">
-                  <span>
-                    <i aria-hidden="true" />
-                    FigJam · Qualitative &amp; quantitative research synthesis
-                  </span>
-                  <span>{project.figmaNotes.length} insights</span>
-                </div>
-                <ul className="notes">
-                  {project.figmaNotes.map((n, i) => (
-                    <li key={i} className={`note ${noteColors[n.tone]}`}>
-                      <small>{n.tag}</small>
-                      <p>{n.text}</p>
-                      <span className="note-foot">
-                        <i aria-hidden="true">{i % 2 ? "UR" : "DJ"}</i>
-                        {i % 2 ? "UX Research" : "Daniel Johnson"}
-                      </span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
-              <div className="cs-subblock">
-                <div className="cs-subblock-head">
-                  <span className="eyebrow">Customer Journey Map</span>
-                  <h3>{project.journeySummary}</h3>
-                </div>
-                <JourneyMap stages={project.journeyFlow} />
-              </div>
-            </>
-          )}
+            <JourneyMap stages={project.journeyFlow} />
+          </div>
         </Section>
 
         <Section
@@ -1576,17 +1468,9 @@ function ProjectPage({ project }: { project: CaseStudyProject }) {
         <Section
           id="final-design"
           n={num("final-design")}
-          label="Final Design & Key Features"
-          title={
-            isTechnicalProject
-              ? "High-fidelity screens, key functionalities, and system specs."
-              : "High-fidelity screens, interaction states, and key features."
-          }
-          intro={
-            isTechnicalProject
-              ? "Every screen translates research insights and design principles into clear visual hierarchy, predictable state transitions, and production-ready component tokens."
-              : "Every screen translates research insights and design principles into clear visual hierarchy, predictable state transitions, and intuitive product touchpoints."
-          }
+          label="Final Design & Key Screens"
+          title="High-fidelity screens, interaction states, and key features."
+          intro="Every screen translates research insights and user needs into clear visual hierarchy, intuitive interaction patterns, and production-ready design craft."
         >
           <ol className="decisions">
             {project.decisions.map((d, i) => (
@@ -1660,90 +1544,21 @@ function ProjectPage({ project }: { project: CaseStudyProject }) {
               </div>
             </figure>
           )}
-
-          {isTechnicalProject && (
-            <div className="bridge cs-system-bridge">
-              <div>
-                <p className="eyebrow">Design System &amp; Style Spec</p>
-                <h3>{project.contractBridge.figmaTitle}</h3>
-                <dl>
-                  {project.contractBridge.figmaSpecs.map(([k, v], i) => (
-                    <div key={k}>
-                      <dt>
-                        <span
-                          className="spec-swatch"
-                          style={{
-                            background: tokenSwatches[i % tokenSwatches.length],
-                          }}
-                          aria-hidden="true"
-                        />
-                        {k}
-                      </dt>
-                      <dd>{clean(v)}</dd>
-                    </div>
-                  ))}
-                </dl>
-              </div>
-              <div className="bridge-code">
-                <div className="bridge-code-top">
-                  <p className="eyebrow">Engineering Token &amp; State Contract</p>
-                  <span className="bridge-copy-hint">Click any token to copy</span>
-                </div>
-                <h3>{project.contractBridge.codeTitle}</h3>
-                <dl>
-                  {project.contractBridge.codeSpecs.map(([k, v]) => {
-                    const raw = clean(v)
-                    const isCopied = copiedToken === k
-                    return (
-                      <div key={k}>
-                        <dt>{k}</dt>
-                        <dd>
-                          <button
-                            type="button"
-                            className={`token-copy-btn ${isCopied ? "is-copied" : ""}`}
-                            onClick={() => copyToken(k, raw)}
-                            title="Click to copy token specification"
-                          >
-                            <code>{raw}</code>
-                            <span className="token-copy-badge">
-                              <Icon name={isCopied ? "check" : "copy"} size={11} />
-                              {isCopied ? "Copied!" : "Copy"}
-                            </span>
-                          </button>
-                        </dd>
-                      </div>
-                    )
-                  })}
-                </dl>
-              </div>
-            </div>
-          )}
         </Section>
 
         <Section
           id="results"
           n={num("results")}
-          label="Testing, Results & Closing"
-          title="Validation outcomes, engineering delivery, and leadership reflection."
+          label="Impact & Closing"
+          title="Measurable outcomes, validation, and design leadership reflection."
           intro={project.engineeringSummary}
         >
-          <ol className="tiles tiles-3 cs-collab-tiles">
-            {project.collabTracks.map((t) => (
-              <li key={t.phase} className="tile">
-                <span className="tile-no">{t.phase}</span>
-                <h3>{t.title}</h3>
-                <p>{clean(t.detail)}</p>
-                <span className="tile-foot">{t.deliverable}</span>
-              </li>
-            ))}
-          </ol>
-
           <div className="cs-closing-card">
             <div className="cs-closing-copy">
               <span className="eyebrow">Closing Reflection &amp; Skills Alignment</span>
               <h3>How {project.name} reflects my product design leadership</h3>
               <p>
-                {project.lede} By pairing qualitative user synthesis with deterministic state modeling and tokenized design-to-code contracts, the team shipped a resilient {project.platform.toLowerCase()} with zero handoff ambiguity.
+                {project.lede} By pairing in-depth user insights with iterative prototyping and clear design foundations, we shipped a cohesive {project.platform.toLowerCase()} that eliminates user friction and drives measurable business impact.
               </p>
             </div>
             <div className="cs-closing-meta">
