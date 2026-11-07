@@ -8,7 +8,6 @@ import {
 } from "./data/portfolioData"
 import { userFlows } from "./data/userFlows"
 import { Icon } from "./components/Icon"
-import { JourneyMap } from "./components/JourneyMap"
 import { UserFlowDiagram } from "./components/UserFlowDiagram"
 import { Sparkle, SparkLabel, Squiggle, Typed } from "./components/Decor"
 
@@ -1002,7 +1001,7 @@ function ProjectPage({ project }: { project: CaseStudyProject }) {
   const sections: [string, string][] = [
     ["overview", "Overview"],
     ["problem", "Challenge"],
-    ["discovery", "Research & Journey"],
+    ["discovery", "Research & Insights"],
     ["process", "Architecture & Principles"],
     ["final-design", "Key Screens"],
     ["results", "Impact & Closing"],
@@ -1406,8 +1405,8 @@ function ProjectPage({ project }: { project: CaseStudyProject }) {
         <Section
           id="discovery"
           n={num("discovery")}
-          label="Research & User Journey"
-          title="User needs, real friction points, and end-to-end journey mapping."
+          label="Research & Discovery"
+          title="User needs, research methods, and key insights."
           intro={project.discoverySummary}
         >
           <div className="persona-card">
@@ -1418,12 +1417,14 @@ function ProjectPage({ project }: { project: CaseStudyProject }) {
             <p className="persona-goal">{project.audienceGoal ?? project.journeyFlow[0]?.userGoal ?? project.discoverySummary}</p>
           </div>
 
-          <div className="cs-subblock">
-            <div className="cs-subblock-head">
-              <span className="eyebrow">Customer Journey Map</span>
-              <h3>{project.journeySummary}</h3>
-            </div>
-            <JourneyMap stages={project.journeyFlow} />
+          <div className="tiles tiles-3 cs-overview-pillars">
+            {project.discoveryMethods.map(([t, d], i) => (
+              <div key={t} className="tile">
+                <span className="tile-no">{pad(i + 1)} · Research Method &amp; Insight</span>
+                <h3>{clean(t)}</h3>
+                <p>{clean(d)}</p>
+              </div>
+            ))}
           </div>
         </Section>
 
