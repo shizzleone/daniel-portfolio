@@ -106,7 +106,35 @@ export function UserFlowDiagram({ flow, id }: FlowProps) {
   const markerId = `arrow-${id}`
 
   return (
-    <figure className="flow">
+    <figure className="flow fj-flow-window">
+      <div className="fj-window-bar">
+        <div className="fj-window-left">
+          <div className="ui-frame-dots" aria-hidden="true">
+            <span />
+            <span />
+            <span />
+          </div>
+          <div className="fj-journey-title">
+            <i className="fj-badge-icon" aria-hidden="true" />
+            <span>FigJam · End-to-End User &amp; System Flow Architecture</span>
+          </div>
+        </div>
+        <div className="fj-journey-collaborators" aria-label="Workshop collaborators">
+          <span className="fj-cursor-pill is-dj">
+            <i>DJ</i> Daniel Johnson
+          </span>
+          <span className="fj-cursor-pill is-ur">
+            <i>UR</i> UX Research
+          </span>
+          <span className="fj-cursor-pill is-eng">
+            <i>ENG</i> Engineering
+          </span>
+          <span className="fj-stage-count">
+            {flow.nodes.length} nodes · {flow.lanes.length} lanes
+          </span>
+        </div>
+      </div>
+
       <div className="flow-toolbar">
         <div className="flow-chips" role="group" aria-label="Highlight a path">
           <button

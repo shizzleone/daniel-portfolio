@@ -759,19 +759,21 @@ html body .gate-close{position:absolute;top:18px;right:18px;z-index:1}
 
 /* Case study */
 .cs-hero-wrap {
-  padding-top: 20px;
+  padding-top: 24px;
 }
 .cs-hero {
-  padding: 36px 48px 0;
-  border-radius: 28px;
-  overflow: hidden;
-  background: var(--tint);
-  border: 1px solid color-mix(in srgb, var(--tint-ink) 14%, transparent);
+  padding: 12px 0 0;
+  background: transparent;
+  border: 0;
+  overflow: visible;
 }
 .cs-hero-top {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 16px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid var(--line);
 }
 .back {
   display: inline-flex;
@@ -781,12 +783,12 @@ html body .gate-close{position:absolute;top:18px;right:18px;z-index:1}
   border-radius: 999px;
   font-size: 14px;
   font-weight: 500;
-  background: color-mix(in srgb, var(--surface) 80%, transparent);
-  border: 1px solid color-mix(in srgb, var(--tint-ink) 14%, transparent);
+  background: var(--surface);
+  border: 1px solid var(--line);
   transition: all 0.2s ease;
 }
 .back:hover {
-  background: var(--surface);
+  border-color: var(--line-strong);
   transform: translateX(-2px);
 }
 .cs-index {
@@ -794,26 +796,21 @@ html body .gate-close{position:absolute;top:18px;right:18px;z-index:1}
   font-size: 12px;
   font-weight: 600;
   letter-spacing: 0.05em;
-  color: var(--tint-ink);
+  color: var(--muted);
+  padding-left: 12px;
+  border-left: 1px solid var(--line);
 }
 .cs-hero-copy {
-  margin-top: 44px;
-}
-.cs-hero-badges {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 10px;
+  margin-top: 40px;
 }
 .cs-codename {
   font-family: var(--mono);
   font-size: 12px;
   font-weight: 500;
-  color: var(--tint-ink);
-  opacity: 0.85;
+  color: var(--muted);
 }
 .cs-hero-copy h1 {
-  margin: 16px 0 18px;
+  margin: 0 0 18px;
   font-size: clamp(36px, 4.8vw, 68px);
   line-height: 1.06;
   letter-spacing: -0.04em;
@@ -826,7 +823,7 @@ html body .gate-close{position:absolute;top:18px;right:18px;z-index:1}
 }
 .cs-h1-tagline {
   display: block;
-  margin-top: 6px;
+  margin-top: 8px;
   font-size: clamp(22px, 2.5vw, 36px);
   font-weight: 500;
   line-height: 1.18;
@@ -835,7 +832,7 @@ html body .gate-close{position:absolute;top:18px;right:18px;z-index:1}
 }
 .cs-h1-tagline em {
   font-style: normal;
-  color: var(--tint-ink);
+  color: var(--accent);
   font-weight: 650;
 }
 .cs-hero-copy h1:focus {
@@ -848,33 +845,47 @@ html body .gate-close{position:absolute;top:18px;right:18px;z-index:1}
   color: var(--ink-2);
   max-width: 72ch;
 }
+.cs-hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  margin-top: 26px;
+}
 .cs-meta {
   display: grid;
-  grid-template-columns: repeat(5, minmax(0, 1fr));
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 24px;
-  margin-top: 48px;
-  padding-top: 20px;
-  border-top: 1px solid color-mix(in srgb, var(--tint-ink) 18%, transparent);
+  margin-top: 40px;
+  padding: 22px 28px;
+  border-radius: 18px;
+  background: var(--sunken);
+  border: 1px solid var(--line);
 }
 .cs-meta dt {
   font-family: var(--mono);
   font-size: 11px;
-  color: var(--tint-ink);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--muted);
 }
 .cs-meta dd {
   margin-top: 6px;
-  font-size: 14px;
+  font-size: 14.5px;
+  font-weight: 500;
+  color: var(--ink);
 }
 .cs-hero-media {
-  margin-top: 48px;
-  border-radius: 14px 14px 0 0;
+  margin-top: 36px;
+  border-radius: 20px;
   overflow: hidden;
   border: 1px solid var(--line);
-  box-shadow: 0 -12px 60px -30px rgba(0, 0, 0, 0.45);
+  background: var(--surface);
+  box-shadow: 0 24px 64px -24px rgba(0, 0, 0, 0.22);
 }
 .cs-hero-media img {
   width: 100%;
-  max-height: 660px;
+  max-height: 680px;
   object-fit: cover;
   object-position: top;
 }
@@ -1168,12 +1179,43 @@ html body .gate-close{position:absolute;top:18px;right:18px;z-index:1}
   color: var(--muted);
 }
 
-/* User flow */
+/* User flow — inside FigJam container window */
 .flow {
   border-radius: 24px;
   border: 1px solid var(--line);
   background: var(--surface);
   overflow: hidden;
+  box-shadow: 0 16px 40px -20px rgba(0, 0, 0, 0.22);
+}
+.fj-flow-window {
+  border-radius: 24px;
+  background-color: var(--surface);
+  background-image: radial-gradient(var(--line-strong) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+.fj-window-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  padding: 14px 18px;
+  background: color-mix(in srgb, var(--surface) 86%, var(--sunken));
+  border-bottom: 1px solid var(--line);
+}
+.fj-window-left {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.fj-window-bar .fj-journey-title {
+  font-family: var(--mono);
+  font-size: 11.5px;
+  letter-spacing: -0.01em;
+}
+.fj-window-bar .fj-stage-count {
+  font-family: var(--mono);
+  font-size: 11px;
 }
 .flow-toolbar {
   display: flex;

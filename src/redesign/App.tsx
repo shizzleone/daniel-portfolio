@@ -1125,64 +1125,24 @@ function ProjectPage({ project }: { project: CaseStudyProject }) {
       </div>
 
       <header className="shell cs-hero-wrap">
-        <div className={`cs-hero ${tint(project)}`}>
+        <div className="cs-hero">
           <div className="cs-hero-top">
             <a href="#/" className="back">
               <Icon name="arrow-left" size={15} />
               All work
             </a>
             <div className="cs-hero-top-right">
-              {canEmbed && (
-                <button
-                  type="button"
-                  className={`cs-sandbox-toggle ${heroView === "sandbox" ? "is-active" : ""}`}
-                  onClick={() =>
-                    setHeroView((v) => (v === "screen" ? "sandbox" : "screen"))
-                  }
-                >
-                  <Icon name="play" size={11} />
-                  {heroView === "sandbox"
-                    ? "Exit Sandbox · View Mockup"
-                    : "⚡ Test Live App in Browser"}
-                </button>
-              )}
-              {project.liveUrl && (
-                <a
-                  href={project.liveUrl}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="cs-live-pill"
-                >
-                  <i aria-hidden="true" />
-                  Live Prototype
-                  <Icon name="arrow-up-right" size={12} />
-                </a>
-              )}
-              {project.figmaUrl && (
-                <a
-                  href={project.figmaUrl}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="cs-figma-pill"
-                  title="Inspect file structure, design system tokens, and component sets in Figma"
-                >
-                  <Icon name="figma" size={13} />
-                  Inspect in Figma
-                  <Icon name="arrow-up-right" size={12} />
-                </a>
+              <span className="eyebrow">{project.category}</span>
+              {project.codename && (
+                <span className="cs-codename">{project.codename}</span>
               )}
               <span className="cs-index">
                 {project.index} / {pad(allCaseStudies.length)}
               </span>
             </div>
           </div>
+
           <div className="cs-hero-copy">
-            <div className="cs-hero-badges">
-              <span className="eyebrow">{project.category}</span>
-              {project.codename && (
-                <span className="cs-codename">{project.codename}</span>
-              )}
-            </div>
             <h1 id="page-title" tabIndex={-1}>
               <span className="cs-h1-name">{project.name}</span>
               {project.headlineStart && project.headlineAccent && (
@@ -1193,7 +1153,52 @@ function ProjectPage({ project }: { project: CaseStudyProject }) {
               )}
             </h1>
             <p className="cs-summary">{project.summary}</p>
+
+            {(canEmbed || project.liveUrl || project.figmaUrl) && (
+              <div className="cs-hero-actions">
+                {canEmbed && (
+                  <button
+                    type="button"
+                    className={`cs-sandbox-toggle ${heroView === "sandbox" ? "is-active" : ""}`}
+                    onClick={() =>
+                      setHeroView((v) => (v === "screen" ? "sandbox" : "screen"))
+                    }
+                  >
+                    <Icon name="play" size={11} />
+                    {heroView === "sandbox"
+                      ? "Exit Sandbox · View Mockup"
+                      : "⚡ Test Live App in Browser"}
+                  </button>
+                )}
+                {project.liveUrl && (
+                  <a
+                    href={project.liveUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="cs-live-pill"
+                  >
+                    <i aria-hidden="true" />
+                    Live Prototype
+                    <Icon name="arrow-up-right" size={12} />
+                  </a>
+                )}
+                {project.figmaUrl && (
+                  <a
+                    href={project.figmaUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="cs-figma-pill"
+                    title="Inspect file structure, design system tokens, and component sets in Figma"
+                  >
+                    <Icon name="figma" size={13} />
+                    Inspect in Figma
+                    <Icon name="arrow-up-right" size={12} />
+                  </a>
+                )}
+              </div>
+            )}
           </div>
+
           <dl className="cs-meta">
             <div>
               <dt>Role</dt>
@@ -1211,40 +1216,6 @@ function ProjectPage({ project }: { project: CaseStudyProject }) {
               <dt>Platform</dt>
               <dd>{project.platform}</dd>
             </div>
-            <div>
-              <dt>Prototype</dt>
-              <dd>
-                {project.liveUrl ? (
-                  <a
-                    href={project.liveUrl}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="link"
-                  >
-                    Open prototype
-                    <Icon name="arrow-up-right" size={13} />
-                  </a>
-                ) : (
-                  "Available on request"
-                )}
-              </dd>
-            </div>
-            {project.figmaUrl && (
-              <div>
-                <dt>Figma File</dt>
-                <dd>
-                  <a
-                    href={project.figmaUrl}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="link"
-                  >
-                    Inspect in Figma
-                    <Icon name="arrow-up-right" size={13} />
-                  </a>
-                </dd>
-              </div>
-            )}
           </dl>
 
           {heroView === "sandbox" && canEmbed && project.liveUrl ? (
@@ -1303,18 +1274,6 @@ function ProjectPage({ project }: { project: CaseStudyProject }) {
                   {project.name} · {project.platform}
                 </span>
                 <div className="ui-frame-actions">
-                  {canEmbed && (
-                    <button
-                      type="button"
-                      className="ui-frame-zoom is-interactive-btn"
-                      onClick={(e) => {
-                        e.stopPropagation()
-                        setHeroView("sandbox")
-                      }}
-                    >
-                      <Icon name="play" size={10} /> ⚡ Test Live App
-                    </button>
-                  )}
                   <span className="ui-frame-zoom">
                     <Icon name="expand" size={12} /> Inspect screen
                   </span>
