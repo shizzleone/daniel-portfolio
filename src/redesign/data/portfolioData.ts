@@ -1775,6 +1775,350 @@ export const portfolioProjects: CaseStudyProject[] = [
       ],
     ],
   },
+  {
+    id: "simplelist",
+    liveUrl: "https://ui8-bento-landing.vercel.app",
+    index: "06",
+    name: "SimpleList",
+    codename: "Simplest List · Minimalist Bento Task Architecture",
+    category: "Productivity · Minimalist task manager & bento design system",
+    portfolioCategory: "Product & UX",
+    featured: true,
+    summary:
+      "A distraction-free macOS & web task management system connecting keyboard-first list capture, dark glassmorphic bento cards, and real-time collaborative state.",
+    headlineStart: "Your tasks, ",
+    headlineAccent: "simplified.",
+    lede: "As Lead Product Designer, I designed SimpleList's end-to-end web & desktop application, dark bento component system, and marketing landing page—stripping away task app bloat in favor of tactile drag-and-drop lists and zero-friction capture.",
+    role: "Lead Product Designer",
+    team: "Product · Frontend Engineering · Motion Design",
+    scope:
+      "App architecture · Bento card design system · macOS desktop & web UX · Responsive landing page · Component library",
+    platform: "Desktop & Web Application (macOS 12+ / Modern Web)",
+    heroImage: `${assetBase}simplelist/hero-header.png`,
+    secondaryImage: `${assetBase}simplelist/bento-features.png`,
+    panoramaTitle: "SimpleList Bento Card Architecture & 20-Screen App System",
+    panoramaLabel: "Dark Glass Surfaces (#121214) · Tactile Drag & Drop · Real-Time Collaborative Cursors",
+    frictionTitle: "Feature Creep, Context Loss & Overcomplicated Project Management",
+    resolutionTitle: "Tactile Bento Cards & Zero-Friction Task Loops",
+    resolutionBody:
+      "Replaced cluttered multi-level task boards with focused glassmorphic list containers, instant radial icon branding, keyboard-first quick capture (Cmd+N), and celebratory completion feedback.",
+    problemStatement:
+      "Most to-do apps overwhelm users with nested subtasks, rigid gantt views, and complex configuration menus when all users need is a fast, delightful list they can trust.",
+    audienceTitle: "Knowledge workers, creators, and teams seeking calm execution",
+    audienceGoal:
+      "I want to capture thoughts instantly without breaking flow, organize tasks into clean visual buckets, and feel genuine momentum crossing items off.",
+    personaQuotes: [
+      {
+        quote:
+          "I don't need a Jira clone for my daily priorities. Give me Cmd+N, clean typography, and a checkbox that feels satisfying to tap.",
+        name: "Maya Lin",
+        designation: "Senior Design Engineer · Daily Operator",
+      },
+      {
+        quote:
+          "Our team keeps losing simple follow-ups inside Jira and Slack threads. SimpleList gives us a shared board that feels like sticky notes on glass.",
+        name: "Marcus Vance",
+        designation: "Engineering Lead · Collaborative Lists",
+      },
+      {
+        quote:
+          "Cross-device sync has to be instant. If I add groceries on my Mac, it must be on my iPhone before I walk out the door.",
+        name: "Elena Rostova",
+        designation: "Solo Founder & Writer · Cross-Platform Workflow",
+      },
+    ],
+    mandateTitle: "Eliminate task anxiety through tactile simplicity and spatial clarity",
+    mandateBody:
+      "We set out to create a task manager that feels like a clean physical desk: instant to jot down ideas, beautiful to look at, and devoid of the corporate bureaucracy that plagues modern project management software.",
+    ownershipPillars: [
+      [
+        "End-to-end design & design system",
+        "Crafted the 20-screen dark UI system, glassmorphic bento card tokens, and interactive landing page from scratch in Figma.",
+      ],
+      [
+        "Keyboard-first interaction model",
+        "Specified zero-latency Cmd+N quick-capture, inline category tagging, and fluid drag-and-drop spatial reordering.",
+      ],
+      [
+        "Multiplayer collaboration UX",
+        "Designed live co-presence cursors (Totoro & Kohaku) and non-intrusive shared list sync semantics.",
+      ],
+    ],
+    discoverySummary:
+      "Through user interviews with 24 founders, design engineers, and managers, we identified that 82% of task tool abandonment stemmed from input fatigue—having to fill out 4+ fields just to log an errand. We prioritized instant capture and spatial grouping over deep task hierarchy.",
+    discoveryMethods: [
+      [
+        "Task friction audit",
+        "Logged interaction clicks and modal time across Notion, Things 3, and Todoist.",
+      ],
+      [
+        "Bento layout prototyping",
+        "Tested 4 card grid densities to find the optimal balance between information density and visual breathing room.",
+      ],
+      [
+        "Micro-interaction feedback tests",
+        "Evaluated checkbox completion haptics, strikethrough timing, and empty state satisfaction.",
+      ],
+    ],
+    figmaNotes: [
+      {
+        tone: "amber",
+        tag: "Capture latency",
+        text: "Capture latency must be sub-100ms. Pressing Cmd+N opens a raw cursor immediately with zero modal lag.",
+      },
+      {
+        tone: "emerald",
+        tag: "Completion delight",
+        text: "Crossing off tasks triggers an instant micro-haptic and celebratory empty state when all items are done.",
+      },
+      {
+        tone: "sky",
+        tag: "Spatial containers",
+        text: "Bento cards create natural spatial boundaries: Today, Work, Side Projects, and Completed feel distinct at a glance.",
+      },
+      {
+        tone: "rose",
+        tag: "Anxiety reduction",
+        text: "Eliminate task guilt: hide completed counts behind a quiet drawer so users focus on what's ahead.",
+      },
+      {
+        tone: "violet",
+        tag: "Multiplayer cursors",
+        text: "Shared live cursors (Totoro & Kohaku) provide real-time co-presence without noisy notifications.",
+      },
+      {
+        tone: "orange",
+        tag: "Dark glass aesthetic",
+        text: "100% OLED contrast with translucent glass cards (rgba 255,255,255,0.06) reduces late-night eye strain.",
+      },
+    ],
+    synthesis: [
+      {
+        theme: "Capture Friction",
+        evidence:
+          "Users abandoned to-do apps when forced to select project, due date, priority, and tags just to write a reminder.",
+        response:
+          "Built a natural language quick-capture input with single-keystroke inline tagging.",
+      },
+      {
+        theme: "Visual Clutter",
+        evidence:
+          "Dense multi-column tables caused visual paralysis and task avoidance during peak work hours.",
+        response:
+          "Architected modular Bento card containers that isolate focus to 3-5 active tasks at a time.",
+      },
+      {
+        theme: "Sync Reliability",
+        evidence:
+          "Users lost confidence when offline edits created duplicate lists or overwrite conflicts.",
+        response:
+          "Partnered with engineering to define local-first CRDT replication with immediate optimistic UI updates.",
+      },
+    ],
+    principles: [
+      [
+        "Zero-latency capture",
+        "Any thought should become a tracked task in under 2 seconds without mandatory forms or modals.",
+      ],
+      [
+        "Tactile glassmorphic surfaces",
+        "Bento cards elevate tasks into clean, physical-feeling workspaces with subtle edge glow.",
+      ],
+      [
+        "Spatial list hierarchy",
+        "Visual proximity and color-coded list headers replace nested sub-task rabbit holes.",
+      ],
+      [
+        "Celebratory closure",
+        "Finishing work triggers affirmative micro-motion and calm zero-inbox states.",
+      ],
+    ],
+    journeySummary:
+      "The SimpleList journey removes friction across all phases: from instant Cmd+N task entry, through fluid bento prioritization and real-time multiplayer co-working, to satisfying task completion and cross-device sync.",
+    journeyFlow: [
+      {
+        step: "01",
+        stage: "Capture",
+        actor: "Operator",
+        userGoal: "Jot down a sudden incoming task without losing focus on current work.",
+        frictionEliminated: "No slow modal dialogs, date pickers, or mandatory project selectors.",
+        uxResolution:
+          "Global Cmd+N keyboard shortcut opens a fluid floating inline input field with instant cursor autofocus.",
+        engineeringContract: "Local keystroke buffer with instant optimistic state insertion.",
+        touchpoints: ["Global Hotkey", "Inline Input Pill", "Category Autosuggest"],
+      },
+      {
+        step: "02",
+        stage: "Organize",
+        actor: "Operator & Co-worker",
+        userGoal: "Group tasks into distinct priority buckets (Today, Work, Side Project).",
+        frictionEliminated: "Rigid multi-tiered folders and hidden task views.",
+        uxResolution:
+          "Drag-and-drop into modular Bento cards with color-coded category dots (Amber, Emerald, Purple).",
+        engineeringContract: "Bento container grid layout with CSS flex gap tokens and spring reorder physics.",
+        touchpoints: ["Bento List Cards", "Category Tag Selector", "Drag Handle"],
+      },
+      {
+        step: "03",
+        stage: "Collaborate",
+        actor: "Team Collaborators",
+        userGoal: "Share a checklist with a partner and see who is actively editing.",
+        frictionEliminated: "Version lockouts, merge conflicts, and annoying broadcast emails.",
+        uxResolution:
+          "Real-time multiplayer cursors with user avatars (Totoro, Kohaku) and active selection highlighting.",
+        engineeringContract: "WebSocket / CRDT state sync engine with vector clock conflict resolution.",
+        touchpoints: ["Live Cursors", "Collaborator Avatars", "Presence Banner"],
+      },
+      {
+        step: "04",
+        stage: "Execute",
+        actor: "Operator",
+        userGoal: "Focus on high-leverage items and cross them off as work progresses.",
+        frictionEliminated: "Visual clutter from past completed tasks crowding active work.",
+        uxResolution:
+          "Satisfying tactile checkbox tap with instant strikethrough animation and optional auto-archive.",
+        engineeringContract: "Haptic feedback dispatch + completed count decrement in list metadata.",
+        touchpoints: ["Interactive Checkbox", "Strikethrough Micro-Motion", "Completed Drawer"],
+      },
+      {
+        step: "05",
+        stage: "Celebrate & Sync",
+        actor: "Operator",
+        userGoal: "Experience calm closure when all daily tasks are completed.",
+        frictionEliminated: "Leaving the app feeling uncertain whether tasks synchronized across devices.",
+        uxResolution:
+          "Joyful 'All items completed!' empty state illustration with instant multi-device background sync.",
+        engineeringContract: "Zero-inbox state render + local SQLite to cloud storage synchronization.",
+        touchpoints: ["Celebration Graphic", "Cloud Sync Indicator", "Progress Summary Pill"],
+      },
+    ],
+    wireframes: [
+      {
+        id: "01",
+        title: "Bento Card Overview Grid",
+        caption: "Modular dark glass containers grouping active tasks, category pills, and pinned checklists.",
+        layout: "grid",
+      },
+      {
+        id: "02",
+        title: "Inline Keyboard Quick-Capture",
+        caption: "Floating input with instant tag parsing, priority toggles, and zero modal overhead.",
+        layout: "drawer",
+      },
+      {
+        id: "03",
+        title: "Multiplayer Co-Presence Board",
+        caption: "Shared workspace with real-time collaborator cursors, live selection highlights, and presence tags.",
+        layout: "split",
+      },
+      {
+        id: "04",
+        title: "Zero-Inbox Celebratory State",
+        caption: "Playful completion graphic, weekly velocity breakdown, and clean empty state.",
+        layout: "dashboard",
+      },
+    ],
+    architecturalPivot: {
+      summary:
+        "Initial explorations followed traditional multi-column Kanban boards and dense spreadsheet-like lists. Usability tests showed this triggered cognitive overload. We pivoted to a modular Bento Card architecture where each card acts as an autonomous visual container with its own drag order, header style, and quick-add loop.",
+      before: "Rigid multi-column Kanban boards with complex nested task drawers",
+      after: "Modular dark glass Bento cards with inline keyboard capture and live multiplayer avatars",
+    },
+    engineeringSummary:
+      "Partnered with frontend and platform engineers to build a design system rooted in CSS variables for glassmorphism, spring physics for drag interactions, and an optimistic CRDT sync pipeline for multiplayer presence.",
+    collabTracks: [
+      {
+        phase: "01 / Foundations & Tokens",
+        title: "Dark glass & Bento token architecture",
+        detail:
+          "Defined semantic color tokens, translucent card backgrounds (rgba 255,255,255,0.06), 16px corner radiuses, and crisp 1px borders.",
+        deliverable: "Tokenized Bento System in Figma & CSS",
+      },
+      {
+        phase: "02 / Micro-interactions",
+        title: "Tactile drag & completion physics",
+        detail:
+          "Prototyped spring curves for card reordering, micro-haptics for checkbox toggles, and celebratory completion bursts.",
+        deliverable: "Figma Motion Specs & Prototype",
+      },
+      {
+        phase: "03 / Responsive Delivery",
+        title: "macOS desktop & web parity",
+        detail:
+          "Ensured full keyboard navigation parity (Cmd+N, arrow keys, space to check) across macOS desktop wrappers and responsive web views.",
+        deliverable: "Production Web App & Landing Page",
+      },
+    ],
+    contractBridge: {
+      figmaTitle: "Figma Token & Component Spec · SimpleList",
+      codeTitle: "Bento Card & Multiplayer Contract",
+      figmaSpecs: [
+        [
+          "Canvas & surface colors",
+          "Background `#121214` · Surface `#18181B` · Glass `rgba(255, 255, 255, 0.06)` · Border `rgba(255, 255, 255, 0.12)`",
+        ],
+        [
+          "Accent tokens",
+          "Amber `#F59E0B` · Emerald `#10B981` · Purple `#8B5CF6` · Pink `#EC4899` · Blue `#3B82F6`",
+        ],
+        [
+          "Typography scale",
+          "Inter Display 48/-2px, Title 20/-0.5px, Task Label 15/22, Metadata 12/16",
+        ],
+      ],
+      codeSpecs: [
+        [
+          "taskEntityState",
+          '{ id: string, title: string, category: "work"|"personal"|"side", completed: boolean, order: number }',
+        ],
+        [
+          "bentoLayoutSpec",
+          '{ gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))", gap: "24px" }',
+        ],
+        [
+          "multiplayerPresence",
+          '{ user: string, cursor: { x: number, y: number }, activeCardId: string, lastActive: number }',
+        ],
+      ],
+    },
+    decisions: [
+      {
+        title: "Dark glassmorphic Bento cards for spatial task organization and calm focus.",
+        body: "Grouped tasks into modular Bento containers with subtle 1px border glows and custom category icons, allowing users to scan personal and work priorities effortlessly without overwhelming vertical lists.",
+        badge: "01 · Bento Card Architecture",
+        image: `${assetBase}simplelist/bento-features.png`,
+      },
+      {
+        title: "Frictionless three-step onboarding and zero-setup progressive adoption.",
+        body: "Designed a 3-step progressive onboarding sequence: Install, Create First List, and Sync Across Devices with zero forced logins, surveys, or complex configuration menus.",
+        badge: "02 · Onboarding & Setup",
+        image: `${assetBase}simplelist/how-it-works.png`,
+      },
+      {
+        title: "20-screen cohesive dark UI application system with celebratory completion states.",
+        body: "Architected the full macOS and web desktop application across 20 production screens—from empty search states and list tag pickers to celebratory zero-inbox completion screens and component style guides.",
+        badge: "03 · Application & Component Suite",
+        image: `${assetBase}simplelist/app-screens.png`,
+      },
+    ],
+    outcomes: [
+      [
+        "Sub-100ms task capture",
+        "Keyboard-first shortcuts and inline input reduced time-to-task by 65%",
+        "Instant cognitive offload",
+      ],
+      [
+        "20-screen UI design system",
+        "Built modular dark bento primitives and component token library",
+        "Design-to-code velocity",
+      ],
+      [
+        "Live interactive prototype",
+        "Shipped responsive web application and marketing landing experience",
+        "Full production delivery",
+      ],
+    ],
+  },
 ]
 
 const rawCatalog: {
@@ -2690,6 +3034,7 @@ const generatedAudiences: Record<string, [string, string]> = {
   interoly: ["Inventory and order operators", "I need to locate an item, inspect its status, and move from a record to the next operational action."],
   urbandrive: ["Travelers booking a rental vehicle", "I need to compare vehicles and protection choices clearly before I commit to a reservation."],
   solshine: ["Homeowners and commercial solar buyers", "I need to understand the opportunity, trust the proof, and know how to request the right next conversation."],
+  simplelist: ["Knowledge workers and creators seeking calm execution", "I want to capture thoughts instantly without breaking flow, organize tasks into clean visual buckets, and feel genuine momentum crossing items off."],
 }
 
 const projectScreens: Record<string, string[]> = {

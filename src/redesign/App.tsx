@@ -27,6 +27,8 @@ const tintById: Record<string, string> = {
   shiftsnap: "green",
   "navflow-ai": "lilac",
   motive: "sand",
+  pennwise: "rose",
+  simplelist: "lilac",
 }
 const tintByCategory: Record<CaseStudyProject["portfolioCategory"], string> = {
   "Developer tools": "blue",
