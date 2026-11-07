@@ -10,7 +10,6 @@ import { userFlows } from "./data/userFlows"
 import { Icon } from "./components/Icon"
 import { JourneyMap } from "./components/JourneyMap"
 import { UserFlowDiagram } from "./components/UserFlowDiagram"
-import { Wireframe, WireframeFrame } from "./components/Wireframe"
 import { Sparkle, SparkLabel, Squiggle, Typed } from "./components/Decor"
 
 const RESUME = "https://danieljohnson.bio/assets/daniel-johnson-resume.pdf"
@@ -1009,7 +1008,6 @@ function ProjectPage({ project }: { project: CaseStudyProject }) {
   const [active, setActive] = useState("overview")
   const [readMode, setReadMode] = useState<"deep" | "quick">("deep")
   const [heroView, setHeroView] = useState<"screen" | "sandbox">("screen")
-  const [comparePos, setComparePos] = useState(54)
   const [copiedToken, setCopiedToken] = useState<string | null>(null)
   const [personaQuote, setPersonaQuote] = useState(0)
   const [scrollProgress, setScrollProgress] = useState(0)
@@ -1020,6 +1018,9 @@ function ProjectPage({ project }: { project: CaseStudyProject }) {
   } | null>(null)
   const quotes = project.personaQuotes ?? []
   const canEmbed = isEmbeddablePrototype(project.liveUrl)
+  const isTechnicalProject =
+    project.portfolioCategory === "Design systems" ||
+    project.portfolioCategory === "Developer tools"
 
   const idx = allCaseStudies.findIndex((p) => p.id === project.id)
   const prev =
@@ -1031,7 +1032,6 @@ function ProjectPage({ project }: { project: CaseStudyProject }) {
     setPersonaQuote(0)
     setLightbox(null)
     setHeroView("screen")
-    setComparePos(54)
 
     const obs = new IntersectionObserver(
       (entries) =>
@@ -1505,10 +1505,10 @@ function ProjectPage({ project }: { project: CaseStudyProject }) {
           id="process"
           n={num("process")}
           label="Design Process & Architecture"
-          title="Task flows, structural wireframes, and guiding principles."
+          title="System flow, architectural pivot, and guiding principles."
           intro={project.architecturalPivot.summary}
         >
-          {readMode === "deep" && flow && (
+          {flow && (
             <div className="cs-flow-wrap">
               <UserFlowDiagram flow={flow} id={project.id} />
             </div>
@@ -1528,97 +1528,6 @@ function ProjectPage({ project }: { project: CaseStudyProject }) {
             </div>
           </div>
 
-          <div className="ba-slider-card" aria-label="Before and after architecture comparison">
-            <div className="ba-slider-head">
-              <div>
-                <span className="eyebrow">
-                  <Icon name="sliders" size={12} /> Interactive Evolution Slider
-                </span>
-                <h3>Drag to compare structural wireframe vs. shipped production UI</h3>
-              </div>
-              <div className="ba-slider-presets">
-                <button
-                  type="button"
-                  className={comparePos < 20 ? "is-active" : ""}
-                  onClick={() => setComparePos(8)}
-                >
-                  Wireframe
-                </button>
-                <button
-                  type="button"
-                  className={comparePos >= 20 && comparePos <= 80 ? "is-active" : ""}
-                  onClick={() => setComparePos(50)}
-                >
-                  50 / 50 Split
-                </button>
-                <button
-                  type="button"
-                  className={comparePos > 80 ? "is-active" : ""}
-                  onClick={() => setComparePos(92)}
-                >
-                  Production UI
-                </button>
-              </div>
-            </div>
-
-            <div className="ba-stage">
-              <div className="ba-layer ba-after">
-                <img
-                  src={project.decisions[0]?.image ?? project.heroImage}
-                  alt={`${project.name} shipped production interface`}
-                />
-                <span className="ba-tag ba-tag-right">
-                  After · Shipped High-Fidelity UI
-                </span>
-              </div>
-
-              <div
-                className="ba-layer ba-before"
-                style={{ clipPath: `inset(0 ${100 - comparePos}% 0 0)` }}
-              >
-                <div className="ba-wf-canvas">
-                  <div className="ba-wf-inner">
-                    <WireframeFrame
-                      layout={project.wireframes[0]?.layout ?? "dashboard"}
-                    />
-                  </div>
-                </div>
-                <span className="ba-tag ba-tag-left">
-                  Before · Low-Fidelity Architecture ({project.wireframes[0]?.title ?? "System Skeleton"})
-                </span>
-              </div>
-
-              <div
-                className="ba-divider"
-                style={{ left: `${comparePos}%` }}
-                aria-hidden="true"
-              >
-                <span className="ba-handle">
-                  <Icon name="arrow-left" size={11} />
-                  <Icon name="arrow-right" size={11} />
-                </span>
-              </div>
-
-              <input
-                type="range"
-                min={2}
-                max={98}
-                value={comparePos}
-                aria-label="Comparison slider percentage"
-                className="ba-range-input"
-                onChange={(e) => setComparePos(Number(e.target.value))}
-              />
-            </div>
-          </div>
-
-          {readMode === "deep" && (
-            <div className="wf-grid">
-              {project.wireframes.map((w, i) => (
-                <Wireframe key={w.id} spec={w} n={i + 1} />
-              ))}
-            </div>
-          )}
-
           <ol className="principles">
             {project.principles.map(([t, d], i) => (
               <li key={t}>
@@ -1634,8 +1543,16 @@ function ProjectPage({ project }: { project: CaseStudyProject }) {
           id="final-design"
           n={num("final-design")}
           label="Final Design & Key Features"
-          title="High-fidelity screens, key functionalities, and system specs."
-          intro="Every screen translates research insights and design principles into clear visual hierarchy, predictable state transitions, and production-ready component tokens."
+          title={
+            isTechnicalProject
+              ? "High-fidelity screens, key functionalities, and system specs."
+              : "High-fidelity screens, interaction states, and key features."
+          }
+          intro={
+            isTechnicalProject
+              ? "Every screen translates research insights and design principles into clear visual hierarchy, predictable state transitions, and production-ready component tokens."
+              : "Every screen translates research insights and design principles into clear visual hierarchy, predictable state transitions, and intuitive product touchpoints."
+          }
         >
           <ol className="decisions">
             {project.decisions.map((d, i) => (
@@ -1710,61 +1627,63 @@ function ProjectPage({ project }: { project: CaseStudyProject }) {
             </figure>
           )}
 
-          <div className="bridge cs-system-bridge">
-            <div>
-              <p className="eyebrow">Design System &amp; Style Spec</p>
-              <h3>{project.contractBridge.figmaTitle}</h3>
-              <dl>
-                {project.contractBridge.figmaSpecs.map(([k, v], i) => (
-                  <div key={k}>
-                    <dt>
-                      <span
-                        className="spec-swatch"
-                        style={{
-                          background: tokenSwatches[i % tokenSwatches.length],
-                        }}
-                        aria-hidden="true"
-                      />
-                      {k}
-                    </dt>
-                    <dd>{clean(v)}</dd>
-                  </div>
-                ))}
-              </dl>
-            </div>
-            <div className="bridge-code">
-              <div className="bridge-code-top">
-                <p className="eyebrow">Engineering Token &amp; State Contract</p>
-                <span className="bridge-copy-hint">Click any token to copy</span>
-              </div>
-              <h3>{project.contractBridge.codeTitle}</h3>
-              <dl>
-                {project.contractBridge.codeSpecs.map(([k, v]) => {
-                  const raw = clean(v)
-                  const isCopied = copiedToken === k
-                  return (
+          {isTechnicalProject && (
+            <div className="bridge cs-system-bridge">
+              <div>
+                <p className="eyebrow">Design System &amp; Style Spec</p>
+                <h3>{project.contractBridge.figmaTitle}</h3>
+                <dl>
+                  {project.contractBridge.figmaSpecs.map(([k, v], i) => (
                     <div key={k}>
-                      <dt>{k}</dt>
-                      <dd>
-                        <button
-                          type="button"
-                          className={`token-copy-btn ${isCopied ? "is-copied" : ""}`}
-                          onClick={() => copyToken(k, raw)}
-                          title="Click to copy token specification"
-                        >
-                          <code>{raw}</code>
-                          <span className="token-copy-badge">
-                            <Icon name={isCopied ? "check" : "copy"} size={11} />
-                            {isCopied ? "Copied!" : "Copy"}
-                          </span>
-                        </button>
-                      </dd>
+                      <dt>
+                        <span
+                          className="spec-swatch"
+                          style={{
+                            background: tokenSwatches[i % tokenSwatches.length],
+                          }}
+                          aria-hidden="true"
+                        />
+                        {k}
+                      </dt>
+                      <dd>{clean(v)}</dd>
                     </div>
-                  )
-                })}
-              </dl>
+                  ))}
+                </dl>
+              </div>
+              <div className="bridge-code">
+                <div className="bridge-code-top">
+                  <p className="eyebrow">Engineering Token &amp; State Contract</p>
+                  <span className="bridge-copy-hint">Click any token to copy</span>
+                </div>
+                <h3>{project.contractBridge.codeTitle}</h3>
+                <dl>
+                  {project.contractBridge.codeSpecs.map(([k, v]) => {
+                    const raw = clean(v)
+                    const isCopied = copiedToken === k
+                    return (
+                      <div key={k}>
+                        <dt>{k}</dt>
+                        <dd>
+                          <button
+                            type="button"
+                            className={`token-copy-btn ${isCopied ? "is-copied" : ""}`}
+                            onClick={() => copyToken(k, raw)}
+                            title="Click to copy token specification"
+                          >
+                            <code>{raw}</code>
+                            <span className="token-copy-badge">
+                              <Icon name={isCopied ? "check" : "copy"} size={11} />
+                              {isCopied ? "Copied!" : "Copy"}
+                            </span>
+                          </button>
+                        </dd>
+                      </div>
+                    )
+                  })}
+                </dl>
+              </div>
             </div>
-          </div>
+          )}
         </Section>
 
         <Section
