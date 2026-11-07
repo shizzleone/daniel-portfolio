@@ -248,7 +248,7 @@ export const portfolioProjects: CaseStudyProject[] = [
       ],
       [
         "Interactive What-If Simulation Studio",
-        "Created the 9-step sandbox simulator (`Module 12`) to stress-test home purchases, raises, and 3-month sabbaticals against 2036 Net Worth.",
+        "Created the 9-step sandbox simulator to stress-test home purchases, raises, and 3-month sabbaticals against 2036 Net Worth.",
       ],
       [
         "Semantic Token & Component System",
@@ -280,17 +280,17 @@ export const portfolioProjects: CaseStudyProject[] = [
       {
         tone: "amber",
         tag: "Biggest Lift First",
-        text: "On Financial Compass (034), rank the four pillars strongest-first and pin 'Biggest lift: saving (+6 pts)' at the bottom.",
+        text: "On the Financial Compass, rank the four pillars strongest-first and pin 'Biggest lift: saving (+6 pts)' at the bottom.",
       },
       {
         tone: "sky",
         tag: "Safe Sandbox",
-        text: "Reassure users on What-Ifs (185): 'Simulations never change your real accounts, budgets, or goals.'",
+        text: "Reassure users on What-If simulations: 'Simulations never change your real accounts, budgets, or goals.'",
       },
       {
         tone: "rose",
         tag: "Surplus Guardrail",
-        text: "When creating a new goal (133), warn inline if the required monthly contribution exceeds the $870 planned monthly surplus.",
+        text: "When creating a new goal, warn inline if the required monthly contribution exceeds the $870 planned monthly surplus.",
       },
     ],
     synthesis: [
@@ -302,12 +302,12 @@ export const portfolioProjects: CaseStudyProject[] = [
       {
         theme: "Finite monthly surplus trade-offs",
         evidence: "Users created multiple savings goals without realizing their combined monthly targets exceeded their actual cash flow surplus.",
-        response: "Designed the `$870 Monthly Surplus Allocator` (`138 · Contributions`) with priority ranking and timeline impact badges.",
+        response: "Designed the `$870 Monthly Surplus Allocator` with priority ranking and timeline impact badges.",
       },
       {
         theme: "Transparent long-term assumptions",
         evidence: "Users doubted 10-year net worth numbers when inflation, return rates, and debt payoff strategies were hidden.",
-        response: "Exposed interactive sliders (`3.0% income growth`, `2.5% inflation`, `6.0% return`) and tornado sensitivity charts (`201 · Sensitivity Analysis`).",
+        response: "Exposed interactive sliders (`3.0% income growth`, `2.5% inflation`, `6.0% return`) and tornado sensitivity charts.",
       },
     ],
     principles: [
@@ -339,10 +339,10 @@ export const portfolioProjects: CaseStudyProject[] = [
         frictionEliminated:
           "Logging into four separate banking and retirement apps to piece together household net worth.",
         uxResolution:
-          "`033 · Main Dashboard` hero card with 1-tap privacy mask, quick transfer actions, and synced account cards.",
+          "`Main Dashboard` hero card with 1-tap privacy mask, quick transfer actions, and synced account cards.",
         engineeringContract:
           "Aggregated Plaid/OAuth balance ledger + real-time safe-to-spend buffer calc",
-        touchpoints: ["033 Main Dashboard", "036 Net Worth", "040 Available Cash"],
+        touchpoints: ["Main Dashboard", "Net Worth View", "Available Cash"],
       },
       {
         step: "02",
@@ -352,10 +352,10 @@ export const portfolioProjects: CaseStudyProject[] = [
         frictionEliminated:
           "Vague credit-score style gauges that don't explain how daily spending or savings rate changes the score.",
         uxResolution:
-          "`034 · Financial Compass` 4-pillar breakdown (`Spending 84`, `Investing 80`, `Debt 66`, `Saving 58`) + `049 · Action Plan`.",
+          "`Financial Compass` 4-pillar breakdown (`Spending 84`, `Investing 80`, `Debt 66`, `Saving 58`) + `Action Plan`.",
         engineeringContract:
           "Weighted 4-pillar scoring engine + marginal point-lift recommender",
-        touchpoints: ["034 Financial Compass", "035 Health Breakdown", "049 Action Plan"],
+        touchpoints: ["Financial Compass", "Health Breakdown", "Action Plan"],
       },
       {
         step: "03",
@@ -365,10 +365,10 @@ export const portfolioProjects: CaseStudyProject[] = [
         frictionEliminated:
           "Over-committing monthly cash across uncoordinated savings goals.",
         uxResolution:
-          "`127 · Goals Overview` + `144 · Priorities` surplus bar with automated payday transfer rules and milestone celebrations.",
+          "`Goals Overview` + `Priorities` surplus bar with automated payday transfer rules and milestone celebrations.",
         engineeringContract:
           "Payday auto-split rule engine + surplus over-allocation guardrail",
-        touchpoints: ["127 Goals Overview", "138 Contributions", "144 Priorities"],
+        touchpoints: ["Goals Overview", "Monthly Contributions", "Priorities"],
       },
       {
         step: "04",
@@ -378,10 +378,10 @@ export const portfolioProjects: CaseStudyProject[] = [
         frictionEliminated:
           "Hidden mutual-fund expense ratios and overlapping US equity exposure across accounts.",
         uxResolution:
-          "`163 · Portfolio Overview` + `182 · Diversification` & `183 · Fees` showing exact annual fee savings (`$4,200 over 20 yrs`).",
+          "`Portfolio Overview` + `Diversification` & `Fees` showing exact annual fee savings (`$4,200 over 20 yrs`).",
         engineeringContract:
           "Holdings look-through classifier + 20-year expense-ratio compounding calc",
-        touchpoints: ["163 Portfolio", "166 Asset Allocation", "183 Fees Audit"],
+        touchpoints: ["Portfolio", "Asset Allocation", "Fees Audit"],
       },
       {
         step: "05",
@@ -391,34 +391,34 @@ export const portfolioProjects: CaseStudyProject[] = [
         frictionEliminated:
           "Guessing whether a home purchase or career break will derail retirement at age 65.",
         uxResolution:
-          "`185 · What-Ifs` + `200 · Compare` + `201 · Sensitivity Analysis` tornado chart and partner PDF/link sharing.",
+          "`What-If Studio` + `Compare Scenarios` + `Sensitivity Analysis` tornado chart and partner PDF/link sharing.",
         engineeringContract:
           "Monte Carlo & deterministic 30-year cash-flow projection engine",
-        touchpoints: ["185 What-Ifs", "198 Results ($505k)", "200 Scenario Compare"],
+        touchpoints: ["What-If Studio", "10-Year Projections", "Scenario Compare"],
       },
     ],
     wireframes: [
       {
         id: "01",
-        title: "Net Worth & Quick Actions (033)",
+        title: "Net Worth & Quick Actions",
         caption: "Soft lime radial hero card ($128,420.50), Compass 72 badge, 4 quick actions, and Checking/Savings split.",
         layout: "mobile-home",
       },
       {
         id: "02",
-        title: "4-Pillar Financial Compass (034)",
+        title: "4-Pillar Financial Compass",
         caption: "72/100 score card with proportional pillar bars, ranked pillar list, and dark 'Biggest lift' banner.",
         layout: "mobile-queue",
       },
       {
         id: "03",
-        title: "Surplus & Goal Planner (127–144)",
+        title: "Surplus & Goal Planner",
         caption: "$37,450 goal progress header, payday cadence selector, and $870 monthly surplus priority allocator.",
         layout: "mobile-ledger",
       },
       {
         id: "04",
-        title: "What-If Scenario Compare (185–201)",
+        title: "What-If Scenario Compare",
         caption: "Interactive slider cards for savings/return assumptions, 2036 trajectory curves, and sensitivity bars.",
         layout: "mobile-heatmap",
       },
@@ -437,10 +437,10 @@ export const portfolioProjects: CaseStudyProject[] = [
         title: "Light/Dark semantic variables & 1-hero lime rule",
         detail:
           "Mapped `bg/default`, `bg/subtle`, `brand/default (#B6F256)`, and semantic status tokens across Light and Dark modes.",
-        deliverable: "Foundations & Token Spec (Node 343:2)",
+        deliverable: "Foundations & Token Spec",
       },
       {
-        phase: "02 / Core Modules (01–16)",
+        phase: "02 / Core iOS Modules",
         title: "End-to-end iOS financial flows",
         detail:
           "Designed Dashboard, Financial Compass, Cash Flow, Budgets, Bills, Debt Payoff, Goals, Portfolio, and What-If Simulation.",
@@ -489,19 +489,19 @@ export const portfolioProjects: CaseStudyProject[] = [
     decisions: [
       {
         title: "Start with a 4-pillar Financial Compass and concrete action plan—not a wall of raw transactions.",
-        body: "The Main Dashboard (033) pairs Net Worth ($128,420.50) and safe-to-spend cash ($2,628.08) with a 72/100 Financial Compass score that pinpoints the exact monthly move (+6 pts from shifting $150/mo to savings) with the highest financial lift.",
+        body: "The Main Dashboard pairs Net Worth ($128,420.50) and safe-to-spend cash ($2,628.08) with a 72/100 Financial Compass score that pinpoints the exact monthly move (+6 pts from shifting $150/mo to savings) with the highest financial lift.",
         badge: "01 · Dashboard & Financial Compass",
         image: `${assetBase}pennwise/dashboard-compass.png`,
       },
       {
         title: "Connect savings goals to a real $870 monthly surplus guardrail and automated payday rules.",
-        body: "Across Emergency Fund, Home Down Payment, and Retirement planners (Module 09), users see how every dollar of monthly surplus is allocated, get warned before over-scheduling their income, and celebrate 75% milestones.",
+        body: "Across Emergency Fund, Home Down Payment, and Retirement planners, users see how every dollar of monthly surplus is allocated, get warned before over-scheduling their income, and celebrate 75% milestones.",
         badge: "02 · Savings Goals & Surplus Planning",
         image: `${assetBase}pennwise/goals-planning.png`,
       },
       {
         title: "Make long-term wealth and What-If life scenarios tangible with editable assumptions.",
-        body: "Users audit their $132,968 portfolio for asset diversification and hidden ETF fee drag, then jump into the What-If Simulator (Module 12) to test buying a $400k home in 2029, a 10% raise, or a 3-month sabbatical with live sensitivity bars.",
+        body: "Users audit their $132,968 portfolio for asset diversification and hidden ETF fee drag, then jump into the What-If Simulator to test buying a $400k home in 2029, a 10% raise, or a 3-month sabbatical with live sensitivity bars.",
         badge: "03 · Portfolio & What-If Simulation",
         image: `${assetBase}pennwise/simulation-scenarios.png`,
       },
@@ -1259,24 +1259,24 @@ export const portfolioProjects: CaseStudyProject[] = [
       {
         tone: "rose",
         tag: "Decline Recovery",
-        text: "When a card declines (H06), lock the car in a 14:32 hold timer and offer 1-tap Apple Pay so the user never loses their vehicle.",
+        text: "When a card declines, lock the car in a 14:32 hold timer and offer 1-tap Apple Pay so the user never loses their vehicle.",
       },
     ],
     synthesis: [
       {
         theme: "Active trip immediacy",
         evidence: "Drivers returning to their car in a parking garage fumbled through navigation tabs to find lock/unlock controls.",
-        response: "Added a persistent dark glass Active Trip Strip (`C01 Home`) that launches the Digital Key in one tap.",
+        response: "Added a persistent dark glass Active Trip Strip on Home that launches the Digital Key in one tap.",
       },
       {
         theme: "EV range & charging literacy",
         evidence: "Renters hesitated to book electric crossovers because kilowatt curves and luggage fit were hidden in fine print.",
-        response: "Elevated `Encode Sans Expanded Light` spec numerals (`294 mi | 4.0s | 5 seats`) and a 2×2 charge/luggage bento on `D01 Car Detail`.",
+        response: "Elevated spec numerals (`294 mi | 4.0s | 5 seats`) and a 2×2 charge/luggage bento on the Vehicle Detail stage.",
       },
       {
         theme: "Graceful payment recovery",
         evidence: "Travelers frequently triggered bank fraud holds when booking at airports, losing their selected car immediately.",
-        response: "Designed `H06 Payment Declined` with a live 15-minute vehicle hold badge and instant Apple Pay fallback.",
+        response: "Designed Payment Declined Recovery with a live 15-minute vehicle hold badge and instant Apple Pay fallback.",
       },
     ],
     principles: [
@@ -1311,7 +1311,7 @@ export const portfolioProjects: CaseStudyProject[] = [
           "Exact-model fleet cards (`Genesis GV60 · 2025`) with category chips (`Electric`, `SUV`, `Luxury`) and upfront 3-day total.",
         engineeringContract:
           "Geo-fenced hub inventory query + real-time availability lock",
-        touchpoints: ["C01 Home", "C06 Map View", "Filter Chips"],
+        touchpoints: ["Home Feed", "Map View", "Filter Chips"],
       },
       {
         step: "02",
@@ -1324,7 +1324,7 @@ export const portfolioProjects: CaseStudyProject[] = [
           "Dark cinematic stage with big numerals (`294 mi · 4.0s · 5 seats`), 2×2 feature bento, and LAX delivery toggle.",
         engineeringContract:
           "Vehicle telemetry manifest + dynamic delivery window slotter",
-        touchpoints: ["D01 Car Detail", "D03 Gallery", "D06 Compare"],
+        touchpoints: ["Vehicle Detail", "Vehicle Gallery", "Model Compare"],
       },
       {
         step: "03",
@@ -1334,10 +1334,10 @@ export const portfolioProjects: CaseStudyProject[] = [
         frictionEliminated:
           "Surprise counter upsells and instant reservation loss on bank travel holds.",
         uxResolution:
-          "Itemized `E08 Review & Pay` ledger (`$403.26`) paired with `H06` 15-minute reservation hold recovery.",
+          "Itemized checkout ledger (`$403.26`) paired with 15-minute reservation hold recovery.",
         engineeringContract:
           "Idempotent payment intent + 900s inventory hold TTL + Apple Pay fallback",
-        touchpoints: ["E02 Protection", "E08 Review & Pay", "H06 Payment Declined"],
+        touchpoints: ["Protection Tiers", "Checkout Ledger", "Payment Hold Recovery"],
       },
       {
         step: "04",
@@ -1347,10 +1347,10 @@ export const portfolioProjects: CaseStudyProject[] = [
         frictionEliminated:
           "Waiting at a kiosk for physical keys or paper inspection sheets.",
         uxResolution:
-          "Guided 4-corner photo check (`F05`) and `F08 Active Trip` glassmorphic `Slide to unlock` pill with honk/flash locator.",
+          "Guided 4-corner photo check and glassmorphic `Slide to unlock` pill with honk/flash locator.",
         engineeringContract:
           "BLE/NFC cryptographic key token + live CAN-bus SOC (`62% · 232 mi`)",
-        touchpoints: ["F05 Inspection", "F06 Unlocked", "F08 Active Trip"],
+        touchpoints: ["Vehicle Inspection", "Door Unlock", "Active Trip & Digital Key"],
       },
       {
         step: "05",
@@ -1360,41 +1360,41 @@ export const portfolioProjects: CaseStudyProject[] = [
         frictionEliminated:
           "Hunting across third-party charging apps or calling support to extend a rental.",
         uxResolution:
-          "In-app `F07 Charging Nearby` (`Electrify America · 4 of 6 free · $0.48/kWh`) and 1-tap `+$68/day` extension.",
+          "In-app nearby charging finder (`Electrify America · 4 of 6 free · $0.48/kWh`) and 1-tap `+$68/day` extension.",
         engineeringContract:
           "OCPI live stall availability feed + automated return bay check-in",
-        touchpoints: ["F07 Charging Nearby", "F11 Trip Completed", "E11 Receipt"],
+        touchpoints: ["Nearby EV Charging", "Trip Summary & Return", "Itemized Receipt"],
       },
     ],
     wireframes: [
       {
         id: "01",
-        title: "Home + Active Trip Strip (C01)",
+        title: "Home + Active Trip Strip",
         caption: "Persistent ongoing rental key strip above the airport search card and category chips.",
         layout: "mobile-home",
       },
       {
         id: "02",
-        title: "Vehicle Stage & Spec Bento (D01)",
+        title: "Vehicle Stage & Spec Bento",
         caption: "Dark stage header with 3-column numerals and 2×2 EV charging & trunk bento.",
         layout: "mobile-heatmap",
       },
       {
         id: "03",
-        title: "Itemized Review & Pay (E08)",
+        title: "Itemized Review & Pay",
         caption: "44px total header, 3-tier protection selector, and line-by-line fee ledger.",
         layout: "mobile-ledger",
       },
       {
         id: "04",
-        title: "Active Trip Digital Key (F08)",
+        title: "Active Trip Digital Key",
         caption: "Live battery SOC, Bay C4 progress bar, 2×2 action tiles, and Slide-to-Unlock control.",
         layout: "mobile-queue",
       },
     ],
     architecturalPivot: {
       summary:
-        "Early explorations placed dark-mode styling only in system settings, which made vehicle photos look washed out on light screens. We pivoted to a hybrid 'Dark Stage' architecture where vehicle showcases (`D01`, `F08`) always render on a `#111111` automotive stage while forms and receipts adapt cleanly between warm alabaster (`#FAF9F7`) and carbon dark (`#121211`).",
+        "Early explorations placed dark-mode styling only in system settings, which made vehicle photos look washed out on light screens. We pivoted to a hybrid 'Dark Stage' architecture where vehicle showcases and active trip cards always render on a `#111111` automotive stage while forms and receipts adapt cleanly between warm alabaster (`#FAF9F7`) and carbon dark (`#121211`).",
       before: "Flat light-grey car cards with low-contrast spec lists",
       after: "Cinematic Dark Photo Stage + Dual-Theme Semantic Surface Tokens",
     },
@@ -1406,7 +1406,7 @@ export const portfolioProjects: CaseStudyProject[] = [
         title: "Graphite & Burnt Amber variable system",
         detail:
           "Mapped 12 Graphite neutrals, 8 Burnt Amber accents, and semantic surface/border tokens across Light and Dark modes.",
-        deliverable: "Figma Variables & Style Guide (11:379)",
+        deliverable: "Figma Variables & Style Guide",
       },
       {
         phase: "02 / Component Architecture",

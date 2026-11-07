@@ -512,7 +512,7 @@ export const userFlows: Record<string, UserFlow> = {
         label: "Lock car 14:32 · Apple Pay retry",
         col: 4,
         row: 1,
-        note: "H06 Payment Declined holds the GV60 so the traveler never loses their car.",
+        note: "Card hold protection reserves the GV60 for 15 minutes so the traveler never loses their car.",
       },
       {
         id: "key",
@@ -555,7 +555,7 @@ export const userFlows: Record<string, UserFlow> = {
       },
       {
         id: "recovery",
-        label: "Declined card hold recovery (H06)",
+        label: "Declined card hold recovery",
         nodes: ["start", "search", "stage", "auth", "hold", "key", "unlock", "drive"],
       },
     ],
@@ -567,11 +567,11 @@ export const userFlows: Record<string, UserFlow> = {
     lanes: ["Household Planner", "Pennwise iOS App", "Compass & Sim Engine"],
     cols: 8,
     nodes: [
-      { id: "start", type: "start", label: "Open Dashboard (033)", col: 0, row: 0 },
+      { id: "start", type: "start", label: "Open Main Dashboard", col: 0, row: 0 },
       {
         id: "compass",
         type: "step",
-        label: "Inspect Compass 72/100 (034)",
+        label: "Inspect Financial Compass (72/100)",
         col: 1,
         row: 1,
         note: "Ranks Spending (84), Investing (80), Debt (66), and Saving (58) pillars.",
@@ -587,7 +587,7 @@ export const userFlows: Record<string, UserFlow> = {
       {
         id: "rebalance",
         type: "step",
-        label: "Re-rank Goal Priorities (144)",
+        label: "Rebalance Goal Priorities",
         col: 3,
         row: 1,
         note: "Adjusts Emergency Fund ($300), Home ($330), and Japan Trip ($240) splits.",
@@ -595,7 +595,7 @@ export const userFlows: Record<string, UserFlow> = {
       {
         id: "whatif",
         type: "step",
-        label: "Run 2029 Home What-If (185)",
+        label: "Run 2029 Home What-If",
         col: 4,
         row: 0,
         note: "Tests a $400k home purchase (15% down) or 10% raise in a safe sandbox.",
@@ -611,7 +611,7 @@ export const userFlows: Record<string, UserFlow> = {
       {
         id: "compare",
         type: "step",
-        label: "Review Sensitivity & Share (201)",
+        label: "Review Sensitivity & Share",
         col: 6,
         row: 1,
       },
