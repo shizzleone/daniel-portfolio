@@ -1168,7 +1168,8 @@ function addSlideHeader(slide, category, title, subtitle) {
     `TALKING POINTS (SLIDE 6 - MOTIVE - 2 MINUTES):
 • "Motive highlights my experience designing for connected hardware and IoT ecosystems."
 • "The physical-digital handoff is where traditional car rentals fail. We designed an end-to-end contactless flow: reservation, NFC digital key pairing, and haptic stall location."
-• "Users go from walking off the terminal jet bridge to unlocking their EV in under 90 seconds, with an 82% voluntary digital key adoption rate."`
+• "Users go from walking off the terminal jet bridge to unlocking their EV in under 90 seconds, with an 82% voluntary digital key adoption rate."
+• "Figma Source Link for Recruiters: https://www.figma.com/design/jcZg2FO8oGPwJtHIP1vGEC/Motive---Car-Rental-Mobile (Inspect 8 product modules, dark automotive stage tokens, and iOS components)."`
   );
 }
 

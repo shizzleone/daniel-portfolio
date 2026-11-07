@@ -1439,6 +1439,8 @@ export const portfolioProjects: CaseStudyProject[] = [
   {
     id: "motive",
     liveUrl: "./motive-prototype/index.html",
+    figmaUrl:
+      "https://www.figma.com/design/jcZg2FO8oGPwJtHIP1vGEC/Motive---Car-Rental-Mobile?m=auto&t=k13k9B1nGX5KYeol-6",
     index: "19",
     name: "Motive",
     codename: "Motive EV & Luxury Mobility",
