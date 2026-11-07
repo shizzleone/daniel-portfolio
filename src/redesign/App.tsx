@@ -203,6 +203,34 @@ function CommandPalette({
             </div>
           )}
 
+          {matchedProjects.some((p) => Boolean(p.figmaUrl)) && (
+            <div className="cmd-group">
+              <span className="cmd-group-label">Figma Source Files</span>
+              <ul className="cmd-list">
+                {matchedProjects
+                  .filter((p) => Boolean(p.figmaUrl))
+                  .map((p) => (
+                    <li key={`figma-${p.id}`}>
+                      <a
+                        href={p.figmaUrl}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="cmd-item"
+                        onClick={onClose}
+                      >
+                        <div className="cmd-item-main">
+                          <Icon name="figma" size={14} />
+                          <strong>{p.name}</strong>
+                          <span className="cmd-item-cat">Figma File & System</span>
+                        </div>
+                        <span className="cmd-item-tag">Inspect File ↗</span>
+                      </a>
+                    </li>
+                  ))}
+              </ul>
+            </div>
+          )}
+
           <div className="cmd-group">
             <span className="cmd-group-label">
               Case Studies ({matchedProjects.length})
@@ -706,6 +734,11 @@ function Home() {
                         <i /> Live Prototype
                       </span>
                     )}
+                    {p.figmaUrl && (
+                      <span className="card-pill-figma">
+                        <Icon name="figma" size={11} /> Figma Source
+                      </span>
+                    )}
                   </div>
                   <img
                     src={p.heroImage}
@@ -1151,6 +1184,19 @@ function ProjectPage({ project }: { project: CaseStudyProject }) {
                   <Icon name="arrow-up-right" size={12} />
                 </a>
               )}
+              {project.figmaUrl && (
+                <a
+                  href={project.figmaUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="cs-figma-pill"
+                  title="Inspect file structure, design system tokens, and component sets in Figma"
+                >
+                  <Icon name="figma" size={13} />
+                  Inspect in Figma
+                  <Icon name="arrow-up-right" size={12} />
+                </a>
+              )}
               <span className="cs-index">
                 {project.index} / {pad(allCaseStudies.length)}
               </span>
@@ -1209,6 +1255,22 @@ function ProjectPage({ project }: { project: CaseStudyProject }) {
                 )}
               </dd>
             </div>
+            {project.figmaUrl && (
+              <div>
+                <dt>Figma File</dt>
+                <dd>
+                  <a
+                    href={project.figmaUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="link"
+                  >
+                    Inspect in Figma
+                    <Icon name="arrow-up-right" size={13} />
+                  </a>
+                </dd>
+              </div>
+            )}
           </dl>
 
           {heroView === "sandbox" && canEmbed && project.liveUrl ? (
@@ -1701,6 +1763,18 @@ function ProjectPage({ project }: { project: CaseStudyProject }) {
                   className="btn btn-mint cs-closing-btn"
                 >
                   Explore Live Prototype
+                  <Icon name="arrow-up-right" />
+                </a>
+              )}
+              {project.figmaUrl && (
+                <a
+                  href={project.figmaUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="btn btn-glass cs-closing-btn"
+                >
+                  <Icon name="figma" size={14} />
+                  Inspect in Figma
                   <Icon name="arrow-up-right" />
                 </a>
               )}

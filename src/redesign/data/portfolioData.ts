@@ -62,6 +62,7 @@ export interface CaseStudyProject {
   personaQuotes?: PersonaQuote[]
   secondaryImage?: string
   liveUrl?: string
+  figmaUrl?: string
   mandateTitle: string
   mandateBody: string
   problemStatement?: string
@@ -194,6 +195,8 @@ export const portfolioProjects: CaseStudyProject[] = [
   {
     id: "pennwise",
     liveUrl: "./pennwise-prototype/index.html",
+    figmaUrl:
+      "https://www.figma.com/design/NZbmIQrN9GMHgTasujs7Xv/Pennwise-%E2%80%94-Personal-Finance-App?m=auto&t=MkSK5hpyyhXRYMvc-6",
     index: "20",
     name: "Pennwise",
     codename: "Pennwise Personal Finance & Wealth",
@@ -819,6 +822,8 @@ export const portfolioProjects: CaseStudyProject[] = [
   {
     id: "bluewave",
     liveUrl: "./bluewave-prototype.html",
+    figmaUrl:
+      "https://www.figma.com/design/oKSX4bEtEcHoUe3DoGaAsO/BlueWave-SaaS?m=auto&t=k13k9B1nGX5KYeol-6",
     index: "21",
     name: "BlueWave",
     codename: "BlueWave Maritime Fleet & Logistics OS",

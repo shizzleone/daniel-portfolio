@@ -538,7 +538,8 @@ function addSlideHeader(slide, category, title, subtitle) {
 • "In Pennwise, we tackled one of the biggest friction points in consumer fintech: financial anxiety caused by fragmented account dashboards."
 • "Instead of confronting users with overwhelming tables of red and green stock tickers, I designed the '4-Pillar Financial Compass' which categorizes capital into Liquid, Growth, Defense, and Tax-Shield buckets."
 • "The defining innovation is the 2036 What-If Scenario Simulator: users can drag life milestones (e.g. buying a house, taking sabbatical) and see real-time Monte Carlo probability curves update in milliseconds."
-• "Result: +38% increase in 30-day retention and a 4.8 out of 5 confidence score in post-onboarding user surveys."`
+• "Result: +38% increase in 30-day retention and a 4.8 out of 5 confidence score in post-onboarding user surveys."
+• "Figma Source Link for Recruiters: https://www.figma.com/design/NZbmIQrN9GMHgTasujs7Xv/Pennwise-%E2%80%94-Personal-Finance-App (Inspect component variants, 16 modules, and semantic token sets)."`
   );
 }
 
@@ -842,7 +843,8 @@ function addSlideHeader(slide, category, title, subtitle) {
 • "BlueWave showcases my expertise in complex geospatial UI, IoT hardware telemetry, and supply chain logistics."
 • "We designed an interactive vector-based maritime control center that tracks 22 global vessels in real time with sub-10-second AIS satellite updates."
 • "A core breakthrough was our Interactive Voyage Scrubber: rather than guessing when a vessel reaches the Suez Canal, operators can scrub along the trade lane to preview tidal clearances and berthing availability in seconds."
-• "Impact: +44% dispatch efficiency and $8.4M in annual fuel waste eliminated."`
+• "Impact: +44% dispatch efficiency and $8.4M in annual fuel waste eliminated."
+• "Figma Source Link for Recruiters: https://www.figma.com/design/oKSX4bEtEcHoUe3DoGaAsO/BlueWave-SaaS (Inspect page organization, HIFI specs, Design System, and container bay layouts)."`
   );
 }
 
@@ -1629,36 +1631,42 @@ function addSlideHeader(slide, category, title, subtitle) {
     color: COLORS.accentMint,
   });
 
-  // 3 Link / Resource Cards
+  // 4 Resource & Contact Cards
   const links = [
     {
-      title: 'Live Vercel Prototype',
-      url: 'https://ui8-bento-landing.vercel.app',
-      desc: 'Interactive SimpleList Bento application with real-time state and keyboard actions.',
+      title: 'Interactive Prototypes',
+      url: 'BlueWave & SimpleList',
+      desc: 'Live functional prototypes testing AIS maritime maps, keyboard bento navigation, and state models.',
       color: COLORS.accentLilac,
     },
     {
+      title: 'Figma Source Files',
+      url: 'Pennwise & BlueWave',
+      desc: 'Open design files showcasing file organization, semantic token sets, component variants, and HIFI specs.',
+      color: COLORS.accentBlue,
+    },
+    {
       title: 'Full Online Portfolio',
-      url: 'https://daniel-johnson-portfolio.vercel.app',
-      desc: '11 detailed case studies, interactive project matrices, and design system specs.',
+      url: 'daniel-johnson-portfolio.vercel.app',
+      desc: 'Detailed case studies, architectural pivots, synthesis signals, and design system contracts.',
       color: COLORS.accentMint,
     },
     {
-      title: 'Direct Contact & Resume',
-      url: 'LinkedIn & Email',
+      title: 'Contact & Credentials',
+      url: 'LinkedIn · Dallas–Fort Worth',
       desc: 'Open for Staff / Principal / Lead Product Design and Design Strategy opportunities.',
       color: COLORS.accentLime,
     },
   ];
 
   links.forEach((l, idx) => {
-    const xPos = 0.8 + idx * 2.85;
+    const xPos = 0.8 + idx * 2.15;
     const yPos = 2.8;
 
     slide.addShape(pres.ShapeType.roundRect, {
       x: xPos,
       y: yPos,
-      w: 2.7,
+      w: 2.05,
       h: 2.1,
       rectRadius: 0.08,
       fill: { color: COLORS.cardBg },
@@ -1666,20 +1674,20 @@ function addSlideHeader(slide, category, title, subtitle) {
     });
 
     slide.addText(l.title, {
-      x: xPos + 0.2,
-      y: yPos + 0.2,
-      w: 2.3,
+      x: xPos + 0.15,
+      y: yPos + 0.18,
+      w: 1.75,
       h: 0.35,
-      fontSize: 12,
+      fontSize: 11,
       fontFace: FONT_HEAD,
       bold: true,
       color: l.color,
     });
 
     slide.addText(l.url, {
-      x: xPos + 0.2,
-      y: yPos + 0.55,
-      w: 2.3,
+      x: xPos + 0.15,
+      y: yPos + 0.52,
+      w: 1.75,
       h: 0.35,
       fontSize: 9.5,
       fontFace: FONT_HEAD,
@@ -1688,11 +1696,11 @@ function addSlideHeader(slide, category, title, subtitle) {
     });
 
     slide.addText(l.desc, {
-      x: xPos + 0.2,
-      y: yPos + 1.0,
-      w: 2.3,
-      h: 0.9,
-      fontSize: 9,
+      x: xPos + 0.15,
+      y: yPos + 0.95,
+      w: 1.75,
+      h: 1.0,
+      fontSize: 8.5,
       fontFace: FONT_BODY,
       color: COLORS.textSecondary,
       lineSpacingMultiple: 1.15,
