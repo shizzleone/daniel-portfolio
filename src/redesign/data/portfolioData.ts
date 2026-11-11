@@ -1775,7 +1775,7 @@ export const portfolioProjects: CaseStudyProject[] = [
     id: "rapidbi",
     liveUrl: "./rapidbi-storybook/index.html",
     index: "01",
-    name: "RapidBI (Signal BI)",
+    name: "Signal BI",
     codename: "Signal BI Workbench",
     category: "Developer tools · Analytics platform",
     portfolioCategory: "Developer tools",
