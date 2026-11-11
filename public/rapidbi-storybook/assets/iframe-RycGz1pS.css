@@ -32,3 +32,7 @@ body.dark .ag-theme-quartz .ag-icon,
 html.dark .ag-theme-quartz .ag-header-cell-label,
 body.dark .ag-theme-quartz .ag-header-cell-label,
 .dark .ag-theme-quartz .ag-header-cell-label{color:var(--signal-ink,#edf4f5)!important}
+
+/* Keep widget action labels readable in Safari and narrow menus. */
+.signal-menu-panel button{white-space:nowrap;min-width:max-content}
+.signal-menu-panel button span{white-space:nowrap}
