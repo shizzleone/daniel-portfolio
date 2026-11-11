@@ -53,3 +53,5 @@
 .story-stage .ag-row-hover{background-color:var(--signal-hover)!important}
 .rapidbi .ag-row-selected,
 .story-stage .ag-row-selected{background-color:var(--signal-selected)!important}
+
+.widget-card{overflow:visible!important}.widget-card.fullscreen-card{overflow:hidden!important}
