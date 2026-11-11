@@ -676,16 +676,6 @@ function Home() {
                 </span>
                 Download résumé
               </a>
-              <a
-                className="ring-link"
-                href={WALKTHROUGH_DECK}
-                download="Daniel_Johnson_Featured_Work_Walkthrough.pptx"
-              >
-                <span className="ring-icon">
-                  <Icon name="arrow-down" />
-                </span>
-                Featured Deck (.pptx)
-              </a>
             </div>
           </div>
         </div>
@@ -1660,13 +1650,6 @@ function About() {
               >
                 Download résumé
                 <Icon name="arrow-up-right" />
-              </a>
-              <a
-                className="btn btn-glass"
-                href={WALKTHROUGH_DECK}
-                download="Daniel_Johnson_Featured_Work_Walkthrough.pptx"
-              >
-                Featured Deck (.pptx)
               </a>
               <a
                 className="btn btn-glass"
