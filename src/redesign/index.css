@@ -4666,3 +4666,5 @@ html body .stage-about .stage-lede {
     height: 320px;
   }
 }
+
+html body #overview-h{max-width:34ch}
