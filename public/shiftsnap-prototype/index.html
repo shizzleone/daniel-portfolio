@@ -1,0 +1,1575 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ShiftSnap — Interactive Workforce Mobile Prototype</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+
+      /* ShiftSnap Design Tokens */
+      --navy: #0E1F3B;
+      --teal: #1FB6A6;
+      --teal-dark: #0f897d;
+      --teal-light: #e6f8f6;
+      --teal-glow: rgba(31, 182, 166, 0.25);
+      --success: #10B981;
+      --success-light: #D1FAE5;
+      --warning: #F59E0B;
+      --warning-light: #FEF3C7;
+      --danger: #EF4444;
+      --danger-light: #FEE2E2;
+
+      --bg-stage: #080D1A;
+      --bg-app: #F8FAFC;
+      --surface: #FFFFFF;
+      --surface-subtle: #F1F5F9;
+      --line: #E2E8F0;
+      --line-strong: #CBD5E1;
+      --text: #0F172A;
+      --text-muted: #64748B;
+      --text-subtle: #94A3B8;
+
+      --radius-sm: 8px;
+      --radius-md: 14px;
+      --radius-lg: 20px;
+      --radius-full: 9999px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-font-smoothing: antialiased;
+      user-select: none;
+    }
+
+    body {
+      background: var(--bg-stage);
+      font-family: var(--font-sans);
+      color: #FFFFFF;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      overflow-x: hidden;
+    }
+
+    /* Top Stage Bar */
+    .proto-stage-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 24px;
+      background: rgba(14, 31, 59, 0.75);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .proto-brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .proto-logo-badge {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      background: linear-gradient(135deg, var(--teal), #3B82F6);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 16px;
+      color: #FFFFFF;
+      box-shadow: 0 4px 12px var(--teal-glow);
+    }
+    .proto-title-group h1 {
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      color: #FFFFFF;
+    }
+    .proto-title-group p {
+      font-size: 12px;
+      color: var(--text-subtle);
+      font-family: var(--font-mono);
+    }
+
+    .proto-role-switch {
+      display: flex;
+      background: rgba(0, 0, 0, 0.4);
+      padding: 4px;
+      border-radius: var(--radius-full);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      gap: 4px;
+    }
+    .proto-role-btn {
+      padding: 6px 14px;
+      border-radius: var(--radius-full);
+      border: none;
+      background: transparent;
+      color: var(--text-subtle);
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s ease;
+    }
+    .proto-role-btn.active {
+      background: var(--teal);
+      color: #FFFFFF;
+      box-shadow: 0 2px 8px var(--teal-glow);
+    }
+
+    .proto-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .proto-btn {
+      padding: 6px 12px;
+      border-radius: var(--radius-sm);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      background: rgba(255, 255, 255, 0.05);
+      color: #FFFFFF;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+    .proto-btn:hover {
+      background: rgba(255, 255, 255, 0.12);
+    }
+
+    /* Main Stage Workspace */
+    .proto-main {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px 20px 40px;
+      gap: 36px;
+      max-width: 1300px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    /* Side Scenario Controls */
+    .proto-scenario-sidebar {
+      width: 320px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .proto-card {
+      background: rgba(14, 31, 59, 0.55);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: var(--radius-lg);
+      padding: 20px;
+    }
+    .proto-card h3 {
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--teal);
+      margin-bottom: 12px;
+      font-weight: 700;
+      font-family: var(--font-mono);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .proto-screen-nav {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .proto-nav-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 12px;
+      border-radius: var(--radius-sm);
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid transparent;
+      color: #E2E8F0;
+      font-size: 13px;
+      cursor: pointer;
+      transition: all 0.18s;
+      text-align: left;
+    }
+    .proto-nav-item:hover {
+      background: rgba(255, 255, 255, 0.08);
+    }
+    .proto-nav-item.active {
+      background: rgba(31, 182, 166, 0.15);
+      border-color: rgba(31, 182, 166, 0.4);
+      color: #5EEAD4;
+      font-weight: 600;
+    }
+    .proto-nav-badge {
+      font-size: 10px;
+      font-family: var(--font-mono);
+      padding: 2px 6px;
+      border-radius: 4px;
+      background: rgba(255, 255, 255, 0.1);
+      color: var(--text-subtle);
+    }
+
+    .proto-state-machine {
+      font-size: 12px;
+      color: var(--text-subtle);
+      line-height: 1.5;
+    }
+    .proto-state-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 8px;
+      padding: 6px 10px;
+      background: rgba(0, 0, 0, 0.25);
+      border-radius: 6px;
+      font-family: var(--font-mono);
+    }
+    .proto-state-indicator {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--teal);
+    }
+
+    /* iPhone Frame */
+    .phone-mockup-wrapper {
+      position: relative;
+    }
+    .phone-mockup {
+      width: 390px;
+      height: 844px;
+      background: var(--bg-app);
+      color: var(--text);
+      border-radius: 52px;
+      border: 12px solid #1E293B;
+      box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.7), 0 0 0 1px rgba(255, 255, 255, 0.15);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+
+    /* Dynamic Island / Notch */
+    .phone-island-bar {
+      height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 24px;
+      font-size: 14px;
+      font-weight: 600;
+      background: transparent;
+      position: relative;
+      z-index: 50;
+      flex-shrink: 0;
+    }
+    .phone-island {
+      width: 120px;
+      height: 28px;
+      background: #000000;
+      border-radius: 20px;
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      top: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 10px;
+      color: #94A3B8;
+      font-family: var(--font-mono);
+    }
+    .phone-island-icons {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+    }
+
+    /* Phone Screen Scroll View */
+    .phone-viewport {
+      flex: 1;
+      overflow-y: auto;
+      overflow-x: hidden;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      background: var(--bg-app);
+    }
+    .phone-viewport::-webkit-scrollbar {
+      display: none;
+    }
+
+    /* Phone Bottom Tab Bar */
+    .phone-tabbar {
+      height: 72px;
+      background: #FFFFFF;
+      border-top: 1px solid var(--line);
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      padding-bottom: 14px;
+      flex-shrink: 0;
+      z-index: 40;
+    }
+    .phone-tab-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+      color: var(--text-muted);
+      font-size: 11px;
+      font-weight: 500;
+      cursor: pointer;
+      border: none;
+      background: transparent;
+      transition: color 0.15s;
+    }
+    .phone-tab-item.active {
+      color: var(--teal-dark);
+      font-weight: 700;
+    }
+    .phone-tab-icon {
+      font-size: 18px;
+    }
+
+    /* Interactive Components inside Phone */
+    .ss-screen {
+      padding: 16px 20px 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      animation: fadeIn 0.22s ease forwards;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Toast Notification inside iPhone */
+    .ss-toast {
+      position: absolute;
+      top: 54px;
+      left: 20px;
+      right: 20px;
+      background: var(--navy);
+      color: #FFFFFF;
+      border-radius: var(--radius-md);
+      padding: 12px 16px;
+      font-size: 13px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+      z-index: 90;
+      animation: toastIn 0.3s ease;
+      border: 1px solid rgba(255,255,255,0.12);
+    }
+    @keyframes toastIn {
+      from { transform: translateY(-20px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    /* Header Profile Strip */
+    .ss-header-strip {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .ss-header-user {
+      display: flex;
+      flex-direction: column;
+    }
+    .ss-header-greeting {
+      font-size: 20px;
+      font-weight: 800;
+      color: var(--navy);
+      letter-spacing: -0.02em;
+    }
+    .ss-header-store {
+      font-size: 12.5px;
+      color: var(--text-muted);
+    }
+    .ss-header-avatar {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: var(--teal);
+      color: #FFFFFF;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 14px;
+      box-shadow: 0 4px 10px var(--teal-glow);
+      cursor: pointer;
+    }
+
+    /* Alert / Action Banner */
+    .ss-alert-banner {
+      background: var(--warning-light);
+      border: 1px solid rgba(245, 158, 11, 0.35);
+      border-radius: var(--radius-md);
+      padding: 12px 14px;
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      cursor: pointer;
+      transition: transform 0.15s;
+    }
+    .ss-alert-banner:hover {
+      transform: translateY(-1px);
+    }
+    .ss-alert-banner.is-urgent {
+      background: var(--danger-light);
+      border-color: rgba(239, 68, 68, 0.35);
+    }
+    .ss-alert-icon {
+      font-size: 16px;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+    .ss-alert-text strong {
+      display: block;
+      font-size: 13px;
+      color: #92400E;
+      font-weight: 700;
+    }
+    .ss-alert-banner.is-urgent .ss-alert-text strong {
+      color: #991B1B;
+    }
+    .ss-alert-text p {
+      font-size: 12px;
+      color: #B45309;
+      line-height: 1.4;
+      margin-top: 2px;
+    }
+    .ss-alert-banner.is-urgent .ss-alert-text p {
+      color: #B91C1C;
+    }
+
+    /* Shift Card */
+    .ss-card {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      padding: 18px 20px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+    }
+    .ss-card-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 12px;
+    }
+    .ss-card-title {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--text);
+    }
+    .ss-pill {
+      font-size: 11px;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: var(--radius-full);
+      text-transform: capitalize;
+    }
+    .ss-pill.ss-confirmed {
+      background: var(--success-light);
+      color: #065F46;
+    }
+    .ss-pill.ss-pending {
+      background: var(--warning-light);
+      color: #92400E;
+    }
+    .ss-pill.ss-urgent {
+      background: var(--danger-light);
+      color: #991B1B;
+    }
+
+    .ss-shift-details {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .ss-shift-date {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+    .ss-shift-time {
+      font-size: 18px;
+      font-weight: 800;
+      color: var(--navy);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .ss-shift-meta {
+      display: flex;
+      gap: 16px;
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-top: 4px;
+    }
+
+    .ss-btn-primary {
+      width: 100%;
+      padding: 12px 18px;
+      border-radius: var(--radius-md);
+      border: none;
+      background: var(--teal);
+      color: #FFFFFF;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 14px;
+      box-shadow: 0 4px 14px var(--teal-glow);
+      transition: all 0.2s;
+    }
+    .ss-btn-primary:hover {
+      background: var(--teal-dark);
+      transform: translateY(-1px);
+    }
+
+    /* KPI Grid for Manager */
+    .ss-kpi-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+    .ss-kpi-box {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      padding: 14px 16px;
+      cursor: pointer;
+      transition: transform 0.15s, border-color 0.15s;
+    }
+    .ss-kpi-box:hover {
+      transform: translateY(-2px);
+      border-color: var(--teal);
+    }
+    .ss-kpi-num {
+      font-size: 24px;
+      font-weight: 800;
+      color: var(--navy);
+      line-height: 1;
+    }
+    .ss-kpi-label {
+      font-size: 11.5px;
+      color: var(--text-muted);
+      margin-top: 4px;
+    }
+
+    /* Coverage Heatmap Grid */
+    .ss-heatmap {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      padding: 16px;
+    }
+    .ss-heatmap-legend {
+      display: flex;
+      justify-content: space-between;
+      font-size: 10.5px;
+      font-weight: 600;
+      color: var(--text-muted);
+      margin-bottom: 12px;
+    }
+    .ss-legend-dot {
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      border-radius: 2px;
+      margin-right: 4px;
+    }
+    .ss-grid-table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 4px;
+    }
+    .ss-grid-table th {
+      font-size: 10px;
+      color: var(--text-muted);
+      font-weight: 600;
+      padding-bottom: 4px;
+    }
+    .ss-heat-cell {
+      height: 24px;
+      border-radius: 4px;
+      font-size: 9px;
+      font-weight: 700;
+      color: #FFFFFF;
+      text-align: center;
+      line-height: 24px;
+      cursor: pointer;
+      transition: transform 0.12s;
+    }
+    .ss-heat-cell:hover {
+      transform: scale(1.1);
+      box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+    }
+    .heat-high { background: #10B981; }
+    .heat-med { background: #F59E0B; }
+    .heat-low { background: #EF4444; }
+
+    /* Team Roster List */
+    .ss-roster-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 14px;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      margin-bottom: 8px;
+      cursor: pointer;
+      transition: transform 0.15s;
+    }
+    .ss-roster-item:hover {
+      transform: translateY(-1px);
+      border-color: var(--teal);
+    }
+    .ss-roster-left {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .ss-roster-avatar {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      background: #0284C7;
+      color: #FFFFFF;
+      font-size: 12px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .ss-roster-info h4 {
+      font-size: 13.5px;
+      font-weight: 700;
+      color: var(--text);
+    }
+    .ss-roster-info small {
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+    .ss-cert-badge {
+      font-size: 10px;
+      font-weight: 700;
+      color: #065F46;
+      background: var(--success-light);
+      padding: 2px 6px;
+      border-radius: 4px;
+    }
+
+    /* Modal / Drawer Overlay inside Phone */
+    .ss-modal-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(14, 31, 59, 0.65);
+      backdrop-filter: blur(4px);
+      z-index: 60;
+      display: flex;
+      align-items: flex-end;
+      animation: fadeIn 0.2s ease;
+    }
+    .ss-drawer {
+      background: #FFFFFF;
+      width: 100%;
+      border-radius: 28px 28px 0 0;
+      padding: 24px 20px 32px;
+      box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.15);
+      animation: slideUp 0.25s ease;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      max-height: 85%;
+      overflow-y: auto;
+    }
+    @keyframes slideUp {
+      from { transform: translateY(100%); }
+      to { transform: translateY(0); }
+    }
+    .ss-drawer-handle {
+      width: 40px;
+      height: 4px;
+      background: var(--line-strong);
+      border-radius: 2px;
+      align-self: center;
+      margin-bottom: 4px;
+    }
+
+    /* Responsive */
+    @media (max-width: 950px) {
+      .proto-main {
+        flex-direction: column;
+      }
+      .proto-scenario-sidebar {
+        width: 100%;
+        max-width: 390px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Stage Top Control Bar -->
+  <header class="proto-stage-bar">
+    <div class="proto-brand">
+      <div class="proto-logo-badge">⚡</div>
+      <div class="proto-title-group">
+        <h1>ShiftSnap Interactive Prototype</h1>
+        <p>iOS Mobile SaaS • Dual-Role Workforce Engine</p>
+      </div>
+    </div>
+
+    <div class="proto-role-switch">
+      <button type="button" class="proto-role-btn active" id="roleWorkerBtn" onclick="switchRole('worker')">
+        <span>👤</span> Worker View (Maya)
+      </button>
+      <button type="button" class="proto-role-btn" id="roleManagerBtn" onclick="switchRole('manager')">
+        <span>📋</span> Manager View (Priya)
+      </button>
+    </div>
+
+    <div class="proto-actions">
+      <a href="/#/work/shiftsnap" class="proto-btn">
+        <span>←</span> Exit to Case Study
+      </a>
+    </div>
+  </header>
+
+  <!-- Interactive Stage Body -->
+  <main class="proto-main">
+
+    <!-- Sidebar Scenario Navigator -->
+    <aside class="proto-scenario-sidebar">
+      <div class="proto-card">
+        <h3><span style="font-size:14px">📱</span> Screen Flow</h3>
+        <nav class="proto-screen-nav" id="screenNavList">
+          <!-- Injected via JavaScript -->
+        </nav>
+      </div>
+
+      <div class="proto-card">
+        <h3><span>⚙️</span> Shared State Contract</h3>
+        <div class="proto-state-machine">
+          <p>Deterministic 5-State lifecycle synchronizing client calendars:</p>
+          <div class="proto-state-row">
+            <span class="proto-state-indicator" id="stateIndicator"></span>
+            <strong id="stateLabel">PENDING_MANAGER</strong>
+          </div>
+          <p style="margin-top:10px;font-size:11.5px;color:var(--text-subtle)">
+            Worker request carrying shift metadata → Qualified coworker acceptance → Coverage heatmap & overtime audit → Calendar sync.
+          </p>
+          <button type="button" class="ss-btn-primary" style="margin-top:12px;padding:8px 12px;font-size:12px" onclick="resetPrototype()">
+            ↺ Reset Prototype State
+          </button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- iPhone 15 Pro Hardware Frame -->
+    <div class="phone-mockup-wrapper">
+      <div class="phone-mockup">
+        <!-- iOS Status Bar -->
+        <div class="phone-island-bar">
+          <span id="liveClock">9:41</span>
+          <div class="phone-island">ShiftSnap iOS</div>
+          <div class="phone-island-icons">
+            <span>5G</span>
+            <span>100%</span>
+          </div>
+        </div>
+
+        <!-- Scrollable Screen Content -->
+        <div class="phone-viewport" id="phoneViewport">
+          <!-- Injected dynamically -->
+        </div>
+
+        <!-- iOS Bottom Tab Bar -->
+        <nav class="phone-tabbar" id="phoneTabbar">
+          <!-- Injected dynamically based on role -->
+        </nav>
+      </div>
+    </div>
+
+  </main>
+
+  <script>
+    const appState = {
+      role: 'worker', // 'worker' | 'manager'
+      screen: 'worker-home', // worker: 'worker-onboarding' | 'worker-home' | 'worker-schedule' | 'worker-swap-status' | 'worker-availability' | 'worker-profile'
+                             // manager: 'manager-home' | 'manager-coverage' | 'manager-roster' | 'manager-reports'
+      swapState: 'PENDING_MANAGER', // 'INIT' | 'PENDING_PEER' | 'PENDING_MANAGER' | 'APPROVED' | 'DECLINED'
+      drawer: null, // 'request-swap' | 'confirm-approval' | 'time-off' | 'shift-details' | 'post-open-shift' | null
+      toast: null,
+      availability: {
+        Monday: true,
+        Tuesday: false,
+        Wednesday: true,
+        Thursday: false,
+        Friday: true,
+        Saturday: true,
+        Sunday: false,
+      },
+      selectedPeer: 'Jordan Lee',
+      requestsCount: 2,
+    };
+
+    const workerScreens = [
+      { id: 'worker-onboarding', label: '1. Role Onboarding', badge: 'SSO' },
+      { id: 'worker-home', label: '2. Today\'s Schedule', badge: 'Home' },
+      { id: 'worker-schedule', label: '3. Full Schedule Calendar', badge: 'Week' },
+      { id: 'worker-swap-status', label: '4. Swap Ledger & Diff', badge: 'Ledger' },
+      { id: 'worker-availability', label: '5. Availability & Time Off', badge: 'Pref' },
+      { id: 'worker-profile', label: '6. Member Profile & Certs', badge: 'Account' },
+    ];
+
+    const managerScreens = [
+      { id: 'manager-home', label: '1. Manager Triage Home', badge: 'Queue' },
+      { id: 'manager-coverage', label: '2. Coverage Heatmap', badge: 'Matrix' },
+      { id: 'manager-roster', label: '3. Team Roster & Certs', badge: 'Staff' },
+      { id: 'manager-reports', label: '4. Analytics & Labor', badge: 'Reports' },
+    ];
+
+    function showToast(msg) {
+      appState.toast = msg;
+      render();
+      setTimeout(() => {
+        appState.toast = null;
+        render();
+      }, 3200);
+    }
+
+    function switchRole(role) {
+      appState.role = role;
+      document.getElementById('roleWorkerBtn').classList.toggle('active', role === 'worker');
+      document.getElementById('roleManagerBtn').classList.toggle('active', role === 'manager');
+      appState.screen = role === 'worker' ? 'worker-home' : 'manager-home';
+      appState.drawer = null;
+      showToast(`Switched to ${role === 'worker' ? 'Maya Lin (Worker View)' : 'Priya Kumar (Store Manager View)'}`);
+    }
+
+    function setScreen(screenId) {
+      appState.screen = screenId;
+      appState.drawer = null;
+      render();
+    }
+
+    function openDrawer(type) {
+      appState.drawer = type;
+      render();
+    }
+
+    function closeDrawer() {
+      appState.drawer = null;
+      render();
+    }
+
+    function toggleAvailability(day) {
+      appState.availability[day] = !appState.availability[day];
+      showToast(`${day} availability updated to: ${appState.availability[day] ? 'Available' : 'Unavailable'}`);
+    }
+
+    function submitSwapRequest() {
+      appState.swapState = 'PENDING_MANAGER';
+      appState.drawer = null;
+      appState.screen = 'worker-swap-status';
+      showToast(`Swap request sent to ${appState.selectedPeer}! Awaiting manager review.`);
+    }
+
+    function approveSwap() {
+      appState.swapState = 'APPROVED';
+      appState.drawer = null;
+      appState.requestsCount = Math.max(0, appState.requestsCount - 1);
+      showToast('Swap Approved! Both rosters and calendars synchronized.');
+    }
+
+    function declineSwap() {
+      appState.swapState = 'DECLINED';
+      appState.drawer = null;
+      appState.requestsCount = Math.max(0, appState.requestsCount - 1);
+      showToast('Swap Declined. Teammates have been notified with reason.');
+    }
+
+    function resetPrototype() {
+      appState.swapState = 'PENDING_MANAGER';
+      appState.requestsCount = 2;
+      appState.drawer = null;
+      appState.screen = appState.role === 'worker' ? 'worker-home' : 'manager-home';
+      showToast('Prototype state reset to baseline.');
+    }
+
+    function renderNav() {
+      const screens = appState.role === 'worker' ? workerScreens : managerScreens;
+      const navList = document.getElementById('screenNavList');
+      navList.innerHTML = screens.map(s => `
+        <button type="button" class="proto-nav-item ${appState.screen === s.id ? 'active' : ''}" onclick="setScreen('${s.id}')">
+          <span>${s.label}</span>
+          <span class="proto-nav-badge">${s.badge}</span>
+        </button>
+      `).join('');
+
+      document.getElementById('stateLabel').textContent = appState.swapState;
+      const ind = document.getElementById('stateIndicator');
+      if (appState.swapState === 'APPROVED') ind.style.background = 'var(--success)';
+      else if (appState.swapState === 'DECLINED') ind.style.background = 'var(--danger)';
+      else ind.style.background = 'var(--warning)';
+    }
+
+    function renderTabBar() {
+      const bar = document.getElementById('phoneTabbar');
+      if (appState.screen === 'worker-onboarding') {
+        bar.style.display = 'none';
+        return;
+      }
+      bar.style.display = 'flex';
+
+      if (appState.role === 'worker') {
+        bar.innerHTML = `
+          <button class="phone-tab-item ${appState.screen === 'worker-home' ? 'active' : ''}" onclick="setScreen('worker-home')">
+            <span class="phone-tab-icon">🏠</span>
+            <span>Home</span>
+          </button>
+          <button class="phone-tab-item ${appState.screen === 'worker-schedule' ? 'active' : ''}" onclick="setScreen('worker-schedule')">
+            <span class="phone-tab-icon">🗓️</span>
+            <span>Schedule</span>
+          </button>
+          <button class="phone-tab-item ${appState.screen === 'worker-swap-status' ? 'active' : ''}" onclick="setScreen('worker-swap-status')">
+            <span class="phone-tab-icon">🔄</span>
+            <span>Swap Board</span>
+          </button>
+          <button class="phone-tab-item ${appState.screen === 'worker-availability' ? 'active' : ''}" onclick="setScreen('worker-availability')">
+            <span class="phone-tab-icon">📅</span>
+            <span>Availability</span>
+          </button>
+          <button class="phone-tab-item ${appState.screen === 'worker-profile' ? 'active' : ''}" onclick="setScreen('worker-profile')">
+            <span class="phone-tab-icon">👤</span>
+            <span>Profile</span>
+          </button>
+        `;
+      } else {
+        bar.innerHTML = `
+          <button class="phone-tab-item ${appState.screen === 'manager-home' ? 'active' : ''}" onclick="setScreen('manager-home')">
+            <span class="phone-tab-icon">📊</span>
+            <span>Triage</span>
+          </button>
+          <button class="phone-tab-item ${appState.screen === 'manager-coverage' ? 'active' : ''}" onclick="setScreen('manager-coverage')">
+            <span class="phone-tab-icon">🗓️</span>
+            <span>Coverage</span>
+          </button>
+          <button class="phone-tab-item ${appState.screen === 'manager-roster' ? 'active' : ''}" onclick="setScreen('manager-roster')">
+            <span class="phone-tab-icon">👥</span>
+            <span>Roster</span>
+          </button>
+          <button class="phone-tab-item ${appState.screen === 'manager-reports' ? 'active' : ''}" onclick="setScreen('manager-reports')">
+            <span class="phone-tab-icon">📈</span>
+            <span>Reports</span>
+          </button>
+        `;
+      }
+    }
+
+    function renderScreenContent() {
+      const vp = document.getElementById('phoneViewport');
+      let html = '';
+
+      if (appState.toast) {
+        html += `
+          <div class="ss-toast">
+            <span>⚡</span>
+            <span>${appState.toast}</span>
+          </div>
+        `;
+      }
+
+      if (appState.screen === 'worker-onboarding') {
+        html += `
+          <div class="ss-screen" style="height:100%;justify-content:center;text-align:center;padding:40px 24px;">
+            <div style="width:68px;height:68px;background:var(--teal);border-radius:20px;margin:0 auto 20px;display:flex;align-items:center;justify-content:center;font-size:32px;box-shadow:0 8px 24px var(--teal-glow)">☕</div>
+            <h2 style="font-size:24px;font-weight:800;color:var(--navy);margin-bottom:6px">Harbor Coffee SSO</h2>
+            <p style="font-size:13.5px;color:var(--text-muted);margin-bottom:28px">Role-verified sign-in detected: <strong>Maya Lin (Team Member · Barista)</strong></p>
+
+            <div style="background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-lg);padding:18px;text-align:left;margin-bottom:24px;box-shadow:0 4px 16px rgba(0,0,0,0.03)">
+              <div style="font-size:11px;color:var(--text-muted);text-transform:uppercase;font-weight:700">Store Profile</div>
+              <div style="font-size:15px;font-weight:700;color:var(--navy);margin-top:2px">Downtown Store #1402</div>
+              <div style="font-size:12.5px;color:var(--text-muted);margin-top:4px">Certifications: Certified Barista · Cashier</div>
+              <div style="display:flex;gap:6px;margin-top:10px">
+                <span class="ss-pill ss-confirmed">Active Employee</span>
+                <span class="ss-pill" style="background:#E0F2FE;color:#0369A1">32h / 40h Safe</span>
+              </div>
+            </div>
+
+            <button class="ss-btn-primary" onclick="setScreen('worker-home')">
+              Enter Team Member Dashboard →
+            </button>
+          </div>
+        `;
+      }
+      else if (appState.screen === 'worker-home') {
+        html += `
+          <div class="ss-screen">
+            <div class="ss-header-strip">
+              <div class="ss-header-user">
+                <span class="ss-header-greeting">Hi, Maya</span>
+                <span class="ss-header-store">Harbor Coffee • Downtown #1402</span>
+              </div>
+              <div class="ss-header-avatar" onclick="setScreen('worker-profile')">M</div>
+            </div>
+
+            ${appState.requestsCount > 0 ? `
+              <div class="ss-alert-banner" onclick="setScreen('worker-swap-status')">
+                <span class="ss-alert-icon">⏳</span>
+                <div class="ss-alert-text">
+                  <strong>${appState.requestsCount} requests pending approval</strong>
+                  <p>Your swap requests are awaiting manager review. Tap to view ledger.</p>
+                </div>
+              </div>
+            ` : `
+              <div class="ss-alert-banner" style="background:var(--success-light);border-color:rgba(16,185,129,0.3)" onclick="setScreen('worker-swap-status')">
+                <span class="ss-alert-icon">✓</span>
+                <div class="ss-alert-text">
+                  <strong style="color:#065F46">All swap requests resolved</strong>
+                  <p style="color:#047857">Your current schedule is fully confirmed.</p>
+                </div>
+              </div>
+            `}
+
+            <div class="ss-card">
+              <div class="ss-card-top">
+                <span class="ss-card-title">Today's Shift</span>
+                <span class="ss-pill ss-confirmed">Confirmed</span>
+              </div>
+              <div class="ss-shift-details">
+                <span class="ss-shift-date">Monday, May 29</span>
+                <span class="ss-shift-time">7:00 AM – 3:00 PM</span>
+                <div class="ss-shift-meta">
+                  <span>📍 Downtown Location</span>
+                  <span>☕ Barista</span>
+                </div>
+              </div>
+              <button class="ss-btn-primary" onclick="openDrawer('request-swap')">
+                Request Swap
+              </button>
+            </div>
+
+            <div class="ss-card" style="padding:16px;cursor:pointer" onclick="openDrawer('shift-details')">
+              <div class="ss-card-top" style="margin-bottom:6px">
+                <span style="font-size:13px;font-weight:700">Next Shift</span>
+                <span style="font-size:12px;color:var(--teal);font-weight:600">Details →</span>
+              </div>
+              <div style="font-size:14px;font-weight:700;color:var(--navy)">Tuesday, May 30</div>
+              <div style="font-size:12px;color:var(--text-muted)">2:00 PM – 10:00 PM • Shift Lead • Riverside</div>
+            </div>
+
+            <div>
+              <div style="font-size:13px;font-weight:700;color:var(--navy);margin-bottom:10px">Quick Actions</div>
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+                <div style="background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px;cursor:pointer" onclick="setScreen('worker-swap-status')">
+                  <div style="font-size:20px;margin-bottom:4px">🔄</div>
+                  <strong style="font-size:13px;display:block">Swap Board</strong>
+                  <small style="font-size:11px;color:var(--text-muted)">Track trades & diffs</small>
+                </div>
+                <div style="background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px;cursor:pointer" onclick="setScreen('worker-availability')">
+                  <div style="font-size:20px;margin-bottom:4px">📅</div>
+                  <strong style="font-size:13px;display:block">Availability</strong>
+                  <small style="font-size:11px;color:var(--text-muted)">Set recurring hours</small>
+                </div>
+              </div>
+            </div>
+          </div>
+        `;
+      }
+      else if (appState.screen === 'worker-schedule') {
+        html += `
+          <div class="ss-screen">
+            <h2 style="font-size:18px;font-weight:800;color:var(--navy)">Weekly Schedule</h2>
+            <p style="font-size:12px;color:var(--text-muted)">Week of May 29 – Jun 4 • 32 Hours Assigned</p>
+
+            ${[
+              { day: 'Mon, May 29', time: '7:00 AM – 3:00 PM', role: 'Barista', status: 'confirmed', loc: 'Downtown' },
+              { day: 'Tue, May 30', time: '2:00 PM – 10:00 PM', role: 'Shift Lead', status: 'pending', loc: 'Riverside' },
+              { day: 'Wed, May 31', time: 'OFF', role: 'Rest Day', status: 'off', loc: '—' },
+              { day: 'Thu, Jun 1', time: '7:00 AM – 3:00 PM', role: 'Barista', status: 'confirmed', loc: 'Downtown' },
+              { day: 'Fri, Jun 2', time: '11:00 AM – 7:00 PM', role: 'Barista', status: 'confirmed', loc: 'Downtown' },
+              { day: 'Sat, Jun 3', time: 'OFF', role: 'Rest Day', status: 'off', loc: '—' },
+            ].map(s => `
+              <div class="ss-card" style="padding:14px;cursor:pointer" onclick="openDrawer('shift-details')">
+                <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px">
+                  <strong style="font-size:13.5px;color:var(--navy)">${s.day}</strong>
+                  <span class="ss-pill ${s.status === 'confirmed' ? 'ss-confirmed' : s.status === 'pending' ? 'ss-pending' : ''}" style="${s.status === 'off' ? 'background:#F1F5F9;color:#64748B' : ''}">
+                    ${s.status}
+                  </span>
+                </div>
+                <div style="font-size:13px;font-weight:700;color:${s.status === 'off' ? 'var(--text-muted)' : 'var(--teal-dark)'}">${s.time}</div>
+                <div style="font-size:11.5px;color:var(--text-muted);margin-top:2px">${s.role} • ${s.loc}</div>
+              </div>
+            `).join('')}
+          </div>
+        `;
+      }
+      else if (appState.screen === 'worker-swap-status') {
+        html += `
+          <div class="ss-screen">
+            <div style="display:flex;align-items:center;gap:10px;margin-bottom:4px">
+              <button onclick="setScreen('worker-home')" style="border:none;background:none;font-size:18px;cursor:pointer">←</button>
+              <h2 style="font-size:18px;font-weight:800;color:var(--navy)">Swap Status</h2>
+            </div>
+
+            <div class="ss-card" style="border-left:4px solid ${appState.swapState === 'APPROVED' ? 'var(--success)' : appState.swapState === 'DECLINED' ? 'var(--danger)' : 'var(--warning)'}">
+              <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px">
+                <span class="ss-pill ${appState.swapState === 'APPROVED' ? 'ss-confirmed' : appState.swapState === 'DECLINED' ? 'ss-urgent' : 'ss-pending'}">
+                  ${appState.swapState === 'APPROVED' ? '✓ Approved' : appState.swapState === 'DECLINED' ? '✗ Declined' : 'Pending Manager'}
+                </span>
+                <span style="font-size:11px;font-family:var(--font-mono);color:var(--text-muted)">#SWP-8821</span>
+              </div>
+              <strong style="font-size:15px;display:block;margin-bottom:4px">
+                ${appState.swapState === 'APPROVED' ? 'Swap Completed & Calendar Updated' : appState.swapState === 'DECLINED' ? 'Trade Request Declined by Manager' : 'Awaiting Store Manager Confirmation'}
+              </strong>
+              <p style="font-size:12px;color:var(--text-muted);line-height:1.4">
+                ${appState.swapState === 'APPROVED' ? 'Both rosters have been officially modified. Your schedule is locked.' : appState.swapState === 'DECLINED' ? 'Priya Kumar declined the request due to Friday night coverage rules.' : 'Jordan Lee has accepted your shift. Manager Priya is verifying floor coverage.'}
+              </p>
+            </div>
+
+            <div style="font-size:13px;font-weight:700;color:var(--navy);margin-top:4px">Swap Summary Diff</div>
+            <div style="background:var(--danger-light);border:1px solid rgba(239,68,68,0.2);border-radius:12px;padding:12px">
+              <small style="font-size:10px;font-weight:700;text-transform:uppercase;color:#991B1B">You Gave Up</small>
+              <div style="font-size:13px;font-weight:700;color:#991B1B">Mon, May 29 • 7a–3p</div>
+              <div style="font-size:11px;color:#B91C1C">Barista • Downtown Location</div>
+            </div>
+
+            <div style="background:var(--success-light);border:1px solid rgba(16,185,129,0.2);border-radius:12px;padding:12px">
+              <small style="font-size:10px;font-weight:700;text-transform:uppercase;color:#065F46">You Received</small>
+              <div style="font-size:13px;font-weight:700;color:#065F46">Tue, May 30 • 2p–10p</div>
+              <div style="font-size:11px;color:#047857">Shift Lead • Riverside Location</div>
+            </div>
+
+            <div style="font-size:13px;font-weight:700;color:var(--navy);margin-top:6px">Audit Activity Timeline</div>
+            <div style="display:flex;flex-direction:column;gap:12px;padding-left:14px;border-left:2px solid var(--line);margin-left:8px">
+              <div>
+                <strong style="font-size:12px;display:block">Swap Status Updated</strong>
+                <small style="font-size:11px;color:var(--text-muted)">${appState.swapState === 'APPROVED' ? 'May 29, 2:15 PM • Approved by Priya Kumar' : 'May 29, 10:15 AM • Pending final approval'}</small>
+              </div>
+              <div>
+                <strong style="font-size:12px;display:block">Teammate Accepted</strong>
+                <small style="font-size:11px;color:var(--text-muted)">May 28, 9:04 PM • Jordan Lee accepted swap</small>
+              </div>
+              <div>
+                <strong style="font-size:12px;display:block">Trade Initiated</strong>
+                <small style="font-size:11px;color:var(--text-muted)">May 28, 8:45 PM • Maya Lin requested shift exchange</small>
+              </div>
+            </div>
+          </div>
+        `;
+      }
+      else if (appState.screen === 'worker-availability') {
+        html += `
+          <div class="ss-screen">
+            <h2 style="font-size:18px;font-weight:800;color:var(--navy)">Weekly Availability</h2>
+            <p style="font-size:12.5px;color:var(--text-muted)">Tap any day to toggle your recurring available times.</p>
+
+            <div class="ss-card" style="padding:14px">
+              ${Object.entries(appState.availability).map(([day, isAvail], i) => `
+                <div style="display:flex;align-items:center;justify-content:space-between;padding:10px 0;border-bottom:${i < 6 ? '1px solid var(--line)' : 'none'};cursor:pointer" onclick="toggleAvailability('${day}')">
+                  <span style="font-size:13.5px;font-weight:600">${day}</span>
+                  <span class="ss-pill ${isAvail ? 'ss-confirmed' : 'ss-pending'}">
+                    ${isAvail ? '✓ Available' : '✕ Unavailable'}
+                  </span>
+                </div>
+              `).join('')}
+            </div>
+
+            <button class="ss-btn-primary" onclick="openDrawer('time-off')">
+              Request Specific Time Off →
+            </button>
+          </div>
+        `;
+      }
+      else if (appState.screen === 'worker-profile') {
+        html += `
+          <div class="ss-screen">
+            <div style="text-align:center;padding:10px 0">
+              <div style="width:72px;height:72px;border-radius:50%;background:var(--teal);color:#FFFFFF;font-size:28px;font-weight:800;margin:0 auto 10px;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 20px var(--teal-glow)">M</div>
+              <h2 style="font-size:20px;font-weight:800;color:var(--navy)">Maya Lin</h2>
+              <p style="font-size:13px;color:var(--text-muted)">Barista · Harbor Coffee Downtown #1402</p>
+            </div>
+
+            <div class="ss-card">
+              <div style="font-size:13px;font-weight:700;color:var(--navy);margin-bottom:10px">Active Skill Certifications</div>
+              <div style="display:flex;flex-wrap:wrap;gap:8px">
+                <span class="ss-pill ss-confirmed">Certified Barista</span>
+                <span class="ss-pill ss-confirmed">Food Safety L2</span>
+                <span class="ss-pill ss-confirmed">POS Cashier</span>
+                <span class="ss-pill" style="background:#E0F2FE;color:#0369A1">Shift Lead Training (80%)</span>
+              </div>
+            </div>
+
+            <div class="ss-card">
+              <div style="font-size:13px;font-weight:700;color:var(--navy);margin-bottom:10px">Work Preferences</div>
+              <div style="font-size:12.5px;color:var(--text-muted);display:flex;flex-direction:column;gap:8px">
+                <div>Max Hours / Week: <strong>35 hours</strong></div>
+                <div>Preferred Shift: <strong>Morning (7 AM – 3 PM)</strong></div>
+                <div>Secondary Store: <strong>Riverside Store #1108</strong></div>
+              </div>
+            </div>
+
+            <button class="ss-btn-primary" style="background:var(--navy)" onclick="switchRole('manager')">
+              Switch to Manager Portal View ➔
+            </button>
+          </div>
+        `;
+      }
+      else if (appState.screen === 'manager-home') {
+        html += `
+          <div class="ss-screen">
+            <div class="ss-header-strip">
+              <div class="ss-header-user">
+                <span class="ss-header-greeting">Manager Portal</span>
+                <span class="ss-header-store">Priya Kumar • Downtown Store #1402</span>
+              </div>
+              <div class="ss-header-avatar" style="background:#0284C7">P</div>
+            </div>
+
+            <div class="ss-alert-banner is-urgent" onclick="setScreen('manager-coverage')">
+              <span class="ss-alert-icon">⚠️</span>
+              <div class="ss-alert-text">
+                <strong>2 coverage gaps today</strong>
+                <p>Downtown needs 2 baristas for evening rush. Tap to view heatmap.</p>
+              </div>
+            </div>
+
+            <div class="ss-kpi-grid">
+              <div class="ss-kpi-box" onclick="openDrawer('post-open-shift')">
+                <div class="ss-kpi-num" style="color:var(--teal)">5</div>
+                <div class="ss-kpi-label">Open shifts (Post +)</div>
+              </div>
+              <div class="ss-kpi-box" onclick="openDrawer('confirm-approval')">
+                <div class="ss-kpi-num" style="color:var(--warning)">${appState.requestsCount}</div>
+                <div class="ss-kpi-label">Pending approvals</div>
+              </div>
+              <div class="ss-kpi-box" onclick="setScreen('manager-coverage')">
+                <div class="ss-kpi-num" style="color:var(--danger)">3</div>
+                <div class="ss-kpi-label">Coverage gaps</div>
+              </div>
+              <div class="ss-kpi-box" onclick="setScreen('manager-roster')">
+                <div class="ss-kpi-num" style="color:#8B5CF6">8</div>
+                <div class="ss-kpi-label">Overtime risk</div>
+              </div>
+            </div>
+
+            <div style="font-size:13px;font-weight:700;color:var(--navy);margin-top:4px">Pending Trade Queue</div>
+
+            ${appState.requestsCount > 0 ? `
+              <div class="ss-card" style="border-left:4px solid var(--warning);padding:14px">
+                <div style="display:flex;justify-content:space-between;margin-bottom:6px">
+                  <strong style="font-size:13.5px">Maya Lin ↔ Jordan Lee</strong>
+                  <span class="ss-pill ss-pending">Review</span>
+                </div>
+                <p style="font-size:12px;color:var(--text-muted);margin-bottom:12px">
+                  Mon 7a–3p (Downtown) for Tue 2p–10p (Riverside). Both hold certified qualifications.
+                </p>
+                <button class="ss-btn-primary" style="margin-top:0;padding:9px 14px" onclick="openDrawer('confirm-approval')">
+                  Approve Trade with Guardrails →
+                </button>
+              </div>
+            ` : `
+              <div class="ss-card" style="padding:16px;text-align:center">
+                <div style="font-size:24px;margin-bottom:4px">🎉</div>
+                <strong style="font-size:14px;color:var(--navy);display:block">Zero Pending Approvals</strong>
+                <p style="font-size:12px;color:var(--text-muted);margin-top:2px">All current team requests have been processed.</p>
+              </div>
+            `}
+          </div>
+        `;
+      }
+      else if (appState.screen === 'manager-coverage') {
+        html += `
+          <div class="ss-screen">
+            <h2 style="font-size:18px;font-weight:800;color:var(--navy)">Coverage Heatmap</h2>
+            <p style="font-size:12.5px;color:var(--text-muted)">Staffing thresholds: Green ≥90% · Amber 75–89% · Red &lt;75%</p>
+
+            <div class="ss-heatmap">
+              <div class="ss-heatmap-legend">
+                <span><span class="ss-legend-dot" style="background:#10B981"></span>90%+ covered</span>
+                <span><span class="ss-legend-dot" style="background:#F59E0B"></span>75–89%</span>
+                <span><span class="ss-legend-dot" style="background:#EF4444"></span>&lt;75% risk</span>
+              </div>
+
+              <table class="ss-grid-table">
+                <thead>
+                  <tr>
+                    <th>Time</th><th>M</th><th>T</th><th>W</th><th>T</th><th>F</th><th>S</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  ${['6AM', '9AM', '12PM', '3PM', '6PM', '9PM'].map((t, idx) => `
+                    <tr>
+                      <td style="font-size:10px;font-weight:600;color:var(--text-muted)">${t}</td>
+                      <td class="ss-heat-cell heat-high" onclick="showToast('Monday ${t}: 95% fully staffed')">95%</td>
+                      <td class="ss-heat-cell heat-high" onclick="showToast('Tuesday ${t}: 92% fully staffed')">92%</td>
+                      <td class="ss-heat-cell ${idx === 3 || idx === 4 ? 'heat-low' : 'heat-high'}" onclick="showToast('${idx === 3 || idx === 4 ? 'Critical staffing gap on Wednesday ' + t + '! Only 2 staff active.' : 'Wednesday ' + t + ': 90%'}')">
+                        ${idx === 3 || idx === 4 ? '68%' : '90%'}
+                      </td>
+                      <td class="ss-heat-cell heat-med" onclick="showToast('Thursday ${t}: 82% coverage')">82%</td>
+                      <td class="ss-heat-cell heat-high" onclick="showToast('Friday ${t}: 94% coverage')">94%</td>
+                      <td class="ss-heat-cell ${idx >= 3 ? 'heat-low' : 'heat-med'}" onclick="showToast('Saturday ${t}: Attention required')">
+                        ${idx >= 3 ? '64%' : '85%'}
+                      </td>
+                    </tr>
+                  `).join('')}
+                </tbody>
+              </table>
+            </div>
+
+            <div class="ss-alert-banner is-urgent" onclick="openDrawer('post-open-shift')">
+              <span class="ss-alert-icon">🚨</span>
+              <div class="ss-alert-text">
+                <strong>Critical Gap: Wed 3PM–6PM</strong>
+                <p>Only 2 of 4 required baristas assigned. Tap to post open shift.</p>
+              </div>
+            </div>
+          </div>
+        `;
+      }
+      else if (appState.screen === 'manager-roster') {
+        html += `
+          <div class="ss-screen">
+            <h2 style="font-size:18px;font-weight:800;color:var(--navy)">Team Roster & Certs</h2>
+            <p style="font-size:12.5px;color:var(--text-muted)">15 active team members at Downtown Store #1402</p>
+
+            ${[
+              { name: 'Sarah Chen', role: 'Barista', hours: '32h / week', cert: true, initial: 'SC' },
+              { name: 'Marcus Johnson', role: 'Shift Lead', hours: '38h / week', cert: true, initial: 'MJ' },
+              { name: 'Emma Davis', role: 'Barista', hours: '21h / week', cert: true, initial: 'ED' },
+              { name: 'James Wilson', role: 'Cashier', hours: '18h / week', cert: false, initial: 'JW' },
+              { name: 'Aisha Khan', role: 'Barista', hours: '29h / week', cert: true, initial: 'AK' },
+              { name: 'Jordan Lee', role: 'Barista', hours: '30h / week', cert: true, initial: 'JL' },
+            ].map(m => `
+              <div class="ss-roster-item" onclick="showToast('Inspecting ${m.name} profile: ${m.hours}')">
+                <div class="ss-roster-left">
+                  <div class="ss-roster-avatar">${m.initial}</div>
+                  <div class="ss-roster-info">
+                    <h4>${m.name}</h4>
+                    <small>${m.role} • ${m.hours}</small>
+                  </div>
+                </div>
+                ${m.cert ? '<span class="ss-cert-badge">Certified</span>' : '<span style="font-size:11px;color:var(--text-muted)">In-Training</span>'}
+              </div>
+            `).join('')}
+          </div>
+        `;
+      }
+      else if (appState.screen === 'manager-reports') {
+        html += `
+          <div class="ss-screen">
+            <h2 style="font-size:18px;font-weight:800;color:var(--navy)">Labor & Scheduling Reports</h2>
+            <p style="font-size:12.5px;color:var(--text-muted)">Monthly overview of swap resolution times and staffing coverage.</p>
+
+            <div class="ss-card" style="padding:16px">
+              <div style="font-size:12px;color:var(--text-muted);text-transform:uppercase;font-weight:700">Swap Resolution Velocity</div>
+              <div style="font-size:28px;font-weight:800;color:var(--teal);margin:4px 0">4.2 hours</div>
+              <p style="font-size:12px;color:var(--text-muted)">Down from 3.5 days prior to ShiftSnap mobile deployment (-78%).</p>
+            </div>
+
+            <div class="ss-card" style="padding:16px">
+              <div style="font-size:12px;color:var(--text-muted);text-transform:uppercase;font-weight:700">Store Coverage Index</div>
+              <div style="font-size:28px;font-weight:800;color:var(--navy);margin:4px 0">94.2%</div>
+              <p style="font-size:12px;color:var(--text-muted)">Zero unfilled evening rush shifts over the last 30 days.</p>
+            </div>
+          </div>
+        `;
+      }
+
+      // Drawers
+      if (appState.drawer === 'request-swap') {
+        html += `
+          <div class="ss-modal-overlay" onclick="closeDrawer()">
+            <div class="ss-drawer" onclick="event.stopPropagation()">
+              <div class="ss-drawer-handle"></div>
+              <h3 style="font-size:17px;font-weight:800;color:var(--navy)">Initiate Shift Swap</h3>
+              <p style="font-size:12.5px;color:var(--text-muted)">Select a qualified teammate to request shift exchange for Monday, May 29.</p>
+
+              <div style="display:flex;flex-direction:column;gap:8px">
+                <div style="border:2px solid var(--teal);background:var(--teal-light);border-radius:12px;padding:12px;cursor:pointer" onclick="appState.selectedPeer='Jordan Lee';render()">
+                  <div style="display:flex;justify-content:space-between">
+                    <strong style="font-size:13px;color:var(--teal-dark)">Jordan Lee (Certified Barista)</strong>
+                    <span class="ss-pill ss-confirmed">Available</span>
+                  </div>
+                  <small style="font-size:11.5px;color:var(--teal-dark)">Works Tue 2p–10p • Safe weekly hours (32h)</small>
+                </div>
+
+                <div style="border:1px solid var(--line);background:var(--surface);border-radius:12px;padding:12px;opacity:0.6;cursor:not-allowed" onclick="showToast('Sarah Chen is near overtime limit (38h). System prevents scheduling violation.')">
+                  <div style="display:flex;justify-content:space-between">
+                    <strong style="font-size:13px">Sarah Chen</strong>
+                    <span class="ss-pill ss-pending">Overtime Risk</span>
+                  </div>
+                  <small style="font-size:11.5px;color:var(--text-muted)">Already at 38h this week</small>
+                </div>
+              </div>
+
+              <button class="ss-btn-primary" onclick="submitSwapRequest()">
+                Send Swap Request to ${appState.selectedPeer} →
+              </button>
+            </div>
+          </div>
+        `;
+      }
+      else if (appState.drawer === 'confirm-approval') {
+        html += `
+          <div class="ss-modal-overlay" onclick="closeDrawer()">
+            <div class="ss-drawer" onclick="event.stopPropagation()">
+              <div class="ss-drawer-handle"></div>
+              <h3 style="font-size:17px;font-weight:800;color:var(--navy)">Manager Trade Approval</h3>
+              <p style="font-size:12.5px;color:var(--text-muted)">Verify shift exchange between Maya Lin and Jordan Lee.</p>
+
+              <div style="background:var(--success-light);border:1px solid rgba(16,185,129,0.25);border-radius:10px;padding:10px;font-size:12px;color:#065F46;line-height:1.5">
+                ✓ Both employees hold Certified Barista status.<br>
+                ✓ Neither party enters overtime (&lt;40h).<br>
+                ✓ Store coverage index remains at 95%.
+              </div>
+
+              <div style="display:flex;gap:10px;margin-top:8px">
+                <button style="flex:1;padding:12px;border-radius:10px;border:1px solid var(--line);background:var(--surface);font-weight:700;cursor:pointer" onclick="declineSwap()">
+                  Decline
+                </button>
+                <button class="ss-btn-primary" style="flex:2;margin-top:0" onclick="approveSwap()">
+                  Approve & Update Roster
+                </button>
+              </div>
+            </div>
+          </div>
+        `;
+      }
+      else if (appState.drawer === 'time-off') {
+        html += `
+          <div class="ss-modal-overlay" onclick="closeDrawer()">
+            <div class="ss-drawer" onclick="event.stopPropagation()">
+              <div class="ss-drawer-handle"></div>
+              <h3 style="font-size:17px;font-weight:800;color:var(--navy)">Request Time Off</h3>
+              <p style="font-size:12.5px;color:var(--text-muted)">Select dates for personal leave or college exam blackout.</p>
+
+              <div style="display:flex;flex-direction:column;gap:10px">
+                <div>
+                  <label style="font-size:11px;font-weight:700;color:var(--text-muted);display:block;margin-bottom:4px">Start Date</label>
+                  <input type="date" value="2026-06-15" style="width:100%;padding:10px;border-radius:8px;border:1px solid var(--line);font-family:var(--font-sans)">
+                </div>
+                <div>
+                  <label style="font-size:11px;font-weight:700;color:var(--text-muted);display:block;margin-bottom:4px">End Date</label>
+                  <input type="date" value="2026-06-17" style="width:100%;padding:10px;border-radius:8px;border:1px solid var(--line);font-family:var(--font-sans)">
+                </div>
+                <div>
+                  <label style="font-size:11px;font-weight:700;color:var(--text-muted);display:block;margin-bottom:4px">Reason</label>
+                  <select style="width:100%;padding:10px;border-radius:8px;border:1px solid var(--line);font-family:var(--font-sans)">
+                    <option>College Exams / Study</option>
+                    <option>Personal / Family</option>
+                    <option>Medical</option>
+                  </select>
+                </div>
+              </div>
+
+              <button class="ss-btn-primary" onclick="closeDrawer();showToast('Time-off request for Jun 15-17 submitted to Store Manager!')">
+                Submit Request →
+              </button>
+            </div>
+          </div>
+        `;
+      }
+      else if (appState.drawer === 'shift-details') {
+        html += `
+          <div class="ss-modal-overlay" onclick="closeDrawer()">
+            <div class="ss-drawer" onclick="event.stopPropagation()">
+              <div class="ss-drawer-handle"></div>
+              <h3 style="font-size:17px;font-weight:800;color:var(--navy)">Shift Details</h3>
+              <div style="font-size:13px;color:var(--text-muted)">Tuesday, May 30 • 2:00 PM – 10:00 PM</div>
+
+              <div style="background:var(--surface-subtle);border-radius:12px;padding:14px;font-size:12.5px;color:var(--navy);display:flex;flex-direction:column;gap:6px">
+                <div>Location: <strong>Riverside Store #1108</strong></div>
+                <div>Role: <strong>Shift Lead</strong></div>
+                <div>Coworkers on Duty: <strong>Marcus J., Aisha K.</strong></div>
+                <div>Estimated Pay: <strong>8.0 hrs ($144.00)</strong></div>
+              </div>
+
+              <button class="ss-btn-primary" onclick="closeDrawer();openDrawer('request-swap')">
+                Request Trade for This Shift →
+              </button>
+            </div>
+          </div>
+        `;
+      }
+      else if (appState.drawer === 'post-open-shift') {
+        html += `
+          <div class="ss-modal-overlay" onclick="closeDrawer()">
+            <div class="ss-drawer" onclick="event.stopPropagation()">
+              <div class="ss-drawer-handle"></div>
+              <h3 style="font-size:17px;font-weight:800;color:var(--navy)">Post Open Shift to Team</h3>
+              <p style="font-size:12.5px;color:var(--text-muted)">Broadcast uncovered shift to all eligible certified team members.</p>
+
+              <div style="background:var(--danger-light);border-radius:10px;padding:10px;font-size:12px;color:#991B1B">
+                🚨 Wednesday, May 31 • 3:00 PM – 6:00 PM (Evening Rush)
+              </div>
+
+              <button class="ss-btn-primary" onclick="closeDrawer();showToast('Open shift broadcasted to 6 certified baristas!')">
+                Broadcast Open Shift Now →
+              </button>
+            </div>
+          </div>
+        `;
+      }
+
+      vp.innerHTML = html;
+    }
+
+    function render() {
+      renderNav();
+      renderTabBar();
+      renderScreenContent();
+    }
+
+    // Set live time in status bar
+    function updateClock() {
+      const now = new Date();
+      const hrs = now.getHours();
+      const mins = String(now.getMinutes()).padStart(2, '0');
+      const clockEl = document.getElementById('liveClock');
+      if (clockEl) clockEl.textContent = `${hrs % 12 || 12}:${mins}`;
+    }
+    setInterval(updateClock, 1000);
+    updateClock();
+
+    render();
+  </script>
+</body>
+</html>

@@ -2139,6 +2139,7 @@ export const portfolioProjects: CaseStudyProject[] = [
     platform: "iOS Mobile App",
     heroImage: `${assetBase}shiftsnap/overview-barista-hd.jpg`,
     secondaryImage: `${assetBase}shiftsnap/shiftsnap-complete-user-experience-hd.png`,
+    liveUrl: "/shiftsnap-prototype/index.html",
     panoramaTitle: "Complete User Experience",
     panoramaLabel: "6 Core Mobile Screens · Team Member & Manager Views",
     frictionTitle: "Hourly workers struggle with inflexible scheduling systems that don't accommodate their dynamic lives.",
