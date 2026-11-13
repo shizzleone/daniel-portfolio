@@ -1596,11 +1596,25 @@ function ProjectPage({ project }: { project: CaseStudyProject }) {
           n={num("process")}
           label="Design Process & Architecture"
           title={project.id === "shiftsnap" ? "Information Architecture & Design System" : "System flow, architectural pivot, and guiding principles."}
-          intro={project.id === "shiftsnap" ? undefined : project.architecturalPivot.summary}
+          intro={project.id === "shiftsnap" ? "Mapping the dual-role workflow across lanes clarifies exactly where employee self-service ends and manager oversight begins." : project.architecturalPivot.summary}
         >
           {project.id === "shiftsnap" ? (
             <div className="shiftsnap-ia-system-block">
-              {/* Information Architecture */}
+              {/* Interactive Dual-Role User Flow Diagram */}
+              {flow && (
+                <div className="shiftsnap-flow-interactive-wrap">
+                  <div className="shiftsnap-flow-header">
+                    <span className="eyebrow">Interactive System Flow</span>
+                    <h3>{flow.title}</h3>
+                    <p>{flow.summary}</p>
+                  </div>
+                  <div className="cs-flow-wrap">
+                    <UserFlowDiagram flow={flow} id={project.id} />
+                  </div>
+                </div>
+              )}
+
+              {/* Information Architecture & Step Breakdown */}
               <div className="shiftsnap-ia-panel">
                 <figure
                   className="shiftsnap-ia-photo is-zoomable"
@@ -1620,7 +1634,9 @@ function ProjectPage({ project }: { project: CaseStudyProject }) {
                 </figure>
                 <div className="shiftsnap-ia-flows-grid">
                   <div className="shiftsnap-ia-flow-col">
-                    <h4 className="shiftsnap-flow-heading">Team Member Flow</h4>
+                    <h4 className="shiftsnap-flow-heading">
+                      <span className="shiftsnap-flow-badge">Worker</span> Team Member Flow
+                    </h4>
                     <ul>
                       {project.iaFlows?.teamMember.map((step, sIdx) => (
                         <li key={sIdx}>{step}</li>
@@ -1628,7 +1644,9 @@ function ProjectPage({ project }: { project: CaseStudyProject }) {
                     </ul>
                   </div>
                   <div className="shiftsnap-ia-flow-col">
-                    <h4 className="shiftsnap-flow-heading">Manager Flow</h4>
+                    <h4 className="shiftsnap-flow-heading">
+                      <span className="shiftsnap-flow-badge is-manager">Manager</span> Manager Flow
+                    </h4>
                     <ul>
                       {project.iaFlows?.manager.map((step, sIdx) => (
                         <li key={sIdx}>{step}</li>
