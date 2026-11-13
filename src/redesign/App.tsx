@@ -12,7 +12,6 @@ import { UserFlowDiagram } from "./components/UserFlowDiagram"
 import { Sparkle, SparkLabel, Squiggle, Typed } from "./components/Decor"
 
 const RESUME = "https://danieljohnson.bio/assets/daniel-johnson-resume.pdf"
-const WALKTHROUGH_DECK = "/assets/Daniel_Johnson_Featured_Work_Walkthrough.pptx"
 const EMAIL = "folaseyi@gmail.com"
 const LINKEDIN = "https://www.linkedin.com/in/dannyshizzle"
 const PORTRAIT = "/daniel-johnson-cutout.webp"
@@ -151,15 +150,6 @@ function CommandPalette({
                 >
                   <Icon name="download" size={14} />
                   <span>Download Résumé PDF</span>
-                </a>
-                <a
-                  href={WALKTHROUGH_DECK}
-                  download="Daniel_Johnson_Featured_Work_Walkthrough.pptx"
-                  className="cmd-action-btn"
-                  onClick={onClose}
-                >
-                  <Icon name="download" size={14} />
-                  <span>Download Walkthrough Deck (.pptx)</span>
                 </a>
                 <button
                   type="button"
@@ -522,14 +512,6 @@ export default function App() {
                 rel="noreferrer"
               >
                 Résumé PDF
-                <Icon name="arrow-up-right" size={14} />
-              </a>
-              <a
-                className="btn btn-glass"
-                href={WALKTHROUGH_DECK}
-                download="Daniel_Johnson_Featured_Work_Walkthrough.pptx"
-              >
-                Walkthrough Deck (.pptx)
                 <Icon name="arrow-up-right" size={14} />
               </a>
             </div>
