@@ -1831,23 +1831,6 @@ function ProjectPage({ project }: { project: CaseStudyProject }) {
                       </button>
                     </div>
                   </div>
-                  <figure
-                    className="shiftsnap-feature-preview-screen is-zoomable"
-                    onClick={() =>
-                      setLightbox({
-                        src: "/assets/shiftsnap/screen-worker-home-hd.png",
-                        caption: "ShiftSnap · Smart Shift Swapping & Worker Home View",
-                        badge: "Feature 01 · HD Screen",
-                      })
-                    }
-                  >
-                    <img
-                      src="/assets/shiftsnap/screen-worker-home-hd.png"
-                      alt="Smart Shift Swapping Worker Home Screen"
-                      loading="lazy"
-                    />
-                    <small className="shiftsnap-fig-hint">Click to inspect full worker screen</small>
-                  </figure>
                 </div>
               </div>
 
@@ -1882,23 +1865,6 @@ function ProjectPage({ project }: { project: CaseStudyProject }) {
                       </div>
                     </div>
                   </div>
-                  <figure
-                    className="shiftsnap-feature-preview-screen is-zoomable"
-                    onClick={() =>
-                      setLightbox({
-                        src: "/assets/shiftsnap/screen-manager-dashboard-hd.png",
-                        caption: "ShiftSnap · Intelligent Request Queue & Manager Dashboard",
-                        badge: "Feature 02 · HD Screen",
-                      })
-                    }
-                  >
-                    <img
-                      src="/assets/shiftsnap/screen-manager-dashboard-hd.png"
-                      alt="Intelligent Request Queue Manager Screen"
-                      loading="lazy"
-                    />
-                    <small className="shiftsnap-fig-hint">Click to inspect full manager queue</small>
-                  </figure>
                 </div>
                 <div className="shiftsnap-feature-copy">
                   <span className="shiftsnap-feature-pill">Feature 02</span>
@@ -1961,23 +1927,6 @@ function ProjectPage({ project }: { project: CaseStudyProject }) {
                       Request Time Off →
                     </button>
                   </div>
-                  <figure
-                    className="shiftsnap-feature-preview-screen is-zoomable"
-                    onClick={() =>
-                      setLightbox({
-                        src: "/assets/shiftsnap/screen-coverage-view-hd.png",
-                        caption: "ShiftSnap · Team Availability & Coverage Heatmap View",
-                        badge: "Feature 03 · HD Screen",
-                      })
-                    }
-                  >
-                    <img
-                      src="/assets/shiftsnap/screen-coverage-view-hd.png"
-                      alt="Weekly Availability and Coverage Heatmap Screen"
-                      loading="lazy"
-                    />
-                    <small className="shiftsnap-fig-hint">Click to inspect full coverage heatmap</small>
-                  </figure>
                 </div>
               </div>
 
