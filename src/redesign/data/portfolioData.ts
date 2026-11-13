@@ -125,6 +125,23 @@ export interface CaseStudyProject {
     description: string
     icon: string
   }[]
+  personas?: {
+    initials: string
+    color: string
+    name: string
+    role: string
+    tagline: string
+    quote: string
+    bio: string
+    goals: string[]
+    painPoints: string[]
+  }[]
+  designGoals?: {
+    title: string
+    description: string
+    icon: string
+    color: string
+  }[]
 }
 
 export const assetBase = "/assets/"
@@ -2120,8 +2137,8 @@ export const portfolioProjects: CaseStudyProject[] = [
     scope:
       "End-to-End Product Design · User Research · Mobile UX · Design System",
     platform: "iOS Mobile App",
-    heroImage: `${assetBase}shiftsnap/overview-barista.jpg`,
-    secondaryImage: `${assetBase}shiftsnap/complete-user-experience-screens.jpg`,
+    heroImage: `${assetBase}shiftsnap/overview-barista-hd.jpg`,
+    secondaryImage: `${assetBase}shiftsnap/shiftsnap-complete-user-experience-hd.png`,
     panoramaTitle: "Complete User Experience",
     panoramaLabel: "6 Core Mobile Screens · Team Member & Manager Views",
     frictionTitle: "Hourly workers struggle with inflexible scheduling systems that don't accommodate their dynamic lives.",
@@ -2538,6 +2555,160 @@ export const portfolioProjects: CaseStudyProject[] = [
         title: "Analytics Dashboard",
         description: "Insights into scheduling patterns, coverage gaps, and team performance metrics",
         icon: "chart",
+      },
+    ],
+    personas: [
+      {
+        initials: "SC",
+        color: "#0D9488",
+        name: "Sarah Chen",
+        role: "Full-Time Barista, 24",
+        tagline: "Full-time • Tech-savvy",
+        quote: "I need to see my schedule on my phone and swap shifts quickly when something comes up.",
+        bio: "Sarah works 35-40 hours/week and is pursuing a degree part-time. She values flexibility and uses her phone for everything.",
+        goals: [
+          "Access schedule anytime, anywhere",
+          "Trade shifts without manager friction",
+          "Balance work with college classes",
+          "Build reliable work reputation",
+        ],
+        painPoints: [
+          "Can't easily find coverage for shifts",
+          "Schedule changes aren't communicated clearly",
+          "Feels guilty about calling in",
+          "Hard to plan study time around unpredictable schedule",
+        ],
+      },
+      {
+        initials: "MJ",
+        color: "#0284C7",
+        name: "Marcus Johnson",
+        role: "Shift Manager, 32",
+        tagline: "5 years experience • Team of 15",
+        quote: "I need to approve requests quickly and ensure we're always properly staffed without micromanaging.",
+        bio: "Marcus manages a busy downtown location and spends too much time on scheduling logistics instead of coaching his team.",
+        goals: [
+          "Maintain optimal shift coverage",
+          "Reduce time spent on scheduling",
+          "Empower team to self-manage",
+          "Identify and develop high performers",
+        ],
+        painPoints: [
+          "Constant last-minute coverage requests",
+          "Difficult to track approval status",
+          "No visibility into team availability",
+          "Spends 10+ hours/week on scheduling",
+        ],
+      },
+      {
+        initials: "JW",
+        color: "#F59E0B",
+        name: "Jordan Williams",
+        role: "Part-Time Cashier, 19",
+        tagline: "Part-time • Multiple jobs",
+        quote: "I work at three different places. I need something that shows me ALL my shifts in one place and lets me trade without phone tag.",
+        bio: "Jordan juggles three part-time jobs to make ends meet. Coordination is crucial to avoid scheduling conflicts.",
+        goals: [
+          "Avoid conflicts between multiple jobs",
+          "Pick up extra shifts when available",
+          "Maximize earnings with flexible hours",
+          "Quick shift trades with minimal hassle",
+        ],
+        painPoints: [
+          "Managing schedules across 3 different systems",
+          "Missing shift notifications from different jobs",
+          "No easy way to claim open shifts quickly",
+          "Can't easily communicate availability to all employers",
+        ],
+      },
+      {
+        initials: "LG",
+        color: "#8B5CF6",
+        name: "Lisa Grant",
+        role: "District Manager, 41",
+        tagline: "10+ years • 6 locations",
+        quote: "I need a bird's-eye view of all my locations' staffing and the ability to move resources where they're needed most.",
+        bio: "Lisa oversees 6 locations with 80+ employees. She needs aggregate insights and cross-location coordination capabilities.",
+        goals: [
+          "Monitor coverage across all locations",
+          "Identify staffing patterns and trends",
+          "Enable cross-location shift coverage",
+          "Measure manager performance and efficiency",
+        ],
+        painPoints: [
+          "No consolidated view of district staffing",
+          "Can't easily move certified staff between locations",
+          "Difficult to benchmark performance across stores",
+          "Limited visibility into scheduling inefficiencies",
+        ],
+      },
+      {
+        initials: "RB",
+        color: "#10B981",
+        name: "Robert Brown",
+        role: "Shift Lead, 52",
+        tagline: "15 years tenure • Less tech-savvy",
+        quote: "I've been doing this for years. I just need the app to be simple and not make me feel like I need to take a class to use it.",
+        bio: "Robert is a valued senior employee who prefers traditional methods but recognizes the need to adapt to new technology.",
+        goals: [
+          "Maintain consistent schedule",
+          "Mentor newer team members",
+          "Use technology without frustration",
+          "Avoid frequent schedule changes",
+        ],
+        painPoints: [
+          "Intimidated by complex mobile apps",
+          "Prefers phone calls over app notifications",
+          "Worried about making mistakes in the system",
+          "Needs larger text and clear navigation",
+        ],
+      },
+      {
+        initials: "AK",
+        color: "#EC4899",
+        name: "Aisha Khan",
+        role: "Barista, 20",
+        tagline: "Digital native • Social-first",
+        quote: "I want to coordinate with my coworkers directly. If I need coverage, let me post it on our team board instead of texting everyone individually.",
+        bio: "Aisha expects app experiences to be fast, social, and intuitive. She values peer-to-peer communication and community features.",
+        goals: [
+          "Connect and coordinate with coworkers easily",
+          "Get instant notifications and responses",
+          "Browse and claim shifts with one tap",
+          "Feel part of a team community",
+        ],
+        painPoints: [
+          "Outdated interfaces feel slow and clunky",
+          "Wants to see who's working when",
+          "Frustrated by email-based communication",
+          "Expects app to be as fast as social media",
+        ],
+      },
+    ],
+    designGoals: [
+      {
+        title: "Speed",
+        description: "Enable shift swaps and coverage requests in under 60 seconds",
+        icon: "⚡",
+        color: "#14B8A6",
+      },
+      {
+        title: "Empowerment",
+        description: "Give workers autonomy while maintaining manager oversight",
+        icon: "👥",
+        color: "#3B82F6",
+      },
+      {
+        title: "Clarity",
+        description: "Create a single source of truth for all scheduling information",
+        icon: "✓",
+        color: "#10B981",
+      },
+      {
+        title: "Efficiency",
+        description: "Reduce manager time spent on scheduling by 70%",
+        icon: "🕒",
+        color: "#F59E0B",
       },
     ],
   },

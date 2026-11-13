@@ -1324,14 +1324,14 @@ function ProjectPage({ project }: { project: CaseStudyProject }) {
                 className="shiftsnap-overview-figure is-zoomable"
                 onClick={() =>
                   setLightbox({
-                    src: "/assets/shiftsnap/overview-barista.jpg",
+                    src: "/assets/shiftsnap/overview-barista-hd.jpg",
                     caption: "ShiftSnap · In-Store Barista Floor Context",
                     badge: "Contextual Research",
                   })
                 }
               >
                 <img
-                  src="/assets/shiftsnap/overview-barista.jpg"
+                  src="/assets/shiftsnap/overview-barista-hd.jpg"
                   alt="Barista at work in coffee shop"
                   loading="lazy"
                 />
@@ -1444,14 +1444,14 @@ function ProjectPage({ project }: { project: CaseStudyProject }) {
                   className="shiftsnap-methods-figure is-zoomable"
                   onClick={() =>
                     setLightbox({
-                      src: "/assets/shiftsnap/research-meeting.jpg",
+                      src: "/assets/shiftsnap/research-meeting-hd.jpg",
                       caption: "ShiftSnap · Discovery & User Inquiry Session",
                       badge: "User Research",
                     })
                   }
                 >
                   <img
-                    src="/assets/shiftsnap/research-meeting.jpg"
+                    src="/assets/shiftsnap/research-meeting-hd.jpg"
                     alt="Research team conducting user inquiry"
                     loading="lazy"
                   />
@@ -1483,6 +1483,85 @@ function ProjectPage({ project }: { project: CaseStudyProject }) {
                             insight.text
                           )}
                         </p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {/* User Personas */}
+              {project.personas && (
+                <div className="shiftsnap-personas-section">
+                  <div className="shiftsnap-personas-header">
+                    <h3>User Personas</h3>
+                  </div>
+                  <div className="shiftsnap-personas-grid">
+                    {project.personas.map((p) => (
+                      <div key={p.name} className="shiftsnap-persona-card">
+                        <div className="shiftsnap-persona-top">
+                          <span
+                            className="shiftsnap-persona-avatar"
+                            style={{ backgroundColor: p.color }}
+                          >
+                            {p.initials}
+                          </span>
+                          <div className="shiftsnap-persona-info">
+                            <h4>{p.name}</h4>
+                            <span className="shiftsnap-persona-role">{p.role}</span>
+                            <small className="shiftsnap-persona-tagline">{p.tagline}</small>
+                          </div>
+                        </div>
+
+                        <blockquote className="shiftsnap-persona-quote">
+                          “{p.quote}”
+                        </blockquote>
+
+                        <p className="shiftsnap-persona-bio">{p.bio}</p>
+
+                        <div className="shiftsnap-persona-details">
+                          <div className="shiftsnap-persona-col">
+                            <strong>Goals</strong>
+                            <ul>
+                              {p.goals.map((g, gIdx) => (
+                                <li key={gIdx}>{g}</li>
+                              ))}
+                            </ul>
+                          </div>
+                          <div className="shiftsnap-persona-col">
+                            <strong>Pain Points</strong>
+                            <ul>
+                              {p.painPoints.map((pp, ppIdx) => (
+                                <li key={ppIdx}>{pp}</li>
+                              ))}
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {/* Design Goals */}
+              {project.designGoals && (
+                <div className="shiftsnap-design-goals-section">
+                  <div className="shiftsnap-design-goals-header">
+                    <h3>Design Goals</h3>
+                  </div>
+                  <div className="shiftsnap-design-goals-grid">
+                    {project.designGoals.map((dg) => (
+                      <div key={dg.title} className="shiftsnap-goal-card">
+                        <div
+                          className="shiftsnap-goal-icon"
+                          style={{
+                            backgroundColor: `color-mix(in srgb, ${dg.color} 18%, transparent)`,
+                            color: dg.color,
+                          }}
+                        >
+                          {dg.icon}
+                        </div>
+                        <h4>{dg.title}</h4>
+                        <p>{dg.description}</p>
                       </div>
                     ))}
                   </div>
@@ -1809,14 +1888,14 @@ function ProjectPage({ project }: { project: CaseStudyProject }) {
                   className="shiftsnap-full-screens-fig is-zoomable"
                   onClick={() =>
                     setLightbox({
-                      src: "/assets/shiftsnap/complete-user-experience-screens.jpg",
+                      src: "/assets/shiftsnap/shiftsnap-complete-user-experience-hd.png",
                       caption: "ShiftSnap · 6 Core Mobile Screens (Team Member & Manager Views)",
                       badge: "Complete Mobile Experience",
                     })
                   }
                 >
                   <img
-                    src="/assets/shiftsnap/complete-user-experience-screens.jpg"
+                    src="/assets/shiftsnap/shiftsnap-complete-user-experience-hd.png"
                     alt="ShiftSnap complete 6 mobile screens: Home, Manager, Coverage View, Swap Status, Team Roster, Reports"
                     loading="lazy"
                   />
