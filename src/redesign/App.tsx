@@ -1304,195 +1304,608 @@ function ProjectPage({ project }: { project: CaseStudyProject }) {
           title={project.mandateTitle}
           intro={project.mandateBody}
         >
-          {project.outcomes && project.outcomes.length > 0 && (
-            <div className="cs-impact-strip" aria-label="Key Outcomes & Impact">
-              {project.outcomes.map(([k, v, d]) => (
-                <div key={k} className="cs-impact-card">
-                  <span className="cs-impact-tag">{k}</span>
-                  <strong className="cs-impact-val">{d}</strong>
-                  <p className="cs-impact-desc">{v}</p>
-                </div>
-              ))}
-            </div>
-          )}
-
-          <div className="tiles tiles-3 cs-overview-pillars">
-            {project.ownershipPillars.map(([t, d], i) => (
-              <div key={t} className="tile">
-                <span className="tile-no">{pad(i + 1)} · Ownership</span>
-                <h3>{t}</h3>
-                <p>{d}</p>
+          {project.id === "shiftsnap" ? (
+            <div className="shiftsnap-overview-grid">
+              <div className="shiftsnap-overview-text">
+                <p>
+                  ShiftSnap is a comprehensive mobile workforce management solution
+                  designed specifically for hourly workers in retail and hospitality
+                  industries. The platform addresses critical pain points in shift
+                  scheduling, coverage management, and team communication.
+                </p>
+                <p>
+                  Through extensive user research with baristas, retail associates,
+                  and their managers, we identified a gap in the market for an
+                  intuitive, mobile-first solution that empowers workers while giving
+                  managers operational control.
+                </p>
               </div>
-            ))}
-          </div>
+              <figure
+                className="shiftsnap-overview-figure is-zoomable"
+                onClick={() =>
+                  setLightbox({
+                    src: "/assets/shiftsnap/overview-barista.jpg",
+                    caption: "ShiftSnap · In-Store Barista Floor Context",
+                    badge: "Contextual Research",
+                  })
+                }
+              >
+                <img
+                  src="/assets/shiftsnap/overview-barista.jpg"
+                  alt="Barista at work in coffee shop"
+                  loading="lazy"
+                />
+              </figure>
+            </div>
+          ) : (
+            <>
+              {project.outcomes && project.outcomes.length > 0 && (
+                <div className="cs-impact-strip" aria-label="Key Outcomes & Impact">
+                  {project.outcomes.map(([k, v, d]) => (
+                    <div key={k} className="cs-impact-card">
+                      <span className="cs-impact-tag">{k}</span>
+                      <strong className="cs-impact-val">{d}</strong>
+                      <p className="cs-impact-desc">{v}</p>
+                    </div>
+                  ))}
+                </div>
+              )}
+
+              <div className="tiles tiles-3 cs-overview-pillars">
+                {project.ownershipPillars.map(([t, d], i) => (
+                  <div key={t} className="tile">
+                    <span className="tile-no">{pad(i + 1)} · Ownership</span>
+                    <h3>{t}</h3>
+                    <p>{d}</p>
+                  </div>
+                ))}
+              </div>
+            </>
+          )}
         </Section>
 
         <Section
           id="problem"
           n={num("problem")}
           label="The Challenge"
-          title="What problem we solved and why it mattered."
+          title={project.id === "shiftsnap" ? "The Problem" : "What problem we solved and why it mattered."}
         >
-          <div className="cs-contrast-grid">
-            <div className="cs-contrast-card friction">
-              <span className="cs-contrast-tag">
-                <i aria-hidden="true" /> The Business &amp; User Friction
-              </span>
-              <h3>{project.frictionTitle ?? "Fragmented workflows and unclear next steps"}</h3>
-              <p>{project.problemStatement ?? project.mandateBody}</p>
+          {project.id === "shiftsnap" ? (
+            <div className="shiftsnap-problem-block">
+              <div className="shiftsnap-problem-lead-card">
+                <h3>
+                  Hourly workers struggle with inflexible scheduling systems that
+                  don&apos;t accommodate their dynamic lives.
+                </h3>
+                <p>
+                  Traditional workforce management tools are built for managers,
+                  not workers. They&apos;re desktop-focused, complex, and lack the
+                  flexibility that hourly employees need to balance multiple
+                  jobs, family commitments, and personal schedules.
+                </p>
+              </div>
+
+              {project.problemStats && (
+                <div className="shiftsnap-stats-grid">
+                  {project.problemStats.map((item, idx) => (
+                    <div key={idx} className="shiftsnap-stat-card">
+                      <strong className="shiftsnap-stat-val">{item.stat}</strong>
+                      <p className="shiftsnap-stat-lbl">{item.label}</p>
+                    </div>
+                  ))}
+                </div>
+              )}
             </div>
-            <div className="cs-contrast-card resolution">
-              <span className="cs-contrast-tag">
-                <i aria-hidden="true" /> The Strategic Design Response
-              </span>
-              <h3>{project.resolutionTitle ?? project.ownershipPillars[0]?.[0] ?? "A clearer, unified experience"}</h3>
-              <p>{project.resolutionBody ?? project.mandateBody}</p>
+          ) : (
+            <div className="cs-contrast-grid">
+              <div className="cs-contrast-card friction">
+                <span className="cs-contrast-tag">
+                  <i aria-hidden="true" /> The Business &amp; User Friction
+                </span>
+                <h3>{project.frictionTitle ?? "Fragmented workflows and unclear next steps"}</h3>
+                <p>{project.problemStatement ?? project.mandateBody}</p>
+              </div>
+              <div className="cs-contrast-card resolution">
+                <span className="cs-contrast-tag">
+                  <i aria-hidden="true" /> The Strategic Design Response
+                </span>
+                <h3>{project.resolutionTitle ?? project.ownershipPillars[0]?.[0] ?? "A clearer, unified experience"}</h3>
+                <p>{project.resolutionBody ?? project.mandateBody}</p>
+              </div>
             </div>
-          </div>
+          )}
         </Section>
 
         <Section
           id="discovery"
           n={num("discovery")}
           label="Research & Discovery"
-          title="User needs, research methods, and key insights."
-          intro={project.discoverySummary}
+          title={project.id === "shiftsnap" ? "Research & Discovery" : "User needs, research methods, and key insights."}
+          intro={project.id === "shiftsnap" ? undefined : project.discoverySummary}
         >
-          <div className="persona-card">
-            <div>
-              <span className="eyebrow">Target User &amp; Core Needs</span>
-              <h3>{project.audienceTitle ?? (project.journeyFlow[0]?.actor ?? project.role).replace(/^#+\s*/, '')}</h3>
-            </div>
-            <p className="persona-goal">{project.audienceGoal ?? project.journeyFlow[0]?.userGoal ?? project.discoverySummary}</p>
-          </div>
-
-          <div className="tiles tiles-3 cs-overview-pillars">
-            {project.discoveryMethods.map(([t, d], i) => (
-              <div key={t} className="tile">
-                <span className="tile-no">{pad(i + 1)} · Research Method &amp; Insight</span>
-                <h3>{clean(t)}</h3>
-                <p>{clean(d)}</p>
+          {project.id === "shiftsnap" ? (
+            <div className="shiftsnap-discovery-block">
+              <div className="shiftsnap-methods-split">
+                <div className="shiftsnap-methods-list">
+                  <h3>Research Methods</h3>
+                  {project.discoveryMethods.map(([t, d], i) => (
+                    <div key={t} className="shiftsnap-method-item">
+                      <div className="shiftsnap-method-icon">
+                        {i === 0 ? "👤" : i === 1 ? "📅" : "🔍"}
+                      </div>
+                      <div>
+                        <h4>{clean(t)}</h4>
+                        <p>{clean(d)}</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+                <figure
+                  className="shiftsnap-methods-figure is-zoomable"
+                  onClick={() =>
+                    setLightbox({
+                      src: "/assets/shiftsnap/research-meeting.jpg",
+                      caption: "ShiftSnap · Discovery & User Inquiry Session",
+                      badge: "User Research",
+                    })
+                  }
+                >
+                  <img
+                    src="/assets/shiftsnap/research-meeting.jpg"
+                    alt="Research team conducting user inquiry"
+                    loading="lazy"
+                  />
+                </figure>
               </div>
-            ))}
-          </div>
+
+              {project.keyInsights && (
+                <div className="shiftsnap-insights-card">
+                  <h3>Key Insights</h3>
+                  <div className="shiftsnap-insights-grid">
+                    {project.keyInsights.map((insight) => (
+                      <div key={insight.id} className="shiftsnap-insight-item">
+                        <span className="shiftsnap-insight-tag">{insight.id}</span>
+                        <p>
+                          {insight.highlight ? (
+                            <>
+                              {insight.text.split(insight.highlight).map((part, pIdx, arr) => (
+                                <span key={pIdx}>
+                                  {part}
+                                  {pIdx < arr.length - 1 && (
+                                    <strong className="shiftsnap-insight-accent">
+                                      {insight.highlight}
+                                    </strong>
+                                  )}
+                                </span>
+                              ))}
+                            </>
+                          ) : (
+                            insight.text
+                          )}
+                        </p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </div>
+          ) : (
+            <>
+              <div className="persona-card">
+                <div>
+                  <span className="eyebrow">Target User &amp; Core Needs</span>
+                  <h3>{project.audienceTitle ?? (project.journeyFlow[0]?.actor ?? project.role).replace(/^#+\s*/, '')}</h3>
+                </div>
+                <p className="persona-goal">{project.audienceGoal ?? project.journeyFlow[0]?.userGoal ?? project.discoverySummary}</p>
+              </div>
+
+              <div className="tiles tiles-3 cs-overview-pillars">
+                {project.discoveryMethods.map(([t, d], i) => (
+                  <div key={t} className="tile">
+                    <span className="tile-no">{pad(i + 1)} · Research Method &amp; Insight</span>
+                    <h3>{clean(t)}</h3>
+                    <p>{clean(d)}</p>
+                  </div>
+                ))}
+              </div>
+            </>
+          )}
         </Section>
 
         <Section
           id="process"
           n={num("process")}
           label="Design Process & Architecture"
-          title="System flow, architectural pivot, and guiding principles."
-          intro={project.architecturalPivot.summary}
+          title={project.id === "shiftsnap" ? "Information Architecture & Design System" : "System flow, architectural pivot, and guiding principles."}
+          intro={project.id === "shiftsnap" ? undefined : project.architecturalPivot.summary}
         >
-          {flow && (
-            <div className="cs-flow-wrap">
-              <UserFlowDiagram flow={flow} id={project.id} />
+          {project.id === "shiftsnap" ? (
+            <div className="shiftsnap-ia-system-block">
+              {/* Information Architecture */}
+              <div className="shiftsnap-ia-panel">
+                <figure
+                  className="shiftsnap-ia-photo is-zoomable"
+                  onClick={() =>
+                    setLightbox({
+                      src: "/assets/shiftsnap/ia-flowchart.jpg",
+                      caption: "ShiftSnap · Information Architecture Flowchart Sketches",
+                      badge: "Information Architecture",
+                    })
+                  }
+                >
+                  <img
+                    src="/assets/shiftsnap/ia-flowchart.jpg"
+                    alt="Information Architecture Flowchart Sketches"
+                    loading="lazy"
+                  />
+                </figure>
+                <div className="shiftsnap-ia-flows-grid">
+                  <div className="shiftsnap-ia-flow-col">
+                    <h4 className="shiftsnap-flow-heading">Team Member Flow</h4>
+                    <ul>
+                      {project.iaFlows?.teamMember.map((step, sIdx) => (
+                        <li key={sIdx}>{step}</li>
+                      ))}
+                    </ul>
+                  </div>
+                  <div className="shiftsnap-ia-flow-col">
+                    <h4 className="shiftsnap-flow-heading">Manager Flow</h4>
+                    <ul>
+                      {project.iaFlows?.manager.map((step, sIdx) => (
+                        <li key={sIdx}>{step}</li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              {/* Design System */}
+              <div className="shiftsnap-ds-panel">
+                <div className="shiftsnap-ds-top">
+                  <div className="shiftsnap-ds-copy">
+                    <h3>Design System</h3>
+                    <h4>Visual Language</h4>
+                    <p>
+                      The design system balances professionalism with approachability. We
+                      chose deep navy and teal to convey trust and operational efficiency,
+                      while maintaining WCAG AA accessibility standards across all components.
+                    </p>
+                    <div className="shiftsnap-swatches-wrap">
+                      <span className="shiftsnap-subheading">Color Palette</span>
+                      <div className="shiftsnap-swatches-row">
+                        <div className="shiftsnap-swatch">
+                          <span className="swatch-box" style={{ background: "#0E1F3B" }} />
+                          <small>#0E1F3B</small>
+                          <span>Navy</span>
+                        </div>
+                        <div className="shiftsnap-swatch">
+                          <span className="swatch-box" style={{ background: "#1FB6A6" }} />
+                          <small>#1FB6A6</small>
+                          <span>Teal</span>
+                        </div>
+                        <div className="shiftsnap-swatch">
+                          <span className="swatch-box" style={{ background: "#10B981" }} />
+                          <small>#10B981</small>
+                          <span>Success</span>
+                        </div>
+                        <div className="shiftsnap-swatch">
+                          <span className="swatch-box" style={{ background: "#F59E0B" }} />
+                          <small>#F59E0B</small>
+                          <span>Warning</span>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="shiftsnap-typo-wrap">
+                      <span className="shiftsnap-subheading">Typography</span>
+                      <p className="shiftsnap-typo-spec">
+                        <strong>Aa</strong> Inter / SF Pro Display
+                        <small>Clear, modern sans-serif optimized for mobile interfaces</small>
+                      </p>
+                    </div>
+                  </div>
+                  <figure
+                    className="shiftsnap-ds-figure is-zoomable"
+                    onClick={() =>
+                      setLightbox({
+                        src: "/assets/shiftsnap/design-system-swatches.jpg",
+                        caption: "ShiftSnap · Design System Color Palettes & System Guidelines",
+                        badge: "Design System",
+                      })
+                    }
+                  >
+                    <img
+                      src="/assets/shiftsnap/design-system-swatches.jpg"
+                      alt="Design system color palettes and system tokens"
+                      loading="lazy"
+                    />
+                  </figure>
+                </div>
+
+                <div className="shiftsnap-components-card">
+                  <h4>Key Components</h4>
+                  <div className="shiftsnap-comp-grid">
+                    <div className="shiftsnap-comp-item">
+                      <strong>Status Pills</strong>
+                      <p>Color-coded indicators for shift status, request status, and availability</p>
+                      <div className="shiftsnap-pill-preview">
+                        <span className="ss-pill ss-confirmed">Confirmed</span>
+                        <span className="ss-pill ss-pending">Pending</span>
+                      </div>
+                    </div>
+                    <div className="shiftsnap-comp-item">
+                      <strong>Shift Cards</strong>
+                      <p>Scannable cards displaying key shift information at a glance</p>
+                      <div className="shiftsnap-shift-preview">
+                        <small>Mon, Jun 2</small>
+                        <span>7:00 AM – 3:00 PM</span>
+                      </div>
+                    </div>
+                    <div className="shiftsnap-comp-item">
+                      <strong>Action Buttons</strong>
+                      <p>Clear CTAs with consistent hierarchy and visual feedback</p>
+                      <div className="shiftsnap-btn-preview">
+                        <span className="ss-btn-teal">Request Swap</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
+          ) : (
+            <>
+              {flow && (
+                <div className="cs-flow-wrap">
+                  <UserFlowDiagram flow={flow} id={project.id} />
+                </div>
+              )}
+
+              <div className="pivot">
+                <div>
+                  <small>Before · Legacy Approach</small>
+                  <p>{project.architecturalPivot.before}</p>
+                </div>
+                <span className="pivot-arrow" aria-hidden="true">
+                  <Icon name="arrow-right" />
+                </span>
+                <div className="pivot-after">
+                  <small>After · Architectural Pivot</small>
+                  <p>{project.architecturalPivot.after}</p>
+                </div>
+              </div>
+
+              <ol className="principles">
+                {project.principles.map(([t, d], i) => (
+                  <li key={t}>
+                    <span>Design Principle {pad(i + 1)}</span>
+                    <strong>{t}</strong>
+                    <p>{d}</p>
+                  </li>
+                ))}
+              </ol>
+            </>
           )}
-
-          <div className="pivot">
-            <div>
-              <small>Before · Legacy Approach</small>
-              <p>{project.architecturalPivot.before}</p>
-            </div>
-            <span className="pivot-arrow" aria-hidden="true">
-              <Icon name="arrow-right" />
-            </span>
-            <div className="pivot-after">
-              <small>After · Architectural Pivot</small>
-              <p>{project.architecturalPivot.after}</p>
-            </div>
-          </div>
-
-          <ol className="principles">
-            {project.principles.map(([t, d], i) => (
-              <li key={t}>
-                <span>Design Principle {pad(i + 1)}</span>
-                <strong>{t}</strong>
-                <p>{d}</p>
-              </li>
-            ))}
-          </ol>
         </Section>
 
         <Section
           id="final-design"
           n={num("final-design")}
           label="The Solution · Final Design & Key Screens"
-          title="High-fidelity screens, interaction states, and key features."
-          intro="Every screen translates research insights and user needs into clear visual hierarchy, intuitive interaction patterns, and production-ready design craft."
+          title={project.id === "shiftsnap" ? "Key Features & Complete User Experience" : "High-fidelity screens, interaction states, and key features."}
+          intro={project.id === "shiftsnap" ? "From authentication to advanced manager tools, every screen is crafted to deliver a seamless, intuitive experience for both team members and managers." : "Every screen translates research insights and user needs into clear visual hierarchy, intuitive interaction patterns, and production-ready design craft."}
         >
-          <ol className="decisions">
-            {project.decisions.map((d, i) => (
-              <li key={d.title}>
-                <div className="decision-copy">
-                  <span className="tile-no">
-                    {pad(i + 1)} · {d.badge}
-                  </span>
-                  <h3>{d.title}</h3>
-                  <p>{d.body}</p>
+          {project.id === "shiftsnap" ? (
+            <div className="shiftsnap-solution-block">
+              {/* Feature 01 */}
+              <div className="shiftsnap-feature-row">
+                <div className="shiftsnap-feature-copy">
+                  <span className="shiftsnap-feature-pill">Feature 01</span>
+                  <h3>Smart Shift Swapping</h3>
+                  <p>
+                    Workers can initiate swap requests directly from their schedule with intelligent coworker matching based on role, availability, and location. The system automatically routes to qualified team members and handles approval workflows.
+                  </p>
+                  <ul className="shiftsnap-feature-checklist">
+                    <li><span className="ss-check">✓</span> One-tap swap initiation from any shift</li>
+                    <li><span className="ss-check">✓</span> Filtered coworker list by qualifications</li>
+                    <li><span className="ss-check">✓</span> Real-time status tracking and notifications</li>
+                  </ul>
+                  <a href="#final-design" className="shiftsnap-feature-link">View swap flow screens →</a>
                 </div>
-                {d.image && (
-                  <figure
-                    className="decision-figure is-zoomable"
-                    onClick={() =>
-                      setLightbox({
-                        src: d.image!,
-                        caption: d.title,
-                        badge: `${pad(i + 1)} · ${d.badge}`,
-                      })
-                    }
-                  >
-                    <div className="ui-frame-bar is-compact" aria-hidden="true">
-                      <div className="ui-frame-dots">
-                        <span />
-                        <span />
-                        <span />
-                      </div>
-                      <span className="ui-frame-title">{d.badge}</span>
+                <figure
+                  className="shiftsnap-feature-fig is-zoomable"
+                  onClick={() =>
+                    setLightbox({
+                      src: "/assets/shiftsnap/feature-shift-swapping.jpg",
+                      caption: "ShiftSnap · Smart Shift Swapping Interface",
+                      badge: "Feature 01",
+                    })
+                  }
+                >
+                  <img
+                    src="/assets/shiftsnap/feature-shift-swapping.jpg"
+                    alt="Smart Shift Swapping screen preview"
+                    loading="lazy"
+                  />
+                  <small className="shiftsnap-fig-hint">Click to explore Shift Details screen</small>
+                </figure>
+              </div>
+
+              {/* Feature 02 */}
+              <div className="shiftsnap-feature-row is-reversed">
+                <figure
+                  className="shiftsnap-feature-fig is-zoomable"
+                  onClick={() =>
+                    setLightbox({
+                      src: "/assets/shiftsnap/feature-request-queue.jpg",
+                      caption: "ShiftSnap · Intelligent Request Queue Interface",
+                      badge: "Feature 02",
+                    })
+                  }
+                >
+                  <img
+                    src="/assets/shiftsnap/feature-request-queue.jpg"
+                    alt="Intelligent Request Queue screen preview"
+                    loading="lazy"
+                  />
+                  <small className="shiftsnap-fig-hint">Click to explore full Requests Queue screen</small>
+                </figure>
+                <div className="shiftsnap-feature-copy">
+                  <span className="shiftsnap-feature-pill">Feature 02</span>
+                  <h3>Intelligent Request Queue</h3>
+                  <p>
+                    Managers get a prioritized dashboard with all pending requests, full context for decision-making, and one-tap approval actions. Smart notifications ensure time-sensitive requests never slip through.
+                  </p>
+                  <ul className="shiftsnap-feature-checklist">
+                    <li><span className="ss-check">✓</span> Priority sorting by urgency and impact</li>
+                    <li><span className="ss-check">✓</span> Rich context for informed decisions</li>
+                    <li><span className="ss-check">✓</span> Batch actions for efficiency</li>
+                  </ul>
+                  <a href="#final-design" className="shiftsnap-feature-link">View manager decision flow →</a>
+                </div>
+              </div>
+
+              {/* Feature 03 */}
+              <div className="shiftsnap-feature-row">
+                <div className="shiftsnap-feature-copy">
+                  <span className="shiftsnap-feature-pill">Feature 03</span>
+                  <h3>Availability Management</h3>
+                  <p>
+                    Team members can set their availability preferences, request time off, and block unavailable dates. Managers gain visibility into team availability for proactive scheduling and better work-life balance.
+                  </p>
+                  <ul className="shiftsnap-feature-checklist">
+                    <li><span className="ss-check">✓</span> Flexible recurring availability patterns</li>
+                    <li><span className="ss-check">✓</span> Time-off request tracking</li>
+                    <li><span className="ss-check">✓</span> Manager visibility dashboard</li>
+                  </ul>
+                  <a href="#final-design" className="shiftsnap-feature-link">View availability screen →</a>
+                </div>
+                <figure
+                  className="shiftsnap-feature-fig is-zoomable"
+                  onClick={() =>
+                    setLightbox({
+                      src: "/assets/shiftsnap/feature-availability.jpg",
+                      caption: "ShiftSnap · Weekly Availability Management Interface",
+                      badge: "Feature 03",
+                    })
+                  }
+                >
+                  <img
+                    src="/assets/shiftsnap/feature-availability.jpg"
+                    alt="Availability Management screen preview"
+                    loading="lazy"
+                  />
+                  <small className="shiftsnap-fig-hint">Click to explore full Time Off screen</small>
+                </figure>
+              </div>
+
+              {/* Complete User Experience - 6 Mobile Screens */}
+              <div className="shiftsnap-full-screens-section">
+                <div className="shiftsnap-full-screens-header">
+                  <h3>Complete User Experience</h3>
+                  <p>
+                    From authentication to advanced manager tools, every screen is crafted to deliver a seamless, intuitive experience for both team members and managers.
+                  </p>
+                </div>
+                <figure
+                  className="shiftsnap-full-screens-fig is-zoomable"
+                  onClick={() =>
+                    setLightbox({
+                      src: "/assets/shiftsnap/complete-user-experience-screens.jpg",
+                      caption: "ShiftSnap · 6 Core Mobile Screens (Team Member & Manager Views)",
+                      badge: "Complete Mobile Experience",
+                    })
+                  }
+                >
+                  <img
+                    src="/assets/shiftsnap/complete-user-experience-screens.jpg"
+                    alt="ShiftSnap complete 6 mobile screens: Home, Manager, Coverage View, Swap Status, Team Roster, Reports"
+                    loading="lazy"
+                  />
+                  <figcaption className="shiftsnap-screens-caption">
+                    <span>1. Home (Worker)</span>
+                    <span>2. Manager Dashboard</span>
+                    <span>3. Coverage Heatmap</span>
+                    <span>4. Swap Status Ledger</span>
+                    <span>5. Team Roster</span>
+                    <span>6. Operational Reports</span>
+                  </figcaption>
+                </figure>
+              </div>
+            </div>
+          ) : (
+            <>
+              <ol className="decisions">
+                {project.decisions.map((d, i) => (
+                  <li key={d.title}>
+                    <div className="decision-copy">
+                      <span className="tile-no">
+                        {pad(i + 1)} · {d.badge}
+                      </span>
+                      <h3>{d.title}</h3>
+                      <p>{d.body}</p>
+                    </div>
+                    {d.image && (
+                      <figure
+                        className="decision-figure is-zoomable"
+                        onClick={() =>
+                          setLightbox({
+                            src: d.image!,
+                            caption: d.title,
+                            badge: `${pad(i + 1)} · ${d.badge}`,
+                          })
+                        }
+                      >
+                        <div className="ui-frame-bar is-compact" aria-hidden="true">
+                          <div className="ui-frame-dots">
+                            <span />
+                            <span />
+                            <span />
+                          </div>
+                          <span className="ui-frame-title">{d.badge}</span>
+                          <span className="ui-frame-zoom">
+                            <Icon name="expand" size={11} /> Zoom
+                          </span>
+                        </div>
+                        <img src={d.image} alt={d.title} loading="lazy" />
+                      </figure>
+                    )}
+                  </li>
+                ))}
+              </ol>
+
+              {project.secondaryImage && (
+                <figure
+                  className="cs-panorama-showcase is-zoomable"
+                  onClick={() =>
+                    setLightbox({
+                      src: project.secondaryImage!,
+                      caption:
+                        project.panoramaTitle ?? "Production Interface Showcase",
+                      badge: project.panoramaLabel ?? project.platform,
+                    })
+                  }
+                >
+                  <div className="cs-panorama-header">
+                    <div>
+                      <span className="eyebrow">Complete High-Fidelity System</span>
+                      <h3>{project.panoramaTitle ?? "Production Interface Showcase"}</h3>
+                    </div>
+                    <div className="cs-panorama-actions">
+                      <span className="pill">{project.panoramaLabel ?? `${project.platform}`}</span>
                       <span className="ui-frame-zoom">
-                        <Icon name="expand" size={11} /> Zoom
+                        <Icon name="expand" size={12} /> Fullscreen
                       </span>
                     </div>
-                    <img src={d.image} alt={d.title} loading="lazy" />
-                  </figure>
-                )}
-              </li>
-            ))}
-          </ol>
-
-          {project.secondaryImage && (
-            <figure
-              className="cs-panorama-showcase is-zoomable"
-              onClick={() =>
-                setLightbox({
-                  src: project.secondaryImage!,
-                  caption:
-                    project.panoramaTitle ?? "Production Interface Showcase",
-                  badge: project.panoramaLabel ?? project.platform,
-                })
-              }
-            >
-              <div className="cs-panorama-header">
-                <div>
-                  <span className="eyebrow">Complete High-Fidelity System</span>
-                  <h3>{project.panoramaTitle ?? "Production Interface Showcase"}</h3>
-                </div>
-                <div className="cs-panorama-actions">
-                  <span className="pill">{project.panoramaLabel ?? `${project.platform}`}</span>
-                  <span className="ui-frame-zoom">
-                    <Icon name="expand" size={12} /> Fullscreen
-                  </span>
-                </div>
-              </div>
-              <div className="cs-panorama-media">
-                <img
-                  src={project.secondaryImage}
-                  alt={`${project.name} complete user experience`}
-                  loading="lazy"
-                />
-              </div>
-            </figure>
+                  </div>
+                  <div className="cs-panorama-media">
+                    <img
+                      src={project.secondaryImage}
+                      alt={`${project.name} complete user experience`}
+                      loading="lazy"
+                    />
+                  </div>
+                </figure>
+              )}
+            </>
           )}
         </Section>
 
@@ -1500,51 +1913,188 @@ function ProjectPage({ project }: { project: CaseStudyProject }) {
           id="results"
           n={num("results")}
           label="Impact & Outcomes"
-          title="Measurable outcomes, validation, and design leadership reflection."
+          title={project.id === "shiftsnap" ? "Design Process, Impact & Learnings" : "Measurable outcomes, validation, and design leadership reflection."}
           intro={project.engineeringSummary}
         >
-          <div className="cs-closing-card">
-            <div className="cs-closing-copy">
-              <span className="eyebrow">Closing Reflection &amp; Skills Alignment</span>
-              <h3>How {project.name} reflects my product design leadership</h3>
-              <p>
-                {project.lede} By pairing in-depth user insights with iterative prototyping and clear design foundations, we shipped a cohesive {project.platform.toLowerCase()} that eliminates user friction and drives measurable business impact.
-              </p>
-            </div>
-            <div className="cs-closing-meta">
-              <div>
-                <small>Core Discipline</small>
-                <strong>{project.category}</strong>
-              </div>
-              <div>
-                <small>Deliverables Shipped</small>
-                <strong>{project.scope}</strong>
-              </div>
-              {project.liveUrl && (
-                <a
-                  href={project.liveUrl}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="btn btn-mint cs-closing-btn"
+          {project.id === "shiftsnap" ? (
+            <div className="shiftsnap-results-block">
+              {/* Design Process */}
+              <div className="shiftsnap-process-panel">
+                <div className="shiftsnap-process-header">
+                  <h3>Design Process</h3>
+                </div>
+                <figure
+                  className="shiftsnap-process-fig is-zoomable"
+                  onClick={() =>
+                    setLightbox({
+                      src: "/assets/shiftsnap/process-sketches.jpg",
+                      caption: "ShiftSnap · Design Process Wireframes & Sketches",
+                      badge: "Process Sketches",
+                    })
+                  }
                 >
-                  Explore Live Prototype
-                  <Icon name="arrow-up-right" />
-                </a>
+                  <img
+                    src="/assets/shiftsnap/process-sketches.jpg"
+                    alt="Design process wireframes and sketches"
+                    loading="lazy"
+                  />
+                </figure>
+                <div className="shiftsnap-stages-grid">
+                  {project.processStages?.map((stage) => (
+                    <div key={stage.step} className="shiftsnap-stage-item">
+                      <span className="shiftsnap-stage-num">{stage.step}</span>
+                      <h4>{stage.name}</h4>
+                      <p>{stage.description}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Impact & Results Stats */}
+              <div className="shiftsnap-impact-panel">
+                <h3>Impact &amp; Results</h3>
+                <div className="shiftsnap-impact-stats-grid">
+                  <div className="shiftsnap-impact-stat-card">
+                    <span className="shiftsnap-stat-icon">↗</span>
+                    <strong className="shiftsnap-impact-big">78%</strong>
+                    <h4>Faster Swap Resolution</h4>
+                    <p>Average swap time reduced from 3 days to 4 hours</p>
+                  </div>
+                  <div className="shiftsnap-impact-stat-card">
+                    <span className="shiftsnap-stat-icon">🕒</span>
+                    <strong className="shiftsnap-impact-big">12hrs</strong>
+                    <h4>Manager Time Saved</h4>
+                    <p>Per week on scheduling and admin tasks</p>
+                  </div>
+                  <div className="shiftsnap-impact-stat-card">
+                    <span className="shiftsnap-stat-icon">👥</span>
+                    <strong className="shiftsnap-impact-big">92%</strong>
+                    <h4>User Satisfaction</h4>
+                    <p>Team members report improved work-life balance</p>
+                  </div>
+                </div>
+              </div>
+
+              {/* User Feedback Quotes */}
+              {project.userFeedback && (
+                <div className="shiftsnap-feedback-panel">
+                  <h3>User Feedback</h3>
+                  <div className="shiftsnap-feedback-grid">
+                    {project.userFeedback.map((fb, fIdx) => (
+                      <div key={fIdx} className="shiftsnap-quote-card">
+                        <span className="shiftsnap-quote-mark">“</span>
+                        <p className="shiftsnap-quote-text">{fb.quote}</p>
+                        <footer className="shiftsnap-quote-author">
+                          — <strong>{fb.author}</strong>, {fb.role}
+                        </footer>
+                      </div>
+                    ))}
+                  </div>
+                </div>
               )}
-              {project.figmaUrl && (
-                <a
-                  href={project.figmaUrl}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="btn btn-glass cs-closing-btn"
-                >
-                  <Icon name="figma" size={14} />
-                  Inspect in Figma
-                  <Icon name="arrow-up-right" />
-                </a>
+
+              {/* Key Learnings */}
+              {project.keyLearnings && (
+                <div className="shiftsnap-learnings-panel">
+                  <h3>Key Learnings</h3>
+                  <div className="shiftsnap-learnings-list">
+                    {project.keyLearnings.map((item, lIdx) => (
+                      <div key={lIdx} className="shiftsnap-learning-card">
+                        <h4>{item.title}</h4>
+                        <p>{item.description}</p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
               )}
+
+              {/* Next Steps */}
+              {project.nextSteps && (
+                <div className="shiftsnap-nextsteps-panel">
+                  <h3>Next Steps</h3>
+                  <div className="shiftsnap-nextsteps-grid">
+                    {project.nextSteps.map((ns, nIdx) => (
+                      <div key={nIdx} className="shiftsnap-nextstep-card">
+                        <div className="shiftsnap-nextstep-icon">
+                          {ns.icon === "calendar" ? "📅" : ns.icon === "users" ? "👥" : "📈"}
+                        </div>
+                        <h4>{ns.title}</h4>
+                        <p>{ns.description}</p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {/* Closing reflective card */}
+              <div className="cs-closing-card">
+                <div className="cs-closing-copy">
+                  <span className="eyebrow">Closing Reflection &amp; Leadership</span>
+                  <h3>How {project.name} reflects my product design leadership</h3>
+                  <p>
+                    ShiftSnap was conceived, researched, and designed to bridge real human friction on the retail floor. By combining continuous on-site inquiry with clean mobile interaction design and tight permission architecture, we delivered a product that empowers hourly workers while giving managers total confidence.
+                  </p>
+                </div>
+                <div className="cs-closing-meta">
+                  <div>
+                    <small>Core Discipline</small>
+                    <strong>{project.category}</strong>
+                  </div>
+                  <div>
+                    <small>Timeline</small>
+                    <strong>{project.team}</strong>
+                  </div>
+                  <div>
+                    <small>Platform</small>
+                    <strong>{project.platform}</strong>
+                  </div>
+                </div>
+              </div>
             </div>
-          </div>
+          ) : (
+            <div className="cs-closing-card">
+              <div className="cs-closing-copy">
+                <span className="eyebrow">Closing Reflection &amp; Skills Alignment</span>
+                <h3>How {project.name} reflects my product design leadership</h3>
+                <p>
+                  {project.lede} By pairing in-depth user insights with iterative prototyping and clear design foundations, we shipped a cohesive {project.platform.toLowerCase()} that eliminates user friction and drives measurable business impact.
+                </p>
+              </div>
+              <div className="cs-closing-meta">
+                <div>
+                  <small>Core Discipline</small>
+                  <strong>{project.category}</strong>
+                </div>
+                <div>
+                  <small>Deliverables Shipped</small>
+                  <strong>{project.scope}</strong>
+                </div>
+                {project.liveUrl && (
+                  <a
+                    href={project.liveUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="btn btn-mint cs-closing-btn"
+                  >
+                    Explore Live Prototype
+                    <Icon name="arrow-up-right" />
+                  </a>
+                )}
+                {project.figmaUrl && (
+                  <a
+                    href={project.figmaUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="btn btn-glass cs-closing-btn"
+                  >
+                    <Icon name="figma" size={14} />
+                    Inspect in Figma
+                    <Icon name="arrow-up-right" />
+                  </a>
+                )}
+              </div>
+            </div>
+          )}
         </Section>
       </div>
 

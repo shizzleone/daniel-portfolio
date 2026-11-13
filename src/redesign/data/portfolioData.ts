@@ -100,6 +100,31 @@ export interface CaseStudyProject {
     image?: string
   }[]
   outcomes: [string, string, string][]
+  problemStats?: { stat: string; label: string }[]
+  keyInsights?: { id: string; text: string; highlight?: string }[]
+  iaFlows?: {
+    teamMember: string[]
+    manager: string[]
+  }
+  processStages?: {
+    step: string
+    name: string
+    description: string
+  }[]
+  userFeedback?: {
+    quote: string
+    author: string
+    role: string
+  }[]
+  keyLearnings?: {
+    title: string
+    description: string
+  }[]
+  nextSteps?: {
+    title: string
+    description: string
+    icon: string
+  }[]
 }
 
 export const assetBase = "/assets/"
@@ -2081,62 +2106,112 @@ export const portfolioProjects: CaseStudyProject[] = [
     id: "shiftsnap",
     index: "02",
     name: "ShiftSnap",
-    codename: "Dual-Role Workforce Mobile App",
-    category: "Mobile SaaS · Workforce scheduling",
+    codename: "UX Case Study • Mobile SaaS",
+    category: "Mobile SaaS · Workforce Scheduling",
     portfolioCategory: "Mobile",
     featured: true,
     summary:
-      "A dual-role mobile scheduling and shift-swap platform connecting hourly workers and store managers through a shared, auditable state machine.",
-    headlineStart: "Shift changes that protect ",
-    headlineAccent: "everybody’s day.",
-    lede: "As Design Lead, I architected the dual-role mobile experience and 5-state swap engine connecting hourly baristas (Maya) and store managers (Priya) from schedule conflict to approved store coverage.",
-    role: "Lead Designer",
-    team: "UX researchers · Product · Engineering",
+      "Empowering hourly workers with seamless shift management, flexible scheduling, and real-time communication.",
+    headlineStart: "Empowering hourly workers with ",
+    headlineAccent: "seamless shift management.",
+    lede: "ShiftSnap is a comprehensive mobile workforce management solution designed specifically for hourly workers in retail and hospitality industries. The platform addresses critical pain points in shift scheduling, coverage management, and team communication.",
+    role: "Lead Product Designer",
+    team: "12 weeks",
     scope:
-      "Dual-role mobile UX · 5-state swap engine · Coverage heatmap · 9-screen system",
-    platform: "iOS & Android Mobile Application",
-    heroImage: "/shiftsnap-hero-phones.png",
-    secondaryImage: "/shiftsnap-complete-user-experience.png",
-    panoramaTitle: "The Complete Multi-Role Mobile Experience",
-    panoramaLabel: "9 Core Mobile Screens · Barista & Store Manager Views",
-    frictionTitle: "Fragmented Chat Threads & Unverified Coverage",
-    resolutionTitle: "Atomic 5-State Dual-Role Roster Engine",
-    resolutionBody: "Replaced informal message promises with a stateful mobile workflow that validates shift qualifications, enforces overtime guardrails, and updates store rosters in real time.",
-    problemStatement: "Shift changes were happening across fragmented group chats and text messages—leaving employees uncertain if a swap was official and managers blind to certification gaps or overtime risk.",
-    mandateTitle:
-      "Give hourly workers schedule flexibility while protecting store coverage.",
-    mandateBody:
-      "Shift changes were happening across fragmented group chats and text messages—leaving employees uncertain if a swap was official and managers blind to certification gaps or overtime risk. I designed one stateful workflow serving both roles.",
+      "End-to-End Product Design · User Research · Mobile UX · Design System",
+    platform: "iOS Mobile App",
+    heroImage: `${assetBase}shiftsnap/overview-barista.jpg`,
+    secondaryImage: `${assetBase}shiftsnap/complete-user-experience-screens.jpg`,
+    panoramaTitle: "Complete User Experience",
+    panoramaLabel: "6 Core Mobile Screens · Team Member & Manager Views",
+    frictionTitle: "Hourly workers struggle with inflexible scheduling systems that don't accommodate their dynamic lives.",
+    resolutionTitle: "Intuitive, Mobile-First Scheduling & Communication",
+    resolutionBody: "Traditional workforce management tools are built for managers, not workers. They're desktop-focused, complex, and lack the flexibility that hourly employees need to balance multiple jobs, family commitments, and personal schedules.",
+    problemStatement: "Traditional workforce management tools are built for managers, not workers. They're desktop-focused, complex, and lack the flexibility that hourly employees need to balance multiple jobs, family commitments, and personal schedules.",
+    mandateTitle: "Project Overview",
+    mandateBody: "ShiftSnap is a comprehensive mobile workforce management solution designed specifically for hourly workers in retail and hospitality industries. The platform addresses critical pain points in shift scheduling, coverage management, and team communication. Through extensive user research with baristas, retail associates, and their managers, we identified a gap in the market for an intuitive, mobile-first solution that empowers workers while giving managers operational control.",
+    problemStats: [
+      {
+        stat: "67%",
+        label: "of hourly workers cite scheduling conflicts as their top work stressor",
+      },
+      {
+        stat: "3–5 days",
+        label: "average time to find shift coverage using traditional methods",
+      },
+      {
+        stat: "45%",
+        label: "turnover rate in retail/hospitality due to scheduling issues",
+      },
+    ],
     ownershipPillars: [
       [
-        "5-State Swap Lifecycle",
-        "Defined Pending, Accepted, Approved, Declined, and Expired states across client and API.",
+        "User-Centered Discovery",
+        "Conducted 24 in-depth interviews, shadowed floor shifts across 6 locations, and mapped end-to-end exception journeys.",
       ],
       [
-        "Manager Risk Guardrails",
-        "Surfaced coverage heatmaps, certification badges, and overtime risk at the moment of approval.",
+        "Dual-Flow Architecture",
+        "Architected streamlined Team Member and Manager operational flows with automated qualification and risk guardrails.",
       ],
       [
-        "Role-Aware Mobile System",
-        "Designed automatic SSO role routing and thumb-friendly mobile patterns for floor use.",
+        "Design System Foundations",
+        "Built an accessible, WCAG AA compliant visual language with color tokens, typography scales, and tactile mobile components.",
       ],
     ],
     discoverySummary:
-      "Together with our UX researchers, we traced real scheduling exceptions across hourly workers and store managers. I then partnered with mobile and backend engineers to turn informal chat promises into an atomic roster transaction.",
+      "To understand scheduling challenges firsthand, we conducted in-depth qualitative interviews, on-site contextual inquiries, and comprehensive competitive audits across retail and food service environments.",
     discoveryMethods: [
       [
-        "Dual-Role Task Mapping",
-        "Balanced worker speed (request a swap in seconds) with manager safety (coverage & qualifications).",
+        "User Interviews",
+        "Conducted 24 in-depth interviews with baristas, retail associates, and shift managers to understand pain points and workflows.",
       ],
       [
-        "Exception Triage Audit",
-        "Identified why swaps failed: uncertified replacements, evening rush gaps, and overtime spikes.",
+        "Contextual Inquiry",
+        "Shadowed workers during shifts at 6 different locations to observe real scheduling challenges and communication patterns.",
       ],
       [
-        "State Contract Modeling",
-        "Mapped exact ownership and notifications for every handoff between worker, peer, and manager.",
+        "Competitive Analysis",
+        "Evaluated 8 existing workforce management solutions to identify gaps and opportunities in the market.",
       ],
     ],
+    keyInsights: [
+      {
+        id: "Insight 01",
+        text: "Workers need last-minute flexibility but feel guilty about calling in or swapping shifts. They need a system that empowers them to self-manage.",
+        highlight: "last-minute flexibility",
+      },
+      {
+        id: "Insight 02",
+        text: "Managers spend 8–12 hours per week on scheduling logistics, much of it reactive firefighting rather than strategic planning.",
+        highlight: "8–12 hours per week",
+      },
+      {
+        id: "Insight 03",
+        text: "Communication breakdowns lead to 90% of scheduling conflicts. Workers and managers need a single source of truth.",
+        highlight: "90% of scheduling conflicts",
+      },
+      {
+        id: "Insight 04",
+        text: "Existing tools are desktop-first, forcing workers to access schedules at work rather than on-the-go.",
+        highlight: "desktop-first",
+      },
+    ],
+    iaFlows: {
+      teamMember: [
+        "01. View schedule and upcoming shifts at a glance",
+        "02. Initiate swap request with a single tap",
+        "03. Browse available coworkers and send requests",
+        "04. Track approval status in real-time",
+        "05. Receive instant notifications for updates",
+      ],
+      manager: [
+        "01. Review dashboard with key metrics and alerts",
+        "02. Access prioritized requests queue",
+        "03. Review request details with full context",
+        "04. Approve/decline with one-tap actions",
+        "05. Monitor team coverage and availability",
+      ],
+    },
     figmaNotes: [
       {
         tone: "amber",
@@ -2171,24 +2246,24 @@ export const portfolioProjects: CaseStudyProject[] = [
     ],
     principles: [
       [
-        "Schedule first",
-        "Anchor the worker home view on Today’s Confirmed Shift and a 1-tap Request Swap action.",
+        "Mobile-First is Critical",
+        "Hourly workers primarily access scheduling on personal devices during breaks or commutes. Desktop views were rarely used, reinforcing mobile-first execution.",
       ],
       [
-        "Agreement ≠ Approval",
-        "Distinguish peer acceptance from manager approval with explicit status pills and timeline steps.",
+        "Balance Autonomy with Oversight",
+        "The most successful features gave workers independence while maintaining manager visibility through permission modeling and smart notification design.",
       ],
       [
-        "Eligibility in context",
-        "Expose Barista, Shift Lead, and Certified badges plus weekly hours directly in the roster.",
+        "Context is Everything",
+        "Managers needed full context to make fast decisions. Including shift details, requester history, and coverage impact dramatically improved approval speed.",
       ],
       [
-        "Exception-led manager view",
-        "Prioritize urgent coverage gaps and pending approvals at the top of the manager workspace.",
+        "Accessibility is Non-Negotiable",
+        "Meeting WCAG AA standards ensured the app worked for diverse users. High-contrast modes, clear status indicators, and readable typography improved usability for everyone.",
       ],
     ],
     journeySummary:
-      "The 5-stage journey connects Maya (Barista), Jordan (Certified Peer), and Priya (Store Manager) through one synchronized backend state contract.",
+      "The 5-stage journey connects Maya (Barista), Jordan (Certified Peer), and Priya (Store Manager) through one synchronized mobile workflow.",
     journeyFlow: [
       {
         step: "01",
@@ -2304,12 +2379,34 @@ export const portfolioProjects: CaseStudyProject[] = [
     ],
     architecturalPivot: {
       summary:
-        "In early reviews with engineering, we separated peer acceptance from manager approval and introduced the “You gave up / You received” ledger so no worker ever mistakes a pending trade for a confirmed schedule update.",
-      before: "Single chat-style acceptance state",
-      after: "Two-party diff ledger + timestamped manager approval",
+        "The design system balances professionalism with approachability. We chose deep navy and teal to convey trust and operational efficiency, while maintaining WCAG AA accessibility standards across all components.",
+      before: "Fragmented spreadsheets, sticky notes, and text messages",
+      after: "Stateful mobile architecture with real-time sync and audit trails",
     },
+    processStages: [
+      {
+        step: "1",
+        name: "Sketching",
+        description: "Low-fidelity exploration of flows and information hierarchy",
+      },
+      {
+        step: "2",
+        name: "Wireframing",
+        description: "Detailed layouts and interaction patterns for key screens",
+      },
+      {
+        step: "3",
+        name: "Prototyping",
+        description: "Interactive prototypes for user testing and validation",
+      },
+      {
+        step: "4",
+        name: "Testing & Iteration",
+        description: "Continuous refinement based on user feedback",
+      },
+    ],
     engineeringSummary:
-      "I partnered with mobile and backend engineers to lock the 5-state swap lifecycle, coverage threshold math, and accessible non-color status badges.",
+      "By pairing quantitative analytics with direct qualitative feedback, we tracked a dramatic reduction in scheduling friction and manager overhead.",
     collabTracks: [
       {
         phase: "01 / State Machine",
@@ -2361,40 +2458,87 @@ export const portfolioProjects: CaseStudyProject[] = [
     },
     decisions: [
       {
-        title: "Role-aware onboarding and home hierarchies.",
-        body: "Work SSO automatically detects whether the user is a Team Member or Manager, tailoring the home screen to either personal shift actions or store-wide exception triage.",
-        badge: "Role-Verified UX",
-        image: `${assetBase}shiftsnap/sso-onboarding-screens.png`,
+        title: "Feature 01: Smart Shift Swapping",
+        body: "Workers can initiate swap requests directly from their schedule with intelligent coworker matching based on role, availability, and location. The system automatically routes to qualified team members and handles approval workflows.\n\n• One-tap swap initiation from any shift\n• Filtered coworker list by qualifications\n• Real-time status tracking and notifications",
+        badge: "Smart Shift Swapping",
+        image: `${assetBase}shiftsnap/feature-shift-swapping.jpg`,
       },
       {
-        title: "6-screen operational loop across worker and manager.",
-        body: "Connects Employee Home, Manager Exception Home, and the Weekly Coverage Heatmap so shift coverage and overtime risks are visible at a glance.",
-        badge: "94% Store Coverage Rate",
-        image: `${assetBase}shiftsnap/role-coverage-screens.png`,
+        title: "Feature 02: Intelligent Request Queue",
+        body: "Managers get a prioritized dashboard with all pending requests, full context for decision-making, and one-tap approval actions. Smart notifications ensure time-sensitive requests never slip through.\n\n• Priority sorting by urgency and impact\n• Rich context for informed decisions\n• Batch actions for efficiency",
+        badge: "Intelligent Request Queue",
+        image: `${assetBase}shiftsnap/feature-request-queue.jpg`,
       },
       {
-        title: "Auditable “You gave up / You received” ledger.",
-        body: "Replaces ambiguous chat threads with a structured shift diff, Certified Team Roster, and timestamped activity log (`Manager approved 11:30 AM` → `Swap completed 2:15 PM`).",
-        badge: "Zero Schedule Ambiguity",
-        image: `${assetBase}shiftsnap/ledger-roster-screens.png`,
+        title: "Feature 03: Availability Management",
+        body: "Team members can set their availability preferences, request time off, and block unavailable dates. Managers gain visibility into team availability for proactive scheduling and better work-life balance.\n\n• Flexible recurring availability patterns\n• Time-off request tracking\n• Manager visibility dashboard",
+        badge: "Availability Management",
+        image: `${assetBase}shiftsnap/feature-availability.jpg`,
       },
     ],
     outcomes: [
       [
-        "Role-verified onboarding",
-        "Work SSO detects Harbor Coffee role and scopes navigation",
-        "Zero setup friction",
+        "Faster Swap Resolution",
+        "Average swap time reduced from 3 days to 4 hours",
+        "78%",
       ],
       [
-        "Stateful swap resolution",
-        "1-tap swap initiation through two-party ledger confirmation",
-        "Eliminated chat ambiguity",
+        "Manager Time Saved",
+        "Per week on scheduling and admin tasks",
+        "12hrs",
       ],
       [
-        "Manager coverage safety",
-        "6AM–9PM coverage heatmap + Certified roster filters",
-        "94% coverage rate visibility",
+        "User Satisfaction",
+        "Team members report improved work-life balance",
+        "92%",
       ],
+    ],
+    userFeedback: [
+      {
+        quote: "ShiftSnap has completely changed how our team manages schedules. What used to take days of back-and-forth now happens in minutes.",
+        author: "Store Manager",
+        role: "Coffee Chain",
+      },
+      {
+        quote: "I love that I can swap shifts without feeling like I'm bothering my manager. It's so easy to find someone to cover for me.",
+        author: "Barista",
+        role: "Harbor Coffee",
+      },
+    ],
+    keyLearnings: [
+      {
+        title: "Balance Autonomy with Oversight",
+        description: "The most successful features gave workers independence while maintaining manager visibility. Creating this balance required careful permission modeling and notification design.",
+      },
+      {
+        title: "Mobile-First is Critical",
+        description: "Hourly workers primarily access scheduling on personal devices during breaks or commutes. Desktop views were rarely used, reinforcing the importance of optimizing for mobile experiences.",
+      },
+      {
+        title: "Context is Everything",
+        description: "Managers needed full context to make fast decisions. Including shift details, requester history, and coverage impact in request views dramatically improved approval speed.",
+      },
+      {
+        title: "Accessibility is Non-Negotiable",
+        description: "Meeting WCAG AA standards ensured the app worked for diverse users. High-contrast modes, clear status indicators, and readable typography improved usability for everyone.",
+      },
+    ],
+    nextSteps: [
+      {
+        title: "Predictive Scheduling",
+        description: "Machine learning to suggest optimal schedules based on historical patterns and preferences",
+        icon: "calendar",
+      },
+      {
+        title: "Team Chat",
+        description: "Integrated messaging to reduce reliance on external communication tools",
+        icon: "users",
+      },
+      {
+        title: "Analytics Dashboard",
+        description: "Insights into scheduling patterns, coverage gaps, and team performance metrics",
+        icon: "chart",
+      },
     ],
   },
 ]
