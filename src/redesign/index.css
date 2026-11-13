@@ -5774,3 +5774,206 @@ html body #overview-h{max-width:34ch}
   background: color-mix(in srgb, #38BDF8 18%, transparent);
   color: #0284C7;
 }
+
+/* Feature Cards Pixel-Crisp UI Stages */
+.shiftsnap-feature-card-stage {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: center;
+}
+.shiftsnap-ui-mockup-card {
+  width: 100%;
+  max-width: 440px;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.08);
+  border: 1px solid var(--line);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.shiftsnap-ui-mockup-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 20px 48px rgba(0, 0, 0, 0.12);
+}
+
+/* Feature 01 Shift Details Card */
+.shiftsnap-ui-mockup-card.is-shift-details {
+  background: linear-gradient(135deg, #06373A 0%, #0F5E5D 100%);
+  color: #FFFFFF;
+  padding: 24px;
+}
+.shiftsnap-ui-mockup-card.is-shift-details .ss-mock-tag {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.05em;
+  color: #5EEAD4;
+  text-transform: uppercase;
+}
+.shiftsnap-ui-mockup-card.is-shift-details .ss-mock-sub {
+  display: block;
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  color: #99F6E4;
+  margin-top: 12px;
+}
+.shiftsnap-ui-mockup-card.is-shift-details h4 {
+  font-size: 20px;
+  font-weight: 700;
+  color: #FFFFFF;
+  margin: 4px 0 2px 0;
+}
+.shiftsnap-ui-mockup-card.is-shift-details .ss-mock-time {
+  font-size: 14px;
+  color: #CCFBF1;
+  margin: 0 0 16px 0;
+}
+.shiftsnap-ui-mockup-card.is-shift-details .ss-mock-meta {
+  display: flex;
+  justify-content: space-between;
+  padding: 12px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+  margin-bottom: 16px;
+}
+.shiftsnap-ui-mockup-card.is-shift-details .ss-mock-meta small {
+  display: block;
+  font-size: 11px;
+  color: #99F6E4;
+}
+.shiftsnap-ui-mockup-card.is-shift-details .ss-mock-meta span {
+  font-size: 13px;
+  font-weight: 600;
+  color: #FFFFFF;
+}
+.ss-mock-cta-btn {
+  width: 100%;
+  padding: 11px 18px;
+  border-radius: 10px;
+  border: none;
+  background: #14B8A6;
+  color: #FFFFFF;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(20, 184, 166, 0.4);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+.ss-mock-cta-btn:hover {
+  opacity: 0.95;
+  transform: translateY(-1px);
+}
+
+/* Feature 02 Manager Queue Card */
+.shiftsnap-ui-mockup-card.is-manager-queue {
+  background: var(--surface);
+  color: var(--fg);
+  padding: 24px;
+}
+.shiftsnap-ui-mockup-card.is-manager-queue .ss-mock-tag {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.05em;
+  color: var(--muted);
+  text-transform: uppercase;
+}
+.ss-mock-queue-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 14px;
+}
+.ss-mock-queue-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 14px;
+  background: var(--sunken);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+}
+.ss-mock-queue-item.is-urgent {
+  border-color: rgba(239, 68, 68, 0.35);
+  background: color-mix(in srgb, #EF4444 8%, var(--surface));
+}
+.ss-mock-queue-item strong {
+  display: block;
+  font-size: 13.5px;
+  font-weight: 650;
+  color: var(--fg);
+}
+.ss-mock-queue-item small {
+  font-size: 11.5px;
+  color: var(--muted);
+}
+.ss-urgent {
+  background: #FEE2E2;
+  color: #B91C1C;
+}
+
+/* Feature 03 Availability Card */
+.shiftsnap-ui-mockup-card.is-availability {
+  background: var(--surface);
+  color: var(--fg);
+  padding: 24px;
+}
+.shiftsnap-ui-mockup-card.is-availability .ss-mock-tag {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.05em;
+  color: var(--muted);
+  text-transform: uppercase;
+}
+.ss-mock-avail-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 14px 0 18px 0;
+}
+.ss-mock-avail-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 12px;
+  background: var(--sunken);
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 550;
+}
+.ss-avail-badge {
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 600;
+}
+.ss-avail-badge.is-avail {
+  background: #D1FAE5;
+  color: #065F46;
+}
+.ss-avail-badge.is-unavail {
+  background: #F1F5F9;
+  color: #64748B;
+}
+
+/* Feature Preview Screen Wrapper */
+.shiftsnap-feature-preview-screen {
+  margin: 0;
+  width: 100%;
+  max-width: 240px;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  background: var(--surface);
+  text-align: center;
+  padding-bottom: 8px;
+  transition: transform 0.2s ease;
+}
+.shiftsnap-feature-preview-screen:hover {
+  transform: translateY(-3px);
+  border-color: var(--accent);
+}
+.shiftsnap-feature-preview-screen img {
+  width: 100%;
+  height: auto;
+  display: block;
+}

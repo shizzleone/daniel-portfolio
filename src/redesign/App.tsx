@@ -1807,44 +1807,99 @@ function ProjectPage({ project }: { project: CaseStudyProject }) {
                   </ul>
                   <a href="#final-design" className="shiftsnap-feature-link">View swap flow screens →</a>
                 </div>
-                <figure
-                  className="shiftsnap-feature-fig is-zoomable"
-                  onClick={() =>
-                    setLightbox({
-                      src: "/assets/shiftsnap/feature-shift-swapping.jpg",
-                      caption: "ShiftSnap · Smart Shift Swapping Interface",
-                      badge: "Feature 01",
-                    })
-                  }
-                >
-                  <img
-                    src="/assets/shiftsnap/feature-shift-swapping.jpg"
-                    alt="Smart Shift Swapping screen preview"
-                    loading="lazy"
-                  />
-                  <small className="shiftsnap-fig-hint">Click to explore Shift Details screen</small>
-                </figure>
+                <div className="shiftsnap-feature-card-stage">
+                  <div className="shiftsnap-ui-mockup-card is-shift-details">
+                    <div className="ss-mock-header">
+                      <span className="ss-mock-tag">Shift Details View</span>
+                    </div>
+                    <div className="ss-mock-body">
+                      <small className="ss-mock-sub">UPCOMING SHIFT</small>
+                      <h4>Saturday, Jun 7</h4>
+                      <p className="ss-mock-time">2:00 PM – 10:00 PM</p>
+                      <div className="ss-mock-meta">
+                        <div>
+                          <small>Location</small>
+                          <span>Downtown</span>
+                        </div>
+                        <div>
+                          <small>Role</small>
+                          <span>Barista</span>
+                        </div>
+                      </div>
+                      <button type="button" className="ss-mock-cta-btn">
+                        Request Swap →
+                      </button>
+                    </div>
+                  </div>
+                  <figure
+                    className="shiftsnap-feature-preview-screen is-zoomable"
+                    onClick={() =>
+                      setLightbox({
+                        src: "/assets/shiftsnap/screen-worker-home-hd.png",
+                        caption: "ShiftSnap · Smart Shift Swapping & Worker Home View",
+                        badge: "Feature 01 · HD Screen",
+                      })
+                    }
+                  >
+                    <img
+                      src="/assets/shiftsnap/screen-worker-home-hd.png"
+                      alt="Smart Shift Swapping Worker Home Screen"
+                      loading="lazy"
+                    />
+                    <small className="shiftsnap-fig-hint">Click to inspect full worker screen</small>
+                  </figure>
+                </div>
               </div>
 
               {/* Feature 02 */}
               <div className="shiftsnap-feature-row is-reversed">
-                <figure
-                  className="shiftsnap-feature-fig is-zoomable"
-                  onClick={() =>
-                    setLightbox({
-                      src: "/assets/shiftsnap/feature-request-queue.jpg",
-                      caption: "ShiftSnap · Intelligent Request Queue Interface",
-                      badge: "Feature 02",
-                    })
-                  }
-                >
-                  <img
-                    src="/assets/shiftsnap/feature-request-queue.jpg"
-                    alt="Intelligent Request Queue screen preview"
-                    loading="lazy"
-                  />
-                  <small className="shiftsnap-fig-hint">Click to explore full Requests Queue screen</small>
-                </figure>
+                <div className="shiftsnap-feature-card-stage">
+                  <div className="shiftsnap-ui-mockup-card is-manager-queue">
+                    <div className="ss-mock-header">
+                      <span className="ss-mock-tag">Manager Dashboard</span>
+                    </div>
+                    <div className="ss-mock-queue-list">
+                      <div className="ss-mock-queue-item">
+                        <div>
+                          <strong>Sarah ↔ Marcus</strong>
+                          <small>Swap request • 2h ago</small>
+                        </div>
+                        <span className="ss-pill ss-pending">Pending</span>
+                      </div>
+                      <div className="ss-mock-queue-item is-urgent">
+                        <div>
+                          <strong>David ↔ Open</strong>
+                          <small>Coverage needed • 4h ago</small>
+                        </div>
+                        <span className="ss-pill ss-urgent">Urgent</span>
+                      </div>
+                      <div className="ss-mock-queue-item">
+                        <div>
+                          <strong>Emma time-off</strong>
+                          <small>Jun 15-17 • 1d ago</small>
+                        </div>
+                        <span className="ss-pill ss-pending">Pending</span>
+                      </div>
+                    </div>
+                  </div>
+                  <figure
+                    className="shiftsnap-feature-preview-screen is-zoomable"
+                    onClick={() =>
+                      setLightbox({
+                        src: "/assets/shiftsnap/screen-manager-dashboard-hd.png",
+                        caption: "ShiftSnap · Intelligent Request Queue & Manager Dashboard",
+                        badge: "Feature 02 · HD Screen",
+                      })
+                    }
+                  >
+                    <img
+                      src="/assets/shiftsnap/screen-manager-dashboard-hd.png"
+                      alt="Intelligent Request Queue Manager Screen"
+                      loading="lazy"
+                    />
+                    <small className="shiftsnap-fig-hint">Click to inspect full manager queue</small>
+                  </figure>
+                </div>
                 <div className="shiftsnap-feature-copy">
                   <span className="shiftsnap-feature-pill">Feature 02</span>
                   <h3>Intelligent Request Queue</h3>
@@ -1875,23 +1930,55 @@ function ProjectPage({ project }: { project: CaseStudyProject }) {
                   </ul>
                   <a href="#final-design" className="shiftsnap-feature-link">View availability screen →</a>
                 </div>
-                <figure
-                  className="shiftsnap-feature-fig is-zoomable"
-                  onClick={() =>
-                    setLightbox({
-                      src: "/assets/shiftsnap/feature-availability.jpg",
-                      caption: "ShiftSnap · Weekly Availability Management Interface",
-                      badge: "Feature 03",
-                    })
-                  }
-                >
-                  <img
-                    src="/assets/shiftsnap/feature-availability.jpg"
-                    alt="Availability Management screen preview"
-                    loading="lazy"
-                  />
-                  <small className="shiftsnap-fig-hint">Click to explore full Time Off screen</small>
-                </figure>
+                <div className="shiftsnap-feature-card-stage">
+                  <div className="shiftsnap-ui-mockup-card is-availability">
+                    <div className="ss-mock-header">
+                      <span className="ss-mock-tag">Weekly Availability</span>
+                    </div>
+                    <div className="ss-mock-avail-list">
+                      <div className="ss-mock-avail-row">
+                        <span>Monday</span>
+                        <span className="ss-avail-badge is-avail">Available</span>
+                      </div>
+                      <div className="ss-mock-avail-row">
+                        <span>Tuesday</span>
+                        <span className="ss-avail-badge is-unavail">Unavailable</span>
+                      </div>
+                      <div className="ss-mock-avail-row">
+                        <span>Wednesday</span>
+                        <span className="ss-avail-badge is-avail">Available</span>
+                      </div>
+                      <div className="ss-mock-avail-row">
+                        <span>Thursday</span>
+                        <span className="ss-avail-badge is-unavail">Unavailable</span>
+                      </div>
+                      <div className="ss-mock-avail-row">
+                        <span>Friday</span>
+                        <span className="ss-avail-badge is-avail">Available</span>
+                      </div>
+                    </div>
+                    <button type="button" className="ss-mock-cta-btn ss-btn-teal">
+                      Request Time Off →
+                    </button>
+                  </div>
+                  <figure
+                    className="shiftsnap-feature-preview-screen is-zoomable"
+                    onClick={() =>
+                      setLightbox({
+                        src: "/assets/shiftsnap/screen-coverage-view-hd.png",
+                        caption: "ShiftSnap · Team Availability & Coverage Heatmap View",
+                        badge: "Feature 03 · HD Screen",
+                      })
+                    }
+                  >
+                    <img
+                      src="/assets/shiftsnap/screen-coverage-view-hd.png"
+                      alt="Weekly Availability and Coverage Heatmap Screen"
+                      loading="lazy"
+                    />
+                    <small className="shiftsnap-fig-hint">Click to inspect full coverage heatmap</small>
+                  </figure>
+                </div>
               </div>
 
               {/* Complete User Experience - 6 Mobile Screens */}
