@@ -32,6 +32,72 @@ export interface UserFlow {
 }
 
 export const userFlows: Record<string, UserFlow> = {
+  fingsight: {
+    title: "From a flagged anomaly to an approved action.",
+    summary:
+      "A risk manager moves from triage to investigation to action in one workspace. The assistant suggests, the dashboard shows the evidence, and a person approves.",
+    lanes: ["Risk manager", "FinSight chat", "Dashboard"],
+    cols: 9,
+    nodes: [
+      { id: "start", type: "start", label: "Open FinSight", col: 0, row: 0 },
+      { id: "anomaly", type: "system", label: "Show flagged anomalies", col: 1, row: 1, note: "The assistant opens with what changed instead of an empty chat box." },
+      { id: "more", type: "decision", label: "Want more info?", col: 2, row: 0 },
+      { id: "later", type: "end", label: "Ask anything later", col: 3, row: 1 },
+      { id: "pick", type: "step", label: "Pick a suggested view", col: 3, row: 0 },
+      { id: "build", type: "system", label: "Dashboard builds", col: 4, row: 2, note: "Key numbers, world map, ranked chart, and table appear together." },
+      { id: "inspect", type: "step", label: "Inspect map and news", col: 5, row: 0, note: "Hover a country, open linked news." },
+      { id: "preview", type: "system", label: "Preview the workflow", col: 6, row: 2, note: "Plan, impact, and required sign-offs shown before anything runs." },
+      { id: "submit", type: "decision", label: "Submit for approval?", col: 7, row: 0 },
+      { id: "done", type: "end", label: "Approved and logged", col: 8, row: 2 },
+    ],
+    edges: [
+      { from: "start", to: "anomaly" },
+      { from: "anomaly", to: "more" },
+      { from: "more", to: "pick", label: "Yes" },
+      { from: "more", to: "later", label: "No" },
+      { from: "pick", to: "build" },
+      { from: "build", to: "inspect" },
+      { from: "inspect", to: "preview" },
+      { from: "preview", to: "submit" },
+      { from: "submit", to: "done", label: "Yes" },
+      { from: "submit", to: "inspect", label: "No" },
+    ],
+    paths: [
+      { id: "action", label: "Triage to approval", nodes: ["start", "anomaly", "more", "pick", "build", "inspect", "preview", "submit", "done"] },
+      { id: "dismiss", label: "Dismiss for now", nodes: ["start", "anomaly", "more", "later"] },
+    ],
+  },
+  tokenroute: {
+    title: "From a cost spike to a safe fallback.",
+    summary:
+      "An engineer notices a problem on the Overview, finds the cause in the logs, and sets a fallback rule that shows its cost before it goes live.",
+    lanes: ["Engineer", "TokenRoute", "AI providers"],
+    cols: 8,
+    nodes: [
+      { id: "start", type: "start", label: "Open Overview", col: 0, row: 0 },
+      { id: "spot", type: "step", label: "Spot cost or error spike", col: 1, row: 0 },
+      { id: "logs", type: "system", label: "Open request logs", col: 2, row: 1, note: "Every call, its model, cost, and result in one list." },
+      { id: "fail", type: "decision", label: "Provider failing?", col: 3, row: 0 },
+      { id: "rule", type: "step", label: "Set fallback rule", col: 4, row: 0 },
+      { id: "route", type: "system", label: "Route to backup model", col: 5, row: 2, note: "The rule shows the backup's cost and speed before it goes live." },
+      { id: "budget", type: "step", label: "Check budget and limits", col: 6, row: 1 },
+      { id: "end", type: "end", label: "Traffic up, spend in range", col: 7, row: 0 },
+    ],
+    edges: [
+      { from: "start", to: "spot" },
+      { from: "spot", to: "logs" },
+      { from: "logs", to: "fail" },
+      { from: "fail", to: "rule", label: "Yes" },
+      { from: "fail", to: "budget", label: "No" },
+      { from: "rule", to: "route" },
+      { from: "route", to: "budget" },
+      { from: "budget", to: "end" },
+    ],
+    paths: [
+      { id: "healthy", label: "No failover needed", nodes: ["start", "spot", "logs", "fail", "budget", "end"] },
+      { id: "failover", label: "Failover and budget check", nodes: ["start", "spot", "logs", "fail", "rule", "route", "budget", "end"] },
+    ],
+  },
   shiftsnap: {
     title: "Dual-Role Workflow: Team Member Swap to Manager Approval",
     summary:

@@ -48,6 +48,7 @@ export interface CaseStudyProject {
   category: string
   portfolioCategory: "Developer tools" | "Mobile" | "Design systems" | "Product & UX" | "Content & web"
   featured?: boolean
+  tldr?: { problem: string; bet: string; proof: string }
   summary: string
   headlineStart: string
   headlineAccent: string
@@ -235,7 +236,407 @@ export const toolStack = [
 
 export const portfolioProjects: CaseStudyProject[] = [
   {
+    id: "tokenroute",
+    tldr: { problem: "Engineers, content creators, and everyday AI users check six dashboards to see cost, errors, and limits.", bet: "One endpoint and one control panel, with the backup's cost shown next to every failover rule.", proof: "20 screens covering 6 providers and 24 models, in light and dark." },
+    figmaUrl:
+      "https://www.figma.com/design/TFUxeWZx3dxDCUD7aaW1dQ/TOKENROUTE?m=auto&t=RWFb6IQwhtkfWVBH-6",
+    index: "22",
+    name: "TokenRoute",
+    codename: "TokenRoute AI Gateway",
+    category: "Developer Tools · AI gateway & LLM routing",
+    portfolioCategory: "Developer tools",
+    featured: true,
+    summary:
+      "One endpoint for every AI model. Engineers, content creators, and anyone who uses AI see cost, speed, and failures across providers in one place and set fallback rules without touching code.",
+    headlineStart: "One endpoint. ",
+    headlineAccent: "Every model.",
+    lede: "I designed TokenRoute, a control panel for anyone who uses more than one AI model: engineers building products, content creators running writing and image tools, and everyday AI users. It replaces six separate dashboards with one view of usage, cost, and rules.",
+    role: "Lead Product Designer",
+    team: "Design & product",
+    scope: "20 screens · Design system · Routing & cost flows",
+    platform: "Web Application",
+    heroImage: `${assetBase}tokenroute/hero-cover.png`,
+    figmaNotes: [
+      { tone: "violet", tag: "Pain", text: "Each provider has its own dashboard, so spend and errors are scattered." },
+      { tone: "amber", tag: "Fear", text: "Teams avoid auto-failover because they can't see what the backup will cost." },
+      { tone: "emerald", tag: "Need", text: "A single place to answer: is it up, how fast, and what is it costing me?" },
+      { tone: "sky", tag: "Need", text: "Rules that are readable, not buried in SDK config." },
+    ],
+    synthesis: [
+      {
+        theme: "Six dashboards, no shared view",
+        evidence: "Rate limits, spend, and errors live in separate provider consoles.",
+        response: "A single Overview shows providers, models, and routes together.",
+      },
+      {
+        theme: "Failover feels risky",
+        evidence: "Engineers can't predict the cost or latency of the backup model.",
+        response: "Routing policies show cost and latency next to every fallback.",
+      },
+      {
+        theme: "Cost surprises at month end",
+        evidence: "Spend is only visible after the invoice arrives.",
+        response: "Budgets and usage by team and project are on their own screens.",
+      },
+    ],
+    mandateTitle: "Give everyone who uses AI one place to run it.",
+    mandateBody:
+      "Engineers, content creators, and everyday AI users rarely rely on one model. They pick a cheap, fast one for simple tasks and a stronger one for hard ones. Each provider comes with its own keys, limits, and billing. TokenRoute puts them behind one endpoint with one dashboard.",
+    frictionTitle: "Six provider consoles, no shared view",
+    problemStatement:
+      "To answer a simple question like 'which model is costing me the most?', a person had to open several provider dashboards and add up the numbers by hand. When one provider failed, nobody could tell what the backup would cost.",
+    resolutionTitle: "One endpoint, one control panel",
+    resolutionBody:
+      "A dark-first control panel with an Overview of providers, models, and routes, plus separate screens for analytics, routing rules, request logs, a playground, and budgets.",
+    ownershipPillars: [
+      ["Designed", "20 screens covering overview, analytics, providers, routing, logs, playground, and billing"],
+      ["Structured", "A clear split between watching traffic and changing rules"],
+      ["Built", "A reusable component set and light and dark themes in Figma"],
+    ],
+    discoverySummary:
+      "What we learned from how people who use several AI tools work today, and the design choice each finding led to.",
+    discoveryMethods: [
+      ["Finding 1 · Too many consoles", "Checking spend and errors means visiting every provider. Led to a single Overview with providers, models, and routes together."],
+      ["Finding 2 · Fear of silent failover", "Teams hesitate to turn on auto-fallback when they can't see its cost. Led to routing rules that show cost and latency beside each backup."],
+      ["Finding 3 · Debugging is slow", "Finding one failed request means digging through raw logs. Led to a request log with a detail view for each call."],
+    ],
+    principles: [
+      ["One endpoint first", "Keep the single-endpoint idea visible on every screen."],
+      ["Numbers you can scan", "Use monospace figures and clear units for cost and speed."],
+      ["No surprise failover", "Show the backup and its cost before traffic ever uses it."],
+      ["Rules you can read", "Write each routing rule in plain words, not config."],
+    ],
+    journeySummary:
+      "An engineer's day moves through three moments: check health, fix a problem, and control cost.",
+    journeyFlow: [
+      {
+        step: "01",
+        stage: "Check",
+        actor: "Platform engineer",
+        userGoal: "See if everything is healthy",
+        frictionEliminated: "Opening several provider dashboards.",
+        uxResolution: "One Overview with providers, models, and routes.",
+        engineeringContract: "Single aggregated health and usage endpoint",
+        touchpoints: ["Overview", "Token analytics"],
+      },
+      {
+        step: "02",
+        stage: "Fix",
+        actor: "Platform engineer",
+        userGoal: "Find a failed request and reroute",
+        frictionEliminated: "Searching raw logs across providers.",
+        uxResolution: "Request logs with detail view and editable routing rules.",
+        engineeringContract: "Searchable request log + route policy API",
+        touchpoints: ["Request logs", "Routing policies"],
+      },
+      {
+        step: "03",
+        stage: "Control",
+        actor: "Engineering lead",
+        userGoal: "Keep spend under budget",
+        frictionEliminated: "Finding out about cost at month end.",
+        uxResolution: "Budgets, limits, and usage by team and project.",
+        engineeringContract: "Budget thresholds with alert hooks",
+        touchpoints: ["Budgets", "Rate limits", "Alerts"],
+      },
+    ],
+    wireframes: [
+      { id: "01", title: "Overview", caption: "Providers, models, and routes at a glance.", layout: "dashboard" },
+      { id: "02", title: "Routing policies", caption: "Readable rules with fallback and cost.", layout: "split" },
+      { id: "03", title: "Request detail", caption: "One call, its model, cost, and result.", layout: "drawer" },
+    ],
+    architecturalPivot: {
+      summary: "From separate provider dashboards to one control panel.",
+      before: "Six dashboards, six sets of keys, no combined view of cost or errors.",
+      after: "One endpoint and one control panel with shared analytics, rules, and logs.",
+    },
+    engineeringSummary:
+      "The design is organised so each screen maps to one clear job, which keeps the build simple.",
+    collabTracks: [
+      { phase: "01", title: "Foundations", detail: "Color, type, and spacing tokens for dark and light.", deliverable: "Foundations page" },
+      { phase: "02", title: "Components", detail: "Navigation rail, topbar, cards, tables, and badges.", deliverable: "Component library" },
+      { phase: "03", title: "Screens", detail: "20 core screens built from the component library.", deliverable: "Screens page" },
+    ],
+    contractBridge: {
+      figmaTitle: "Design",
+      codeTitle: "Build",
+      figmaSpecs: [
+        ["Tokens", "Dark and light color variables"],
+        ["Components", "Reusable shell, cards, and tables"],
+      ],
+      codeSpecs: [
+        ["Theme", "CSS variables mapped to tokens"],
+        ["Data", "Aggregated usage and routing endpoints"],
+      ],
+    },
+    decisions: [
+      {
+        title: "Lead with a simple count of providers, models, and routes",
+        body: "Engineers first want to know the shape of their setup. Three numbers answer that before any chart does.",
+        badge: "Overview",
+      },
+      {
+        title: "Show the cost of the backup next to the rule",
+        body: "People turn on failover when they can see what it will cost. The rule and its price sit together.",
+        badge: "Routing",
+      },
+      {
+        title: "Dark first, with clear status colors",
+        body: "Engineers spend long hours in this tool. A calm dark theme keeps attention on the few status colors that matter.",
+        badge: "Visual design",
+      },
+    ],
+    outcomes: [
+      ["Scope", "Screens designed end to end", "20"],
+      ["Coverage", "Providers shown in one view", "6"],
+      ["Coverage", "Models tracked in one view", "24"],
+    ],
+    problemStats: [
+      { stat: "6", label: "Provider dashboards to check today" },
+      { stat: "1", label: "Endpoint after TokenRoute" },
+    ],
+    personas: [
+      {
+        initials: "EN",
+        color: "#8b5cf6",
+        name: "Engineers",
+        role: "Build AI features into products",
+        tagline: "Keep AI features running and affordable",
+        quote: "I want one place to see spend by feature and a safe fallback when a provider slows down.",
+        bio: "Engineers support product teams that each call different AI models.",
+        goals: ["Route traffic without redeploying", "Spot cost spikes early"],
+        painPoints: ["Separate billing and limits per provider", "No view of what a fallback will cost"],
+      },
+      {
+        initials: "CC",
+        color: "#ec4899",
+        name: "Content creators",
+        role: "Write, design, and edit with AI",
+        tagline: "Use several AI tools every day",
+        quote: "I just want to know which tool is cheapest for this job and not run out halfway through.",
+        bio: "Creators move between writing, image, and video models and watch their monthly spend.",
+        goals: ["Pick the right model for each task", "Stay inside a monthly budget"],
+        painPoints: ["Surprise bills at month end", "Different logins and limits for every tool"],
+      },
+      {
+        initials: "AI",
+        color: "#10b981",
+        name: "Everyday AI users",
+        role: "Use AI for work and life",
+        tagline: "Want it to simply work",
+        quote: "If one model is down, switch me to another. I shouldn't have to notice.",
+        bio: "Anyone using AI regularly who wants reliable answers without managing accounts.",
+        goals: ["Always get an answer", "Understand what it costs"],
+        painPoints: ["Outages with no backup", "No simple view of usage"],
+      },
+    ],
+    designGoals: [
+      { title: "One view", description: "Providers, models, and routes together.", icon: "◎", color: "#8b5cf6" },
+      { title: "Clear cost", description: "Cost and speed next to every rule.", icon: "$", color: "#10b981" },
+    ],
+    keyLearnings: [
+      { title: "Keep developer tools calm", description: "Generous spacing and clear numbers beat dense terminal-style tables." },
+    ],
+    nextSteps: [
+      { title: "Test with real engineers", description: "Ask platform engineers to find the costliest model and set a fallback, and time them.", icon: "◷" },
+      { title: "Routing simulator", description: "Let engineers replay past traffic against a new rule before turning it on.", icon: "▶" },
+    ],
+  },
+  {
+    id: "fingsight",
+    tldr: { problem: "Analysts use four separate tools to answer one risk question, and don't trust unsourced AI numbers.", bet: "Chat drives a live dashboard, with linked sources and a human approval before any action.", proof: "Working prototype: 4 risk views, an interactive world map, and a 3-step approval flow." },
+    liveUrl: "./fingsight-prototype/index.html",
+    index: "21",
+    name: "FinSight",
+    codename: "FinSight Risk Assistant",
+    category: "Fintech · Conversational AI & institutional risk",
+    portfolioCategory: "Product & UX",
+    featured: true,
+    summary:
+      "A risk assistant for analysts. Ask a question in plain English and get a map, key numbers, and a table, with a safe approval step before any action.",
+    headlineStart: "Ask about risk, ",
+    headlineAccent: "see the dashboard.",
+    lede: "I designed and built FinSight, a chat assistant paired with a live dashboard. It helps a risk manager go from a flagged anomaly to a reviewed, approved action in one screen.",
+    role: "Lead Product Designer & Prototype Builder",
+    team: "Design & product",
+    scope: "Chat + dashboard · World map · Approval flow · React prototype",
+    platform: "Web Application",
+    heroImage: `${assetBase}fingsight/hero-cover.png`,
+    figmaNotes: [
+      { tone: "rose", tag: "Pain", text: "One risk question means opening trades, country risk, and credit tools separately." },
+      { tone: "amber", tag: "Pain", text: "Blank chat boxes don't tell an analyst what needs attention first." },
+      { tone: "emerald", tag: "Need", text: "Numbers must show where they came from before anyone acts on them." },
+      { tone: "sky", tag: "Need", text: "Any change to a limit needs a second person to approve it." },
+    ],
+    synthesis: [
+      {
+        theme: "Four tools for one question",
+        evidence: "Country, climate, credit, and trade data sit in different systems.",
+        response: "One chat drives one dashboard that combines all four.",
+      },
+      {
+        theme: "Analysts won't act on black-box numbers",
+        evidence: "AI answers without sources are hard to trust in a regulated setting.",
+        response: "Map tooltips link to related news, and actions require approval.",
+      },
+      {
+        theme: "Nobody wants to start from a blank page",
+        evidence: "Analysts need to know what changed overnight.",
+        response: "The assistant opens with the flagged anomalies and asks Yes or No.",
+      },
+    ],
+    mandateTitle: "Turn a risk question into a reviewed decision.",
+    mandateBody:
+      "Risk analysts jump between trade systems, country risk feeds, and credit reports, and each question takes a different tool. FinSight pairs a chat assistant with a live dashboard so one screen answers the question and supports the next step.",
+    frictionTitle: "One risk question, four disconnected tools",
+    problemStatement:
+      "To find out which high-usage clients sit in risky countries, an analyst had to check a trade blotter, a country risk feed, and a credit report, then combine the results by hand.",
+    resolutionTitle: "Chat steers, the dashboard shows the proof",
+    resolutionBody:
+      "A chat panel on the left starts with the flagged anomalies. Each answer opens a dashboard on the right with key numbers, a world map, a ranked chart, and a table. Any action goes through a preview and approval step.",
+    ownershipPillars: [
+      ["Designed", "The chat plus dashboard layout, the response shape, and the approval flow"],
+      ["Built", "A working React and TypeScript prototype with an interactive world map"],
+      ["Scope", "The answers use demo data. A real version needs live risk and trade feeds"],
+    ],
+    discoverySummary:
+      "What we learned from how risk analysts work today, and the design choice each finding led to.",
+    discoveryMethods: [
+      ["Finding 1 · Too many tools", "Cross-cutting questions need several systems. Led to one dashboard that combines country, climate, credit, and trades."],
+      ["Finding 2 · Trust comes from sources", "Analysts won't act on numbers they can't trace. Led to map tooltips with linked news and a clear 'where this came from' feel."],
+      ["Finding 3 · Humans must approve", "Limit changes are sensitive. Led to a preview and a three-step approval before anything runs."],
+    ],
+    principles: [
+      ["Start with what's wrong", "Open with the flagged anomalies, not an empty box."],
+      ["Show, don't just tell", "Every answer comes with numbers, a map, and a table."],
+      ["Humans approve", "The assistant suggests. A person confirms."],
+      ["Say where numbers come from", "Link each figure to its source or related news."],
+    ],
+    journeySummary:
+      "A risk manager's session moves through three steps: triage, investigate, and act.",
+    journeyFlow: [
+      {
+        step: "01",
+        stage: "Triage",
+        actor: "Risk manager",
+        userGoal: "See what changed since yesterday",
+        frictionEliminated: "Hunting through reports to find breaches.",
+        uxResolution: "The assistant opens with flagged anomalies and a Yes or No.",
+        engineeringContract: "Anomaly summary endpoint",
+        touchpoints: ["Greeting", "Anomaly card"],
+      },
+      {
+        step: "02",
+        stage: "Investigate",
+        actor: "Risk manager",
+        userGoal: "Understand where exposure is concentrated",
+        frictionEliminated: "Switching between four tools.",
+        uxResolution: "One dashboard with a map, key numbers, a chart, and a table.",
+        engineeringContract: "Structured dashboard payload per question",
+        touchpoints: ["Suggested views", "World map", "News drawer"],
+      },
+      {
+        step: "03",
+        stage: "Act",
+        actor: "Risk manager and approver",
+        userGoal: "Rebalance an exposure safely",
+        frictionEliminated: "Informal approvals by email.",
+        uxResolution: "Preview the plan, then a three-step approval.",
+        engineeringContract: "Workflow submission with audit trail",
+        touchpoints: ["Workflow preview", "Approval stepper"],
+      },
+    ],
+    wireframes: [
+      { id: "01", title: "Chat and empty canvas", caption: "Greeting, anomaly card, and Yes or No.", layout: "split" },
+      { id: "02", title: "Risk dashboard", caption: "Key numbers, world map, chart, and table.", layout: "dashboard" },
+      { id: "03", title: "Workflow preview", caption: "Plan, impact, and approval steps.", layout: "drawer" },
+    ],
+    architecturalPivot: {
+      summary: "From separate tools to one conversation and one dashboard.",
+      before: "Four systems, manual combining of results, informal approvals.",
+      after: "One chat, one generated dashboard, and one approval flow.",
+    },
+    engineeringSummary:
+      "Every answer has the same shape, so the build is predictable and easy to extend.",
+    collabTracks: [
+      { phase: "01", title: "Answer shape", detail: "Each reply returns text, key numbers, a map, a chart, a table, and next suggestions.", deliverable: "Typed response format" },
+      { phase: "02", title: "Prototype", detail: "React, TypeScript, and Salt Design System with light and dark themes.", deliverable: "Working prototype" },
+      { phase: "03", title: "Tests", detail: "Automated check that questions return the right dashboard.", deliverable: "Vitest suite" },
+    ],
+    contractBridge: {
+      figmaTitle: "Design",
+      codeTitle: "Build",
+      figmaSpecs: [
+        ["Layout", "Chat panel and dashboard canvas"],
+        ["Status colors", "Good, warning, and breach tones"],
+      ],
+      codeSpecs: [
+        ["Reply type", "text, dashboard, suggestions"],
+        ["Dashboard type", "metrics, map points, bars, table"],
+      ],
+    },
+    decisions: [
+      {
+        title: "Chat plus a generated dashboard, not chat alone",
+        body: "Chat alone hides the numbers. A dashboard alone forces filters. Together, a plain question drives a view you can scan and check.",
+        badge: "Layout",
+      },
+      {
+        title: "Every answer has the same shape",
+        body: "A short answer, three key numbers, a map, a chart, a table, and next suggestions. Analysts learn it once and can scan any answer.",
+        badge: "Response design",
+      },
+      {
+        title: "Earn trust by showing sources and asking for approval",
+        body: "Map tooltips link to related news. Actions open a preview, then a three-step approval. The assistant never acts alone.",
+        badge: "Trust",
+      },
+      {
+        title: "Hold back the suggestions until the user engages",
+        body: "The first screen stays calm: a greeting and the flagged anomaly. Suggested views appear after the user says Yes.",
+        badge: "Focus",
+      },
+    ],
+    outcomes: [
+      ["Prototype", "Risk views you can open from chat", "4"],
+      ["Prototype", "Steps in the approval flow", "3"],
+      ["Prototype", "Interactive world map with news drilldown", "1"],
+    ],
+    problemStats: [
+      { stat: "4", label: "Tools needed to answer one risk question" },
+      { stat: "1", label: "Screen after FinSight" },
+    ],
+    personas: [
+      {
+        initials: "CH",
+        color: "#3fb8a5",
+        name: "Christine",
+        role: "Senior risk manager",
+        tagline: "Watches limits and exposure every morning",
+        quote: "Tell me what changed, show me why, and let me route an approval without opening five tools.",
+        bio: "Christine reviews overnight movements across countries and counterparties and signs off on rebalancing.",
+        goals: ["Spot limit breaches quickly", "Check the trade-offs before submitting a change"],
+        painPoints: ["Too many separate systems", "AI answers with no visible source"],
+      },
+    ],
+    designGoals: [
+      { title: "Start with the problem", description: "Open on what needs attention.", icon: "!", color: "#f59e0b" },
+      { title: "Show the evidence", description: "Map, numbers, and sources on one screen.", icon: "◎", color: "#3fb8a5" },
+      { title: "Keep a human in charge", description: "Preview and approve before acting.", icon: "✓", color: "#3b82f6" },
+    ],
+    keyLearnings: [
+      { title: "Hold back options until needed", description: "Hiding suggestions until the user engages kept the first screen calm and focused." },
+      { title: "Put context on the map", description: "Linking news to each country removed a tab switch." },
+    ],
+    nextSteps: [
+      { title: "Do analysts trust a generated dashboard?", description: "Test it side by side with their current tools and ask what they would verify first.", icon: "?" },
+      { title: "How fast to an answer?", description: "Time analysts from a question to a decision-ready view, with and without FinSight.", icon: "◷" },
+      { title: "Connect real data", description: "Replace the demo data with live trade, country, and credit feeds.", icon: "⇄" },
+    ],
+  },
+  {
     id: "pennwise",
+    tldr: { problem: "People can't tell how healthy their money is from a long list of transactions.", bet: "Lead with a 4-pillar Financial Compass score and editable What-If scenarios.", proof: "A playable 5-module mobile prototype." },
     liveUrl: "./pennwise-prototype/index.html",
     figmaUrl:
       "https://www.figma.com/design/NZbmIQrN9GMHgTasujs7Xv/Pennwise-%E2%80%94-Personal-Finance-App?m=auto&t=MkSK5hpyyhXRYMvc-6",
@@ -309,7 +710,7 @@ export const portfolioProjects: CaseStudyProject[] = [
       ],
       [
         "Spreadsheet & Robo-Advisor Audit",
-        "Identified why users distrusted black-box retirement projections that hid inflation (`2.5%`) and return (`6.0%`) assumptions.",
+        "Identified why users distrusted black-box retirement projections that hid inflation (2.5%) and return (6.0%) assumptions.",
       ],
       [
         "Visual Density & Color Restraint Testing",
@@ -341,24 +742,24 @@ export const portfolioProjects: CaseStudyProject[] = [
     synthesis: [
       {
         theme: "Actionable health over raw balances",
-        evidence: "Seeing `$128,420.50` alone didn't tell users whether their 14% savings rate or 14.4% debt-to-asset ratio needed attention first.",
-        response: "Paired the Net Worth hero with a `Compass 72` pill that drills into Spending, Investing, Debt, and Saving pillars.",
+        evidence: "Seeing $128,420.50 alone didn't tell users whether their 14% savings rate or 14.4% debt-to-asset ratio needed attention first.",
+        response: "Paired the Net Worth hero with a Compass 72 pill that drills into Spending, Investing, Debt, and Saving pillars.",
       },
       {
         theme: "Finite monthly surplus trade-offs",
         evidence: "Users created multiple savings goals without realizing their combined monthly targets exceeded their actual cash flow surplus.",
-        response: "Designed the `$870 Monthly Surplus Allocator` with priority ranking and timeline impact badges.",
+        response: "Designed the $870 Monthly Surplus Allocator with priority ranking and timeline impact badges.",
       },
       {
         theme: "Transparent long-term assumptions",
         evidence: "Users doubted 10-year net worth numbers when inflation, return rates, and debt payoff strategies were hidden.",
-        response: "Exposed interactive sliders (`3.0% income growth`, `2.5% inflation`, `6.0% return`) and tornado sensitivity charts.",
+        response: "Exposed interactive sliders (3.0% income growth, 2.5% inflation, 6.0% return) and tornado sensitivity charts.",
       },
     ],
     principles: [
       [
         "Lead with net position and next action",
-        "Pair total Net Worth with safe-to-spend cash (`$2,628.08`) and a concrete 3-step monthly action plan.",
+        "Pair total Net Worth with safe-to-spend cash ($2,628.08) and a concrete 3-step monthly action plan.",
       ],
       [
         "One brand accent per screen",
@@ -366,7 +767,7 @@ export const portfolioProjects: CaseStudyProject[] = [
       ],
       [
         "Make every projection inspectable",
-        "Show real-dollar toggles, inflation assumptions, and p50–p90 confidence bands (`$482k–$567k`) beneath every simulation.",
+        "Show real-dollar toggles, inflation assumptions, and p50–p90 confidence bands ($482k–$567k) beneath every simulation.",
       ],
       [
         "Protect live accounts from experiments",
@@ -384,7 +785,7 @@ export const portfolioProjects: CaseStudyProject[] = [
         frictionEliminated:
           "Logging into four separate banking and retirement apps to piece together household net worth.",
         uxResolution:
-          "`Main Dashboard` hero card with 1-tap privacy mask, quick transfer actions, and synced account cards.",
+          "Main Dashboard hero card with 1-tap privacy mask, quick transfer actions, and synced account cards.",
         engineeringContract:
           "Aggregated Plaid/OAuth balance ledger + real-time safe-to-spend buffer calc",
         touchpoints: ["Main Dashboard", "Net Worth View", "Available Cash"],
@@ -397,7 +798,7 @@ export const portfolioProjects: CaseStudyProject[] = [
         frictionEliminated:
           "Vague credit-score style gauges that don't explain how daily spending or savings rate changes the score.",
         uxResolution:
-          "`Financial Compass` 4-pillar breakdown (`Spending 84`, `Investing 80`, `Debt 66`, `Saving 58`) + `Action Plan`.",
+          "Financial Compass 4-pillar breakdown (Spending 84, Investing 80, Debt 66, Saving 58) + Action Plan.",
         engineeringContract:
           "Weighted 4-pillar scoring engine + marginal point-lift recommender",
         touchpoints: ["Financial Compass", "Health Breakdown", "Action Plan"],
@@ -410,7 +811,7 @@ export const portfolioProjects: CaseStudyProject[] = [
         frictionEliminated:
           "Over-committing monthly cash across uncoordinated savings goals.",
         uxResolution:
-          "`Goals Overview` + `Priorities` surplus bar with automated payday transfer rules and milestone celebrations.",
+          "Goals Overview + Priorities surplus bar with automated payday transfer rules and milestone celebrations.",
         engineeringContract:
           "Payday auto-split rule engine + surplus over-allocation guardrail",
         touchpoints: ["Goals Overview", "Monthly Contributions", "Priorities"],
@@ -423,7 +824,7 @@ export const portfolioProjects: CaseStudyProject[] = [
         frictionEliminated:
           "Hidden mutual-fund expense ratios and overlapping US equity exposure across accounts.",
         uxResolution:
-          "`Portfolio Overview` + `Diversification` & `Fees` showing exact annual fee savings (`$4,200 over 20 yrs`).",
+          "Portfolio Overview + Diversification & Fees showing exact annual fee savings ($4,200 over 20 yrs).",
         engineeringContract:
           "Holdings look-through classifier + 20-year expense-ratio compounding calc",
         touchpoints: ["Portfolio", "Asset Allocation", "Fees Audit"],
@@ -436,7 +837,7 @@ export const portfolioProjects: CaseStudyProject[] = [
         frictionEliminated:
           "Guessing whether a home purchase or career break will derail retirement at age 65.",
         uxResolution:
-          "`What-If Studio` + `Compare Scenarios` + `Sensitivity Analysis` tornado chart and partner PDF/link sharing.",
+          "What-If Studio + Compare Scenarios + Sensitivity Analysis tornado chart and partner PDF/link sharing.",
         engineeringContract:
           "Monte Carlo & deterministic 30-year cash-flow projection engine",
         touchpoints: ["What-If Studio", "10-Year Projections", "Scenario Compare"],
@@ -475,13 +876,13 @@ export const portfolioProjects: CaseStudyProject[] = [
       after: "Unified Financial Compass + Live What-If Trade-Off Engine",
     },
     engineeringSummary:
-      "Defined a 2-collection Figma Variable architecture (`Primitives` → `Semantic Light/Dark` tokens synced with Tailwind/shadcn neutrals) and deterministic TypeScript contracts for the 4-pillar scoring and 10-year compounding simulation engine.",
+      "Defined a 2-collection Figma Variable architecture (Primitives → Semantic Light/Dark tokens synced with Tailwind/shadcn neutrals) and deterministic TypeScript contracts for the 4-pillar scoring and 10-year compounding simulation engine.",
     collabTracks: [
       {
         phase: "01 / Token & Surface System",
         title: "Light/Dark semantic variables & 1-hero lime rule",
         detail:
-          "Mapped `bg/default`, `bg/subtle`, `brand/default (#B6F256)`, and semantic status tokens across Light and Dark modes.",
+          "Mapped bg/default, bg/subtle, brand/default (#B6F256), and semantic status tokens across Light and Dark modes.",
         deliverable: "Foundations & Token Spec",
       },
       {
@@ -509,7 +910,7 @@ export const portfolioProjects: CaseStudyProject[] = [
         ],
         [
           "Semantic color tokens",
-          "Brand Lime `#B6F256` · Brand Strong `#84CC16` · Ink `#0A0A0A` · Subtle `#FAFAFA` · Positive `#15803D`",
+          "Brand Lime #B6F256 · Brand Strong #84CC16 · Ink #0A0A0A · Subtle #FAFAFA · Positive #15803D",
         ],
         [
           "Component primitives",
@@ -576,7 +977,7 @@ export const portfolioProjects: CaseStudyProject[] = [
     codename: "Governed Financial AI Operations",
     category: "Developer tools · AI operations",
     portfolioCategory: "Developer tools",
-    featured: false,
+    featured: true,
     summary:
       "A governed AI workflow platform that helps financial operations teams move from incoming Net Asset Value (NAV) reports to auditable delivery.",
     headlineStart: "Governed AI for ",
@@ -863,20 +1264,25 @@ export const portfolioProjects: CaseStudyProject[] = [
   },
   {
     id: "bluewave",
+    tldr: {
+      problem: "BlueWave Logistics dispatchers tracked 22 vessels and port berthing schedules across disconnected spreadsheets and AIS feeds.",
+      bet: "One calm operations map with a voyage scrubber and port turnaround HUD so dispatchers spot delays early.",
+      proof: "Interactive fleet prototype covering 22 vessels, container bay telemetry, and port schedules.",
+    },
     liveUrl: "./bluewave-prototype.html",
     figmaUrl:
       "https://www.figma.com/design/oKSX4bEtEcHoUe3DoGaAsO/BlueWave-SaaS?m=auto&t=k13k9B1nGX5KYeol-6",
     index: "21",
     name: "BlueWave",
-    codename: "BlueWave Maritime Fleet & Logistics OS",
-    category: "Maritime SaaS · Fleet tracking & supply chain telemetry",
+    codename: "BlueWave Logistics — Fleet & Port Dispatch Platform",
+    category: "Enterprise Logistics · Internal fleet & port operations",
     portfolioCategory: "Product & UX",
     featured: true,
     summary:
-      "An enterprise maritime fleet management and supply chain operating system unifying real-time satellite AIS vessel tracking, interactive sea trade corridors, automated port berthing schedules, and container bay telemetry.",
-    headlineStart: "Global fleets, ",
+      "BlueWave Logistics' internal fleet and port dispatch platform—unifying the company's 22-vessel operations, container bay telemetry, and automated port berthing schedules in one calm workspace.",
+    headlineStart: "BlueWave's fleet, ",
     headlineAccent: "orchestrated live.",
-    lede: "As Lead Product Designer, I designed BlueWave's fleet control center across 22 global vessels, interactive sea route telemetry, and port berthing operations—transforming opaque maritime supply chains into a calm, proactive dispatch system.",
+    lede: "As Lead Product Designer for BlueWave Logistics, I designed the company's internal fleet control center across 22 vessels, container bay telemetry, and port berthing operations—replacing fragmented dispatch spreadsheets with a proactive operations workspace.",
     role: "Lead Product Designer",
     team: "Maritime Ops · UX Research · Geospatial & IoT Engineering",
     scope:
@@ -1414,11 +1820,11 @@ export const portfolioProjects: CaseStudyProject[] = [
       figmaSpecs: [
         [
           "Canvas & surface colors",
-          "Background `#121214` · Surface `#18181B` · Glass `rgba(255, 255, 255, 0.06)` · Border `rgba(255, 255, 255, 0.12)`",
+          "Background #121214 · Surface #18181B · Glass rgba(255, 255, 255, 0.06) · Border rgba(255, 255, 255, 0.12)",
         ],
         [
           "Accent tokens",
-          "Amber `#F59E0B` · Emerald `#10B981` · Purple `#8B5CF6` · Pink `#EC4899` · Blue `#3B82F6`",
+          "Amber #F59E0B · Emerald #10B981 · Purple #8B5CF6 · Pink #EC4899 · Blue #3B82F6",
         ],
         [
           "Typography scale",
@@ -1537,7 +1943,7 @@ export const portfolioProjects: CaseStudyProject[] = [
       ],
       [
         "Dual-Theme Design System",
-        "Authored semantic Graphite (`#151515`) and Burnt Amber (`#C8642A`) tokens with full Light/Dark mode parity and dark automotive photo stages.",
+        "Authored semantic Graphite (#151515) and Burnt Amber (#C8642A) tokens with full Light/Dark mode parity and dark automotive photo stages.",
       ],
       [
         "Resilient On-Trip & Edge Flows",
@@ -1553,7 +1959,7 @@ export const portfolioProjects: CaseStudyProject[] = [
       ],
       [
         "EV Renter Telemetry Interviews",
-        "Identified the 4 exact specs EV renters check first: real range (`294 mi`), `10–80%` fast-charge minutes (`18 min`), luggage capacity, and charger proximity.",
+        "Identified the 4 exact specs EV renters check first: real range (294 mi), 10–80% fast-charge minutes (18 min), luggage capacity, and charger proximity.",
       ],
       [
         "Checkout Drop-Off & Decline Audit",
@@ -1591,7 +1997,7 @@ export const portfolioProjects: CaseStudyProject[] = [
       {
         theme: "EV range & charging literacy",
         evidence: "Renters hesitated to book electric crossovers because kilowatt curves and luggage fit were hidden in fine print.",
-        response: "Elevated spec numerals (`294 mi | 4.0s | 5 seats`) and a 2×2 charge/luggage bento on the Vehicle Detail stage.",
+        response: "Elevated spec numerals (294 mi | 4.0s | 5 seats) and a 2×2 charge/luggage bento on the Vehicle Detail stage.",
       },
       {
         theme: "Graceful payment recovery",
@@ -1602,15 +2008,15 @@ export const portfolioProjects: CaseStudyProject[] = [
     principles: [
       [
         "Stage the vehicle like hardware",
-        "Use dark graded photo stages (`#111111`) on both light and dark themes so vehicle silhouettes and telemetry numerals pop.",
+        "Use dark graded photo stages (#111111) on both light and dark themes so vehicle silhouettes and telemetry numerals pop.",
       ],
       [
         "Show the all-in total early",
-        "Pair daily rates (`$92/day`) with the multi-day total (`$276 total`) and explicit refundable deposit (`$250`).",
+        "Pair daily rates ($92/day) with the multi-day total ($276 total) and explicit refundable deposit ($250).",
       ],
       [
         "Keep active controls one thumb away",
-        "Surface the ongoing rental strip on Home and anchor primary actions (`Slide to unlock`, `Reserve`) in the bottom thumb zone.",
+        "Surface the ongoing rental strip on Home and anchor primary actions (Slide to unlock, Reserve) in the bottom thumb zone.",
       ],
       [
         "Design for real-world exceptions",
@@ -1628,7 +2034,7 @@ export const portfolioProjects: CaseStudyProject[] = [
         frictionEliminated:
           "Generic car-class labels ('Intermediate Or Similar') hid the actual vehicle model and total price.",
         uxResolution:
-          "Exact-model fleet cards (`Genesis GV60 · 2025`) with category chips (`Electric`, `SUV`, `Luxury`) and upfront 3-day total.",
+          "Exact-model fleet cards (Genesis GV60 · 2025) with category chips (Electric, SUV, Luxury) and upfront 3-day total.",
         engineeringContract:
           "Geo-fenced hub inventory query + real-time availability lock",
         touchpoints: ["Home Feed", "Map View", "Filter Chips"],
@@ -1641,7 +2047,7 @@ export const portfolioProjects: CaseStudyProject[] = [
         frictionEliminated:
           "Dense specification tables buried critical EV charge times and delivery fees.",
         uxResolution:
-          "Dark cinematic stage with big numerals (`294 mi · 4.0s · 5 seats`), 2×2 feature bento, and LAX delivery toggle.",
+          "Dark cinematic stage with big numerals (294 mi · 4.0s · 5 seats), 2×2 feature bento, and LAX delivery toggle.",
         engineeringContract:
           "Vehicle telemetry manifest + dynamic delivery window slotter",
         touchpoints: ["Vehicle Detail", "Vehicle Gallery", "Model Compare"],
@@ -1654,7 +2060,7 @@ export const portfolioProjects: CaseStudyProject[] = [
         frictionEliminated:
           "Surprise counter upsells and instant reservation loss on bank travel holds.",
         uxResolution:
-          "Itemized checkout ledger (`$403.26`) paired with 15-minute reservation hold recovery.",
+          "Itemized checkout ledger ($403.26) paired with 15-minute reservation hold recovery.",
         engineeringContract:
           "Idempotent payment intent + 900s inventory hold TTL + Apple Pay fallback",
         touchpoints: ["Protection Tiers", "Checkout Ledger", "Payment Hold Recovery"],
@@ -1667,9 +2073,9 @@ export const portfolioProjects: CaseStudyProject[] = [
         frictionEliminated:
           "Waiting at a kiosk for physical keys or paper inspection sheets.",
         uxResolution:
-          "Guided 4-corner photo check and glassmorphic `Slide to unlock` pill with honk/flash locator.",
+          "Guided 4-corner photo check and glassmorphic Slide to unlock pill with honk/flash locator.",
         engineeringContract:
-          "BLE/NFC cryptographic key token + live CAN-bus SOC (`62% · 232 mi`)",
+          "BLE/NFC cryptographic key token + live CAN-bus SOC (62% · 232 mi)",
         touchpoints: ["Vehicle Inspection", "Door Unlock", "Active Trip & Digital Key"],
       },
       {
@@ -1680,7 +2086,7 @@ export const portfolioProjects: CaseStudyProject[] = [
         frictionEliminated:
           "Hunting across third-party charging apps or calling support to extend a rental.",
         uxResolution:
-          "In-app nearby charging finder (`Electrify America · 4 of 6 free · $0.48/kWh`) and 1-tap `+$68/day` extension.",
+          "In-app nearby charging finder (Electrify America · 4 of 6 free · $0.48/kWh) and 1-tap +$68/day extension.",
         engineeringContract:
           "OCPI live stall availability feed + automated return bay check-in",
         touchpoints: ["Nearby EV Charging", "Trip Summary & Return", "Itemized Receipt"],
@@ -1714,12 +2120,12 @@ export const portfolioProjects: CaseStudyProject[] = [
     ],
     architecturalPivot: {
       summary:
-        "Early explorations placed dark-mode styling only in system settings, which made vehicle photos look washed out on light screens. We pivoted to a hybrid 'Dark Stage' architecture where vehicle showcases and active trip cards always render on a `#111111` automotive stage while forms and receipts adapt cleanly between warm alabaster (`#FAF9F7`) and carbon dark (`#121211`).",
+        "Early explorations placed dark-mode styling only in system settings, which made vehicle photos look washed out on light screens. We pivoted to a hybrid 'Dark Stage' architecture where vehicle showcases and active trip cards always render on a #111111 automotive stage while forms and receipts adapt cleanly between warm alabaster (#FAF9F7) and carbon dark (#121211).",
       before: "Flat light-grey car cards with low-contrast spec lists",
       after: "Cinematic Dark Photo Stage + Dual-Theme Semantic Surface Tokens",
     },
     engineeringSummary:
-      "Structured the Figma component architecture with strict variable bindings (`--color-primary-default`, `--color-contrast-default`, `--bg-card`), 402px iOS responsive constraints, and deterministic state props for iOS SwiftUI & React Native implementation.",
+      "Structured the Figma component architecture with strict variable bindings (--color-primary-default, --color-contrast-default, --bg-card), 402px iOS responsive constraints, and deterministic state props for iOS SwiftUI & React Native implementation.",
     collabTracks: [
       {
         phase: "01 / Token Foundation",
@@ -1732,7 +2138,7 @@ export const portfolioProjects: CaseStudyProject[] = [
         phase: "02 / Component Architecture",
         title: "Reusable mobile primitives",
         detail:
-          "Built parameterized components for `Trip Strip`, `Car Card`, `Price Bar`, `Status Chip`, and `Motive Tab Bar`.",
+          "Built parameterized components for Trip Strip, Car Card, Price Bar, Status Chip, and Motive Tab Bar.",
         deliverable: "Tokenized iOS Component Library",
       },
       {
@@ -1753,11 +2159,11 @@ export const portfolioProjects: CaseStudyProject[] = [
         ],
         [
           "Color & surface tokens",
-          "Primary Ink `#151515` · Burnt Amber `#C8642A` · Card `#FAF9F7` · Subtle `#F3F1EE` · Success `#2FB98E`",
+          "Primary Ink #151515 · Burnt Amber #C8642A · Card #FAF9F7 · Subtle #F3F1EE · Success #2FB98E",
         ],
         [
           "Component variants",
-          "Status Bar (`Default` | `Inverse`) · Tab Item (`Active` pill) · Circle Button (`Outline` | `Dark` glass)",
+          "Status Bar (Default | Inverse) · Tab Item (Active pill) · Circle Button (Outline | Dark glass)",
         ],
       ],
       codeSpecs: [
@@ -1815,6 +2221,11 @@ export const portfolioProjects: CaseStudyProject[] = [
   },
   {
     id: "rapidbi",
+    tldr: {
+      problem: "Teams had powerful charts and grids, but dense settings panels and separate config pages slowed down analysis.",
+      bet: "Keep the overview and 1,440-row grid on one canvas, with an in-place side drawer and previewable AI suggestions.",
+      proof: "Storybook 10.6 component workbench and typed prop contracts built with engineering.",
+    },
     liveUrl: "./rapidbi-storybook/index.html",
     index: "01",
     name: "Signal BI",
@@ -1851,7 +2262,7 @@ export const portfolioProjects: CaseStudyProject[] = [
       ],
       [
         "Engineering Contracts",
-        "Co-defined `groupBy`, `pivotBy`, `delta`, and filter schemas with frontend engineers.",
+        "Co-defined groupBy, pivotBy, delta, and filter schemas with frontend engineers.",
       ],
       [
         "System Delivery",
@@ -1893,7 +2304,7 @@ export const portfolioProjects: CaseStudyProject[] = [
       {
         tone: "emerald",
         tag: "Engineering Sync",
-        text: "Map every Figma variant directly to typed Storybook controls (`groupBy`, `pivotBy`, `delta`).",
+        text: "Map every Figma variant directly to typed Storybook controls (groupBy, pivotBy, delta).",
       },
       {
         tone: "orange",
@@ -1966,7 +2377,7 @@ export const portfolioProjects: CaseStudyProject[] = [
         uxResolution:
           "Contextual side inspector updates the active widget in place without unmounting.",
         engineeringContract:
-          'Typed props (`groupBy: ["product"]`, `pivotBy: ["month"]`, `delta: boolean`)',
+          'Typed props (groupBy: ["product"], pivotBy: ["month"], delta: boolean)',
         touchpoints: ["Contextual Drawer", "Pivot Controls", "Density Toggle"],
       },
       {
@@ -2040,7 +2451,7 @@ export const portfolioProjects: CaseStudyProject[] = [
         phase: "01 / API & Props",
         title: "Co-authored widget prop schemas",
         detail:
-          "Defined exact TypeScript interfaces for `groupBy`, `pivotBy`, `delta`, and multi-condition filters prior to UI lock.",
+          "Defined exact TypeScript interfaces for groupBy, pivotBy, delta, and multi-condition filters prior to UI lock.",
         deliverable: "Typed React component contracts",
       },
       {
@@ -2121,6 +2532,11 @@ export const portfolioProjects: CaseStudyProject[] = [
   },
   {
     id: "shiftsnap",
+    tldr: {
+      problem: "Hourly retail and hospitality workers used clunky desktop tools and group texts to manage shifts and swap requests.",
+      bet: "Separate the worker's mobile schedule from the manager's exception queue and weekly coverage heatmap.",
+      proof: "Dual-role mobile and manager prototype with a 5-state swap approval ledger.",
+    },
     index: "02",
     name: "ShiftSnap",
     codename: "UX Case Study • Mobile SaaS",
@@ -2294,7 +2710,7 @@ export const portfolioProjects: CaseStudyProject[] = [
         uxResolution:
           "Work SSO verifies identity and routes Team Member vs. Manager workspaces.",
         engineeringContract:
-          "Auth session role claim (`TEAM_MEMBER` | `MANAGER`)",
+          "Auth session role claim (TEAM_MEMBER | MANAGER)",
         touchpoints: ["Work SSO", "Account Verified", "Role-Scoped Nav"],
       },
       {
@@ -2308,7 +2724,7 @@ export const portfolioProjects: CaseStudyProject[] = [
         uxResolution:
           "One-tap “Request swap” on Today’s Shift card pre-populates shift metadata.",
         engineeringContract:
-          "`SwapRequest` payload initialized in `PENDING_PEER` state",
+          "SwapRequest payload initialized in PENDING_PEER state",
         touchpoints: [
           "Today’s Shift Card",
           "1-Tap Request Swap",
@@ -2324,9 +2740,9 @@ export const portfolioProjects: CaseStudyProject[] = [
         frictionEliminated:
           "Swaps collapsed when replacements lacked Barista/Shift Lead certification.",
         uxResolution:
-          "Team Roster filters by role and displays `Certified` badges and weekly hour totals.",
+          "Team Roster filters by role and displays Certified badges and weekly hour totals.",
         engineeringContract:
-          "Eligibility guard (`isCertified && weeklyHours + shiftHours <= 40`)",
+          "Eligibility guard (isCertified && weeklyHours + shiftHours <= 40)",
         touchpoints: ["Team Roster", "Certified Filter", "Peer Acceptance"],
       },
       {
@@ -2340,7 +2756,7 @@ export const portfolioProjects: CaseStudyProject[] = [
         uxResolution:
           "Manager home pairs 12 Pending Approvals with the 6AM–9PM Coverage Heatmap.",
         engineeringContract:
-          "Coverage matrix (`>=90%`, `75-89%`, `<75%`) + manager approval lock",
+          "Coverage matrix (>=90%, 75-89%, <75%) + manager approval lock",
         touchpoints: [
           "Manager Queue",
           "Coverage Heatmap",
@@ -2357,7 +2773,7 @@ export const portfolioProjects: CaseStudyProject[] = [
         uxResolution:
           "Swap Status ledger displays “You gave up / You received” cards and audit timeline.",
         engineeringContract:
-          "Atomic calendar mutation (`APPROVED` → `COMPLETED` at 2:15 PM)",
+          "Atomic calendar mutation (APPROVED → COMPLETED at 2:15 PM)",
         touchpoints: [
           "Swap Status Ledger",
           "Gave Up / Received Diff",
@@ -2430,21 +2846,21 @@ export const portfolioProjects: CaseStudyProject[] = [
         phase: "01 / State Machine",
         title: "Co-authored 5-state swap API",
         detail:
-          "Mapped deterministic transitions and cancellation rules across `Pending`, `Accepted`, `Approved`, `Declined`, and `Expired`.",
+          "Mapped deterministic transitions and cancellation rules across Pending, Accepted, Approved, Declined, and Expired.",
         deliverable: "Shared state contract & notification triggers",
       },
       {
         phase: "02 / Coverage Math",
         title: "Engineered real-time coverage heatmaps",
         detail:
-          "Defined hourly store staffing thresholds (`90%+`, `75–89%`, `<75%`) and critical gap alerts for manager triage.",
+          "Defined hourly store staffing thresholds (90%+, 75–89%, <75%) and critical gap alerts for manager triage.",
         deliverable: "Coverage View & exception cards",
       },
       {
         phase: "03 / Mobile Design System",
         title: "Built accessible dual-role components",
         detail:
-          "Paired every status color with semantic icons and labels (`Confirmed`, `Urgent`, `Certified`) for fast floor scanning.",
+          "Paired every status color with semantic icons and labels (Confirmed, Urgent, Certified) for fast floor scanning.",
         deliverable: "9-screen production mobile system",
       },
     ],
@@ -2812,7 +3228,7 @@ const rawCatalog: {
     category: "Fintech · Cross-border money",
     portfolioCategory: "Content & web",
     summary:
-      "Connecting everyday multi-currency payments, beneficiaries, payment links, and digital assets in one transparent account workspace.",
+      "People sending money across borders had to jump between wallets, FX calculators, and saved contacts. We brought Send, Receive, Buy, and Hold into one screen with clear fees and rates shown before you hit send.",
     role: "Lead Designer",
     team: "UX researchers · Product · Engineering",
     scope:
@@ -2822,16 +3238,16 @@ const rawCatalog: {
     liveUrl: "https://www.entashiga.io/",
     decisions: [
       [
-        "Organize around recognizable money goals",
-        "Framed top-level actions around Send, Receive, Buy, and Hold with network details revealed progressively.",
+        "Lead with human money goals, not crypto/FX jargon",
+        "Structured primary navigation around Send, Receive, Buy, and Hold—hiding network/rail complexity until the user needs it.",
       ],
       [
-        "Show paid and received amounts before commitment",
-        "Brought exchange rates, fees, destination, and settlement conditions into one review surface.",
+        "Zero-surprise pre-commitment review",
+        "Locked exchange rate, fee breakdown, and exact recipient payout into one confirmation card before funds move.",
       ],
       [
-        "Separate wallets, payment links, and beneficiaries",
-        "Gave each operational task a stable destination outside the account overview.",
+        "Dedicated operational hubs",
+        "Separated Wallets, Payment Links, and Beneficiaries so repeat payouts take two clicks instead of re-entering details.",
       ],
     ],
   },
@@ -2948,7 +3364,7 @@ const rawCatalog: {
     category: "Fintech · Settlement infrastructure",
     portfolioCategory: "Content & web",
     summary:
-      "An enterprise payment operations and settlement platform making quote-to-settlement lifecycles, exceptions, and webhook endpoints traceable.",
+      "Ops teams couldn't tell if a stuck payout was just a bank delay, a wrong amount, or a broken webhook. We built one view that shows what was expected vs. what actually settled, and flags the exact reason why.",
     role: "Lead Designer",
     team: "UX researchers · Product · Engineering",
     scope: "Operational monitoring · Exception workspace · Webhook visibility",
@@ -2957,16 +3373,16 @@ const rawCatalog: {
     liveUrl: "https://www.pulseshiga.io/",
     decisions: [
       [
-        "Separate expected, received, and settled amounts",
-        "Answered distinct operational questions clearly across high-density transaction tables.",
+        "Three-column amount clarity (Expected / Received / Settled)",
+        "Eliminated reconciliation guesswork by showing exact shortfalls or FX variances inline in the ops table.",
       ],
       [
-        "Pair exception badges with root-cause context",
-        "Helped operators distinguish timing delays from amount mismatches before escalating.",
+        "Root-cause exception badges",
+        "Distinguished 'Timing Delay' from 'Amount Mismatch' so ops teams know when to wait vs. when to escalate.",
       ],
       [
-        "Dedicated webhook & integration health navigation",
-        "Kept technical endpoint monitoring accessible without crowding daily settlement triage.",
+        "Isolated Webhook Health view",
+        "Gave engineers a dedicated endpoint debugger without cluttering the daily settlement triage queue.",
       ],
     ],
   },
@@ -3304,7 +3720,7 @@ const catalogJourneys: Record<
       "Supervise Live Executions",
       "Spot runs waiting for human approval vs. failed external webhooks.",
       "Waiting-for-approval runs and crashed runs looked identical in logs.",
-      "Separated `Needs Approval`, `Running`, and `Failed` into distinct triage queues.",
+      "Separated Needs Approval, Running, and Failed into distinct triage queues.",
       ["Execution Queue", "Approval Action", "Payload Diff"],
       "runState: 'AWAITING_HUMAN' | 'FAILED' | 'OK'",
     ],
@@ -3338,7 +3754,7 @@ const catalogJourneys: Record<
       "Review Transparent Rental Terms",
       "Understand the exact price and viewing window before checkout.",
       "Streaming apps often blurred one-time rentals with recurring subscriptions.",
-      "Stated the exact `$4.99` rental price, 14-day window, and 48-hour finish policy beside the CTA.",
+      "Stated the exact $4.99 rental price, 14-day window, and 48-hour finish policy beside the CTA.",
       ["Access Card", "14-Day Badge", "No-Sub Promise"],
       '{ price: 4.99, windowDays: 14, playWindowHrs: 48 }',
     ],
@@ -3354,7 +3770,7 @@ const catalogJourneys: Record<
       "Return to Organized Library",
       "Distinguish active paid rentals from saved watchlist titles.",
       "Expired rentals, active entitlements, and wishlist items were mixed together.",
-      "Split My Library into `Continue Watching`, `Active Rentals`, `Saved`, and `History`.",
+      "Split My Library into Continue Watching, Active Rentals, Saved, and History.",
       ["My Library Tabs", "Entitlement Badge", "Re-Rent CTA"],
       "libraryBucket: 'ACTIVE' | 'SAVED' | 'EXPIRED'",
     ],
@@ -3372,7 +3788,7 @@ const catalogJourneys: Record<
       "Locate Flagged Transactions",
       "Filter high-density transaction rows by rail, status, or mismatch type.",
       "Operators had to export CSVs to find underpaid or expired FX quotes.",
-      "Built instant status facets (`Mismatch`, `Delayed`, `Webhook Retry`) above the table.",
+      "Built instant status facets (Mismatch, Delayed, Webhook Retry) above the table.",
       ["Facet Filter Bar", "High-Density Grid", "Status Pill"],
       "queryFilter: { status: 'AMOUNT_MISMATCH' }",
     ],
@@ -3430,7 +3846,7 @@ const catalogJourneys: Record<
       "Manage Card Security",
       "Freeze a misplaced virtual or physical card or adjust spending limits.",
       "Security toggles were buried 4 levels deep inside profile settings.",
-      "Placed `Freeze Card`, `Spend Limit`, and `Show PIN` directly beneath the visual card.",
+      "Placed Freeze Card, Spend Limit, and Show PIN directly beneath the visual card.",
       ["Card Carousel", "Instant Freeze Toggle", "Limit Slider"],
       "cardControl: { cardId, frozen: boolean, limit }",
     ],
@@ -3448,7 +3864,7 @@ const catalogJourneys: Record<
       "Triage Low-Stock Alerts",
       "Spot SKUs below reorder threshold at the start of a warehouse shift.",
       "Critical stockouts were buried inside alphabetical catalog lists.",
-      "Pinned `Below Reorder` and `Urgent Orders` exception cards to the top of Home.",
+      "Pinned Below Reorder and Urgent Orders exception cards to the top of Home.",
       ["Shift Overview", "Low-Stock Alert Strip", "Urgent Badge"],
       "alertsQuery: { stockBelowReorder: true }",
     ],
@@ -3456,7 +3872,7 @@ const catalogJourneys: Record<
       "Locate SKU by Scan or Filter",
       "Jump to an item record from the warehouse aisle with one thumb.",
       "Desktop-style tables required horizontal scrolling on handheld devices.",
-      "Created a dedicated `Items` bottom tab with instant SKU/barcode search and zone chips.",
+      "Created a dedicated Items bottom tab with instant SKU/barcode search and zone chips.",
       ["Items Tab", "SKU Search Bar", "Aisle Filter"],
       "skuLookup(query, warehouseZone)",
     ],
@@ -3470,9 +3886,9 @@ const catalogJourneys: Record<
     ],
     [
       "Advance Order Fulfillment",
-      "Move a customer order from `Picking` to `Packed` to `Shipped`.",
+      "Move a customer order from Picking to Packed to Shipped.",
       "Floor staff couldn't see which orders were blocked by missing stock.",
-      "Built a dedicated `Orders` queue with clear stage pills and pick-list checklists.",
+      "Built a dedicated Orders queue with clear stage pills and pick-list checklists.",
       ["Orders Tab", "Fulfillment Stepper", "Pack Action"],
       "orderState: 'PICKING' | 'PACKED' | 'SHIPPED'",
     ],
@@ -3498,7 +3914,7 @@ const catalogJourneys: Record<
       "Filter by Real Trip Capacity",
       "Narrow vehicles by passenger seats, luggage bags, transmission, and drivetrain.",
       "Industry car-class codes ('ICAR', 'SFAR') meant nothing to everyday travelers.",
-      "Replaced opaque class codes with visual capacity chips (`5 Seats`, `3 Bags`, `AWD`).",
+      "Replaced opaque class codes with visual capacity chips (5 Seats, 3 Bags, AWD).",
       ["Capacity Filters", "Fleet Grid", "Spec Badges"],
       "fleetFilter: { minSeats: 5, minBags: 3, awd }",
     ],
@@ -3506,7 +3922,7 @@ const catalogJourneys: Record<
       "Compare Daily vs. Total Price",
       "Evaluate two vehicles side by side with real multi-day pricing.",
       "Headline daily rates hid mandatory airport fees and mileage caps.",
-      "Surfaced both `$ / day` and the all-in trip estimate directly on every fleet card.",
+      "Surfaced both $ / day and the all-in trip estimate directly on every fleet card.",
       ["Vehicle Card", "All-In Estimate", "Compare Drawer"],
       '{ ratePerDay: 68, estTripTotal: 234, unlimitedMi }',
     ],
@@ -3548,7 +3964,7 @@ const catalogJourneys: Record<
       "Balance Competing Goals",
       "Allocate monthly surplus across emergency cash, debt payoff, and retirement.",
       "Saving for one goal in isolation hid how it delayed other household milestones.",
-      "Showed real-time timeline trade-offs (`Home Down Payment -4 mos` vs `Debt Free +2 mos`).",
+      "Showed real-time timeline trade-offs (Home Down Payment -4 mos vs Debt Free +2 mos).",
       ["Goal Trade-Off Matrix", "Allocation Bar", "Timeline Shift Pill"],
       "goalAllocator: { emergencyPct, debtPct, investPct }",
     ],
@@ -3556,7 +3972,7 @@ const catalogJourneys: Record<
       "Inspect Assumptions Clearly",
       "Understand the inflation, tax, and return assumptions behind every projection.",
       "Black-box robo-advisors showed optimistic numbers without explaining the math.",
-      "Exposed editable assumption chips (`6.5% Return`, `2.8% Inflation`) directly below charts.",
+      "Exposed editable assumption chips (6.5% Return, 2.8% Inflation) directly below charts.",
       ["Assumption Bar", "Confidence Band", "Math Explainer"],
       '{ realReturnPct: 6.5, inflationPct: 2.8, p50_p90 }',
     ],
@@ -3598,7 +4014,7 @@ const catalogJourneys: Record<
       "Estimate & Request Assessment",
       "Submit property type and monthly bill range for a tailored solar consultation.",
       "Long 18-field engineering forms caused 70%+ mobile enquiry abandonment.",
-      "Designed a progressive 3-step enquiry flow (`Property Type` → `Bill Range` → `Contact`).",
+      "Designed a progressive 3-step enquiry flow (Property Type → Bill Range → Contact).",
       ["Progressive Enquiry Form", "Bill Range Pills", "Instant Confirmation"],
       "leadCapture: { propertyType, monthlyBillBand }",
     ],

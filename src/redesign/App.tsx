@@ -20,6 +20,8 @@ const clean = (s: string) => s.replace(/`/g, "")
 const pad = (n: number) => String(n).padStart(2, "0")
 
 const tintById: Record<string, string> = {
+  tokenroute: "lilac",
+  fingsight: "blue",
   rapidbi: "blue",
   shiftsnap: "green",
   "navflow-ai": "lilac",
@@ -1286,6 +1288,34 @@ function ProjectPage({ project }: { project: CaseStudyProject }) {
           title={project.mandateTitle}
           intro={project.mandateBody}
         >
+          {(() => {
+            const o = project.outcomes?.[0]
+            const t = project.tldr ?? {
+              problem: project.problemStatement ?? project.summary,
+              bet: project.resolutionTitle ?? project.ownershipPillars?.[0]?.[0] ?? "",
+              proof: o ? `${o[2]} ${o[1]}` : "",
+            }
+            return (
+              <div className="cs-tldr" aria-label="Case study in 10 seconds">
+                <div className="cs-tldr-item">
+                  <span className="cs-tldr-tag">The problem</span>
+                  <p>{t.problem}</p>
+                </div>
+                <div className="cs-tldr-item">
+                  <span className="cs-tldr-tag">My bet</span>
+                  <p>{t.bet}</p>
+                </div>
+                <div className="cs-tldr-item">
+                  <span className="cs-tldr-tag">The proof</span>
+                  <p>{t.proof}</p>
+                </div>
+                <div className="cs-tldr-meta">
+                  <span><b>Role</b> {project.role}</span>
+                  <span><b>Scope</b> {project.scope}</span>
+                </div>
+              </div>
+            )
+          })()}
           {project.id === "shiftsnap" ? (
             <div className="shiftsnap-overview-grid">
               <div className="shiftsnap-overview-text">
