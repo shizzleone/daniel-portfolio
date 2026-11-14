@@ -1156,6 +1156,17 @@ function ProjectPage({ project }: { project: CaseStudyProject }) {
                     <Icon name="arrow-up-right" size={12} />
                   </a>
                 )}
+                {project.storybookUrl && (
+                  <a
+                    href={project.storybookUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="cs-figma-pill"
+                  >
+                    Storybook 10.6
+                    <Icon name="arrow-up-right" size={12} />
+                  </a>
+                )}
                 {project.figmaUrl && (
                   <a
                     href={project.figmaUrl}

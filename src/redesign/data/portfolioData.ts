@@ -63,6 +63,7 @@ export interface CaseStudyProject {
   personaQuotes?: PersonaQuote[]
   secondaryImage?: string
   liveUrl?: string
+  storybookUrl?: string
   figmaUrl?: string
   mandateTitle: string
   mandateBody: string
@@ -2222,191 +2223,211 @@ export const portfolioProjects: CaseStudyProject[] = [
   {
     id: "rapidbi",
     tldr: {
-      problem: "Teams had powerful charts and grids, but dense settings panels and separate config pages slowed down analysis.",
-      bet: "Keep the overview and 1,440-row grid on one canvas, with an in-place side drawer and previewable AI suggestions.",
-      proof: "Storybook 10.6 component workbench and typed prop contracts built with engineering.",
+      problem: "Getting a new dashboard took days in a data-team ticket queue because existing BI tools demanded SQL and chart-config expertise.",
+      bet: "Pair a plain-English AI Canvas Agent with a progressive manual builder—both converging on the exact same editable widget, backed by governed data models.",
+      proof: "92% task success in moderated testing, 120 self-serve users, and a Storybook 10.6 component workbench shipped with engineering.",
     },
-    liveUrl: "./rapidbi-storybook/index.html",
+    liveUrl: "./rapidbi-prototype/index.html",
+    storybookUrl: "./rapidbi-storybook/index.html",
     index: "01",
     name: "Signal BI",
     codename: "Signal BI Workbench",
-    category: "Developer tools · Analytics platform",
+    category: "Enterprise Data & Analytics · AI UX",
     portfolioCategory: "Developer tools",
     featured: true,
     summary:
-      "A developer-facing analytics workbench for composing canvases, configuring widgets, inspecting 1,440+ commerce records, and shipping reusable data experiences.",
-    headlineStart: "Analytics built to drive a ",
-    headlineAccent: "confident decision.",
-    lede: "As Design Lead, I partnered with frontend and data platform engineers to unify KPI signals, Highcharts visualizations, AG Grid row models, and Storybook 10.6 component contracts into one coherent workbench.",
+      "From a question to a dashboard in minutes—an AI-assisted self-service analytics canvas for non-technical business users, backed by a governed manual builder and Storybook 10.6 contracts.",
+    headlineStart: "From a question to a ",
+    headlineAccent: "dashboard in minutes.",
+    lede: "As Lead Designer alongside 1 UX researcher, 2 PMs, and 5 engineers, I designed a dual-path analytics canvas where business users describe charts in plain English—or build by hand with full control—while every output stays bound to governed data and Storybook 10.6 contracts.",
     role: "Lead Designer",
-    team: "UX researchers · Product · Engineering",
+    team: "1 UX Researcher · 2 PMs · 5 Engineers",
     scope:
-      "Developer workflow · Interaction model · Salt tokens · Storybook 10.6",
+      "AI UX · Information Architecture · Progressive Manual Builder · Storybook 10.6",
     platform: "Responsive Web Application & Component Workbench",
     heroImage: `${assetBase}rapidbi/canvas-commerce.png`,
     secondaryImage: `${assetBase}rapidbi/storybook-workbench.png`,
     panoramaTitle: "Live Analytics Canvas & Storybook 10.6 Workbench",
-    panoramaLabel: "Highcharts Visualizations · AG Grid Row Model · Salt Tokens",
-    frictionTitle: "Disconnected Metrics & Configuration Overhead",
-    resolutionTitle: "Unified Governed Analytics Workbench",
-    resolutionBody: "Synthesized Highcharts visualizations, server-side AG Grid row models, and filter schemas into one coherent canvas with inline commentary and one-click Storybook tokens.",
-    problemStatement: "Engineering had powerful data, charting, and export primitives, but product teams experienced them as disconnected demos and dense settings panels that slowed down decision-making.",
+    panoramaLabel: "Dual-Path AI + Manual Builder · Governed Data Models · Salt Tokens",
+    frictionTitle: "Dashboards Took Days. The Questions Couldn't Wait.",
+    resolutionTitle: "Dual-Path AI & Governed Analytics Canvas",
+    resolutionBody: "Unified a plain-English AI Canvas Agent and a progressive manual builder onto one shared widget architecture—cutting dashboard creation from days in a ticket queue to minutes, with 92% usability task success.",
+    problemStatement: "Non-technical business users could not independently create trustworthy dashboards. Every new view meant filing a ticket, waiting days behind complex requests, or fighting developer-oriented tools that assumed SQL and visualization fluency.",
     mandateTitle:
-      "Turn fragmented charting and grid capabilities into one governed analytics loop.",
+      "Let non-technical users build trustworthy dashboards in minutes—without boxing in power users.",
     mandateBody:
-      "Engineering had powerful data, charting, grid, and export primitives, but product teams experienced them as disconnected demos and dense settings panels. I led the end-to-end UX architecture, progressive configuration model, and React + Storybook delivery.",
+      "The data team wanted to offload routine requests while keeping data governed; business users wanted independence without a steep learning curve. I owned UX strategy, research synthesis, IA, dual-path interaction flows, and Storybook 10.6 handoff.",
+    audienceTitle: "Business analysts, data platform SMEs, and executives",
+    audienceGoal: "I want to answer a stakeholder question in minutes without filing a ticket—and trust that every chart uses governed, real data.",
+    personaQuotes: [
+      {
+        quote: "I know exactly what I want to see — I just can't make the tool do it. By the time I get the dashboard, the meeting's over.",
+        name: "Priya",
+        designation: "Business Analyst · Primary",
+      },
+      {
+        quote: "I need to offload routine requests while keeping data governed so teams don't ship wrong-number dashboards.",
+        name: "Marcus",
+        designation: "Data / Platform SME",
+      },
+      {
+        quote: "A blank canvas is intimidating, and I don't trust a chart if I'm not sure it's using the right data.",
+        name: "Elena",
+        designation: "Executive / Consumer",
+      },
+    ],
     ownershipPillars: [
       [
-        "Canvas Architecture",
-        "Connected KPIs, charts, filters, server-side grids, and inline commentary on one surface.",
+        "Dual-Path Canvas IA",
+        "Path A (AI Canvas Agent) and Path B (Manual Builder) converge on the exact same configurable widget—no mode traps.",
+      ],
+      [
+        "Governed by Design",
+        "Data-source-first onboarding and Saved Views provenance (owner, edited date, access tabs) build trust before a chart loads.",
       ],
       [
         "Engineering Contracts",
-        "Co-defined groupBy, pivotBy, delta, and filter schemas with frontend engineers.",
-      ],
-      [
-        "System Delivery",
-        "Shipped Salt token foundations, density modes, and automated a11y checks in Storybook 10.6.",
+        "Co-defined groupBy, pivotBy, delta, and filter schemas and shipped Salt tokens + a11y checks in Storybook 10.6.",
       ],
     ],
     discoverySummary:
-      "Working alongside our UX researchers, we audited existing analytics implementations across product squads. I then paired with engineers on AG Grid and Highcharts constraints and mapped every state transition required for production.",
+      "Across stakeholder and user interviews, journey-mapping workshops, and moderated usability testing (Maze & UserTesting), four insights reshaped the product from 'a better chart form' into 'a conversation that produces charts, backed by full manual control.'",
     discoveryMethods: [
       [
-        "Decision Mapping",
-        "Traced every step from spotting a metric delta to inspecting rows and exporting a decision.",
+        "Stakeholder & User Interviews",
+        "Mapped the ticket-driven request bottleneck across business analysts (Priya), data SMEs (Marcus), and executives (Elena).",
       ],
       [
-        "Technical Pairing",
-        "Aligned directly with engineering on server-side grouping, pivots, and 1,440-row pagination.",
+        "Journey-Mapping Workshops",
+        "Identified where blank-canvas hesitation and data-trust doubts stalled self-service adoption.",
       ],
       [
-        "State Inventory",
-        "Specified empty, loading, configured, filtered, saved, and assistant-review states upfront.",
+        "Moderated Usability Testing",
+        "Validated the dual-path workflow and plain-language widget microcopy, hitting 92% task success.",
       ],
     ],
     figmaNotes: [
       {
         tone: "amber",
-        tag: "Analyst Truth",
-        text: "“A chart only earns trust when I can open the exact commerce rows behind the spike.”",
+        tag: "Insight 01 · Intent",
+        text: "People think in questions, not configs—users asked for 'revenue by region,' not axes, measures, and dimensions.",
       },
       {
         tone: "rose",
-        tag: "Layout Constraint",
-        text: "Configuration must never replace the canvas; keep edits mounted beside the active widget.",
+        tag: "Insight 02 · Onboarding",
+        text: "The blank canvas is the enemy—every empty state must name what's possible and offer an obvious next step.",
       },
       {
         tone: "sky",
-        tag: "Hierarchy Rule",
-        text: "Every analytical view must immediately answer: What changed? Why? What action comes next?",
+        tag: "Insight 03 · North Star",
+        text: "Every screen must answer two questions instantly: 'What can I do here?' and 'Can I trust what I'm seeing?'",
       },
       {
         tone: "emerald",
-        tag: "Engineering Sync",
-        text: "Map every Figma variant directly to typed Storybook controls (groupBy, pivotBy, delta).",
+        tag: "Insight 04 · No Ceiling",
+        text: "Power users exist too—AI speed cannot mean a ceiling; analysts still need fine control over chart types, pivots, and grids.",
       },
       {
         tone: "orange",
-        tag: "AI Governance",
-        text: "Assistant recommendations must preview their impact and wait for explicit human approval.",
+        tag: "Microcopy as UX",
+        text: "Wrote every widget type (Chart, KPI, Grid, Commentary, Group) as a plain-language promise rather than technical jargon.",
       },
       {
         tone: "violet",
-        tag: "Continuity",
-        text: "Persist the filtered analytical state and inline commentary—never just export a static image.",
+        tag: "Engineering Sync",
+        text: "Mapped Figma variants directly to typed Storybook 10.6 controls (groupBy, pivotBy, delta) for 1:1 code parity.",
       },
     ],
     principles: [
       [
-        "Orient first",
-        "Lead with the KPI signal, active timeframe, and comparison delta before exposing controls.",
+        "Conversation over configuration",
+        "Lead with plain-English intent; keep manual controls one click away on the exact same widget.",
       ],
       [
-        "Progressive depth",
-        "Reveal grouping, pivot, and display rules in a contextual drawer only when needed.",
+        "Progressive disclosure",
+        "Simple by default—reveal grouping, pivot, and display rules in an in-place drawer only when asked for.",
       ],
       [
-        "Equal footing for evidence",
-        "Keep the server-side data grid and commentary synchronized with the active chart.",
+        "Governed by design",
+        "Pick an approved data model up front and show Saved Views provenance so trust is built into the sequence.",
       ],
       [
-        "Reviewable automation",
-        "Present AI assistant changes as inspectable proposals before mutating the canvas.",
+        "Always a next step & show the work",
+        "Empty states guide the first widget, and the AI narrates its field mapping so users verify before sharing.",
       ],
     ],
     journeySummary:
-      "I architected a 5-stage loop where user intent, interface resolution, and React/Storybook contracts stay locked in sync.",
+      "I organized the product around two spaces—a Home workspace for Saved Views and a Canvas for building—where AI and manual paths converge across a 5-stage loop.",
     journeyFlow: [
       {
         step: "01",
-        stage: "Scan",
-        actor: "Product / Ops Lead",
+        stage: "Home",
+        actor: "Business Analyst / Exec",
         userGoal:
-          "Identify what changed across net revenue, orders, and conversion",
+          "Find a trustworthy saved view or start a new canvas with clear ownership",
         frictionEliminated:
-          "Headline KPIs were previously detached from time range and comparison baselines.",
+          "Users couldn't tell which dashboards were current, governed, or safe to share.",
         uxResolution:
-          "Unified KPI header strip with explicit period selector and directional delta badges.",
+          "Saved Views gallery with access tabs (All / Private / Public / Shared / Favorites) and per-card owner/edit metadata.",
         engineeringContract:
-          "SavedView header state + Salt semantic status tokens",
-        touchpoints: ["KPI Strip", "Period Selector", "Delta Badges"],
+          "SavedView metadata schema + Salt semantic status tokens",
+        touchpoints: ["Access Tabs", "Provenance Cards", "+ New Canvas"],
       },
       {
         step: "02",
-        stage: "Explore",
-        actor: "Data Analyst",
+        stage: "Source",
+        actor: "Business Analyst",
         userGoal:
-          "Drill from a Q1 revenue spike into product groups and underlying records",
+          "Scope the canvas to a governed, approved data model before building",
         frictionEliminated:
-          "Switching between chart views and data tables reset active filters.",
+          "Blank canvases caused hesitation and risked unverified field combinations.",
         uxResolution:
-          "Synchronized Highcharts + AG Grid canvas sharing a single filter state.",
+          "Data-source-first selector (Finance, Sales Analytics, Web Traffic) + guided empty state naming what's possible.",
         engineeringContract:
-          "Shared query context across chart and 1,440-row server model",
-        touchpoints: ["Chart Switcher", "Advanced Filters", "AG Grid Groups"],
+          "Governed explore schema scoping both AI agent & manual picker",
+        touchpoints: ["Data Model Picker", "Guided Empty State", "Add First Widget"],
       },
       {
         step: "03",
-        stage: "Configure",
-        actor: "Product Builder",
+        stage: "Build",
+        actor: "Novice or Power User",
         userGoal:
-          "Adjust grouping, monthly pivots, and delta calculations in real time",
+          "Add a KPI, Chart, 1,440-row Grid, Commentary, or Group via AI or manual path",
         frictionEliminated:
-          "Full-screen settings pages hid the visualization being configured.",
+          "Switching between 'AI mode' and 'manual mode' trapped users in separate tools.",
         uxResolution:
-          "Contextual side inspector updates the active widget in place without unmounting.",
+          "Dual-path creation: plain-English AI Canvas Agent or plain-language Add Widget menu—both producing the same widget.",
         engineeringContract:
-          'Typed props (groupBy: ["product"], pivotBy: ["month"], delta: boolean)',
-        touchpoints: ["Contextual Drawer", "Pivot Controls", "Density Toggle"],
+          "Unified Widget AST + synchronized Highcharts & 1,440-row AG Grid model",
+        touchpoints: ["AI Canvas Agent", "Add Widget Menu", "Synced Grid"],
       },
       {
         step: "04",
-        stage: "Explain",
-        actor: "Analyst + Stakeholders",
+        stage: "Refine",
+        actor: "Analyst / Product Builder",
         userGoal:
-          "Attach rationale and review AI-suggested segment comparisons",
+          "Adjust grouping, monthly pivots, deltas, and AI suggestions without losing context",
         frictionEliminated:
-          "Insights were copied into Slack or decks, losing the live data context.",
+          "Full-screen settings pages hid the visualization being configured.",
         uxResolution:
-          "Inline commentary threads and human-reviewed assistant suggestion cards.",
+          "In-place contextual side drawer and reviewable AI proposal cards that preview changes before applying.",
         engineeringContract:
-          "Annotation schema bound to view ID + approval gate",
-        touchpoints: ["Inline Commentary", "@Mentions", "AI Review Card"],
+          'Typed props (groupBy: ["product"], pivotBy: ["month"], delta: boolean)',
+        touchpoints: ["Contextual Drawer", "Pivot Controls", "AI Preview Gate"],
       },
       {
         step: "05",
-        stage: "Hand Off",
-        actor: "Design & Engineering",
+        stage: "Share",
+        actor: "Design, Ops & Engineering",
         userGoal:
-          "Save the view or embed the verified component into a host application",
+          "Annotate rationale, export decisions, or embed verified components in host apps",
         frictionEliminated:
-          "Engineers had to reverse-engineer behavior from static mocks.",
+          "Insights copied into Slack lost live data context, and engineers had to reverse-engineer static mocks.",
         uxResolution:
-          "Persistent saved views paired with live Storybook 10.6 component documentation.",
+          "Inline commentary threads, persistent saved views, and live Storybook 10.6 component documentation.",
         engineeringContract:
-          "Storybook Controls, Actions, Interactions & 3 A11y checks",
-        touchpoints: ["Saved Views", "CSV / PDF Export", "Storybook 10.6"],
+          "Annotation schema + Storybook Controls, Actions & 3 A11y checks",
+        touchpoints: ["Inline Commentary", "CSV / PDF Export", "Storybook 10.6"],
       },
     ],
     wireframes: [
@@ -2440,12 +2461,12 @@ export const portfolioProjects: CaseStudyProject[] = [
     ],
     architecturalPivot: {
       summary:
-        "During joint architecture reviews with engineering, we replaced the legacy full-page widget editor with an adjacent contextual drawer so the live canvas state never unmounts.",
-      before: "Detached settings route (context lost)",
-      after: "In-place drawer synced with live canvas",
+        "Two architectural bets unified the product: making the AI Canvas Agent and Manual Builder output the exact same editable widget, and replacing full-page settings routes with an in-place drawer so the live canvas never unmounts.",
+      before: "Siloed AI/manual modes & detached settings route",
+      after: "Converged dual-path widgets & in-place drawer",
     },
     engineeringSummary:
-      "I worked side-by-side with frontend engineers to align Salt design tokens, AG Grid server-side row models, and Storybook 10.6 controls.",
+      "I worked side-by-side with 5 engineers to align Salt design tokens, governed explore schemas, AG Grid server-side row models, and Storybook 10.6 controls.",
     collabTracks: [
       {
         phase: "01 / API & Props",
@@ -2494,39 +2515,39 @@ export const portfolioProjects: CaseStudyProject[] = [
     },
     decisions: [
       {
-        title: "Keep overview and evidence on a single canvas.",
-        body: "KPI tiles, charts, and the server-side AG Grid share one state model so analysts move from a high-level delta to product-level rows without losing context.",
-        badge: "Signal → Evidence Continuity",
+        title: "Dual-path creation converging on one widget & live grid.",
+        body: "Whether a user starts in plain English with the AI agent or picks from the plain-language Add Widget menu (Chart, KPI, Grid, Commentary, Group), both produce the same configurable widget synced to the 1,440-row AG Grid.",
+        badge: "Dual-Path IA",
         image: `${assetBase}rapidbi/canvas-grid-commentary.png`,
       },
       {
-        title: "Progressive configuration with zero context switching.",
-        body: "Common actions stay on the surface while advanced grouping, pivot rules, and delta toggles unfold in an adjacent drawer.",
-        badge: "Progressive Disclosure",
+        title: "Data-source-first governance & in-place configuration.",
+        body: "Users pick a governed data model up front so every field is pre-approved, then refine grouping, pivots, and deltas inside an adjacent drawer without leaving the live canvas.",
+        badge: "Governed by Design",
         image: `${assetBase}rapidbi/widget-settings.png`,
       },
       {
-        title: "Human-reviewed AI assistant recommendations.",
-        body: "Assistant suggestions explain which filters or chart changes will occur and wait for explicit approval before modifying the canvas.",
-        badge: "Governed AI Pattern",
-        image: `${assetBase}rapidbi/ai-assistant.png`,
+        title: "Canvas Agent drawer that shows its work before sharing.",
+        body: "The slide-over Canvas Agent drawer lets users ask what data is available or request charts, grids, and KPIs in plain English—narrating each created widget and reminding users to verify configurations before sharing.",
+        badge: "Trustworthy AI Drawer",
+        image: `${assetBase}rapidbi/canvas-agent-drawer.png`,
       },
     ],
     outcomes: [
       [
-        "Signal orientation",
-        "Unified KPI header, timeframe context, and comparison deltas",
-        "Immediate executive & analyst scan",
+        "92% task success",
+        "Validated in moderated usability testing against a ≥90% bar",
+        "Time-to-first-widget target <2 min (down from days)",
       ],
       [
-        "Deep data inspection",
-        "Synchronized Highcharts + 1,440-row AG Grid grouping",
-        "Zero context loss across drilldowns",
+        "120 self-serve users",
+        "Adopted across business analysts and platform teams",
+        "Offloaded routine dashboard tickets from data engineering",
       ],
       [
-        "Engineering velocity",
-        "Storybook 10.6 workbench with live controls & a11y checks",
-        "Direct design-to-code parity",
+        "Storybook 10.6 parity",
+        "Live Salt tokens, typed prop contracts & automated a11y checks",
+        "Zero drift between Figma specs and production React",
       ],
     ],
   },
@@ -4030,7 +4051,7 @@ const catalogJourneys: Record<
 }
 
 const generatedAudiences: Record<string, [string, string]> = {
-  rapidbi: ["Analytics developers and data product teams", "I need to compose, inspect, and explain trusted data without losing the context behind a metric."],
+  rapidbi: ["Business analysts, data SMEs, and engineering teams", "I want to describe a chart in plain English or refine it by hand—and trust that every number uses governed, real data."],
   shiftsnap: ["Hourly employees and store managers", "I need to see the right shift, request a change, and know when the schedule is confirmed."],
   "navflow-ai": ["Workflow authors and operations leads", "I need to turn a business process into a reviewable flow without losing control of what automation will do."],
   "dev-mode": ["Developers integrating a new API", "I need a guided path from first request to a working integration, with docs and recovery guidance in the same place."],
