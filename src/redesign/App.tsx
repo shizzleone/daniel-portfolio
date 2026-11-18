@@ -20,6 +20,7 @@ const clean = (s: string) => s.replace(/`/g, "")
 const pad = (n: number) => String(n).padStart(2, "0")
 
 const tintById: Record<string, string> = {
+  "advisor-copilot": "blue",
   tokenroute: "lilac",
   fingsight: "blue",
   rapidbi: "blue",

@@ -32,6 +32,36 @@ export interface UserFlow {
 }
 
 export const userFlows: Record<string, UserFlow> = {
+  "advisor-copilot": {
+    title: "Behavior-first conversational UX with 3-tier autonomy.",
+    summary:
+      "Instead of letting an AI guess across client households or send unreviewed advice, the copilot clarifies ambiguity, surfaces stale feeds, enforces FINRA tone guardrails, and locks execution behind human sign-off.",
+    lanes: ["Advisor", "Advisor Copilot", "Governance & CRM"],
+    cols: 8,
+    nodes: [
+      { id: "start", type: "start", label: "Ask ambiguous prompt", col: 0, row: 0 },
+      { id: "clarify", type: "decision", label: "Disambiguate household", col: 1, row: 1 },
+      { id: "select", type: "step", label: "Pick Elena Vance (2:00 PM)", col: 2, row: 0 },
+      { id: "brief", type: "system", label: "Synthesize cited brief + flag 18d stale feed", col: 3, row: 1 },
+      { id: "draft", type: "step", label: "Request client follow-up", col: 4, row: 0 },
+      { id: "finra", type: "system", label: "Run FINRA Rule 2210 tone filter", col: 5, row: 2 },
+      { id: "gate", type: "decision", label: "Approve & queue in CRM", col: 6, row: 0 },
+      { id: "end", type: "end", label: "Audit-logged delivery", col: 7, row: 2 },
+    ],
+    edges: [
+      { from: "start", to: "clarify" },
+      { from: "clarify", to: "select", label: "2 matches" },
+      { from: "select", to: "brief" },
+      { from: "brief", to: "draft" },
+      { from: "draft", to: "finra" },
+      { from: "finra", to: "gate", label: "Passed" },
+      { from: "gate", to: "end" },
+    ],
+    paths: [
+      { id: "all", label: "Full Behavioral Loop", nodes: ["start", "clarify", "select", "brief", "draft", "finra", "gate", "end"] },
+      { id: "safe", label: "Compliance & Human Gate", nodes: ["draft", "finra", "gate", "end"] },
+    ],
+  },
   fingsight: {
     title: "From a flagged anomaly to an approved action.",
     summary:

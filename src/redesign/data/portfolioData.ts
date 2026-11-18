@@ -237,6 +237,285 @@ export const toolStack = [
 
 export const portfolioProjects: CaseStudyProject[] = [
   {
+    id: "advisor-copilot",
+    tldr: {
+      problem: "Wealth advisors lose hours stitching together CRM notes, brokerage drift, and DocuSign status before client reviews—while generic AI chatbots risk hallucinating numbers or violating FINRA rules.",
+      bet: "Design the AI's behavior, not just its dialogue: a 3-tier autonomy framework with disambiguation chips, source citations, staleness recovery, and FINRA-checked human gates.",
+      proof: "Working interactive prototype with 4 behavioral scenarios (Clarify, Grounded Brief, FINRA Draft, Autonomy Refusal) and a live AI Behavior Inspector.",
+    },
+    liveUrl: "./advisor-copilot-prototype/index.html",
+    index: "00",
+    name: "Wealth Advisor Copilot",
+    codename: "Behavior-First Conversational AI",
+    category: "Conversational AI · Wealth Management",
+    portfolioCategory: "AI & Automation",
+    featured: true,
+    summary:
+      "Designing the behavior—not just the dialogue—of an agentic wealth advisor copilot with 3-tier autonomy, persona/tone switching, staleness recovery, and FINRA-compliant human gates.",
+    headlineStart: "Designing AI behavior, ",
+    headlineAccent: "not just dialogue.",
+    lede: "A conversational AI copilot for wealth advisors that disambiguates client context before retrieval, cites internal sources while flagging stale feeds, shifts tone from internal analyst to fiduciary client draft, and locks irreversible trades behind human authorization.",
+    role: "Lead Conversational & AI Product Designer",
+    team: "Product Management · UX Research · Compliance / Legal · Engineering",
+    scope:
+      "Conversational AI · Persona & Tone System · 3-Tier Autonomy · Error Recovery",
+    platform: "Enterprise Web Workspace & Live Behavioral AI Prototype",
+    heroImage: `${assetBase}advisor-copilot/hero-brief.png`,
+    secondaryImage: `${assetBase}advisor-copilot/compliance-draft.png`,
+    panoramaTitle: "Wealth Advisor Copilot & Live AI Behavior Inspector",
+    panoramaLabel: "3-Tier Autonomy · FINRA Rule 2210 Filter · Cross-Client Isolation",
+    frictionTitle: "Generic Chatbots Fail High-Trust Advisory Workflows",
+    resolutionTitle: "Behavior-First Copilot with Explicit Autonomy Boundaries",
+    resolutionBody: "Built a 3-tier governance model (Inform & Clarify, Draft & Propose with Human Gate, Human-Only Execution Lock) paired with a live Behavior Inspector that makes every guardrail transparent.",
+    problemStatement: "Advisors preparing for back-to-back client meetings had to cross-check CRM notes, portfolio drift, and pending forms manually. Off-the-shelf generative AI either guessed across households, hid stale third-party 401(k) feeds, or used promissory language that violated FINRA Rule 2210.",
+    mandateTitle:
+      "Turn an unpredictable LLM into a calm, fiduciary-grade advisor copilot.",
+    mandateBody:
+      "Stakeholders across Product, Compliance, and Engineering needed proof that generative AI could save advisors 20+ minutes per meeting without risking cross-client PII leaks, unverified financial claims, or unauthorized trade execution.",
+    audienceTitle: "Wealth advisors, paraplanners, and compliance reviewers",
+    audienceGoal: "I need a 60-second pre-meeting brief I can trust completely, and a compliant client follow-up I approve before anything is sent.",
+    personaQuotes: [
+      {
+        quote: "If I ask about my afternoon meeting and the AI guesses the wrong client, I lose trust in it immediately.",
+        name: "Elena's Advisor",
+        designation: "Senior Wealth Advisor · $180M Book",
+      },
+      {
+        quote: "Never estimate around a stale 401(k) feed—tell me it's 18 days old so I can ask the client live.",
+        name: "Marcus",
+        designation: "Financial Planning Lead",
+      },
+      {
+        quote: "Client emails cannot imply guaranteed returns; compliance review has to happen before the draft hits CRM.",
+        name: "Compliance Officer",
+        designation: "FINRA Rule 2210 Reviewer",
+      },
+    ],
+    ownershipPillars: [
+      [
+        "Persona, Voice & Tone System",
+        "Defined 3 distinct behavioral modes: calm internal analyst for briefs, warm non-promissory fiduciary for client drafts, and non-judgmental boundary helper for refusals.",
+      ],
+      [
+        "3-Tier Autonomy Framework",
+        "Tier 1 (Inform & Clarify), Tier 2 (Draft & Propose behind Human Gate), and Tier 3 (Human-Only Execution Lock for trades).",
+      ],
+      [
+        "Clarification & Error Recovery",
+        "One-tap disambiguation chips for ambiguous prompts, >7-day data staleness recovery banners, and <0.80 low-confidence fallbacks.",
+      ],
+    ],
+    discoverySummary:
+      "By shadowing pre-meeting advisor prep and reviewing FINRA communication standards with Compliance and Engineering, I mapped where traditional chatbots break down in regulated wealth workflows.",
+    discoveryMethods: [
+      [
+        "Workflow Shadowing",
+        "Timed how advisors switched between calendar, CRM notes, brokerage drift, and DocuSign before client reviews.",
+      ],
+      [
+        "Failure-Mode Mapping",
+        "Cataloged the 4 highest-risk AI failures: entity ambiguity, stale external feeds, promissory phrasing, and unauthorized execution.",
+      ],
+      [
+        "Behavioral Spec Co-Design",
+        "Aligned PM, Legal/Compliance, and Engineering around deterministic tool-call boundaries and confidence thresholds.",
+      ],
+    ],
+    figmaNotes: [
+      {
+        tone: "amber",
+        tag: "Rule 01 · Disambiguate",
+        text: "Never guess when a prompt matches 2+ households—pause retrieval and surface one-tap household chips.",
+      },
+      {
+        tone: "rose",
+        tag: "Rule 02 · Uncertainty",
+        text: "Any external aggregation feed >7 days old must trigger an explicit staleness banner and agenda recovery action.",
+      },
+      {
+        tone: "sky",
+        tag: "Rule 03 · Tone Shift",
+        text: "Internal briefs stay concise and analytical; client-facing drafts shift to warm, non-promissory FINRA-safe language.",
+      },
+      {
+        tone: "emerald",
+        tag: "Rule 04 · Human Gate",
+        text: "Tier 2 drafts stay hard-locked until the advisor clicks Approve & Queue in CRM with an immutable audit timestamp.",
+      },
+      {
+        tone: "orange",
+        tag: "Rule 05 · Refusal UX",
+        text: "When blocking Tier 3 trade execution, never scold—explain the fiduciary rule and offer a staged draft order ticket.",
+      },
+      {
+        tone: "violet",
+        tag: "Rule 06 · Fallback",
+        text: "Below 0.80 intent confidence, suppress free-form generation and guide the advisor back to scoped household workflows.",
+      },
+    ],
+    principles: [
+      [
+        "Clarify before retrieving",
+        "Protect cross-client PII by resolving ambiguous time or household references with one-tap chips.",
+      ],
+      [
+        "Prove every number",
+        "Attach clickable system tags (CRM Note, Brokerage Core, DocuSign) and surface stale feeds openly.",
+      ],
+      [
+        "Graduated autonomy",
+        "Match AI freedom to consequence: read-only briefs flow freely, drafts require approval, trades stay human-only.",
+      ],
+      [
+        "Constructive boundaries",
+        "Refusals immediately pivot to the safest compliant alternative—staging a draft ticket or client approval email.",
+      ],
+    ],
+    journeySummary:
+      "Every turn in the Advisor Copilot is governed by a deterministic behavioral loop linking advisor intent, AI response, and live governance telemetry.",
+    journeyFlow: [
+      {
+        step: "01",
+        stage: "Clarify",
+        actor: "Wealth Advisor",
+        userGoal: "Prep for an afternoon meeting without typing full client IDs",
+        frictionEliminated: "Ambiguous prompts risked pulling the wrong household's financial data.",
+        uxResolution: "One-tap household disambiguation chips (Elena Vance 2:00 PM vs. Patel 3:30 PM).",
+        engineeringContract: "Entity resolution gate before CRM/Portfolio retrieval",
+        touchpoints: ["Calendar Context", "Disambiguation Chips", "Tier 1 Gate"],
+      },
+      {
+        step: "02",
+        stage: "Synthesize",
+        actor: "Advisor Copilot",
+        userGoal: "Review life events, IPS portfolio drift, and pending forms in 60 seconds",
+        frictionEliminated: "Advisors had to open 4 separate tabs and might miss an unsynced external 401(k).",
+        uxResolution: "Cited brief card + amber Data Staleness Warning with '+ Add 401(k) Sync to Agenda' action.",
+        engineeringContract: "RAG provenance tags + >7-day feed staleness detector",
+        touchpoints: ["Source Tags", "Staleness Banner", "Agenda Action"],
+      },
+      {
+        step: "03",
+        stage: "Draft",
+        actor: "Advisor + Copilot",
+        userGoal: "Send a compliant follow-up recapping retirement timeline and equity drift",
+        frictionEliminated: "Raw LLM emails used promissory phrasing that failed FINRA Rule 2210 review.",
+        uxResolution: "Pre-flight FINRA compliance filter + inline Edit Draft + mandatory Approve & Queue gate.",
+        engineeringContract: "Policy classifier + immutable CRM audit log on approval",
+        touchpoints: ["FINRA Guardrail", "Inline Editor", "CRM Queue Gate"],
+      },
+      {
+        step: "04",
+        stage: "Protect",
+        actor: "Governance Layer",
+        userGoal: "Handle requests to execute a $50,000 rebalance safely",
+        frictionEliminated: "Autonomous trade execution creates unacceptable fiduciary and regulatory risk.",
+        uxResolution: "Tier 3 Execution Lock refuses cleanly and offers 'Stage Draft Order Ticket #ORD-8821'.",
+        engineeringContract: "Tool-call write exclusion on order execution APIs",
+        touchpoints: ["Tier 3 Lock", "Staged Order Ticket", "Behavior Inspector"],
+      },
+    ],
+    wireframes: [
+      {
+        id: "01",
+        title: "Disambiguation & calendar context",
+        caption: "Resolves 'afternoon meeting' across two scheduled households before querying PII.",
+        layout: "split",
+      },
+      {
+        id: "02",
+        title: "Grounded brief & staleness recovery",
+        caption: "Pairs CRM/Brokerage citations with an explicit 18-day 401(k) sync warning.",
+        layout: "dashboard",
+      },
+      {
+        id: "03",
+        title: "FINRA-checked draft & human gate",
+        caption: "Highlights compliance-safe phrasing and locks CRM queuing behind advisor sign-off.",
+        layout: "drawer",
+      },
+      {
+        id: "04",
+        title: "Live AI Behavior Inspector",
+        caption: "Documents active pattern, autonomy tier, voice/tone, and guardrails in real time.",
+        layout: "split",
+      },
+    ],
+    architecturalPivot: {
+      summary:
+        "Early concepts treated the copilot like a standard chat window. Pairing the chat stream with a live AI Behavior Inspector turned abstract prompt-engineering rules into an inspectable, auditable product contract for PM, Compliance, and Engineering.",
+      before: "Unscoped chat box with opaque prompt rules",
+      after: "3-tier autonomy architecture + live Behavior Inspector",
+    },
+    engineeringSummary:
+      "Partnered with Product, Compliance, and Engineering to translate conversational persona and safety rules into deterministic UI states and API boundaries.",
+    collabTracks: [
+      {
+        phase: "01 / Persona & Tone",
+        title: "Authored voice & tone matrix",
+        detail: "Defined exact tone shifts across internal briefs, client-facing FINRA drafts, and Tier 3 boundary refusals.",
+        deliverable: "Conversational Style & Tone Spec",
+      },
+      {
+        phase: "02 / Autonomy Tiers",
+        title: "Mapped 3-tier execution boundaries",
+        detail: "Separated read-only retrieval, human-gated drafting, and hard-blocked order execution at the tool-calling layer.",
+        deliverable: "Autonomy Governance Matrix",
+      },
+      {
+        phase: "03 / Live Prototype",
+        title: "Built interactive behavioral sandbox",
+        detail: "Shipped a working React + TypeScript prototype with 4 scenarios, free-text fallback (<0.80), and live spec inspector.",
+        deliverable: "Interactive Advisor Copilot Prototype",
+      },
+    ],
+    contractBridge: {
+      figmaTitle: "Behavioral UX Spec · Voice & Guardrails",
+      codeTitle: "Runtime Governance & Confidence Gates",
+      figmaSpecs: [
+        ["Ambiguity handling", "Pause retrieval → 1-tap household chips"],
+        ["Staleness threshold", ">7 days → Amber recovery banner + agenda CTA"],
+        ["Tone modes", "Analyst (Internal) · Fiduciary (Client) · Boundary (Refusal)"],
+      ],
+      codeSpecs: [
+        ["Autonomy Tiers", "Tier 1 Read · Tier 2 Human Gate · Tier 3 Locked"],
+        ["Confidence Gate", "<0.80 triggers structured fallback chips"],
+        ["Compliance Filter", "FINRA Rule 2210 pre-flight check + audit timestamp"],
+      ],
+    },
+    decisions: [
+      {
+        title: "Disambiguate before retrieving client PII.",
+        body: "When an advisor asks a broad question like 'Prep me for my afternoon meeting,' the copilot pauses retrieval and surfaces one-tap household chips so two clients' data never mix.",
+        badge: "Clarification Strategy",
+        image: `${assetBase}advisor-copilot/hero-brief.png`,
+      },
+      {
+        title: "FINRA pre-flight filter + mandatory human sign-off.",
+        body: "Client follow-ups run through a Rule 2210 tone check, allow inline editing, and remain locked until the advisor explicitly clicks Approve & Queue in CRM.",
+        badge: "Tier 2 Human Gate",
+        image: `${assetBase}advisor-copilot/compliance-draft.png`,
+      },
+    ],
+    outcomes: [
+      [
+        "4 behavioral patterns shipped",
+        "Clarification, Staleness Recovery, FINRA Drafting, and Execution Refusal",
+        "Interactive sandbox ready for stakeholder & compliance review",
+      ],
+      [
+        "Zero-hallucination framing",
+        "100% of brief claims paired with source tags & confidence badges",
+        "Explicitly isolates stale external feeds instead of guessing",
+      ],
+      [
+        "Shared PM/Legal/Eng spec",
+        "Live AI Behavior Inspector maps UI turns directly to governance tiers",
+        "Aligns UX, Compliance, and Engineering on AI autonomy",
+      ],
+    ],
+  },
+  {
     id: "tokenroute",
     tldr: { problem: "Engineers, content creators, and everyday AI users check six dashboards to see cost, errors, and limits.", bet: "One endpoint and one control panel, with the backup's cost shown next to every failover rule.", proof: "20 screens covering 6 providers and 24 models, in light and dark." },
     figmaUrl:
